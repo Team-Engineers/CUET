@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
 import { FaGoogle, FaFacebook, FaLinkedin } from "react-icons/fa";
 
 const Login = () => {
@@ -55,10 +56,13 @@ const Login = () => {
           <b className="relative text-[#5648FC]">CUET-TestKnock</b>
         </div>
         <div className="flex items-center">
-          <p className="m-[20px] font-bold">Don't have a account? </p>
-          <p className="bg-[#FF7468] text-white  text-center p-3  w-[120px] h-[45px] rounded-full cursor-pointer">
+          <p className="m-[20px] font-bold">Don't have an account? </p>
+          <NavLink
+            to="/signup"
+            className="bg-[#FF7468] text-white text-center p-3 w-[120px] h-[45px] rounded-full cursor-pointer"
+          >
             Sign Up
-          </p>
+          </NavLink>
         </div>
       </div>
       <div className="flex">
