@@ -37,11 +37,10 @@ const Footer = () => {
           </div>
           <div className="flex  md:grid-cols-3 lg:col-span-2">
             <div className="text-center ">
-             
               <ul className=" space-y-2 text-[80%] md:text-[100%] list-none no-underline">
-              <p className="md:text-[120%] mb-[40px] text-center text-[90%] text-white hover:text-white ">
-                Company
-              </p>
+                <p className="md:text-[120%] mb-[40px] text-center text-[90%] text-white hover:text-white ">
+                  Company
+                </p>
                 <li>
                   <Link
                     className="text-white transition no-underline hover:text-white"
@@ -69,7 +68,6 @@ const Footer = () => {
                   </Link>
                 </li>
 
-                
                 <li>
                   <Link
                     className="text-white transition no-underline hover:text-white"
@@ -78,14 +76,13 @@ const Footer = () => {
                     Courses
                   </Link>
                 </li>
-
               </ul>
             </div>
             <div className="text-center ">
               <ul className="  text-[80%] space-y-[-3px] md:text-[100%] list-none">
-              <p className="md:text-[120%] mb-[40px] text-[90%] hover:text-white  text-white whitespace-nowrap">
-                Whom We Serve
-              </p>
+                <p className="md:text-[120%] mb-[40px] text-[90%] hover:text-white  text-white whitespace-nowrap">
+                  Whom We Serve
+                </p>
                 <li>
                   <p className="text-white transition hover:text-white whitespace-nowrap">
                     School Students
@@ -117,24 +114,26 @@ const Footer = () => {
               </ul>
             </div>
             <div className="text-center  max-sm:hidden sm:text-left">
-              
               <ul className="space-y-5 text-[80%] md:text-[100%]">
-              <p className="md:text-[120%] left-[30px] relative items-center mb-[40px] text-[90%] hover:text-white font-medium text-white">
-                Contact Us
-              </p>
+                <p className="md:text-[120%] left-[30px] relative items-center mb-[40px] text-[90%] hover:text-white font-medium text-white">
+                  Contact Us
+                </p>
                 <li className="flex items-center hover:text-white text-white  gap-1.5 justify-start ">
                   <Link
                     href="mailto:info@testknock.com"
                     className="gap-1.5 flex no-underline text-white "
                   >
-                    <IoMdMail className='relative top-[5px]'  />
+                    <IoMdMail className="relative top-[5px]" />
                     <h>info@testknock.com</h>
                   </Link>
                 </li>
 
                 <li className="flex items-center hover:text-white text-white  gap-1.5 justify-start ">
-                  <Link href="tel:9810033495" className="gap-1.5 flex no-underline text-white ">
-                    <IoMdCall className='relative top-[5px]' />
+                  <Link
+                    href="tel:9810033495"
+                    className="gap-1.5 flex no-underline text-white "
+                  >
+                    <IoMdCall className="relative top-[5px]" />
                     <h>9953617456</h>
                   </Link>
                 </li>
@@ -142,9 +141,9 @@ const Footer = () => {
                 <li className="flex items-start hover:text-white text-white justify-center gap-1.5 ltr:sm:justify-start rtl:sm:justify-end">
                   <IoMdPin />
                   <h className="-mt-0.5 flex-1 not-italic">
-                   Office No. - 42, Durga Vihar, <br/>
-                  Near Amrapali Saphhire, <br/>
-                   Sec-45, Noida, 201301
+                    Office No. - 42, Durga Vihar, <br />
+                    Near Amrapali Saphhire, <br />
+                    Sec-45, Noida, 201301
                   </h>
                 </li>
               </ul>
@@ -188,25 +187,25 @@ const Footer = () => {
           </ul>
         </div>
         <div className="mx-auto my-[50px]  flex flex-col items-start justify-start py-0 px-px box-border gap-[15px] max-w-full ">
-      <div className="self-stretch mx-[40px]  relative box-border z-[1] border-t-[1px] border-solid border-white" />
-      <div className="w-[1050px] mx-auto flex flex-row items-start justify-start py-0 px-[34px] box-border max-w-full">
-        <div className="flex-1 flex flex-row items-start justify-between gap-[20px] max-w-full mq750:flex-wrap">
-          <div className="flex flex-row items-start justify-start gap-[76px] max-w-full mq750:flex-wrap mq450:gap-[76px]">
-            <div className="flex flex-row items-start justify-start gap-[6px]">
-            &copy;
-              <b className="relative z-[1]">2024 TestKnock</b>
+          <div className="self-stretch mx-[40px]  relative box-border z-[1] border-t-[1px] border-solid border-white" />
+          <div className="w-[1050px] mx-auto flex flex-row items-start justify-start py-0 px-[34px] box-border max-w-full">
+            <div className="flex-1 flex flex-row items-start justify-between gap-[20px] max-w-full mq750:flex-wrap">
+              <div className="flex flex-row items-start justify-start gap-[76px] max-w-full mq750:flex-wrap mq450:gap-[76px]">
+                <div className="flex flex-row items-start justify-start gap-[6px]">
+                  &copy;
+                  <b className="relative z-[1]">2024 TestKnock</b>
+                </div>
+                <b className="relative z-[1]">All rights reserved</b>
+              </div>
+              <div className="flex flex-row items-start justify-start gap-[30px] text-deepskyblue">
+                <b className="relative [text-decoration:underline] z-[1]">{`Terms & Condition`}</b>
+                <b className="relative [text-decoration:underline] z-[1]">
+                  Privacy
+                </b>
+              </div>
             </div>
-            <b className="relative z-[1]">All rights reserved</b>
-          </div>
-          <div className="flex flex-row items-start justify-start gap-[30px] text-deepskyblue">
-            <b className="relative [text-decoration:underline] z-[1]">{`Terms & Condition`}</b>
-            <b className="relative [text-decoration:underline] z-[1]">
-              Privacy
-            </b>
           </div>
         </div>
-      </div>
-    </div>
       </div>
     </footer>
   );
