@@ -5,78 +5,81 @@ import Layout from '../layout/Layout';
 
 function Learning() {
     const subjects = [
-        {
-          title: 'Algebra',
-          questions: 25,
-          totalMarks: 120,
-          difficultyLevel: 'Advanced',
-        },
-        {
-          title: 'Mechanics',
-          questions: 18,
-          totalMarks: 90,
-          difficultyLevel: 'Intermediate',
-        },
-        {
-          title: 'Organic Chemistry',
-          questions: 22,
-          totalMarks: 110,
-          difficultyLevel: 'Beginner',
-        },
-        {
-            title: 'Algebra',
-            questions: 25,
-            totalMarks: 120,
-            difficultyLevel: 'Advanced',
-          },
-          {
-            title: 'Mechanics',
-            questions: 18,
-            totalMarks: 90,
-            difficultyLevel: 'Intermediate',
-          },
-          {
-            title: 'Organic Chemistry',
-            questions: 22,
-            totalMarks: 110,
-            difficultyLevel: 'Beginner',
-          },   {
-            title: 'Algebra',
-            questions: 25,
-            totalMarks: 120,
-            difficultyLevel: 'Advanced',
-          },
-          {
-            title: 'Mechanics',
-            questions: 18,
-            totalMarks: 90,
-            difficultyLevel: 'Intermediate',
-          },
-          {
-            title: 'Organic Chemistry',
-            questions: 22,
-            totalMarks: 110,
-            difficultyLevel: 'Beginner',
-          },
-          {
-            title: 'Algebra',
-            questions: 25,
-            totalMarks: 120,
-            difficultyLevel: 'Advanced',
-          },
-          {
-            title: 'Mechanics',
-            questions: 18,
-            totalMarks: 90,
-            difficultyLevel: 'Intermediate',
-          },
-          {
-            title: 'Organic Chemistry',
-            questions: 22,
-            totalMarks: 110,
-            difficultyLevel: 'Beginner',
-          },
-      ];
+      {
+        title: "Algebra",
+        questions: 25,
+        totalMarks: 60,
+        difficultyLevel: "Advanced",
+
+      },
+      {
+        title: "Mechanics",
+        questions: 18,
+        totalMarks: 90,
+        difficultyLevel: "Intermediate",
+   
+      },
+      {
+        title: "Organic Chemistry",
+        questions: 22,
+        totalMarks: 40,
+        difficultyLevel: "Beginner",
+      },
+      {
+        title: "Algebra",
+        questions: 25,
+        totalMarks: 120,
+        difficultyLevel: "Advanced",
+      },
+      {
+        title: "Mechanics",
+        questions: 18,
+        totalMarks: 90,
+        difficultyLevel: "Intermediate",
+      },
+      {
+        title: "Organic Chemistry",
+        questions: 22,
+        totalMarks: 110,
+        difficultyLevel: "Beginner",
+      },
+      {
+        title: "Algebra",
+        questions: 25,
+        totalMarks: 120,
+        difficultyLevel: "Advanced",
+      },
+      {
+        title: "Mechanics",
+        questions: 18,
+        totalMarks: 90,
+        difficultyLevel: "Intermediate",
+      },
+      {
+        title: "Organic Chemistry",
+        questions: 22,
+        totalMarks: 110,
+        difficultyLevel: "Beginner",
+      },
+      {
+        title: "Algebra",
+        questions: 25,
+        totalMarks: 120,
+        difficultyLevel: "Advanced",
+      },
+      {
+        title: "Mechanics",
+        questions: 18,
+        totalMarks: 90,
+        difficultyLevel: "Intermediate",
+      },
+      {
+        title: "Organic Chemistry",
+        questions: 22,
+        totalMarks: 110,
+        difficultyLevel: "Beginner",
+      },
+    ];
       
     
     
