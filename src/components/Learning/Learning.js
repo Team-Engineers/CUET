@@ -1,88 +1,95 @@
-import React from 'react'
-import TestCard from '../Test/TestCard';
-import Layout from '../layout/Layout';
-
+import React from "react";
+import TestCard from "../Test/TestCard";
+import Layout from "../layout/Layout";
 
 function Learning() {
-    const subjects = [
-      {
-        title: "Algebra",
-        questions: 25,
-        totalMarks: 60,
-        difficultyLevel: "Advanced",
+  const subjects = [
+    {
+      title: "Algebra",
+      Questions: 25,
+      Marks: 60,
+      difficultyLevel: "Advanced",
+      bgcolor: "#FFB6C1",
+    },
+    {
+      title: "Mechanics",
+      Questions: 18,
+      Marks: 90,
+      difficultyLevel: "Intermediate",
+      bgcolor: "#98FB98",
+    },
+    {
+      title: "Organic Chemistry",
+      Questions: 22,
+      Marks: 40,
+      difficultyLevel: "Beginner",
+      bgcolor: "#87CEFA",
+    },
+    {
+      title: "Algebra",
+      Questions: 25,
+      Marks: 120,
+      difficultyLevel: "Advanced",
+      bgcolor: "#FFA07A",
+    },
+    {
+      title: "Mechanics",
+      Questions: 18,
+      Marks: 90,
+      difficultyLevel: "Intermediate",
+      bgcolor: "#DDA0DD",
+    },
+    {
+      title: "Organic Chemistry",
+      Questions: 22,
+      Marks: 110,
+      difficultyLevel: "Beginner",
+      bgcolor: "#FFB6C1",
+    },
+    {
+      title: "Algebra",
+      Questions: 25,
+      Marks: 120,
+      difficultyLevel: "Advanced",
+      bgcolor: "#FFD700",
+    },
+    {
+      title: "Mechanics",
+      Questions: 18,
+      Marks: 90,
+      difficultyLevel: "Intermediate",
+      bgcolor: "#FFEDB9",
+    },
+    {
+      title: "Organic Chemistry",
+      Questions: 22,
+      Marks: 110,
+      difficultyLevel: "Beginner",
+      bgcolor: "#9CC2F4",
+    },
+    {
+      title: "Algebra",
+      Questions: 25,
+      Marks: 120,
+      difficultyLevel: "Advanced",
+      bgcolor: "#CDFADB",
+    },
+    {
+      title: "Mechanics",
+      Questions: 18,
+      Marks: 90,
+      difficultyLevel: "Intermediate",
+      bgcolor: "#C3ACD0",
+    },
+    {
+      title: "Organic Chemistry",
+      Questions: 22,
+      Marks: 110,
+      difficultyLevel: "Beginner",
+      bgcolor: "#F9B572",
+    },
+  ];
 
-      },
-      {
-        title: "Mechanics",
-        questions: 18,
-        totalMarks: 90,
-        difficultyLevel: "Intermediate",
-   
-      },
-      {
-        title: "Organic Chemistry",
-        questions: 22,
-        totalMarks: 40,
-        difficultyLevel: "Beginner",
-      },
-      {
-        title: "Algebra",
-        questions: 25,
-        totalMarks: 120,
-        difficultyLevel: "Advanced",
-      },
-      {
-        title: "Mechanics",
-        questions: 18,
-        totalMarks: 90,
-        difficultyLevel: "Intermediate",
-      },
-      {
-        title: "Organic Chemistry",
-        questions: 22,
-        totalMarks: 110,
-        difficultyLevel: "Beginner",
-      },
-      {
-        title: "Algebra",
-        questions: 25,
-        totalMarks: 120,
-        difficultyLevel: "Advanced",
-      },
-      {
-        title: "Mechanics",
-        questions: 18,
-        totalMarks: 90,
-        difficultyLevel: "Intermediate",
-      },
-      {
-        title: "Organic Chemistry",
-        questions: 22,
-        totalMarks: 110,
-        difficultyLevel: "Beginner",
-      },
-      {
-        title: "Algebra",
-        questions: 25,
-        totalMarks: 120,
-        difficultyLevel: "Advanced",
-      },
-      {
-        title: "Mechanics",
-        questions: 18,
-        totalMarks: 90,
-        difficultyLevel: "Intermediate",
-      },
-      {
-        title: "Organic Chemistry",
-        questions: 22,
-        totalMarks: 110,
-        difficultyLevel: "Beginner",
-      },
-    ];
-      
-    
-    
   return (
     <>
       <Layout>
@@ -108,7 +115,7 @@ function Learning() {
                   </button>
                 </div>
               </div>
-              <div className="flex flex-row items-start justify-start max-w-full text-10xl mt-6 col-md-12 ">
+              <div className="flex flex-row items-start justify-start max-w-full text-10xl mt-6 col-md-12 mx-auto ">
                 <p className="m-0 font-bold">Prepartory Modules</p>
                 <p className="m-0 pl-10 font-bold"> Practice Test</p>
                 <p className="m-0 pl-10 font-bold">Mock Test</p>
@@ -116,7 +123,7 @@ function Learning() {
               <div className="container mt-2">
                 <div className="row">
                   {subjects.map((subject, index) => (
-                    <div key={index} className="col-md-4">
+                    <div key={index} className="col-lg-4 col-md-6 col-sm-12">
                       <TestCard {...subject} />
                     </div>
                   ))}
@@ -130,4 +137,4 @@ function Learning() {
   );
 }
 
-export default Learning
+export default Learning;

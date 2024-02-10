@@ -3,37 +3,22 @@ import { FaQuestionCircle, FaCheckCircle } from "react-icons/fa";
 
 const TestCard = ({
   title,
-  questions,
-  totalMarks,
+  Questions,
+  Marks,
   difficultyLevel,
+  bgcolor,
  
 }) => {
-  const lightColors = [
-    "#FFD700",
-    "#98FB98",
-    "#87CEFA",
-    "#FFA07A",
-    "#DDA0DD",
-    "#FFB6C1",
-  ];
-
-  let colorIndex = 0;
-
-  const getRandomColor = (() => {
-    return () => {
-      const color = lightColors[colorIndex];
-      colorIndex = (colorIndex + 1) % lightColors.length;
-      return color;
-    };
-  })();
 
   const renderDifficultyBtn = (level) => {
     let btnClassName = `btn btn-${
       level === difficultyLevel ? "success" : "outline-secondary"
     } btn-md mx-1 mt-2`;
     let btnStyle = {
-      borderRadius: "13px",
-      fontSize: "0.55rem",
+      borderRadius: "32px",
+      fontSize: "0.7rem",
+      display: "inline-block",
+      marginBottom:"10px",
     };
 
     if (level === "Beginner" || level === "Intermediate" || level ==="Advanced") {
@@ -51,43 +36,43 @@ const TestCard = ({
   return (
     <div
       className="card mt-3 mb-3"
-      style={{ borderRadius: "29px", maxWidth: "300px", maxHeight: "280px" }}
+      style={{ borderRadius: "29px", maxWidth: "350px", maxHeight: "370px" , margin:"auto" }}
     >
       <div>
         <div
           className="card-body"
           style={{
-            backgroundColor: getRandomColor(),
+            backgroundColor: bgcolor,
             borderRadius: "15px",
-            marginLeft: "12px",
+            marginLeft: "10px",
             marginRight: "10px",
             marginTop: "10px",
             maxwidth: "150px",
-            maxHeight: "200px",
+            maxHeight: "370px",
           }}
         >
-          <h5 className="card-title">{title}</h5>
+          <h5 className="card-title font-bold" >{title}</h5>
           <div className="row">
             <div className="col-md-6">
               <div className="d-flex align-items-center">
-                <FaQuestionCircle size={20} color="#000" className="mr-2" />
-                <p className="mb-0" style={{ fontSize: "0.8rem" }}>
-                  <strong>{questions}</strong> Questions
+                <FaQuestionCircle size={25} color="#000" className="mr-2" />
+                <p className="mb-0" style={{ fontSize: "1.0rem" }}>
+                  <strong>{Questions}</strong> <br></br>Questions
                 </p>
               </div>
             </div>
             <div className="col-md-6">
               <div className="d-flex align-items-center">
-                <FaCheckCircle size={20} color="#000" className="mr-1" />
-                <p className="mb-0" style={{ fontSize: "0.8rem" }}>
-                  <strong>{totalMarks}</strong> Total Marks
+                <FaCheckCircle size={25} color="#000" className="mr-2" />
+                <p className="mb-0" style={{ fontSize: "1.0rem" }}>
+                  <strong>{Marks}</strong> <br></br> Marks
                 </p>
               </div>
             </div>
           </div>
-          <div className="mt-3" style={{ fontSize: "0.8rem" }}>
+          <div className="mt-3" style={{ fontSize: "1.0rem" }}>
             <strong>Difficulty Level:</strong>
-          </div>
+            </div>
           {renderDifficultyBtn("Beginner")}
           {renderDifficultyBtn("Intermediate")}
           {renderDifficultyBtn("Advanced")}
