@@ -17,10 +17,10 @@ const Homepage = () => {
       <Banner />
       <SubjectTopic />
       <img
-        className="w-[608.7px] h-[542.2px]  mx-auto absolute my-0  top-[1155px] right-[-321.7px] object-contain z-[2]"
+        className="w-[608.7px] h-[542.2px]  mx-auto absolute my-0  top-[1455px] right-[-281.7px] object-contain z-[2] hidden lg:block"
         loading="eager"
         alt=""
-        src={require("../assets/images/signup/Vector.png")}
+        src={"/bubbles/bubble1.png"}
       />
 
       <HomeSteps />
