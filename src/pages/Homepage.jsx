@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Footer from "../components/footer/Footer";
-import Header from "../components/header/Header";
+import Navbar from "../components/Navbar";
 import Contact from '../components/home/Contact';
 import HomeSteps from "../components/home/HomeSteps";
 import SubjectTopic from "../components/home/SubjectTopic";
@@ -16,8 +16,8 @@ const Homepage = () => {
   };
 
   return (
-    <div className="w-full  relative bg-white overflow-hidden flex flex-col items-center  pt-5 px-0 pb-0 box-border gap-[81px] tracking-[normal]">
-      <Header />
+    <div className="w-full  relative bg-white overflow-hidden flex flex-col items-center px-0 pb-0 box-border tracking-[normal]">
+      <Navbar />
       <div className="flex flex-row gap-[100px] items-start justify-between mx-auto box-border  text-left text-13xl text-blueviolet-100 font-inter">
         <div className="flex flex-col items-start gap-[42px] max-w-full">
           <div className="flex flex-col items-start box-border gap-[17px] max-w-full">
