@@ -12,7 +12,7 @@ const getTouches = (evt) => {
 
 const Testinomials2 = ({ image, name, text }) => {
   return (
-    <div className="cursor-pointer w-[20em] min-h-[20em] md:w-[35em] md:h-[15em] py-10 rounded-[16.02px] bg-gray-300 shadow-[0px_4px_4px_rgba(0,_0,_0,_0.25)] [backdrop-filter:blur(50px)] flex flex-col justify-evenly items-center px-5">
+    <div className="cursor-pointer w-[20em] min-h-[20em] md:w-[40em] md:h-[15em] py-10 rounded-[16.02px] bg-gray-300 shadow-[0px_4px_4px_rgba(0,_0,_0,_0.25)] [backdrop-filter:blur(50px)] flex flex-col justify-evenly items-center px-5">
       <div className="text-13xl text-white font-bold">{name}</div>
       <div className="text-white text-xl text-center my-8">{text}</div>
       <hr className="border-[1px] border-solid border-[#D9D9D9] w-full" />

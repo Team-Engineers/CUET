@@ -1,7 +1,7 @@
 import DomainTopic from "./DomainTopic";
 const SubjectTopic = () => {
   return (
-    <section className="w-full relative flex flex-col items-center mt-72">
+    <section className="w-full relative flex flex-col items-center mt-48">
       <div className="text-7xl md:text-17xl w-full flex flex-col items-center justify-center">
         <div className="  min-h-[10vh] flex flex-col items-center justify-around">
           <h1 className="text-blueviolet-100 m-0 mb-2  tracking-[0.02em] text-21xl font-bold z-10 ">Challenge Your-self</h1>
