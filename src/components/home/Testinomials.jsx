@@ -1,56 +1,74 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import { config } from "react-spring";
 import Carousel from "react-spring-3d-carousel";
 import { v4 as uuidv4 } from "uuid";
+import { useMediaQuery } from "react-responsive";
 
-const Testinomials2 = ({
-  image,
-  name,
-  text,
-}) => {
+const getTouches = (evt) => {
   return (
-    <div
-      className="w-[416px] flex flex-col items-start justify-start pt-1 pb-0 pr-8 pl-0 box-border max-w-full text-center text-xs-2 text-white font-inter"
-    >
-      <div className="self-stretch flex flex-col items-center justify-end py-[49px] pr-3 pl-[7px] box-border relative min-h-[266px]">
-        <div
-          className="w-full h-[238px] absolute my-0 mx-[!important] right-[0px] bottom-[0px] left-[0px] rounded-[16.02px] bg-gray-300 shadow-[0px_4px_4px_rgba(0,_0,_0,_0.25)] [backdrop-filter:blur(50px)]"
-        />
-        <img
-          className="w-[56.1px] h-[56.1px] absolute my-0 mx-[!important] top-[0px] left-[calc(50%_-_28.1px)] rounded-[50%] object-cover z-[1]"
-          loading="eager"
-          alt=""
-          src={image}
-        />
-        <div className="self-stretch flex flex-col items-center justify-start gap-[21px]">
-          <div
-            className="self-stretch relative  z-[1]"
-          >
-            {text}
-          </div>
-          <div className="self-stretch flex flex-col items-center justify-start py-0 px-2.5 gap-[13px] text-lgi-2">
-            <div className="self-stretch h-[0.8px] relative box-border z-[1] border-t-[0.8px] border-solid border-white" />
-            <div className="flex flex-row items-start justify-start py-0 pr-0 pl-[5px]">
-              <div
-                className="relative font-semibold z-[1]"
-              >
-                {name}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+    evt.touches || evt.originalEvent.touches // browser API
+  );
+};
+
+const Testinomials2 = ({ image, name, text }) => {
+  return (
+    <div className="cursor-pointer w-[20em] min-h-[20em] md:w-[40em] md:h-[15em] py-10 rounded-[16.02px] bg-gray-300 shadow-[0px_4px_4px_rgba(0,_0,_0,_0.25)] [backdrop-filter:blur(50px)] flex flex-col justify-evenly items-center px-5">
+      <div className="text-13xl text-white font-bold">{name}</div>
+      <div className="text-white text-xl text-center my-8">{text}</div>
+      <hr className="border-[1px] border-solid border-[#D9D9D9] w-full" />
+      <div className="mb-0 font-bold text-7xl text-white text-center">Professor, IILM University</div>
     </div>
   );
 };
+
 function Carroussel(props) {
   const table = props.cards.map((element, index) => {
     return { ...element, onClick: () => setGoToSlide(index) };
   });
   const [offsetRadius, setOffsetRadius] = useState(4);
   const [showArrows, setShowArrows] = useState(false);
-  const [goToSlide, setGoToSlide] = useState(null);
+  const [goToSlide, setGoToSlide] = useState(0);
   const [cards] = useState(table);
+  const [xDown, setXDown] = useState(null);
+  const [yDown, setYDown] = useState(null);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      // setGoToSlide(goToSlide + 1);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, [goToSlide]);
+
+  const handleTouchStart = (evt) => {
+    const firstTouch = getTouches(evt)[0];
+    setXDown(firstTouch.clientX);
+    setYDown(firstTouch.clientY);
+  };
+
+  const handleTouchMove = (evt) => {
+    if (!xDown && !yDown) {
+      return;
+    }
+
+    let xUp = evt.touches[0].clientX;
+    let yUp = evt.touches[0].clientY;
+
+    let xDiff = xDown - xUp;
+    let yDiff = yDown - yUp;
+    if (Math.abs(xDiff) > Math.abs(yDiff)) {
+      if (xDiff > 0) {
+        /* left swipe */
+        setXDown(null);
+        setYDown(null);
+        setGoToSlide(goToSlide + 1);
+      } else {
+        /* right swipe */
+        setXDown(null);
+        setYDown(null);
+        setGoToSlide(goToSlide - 1);
+      }
+    }
+  };
 
   useEffect(() => {
     setOffsetRadius(props.offset);
@@ -60,8 +78,14 @@ function Carroussel(props) {
   return (
     <div
       style={{ width: props.width, height: props.height, margin: props.margin }}
+      className="2xl:max-w-[80vw] w-full min-h-[60vh] flex flex-col justify-center items-center z-10"
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
     >
       <Carousel
+        offsetFn={(index) => {
+          return { opacity: 1 };
+        }}
         slides={cards}
         goToSlide={goToSlide}
         offsetRadius={offsetRadius}
@@ -78,13 +102,9 @@ const slides = [
       <Testinomials2
         image={require("../../assets/images/signup/test1.png")}
         name="Mohan Singh"
-        text="Enrolling in the online CUET course was a game-changer for me.
-          The comprehensive material, interactive lessons, and personalized
-          support elevated my preparation. I not only gained confidence but
-          also achieved remarkable results. Thank you for paving the way to
-          my success!"
+        text="This is a short and sweet review from Mohan Singh"
       />
-    )
+    ),
   },
   {
     key: uuidv4(),
@@ -98,45 +118,34 @@ const slides = [
           also achieved remarkable results. Thank you for paving the way to
           my success!"
       />
-    )
+    ),
   },
   {
     key: uuidv4(),
     content: (
       <Testinomials2
-        image={require("../../assets/images/signup/test1.png")}
-        name="Priya Singh"
-        text="Enrolling in the online CUET course was a game-changer for me.
-          The comprehensive material, interactive lessons, and personalized
-          support elevated my preparation. I not only gained confidence but
-          also achieved remarkable results. Thank you for paving the way to
-          my success!"
+        name={"Jhon Lawrence"}
+        text={
+          "Enrolling in the online CUET course was a game-changer for me.  The comprehensive material, interactive lessons, and personalized support elevated my preparation. I not only gained confidence but also achieved remarkable results. Thank you for paving the way to my success!"
+        }
       />
-    )
-  }
+    ),
+  },
 ];
 const Testinomials = () => {
+  const isMobile = useMediaQuery({ query: `(max-width: 760px)` });
+
   return (
-    <div>
-      <div className='mb-[-35px]'>
-        <h1 className="m-0 relative text-blueviolet-400  text-13xl font-semibold font-inherit text-center mq750:text-7xl mq450:text-lgi">
-          Testimonials
-        </h1>
-        <h1 className="m-0 relative text-blueviolet-400  text-[25px] font-semibold font-inherit text-center mq750:text-7xl mq450:text-lgi">
-          Information
-        </h1>
+    <div className="relative w-full flex justify-center items-center">
+      <div className="w-full 2xl:max-w-[80vw] min-h-[80vh] flex flex-col justify-around my-10">
+        <div className="">
+          <h1 className="text-blueviolet-400  text-13xl font-semibold text-center ">Testimonials</h1>
+          <h1 className="text-blueviolet-400 font-normal text-5xl text-center ">Information</h1>
+        </div>
+        <Carroussel cards={slides} height="500px" width="80%" margin="0 auto" offset={isMobile ? 0 : 200} showArrows={isMobile} />{" "}
       </div>
-
-      <div className="relative mb-[-50px]  w-[1280px] overflow-hidden flex flex-row items-center justify-start gap-[94px] max-w-full z-[1] text-center text-xs-2 text-white mq1225:flex-wrap">
-
-        <Carroussel
-          cards={slides}
-          height="500px"
-          width="80%"
-          margin="0 auto"
-          offset={200}
-          showArrows={false}
-        />        </div>
+      <img src="/bubbles/bubble3.png" className="absolute left-0 z-[2]" />
+      <img src="/bubbles/bubble2.png" className="absolute right-0 top-[-200px] md:top-0 z-[2]" />
     </div>
   );
 };

@@ -1,30 +1,15 @@
-
-const DomainTopic = ({
-    brick,
-    general,
-    english,
-  }) => {
-   
-  
-    return (
-      <div className=" flex flex-col items-center justify-start pt-10 pb-[33px] pr-[76px] pl-[75px] box-border relative gap-[28px] text-center text-13xl text-black font-inter">
-        <div
-          className="w-full h-full absolute my-0 mx-[!important] top-[0px] right-[0px] bottom-[0px] left-[0px] rounded-xl bg-white shadow-[10px_4px_4px_rgba(0,_0,_0,_0.25)] cursor-pointer z-[1]"
-        />
-        <img
-          className="w-[126px] h-[126px] relative object-cover z-[2]"
-          loading="eager"
-          alt=""
-          src={(brick)}
-        />
-        <h1
-          className="m-0 self-stretch h-[78px] relative text-inherit font-semibold font-inherit inline-block z-[2] mq750:text-7xl mq450:text-lgi"
-        >
-          <p className="m-0">{general}</p>
-          <p className="m-0">{english}</p>
+const DomainTopic = ({ img_path, text, color }) => {
+  return (
+    <div className={`w-60 h-60 md:w-72 md:h-72 z-[1] rounded-2xl flex justify-center items-center shadow-[10px_10px_4px_0px_rgba(0,0,0,0.3)] ${color} m-3`}>
+      <div className="flex flex-col items-center">
+        <img className="w-[126px] h-[126px] relative object-cover z-[2]" loading="eager" alt="" src={img_path} />
+        <h1 className="text-5xl md:text-[2em] md:max-w-40 text-center">
+          {text}
         </h1>
       </div>
-    );
-  };
+    </div>
+  );
 
-export default DomainTopic
+};
+
+export default DomainTopic;
