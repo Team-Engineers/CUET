@@ -136,14 +136,16 @@ const Testinomials = () => {
   const isMobile = useMediaQuery({ query: `(max-width: 760px)` });
 
   return (
-    <div className="relative w-full 2xl:max-w-[80vw] min-h-[80vh] flex flex-col justify-around my-10">
-      <div className="">
-        <h1 className="text-blueviolet-400  text-13xl font-semibold text-center ">Testimonials</h1>
-        <h1 className="text-blueviolet-400 font-normal text-5xl text-center ">Information</h1>
+    <div className="relative w-full flex justify-center items-center">
+      <div className="w-full 2xl:max-w-[80vw] min-h-[80vh] flex flex-col justify-around my-10">
+        <div className="">
+          <h1 className="text-blueviolet-400  text-13xl font-semibold text-center ">Testimonials</h1>
+          <h1 className="text-blueviolet-400 font-normal text-5xl text-center ">Information</h1>
+        </div>
+        <Carroussel cards={slides} height="500px" width="80%" margin="0 auto" offset={isMobile ? 0 : 200} showArrows={isMobile} />{" "}
       </div>
-      <Carroussel cards={slides} height="500px" width="80%" margin="0 auto" offset={isMobile ? 0 : 200} showArrows={isMobile} />{" "}
-      <img src="/bubbles/bubble3.png" className="absolute z-[2]" />
-      <img src="/bubbles/bubble2.png" className="absolute right-0 z-[2]" />
+      <img src="/bubbles/bubble3.png" className="absolute left-0 z-[2]" />
+      <img src="/bubbles/bubble2.png" className="absolute right-0 top-[-200px] md:top-0 z-[2]" />
     </div>
   );
 };
