@@ -22,7 +22,6 @@ const Homepage = () => {
         alt=""
         src={"/bubbles/bubble1.png"}
       />
-
       <HomeSteps />
       <section className="w-[927px] h-[822px] absolute my-0 mx-[!important] right-[-378px] bottom-[621px]">
         <img
