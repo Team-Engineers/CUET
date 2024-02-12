@@ -23,13 +23,13 @@ const Homepage = () => {
         src={"/bubbles/bubble1.png"}
       />
       <HomeSteps />
-      <section className="w-[927px] h-[822px] absolute my-0 mx-[!important] right-[-378px] bottom-[621px]">
+      {/* <section className="hidden md:visible w-[927px] h-[822px] absolute my-0 mx-[!important] right-[-378px] bottom-[621px]">
         <img
           className="absolute top-[0px] left-[193px] w-[734.2px] h-[641.2px] object-contain"
           alt=""
           src={require("../assets/images/signup/Vector.png")}
         />
-      </section>
+      </section> */}
       <Testinomials />
       <Contact />
       <Footer />
