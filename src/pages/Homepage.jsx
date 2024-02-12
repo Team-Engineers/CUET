@@ -6,11 +6,10 @@ import HomeSteps from "../components/home/HomeSteps";
 import SubjectTopic from "../components/home/SubjectTopic";
 import Testinomials from '../components/home/Testinomials';
 import Banner from "../components/home/Banner"
-
+import Universities from "../components/home/Universities";
 
 
 const Homepage = () => {
-
   return (
     <div className="w-full  relative bg-white overflow-hidden flex flex-col items-center px-0 pb-0 box-border tracking-[normal]">
       <Navbar />
@@ -23,13 +22,7 @@ const Homepage = () => {
         src={"/bubbles/bubble1.png"}
       />
       <HomeSteps />
-      {/* <section className="hidden md:visible w-[927px] h-[822px] absolute my-0 mx-[!important] right-[-378px] bottom-[621px]">
-        <img
-          className="absolute top-[0px] left-[193px] w-[734.2px] h-[641.2px] object-contain"
-          alt=""
-          src={require("../assets/images/signup/Vector.png")}
-        />
-      </section> */}
+      <Universities />
       <Testinomials />
       <Contact />
       <Footer />
