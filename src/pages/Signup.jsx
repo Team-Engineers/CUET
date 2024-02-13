@@ -1,13 +1,13 @@
 import React from "react";
-import Navbar from "./Navbar";
-import SignupForm from "./SignupForm";
-import gif from "../../assets/Animation - 1707321568356.json";
+import Navbar from "../components/Signup/Navbar";
+import SignupForm from "../components/Signup/SignupForm";
+import gif from "../assets/Animation - 1707321568356.json";
 import Lottie from "lottie-react";
-import ResponsiveNav from "./ResponsiveNav";
+import ResponsiveNav from "../components/Signup/ResponsiveNav";
 
 const Signup = () => {
   return (
-    <div>
+    <div className="relative h-[100vh]">
       <Navbar />
         <ResponsiveNav />
       <div className="flex justify-between mt-0">
@@ -16,11 +16,12 @@ const Signup = () => {
         </div>
         <div className="flex justify-end  h-[88vh] items-end">
           <div
-            className="w-[700px] h-[400px] rounded-[31% 100% 0% 61% / 20% 64% 0% 68% ] bg-bgGradientCustom relative top-0 flex justify-center
+            className="w-[700px] h-[400px] top-0 flex justify-center
             Laptops:w-[500px] Laptops:h-[350px] mLaptops:w-[400px] tablets:hidden"
             style={{ "border-radius": "31% 100% 0% 61% / 20% 64% 0% 68%" }}
           >
-            <Lottie animationData={gif} loop={true} style={{ width: "60%" }} />
+            <img className="absolute z-[-1] right-0 bottom-0" src="/bubbles/signup-bubble.png" />
+            <Lottie animationData={gif} loop={true} />
           </div>
         </div>
       </div>
