@@ -121,9 +121,9 @@ function Learning() {
                 <p className="m-0 pl-10 font-bold">Mock Test</p>
               </div>
               <div className="container mt-2">
-                <div className="row">
+                <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3">
                   {subjects.map((subject, index) => (
-                    <div key={index} className="col-lg-4 col-md-6 col-sm-12">
+                    <div key={index} className="col mb-4">
                       <TestCard {...subject} />
                     </div>
                   ))}

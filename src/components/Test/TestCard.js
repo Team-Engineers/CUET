@@ -1,15 +1,7 @@
 import React from "react";
 import { FaQuestionCircle, FaCheckCircle } from "react-icons/fa";
 
-const TestCard = ({
-  title,
-  Questions,
-  Marks,
-  difficultyLevel,
-  bgcolor,
- 
-}) => {
-
+const TestCard = ({ title, Questions, Marks, difficultyLevel, bgcolor }) => {
   const renderDifficultyBtn = (level) => {
     let btnClassName = `btn btn-${
       level === difficultyLevel ? "success" : "outline-secondary"
@@ -18,10 +10,14 @@ const TestCard = ({
       borderRadius: "32px",
       fontSize: "0.7rem",
       display: "inline-block",
-      marginBottom:"10px",
+      marginBottom: "5px",
     };
 
-    if (level === "Beginner" || level === "Intermediate" || level ==="Advanced") {
+    if (
+      level === "Beginner" ||
+      level === "Intermediate" ||
+      level === "Advanced"
+    ) {
       btnStyle.color = "black";
       btnStyle.backgroundColor = "transparent";
     }
@@ -36,7 +32,12 @@ const TestCard = ({
   return (
     <div
       className="card mt-3 mb-3"
-      style={{ borderRadius: "29px", maxWidth: "350px", maxHeight: "370px" , margin:"auto" }}
+      style={{
+        borderRadius: "29px",
+        maxWidth: "350px",
+        maxHeight: "370px",
+        margin: "auto",
+      }}
     >
       <div>
         <div
@@ -51,11 +52,16 @@ const TestCard = ({
             maxHeight: "370px",
           }}
         >
-          <h5 className="card-title font-bold" >{title}</h5>
+          <h5 className="card-title font-bold">{title}</h5>
           <div className="row">
             <div className="col-md-6">
               <div className="d-flex align-items-center">
-                <FaQuestionCircle size={25} color="#000" className="mr-2" />
+                <FaQuestionCircle
+                  size={30}
+                  color="#5648FC"
+                  style={{ backgroundColor: "white", borderRadius: "60px" }}
+                  className="mr-2"
+                />
                 <p className="mb-0" style={{ fontSize: "1.0rem" }}>
                   <strong>{Questions}</strong> <br></br>Questions
                 </p>
@@ -63,7 +69,12 @@ const TestCard = ({
             </div>
             <div className="col-md-6">
               <div className="d-flex align-items-center">
-                <FaCheckCircle size={25} color="#000" className="mr-2" />
+                <FaCheckCircle
+                  size={30}
+                  color="#5648FC"
+                  style={{ backgroundColor: "white", borderRadius: "60px" }}
+                  className="mr-2"
+                />
                 <p className="mb-0" style={{ fontSize: "1.0rem" }}>
                   <strong>{Marks}</strong> <br></br> Marks
                 </p>
@@ -72,7 +83,7 @@ const TestCard = ({
           </div>
           <div className="mt-3" style={{ fontSize: "1.0rem" }}>
             <strong>Difficulty Level:</strong>
-            </div>
+          </div>
           {renderDifficultyBtn("Beginner")}
           {renderDifficultyBtn("Intermediate")}
           {renderDifficultyBtn("Advanced")}
