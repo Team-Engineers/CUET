@@ -9,6 +9,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #acbcff;
+  background-image: linear-gradient(to bottom right, transparent, white);
 }
 
 code {
@@ -16,16 +18,15 @@ code {
     monospace;
 }
 
-.circle{
+/* .circle{
   /* Vector */
 
-position: absolute;
+/* position: absolute;
 width: 683.04px;
 height: 846.18px;
 left: -336.85px;
 top: 436.98px;
 
 background: linear-gradient(206.9deg, rgba(0, 209, 255, 0.6) 0.06%, rgba(86, 72, 252, 0.6) 75.11%);
-transform: rotate(-64.76deg);
+transform: rotate(-64.76deg); */
 
-}
