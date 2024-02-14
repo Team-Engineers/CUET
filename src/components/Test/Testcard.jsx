@@ -46,12 +46,12 @@ export const Testcard = ({
           </h5>
           <div className="flex items-center justify-center">
             <div className="flex w-[150px] text-[16px] m-1  justify-center items-center ">
-              <FaQuestionCircle size={50} color="#5648FC" className="mr-2" />
+              <FaQuestionCircle size={40} color="#5648FC" className="mr-1" />
               {Questions} <br />
               Questions
             </div>
             <div className="flex w-[150px] text-[16px] m-1  justify-center items-center ">
-              <FaCheckCircle size={50} color="#5648FC" className="mr-2" />
+              <FaCheckCircle size={40} color="#5648FC" className="mr-1" />
               {Marks} <br />
               Marks
             </div>
@@ -99,7 +99,7 @@ export const Testcard1 = ({
           alt={title}
           className="w-[12vw]  my-[4vh] h-auto rounded-lg "
         />
-        <div className="rounded-[50px] right-[1vw] relative max-h-[35vh] bg-white   mx-auto py-[1vw] px-[2vw] ">
+        <div className="rounded-[50px] right-[1vw] relative max-h-[35vh] max-w-[25vw] bg-white   mx-auto py-[1vw] px-[2vw] ">
           <h5 className="font-bold text-[25px] flex items-start justify-start mb-4">
             {title}
           </h5>
