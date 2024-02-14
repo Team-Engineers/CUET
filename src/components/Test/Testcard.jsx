@@ -45,12 +45,12 @@ export const Testcard = ({
             {title}
           </h5>
           <div className="flex items-center justify-center">
-            <div className="flex w-[150px] text-[18px] m-1  justify-center items-center ">
+            <div className="flex w-[150px] text-[16px] m-1  justify-center items-center ">
               <FaQuestionCircle size={50} color="#5648FC" className="mr-2" />
               {Questions} <br />
               Questions
             </div>
-            <div className="flex w-[150px] text-[18px] m-1  justify-center items-center ">
+            <div className="flex w-[150px] text-[16px] m-1  justify-center items-center ">
               <FaCheckCircle size={50} color="#5648FC" className="mr-2" />
               {Marks} <br />
               Marks
@@ -91,7 +91,7 @@ export const Testcard1 = ({
   return (
     <div
       style={{ background: bgcolor }}
-      className=" max-w-[30vw] mx-[20px]  h-[65vh] mb-3 bg-white rounded-[50px]  flex justify-center items-center "
+      className=" max-w-[35vw] mx-[20px]  h-[70vh] mb-3 bg-white rounded-[50px]  flex justify-center items-center "
     >
       <div className="flex flex-col relative top-[2vh] left-[1vw] mb-10 items-center justify-center  h-[50vh] rounded-[50px] ">
         <img
