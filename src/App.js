@@ -7,6 +7,7 @@ import AboutPage from "./pages/Aboutpage";
 import Coursespage from "./pages/Coursespage";
 import SubtopicPage from "./components/Courses/SubtopicPage";
 import Learningpage from "./pages/Learningpage";
+import TestPage from "./components/Test/TestPage";
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
         <Route path="/courses" element={<Coursespage />} />
         <Route path="/courses/:subtopic" element={<SubtopicPage />} />
         <Route path="/learning" element={<Learningpage />} />
+        <Route path ='/test' element={<TestPage/>}/>
       </Routes>
     </div>
   );
