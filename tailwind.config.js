@@ -2,37 +2,67 @@
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
+    screens:{
+      lScreens:'769px',
+      Laptops:{'max':'1100px'},
+      mLaptops:{'max':'900px'},
+      tablets:{'max':'768px'},
+      mobiles:{'max':'425px'},
+      sScreens:{'max':'660px'},
+      sMobiles:{'max':'376px'},
+      'sm': '640px',
+      // => @media (min-width: 640px) { ... }
+
+      'md': '768px',
+      // => @media (min-width: 768px) { ... }
+
+      'lg': '1024px',
+      // => @media (min-width: 1024px) { ... }
+
+      'xl': '1280px',
+      // => @media (min-width: 1280px) { ... }
+
+      '2xl': '1536px',
+      // => @media (min-width: 1536px) { ... }
+    },
     extend: {
       colors: {
+        indigo: "#5648FC",
+        darkyellow: "#ffbb64",
+        darkcyan: "#80BCBD",
         white: "#fff",
         midnightblue: "#0d0756",
         deepskyblue: "#00d1ff",
         gainsboro: {
-          "100": "#d9d9d9",
-          "200": "rgba(217, 217, 217, 0.1)",
+          100: "#d9d9d9",
+          200: "rgba(217, 217, 217, 0.1)",
         },
         tomato: {
-          "100": "#ff5c4f",
-          "200": "#ea4335",
+          100: "#ff5c4f",
+          200: "#ea4335",
         },
         gray: {
-          "100": "rgba(0, 0, 0, 0.75)",
-          "200": "rgba(0, 0, 0, 0.6)",
-          "300": "rgba(0, 0, 0, 0.5)",
+          100: "rgba(0, 0, 0, 0.75)",
+          200: "rgba(0, 0, 0, 0.6)",
+          300: "rgba(0, 0, 0, 0.5)",
         },
         blueviolet: {
-          "100": "#5648fc",
-          "200": "rgba(86, 72, 252, 0.75)",
-          "300": "rgba(86, 72, 252, 0.8)",
-          "400": "rgba(86, 72, 252, 0.65)",
+          100: "#5648fc",
+          200: "rgba(86, 72, 252, 0.75)",
+          300: "rgba(86, 72, 252, 0.8)",
+          400: "rgba(86, 72, 252, 0.65)",
         },
         black: "#000",
         thistle: "rgba(204, 198, 248, 0.2)",
         mediumslateblue: {
-          "100": "#7d6eff",
-          "200": "rgba(125, 110, 255, 0.09)",
+          100: "#7d6eff",
+          200: "rgba(125, 110, 255, 0.09)",
         },
-        salmon: "#ff7468",
+        salmon:{
+          100: "#FF6868BF",
+          200: "#ff7468"
+        },
+        // salmon: "#ff7468",
         firebrick: "#cc4236",
         mediumblue: "#1404da",
       },
@@ -45,6 +75,10 @@ module.exports = {
         "3xs-2": "9.2px",
         base: "16px",
         xl: "20px",
+      },
+      backgroundImage: {
+        bgGradientCustom:
+          "linear-gradient(-206.9deg, rgba(0, 209, 255, 0.6) 0.06%, rgba(86, 72, 252, 0.6) 75.11%)",
       },
     },
     fontSize: {
@@ -68,7 +102,19 @@ module.exports = {
       inherit: "inherit",
     },
   },
+  daisyui: {
+    themes: false, // false: only light + dark | true: all themes | array: specific themes like this ["light", "dark", "cupcake"]
+    darkTheme: "light", // name of one of the included themes for dark mode
+    base: true, // applies background color and foreground color for root element by default
+    styled: true, // include daisyUI colors and design decisions for all components
+    utils: true, // adds responsive and modifier utility classes
+    prefix: "", // prefix for daisyUI classnames (components, modifiers and responsive class names. Not colors)
+    logs: false, // Shows info about daisyUI version and used config in the console when building your CSS
+    themeRoot: ":root", // The element that receives theme color CSS variables
+  },
+
   corePlugins: {
     preflight: false,
   },
+  plugins: [require("daisyui")],
 };
