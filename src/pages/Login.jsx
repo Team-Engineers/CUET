@@ -8,24 +8,21 @@ import ResponsiveNav from "../components/Login/ResponsiveNav";
 
 const Login = () => {
   return (
-    <>
+    <div className="">
     <ResponsiveNav/>
         <Navbar />
-      <div className="flex h-[100vh] w-full justify-between tablets:justify-center">
+      <div className="md:flex md:h-[80vh] md:w-full md:items-end 2xl:items-center gap-[10%]">
         <div
-          className="relative min-w-[50vw] w-[35rem] h-[80vh] flex justify-center items-center Laptops:w-[35rem] Laptops:h-[80vh] tablets:hidden z-0"
+          className="md:relative md:w-[22rem] lg:w-[40vw] h-[80vh] md:flex md:justify-center md:items-center md:z-0 hidden bg-bgGradientCustom"
           style={{ "border-radius": "0% 100% 100% 99% / 0% 97% 100% 93%  " }}
         >
-          <img 
-          className="absolute z-[-1] left-0 top-0 h-full w-full"
-          src="/bubbles/login-bubble.png" />
-          <div className=" z-10 w-[70%]">
-            <Lottie animationData={animatedGif} loop={true} />
+          <div className=" md:z-10 md:w-[80%] md:flex md:justify-end">
+            <Lottie animationData={animatedGif} loop={true} style={{width:'80%'}}/>
           </div>
         </div>
           <LoginForm />
       </div>
-    </>
+    </div>
   );
 };
 
