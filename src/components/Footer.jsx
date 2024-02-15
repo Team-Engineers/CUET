@@ -30,11 +30,19 @@ const Footer = () => {
           </div>
           <div className="w-full grid grid-cols-2 md:flex md:justify-around text-sm md:text-md">
             <div className="min-w-[10em] mx-auto my-5">
-              <p className="font-bold mb-10">Company</p>
-              <p className="font-semibold">Home</p>
-              <p className="font-semibold">About</p>
-              <p className="font-semibold">Syllabus</p>
-              <p className="font-semibold">Courses</p>
+              <p className="cursor-pointer font-bold mb-10">Company</p>
+              <Link to="/" className="no-underline text-white">
+                <p className="font-semibold">Home</p>
+              </Link>
+              <Link to="/about" className="no-underline text-white">
+                <p className="font-semibold">About</p>
+              </Link>
+              <Link to="/syllabus" className="no-underline text-white">
+                <p className="font-semibold">Syllabus</p>
+              </Link>
+              <Link to="/courses" className="no-underline text-white">
+                <p className="font-semibold">Courses</p>
+              </Link>
             </div>
             <div className="min-w-[10em] mx-auto my-5">
               <p className="font-bold mb-10">Whom we serve</p>
@@ -46,7 +54,7 @@ const Footer = () => {
             <div className="min-w-[10em] mx-auto my-5">
               <p className="font-bold mb-10">Contact US</p>
               <p className="font-semibold">
-                <IoMdMail className="mr-1"/> info@testknock.com
+                <IoMdMail className="mr-1" /> info@testknock.com
               </p>
               <p className="font-semibold">
                 <IoMdCall className="mr-1" />

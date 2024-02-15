@@ -7,26 +7,35 @@ import ResponsiveNav from "../components/Signup/ResponsiveNav";
 
 const Signup = () => {
   return (
-    <div className="relative h-[100vh]">
-      <Navbar />
+    <>
+      <div className="md:hidden">
         <ResponsiveNav />
-      <div className="flex justify-between mt-0">
-        <div className="flex w-[45%] justify-center items-center h-[88vh] tablets:justify-center tablets:w-full tablets:h-[64vh]">
-          <SignupForm />
-        </div>
-        <div className="flex justify-end  h-[88vh] items-end">
-          <div
-            className="w-[700px] h-[400px] top-0 flex justify-center
-            Laptops:w-[500px] Laptops:h-[350px] mLaptops:w-[400px] tablets:hidden"
-            style={{ "border-radius": "31% 100% 0% 61% / 20% 64% 0% 68%" }}
-          >
-            <img className="absolute z-[-1] right-0 bottom-0" src="/bubbles/signup-bubble.png" />
-            <Lottie animationData={gif} loop={true} />
+        <SignupForm />
+      </div>
+      <div className="hidden md:block">
+        <Navbar />
+        <div className="ml-5 md:flex md:items-end md:justify-around 2xl:h-[90vh] 2xl:items-center">
+          <div className="">
+            <SignupForm />
+          </div>
+          <div>
+            <img
+              className="md:absolute md:z-[-1] md:right-0 md:bottom-0 md:w-[50vw] h-[60vh]"
+              src="/bubbles/signup-bubble.png"
+            />
+            <div className="md:w-[25rem]">
+              <Lottie
+                animationData={gif}
+                loop={true}
+                style={{ width: "100%" }}
+              />
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
 export default Signup;
+// lg:w-[32rem] xl:w-[40rem] 2xl:min-w-[45rem]
