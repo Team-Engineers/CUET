@@ -50,7 +50,7 @@ const ProfileCard = () => {
     console.log(data);
   };
   return (
-    <div className="w-[500px] md:w-full">
+    <div className="w-[500px] md:w-full flex flex-col items-center md:block">
       <div className="flex items-center justify-center leading-none md:w-[18%] border-blueviolet-100 border-b-4 mt-5">
         <FiArrowLeft className="text-blueviolet-100 size-7" />
         <div>
@@ -61,18 +61,18 @@ const ProfileCard = () => {
         </div>
       </div>
       <form
-        className=" px-4 md:flex md:items-start md:justify-around"
+        className=" px-4 flex flex-col items-center"
         onSubmit={handleSubmit(onSubmit)}
       >
-        <div className="flex justify-center md:mt-5">
+        {/* <div className="flex justify-center md:mt-5"> */}
           <img src={profileImg} alt="" className="w-24 md:w-28 xl:w-36 " />
-        </div>
+        {/* </div> */}
         <div className="md:w-[75%]">
           <p className="text-blueviolet-100 font-semibold text-lg ">
             Personal Information
           </p>
-          <div className="md:flex md:flex-wrap md:justify-between ">
-            <div className="flex flex-col mb-5 xl:mb-6">
+          <div className=" ">
+            <div className="flex flex-col mb-2 xl:mb-6">
               <label
                 htmlFor="firstName"
                 className="text-lg before:content-['*'] before:ml-0.5 before:text-red-500 mb-1 text-blueviolet-100 font-semibold "
