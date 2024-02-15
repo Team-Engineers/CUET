@@ -9,6 +9,7 @@ import SubtopicPage from "./components/Courses/SubtopicPage";
 import Learningpage from "./pages/Learningpage";
 
 
+import Profile from './pages/Profile';
 function App() {
   return (
     <div>
@@ -17,6 +18,8 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/" element={<Homepage />} />
         <Route path="/about" element={<AboutPage />} />
+            <Route path="/profile" element={<Profile />} />
+
         <Route path="/courses" element={<Coursespage />} />
         <Route path="/courses/:subtopic" element={<SubtopicPage />} />
         <Route path="/learning" element={<Learningpage />} />
