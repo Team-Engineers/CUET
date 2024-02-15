@@ -14,7 +14,7 @@ const Banner = () => {
     // <div className="flex flex-row gap-[100px] items-start justify-between mx-auto box-border  text-left text-13xl text-blueviolet-100 font-inter">
     <div className="min-h-[80vh] 2xl:max-w-[80vw] max-w-[90vw] w-full flex flex-col md:flex-row md:justify-between items-center ">
       {/* <div className="flex flex-col items-start gap-[42px] max-w-full"> */}
-      <div className="flex flex-col justify-around max-w-full min-h-[35vh] md:min-h-[45vh] 2xl:min-h-[40vh]">
+      <div className="flex flex-col justify-around max-w-full min-h-[45vh] md:min-h-[55vh] 2xl:min-h-[40vh]">
         <div className="font-bold text-7xl md:text-21xl">
           <p className="m-0 text-blueviolet-100">One Stop Solution for your</p>
           <p className="m-0">
