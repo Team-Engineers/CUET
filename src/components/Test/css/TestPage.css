@@ -36,10 +36,14 @@ body ,html{
     color: #5648FC;
 }
 #left button{
-    max-width: 30%;
+   max-width: 23%;
     margin-top: 40px;
     background: #FF7468;
-    border-radius: 10px;
+    border-radius: 12px;
+    padding: 10px;
+    color: white;
+    font-size: 18px;
+    font-weight: 700;
 
 }
 #right{
