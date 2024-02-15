@@ -21,7 +21,7 @@ function App() {
 
   return (
     <div>
-      <UserContext.Provider value={{userLoggedIn, setUserLoggedIn}}>
+      <UserContext.Provider value={{ userLoggedIn, setUserLoggedIn }}>
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
@@ -29,7 +29,9 @@ function App() {
           <Route path="/about" element={<AboutPage />} />
           <Route path="/profile" element={<Profile />} />
 
-        <Route path ='/test' element={<TestPage/>}/>
+          <Route path="/test" element={<TestPage />} />
+        </Routes>
+      </UserContext.Provider>
     </div>
   );
 }
