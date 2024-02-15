@@ -10,6 +10,7 @@ import Learningpage from "./pages/Learningpage";
 import Payment from "./pages/Payment";
 
 import Profile from "./pages/Profile";
+import Syllabus from "./pages/Syllabus";
 function App() {
   const packname = "CUET GENERAL PACK";
   const packprice = 999;
@@ -21,6 +22,7 @@ function App() {
         <Route path="/" element={<Homepage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/syllabus" element={<Syllabus />} />
 
         <Route path="/courses" element={<Coursespage />} />
         <Route path="/courses/:subtopic" element={<SubtopicPage />} />
