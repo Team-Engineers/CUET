@@ -7,6 +7,7 @@ import AboutPage from "./pages/Aboutpage";
 import Coursespage from "./pages/Coursespage";
 import SubtopicPage from "./components/Courses/SubtopicPage";
 import Learningpage from "./pages/Learningpage";
+import TestPage from "./components/Test/TestPage";
 import Payment from "./pages/Payment";
 
 import Profile from "./pages/Profile";
@@ -25,6 +26,7 @@ function App() {
         <Route path="/courses" element={<Coursespage />} />
         <Route path="/courses/:subtopic" element={<SubtopicPage />} />
         <Route path="/learning" element={<Learningpage />} />
+        <Route path ='/test' element={<TestPage/>}/>
         <Route path="/payment" element={<Payment packname={packname} packprice={packprice} />} />
       </Routes>
     </div>
