@@ -12,10 +12,10 @@ const Banner = () => {
 
   return (
     // <div className="flex flex-row gap-[100px] items-start justify-between mx-auto box-border  text-left text-13xl text-blueviolet-100 font-inter">
-    <div className="min-h-[80vh] 2xl:max-w-[80vw] max-w-[90vw] w-full flex flex-col md:flex-row md:justify-between items-center ">
+    <div className="min-h-[80vh] xl:max-w-[95vw] 2xl:max-w-[80vw] max-w-[90vw] w-full flex flex-col md:flex-row md:justify-between items-center ">
       {/* <div className="flex flex-col items-start gap-[42px] max-w-full"> */}
       <div className="flex flex-col justify-around max-w-full min-h-[45vh] md:min-h-[55vh] 2xl:min-h-[40vh]">
-        <div className="font-bold text-7xl md:text-21xl">
+        <div className="my-6 font-bold text-7xl md:text-21xl">
           <p className="m-0 text-blueviolet-100">One Stop Solution for your</p>
           <p className="m-0">
             <span className="text-blueviolet-100">all </span>
@@ -23,7 +23,7 @@ const Banner = () => {
             <span className="text-7xl md:text-21xl text-blueviolet-100"> needs</span>
           </p>
         </div>
-        <div className="text-blueviolet-200">
+        <div className="my-6 text-blueviolet-200">
           <b className="h-12 relative max-w-full font-semibold text-xl">
             <p className="m-0">Avail Complete Support from India’s best trainers</p>
           </b>
@@ -33,7 +33,7 @@ const Banner = () => {
             <p className="m-0">Trusted by maximum Students & Teachers across the INDIA</p>
           </h3>
         </div>
-        <div className="flex justify-center md:justify-start">
+        <div className="my-6 flex justify-center md:justify-start">
           <button
             to={"/signup"}
             className={
@@ -50,7 +50,7 @@ const Banner = () => {
             Take a free test
           </button>
         </div>
-        <div className="hidden md:block">
+        <div className="my-10 hidden md:block">
           <div onClick={handleBellIconClick} className="flex z-50 relative  flex-row items-center gap-[7px] text-base cursor-pointer">
             <img
               className="h-[54px] w-[52px] relative object-cover"
@@ -71,7 +71,7 @@ const Banner = () => {
           </div>
         </div>
       </div>
-      <div className="w-[392px] lg:w-[700px] ">
+      <div className="w-[392px] lg:w-[550px] ">
         <Lottie
           options={{
             loop: true,

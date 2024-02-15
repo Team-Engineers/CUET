@@ -78,7 +78,7 @@ function Carroussel(props) {
   return (
     <div
       style={{ width: props.width, height: props.height, margin: props.margin }}
-      className="2xl:max-w-[80vw] w-full min-h-[60vh] flex flex-col justify-center items-center z-10"
+      className="xl:max-w-[95vw] 2xl:max-w-[80vw] w-full min-h-[60vh] flex flex-col justify-center items-center z-10"
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
     >
@@ -136,10 +136,10 @@ const Testinomials = () => {
   const isMobile = useMediaQuery({ query: `(max-width: 760px)` });
 
   return (
-    <div className="relative w-full flex justify-center items-center">
-      <div className="w-full 2xl:max-w-[80vw] min-h-[80vh] flex flex-col justify-around my-10">
+    <div className="relative w-full flex justify-center items-center mt-20">
+      <div className="w-full xl:max-w-[95vw] 2xl:max-w-[80vw] min-h-[80vh] flex flex-col justify-around my-10">
         <div className="">
-          <h1 className="text-blueviolet-400  text-13xl font-semibold text-center ">Testimonials</h1>
+          <h1 className="text-blueviolet-100  text-13xl font-semibold text-center ">Testimonials</h1>
           <h1 className="text-blueviolet-400 font-normal text-5xl text-center ">Information</h1>
         </div>
         <Carroussel cards={slides} height="500px" width="80%" margin="0 auto" offset={isMobile ? 0 : 200} showArrows={isMobile} />{" "}
