@@ -1,10 +1,13 @@
 import React from "react";
 import logo from "../../assets/logo_final.png";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
 const Navbar = () => {
+  const navigate = useNavigate()
   return (
     <div className="md:flex md:flex-row md:items-center md:justify-between md:gap-[7px]  md:fixed w-[100%] z-10 hidden text-[16px]">
-      <div className="flex flex-row items-center">
+      <div className="flex flex-row items-center cursor-pointer" onClick={() => navigate("/")} >
         <img
           className="h-[40.5px] m-2 w-[30px] relative object-cover"
           loading="eager"

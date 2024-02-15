@@ -3,15 +3,17 @@ import logo from '../../assets/logo_final.png'
 import { Link } from 'react-router-dom'
 import Lottie from 'lottie-react'
 import gif from '../../assets/Animation - 1707298499168.json'
+import { useNavigate } from 'react-router-dom'
 
 const ResponsiveNav = () => {
+  const navigate = useNavigate()
   return (
     <div
       className='bg-bgGradientCustom w-full md:hidden'
       style={{ borderRadius: "10% 10% 45% 50% / 0% 0% 42% 44%   " }}
     >
       <div className="flex justify-between px-2 pt-2">
-        <div className="flex gap-2 items-center">
+        <div className="flex gap-2 items-center cursor-pointer" onClick={() => navigate("/")}>
           <img
             className="h-[20.5px] w-[25px] sm:h-[40px]"
             loading="eager"
