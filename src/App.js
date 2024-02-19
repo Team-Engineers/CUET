@@ -11,6 +11,7 @@ import TestPage from "./components/Test/TestPage";
 import Payment from "./pages/Payment";
 import { UserContext } from "./context";
 import { useState } from "react";
+import PacksPage from "./components/Packs/PacksPage";
 
 import Profile from "./pages/Profile";
 import Syllabus from "./pages/Syllabus";
@@ -29,9 +30,10 @@ function App() {
           <Route path="/" element={<Homepage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/profile" element={<Profile />} />
-        <Route path="/syllabus" element={<Syllabus />} />
+          <Route path="/syllabus" element={<Syllabus />} />
 
           <Route path="/test" element={<TestPage />} />
+          <Route path="packs" element={<PacksPage />} />
         </Routes>
       </UserContext.Provider>
     </div>
