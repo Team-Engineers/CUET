@@ -12,6 +12,7 @@ import Payment from "./pages/Payment";
 import { UserContext } from "./context";
 import { useState } from "react";
 import PacksPage from "./components/Packs/PacksPage";
+import TestNew from "./components/testNew/TestNew";
 
 import Profile from "./pages/Profile";
 import Syllabus from "./pages/Syllabus";
@@ -35,6 +36,7 @@ function App() {
           <Route path="/courses/:subtopic" element={<SubtopicPage />} />
           <Route path="/learning" element={<Learningpage />} />
           <Route path="/test" element={<TestPage />} />
+          <Route path='/test-new' element={<TestNew/>} />
 
           <Route path="/payment" element={<Payment />} />
           <Route path="/packs" element={<PacksPage />} />
