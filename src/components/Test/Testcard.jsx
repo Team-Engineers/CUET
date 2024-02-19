@@ -89,9 +89,9 @@ export const Testcard1 = ({
   return (
     <div
       style={{ background: bgcolor }}
-      className=" lg:max-w-[35vw] md:max-w-[35vw] sm:max-w-[24vw] mx-[20px]  lg:h-[50vh] md:h-[25vh]  sm:h-[30px] mb-3 bg-white rounded-[20px]  flex justify-center items-center "
+      className=" lg:max-w-[35vw] md:max-w-[35vw] sm:max-w-[24vw] md:mx-[20px]  lg:h-[50vh] md:h-[25vh]  sm:h-[30px] mb-3 bg-white rounded-[20px]  flex justify-center items-center "
     >
-      <div className="flex flex-col relative top-[2vh] left-[1vw] mb-10 items-center justify-center  lg:h-[50vh] md:h-[40vh] sm:h-[30vh] rounded-[50px] ">
+      <div className="flex px-4 flex-col relative top-[2vh] left-[1vw] mb-10 items-center justify-center  lg:h-[50vh] md:h-[40vh] h-[30vh] rounded-[50px] ">
         <img
           src="https://i.ibb.co/XFnxJSS/practicetest.png"
           alt={title}
@@ -193,4 +193,3 @@ export const Testcard2 = ({
     </div>
   );
 };
-

@@ -14,7 +14,7 @@ const SubtopicPage = () => {
   const subtopicData = subtopicsData[subtopicCategory];
 
   return (
-    <>
+    <div className='bg-gradient-to-br from-[#ACBCFF] to-white'>
       <Navbar />
 
       <div className="max-w-screen-lg mx-auto px-4 sm:px-6 lg:px-8">
@@ -35,13 +35,14 @@ const SubtopicPage = () => {
                   key={index}
                   brick={item.image}
                   heading={item.title}
+                  color={item.color}
                 />
               ))}
           </div>
         </div>
       </div>
       <Footer />
-    </>
+    </div>
   );
 };
 

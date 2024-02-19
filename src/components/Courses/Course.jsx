@@ -1,60 +1,3 @@
-// import React from "react";
-// import { Link } from "react-router-dom";
-// import { IoArrowBack } from "react-icons/io5";
-// import TopicContainer from "./TopicContainer";
-// import { DomainTopic } from "../../utils/courses";
-// const Courses = () => {
-//   return (
-//     <>
-//       <div className="max-w-screen-lg mx-auto px-4 sm:px-6 lg:px-8">
-//         <div className="max-w-[180vh] mx-auto">
-//           <h1 className="text-[#5648FC] items-center flex">
-//             <Link className="text-[#5648FC]  items-center flex pr-2" to={"/"}>
-//               <IoArrowBack />
-//             </Link>
-//             Courses
-//           </h1>
-//           <div className="grid grid-cols-3  my-[70px] md:flex-row  gap-[10px] ">
-//             <TopicContainer
-//               brick={require("../../assets/images/signup/brick.png")}
-//               heading="General English"
-//             />
-//             <TopicContainer
-//               brick={require("../../assets/images/signup/test.png")}
-//               heading="General Test"
-//             />
-//           </div>
-//         </div>
-//         <div className="max-w-[180vh] mx-auto">
-//           <h1 className="text-[#5648FC] items-center flex">
-//             <Link className="text-[#5648FC]  items-center flex pr-2" to={"/"}>
-//               <IoArrowBack />
-//             </Link>
-//             Domain Subjects
-//           </h1>
-//           <div className="grid grid-cols-3 my-[70px] md:flex-row gap-[10px]">
-//             {DomainTopic.map((subtopic, index) => (
-//               <div key={index}>
-//                 <Link
-//                   className="no-underline"
-//                   to={`/courses/${subtopic.title}`}
-//                 >
-//                   <TopicContainer
-//                     brick={subtopic.image}
-//                     heading={subtopic.title}
-//                   />
-//                 </Link>
-//               </div>
-//             ))}
-//           </div>
-//         </div>
-//       </div>
-//     </>
-//   );
-// };
-
-// export default Courses;
-
 import { useMediaQuery } from "@react-hook/media-query";
 import React from "react";
 import { IoArrowBack } from "react-icons/io5";
@@ -65,12 +8,12 @@ import TopicContainer from "./TopicContainer";
 const Courses = () => {
   const isMobile = useMediaQuery("(max-width: 768px)");
   const gridColumns = isMobile ? "grid-cols-1" : "grid-cols-3";
-  const gridGap = isMobile ? "gap-4" : "gap-12";
+  const gridGap = isMobile ? "gap-4" : "gap-16";
   const flexDirection = isMobile ? "flex-col" : "flex-row";
 
   return (
     <>
-      <div className=" mx-auto px-4 sm:px-6 lg:px-8 ">
+      <div className=" mx-auto mt-14 px-4 sm:px-6 lg:px-8 ">
         <div className="left-0 top-28 z-[0] absolute">
           <svg
             width="162"
@@ -112,35 +55,38 @@ const Courses = () => {
             />
           </svg>
         </div>
-        <Link className="text-[#5648FC] flex items-center relative z-10 pr-2 mt-10" to={"/"}>
+        <Link
+          className="text-[#5648FC] flex items-center relative z-10 pr-2 "
+          to={"/"}
+        >
           <IoArrowBack size={40} />
         </Link>
-        <div className="max-w-[180vh] mx-auto flex flex-col items-center mt-[-40px]">
+        <div className="relative z-10 flex  items-center  flex-col  mt-[-40px] ">
           <h1 className="text-[#5648FC] items-center flex ">Courses</h1>
-          <div className="flex flex-col items-center justify-center mt-[20px]">
-            <div
-              className={`my-6 flex gap-[100px] `}
-            >
+        </div>
+
+        <div className="max-w-[180vh] mx-auto flex flex-col items-center mt-[-40px]">
+          <div className="flex flex-col items-center justify-center mt-[50px] ">
+            <div className={`my-6 flex md:flex-row flex-col gap-[70px] `}>
               <TopicContainer
                 brick={require("../../assets/images/signup/brick.png")}
                 heading="General English"
-                color="bg-[#FF6868]"
+                color="#FF6868"
               />
               <TopicContainer
                 brick={require("../../assets/images/signup/test.png")}
                 heading="General Test"
-                color="bg-[#80BCBD]"
+                color="#80BCBD"
               />
             </div>
           </div>
         </div>
-        <div className="max-w-[180vh] mx-auto mt-[60px] flex flex-col items-center ">
-          <h1 className="text-[#5648FC] items-center flex">
-            {/* <Link className="text-[#5648FC]  items-center flex pr-2" to={"/"}>
-              <IoArrowBack />
-            </Link> */}
-            Domain Subjects
-          </h1>
+
+        <h1 className="text-[#5648FC] md:mx-[50px] mx-[0] md:justify-start justify-center items-center flex flex-col mt-10 ">
+          Domain Subjects
+        </h1>
+
+        <div className="max-w-[180vh] relative z-30 mx-auto  flex flex-col items-center ">
           <div className=" mt-[20px] mb-[-80px]">
             <div
               className={`grid ${gridColumns}  my-6 ${flexDirection} ${gridGap}`}
@@ -154,6 +100,7 @@ const Courses = () => {
                     <TopicContainer
                       brick={subtopic.image}
                       heading={subtopic.title}
+                      color={subtopic.color}
                     />
                   </Link>
                 </div>
@@ -205,7 +152,6 @@ const Courses = () => {
         </svg>
       </div>
     </>
-
   );
 };
 
