@@ -7,7 +7,7 @@
     .text {
         padding-top: 8%;
         display: flex;
-        margin-left: 50px;
+        margin-left: 5%;
 
         .back-icon {
             font-size: 30px;
@@ -47,7 +47,7 @@
     }
 
     .hero-image{
-        margin-right: 100px;
+        margin-right: 5%;
     }
 }
 
@@ -63,7 +63,6 @@
         .text {
             padding-top: 8%;
             display: flex;
-            margin-left: 10px;
     
             .back-icon {
                 font-size: 15px;
@@ -88,7 +87,7 @@
         }
     
         .btn {
-            font-size: 13px;
+            font-size: 65%;
             color: #FFFFFF;   
             margin-top: 20px;
             height: 25px;
@@ -96,8 +95,6 @@
         }
     
         .hero-image{
-            margin-right: 5px;
-            margin-left: 10px;
             width: 180px;
         }
     }
