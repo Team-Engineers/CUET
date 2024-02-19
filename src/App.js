@@ -13,6 +13,7 @@ import { UserContext } from "./context";
 import { useState } from "react";
 
 import Profile from "./pages/Profile";
+import Syllabus from "./pages/Syllabus";
 function App() {
   const [userLoggedIn, setUserLoggedIn] = useState(false);
 
@@ -28,6 +29,7 @@ function App() {
           <Route path="/" element={<Homepage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/profile" element={<Profile />} />
+        <Route path="/syllabus" element={<Syllabus />} />
 
           <Route path="/test" element={<TestPage />} />
         </Routes>
