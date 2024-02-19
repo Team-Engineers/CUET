@@ -10,7 +10,7 @@ const ContactForm = () => {
   };
 
   const ContactInputStyles =
-    "my-3 w-full min-h-10 border-2 border-solid border-white rounded-full bg-transparent placeholder:text-white placeholder:opacity-100 placeholder:text-xl  pl-8  text-white text-xl focus:ring-0 focus:outline-none";
+    "my-3 w-full min-h-10 border-2 border-solid border-white rounded-full bg-transparent placeholder:text-white placeholder:opacity-100 placeholder:text-xl  p-3  text-white text-xl focus:ring-0 focus:outline-none";
   return (
     <div className="min-h-[70vh] 2xl:min-h-[60vh] w-full md:w-full h-full flex flex-col items-center justify-evenly">
       <h1 className="font-bold text-13xl text-left ">Request a Call back</h1>
@@ -19,7 +19,7 @@ const ContactForm = () => {
         <input className={ContactInputStyles} placeholder="Email" type="email" />
         <input className={ContactInputStyles} placeholder="Phone Number" type="text" />
         <textarea
-          className={`my-1 w-full min-h-10 border-2 border-solid border-white rounded-2xl bg-transparent placeholder:text-white placeholder:opacity-100 placeholder:text-xl pl-8 text-white text-xl focus:ring-0 focus:outline-none h-40`}
+          className={`my-1 w-[93%] min-h-10 border-2 border-solid border-white rounded-2xl bg-transparent placeholder:text-white placeholder:opacity-100 placeholder:text-xl p-3 text-white text-xl focus:ring-0 focus:outline-none h-40`}
           placeholder="Reason"
           type="textarea"
         />

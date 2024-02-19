@@ -6,7 +6,7 @@ import LandingAnimationData from "../../assets/animation_landing.json";
 import { useNavigate } from "react-router-dom/dist";
 
 const Banner = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const handleBellIconClick = () => {
@@ -38,7 +38,7 @@ const Banner = () => {
         </div>
         <div className="my-6 flex justify-center md:justify-start">
           <button
-            onClick={() => navigate("/signup") }
+            onClick={() => navigate("/signup")}
             className={
               "btn text-sm md:text-lg font-medium text-white bg-salmon-200 hover:bg-salmon-200  no-underline rounded-full border-0 min-h-0 h-10 w-40 md:mr-8 mr-3 capitalize"
             }
@@ -46,7 +46,7 @@ const Banner = () => {
             Join Us
           </button>
           <button
-          onClick={() => navigate("/login")}
+            onClick={() => navigate("/login")}
             className={
               "btn btn-outline text-sm md:text-lg font-medium border-blueviolet-100 text-blueviolet-100 no-underline border-solid  hover:bg-blueviolet-100 rounded-full min-h-0 h-10 w-44 md:w-56 capitalize"
             }
@@ -63,15 +63,15 @@ const Banner = () => {
               src={require("../../assets/images/signup/bellicon.gif")}
             />
             <div className="relative font-semibold">Live Notification</div>
-          </div>
-          <div className="flex flex-row items-center gap-[7px] text-base cursor-pointer">
-            {isPopupOpen && (
-              <div className=" top-[82vh] absolute inset-0 flex z-40  bg-opacity-50">
-                <div>
-                  <ExamInfo />
+            <div className="flex flex-row items-center gap-[7px] text-base cursor-pointer">
+              {isPopupOpen && (
+                <div className=" top-[0vh] absolute inset-0 flex z-40  bg-opacity-50">
+                  <div>
+                    <ExamInfo />
+                  </div>
                 </div>
-              </div>
-            )}
+              )}
+            </div>
           </div>
         </div>
       </div>
