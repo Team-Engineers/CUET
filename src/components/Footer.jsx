@@ -4,10 +4,10 @@ import { IoMdCall, IoMdMail, IoMdPin } from "react-icons/io";
 
 const Footer = () => {
   return (
-    <footer className="bg-[#0D0756] text-white w-full flex justify-center items-center  ">
-      <div className="2xl:max-w-[80vw] w-full">
+    <footer className="bg-[#0D0756] text-white w-full flex justify-center items-center mt-56  ">
+      <div className="xl:max-w-[95vw] 2xl:max-w-[80vw] w-full">
         <div className="flex flex-col justify-betwen md:flex-row md:items-center md:justify-around mx-3">
-          <div className="w-full md:max-w-[40vw]">
+          <div className="w-full md:max-w-[40vw] md:mr-20">
             <div className=" flex justify-start ">
               <Link to="/" className="no-underline">
                 <div className="flex items-center">
@@ -22,7 +22,7 @@ const Footer = () => {
                 </div>
               </Link>
             </div>
-            <p className="text-left font-semibold">
+            <p className="text-left font-normal">
               At TestKnock, we are dedicated to more than just academic success. Our unwavering commitment extends to providing you with the essential
               tools and expert guidance. So join us on this transformative expedition and discover where educational excellence is not just an
               aspiration but an inspiring and achievable pursuit.
@@ -30,29 +30,37 @@ const Footer = () => {
           </div>
           <div className="w-full grid grid-cols-2 md:flex md:justify-around text-sm md:text-md">
             <div className="min-w-[10em] mx-auto my-5">
-              <p className="font-bold mb-10">Company</p>
-              <p className="font-semibold">Home</p>
-              <p className="font-semibold">About</p>
-              <p className="font-semibold">Syllabus</p>
-              <p className="font-semibold">Courses</p>
+              <p className="cursor-pointer font-bold mb-10">Company</p>
+              <Link to="/" className="no-underline text-white">
+                <p className="font-normal">Home</p>
+              </Link>
+              <Link to="/about" className="no-underline text-white">
+                <p className="font-normal">About</p>
+              </Link>
+              <Link to="/syllabus" className="no-underline text-white">
+                <p className="font-normal">Syllabus</p>
+              </Link>
+              <Link to="/courses" className="no-underline text-white">
+                <p className="font-normal">Courses</p>
+              </Link>
             </div>
             <div className="min-w-[10em] mx-auto my-5">
               <p className="font-bold mb-10">Whom we serve</p>
-              <p className="font-semibold">School Students</p>
-              <p className="font-semibold">College Students</p>
-              <p className="font-semibold">Educational Institutions</p>
-              <p className="font-semibold">Private Colleges</p>
+              <p className="font-normal">School Students</p>
+              <p className="font-normal">College Students</p>
+              <p className="font-normal">Educational Institutions</p>
+              <p className="font-normal">Private Colleges</p>
             </div>
-            <div className="min-w-[10em] mx-auto my-5">
+            <div className="min-w-[10em] mx-auto my-5 md:ml-10">
               <p className="font-bold mb-10">Contact US</p>
-              <p className="font-semibold">
-                <IoMdMail className="mr-1"/> info@testknock.com
+              <p className="font-normal flex items-center">
+                <IoMdMail className="mr-1" /> info@testknock.com
               </p>
-              <p className="font-semibold">
+              <p className="font-normal flex items-center">
                 <IoMdCall className="mr-1" />
                 9953617456
               </p>
-              <p className="font-semibold max-w-[10em]">
+              <p className="font-normal max-w-[10em] ">
                 <IoMdPin className="mr-1" /> Office No. - 42, Durga Vihar, near Amrapali Saphhire, Sec-45, Noida-201301
               </p>
             </div>

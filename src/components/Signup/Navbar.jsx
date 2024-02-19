@@ -1,10 +1,11 @@
 import React from "react";
 import logo from "../../assets/logo_final.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
+  const naviagte=useNavigate()
   return (
-    <div className="flex items-center justify-between z-20 px-5 py-4 tablets:hidden">
+    <div className="md:flex md:items-center md:justify-between md:z-20 md:px-5 md:py-4 hidden">
       <div className="flex gap-2 items-center">
         <img
           className="h-[40.5px] w-[30px]"
@@ -18,12 +19,12 @@ const Navbar = () => {
         <p className="font-semibold">
           Already have an account?{" "}
         </p>
-        <Link
+        <button
           className="border-2 border-indigo px-2 py-1 rounded-full text-indigo "
-          to="/login"
+          onClick={()=>naviagte("/login")}
         >
           Log In
-        </Link>
+        </button>
       </div>
     </div>
   );

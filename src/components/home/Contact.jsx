@@ -10,7 +10,7 @@ const ContactForm = () => {
   };
 
   const ContactInputStyles =
-    "my-1 w-full min-h-10 border-2 border-solid border-white rounded-full bg-transparent placeholder:text-white placeholder:opacity-100 placeholder:text-xl  pl-8  text-white text-xl focus:ring-0 focus:outline-none";
+    "my-3 w-full min-h-10 border-2 border-solid border-white rounded-full bg-transparent placeholder:text-white placeholder:opacity-100 placeholder:text-xl  pl-8  text-white text-xl focus:ring-0 focus:outline-none";
   return (
     <div className="min-h-[70vh] 2xl:min-h-[60vh] w-full md:w-full h-full flex flex-col items-center justify-evenly">
       <h1 className="font-bold text-13xl text-left ">Request a Call back</h1>
@@ -18,13 +18,13 @@ const ContactForm = () => {
         <input className={ContactInputStyles} placeholder="Your Name" type="text" />
         <input className={ContactInputStyles} placeholder="Email" type="email" />
         <input className={ContactInputStyles} placeholder="Phone Number" type="text" />
-        <input
+        <textarea
           className={`my-1 w-full min-h-10 border-2 border-solid border-white rounded-2xl bg-transparent placeholder:text-white placeholder:opacity-100 placeholder:text-xl pl-8 text-white text-xl focus:ring-0 focus:outline-none h-40`}
           placeholder="Reason"
           type="textarea"
         />
       </div>
-      <div className="flex justify-around w-full relative">
+      <div className="my-3 flex justify-around w-full relative">
         <button className="btn bg-[#EA4335] hover:bg-[#EA4335] text-white text-lg min-h-0 h-10 min-w-40 2xl:min-w-54 rounded-full border-none mx-2">
           Submit
         </button>
@@ -35,7 +35,7 @@ const ContactForm = () => {
           Need Help
         </button>
         {isPopupOpen && (
-          <div onClick={handleNeedHelpClick} className="absolute right-0 flex bg-opacity-50 z-50">
+          <div onClick={handleNeedHelpClick} className="absolute right-[-50px] flex bg-opacity-50 z-50">
             <Needhelppopup />
           </div>
         )}
@@ -72,7 +72,7 @@ const Needhelppopup = () => {
 
 const Contact = () => {
   return (
-    <div className="">
+    <div className="mt-56">
       <div
         style={{
           background: "linear-gradient(110.83deg, rgba(0, 124, 236, 0.6) -2.04%, rgba(0, 124, 236, 0) 126.65%)",
