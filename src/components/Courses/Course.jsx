@@ -55,78 +55,81 @@
 
 // export default Courses;
 
-import React from "react";
-import { Link } from "react-router-dom";
-import { IoArrowBack } from "react-icons/io5";
-import TopicContainer from "./TopicContainer";
-import { DomainTopic } from "../../utils/courses";
 import { useMediaQuery } from "@react-hook/media-query";
+import React from "react";
+import { IoArrowBack } from "react-icons/io5";
+import { Link } from "react-router-dom";
+import { DomainTopic } from "../../utils/courses";
+import TopicContainer from "./TopicContainer";
 
 const Courses = () => {
   const isMobile = useMediaQuery("(max-width: 768px)");
   const gridColumns = isMobile ? "grid-cols-1" : "grid-cols-3";
-  const gridGap = isMobile ? "gap-4" : "gap-10";
+  const gridGap = isMobile ? "gap-4" : "gap-12";
   const flexDirection = isMobile ? "flex-col" : "flex-row";
 
   return (
     <>
-      <div className="max-w-screen-lg mx-auto px-4 sm:px-6 lg:px-8">
-        <svg
-          width="162"
-          height="222"
-          viewBox="0 0 162 222"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <rect
-            width="120.516"
-            height="112.816"
-            rx="8"
-            transform="matrix(0.883699 -0.468055 0 1 55.5 108.511)"
-            fill="#65E1C6"
-          />
-          <rect
-            width="120.516"
-            height="90.2531"
-            transform="matrix(0.883699 0.468055 0 1 -51 63.3841)"
-            fill="#93FCE5"
-          />
-          <rect
-            width="96.4129"
-            height="120.516"
-            transform="matrix(0.883699 -0.468055 0.883699 0.468055 -40.3501 46.4616)"
-            fill="#BDFDEF"
-          />
-          <path
-            d="M55.5 210.045C55.5 212.933 56.5398 215.269 58.6193 216.371L-47.8807 159.962C-49.9602 158.861 -51 156.524 -51 153.637L55.5 210.045Z"
-            fill="#93FCE5"
-          />
-          <path
-            d="M55.5 119.792C55.5 113.562 60.2682 105.985 66.15 102.87L-40.35 46.4616C-46.2318 49.5769 -51 57.1534 -51 63.3841L55.5 119.792Z"
-            fill="#BDFDEF"
-          />
-          <path
-            d="M158.881 57.0589C156.801 55.9575 154.076 56.2996 151.35 57.7432L44.8501 1.33504C47.5757 -0.108573 50.3012 -0.450746 52.3808 0.650693L158.881 57.0589Z"
-            fill="#BDFDEF"
-          />
-        </svg>
-
-        <Link className="text-[#5648FC] flex items-center  pr-2 mt-10" to={"/"}>
+      <div className=" mx-auto px-4 sm:px-6 lg:px-8 ">
+        <div className="left-0 top-28 z-[0] absolute">
+          <svg
+            width="162"
+            height="222"
+            viewBox="0 0 162 222"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect
+              width="120.516"
+              height="112.816"
+              rx="8"
+              transform="matrix(0.883699 -0.468055 0 1 55.5 108.511)"
+              fill="#65E1C6"
+            />
+            <rect
+              width="120.516"
+              height="90.2531"
+              transform="matrix(0.883699 0.468055 0 1 -51 63.3841)"
+              fill="#93FCE5"
+            />
+            <rect
+              width="96.4129"
+              height="120.516"
+              transform="matrix(0.883699 -0.468055 0.883699 0.468055 -40.3501 46.4616)"
+              fill="#BDFDEF"
+            />
+            <path
+              d="M55.5 210.045C55.5 212.933 56.5398 215.269 58.6193 216.371L-47.8807 159.962C-49.9602 158.861 -51 156.524 -51 153.637L55.5 210.045Z"
+              fill="#93FCE5"
+            />
+            <path
+              d="M55.5 119.792C55.5 113.562 60.2682 105.985 66.15 102.87L-40.35 46.4616C-46.2318 49.5769 -51 57.1534 -51 63.3841L55.5 119.792Z"
+              fill="#BDFDEF"
+            />
+            <path
+              d="M158.881 57.0589C156.801 55.9575 154.076 56.2996 151.35 57.7432L44.8501 1.33504C47.5757 -0.108573 50.3012 -0.450746 52.3808 0.650693L158.881 57.0589Z"
+              fill="#BDFDEF"
+            />
+          </svg>
+        </div>
+        <Link className="text-[#5648FC] flex items-center relative z-10 pr-2 mt-10" to={"/"}>
           <IoArrowBack size={40} />
         </Link>
         <div className="max-w-[180vh] mx-auto flex flex-col items-center mt-[-40px]">
           <h1 className="text-[#5648FC] items-center flex ">Courses</h1>
-          <div className="flex flex-col items-center mt-[20px]">
+          <div className="flex flex-col items-center justify-center mt-[20px]">
             <div
-              className={`grid ${gridColumns} my-6 ${flexDirection} ${gridGap}`}
+              className={`my-6 flex gap-[100px] `}
             >
               <TopicContainer
                 brick={require("../../assets/images/signup/brick.png")}
                 heading="General English"
+                color="bg-[#FF6868]"
               />
               <TopicContainer
                 brick={require("../../assets/images/signup/test.png")}
                 heading="General Test"
+                color="bg-[#80BCBD]"
               />
             </div>
           </div>
@@ -138,9 +141,9 @@ const Courses = () => {
             </Link> */}
             Domain Subjects
           </h1>
-          <div className=" mt-[20px]">
+          <div className=" mt-[20px] mb-[-80px]">
             <div
-              className={`grid ${gridColumns} my-6 ${flexDirection} ${gridGap}`}
+              className={`grid ${gridColumns}  my-6 ${flexDirection} ${gridGap}`}
             >
               {DomainTopic.map((subtopic, index) => (
                 <div key={index}>
@@ -158,12 +161,15 @@ const Courses = () => {
             </div>
           </div>
         </div>
+      </div>
+      <div className="relative top-12 ">
         <svg
           width="189"
           height="222"
           viewBox="0 0 189 222"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
+          className="absolute right-0 z-[0]"
         >
           <rect
             width="120.516"
@@ -199,6 +205,7 @@ const Courses = () => {
         </svg>
       </div>
     </>
+
   );
 };
 

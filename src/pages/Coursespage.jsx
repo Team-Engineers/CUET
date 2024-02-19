@@ -1,15 +1,15 @@
 import React from 'react'
-import Navbar from '../components/Navbar'
-import Footer from '../components/Footer'
 import Courses from '../components/Courses/Course'
+import Footer from '../components/Footer'
+import Navbar from '../components/Navbar'
 
 
 const Coursespage = () => {
   return (
-    <div>
-      <Navbar/>
-      <Courses/>
-      <Footer/>
+    <div className='bg-gradient-to-br from-[#ACBCFF] to-white'>
+      <Navbar />
+      <Courses />
+      <Footer />
     </div>
   )
 }
