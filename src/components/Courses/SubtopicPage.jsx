@@ -17,7 +17,7 @@ const SubtopicPage = () => {
     <>
       <Navbar />
 
-      <div className="max-w-[1380px] mx-auto">
+      <div className="max-w-screen-lg mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-[180vh] mx-auto">
           <h1 className="text-[#5648FC] items-center flex">
             <Link
@@ -28,7 +28,7 @@ const SubtopicPage = () => {
             </Link>
             {subtopicCategory}
           </h1>
-          <div className="grid grid-cols-3 my-[70px] md:flex-row gap-[100px]">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-6 my-8">
             {subtopicData &&
               subtopicData.map((item, index) => (
                 <TopicContainer
