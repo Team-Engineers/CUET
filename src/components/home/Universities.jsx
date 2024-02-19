@@ -51,9 +51,9 @@ const Universities = () => {
               </tr>
             </tbody>
           </table>
-          <p className="w-full text-right underline text-blue-400 cursor-pointer">View More Colleges</p>
+          <p className="w-full text-right underline text-[#1877F2] cursor-pointer my-3">View More Colleges</p>
         </div>
-        <img src="/uni_building.png" className="w-72 h-72 " />
+        <img src="/uni_building.png" className="w-72 h-72 md:h-[400px] md:w-[400px] z-40" />
       </div>
     </div>
   );

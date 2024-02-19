@@ -21,9 +21,9 @@ const HomeSteps = () => {
           />
         </div>
         <div className="min-h-[60vh] h-full flex flex-col justify-between md:max-w-[50%]">
-          <div className="flex flex-col justify-start">
+          <div className="flex flex-col justify-start my-6">
             <h1 className="text-left text-blueviolet-100  text-13xl font-bold m-0">May We Help You</h1>
-            <h3 className="text-left font-bold text-7xl mt-2">3 Simple steps for Assured Success at CUET</h3>
+              <h3 className="text-left font-bold text-7xl mt-2 text-[#000000CC]">3 Simple steps for Assured Success at CUET</h3>
           </div>
           <div className="flex-1 flex flex-col justify-evenly ">
             <ul className="timeline timeline-compact timeline-snap-icon  timeline-vertical flex-none pl-0">
@@ -47,7 +47,7 @@ const HomeSteps = () => {
                     selected={currStep == 1}
                     step="Step 01"
                     stepHeading="APPEAR FOR MOCK TEST"
-                    description1="At TestKNOCK we strongly believe that students need to take tests regularly to know where they stand in today’s competitive environment."
+                    description1="At TestKnock we strongly believe that students need to take tests regularly to know where they stand in today’s competitive environment."
                   />
                 </div>
 
@@ -73,8 +73,8 @@ const HomeSteps = () => {
                   <StepGuide
                     selected={currStep == 2}
                     step="Step 01"
-                    stepHeading="APPEAR FOR MOCK TEST"
-                    description1="At TestKNOCK we strongly believe that students need to take tests regularly to know where they stand in today’s competitive environment."
+                    stepHeading={"PRACTICE QUESTION FROM PREPARATORY MODULES"}
+                    description1="The content team at TestKnock has executed thousands interactive Multiple Choice Questions with detailed explanation to help you improve tremendously."
                   />
                 </div>
                 <hr className="bg-transparent" style={{ borderRight: "3px dashed rgba(86, 72, 252, 0.65)" }} />
@@ -99,8 +99,8 @@ const HomeSteps = () => {
                   <StepGuide
                     selected={currStep == 3}
                     step="Step 01"
-                    stepHeading="APPEAR FOR MOCK TEST"
-                    description1="At TestKNOCK we strongly believe that students need to take tests regularly to know where they stand in today’s competitive environment."
+                    stepHeading="PLAN, REVIEW AND EXECUTE"
+                    description1="We strongly recommend that students spend 4-5 hrs every week for extensive practice and observe considerable growth over a period of time. "
                   />
                 </div>
               </li>

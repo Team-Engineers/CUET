@@ -33,8 +33,11 @@ function App() {
           <Route path="/syllabus" element={<Syllabus />} />
           <Route path="/courses" element={<Coursespage />} />
           <Route path="/courses/:subtopic" element={<SubtopicPage />} />
+
           <Route path="/test" element={<TestPage />} />
-          <Route path="packs" element={<PacksPage />} />
+
+          <Route path="/payment" element={<Payment />} />
+          <Route path="/packs" element={<PacksPage />} />
         </Routes>
       </UserContext.Provider>
     </div>
