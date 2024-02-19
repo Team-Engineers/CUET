@@ -6,7 +6,7 @@ const AboutPage = () => {
     <div className="w-full min-h-[100vh] flex flex-col items-center">
       <Navbar />
       <div className="relative w-full xl:max-w-[100vw] flex flex-col md:flex-row justify-around items-center  min-h-[90vh] h-full">
-        <div className="w-full md:max-w-[40vw] flex flex-col justify-center">
+        <div className="w-full md:max-w-[40vw] min-h-[40vh] flex flex-col justify-around">
           <div className="px-3">
             <h1 className="pl-0 mb-0 font-bold text-7xl md:text-21xl text-blueviolet-100 px-3">About Us</h1>
             <hr className="w-10 m-0 text-blueviolet-100" />
