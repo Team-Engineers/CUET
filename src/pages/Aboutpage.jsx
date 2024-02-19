@@ -3,7 +3,7 @@ import Footer from "../components/Footer";
 
 const AboutPage = () => {
   return (
-    <div className="w-full min-h-[100vh] flex flex-col items-center">
+    <div className="w-full min-h-[100vh] flex flex-col items-center bg-white">
       <Navbar />
       <div className="relative w-full xl:max-w-[95vw] 2xl:max-w-[80vw] flex flex-col md:flex-row justify-around items-center  min-h-[90vh] h-full">
         <div className="w-full md:max-w-[40vw] flex flex-col justify-center">
