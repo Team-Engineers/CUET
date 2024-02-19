@@ -17,7 +17,7 @@ const ProfileCard = () => {
     location: "",
   });
 
-  const navigate=useNavigate()
+  const navigate = useNavigate();
   const schema = z.object({
     firstName: z
       .string()
@@ -52,23 +52,24 @@ const ProfileCard = () => {
     console.log(data);
   };
   return (
-      <div className="flex flex-col items-center">
-        <div className="flex" onClick={()=>navigate(-1)}>
-          <FiArrowLeft className="text-blueviolet-100 size-7" />
-          <div>
-            <h2 className="pl-0 mb-1 text-blueviolet-100 text-5xl xl:text-10xl leading-none">
-              Profile
-            </h2>
-            <hr className="bg-blueviolet-100 h-1 border-none w-10 m-0 mb-3" />
-          </div>
+    <div className="flex flex-col items-center mt-10 ">
+      <div className="flex md:w-[93%] lg:w-[91%] xl:w-[90%] 2xl:w-[88%]" onClick={() => navigate(-1)}>
+        <FiArrowLeft className="text-blueviolet-100 size-7" />
+        <div className="">
+          <h2 className="pl-0 mb-1 text-blueviolet-100 text-5xl xl:text-10xl leading-none">
+            Profile
+          </h2>
+          <hr className="bg-blueviolet-100 h-1 border-none w-10 m-0 mb-3" />
         </div>
-        <form className="flex flex-col items-center bg-red-400 w-[100rem]">
-          <img src={profileImg} alt="" className="w-24 md:w-28 xl:w-36 " />
-          <div className="">
+      </div>
+      <form className="flex flex-col items-center max-w-none w-full pb-6 md:flex-row md:items-start md:gap-[5%] md:justify-center">
+        <img src={profileImg} alt="" className="w-24 md:w-28 xl:w-36 md:mt-5" />
+        <div className="md:w-[75%]">
+          <div className="flex flex-col items-center md:items-start">
             <p className="text-blueviolet-100 font-semibold text-lg ">
               Personal Information
             </p>
-            <div className="mt-4 flex flex-wrap">
+            <div className="mt-4 flex flex-wrap justify-center md:justify-between">
               <div className="flex flex-col mb-3 xl:mb-6">
                 <label
                   htmlFor="firstName"
@@ -83,7 +84,7 @@ const ProfileCard = () => {
                   autoComplete="true"
                   autoCorrect="true"
                   placeholder="Thomas"
-                  className="px-6 py-2 text-lg rounded-full border-none shadow-md shadow-gray-500 w-[15rem] md:w-52 lg:w-80 xl:w-96 text-[#00000080] 2xl:w-[510px]"
+                  className="px-6 py-2 text-lg rounded-full border-none shadow-md shadow-gray-500 w-80 sm:w-[30rem] md:w-[17rem] lg:w-[22rem] xl:w-[27rem] text-[#00000080] 2xl:w-[510px]"
                   {...register("firstName")}
                 />
                 {errors.firstName && (
@@ -106,7 +107,7 @@ const ProfileCard = () => {
                   autoComplete="true"
                   autoCorrect="true"
                   placeholder="J"
-                  className="px-6 py-2 text-lg rounded-full border-none shadow-md shadow-gray-500 md:w-52 lg:w-80 text-[#00000080] xl:w-96 2xl:w-[510px]"
+                  className="px-6 py-2 text-lg rounded-full border-none shadow-md shadow-gray-500 w-80 sm:w-[30rem] md:w-[17rem] lg:w-[22rem] text-[#00000080] xl:w-[27rem] 2xl:w-[510px]"
                   {...register("lastName")}
                 />
                 {errors.lastName && (
@@ -129,7 +130,7 @@ const ProfileCard = () => {
                   autoComplete="true"
                   autoCorrect="true"
                   placeholder="Thomas.j@gmail.com"
-                  className="px-6 py-2 text-lg rounded-full border-none shadow-md shadow-gray-500 md:w-52 lg:w-80 xl:w-96 text-[#00000080] 2xl:w-[510px]"
+                  className="px-6 py-2 text-lg rounded-full border-none shadow-md shadow-gray-500 w-80 sm:w-[30rem] md:w-[17rem] lg:w-[22rem] xl:w-[27rem] text-[#00000080] 2xl:w-[510px]"
                   {...register("email")}
                 />
                 {errors.email && (
@@ -154,7 +155,7 @@ const ProfileCard = () => {
                   placeholder="1998-12-5"
                   onFocus={(e) => (e.target.type = "date")}
                   onBlur={(e) => (e.target.type = "text")}
-                  className="px-6 py-2 text-lg rounded-full border-none shadow-md shadow-gray-500 md:w-52 lg:w-80 xl:w-96 text-[#00000080] 2xl:w-[510px]"
+                  className="px-6 py-2 text-lg rounded-full border-none shadow-md shadow-gray-500 w-80 sm:w-[30rem] md:w-[17rem] lg:w-[22rem] xl:w-[27rem] text-[#00000080] 2xl:w-[510px]"
                   {...register("dob")}
                 />
                 {errors.dob && (
@@ -177,7 +178,7 @@ const ProfileCard = () => {
                   autoComplete="true"
                   autoCorrect="true"
                   placeholder="+000-000-0000"
-                  className="px-6 py-2 text-lg rounded-full border-none shadow-md shadow-gray-500 md:w-52 lg:w-80 xl:w-96 text-[#00000080] 2xl:w-[510px]"
+                  className="px-6 py-2 text-lg rounded-full border-none shadow-md shadow-gray-500 w-80 sm:w-[30rem] md:w-[17rem] lg:w-[22rem] xl:w-[27rem] text-[#00000080] 2xl:w-[510px]"
                   {...register("phoneNumber")}
                 />
                 {errors.phoneNumber && (
@@ -200,7 +201,7 @@ const ProfileCard = () => {
                   autoComplete="true"
                   autoCorrect="true"
                   placeholder="Banglore"
-                  className="px-6 py-2 text-lg rounded-full border-none shadow-md shadow-gray-500 md:w-52 lg:w-80 xl:w-96 text-[#00000080] 2xl:w-[510px]"
+                  className="px-6 py-2 text-lg rounded-full border-none shadow-md shadow-gray-500 w-80 sm:w-[30rem] md:w-[17rem] lg:w-[22rem] xl:w-[27rem] text-[#00000080] 2xl:w-[510px]"
                   {...register("location")}
                 />
                 {errors.location && (
@@ -212,10 +213,10 @@ const ProfileCard = () => {
             </div>
           </div>
           <div className="">
-            <p className="text-blueviolet-100 font-semibold text-lg">
+            <p className="text-blueviolet-100 font-semibold text-lg pl-[10%] md:pl-0">
               Membership
             </p>
-            <div className="flex items-center justify-between md:justify-start md:gap-8">
+            <div className="flex items-center justify-around md:justify-start md:gap-8">
               <button className="px-6 py-2 text-lg rounded-full border-none bg-white shadow-md shadow-gray-500 text-[#00000080] flex items-center gap-1 cursor-pointer">
                 <BsFillPersonLinesFill /> CUET GENERAL PACK
               </button>
@@ -224,8 +225,9 @@ const ProfileCard = () => {
               </button>
             </div>
           </div>
-        </form>
-      </div>
+        </div>
+      </form>
+    </div>
   );
 };
 
