@@ -4,11 +4,9 @@ import ProfileCard from "../components/profile/ProfileCard";
 
 const Profile = () => {
   return (
-    <div className="bg-[#c9d4ff] min-h-screen pb-4">
+    <div className="bg-[#c9d4ff]">
       <Navbar />
-      <div className="flex justify-center mb-5 bg-red-500">
         <ProfileCard />
-      </div>
     </div>
   );
 };
