@@ -9,9 +9,9 @@ const HomeSteps = () => {
   const [currStep, setCurrStep] = useState(1);
 
   return (
-    <div className="w-full md:max-w-[80vw] mt-72 ">
+    <div className="w-full  mt-56 ">
       <div className="flex flex-col-reverse items-center mx-3 lg:flex-row lg:justify-around">
-        <div className="w-72 h-72 md:w-[600px] md:h-[600px] object-cover ">
+        <div className="w-96 h-96 md:w-[600px] md:h-[600px] object-cover ">
           <Lottie
             options={{
               loop: true,
