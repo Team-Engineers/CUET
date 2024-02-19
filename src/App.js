@@ -7,28 +7,33 @@ import AboutPage from "./pages/Aboutpage";
 import Coursespage from "./pages/Coursespage";
 import SubtopicPage from "./components/Courses/SubtopicPage";
 import Learningpage from "./pages/Learningpage";
+import TestPage from "./components/Test/TestPage";
 import Payment from "./pages/Payment";
+import { UserContext } from "./context";
+import { useState } from "react";
 
 import Profile from "./pages/Profile";
 import Syllabus from "./pages/Syllabus";
 function App() {
+  const [userLoggedIn, setUserLoggedIn] = useState(false);
+
   const packname = "CUET GENERAL PACK";
   const packprice = 999;
+
   return (
     <div>
-      <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/" element={<Homepage />} />
-        <Route path="/about" element={<AboutPage />} />
-        <Route path="/profile" element={<Profile />} />
+      <UserContext.Provider value={{ userLoggedIn, setUserLoggedIn }}>
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/" element={<Homepage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/profile" element={<Profile />} />
         <Route path="/syllabus" element={<Syllabus />} />
 
-        <Route path="/courses" element={<Coursespage />} />
-        <Route path="/courses/:subtopic" element={<SubtopicPage />} />
-        <Route path="/learning" element={<Learningpage />} />
-        <Route path="/payment" element={<Payment packname={packname} packprice={packprice} />} />
-      </Routes>
+          <Route path="/test" element={<TestPage />} />
+        </Routes>
+      </UserContext.Provider>
     </div>
   );
 }
