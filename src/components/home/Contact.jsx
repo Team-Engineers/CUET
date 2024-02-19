@@ -72,7 +72,7 @@ const Needhelppopup = () => {
 
 const Contact = () => {
   return (
-    <div className="mt-56">
+    <div className="mt-56 mb-32">
       <div
         style={{
           background: "linear-gradient(110.83deg, rgba(0, 124, 236, 0.6) -2.04%, rgba(0, 124, 236, 0) 126.65%)",

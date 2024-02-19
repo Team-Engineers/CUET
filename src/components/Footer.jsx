@@ -4,7 +4,7 @@ import { IoMdCall, IoMdMail, IoMdPin } from "react-icons/io";
 
 const Footer = () => {
   return (
-    <footer className="bg-[#0D0756] text-white w-full flex justify-center items-center mt-56 ">
+    <footer className="bg-[#0D0756] text-white w-full flex justify-center items-center ">
       <div className="xl:max-w-[95vw] 2xl:max-w-[80vw] w-full">
         <div className="flex flex-col justify-betwen md:flex-row md:items-center md:justify-around mx-3">
           <div className="w-full md:max-w-[40vw] md:mr-20 my-10 md:my-0">
