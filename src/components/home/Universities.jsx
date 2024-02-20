@@ -1,10 +1,12 @@
 const Universities = () => {
   return (
-    <div className="2xl:max-w-[80vw] w-full flex flex-col justify-evenly items-center">
-      <h1 className="text-blueviolet-100 mx-2">Universities Participating in <span className="text-red-500">CUET</span></h1>
-      <div className="w-full min-h-[100vh] md:min-h-[60vh] h-full  flex flex-col justify-around items-center lg:flex-row ">
+    <div className="xl:max-w-[95vw] 2xl:max-w-[80vw] w-full flex flex-col justify-evenly items-center mt-20">
+      <h1 className="text-blueviolet-100 mx-2">
+        Universities Participating in <span className="text-red-500">CUET</span>
+      </h1>
+      <div className="w-full min-h-[100vh] md:min-h-[60vh] h-full  flex flex-col-reverse justify-around items-center lg:flex-row ">
         <div className="mx-2">
-          <table className="border-collapse table min-w-[50vw] 2xl:min-w-[30vw] rounded-2xl shadow-[0px_4px_6px_0px_rgba(0,0,0,0.1)]">
+          <table className="border-collapse table min-w-[65vw] md:min-w-[50vw] 2xl:min-w-[30vw] rounded-2xl shadow-[0px_4px_6px_0px_rgba(0,0,0,0.1)]">
             <thead>
               <tr>
                 <th
@@ -49,9 +51,9 @@ const Universities = () => {
               </tr>
             </tbody>
           </table>
-      <p className="w-full text-right underline font-bold text-blue-400 cursor-pointer">View More Colleges</p>
+          <p className="w-full text-right underline text-[#1877F2] cursor-pointer my-3">View More Colleges</p>
         </div>
-        <img src="/uni_building.png" className="w-72 h-72 md:w-96 md:h-96" />
+        <img src="/uni_building.png" className="w-72 h-72 md:h-[400px] md:w-[400px] z-40" />
       </div>
     </div>
   );

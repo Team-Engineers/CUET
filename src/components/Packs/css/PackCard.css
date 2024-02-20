@@ -1,0 +1,46 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.title{
+    color: #5648FC;
+    background-color: #D9D9D9;
+    text-align: center;
+    padding: 4px;
+    border-radius: 8px;
+    margin-bottom: 5px;
+}
+.main{
+    padding: 2vw;
+  background: linear-gradient(159.85deg, #402E87 9.07%, #402E87 74.25%, #000000 119.2%);
+   height: 320px;
+   border-radius: 10px;
+}
+.price{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+.icon{
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #D3C5FE;
+   margin-right: 10px;
+}
+.feautres{
+    display: flex;
+}
+.feature-cont{
+    margin-top: 5px;
+    display: flex;
+    padding: 10px;
+}
+.confirmation-btn{
+    background-color:  white;
+    text-align: center;
+    padding: 4px;
+    border-radius: 8px;
+    margin-bottom: 5px;
+}

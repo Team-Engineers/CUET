@@ -12,7 +12,7 @@ const getTouches = (evt) => {
 
 const Testinomials2 = ({ image, name, text }) => {
   return (
-    <div className="cursor-pointer w-[20em] min-h-[20em] md:w-[40em] md:h-[15em] py-10 rounded-[16.02px] bg-gray-300 shadow-[0px_4px_4px_rgba(0,_0,_0,_0.25)] [backdrop-filter:blur(50px)] flex flex-col justify-evenly items-center px-5">
+    <div className="cursor-pointer w-[20em] min-h-[30em] md:w-[40em] md:h-[15em] py-10 rounded-[16.02px] bg-gray-300 shadow-[0px_4px_4px_rgba(0,_0,_0,_0.25)] [backdrop-filter:blur(50px)] flex flex-col justify-evenly items-center px-5">
       <div className="text-13xl text-white font-bold">{name}</div>
       <div className="text-white text-xl text-center my-8">{text}</div>
       <hr className="border-[1px] border-solid border-[#D9D9D9] w-full" />
@@ -34,7 +34,7 @@ function Carroussel(props) {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      // setGoToSlide(goToSlide + 1);
+      setGoToSlide(goToSlide + 1);
     }, 3000);
     return () => clearInterval(interval);
   }, [goToSlide]);
@@ -78,7 +78,7 @@ function Carroussel(props) {
   return (
     <div
       style={{ width: props.width, height: props.height, margin: props.margin }}
-      className="2xl:max-w-[80vw] w-full min-h-[60vh] flex flex-col justify-center items-center z-10"
+      className="xl:max-w-[95vw] 2xl:max-w-[80vw] w-full min-h-[60vh] flex flex-col justify-center items-center z-10"
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
     >
@@ -136,16 +136,16 @@ const Testinomials = () => {
   const isMobile = useMediaQuery({ query: `(max-width: 760px)` });
 
   return (
-    <div className="relative w-full flex justify-center items-center">
-      <div className="w-full 2xl:max-w-[80vw] min-h-[80vh] flex flex-col justify-around my-10">
+    <div className="relative w-full flex justify-center items-center mt-20">
+      <div className="w-full xl:max-w-[95vw] 2xl:max-w-[80vw] min-h-[80vh] flex flex-col justify-around my-10">
         <div className="">
-          <h1 className="text-blueviolet-400  text-13xl font-semibold text-center ">Testimonials</h1>
+          <h1 className="text-blueviolet-100  text-13xl font-semibold text-center ">Testimonials</h1>
           <h1 className="text-blueviolet-400 font-normal text-5xl text-center ">Information</h1>
         </div>
-        <Carroussel cards={slides} height="500px" width="80%" margin="0 auto" offset={isMobile ? 0 : 200} showArrows={isMobile} />{" "}
+        <Carroussel cards={slides} height="500px" width="80%" margin="0 auto" offset={isMobile ? 10 : 200} showArrows={false} />{" "}
       </div>
-      <img src="/bubbles/bubble3.png" className="absolute left-0 z-[2]" />
-      <img src="/bubbles/bubble2.png" className="absolute right-0 top-[-200px] md:top-0 z-[2]" />
+      <img src="/bubbles/bubble3.png" className="absolute bottom-0  left-0 z-[2]" />
+      <img src="/bubbles/bubble2.png" className="absolute right-0 top-[100px] md:top-0 z-[2]" />
     </div>
   );
 };

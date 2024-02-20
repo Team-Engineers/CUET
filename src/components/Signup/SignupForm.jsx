@@ -1,13 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { FaGoogle, FaFacebook, FaLinkedin } from "react-icons/fa";
 import { z } from "zod";
-import googlePng from '../../assets/pngimg.com - google_PNG19635.png'
+import googlePng from "../../assets/pngimg.com - google_PNG19635.png";
+import { UserContext } from "../../context";
+import { useNavigate } from "react-router-dom";
 
 // const emailSchema = z.string().min(1, { message: "This field has to be filled." }).email("This is not a valid email.");
 // const nameSchema = z.string().min(1, { message: "This field has to be filled." })
 // const passwordSchema = z.string().min(1, { message: "This field has to be filled." })
 
 const SignupForm = () => {
+  const { userLoggedIn, setUserLoggedIn } = useContext(UserContext);
+  const navigate = useNavigate();
+
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -16,6 +21,8 @@ const SignupForm = () => {
 
   const signup = () => {
     // console.log("Logging in with:", { name, password });
+    setUserLoggedIn(true);
+    navigate("/");
   };
 
   //validation
@@ -45,10 +52,7 @@ const SignupForm = () => {
       <h2 className="hidden md:block text-blueviolet-100 text-[36px]">Sign-Up</h2>
       <form className="flex flex-col items-center justify-center mt-5 md:items-start" onSubmit={(e) => e.preventDefault()}>
         <div className="flex flex-col mb-4">
-          <label
-            htmlFor="name"
-            className="text-start font-bold  text-gray-700 text-[15px] sm:text-[18px] "
-          >
+          <label htmlFor="name" className="text-start font-bold  text-gray-700 text-[15px] sm:text-[18px] ">
             Name
           </label>
           <input
@@ -64,10 +68,7 @@ const SignupForm = () => {
           />
         </div>
         <div className="flex flex-col mb-4">
-          <label
-            htmlFor="email"
-            className="text-start font-bold  text-gray-700 text-[15px] sm:text-[18px]"
-          >
+          <label htmlFor="email" className="text-start font-bold  text-gray-700 text-[15px] sm:text-[18px]">
             Email
           </label>
           <input
@@ -84,10 +85,7 @@ const SignupForm = () => {
           {email && <p className="mt-1 text-red-500">{message}</p>}
         </div>
         <div className="flex flex-col">
-          <label
-            htmlFor="password"
-            className="text-start font-bold  text-gray-700 text-[15px] sm:text-[18px]"
-          >
+          <label htmlFor="password" className="text-start font-bold  text-gray-700 text-[15px] sm:text-[18px]">
             Password
           </label>
           <input
@@ -101,11 +99,7 @@ const SignupForm = () => {
             onChange={validatePassword}
             className="mt-1 bg-[#D9D9D9] font-semibold p-3 w-80 border rounded-[20px] text-[15px] border-none sm:text-[18px] text-gray-300 shadow-lg shadow-[#00000040] md:w-72 lg:w-80"
           />
-          {password && password.length < 9 ? (
-            <p className="mt-1 text-red-500">Weak password</p>
-          ) : (
-            ""
-          )}
+          {password && password.length < 9 ? <p className="mt-1 text-red-500">Weak password</p> : ""}
         </div>
         <div className="mt-8 md:flex justify-start">
           <button
@@ -117,7 +111,7 @@ const SignupForm = () => {
         </div>
         <div className="flex items-center">
           <p className="px-2 text-sm">Create account with:</p>
-          <img src={googlePng} alt="" className="w-10"/>
+          <img src={googlePng} alt="" className="w-10" />
           <FaLinkedin className="text-blue-500 px-1" size={24} />
           <FaFacebook className="text-blue-700 px-1" size={24} />
         </div>{" "}
