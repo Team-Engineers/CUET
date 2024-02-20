@@ -9,8 +9,8 @@ const HomeSteps = () => {
   const [currStep, setCurrStep] = useState(1);
 
   return (
-    <div className="w-full  mt-56 ">
-      <div className="flex flex-col-reverse items-center mx-3 lg:flex-row lg:justify-around">
+    <div className="w-full mt-32  md:mt-56 ">
+      <div className="flex flex-col justify-around items-center mx-3 lg:flex-row lg:justify-around">
         <div className="w-96 h-96 md:w-[600px] md:h-[600px] object-cover ">
           <Lottie
             options={{

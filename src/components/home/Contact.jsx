@@ -14,7 +14,7 @@ const ContactForm = () => {
   return (
     <div className="min-h-[70vh] 2xl:min-h-[60vh] w-full md:w-full h-full flex flex-col items-center justify-evenly">
       <h1 className="font-bold text-13xl text-left ">Request a Call back</h1>
-      <div className="flex flex-col items-center justify-evenly w-[80%] md:w-[65%] min-h-[50vh] 2xl:min-h-[40vh]">
+      <div className="flex flex-col items-center justify-evenly w-[80%] md:w-[80%] min-h-[50vh] 2xl:min-h-[40vh]">
         <input className={ContactInputStyles} placeholder="Your Name" type="text" />
         <input className={ContactInputStyles} placeholder="Email" type="email" />
         <input className={ContactInputStyles} placeholder="Phone Number" type="text" />
@@ -72,17 +72,17 @@ const Needhelppopup = () => {
 
 const Contact = () => {
   return (
-    <div className="mt-56 mb-32">
+    <div className="mt-32 md:mt-56 mb-32">
       <div
         style={{
           background: "linear-gradient(110.83deg, rgba(0, 124, 236, 0.6) -2.04%, rgba(0, 124, 236, 0) 126.65%)",
         }}
-        className="min-w-[80vw] min-h-[100vh] md:min-h-[70vh] 2xl:min-h-[70vh] rounded-2xl mb-10 flex flex-col items-center justify-evenly md:flex-row md:justify-evenly mx-8"
+        className="min-w-[80vw] min-h-[100vh] md:min-h-[70vh] 2xl:min-h-[70vh] rounded-2xl mb-10 flex flex-col-reverse items-center justify-evenly md:flex-row md:justify-evenly mx-8"
       >
         <div className="h-full w-full 2xl:w-[60%] flex justify-center">
           <ContactForm />
         </div>
-        <div className="w-full md:max-w-[60%] min-h-[40vh]">
+        <div className="flex justify-center items-center w-full md:max-w-[60%] min-h-[40vh]">
           <Lottie
             options={{
               loop: true,
