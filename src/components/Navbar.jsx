@@ -20,12 +20,12 @@ const Navbar = () => {
   return (
     <div className={`navbar ${location.pathname === "/" ? "bg-white" : ""}  w-full xl:max-w-[95vw] 2xl:max-w-[80vw] min-h-[10vh]`}>
       <div className="navbar-start ml-5 w-72">
-        <div className="flex flex-row items-center justify-start gap-[7px]">
           <NavLink to={"/"} className="no-underline gap-2 items-center flex">
+          <div className="flex gap-2 items-center">
             <img className="h-[40.5px] w-[30px] relative object-cover" loading="eager" alt="" src={"/logo.png"} />
             <b className="relative text-blueviolet-100 text-xl">CUET-TestKnock</b>
+            </div>
           </NavLink>
-        </div>
       </div>
       <div className="navbar-end mr-2  lg:ml-auto w-full relative">
         {/* Normal */}

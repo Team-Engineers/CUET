@@ -14,9 +14,16 @@ const Banner = () => {
   };
 
   return (
-    // <div className="flex flex-row gap-[100px] items-start justify-between mx-auto box-border  text-left text-13xl text-blueviolet-100 font-inter">
-    <div className="min-h-[80vh] xl:max-w-[95vw] 2xl:max-w-[80vw] max-w-[90vw] w-full flex flex-col-reverse justify-around md:flex-row md:justify-between items-center ">
-      {/* <div className="flex flex-col items-start gap-[42px] max-w-full"> */}
+    <div className="min-h-[80vh] xl:max-w-[95vw] 2xl:max-w-[80vw] max-w-[90vw] w-full flex flex-col-reverse  justify-around md:flex-row md:justify-between items-center ">
+      <div className="w-[392px] md:hidden block lg:w-[550px] ">
+        <Lottie
+          options={{
+            loop: true,
+            autoplay: true,
+            animationData: LandingAnimationData,
+          }}
+        />
+      </div>
       <div className="flex flex-col justify-around max-w-full min-h-[45vh] md:min-h-[55vh] 2xl:min-h-[40vh]">
         <div className="my-6 font-bold text-7xl md:text-21xl">
           <p className="m-0 text-blueviolet-100">One Stop Solution for your</p>
@@ -75,7 +82,7 @@ const Banner = () => {
           </div>
         </div>
       </div>
-      <div className="w-[392px] lg:w-[550px] ">
+      <div className="w-[392px] md:block hidden lg:w-[550px] ">
         <Lottie
           options={{
             loop: true,
@@ -84,7 +91,6 @@ const Banner = () => {
           }}
         />
       </div>
-      {/* <img className="w-[392px] lg:w-[500px] " loading="eager" alt="" src={require("../../assets/images/signup/homefirst.png")} /> */}
     </div>
   );
 };

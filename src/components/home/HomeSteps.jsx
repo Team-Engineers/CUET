@@ -9,23 +9,23 @@ const HomeSteps = () => {
   const [currStep, setCurrStep] = useState(1);
 
   return (
-    <div className="w-full mt-32  md:mt-56 ">
-      <div className="flex flex-col justify-around items-center mx-3 lg:flex-row lg:justify-around">
-        <div className="w-96 h-96 md:w-[600px] md:h-[600px] object-cover ">
+    <section className="w-full relative h-screen z-10 mx-md:mt-5  ">
+      <div className="flex h-screen flex-col justify-around items-center mx-3 lg:flex-row lg:justify-around">
+        <div className="max-w-96 max-md:hidden max-h-96 md:max-w-[600px] md:max-h-[600px] object-cover ">
           <Lottie
             options={{
               loop: true,
               autoplay: true,
-              animationData: currStep == 1 ? Step1AnimatiionData : currStep == 2 ? Step2AnimatiionData : Step3AnimatiionData ,
+              animationData: currStep == 1 ? Step1AnimatiionData : currStep == 2 ? Step2AnimatiionData : Step3AnimatiionData,
             }}
           />
         </div>
-        <div className="min-h-[60vh] h-full flex flex-col justify-between md:max-w-[50%]">
-          <div className="flex flex-col justify-start my-6">
-            <h1 className="text-left text-blueviolet-100  text-13xl font-bold m-0">May We Help You</h1>
-              <h3 className="text-left font-bold text-7xl mt-2 text-[#000000CC]">3 Simple steps for Assured Success at CUET</h3>
-          </div>
+        <div className=" h-full flex flex-col justify-between md:max-w-[50%]">
           <div className="flex-1 flex flex-col justify-evenly ">
+            <div className="flex flex-col justify-start max-md:my-10 ">
+              <h1 className="text-left text-blueviolet-100  text-13xl font-bold m-0">May We Help You</h1>
+              <h3 className="text-left font-bold text-7xl mt-2 text-[#000000CC]">3 Simple steps for Assured Success at CUET</h3>
+            </div>
             <ul className="timeline timeline-compact timeline-snap-icon  timeline-vertical flex-none pl-0">
               <li
                 className="group cursor-pointer"
@@ -35,9 +35,8 @@ const HomeSteps = () => {
               >
                 <div className="timeline-middle">
                   <div
-                    className={`w-10 h-10 rounded-full flex justify-center items-center text-3xl font-bold group-hover:bg-blueviolet-100 group-hover:text-white  ${
-                      currStep == 1 ? "bg-blueviolet-100 text-white" : "text-gray-200 bg-gray-400"
-                    }  `}
+                    className={`w-10 h-10 rounded-full flex justify-center items-center text-3xl font-bold group-hover:bg-blueviolet-100 group-hover:text-white  ${currStep == 1 ? "bg-blueviolet-100 text-white" : "text-gray-200 bg-gray-400"
+                      }  `}
                   >
                     1
                   </div>
@@ -62,9 +61,8 @@ const HomeSteps = () => {
                 <hr className="bg-transparent" style={{ borderRight: "3px dashed rgba(86, 72, 252, 0.65)" }} />
                 <div className="timeline-middle">
                   <div
-                    className={`w-10 h-10 rounded-full flex justify-center items-center text-3xl font-bold   group-hover:bg-blueviolet-100 group-hover:text-white ${
-                      currStep == 2 ? "bg-blueviolet-100 text-white" : "text-gray-200 bg-gray-400"
-                    }`}
+                    className={`w-10 h-10 rounded-full flex justify-center items-center text-3xl font-bold   group-hover:bg-blueviolet-100 group-hover:text-white ${currStep == 2 ? "bg-blueviolet-100 text-white" : "text-gray-200 bg-gray-400"
+                      }`}
                   >
                     2
                   </div>
@@ -88,9 +86,8 @@ const HomeSteps = () => {
                 <hr className="bg-transparent" style={{ borderRight: "3px dashed rgba(86, 72, 252, 0.65)" }} />
                 <div className="timeline-middle">
                   <div
-                    className={`w-10 h-10 rounded-full flex justify-center items-center text-3xl font-bold   group-hover:bg-blueviolet-100 group-hover:text-white ${
-                      currStep == 3 ? "bg-blueviolet-100 text-white" : "text-gray-200 bg-gray-400"
-                    }`}
+                    className={`w-10 h-10 rounded-full flex justify-center items-center text-3xl font-bold   group-hover:bg-blueviolet-100 group-hover:text-white ${currStep == 3 ? "bg-blueviolet-100 text-white" : "text-gray-200 bg-gray-400"
+                      }`}
                   >
                     3
                   </div>
@@ -107,8 +104,17 @@ const HomeSteps = () => {
             </ul>
           </div>
         </div>
+        <div className="max-w-96 max-h-96 md:hidden  md:max-w-[600px] md:max-h-[600px] object-cover ">
+          <Lottie
+            options={{
+              loop: true,
+              autoplay: true,
+              animationData: currStep == 1 ? Step1AnimatiionData : currStep == 2 ? Step2AnimatiionData : Step3AnimatiionData,
+            }}
+          />
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 

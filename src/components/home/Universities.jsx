@@ -1,12 +1,13 @@
 const Universities = () => {
   return (
-    <div className="xl:max-w-[95vw] 2xl:max-w-[80vw] w-full flex flex-col justify-evenly items-center mt-20">
-      <h1 className="text-blueviolet-100 mx-2">
+    <div className="xl:max-w-[95vw] 2xl:max-w-[80vw] w-full flex  max-2xl:mt-[3vw] flex-col justify-evenly items-center ">
+      <h1 className="text-blueviolet-100 mb-4 max-md:ml-3 max-md:mr-10">
         Universities Participating in <span className="text-red-500">CUET</span>
       </h1>
-      <div className="w-full min-h-[100vh] md:min-h-[60vh] h-full  flex flex-col-reverse justify-around items-center lg:flex-row ">
+      
+      <div className="w-full  md:min-h-[60vh] h-full  flex flex-col justify-around items-center lg:flex-row ">
         <div className="mx-2">
-          <table className="border-collapse table min-w-[65vw] md:min-w-[50vw] 2xl:min-w-[30vw] rounded-2xl shadow-[0px_4px_6px_0px_rgba(0,0,0,0.1)]">
+          <table className="border-collapse table  md:w-[500px] max-md:max-w-[400px]  rounded-2xl shadow-[0px_4px_6px_0px_rgba(0,0,0,0.1)]">
             <thead>
               <tr>
                 <th

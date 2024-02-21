@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import Contact from '../components/home/Contact';
@@ -11,22 +10,20 @@ import Universities from "../components/home/Universities";
 
 const Homepage = () => {
   return (
-    <div className="w-full  relative bg-white overflow-x-hidden overflow-y-scroll flex flex-col items-center px-0 pb-0 box-border tracking-[normal]">
+    <>
+  
+    <div className="w-full relative bg-white overflow-hidden flex flex-col  items-center  ">
       <Navbar />
       <Banner />
       <SubjectTopic />
-      <img
-        className="w-[608.7px] h-[542.2px]  mx-auto absolute my-0  top-[1455px] right-[-281.7px] object-contain z-[2] hidden lg:block"
-        loading="eager"
-        alt=""
-        src={"/bubbles/bubble1.png"}
-      />
       <HomeSteps />
       <Universities />
       <Testinomials />
+      </div>
+
       <Contact />
       <Footer />
-    </div>
+      </>
   );
 };
 

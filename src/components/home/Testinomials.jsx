@@ -136,7 +136,7 @@ const Testinomials = () => {
   const isMobile = useMediaQuery({ query: `(max-width: 760px)` });
 
   return (
-    <div className="relative w-full flex justify-center items-center mt-20">
+    <div className="relative w-full flex justify-center items-center ">
       <div className="w-full xl:max-w-[95vw] 2xl:max-w-[80vw] min-h-[80vh] flex flex-col justify-around my-10">
         <div className="">
           <h1 className="text-blueviolet-100  text-13xl font-semibold text-center ">Testimonials</h1>
