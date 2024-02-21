@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { FaArrowRight } from 'react-icons/fa';
 import './Payment.css';
 
 function Payment({ packname, packprice }) {
@@ -17,6 +18,7 @@ function Payment({ packname, packprice }) {
   }
 
   return (
+  
     <div className="main">
       <div className="container">
         <div className="left">
@@ -52,10 +54,19 @@ function Payment({ packname, packprice }) {
         <div className="right-content">
           <h3>{packname}</h3>
            <h1> Rs {packprice} Only</h1>
+           <p className='description'>
+           Master the language of success with our General English Pack. Tailored for excellence, this pack focuses on honing your language skills, ensuring proficiency and confidence in every aspect of the exam.
+           </p>
+          <div className="subject">
+          <FaArrowRight size={30} color="blue" />
+          <h4>General English</h4>
+          </div>
         </div>
         </div>
       </div>
+      
     </div>
+    
   );
 }
 
