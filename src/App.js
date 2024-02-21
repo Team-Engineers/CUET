@@ -4,7 +4,6 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Homepage from "./pages/Homepage";
 import AboutPage from "./pages/Aboutpage";
-import Coursespage from "./pages/Coursespage";
 import SubtopicPage from "./components/Courses/SubtopicPage";
 import Learningpage from "./pages/Learningpage";
 import TestPage from "./components/Test/TestPage";
@@ -15,6 +14,7 @@ import PacksPage from "./components/Packs/PacksPage";
 
 import Profile from "./pages/Profile";
 import Syllabus from "./pages/Syllabus";
+import Coursespage from "./pages/Coursespage";
 function App() {
   const [userLoggedIn, setUserLoggedIn] = useState(false);
 
@@ -33,7 +33,7 @@ function App() {
           <Route path="/syllabus" element={<Syllabus />} />
           <Route path="/courses" element={<Coursespage />} />
           <Route path="/courses/:subtopic" element={<SubtopicPage />} />
-          <Route path="/learning" element={<Learningpage />} />
+
           <Route path="/test" element={<TestPage />} />
 
           <Route path="/payment" element={<Payment />} />

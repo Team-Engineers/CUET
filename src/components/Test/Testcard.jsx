@@ -1,28 +1,15 @@
 import React from "react";
 import { FaQuestionCircle, FaCheckCircle } from "react-icons/fa";
+import { FaQuestion } from "react-icons/fa6";
+import { CiSquareCheck } from "react-icons/ci";
+import { TbClockHour8 } from "react-icons/tb";
+import { CiCircleMinus } from "react-icons/ci";
 
-export const Testcard = ({
-  title,
-  Questions,
-  Marks,
-  take,
-  difficultyLevel,
-  bgcolor,
-  Time,
-  Negative,
-  image,
-  Times,
-}) => {
+export const Testcard = ({ title, Questions, Marks, take, difficultyLevel, bgcolor, Time, Negative, image, Times }) => {
   const renderDifficultyBtn = (level) => {
-    let btnClassName = `p-1 rounded-full mx-1 mt-2 ${
-      level === difficultyLevel ? "bg-white text-black" : "bg-white text-black"
-    } text-sm`;
+    let btnClassName = `p-1 rounded-full mx-1 mt-2 ${level === difficultyLevel ? "bg-white text-black" : "bg-white text-black"} text-sm`;
 
-    if (
-      level === "Beginner" ||
-      level === "Intermediate" ||
-      level === "Advanced"
-    ) {
+    if (level === "Beginner" || level === "Intermediate" || level === "Advanced") {
       btnClassName += " border-black border";
     }
 
@@ -33,40 +20,38 @@ export const Testcard = ({
     );
   };
   return (
-    <div className="card flex flex-col justify-center  mt-3 w-[25vw] h-[60vh] mb-3 bg-white rounded-3xl m-[50px]">
-      <div
-        style={{ background: bgcolor }}
-        className="flex relative top-[1vh] left-[1.5vw] items-center justify-center w-[22vw] h-[45vh] rounded-2xl "
-      >
-        <div className="card-body">
-          <h5 className="font-bold flex items-center justify-center mb-8 text-3xl">
-            {title}
-          </h5>
-          <div className="flex items-center justify-center">
-            <div className="flex w-[150px] text-[14px] m-1  justify-center items-center ">
-              <FaQuestionCircle size={30} color="#5648FC" className="mr-1" />
+    <div className="flex flex-col justify-around items-center bg-white rounded-3xl w-[350px] h-[350px] ">
+      <div style={{ background: bgcolor }} className="w-[95%] h-[80%] mt-3 rounded-2xl text-white flex justify-center">
+        <div className="w-[90%] h-full flex flex-col justify-around">
+          <h5 className="font-bold text-3xl ">{title}</h5>
+          <div className="flex items-center justify-between pr-8">
+            <div className="flex justify-center items-center">
+              <FaQuestion size={30} className="mr-3 text-white bg-[#5648FC] rounded-full p-2" />
               {Questions} <br />
               Questions
             </div>
-            <div className="flex w-[150px] text-[14px] m-1  justify-center items-center ">
-              <FaCheckCircle size={30} color="#5648FC" className="mr-1" />
+            <div className="flex ustify-center items-center">
+              <CiSquareCheck size={30} className="mr-3 text-white bg-[#5648FC] rounded-full p-2" />
               {Marks} <br />
               Marks
             </div>
           </div>
 
-          <div className="flex flex-col justify-center items-center space-x-2 mt-3">
-            <h1 className="mb-4 text-lg font-semibold">Difficulty Level:</h1>
-            <div className="flex">
-              {renderDifficultyBtn("Beginner")}
+          <div className="flex flex-col justify-start  h-[40%]">
+            <h1 className="mb-4 text-lg font-normal">Difficulty Level:</h1>
+            <div className="flex justify-between">
+              {/* {renderDifficultyBtn("Beginner")}
               {renderDifficultyBtn("Intermediate")}
-              {renderDifficultyBtn("Advanced")}
+              {renderDifficultyBtn("Advanced")} */}
+              <p className="text-xs px-2 py-1 border-2 border-solid border-white rounded-full">Beginner</p>
+              <p className="text-xs px-2 py-1 border-2 border-solid border-white rounded-full">Intermediate</p>
+              <p className="text-xs px-2 py-1 border-2 border-solid border-white rounded-full">Advanced</p>
             </div>
           </div>
         </div>
       </div>
-      <div className="flex justify-end items-end mr-6 mt-5 pr-4 pl-4">
-        <button className="px-6 relative py-2 mt-3 flex justify-items-end place-items-end  border border-green-500 rounded-full text-white bg-green-500 text-lg">
+      <div className="flex justify-end items-center w-[90%]">
+        <button className="btn hover:bg-[#34A853] bg-[#34A853] text-white flex justify-center rounded-full items-center  text-lg font-bold min-h-0 h-10 px-8 my-3">
           Practice
         </button>
       </div>
@@ -74,120 +59,110 @@ export const Testcard = ({
   );
 };
 
-export const Testcard1 = ({
-  title,
-  Questions,
-  Marks,
-  take,
-  difficultyLevel,
-  bgcolor,
-  Time,
-  Negative,
-  image,
-  Times,
-}) => {
+export const Testcard1 = ({ title, Questions, Marks, take, difficultyLevel, bgcolor, Time, Negative, image, Times }) => {
   return (
-    <div
-      style={{ background: bgcolor }}
-      className=" max-w-[35vw] mx-[20px]  h-[60vh] mb-3 bg-white rounded-[50px]  flex justify-center items-center "
-    >
-      <div className="flex flex-col relative top-[2vh] left-[1vw] mb-10 items-center justify-center  h-[50vh] rounded-[50px] ">
-        <img
-          src="https://i.ibb.co/XFnxJSS/practicetest.png"
-          alt={title}
-          className="w-[12vw]  my-[4vh] h-auto rounded-lg "
-        />
-        <div className="rounded-[50px] right-[1vw] relative max-h-[30vh] max-w-[18vw] bg-white   mx-auto py-[1vw] px-[2vw] ">
-          <h5 className="font-bold text-[20px] flex items-start justify-start mb-4">
-            {title}
-          </h5>
-          <div className="flex flex-col items-center justify-center">
-            <div className="flex items-center">
-              <div className="flex  justify-center text-[14px] items-center ">
-                <FaQuestionCircle size={30} color="#5648FC" className="mr-1" />
-                {Questions} <br />
-                Questions
-              </div>
-              <div className="flex  justify-center items-center text-[14px]  ml-1">
-                <FaQuestionCircle size={30} color="#5648FC" className="mr-1" />
-                {Marks} <br />
-                Marks
-              </div>
-              <div className="flex  justify-center text-[14px] items-center ml-1">
-                <FaQuestionCircle size={30} color="#5648FC" className="mr-1" />
-                {Times} <br /> Minutes
-              </div>
-            </div>
-            <div>
-              <button className="px-4 relative py-2 mt-4 flex justify-items-end place-items-end  bg-green-500 rounded-full text-white text-lg">
-                Take Test
-              </button>
-            </div>
+    <div style={{ background: bgcolor }} className="flex flex-col justify-around items-center bg-white rounded-3xl w-[350px] h-[350px] ">
+      <img src="https://i.ibb.co/XFnxJSS/practicetest.png" alt={title} className="w-[150px] h-[150px]" />
+      <div className="rounded-[20px]  bg-white   mx-auto w-[80%] h-[45%] flex flex-col items-center justify-around px-4">
+        <h5 className="w-full font-bold text-3xl pl-4 pt-2">{title}</h5>
+        <div className="w-full flex items-center justify-around">
+          <div className="flex justify-center items-center text-[10px]">
+            <FaQuestion size={16} className="mr-1 text-white bg-[#5648FC] rounded-full p-2" />
+            {Questions} <br />
+            Questions
+          </div>
+          <div className="flex justify-center items-center text-[10px]">
+            <CiSquareCheck size={20} className="mr-1 text-white bg-[#5648FC] rounded-full p-2" />
+            {Marks} <br />
+            Marks
+          </div>
+          <div className="flex  justify-center  items-center text-[10px]">
+            <TbClockHour8 size={20} className="mr-1 text-white bg-[#5648FC] rounded-full p-2" />
+            {Times} <br /> Minutes
           </div>
         </div>
+        <button className="btn hover:bg-[#34A853] bg-[#34A853] rounded-full text-white min-h-0 h-8 px-8">Take Test</button>
       </div>
     </div>
   );
 };
-export const Testcard2 = ({
-  title,
-  Questions,
-  Marks,
-  take,
-  difficultyLevel,
-  bgcolor,
-  Time,
-  Negative,
-  image,
-  Times,
-}) => {
+
+export const Testcard2 = ({ title, Questions, Marks, take, difficultyLevel, bgcolor, Time, Negative, image, Times }) => {
   return (
-    <div className=" max-w-[30vw] mx-[20px] flex-col  h-[60vh] mb-5 bg-white rounded-[50px]  flex justify-center items-center">
-      <div className="flex items-center ">
-        <div>
-          <img
-            src="https://i.ibb.co/p0WP2Ss/mocktest.png"
-            alt={title}
-            className="w-[8vw] rounded-lg "
-          />
-        </div>
-        <div>
-          <h5 className="font-bold leading-3 text-[22px] flex items-start justify-start mb-4">
-            Mock Test {title}
-          </h5>
-          <h1 className=" text-[20px] ">FREE</h1>
+    <div className=" flex flex-col  bg-white rounded-[20px]  items-center justify-around w-[350px] h-[350px]">
+      <div className="w-full flex  flex-row items-center">
+        <img src="https://i.ibb.co/p0WP2Ss/mocktest.png" alt={title} className="w-28 h-28" />
+        <h5 className="font-bold text-3xl">
+          Mock Test {title} <p className="text-sm text-[#00000099]">Free</p>
+        </h5>
+      </div>
+      <div className="w-full flex justify-center">
+        <div className="w-[90%] grid grid-cols-2 gap-x-7 gap-y-10 pl-3">
+          <div className="flex justify-start items-center text-lg">
+            <FaQuestion size={36} className="mr-2 text-white bg-[#5648FC] rounded-full p-2" />
+            {Questions} <br />
+            Questions
+          </div>
+          <div className="flex justify-start items-center text-lg">
+            <CiSquareCheck size={40} className="mr-2 text-white bg-[#5648FC] rounded-full p-2" />
+            {Marks} <br />
+            Marks
+          </div>
+          <div className="flex  justify-start items-center text-lg ">
+            <TbClockHour8 size={40} className="mr-2 text-white bg-[#5648FC] rounded-full p-2" />
+            {Times} <br /> Minutes
+          </div>
+          <div className="flex  justify-start items-center text-lg">
+            <CiCircleMinus size={40} className="mr-2 text-white bg-[#5648FC] rounded-full p-2" />
+            {Negative} <br />
+            Negative
+          </div>
         </div>
       </div>
-      <div className="flex flex-col relative top-[2vh] left-[1vw] items-center justify-center h-[50vh] rounded-[50px] ">
-        <div className="rounded-[50px] right-[1vw] relative max-h-[35vh] bg-white   mx-auto py-[1vw] px-[2vw] ">
+      <div className="w-full flex items-center justify-end h-16 pr-10">
+        <button className="btn btn-outline text-[#34A853] border-[#34A853] rounded-full shadow-none outline-none font-normal text-lg min-h-0 h-8 px-6">Take Test</button>
+      </div>
+    </div>
+  );
+  return (
+    <div className="max-w-full mx-4 sm:max-w-[18vw] md:max-w-[34vw] lg:max-w-[22vw] flex-col lg:h-[42vh] md:h-[25vh] sm:h-[18vh] mb-5 bg-white rounded-[20px]  items-center">
+      <div className="flex  flex-row items-center">
+        <div>
+          <img src="https://i.ibb.co/p0WP2Ss/mocktest.png" alt={title} className="md:w-[8vw] w-[25vw] h-auto rounded-md justify-start" />
+        </div>
+        <div className="ml-4">
+          <h5 className="font-bold leading-3 text-[22px] mb-1">Mock Test {title}</h5>
+          <h1 className="text-[14px] mb-2">FREE</h1>
+        </div>
+      </div>
+      <div className="flex flex-col relative items-center justify-center flex-grow">
+        <div className="mx-auto">
           <div className="flex flex-col items-center justify-center">
-            <div className="grid grid-cols-2 gap-5 items-center">
-              <div className="flex w-[150px] text-[16px] m-1  justify-center items-center ">
+            <div className="grid grid-cols-2 gap-5 items-center mb-4 px-4">
+              <div className="flex w-[150px] text-[14px] items-center">
                 <FaQuestionCircle size={30} color="#5648FC" className="mr-1" />
                 {Questions} <br />
                 Questions
               </div>
-              <div className="flex w-[150px] text-[16px] m-1  justify-center items-center ">
+              <div className="flex w-[150px] text-[14px] items-center">
                 <FaQuestionCircle size={30} color="#5648FC" className="mr-1" />
                 {Marks} <br />
                 Marks
               </div>
-              <div className="flex w-[150px] text-[16px] m-1  justify-center items-center ">
+              <div className="flex w-[150px] text-[14px] items-center">
                 <FaQuestionCircle size={30} color="#5648FC" className="mr-1" />
                 {Times} <br /> Minutes
               </div>
-              <div className="flex w-[150px] text-[16px] m-1  justify-center items-center ">
+              <div className="flex w-[150px] text-[14px] items-center">
                 <FaQuestionCircle size={30} color="#5648FC" className="mr-1" />
                 {Negative} <br />
                 Negative
               </div>
             </div>
-            <div>
-              <button className="px-6 relative py-2 mt-4 flex justify-items-end place-items-end  border border-green-500 rounded-full text-green-500 text-lg">
-                Take Test
-              </button>
-            </div>
           </div>
+        </div>
+        <div>
+          <button className="px-6 py-2 mb-6 ml-[130px] border border-green-500 rounded-full text-green-500 text-sm font-semibold">Take Test</button>
         </div>
       </div>
     </div>

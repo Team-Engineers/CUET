@@ -43,58 +43,35 @@ const Navbar = () => {
             </li>
           ))}
 
-          {/* Not Logged IN */}
-          {!userLoggedIn && (
-            <li className="hidden lg:flex">
-              <NavLink
-                to={"/login"}
-                className={
-                  "text-sm md:text-lg font-medium text-blueviolet-100 hover:bg-blueviolet-100 hover:text-white no-underline border-solid border-2 border-blueviolet-100 rounded-full py-2 md:py-3 md:px-6"
-                }
-              >
-                Login
-              </NavLink>
-            </li>
-          )}
-          {!userLoggedIn && (
+          <li className="hidden lg:flex">
+            <NavLink
+              to={!userLoggedIn ? "/login" : "/profile"}
+              className={
+                "flex justify-between text-sm md:text-lg font-medium text-blueviolet-100 hover:bg-blueviolet-100 hover:text-white no-underline border-solid border-2 border-blueviolet-100 rounded-full py-2 md:py-3 md:px-6"
+              }
+            >
+              {!userLoggedIn ? (
+                "Login"
+              ) : (
+                <span>
+                  <LuUser2 className="mr-1" />
+                  Profile{" "}
+                </span>
+              )}
+            </NavLink>
+          </li>
             <li className="hidden lg:flex">
               <NavLink
                 to={"/signup"}
+                onClick={() => {if(userLoggedIn) setUserLoggedIn(false)}}
                 className={
                   "text-sm md:text-lg font-medium text-white bg-salmon-200 hover:bg-salmon-200 no-underline rounded-full py-2 border-solid border-2 md:py-3 md:px-6"
                 }
               >
-                Sign Up
+                {!userLoggedIn ? <span>Sign Up</span>: <span>Sign Out</span>}
               </NavLink>
             </li>
-          )}
 
-          {/* Logged In */}
-          {userLoggedIn && (
-            <li className="hidden lg:flex">
-              <NavLink
-                to={"/profile"}
-                className={
-                  "text-sm md:text-lg font-medium text-blueviolet-100 hover:bg-blueviolet-100 hover:text-white no-underline border-solid border-2 border-blueviolet-100 rounded-full py-2 md:py-3 md:px-6"
-                }
-              >
-                <LuUser2 />
-                Profile
-              </NavLink>
-            </li>
-          )}
-          {userLoggedIn && (
-            <li className="hidden lg:flex">
-              <div
-                onClick={() => setUserLoggedIn(false)}
-                className={
-                  "text-sm md:text-lg font-medium text-white bg-salmon-200 hover:bg-salmon-200 no-underline rounded-full py-2 border-solid border-2 md:py-3 md:px-6"
-                }
-              >
-                Sign Out
-              </div>
-            </li>
-          )}
         </ul>
         {/* <b className="">+91 8279662680</b> */}
 
@@ -143,7 +120,7 @@ const Navbar = () => {
                 <div className="h-[21px] flex flex-col items-start justify-start gap-[2px] text-blueviolet-100 ">
                   <NavLink to={"/profile"} className={`no-underline text-blueviolet-100 text-center w-full `}>
                     <b className="flex-1 relative cursor-pointer text-blueviolet-100 text-lg md:font-bold">
-                      <LuUser2  className="mr-2"/>
+                      <LuUser2 className="mr-2" />
                       Profile
                     </b>
                   </NavLink>
