@@ -8,13 +8,13 @@ import TopicContainer from "./TopicContainer";
 const Courses = () => {
   const isMobile = useMediaQuery("(max-width: 768px)");
   const gridColumns = isMobile ? "grid-cols-1" : "grid-cols-3";
-  const gridGap = isMobile ? "gap-4" : "gap-16";
+  const gridGap = isMobile ? "gap-4" : "gap-32";
   const flexDirection = isMobile ? "flex-col" : "flex-row";
 
   return (
-    <>
-      <div className=" mx-auto mt-14 px-4 sm:px-6 lg:px-8 ">
-        <div className="left-0 top-28 z-[0] absolute">
+    <div className="w-full h-full relative">
+      <div className=" mx-auto mt-14 px-4 sm:px-6 lg:px-8 flex flex-col justify-around">
+        <div className="left-0 top-0 z-[0] absolute">
           <svg
             width="162"
             height="222"
@@ -151,7 +151,7 @@ const Courses = () => {
           />
         </svg>
       </div>
-    </>
+    </div>
   );
 };
 
