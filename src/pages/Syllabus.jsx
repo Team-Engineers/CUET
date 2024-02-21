@@ -2,7 +2,6 @@ import React from "react";
 import Navbar from "../components/Navbar";
 import SyllabusCard from "../components/Syllabus/SyllabusCard";
 import Footer from "../components/Footer";
-import { FiArrowLeft } from "react-icons/fi";
 
 const Syllabus = () => {
   const subjects = [

@@ -17,8 +17,8 @@ const AboutPage = () => {
             aspiration but an inspiring and achievable pursuit.
           </p>
         </div>
-        <img src="/aboutpage_vector.png" className="w-[400px] h-[300px] md:w-[400px] md:h-[300px] lg:w-[500px] lg:h-[400px] " />
-        <img src="/aboutpage_waves.png" className="absolute bottom-0 h-full max-h-[10vh] md:max-h-[20vh] w-[100vw]" />
+        <img alt="" src="/aboutpage_vector.png" className="w-[400px] h-[300px] md:w-[400px] md:h-[300px] lg:w-[500px] lg:h-[400px] " />
+        <img alt="" src="/aboutpage_waves.png" className="absolute bottom-0 h-full max-h-[10vh] md:max-h-[20vh] w-[100vw]" />
       </div>
       <Footer />
     </div>

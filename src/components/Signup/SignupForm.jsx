@@ -1,6 +1,5 @@
-import React, { useEffect, useState, useContext } from "react";
-import { FaGoogle, FaFacebook, FaLinkedin } from "react-icons/fa";
-import { z } from "zod";
+import React, {  useState, useContext } from "react";
+import {  FaFacebook, FaLinkedin } from "react-icons/fa";
 import googlePng from "../../assets/pngimg.com - google_PNG19635.png";
 import { UserContext } from "../../context";
 import { useNavigate } from "react-router-dom";

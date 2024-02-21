@@ -5,7 +5,6 @@ import Signup from "./pages/Signup";
 import Homepage from "./pages/Homepage";
 import AboutPage from "./pages/Aboutpage";
 import SubtopicPage from "./components/Courses/SubtopicPage";
-import Learningpage from "./pages/Learningpage";
 import TestPage from "./components/Test/TestPage";
 import Payment from "./pages/Payment";
 import { UserContext } from "./context";
@@ -18,8 +17,7 @@ import Coursespage from "./pages/Coursespage";
 function App() {
   const [userLoggedIn, setUserLoggedIn] = useState(false);
 
-  const packname = "CUET GENERAL PACK";
-  const packprice = 999;
+
 
   return (
     <div>

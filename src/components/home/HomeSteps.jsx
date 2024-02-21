@@ -1,5 +1,5 @@
 import StepGuide from "./StepGuide";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Lottie from "react-lottie";
 import Step1AnimatiionData from "../../assets/animation_step1.json";
 import Step2AnimatiionData from "../../assets/animation_step2.json";
@@ -16,7 +16,7 @@ const HomeSteps = () => {
             options={{
               loop: true,
               autoplay: true,
-              animationData: currStep == 1 ? Step1AnimatiionData : currStep == 2 ? Step2AnimatiionData : Step3AnimatiionData,
+              animationData: currStep === 1 ? Step1AnimatiionData : currStep === 2 ? Step2AnimatiionData : Step3AnimatiionData,
             }}
           />
         </div>
@@ -35,7 +35,7 @@ const HomeSteps = () => {
               >
                 <div className="timeline-middle">
                   <div
-                    className={`w-10 h-10 rounded-full flex justify-center items-center text-3xl font-bold group-hover:bg-blueviolet-100 group-hover:text-white  ${currStep == 1 ? "bg-blueviolet-100 text-white" : "text-gray-200 bg-gray-400"
+                    className={`w-10 h-10 rounded-full flex justify-center items-center text-3xl font-bold group-hover:bg-blueviolet-100 group-hover:text-white  ${currStep === 1 ? "bg-blueviolet-100 text-white" : "text-gray-200 bg-gray-400"
                       }  `}
                   >
                     1
@@ -43,7 +43,7 @@ const HomeSteps = () => {
                 </div>
                 <div className="timeline-end">
                   <StepGuide
-                    selected={currStep == 1}
+                    selected={currStep === 1}
                     step="Step 01"
                     stepHeading="APPEAR FOR MOCK TEST"
                     description1="At TestKnock we strongly believe that students need to take tests regularly to know where they stand in today’s competitive environment."
@@ -61,7 +61,7 @@ const HomeSteps = () => {
                 <hr className="bg-transparent" style={{ borderRight: "3px dashed rgba(86, 72, 252, 0.65)" }} />
                 <div className="timeline-middle">
                   <div
-                    className={`w-10 h-10 rounded-full flex justify-center items-center text-3xl font-bold   group-hover:bg-blueviolet-100 group-hover:text-white ${currStep == 2 ? "bg-blueviolet-100 text-white" : "text-gray-200 bg-gray-400"
+                    className={`w-10 h-10 rounded-full flex justify-center items-center text-3xl font-bold   group-hover:bg-blueviolet-100 group-hover:text-white ${currStep === 2 ? "bg-blueviolet-100 text-white" : "text-gray-200 bg-gray-400"
                       }`}
                   >
                     2
@@ -69,7 +69,7 @@ const HomeSteps = () => {
                 </div>
                 <div className="timeline-end">
                   <StepGuide
-                    selected={currStep == 2}
+                    selected={currStep === 2}
                     step="Step 01"
                     stepHeading={"PRACTICE QUESTION FROM PREPARATORY MODULES"}
                     description1="The content team at TestKnock has executed thousands interactive Multiple Choice Questions with detailed explanation to help you improve tremendously."
@@ -86,7 +86,7 @@ const HomeSteps = () => {
                 <hr className="bg-transparent" style={{ borderRight: "3px dashed rgba(86, 72, 252, 0.65)" }} />
                 <div className="timeline-middle">
                   <div
-                    className={`w-10 h-10 rounded-full flex justify-center items-center text-3xl font-bold   group-hover:bg-blueviolet-100 group-hover:text-white ${currStep == 3 ? "bg-blueviolet-100 text-white" : "text-gray-200 bg-gray-400"
+                    className={`w-10 h-10 rounded-full flex justify-center items-center text-3xl font-bold   group-hover:bg-blueviolet-100 group-hover:text-white ${currStep === 3 ? "bg-blueviolet-100 text-white" : "text-gray-200 bg-gray-400"
                       }`}
                   >
                     3
@@ -94,7 +94,7 @@ const HomeSteps = () => {
                 </div>
                 <div className="timeline-end">
                   <StepGuide
-                    selected={currStep == 3}
+                    selected={currStep === 3}
                     step="Step 01"
                     stepHeading="PLAN, REVIEW AND EXECUTE"
                     description1="We strongly recommend that students spend 4-5 hrs every week for extensive practice and observe considerable growth over a period of time. "
@@ -109,7 +109,7 @@ const HomeSteps = () => {
             options={{
               loop: true,
               autoplay: true,
-              animationData: currStep == 1 ? Step1AnimatiionData : currStep == 2 ? Step2AnimatiionData : Step3AnimatiionData,
+              animationData: currStep === 1 ? Step1AnimatiionData : currStep === 2 ? Step2AnimatiionData : Step3AnimatiionData,
             }}
           />
         </div>

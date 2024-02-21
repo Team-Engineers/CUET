@@ -144,8 +144,8 @@ const Testinomials = () => {
         </div>
         <Carroussel cards={slides} height="500px" width="80%" margin="0 auto" offset={isMobile ? 10 : 200} showArrows={false} />{" "}
       </div>
-      <img src="/bubbles/bubble3.png" className="absolute bottom-0  left-0 z-[2]" />
-      <img src="/bubbles/bubble2.png" className="absolute right-0 top-[100px] md:top-0 z-[2]" />
+      <img alt="" src="/bubbles/bubble3.png" className="absolute bottom-0  left-0 z-[2]" />
+      <img alt="" src="/bubbles/bubble2.png" className="absolute right-0 top-[100px] md:top-0 z-[2]" />
     </div>
   );
 };

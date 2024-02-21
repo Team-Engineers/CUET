@@ -21,6 +21,7 @@ const Signup = () => {
           <div>
             <img
               className="md:absolute md:z-[-1] md:right-0 md:bottom-0 md:w-[50vw] h-[60vh]"
+              alt=""
               src="/bubbles/signup-bubble.png"
             />
             <div className="md:w-[25rem]">

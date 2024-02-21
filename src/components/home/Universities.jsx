@@ -22,7 +22,7 @@ const Universities = () => {
             <tbody className="font-semibold">
               <tr>
                 <td className="w-10" style={{ borderBottom: "2px solid rgba(203, 213, 225, 1)" }}>
-                  <img src="/uni_icon1.png" />
+                  <img alt="" src="/uni_icon1.png" />
                 </td>
                 <td className="text-left" style={{ borderBottom: "2px solid rgba(203, 213, 225, 1)" }}>
                   Assam University
@@ -30,7 +30,7 @@ const Universities = () => {
               </tr>
               <tr>
                 <td className="w-10" style={{ borderBottom: "2px solid rgba(203, 213, 225, 1)" }}>
-                  <img src="/uni_icon2.png" />
+                  <img alt="" src="/uni_icon2.png" />
                 </td>
                 <td className="text-left" style={{ borderBottom: "2px solid rgba(203, 213, 225, 1)" }}>
                   Central Sanskrit University
@@ -38,7 +38,7 @@ const Universities = () => {
               </tr>
               <tr>
                 <td className="w-10" style={{ borderBottom: "2px solid rgba(203, 213, 225, 1)" }}>
-                  <img src="/uni_icon3.png" />
+                  <img alt="" src="/uni_icon3.png" />
                 </td>
                 <td className="text-left" style={{ borderBottom: "2px solid  rgba(203, 213, 225, 1)" }}>
                   Guru Gobind Singh Indraprastha University
@@ -46,7 +46,7 @@ const Universities = () => {
               </tr>
               <tr>
                 <td className="w-10">
-                  <img src="/uni_icon4.png" />
+                  <img alt="" src="/uni_icon4.png" />
                 </td>
                 <td className="text-left">University Of Jammu</td>
               </tr>
@@ -54,7 +54,7 @@ const Universities = () => {
           </table>
           <p className="w-full text-right underline text-[#1877F2] cursor-pointer my-3">View More Colleges</p>
         </div>
-        <img src="/uni_building.png" className="w-72 h-72 md:h-[400px] md:w-[400px] z-40" />
+        <img alt="" src="/uni_building.png" className="w-72 h-72 md:h-[400px] md:w-[400px] z-40" />
       </div>
     </div>
   );
