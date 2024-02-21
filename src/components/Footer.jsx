@@ -30,30 +30,38 @@ const Footer = () => {
           </div>
           <div className="w-full grid grid-cols-2 md:flex md:justify-around text-sm md:text-md">
             <div className="min-w-[10em] mx-auto my-5">
-              <p className="font-bold mb-10">Company</p>
-              <p>Home</p>
-              <p>About</p>
-              <p>Syllabus</p>
-              <p>Courses</p>
+              <p className="cursor-pointer font-bold mb-10">Company</p>
+              <Link to="/" className="no-underline text-white">
+                <p className="font-semibold">Home</p>
+              </Link>
+              <Link to="/about" className="no-underline text-white">
+                <p className="font-semibold">About</p>
+              </Link>
+              <Link to="/syllabus" className="no-underline text-white">
+                <p className="font-semibold">Syllabus</p>
+              </Link>
+              <Link to="/courses" className="no-underline text-white">
+                <p className="font-semibold">Courses</p>
+              </Link>
             </div>
             <div className="min-w-[10em] mx-auto my-5">
               <p className="font-bold mb-10">Whom we serve</p>
-              <p>School Students</p>
-              <p>College Students</p>
-              <p>Educational Institutions</p>
-              <p>Private Colleges</p>
+              <p className="font-semibold">School Students</p>
+              <p className="font-semibold">College Students</p>
+              <p className="font-semibold">Educational Institutions</p>
+              <p className="font-semibold">Private Colleges</p>
             </div>
             <div className="min-w-[10em] mx-auto my-5">
               <p className="font-bold mb-10">Contact US</p>
-              <p>
-                <IoMdMail /> info@testknock.com
+              <p className="font-semibold">
+                <IoMdMail className="mr-1" /> info@testknock.com
               </p>
-              <p>
-                <IoMdCall />
+              <p className="font-semibold">
+                <IoMdCall className="mr-1" />
                 9953617456
               </p>
-              <p className="max-w-[10em]">
-                <IoMdPin /> Office No. - 42, Durga Vihar, near Amrapali Saphhire, Sec-45, Noida-201301
+              <p className="font-semibold max-w-[10em]">
+                <IoMdPin className="mr-1" /> Office No. - 42, Durga Vihar, near Amrapali Saphhire, Sec-45, Noida-201301
               </p>
             </div>
             <div className="min-w-[10em]  mx-auto my-5 md:hidden">
