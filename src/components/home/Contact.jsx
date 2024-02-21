@@ -17,7 +17,7 @@ const ContactForm = () => {
       <div className="flex flex-col items-center justify-evenly w-[80%] md:w-[80%] min-h-[50vh] 2xl:min-h-[40vh]">
         <input className={ContactInputStyles} placeholder="Your Name" type="text" />
         <input className={ContactInputStyles} placeholder="Email" type="email" />
-        <input className={ContactInputStyles} placeholder="Phone Nupber" type="text" />
+        <input className={ContactInputStyles} placeholder="Phone Number" type="text" />
         <textarea
           className={`my-1 w-[80%]  border-2 border-solid border-white rounded-2xl bg-transparent placeholder:text-white placeholder:opacity-100 placeholder:text-xl  p-3  text-white text-xl focus:ring-0 focus:outline-none h-40`}
           placeholder="Reason"
@@ -72,13 +72,13 @@ const Needhelppopup = () => {
 
 const Contact = () => {
   return (
-    <div className="pt-10 md:pt-15 bg-white pb-32">
+    <div className="pt-10  md:pt-15 bg-white pb-32">
 
       <div
         style={{
           background: "linear-gradient(110.83deg, rgba(0, 124, 236, 0.6) -2.04%, rgba(0, 124, 236, 0) 126.65%)",
         }}
-        className="min-w-[80vw] min-h-[80vh] md:min-h-[70vh] 2xl:min-h-[70vh] rounded-2xl flex flex-col-reverse items-center justify-evenly md:flex-row md:justify-evenly max-md:mx-8 mx-[10vw]"
+        className="min-w-[80vw] min-h-[70vh] md:min-h-[70vh] 2xl:min-h-[70vh] rounded-2xl flex flex-col-reverse items-center justify-evenly md:flex-row md:justify-evenly max-md:mx-8 mx-[10vw]"
       >
 
         <div className="h-full w-full 2xl:w-[60%] flex justify-center">

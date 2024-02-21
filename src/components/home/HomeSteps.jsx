@@ -22,8 +22,8 @@ const HomeSteps = () => {
         </div>
         <div className=" h-full flex flex-col justify-between md:max-w-[50%]">
           <div className="flex-1 flex flex-col justify-evenly ">
-            <div className="flex flex-col justify-start max-md:my-10 ">
-              <h1 className="text-left text-blueviolet-100  text-13xl font-bold m-0">May We Help You</h1>
+            <div className="flex flex-col justify-start max-md:mt-20 max-md:mb-5 ">
+              <h1 className="text-left text-blueviolet-100  text-13xl font-bold ">May We Help You</h1>
               <h3 className="text-left font-bold text-7xl mt-2 text-[#000000CC]">3 Simple steps for Assured Success at CUET</h3>
             </div>
             <ul className="timeline timeline-compact timeline-snap-icon  timeline-vertical flex-none pl-0">

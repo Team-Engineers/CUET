@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import ExamInfo from "../../components/home/ExamInfo";
-import { NavLink, useLocation } from "react-router-dom/dist";
 import Lottie from "react-lottie";
 import LandingAnimationData from "../../assets/animation_landing.json";
 import { useNavigate } from "react-router-dom/dist";
@@ -47,7 +46,7 @@ const Banner = () => {
           <button
             onClick={() => navigate("/signup")}
             className={
-              "btn text-sm md:text-lg font-medium text-white bg-salmon-200 hover:bg-salmon-200  no-underline rounded-full border-0 min-h-0 h-10 w-40 md:mr-8 mr-3 capitalize"
+              "btn text-sm md:text-lg font-medium text-white bg-salmon-200 hover:bg-salmon-200  no-underline rounded-full border-0 min-h-0 h-10 max-md:max-w-40 w-40 md:mr-8 mr-3 capitalize"
             }
           >
             Join Us
@@ -55,7 +54,7 @@ const Banner = () => {
           <button
             onClick={() => navigate("/login")}
             className={
-              "btn btn-outline text-sm md:text-lg font-medium border-blueviolet-100 text-blueviolet-100 no-underline border-solid  hover:bg-blueviolet-100 rounded-full min-h-0 h-10 w-44 md:w-56 capitalize"
+              "btn btn-outline text-sm md:text-lg font-medium border-blueviolet-100 text-blueviolet-100 no-underline border-solid  hover:bg-blueviolet-100 rounded-full min-h-0 h-10 max-md:max-w-40 md:w-56 capitalize"
             }
           >
             Take a free test

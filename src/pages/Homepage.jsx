@@ -20,7 +20,6 @@ const Homepage = () => {
       <Universities />
       <Testinomials />
       </div>
-
       <Contact />
       <Footer />
       </>

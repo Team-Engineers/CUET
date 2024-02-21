@@ -1,6 +1,6 @@
 const Universities = () => {
   return (
-    <div className="xl:max-w-[95vw] 2xl:max-w-[80vw] w-full flex  max-2xl:mt-[3vw] flex-col justify-evenly items-center ">
+    <div className="xl:max-w-[95vw] 2xl:max-w-[80vw] w-full flex  max-2xl:mt-[3vw] flex-col justify-evenly items-center max-md:mt-20 ">
       <h1 className="text-blueviolet-100 mb-4 max-md:ml-3 max-md:mr-10">
         Universities Participating in <span className="text-red-500">CUET</span>
       </h1>
