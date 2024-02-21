@@ -1,0 +1,102 @@
+.hero-section{
+    background-color: #ACBCFF;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+
+    .text {
+        padding-top: 8%;
+        display: flex;
+        margin-left: 5%;
+
+        .back-icon {
+            font-size: 30px;
+            padding-top: 15px;
+            margin-right: 10px;
+        }
+    }
+
+    .heading-text {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 40px;
+        line-height: 48px;
+        color: #5648FC;
+    }
+
+    .subHeading-text{
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 24px;
+        color: rgba(86, 72, 252, 0.5);
+    }
+
+    .btn {
+        background: #FF7468;
+        border-radius: 10px;
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 24px;
+        color: #FFFFFF;   
+        margin-top: 50px;
+    }
+
+    .hero-image{
+        margin-right: 5%;
+    }
+}
+
+
+
+@media (max-width: 460px) {
+    .hero-section{
+        background-color: #ACBCFF;
+        display: flex;
+        justify-content: space-between;
+        padding: 5px;
+    
+        .text {
+            padding-top: 8%;
+            display: flex;
+    
+            .back-icon {
+                font-size: 15px;
+                padding-top: 5px;
+                margin-right: 3px;
+            }
+        }
+    
+        .heading-text {
+            font-size: 14px;
+            line-height: 18px;
+            color: #5648FC;
+        }
+    
+        .subHeading-text{
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 12px;
+            line-height: 24px;
+            color: rgba(86, 72, 252, 0.5);
+        }
+    
+        .btn {
+            font-size: 65%;
+            color: #FFFFFF;   
+            margin-top: 20px;
+            height: 25px;
+            min-height: auto;
+        }
+    
+        .hero-image{
+            width: 180px;
+        }
+    }
+    
+}
