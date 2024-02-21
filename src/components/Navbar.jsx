@@ -23,7 +23,7 @@ const Navbar = () => {
           <NavLink to={"/"} className="no-underline gap-2 items-center flex">
           <div className="flex gap-2 items-center">
             <img className="h-[40.5px] w-[30px] relative object-cover" loading="eager" alt="" src={"/logo.png"} />
-            <b className="relative text-blueviolet-100 text-xl">CUET-TestKnock</b>
+            <b className="relative text-blueviolet-100 whitespace-nowrap text-xl">CUET-TestKnock</b>
             </div>
           </NavLink>
       </div>

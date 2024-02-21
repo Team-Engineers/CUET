@@ -80,11 +80,9 @@ const Contact = () => {
         }}
         className="min-w-[80vw] min-h-[70vh] md:min-h-[70vh] 2xl:min-h-[70vh] rounded-2xl flex flex-col-reverse items-center justify-evenly md:flex-row md:justify-evenly max-md:mx-8 mx-[10vw]"
       >
-
         <div className="h-full w-full 2xl:w-[60%] flex justify-center">
           <ContactForm />
         </div>
-
         <div className="flex justify-center items-center w-full md:max-w-[60%] min-h-[40vh]">
           <Lottie
             options={{
