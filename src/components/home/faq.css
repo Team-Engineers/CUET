@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css?family=Hind:300,400&display=swap');
+
+.container-faq {
+    color: #5648FC;
+    margin: 0 auto;
+    padding: 4rem;
+}
+.faq-heading{
+    margin-bottom: 50px;
+    font-weight: 600;
+    font-size: 32px;
+    letter-spacing: normal;
+    text-align: center;
+}
+
+.accordion-item-faq {
+    margin: 20px;
+    padding: 0 25px 0 25px;
+    border: 1px solid #e5e5e5;
+    border-radius: 10px;
+    background: linear-gradient(0.25turn, #5748fc80, #407cff9f);
+    /* background: linear-gradient(0.25turn,#FFFFFF, #5648FC, #407BFF #EA4335, #407BFF, #1F314D); */
+}
+
+.accordion-faq button {
+    position: relative;
+    display: block;
+    text-align: left;
+    width: 100%;
+    padding: 1em 0;
+    color: #5748fcc4;
+    font-size: 1.15rem;
+    font-weight: 400;
+    border: none;
+    background: none;
+    outline: none;
+}
+
+.accordion-faq button:hover,
+.accordion-faq button:focus {
+    cursor: pointer;
+    color: #5748fcc4;
+}
+
+.accordion-faq button .accordion-title-faq {
+    padding: 1em 1.5em 1em 0;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.accordion-faq button .icon-faq {
+    display: inline-block;
+    position: absolute;
+    top: 18px;
+    right: 0;
+    width: 22px;
+    height: 22px;
+    border: 1px solid;
+    border-radius: 22px;
+}
+
+.accordion-faq button .icon-faq::before {
+    display: block;
+    position: absolute;
+    content: '';
+    top: 9px;
+    left: 5px;
+    width: 10px;
+    height: 2px;
+    background: currentColor;
+}
+
+.accordion-faq button .icon-faq::after {
+    display: block;
+    position: absolute;
+    content: '';
+    top: 5px;
+    left: 9px;
+    width: 2px;
+    height: 10px;
+    background: currentColor;
+}
+
+.accordion-faq button[aria-expanded='true'] {
+    padding-bottom: 3px;
+    color: #ffffff;
+}
+
+.accordion-faq button[aria-expanded='true'] .icon-faq::after {
+    width: 0;
+}
+
+.accordion-content-faq {
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: opacity 200ms linear, max-height 200ms linear;
+}
+
+.accordion-content-faq p {
+    font-size: 17px;
+    font-weight: 400;
+    margin-bottom: 1em ;
+}
+
+.accordion-content-faq[style*='opacity: 1'] {
+    opacity: 1;
+    max-height: 9em;
+}
+
+.accordion-title-faq{
+    color: #5648FC;
+}

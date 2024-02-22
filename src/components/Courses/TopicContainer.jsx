@@ -3,24 +3,24 @@ import { useNavigate } from "react-router-dom";
 const TopicContainer = ({ brick, heading, color }) => {
   const navigate = useNavigate();
 
-  return (
-    <div
-      onClick={() => navigate("/test")}
-      className=" cursor-pointer flex flex-col items-center justify-evenly box-border text-center text-13xl text-black 
-rounded-xl 
-shadow-[10px_4px_4px_rgba(0,_0,_0,_0.25)] h-[300px] w-[300px]
-       "
-      style={{ background: color }}
-    >
-      {/* <div
-        className="flex flex-col absolute  p-4   shadow-[10px_4px_4px_rgba(0,_0,_0,_0.25)] h-[250px] w-[230px]  justify-center items-center m-[10px] text-center"
-      /> */}
-      <img className="w-[120px] h-[120px] " loading="eager" alt="" src={brick} />
-      <h1 className="font-semibold ">
-        <p className="text-white text-center  mx-auto flex items-center justify-center text-13xl">{heading}</p>
-      </h1>
-    </div>
-  );
+  // return (
+  //   <div
+  //     onClick={() => navigate("/test")}
+  //     className=" cursor-pointer flex flex-col items-center justify-evenly box-border text-center text-13xl text-black 
+  // rounded-xl 
+  // shadow-[10px_4px_4px_rgba(0,_0,_0,_0.25)] h-[300px] w-[300px]
+  //        "
+  //     style={{ background: color }}
+  //   >
+  //     {/* <div
+  //         className="flex flex-col absolute  p-4   shadow-[10px_4px_4px_rgba(0,_0,_0,_0.25)] h-[250px] w-[230px]  justify-center items-center m-[10px] text-center"
+  //       /> */}
+  //     <img className="w-[120px] h-[120px] " loading="eager" alt="" src={brick} />
+  //     <h1 className="font-semibold ">
+  //       <p className="text-white text-center  mx-auto flex items-center justify-center text-13xl">{heading}</p>
+  //     </h1>
+  //   </div>
+  // );
 
   return (
     <div
