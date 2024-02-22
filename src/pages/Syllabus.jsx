@@ -48,14 +48,14 @@ const Syllabus = () => {
             <SyllabusCard subject={subject} />
           ))}
         </div> */}
-        <div className="grid 2xl:grid-cols-5 2xl:gap-16 xl:grid-cols-4 xl:gap-8 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-16">
+        <div className="grid grid-cols-2 lg:grid-cols-4 md:grid-cols-3 justify-center">
           {subjects.map((subject) => (
             <SyllabusCard subject={subject} />
           ))}
         </div>
       </div>
       <Footer />
-    </div>
+    </div> 
   );
 };
 
