@@ -83,7 +83,7 @@ const Contact = () => {
         <div className="h-full w-full 2xl:w-[60%] flex justify-center">
           <ContactForm />
         </div>
-        <div className="flex justify-center items-center w-full md:max-w-[60%] min-h-[40vh]">
+        <div className="flex justify-center items-center w-full md:max-w-[60%] md:min-h-[40vh] min-h-[2 0vh]">
           <Lottie
             options={{
               loop: true,

@@ -10,9 +10,11 @@ const getTouches = (evt) => {
   );
 };
 
-const Testinomials2 = ({ image, name, text }) => {
+const Testinomials2 = ({ image, color, name, text }) => {
   return (
-    <div className="cursor-pointer w-[20em] min-h-[30em] md:w-[40em] md:h-[15em] py-10 rounded-[16.02px] bg-gray-300 shadow-[0px_4px_4px_rgba(0,_0,_0,_0.25)] [backdrop-filter:blur(50px)] flex flex-col justify-evenly items-center px-5">
+    <div 
+    style={{background:color}}
+    className="cursor-pointer w-[20em] min-h-[30em] md:w-[40em] md:h-[15em] py-10 rounded-[16.02px] bg-gray-300 shadow-[0px_4px_4px_rgba(0,_0,_0,_0.25)] [backdrop-filter:blur(50px)] flex flex-col justify-evenly items-center px-5">
       <div className="text-13xl text-white font-bold">{name}</div>
       <div className="text-white text-xl text-center my-8">{text}</div>
       <hr className="border-[1px] border-solid border-[#D9D9D9] w-full" />
@@ -102,7 +104,12 @@ const slides = [
       <Testinomials2
         image={require("../../assets/images/signup/test1.png")}
         name="Mohan Singh"
-        text="This is a short and sweet review from Mohan Singh"
+        text="Enrolling in the online CUET course was a game-changer for me.
+        The comprehensive material, interactive lessons, and personalized
+        support elevated my preparation. I not only gained confidence but
+        also achieved remarkable results. Thank you for paving the way to
+        my success!"
+        color="#4477CE"
       />
     ),
   },
@@ -117,6 +124,7 @@ const slides = [
           support elevated my preparation. I not only gained confidence but
           also achieved remarkable results. Thank you for paving the way to
           my success!"
+          color="#9F73AB"
       />
     ),
   },
@@ -128,6 +136,7 @@ const slides = [
         text={
           "Enrolling in the online CUET course was a game-changer for me.  The comprehensive material, interactive lessons, and personalized support elevated my preparation. I not only gained confidence but also achieved remarkable results. Thank you for paving the way to my success!"
         }
+        color="#3795BD"
       />
     ),
   },
@@ -137,7 +146,7 @@ const Testinomials = () => {
 
   return (
     <div className="relative w-full flex justify-center items-center ">
-      <div className="w-full xl:max-w-[95vw] 2xl:max-w-[80vw] min-h-[80vh] flex flex-col justify-around my-10">
+      <div className="w-screen min-h-[80vh] flex flex-col justify-around my-10">
         <div className="">
           <h1 className="text-blueviolet-100  text-13xl font-semibold text-center ">Testimonials</h1>
           <h1 className="text-blueviolet-400 font-normal text-5xl text-center ">Information</h1>

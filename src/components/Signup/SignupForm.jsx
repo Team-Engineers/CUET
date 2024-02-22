@@ -48,10 +48,10 @@ const SignupForm = () => {
   };
   return (
     <div className="">
-      <h2 className="hidden md:block text-blueviolet-100 text-[36px]">Sign-Up</h2>
-      <form className="flex flex-col items-center justify-center mt-5 md:items-start" onSubmit={(e) => e.preventDefault()}>
-        <div className="flex flex-col mb-4">
-          <label htmlFor="name" className="text-start font-bold  text-gray-700 text-[15px] sm:text-[18px] ">
+      <h2 className="hidden md:block text-blueviolet-100 md:text-[2.5vw]">Sign-Up</h2>
+      <form className="flex flex-col items-center justify-center mt-[.3vw] md:items-start" onSubmit={(e) => e.preventDefault()}>
+        <div className="flex flex-col max-md:mb-4">
+          <label htmlFor="name" className=" max-md:mt-[2vw] my-[1vw] text-start font-medium  text-black text-[15px] sm:text-[1.4vw]">
             Name
           </label>
           <input
@@ -63,11 +63,11 @@ const SignupForm = () => {
             placeholder="Your Name"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="mt-1 bg-[#D9D9D9] font-semibold p-3 w-80 border rounded-[20px] text-[15px] border-none sm:text-[18px] text-gray-300 shadow-lg shadow-[#00000040] md:w-72 lg:w-80"
-          />
+            className="max-md:mt-2 bg-[#c5c5c5] font-medium md:p-[1vw] p-3 max-md:py-4 w-[300px] border rounded-[20px] md:rounded-[15px] text-[15px] border-none sm:text-[1.2vw] md:w-[30vw] text-black shadow-md"
+            />
         </div>
-        <div className="flex flex-col mb-4">
-          <label htmlFor="email" className="text-start font-bold  text-gray-700 text-[15px] sm:text-[18px]">
+        <div className="flex flex-col max-md:mb-4 ">
+          <label htmlFor="email" className=" max-md:mt-[2vw] my-[1vw] text-start font-medium  text-black text-[15px] sm:text-[1.4vw]">
             Email
           </label>
           <input
@@ -79,12 +79,12 @@ const SignupForm = () => {
             placeholder="Your Email"
             value={email}
             onChange={handleChange}
-            className="mt-1 bg-[#D9D9D9] font-semibold p-3 w-80 border rounded-[20px] text-[15px] border-none sm:text-[18px] text-gray-300 shadow-lg shadow-[#00000040] md:w-72 lg:w-80"
-          />
+            className="max-md:mt-2 bg-[#c5c5c5] font-medium md:p-[1vw] p-3 max-md:py-4 w-[300px] border rounded-[20px] md:rounded-[15px] text-[15px] border-none sm:text-[1.2vw] md:w-[30vw] text-black shadow-md"
+            />
           {email && <p className="mt-1 text-red-500">{message}</p>}
         </div>
         <div className="flex flex-col">
-          <label htmlFor="password" className="text-start font-bold  text-gray-700 text-[15px] sm:text-[18px]">
+          <label htmlFor="password" className=" max-md:mt-[2vw] my-[1vw] text-start font-medium  text-black text-[15px] sm:text-[1.4vw]">
             Password
           </label>
           <input
@@ -96,15 +96,15 @@ const SignupForm = () => {
             value={password}
             placeholder="8+ Password"
             onChange={validatePassword}
-            className="mt-1 bg-[#D9D9D9] font-semibold p-3 w-80 border rounded-[20px] text-[15px] border-none sm:text-[18px] text-gray-300 shadow-lg shadow-[#00000040] md:w-72 lg:w-80"
-          />
+            className="max-md:mt-2 bg-[#c5c5c5] font-medium md:p-[1vw] p-3 max-md:py-4 w-[300px] border rounded-[20px] md:rounded-[15px] text-[15px] border-none sm:text-[1.2vw] md:w-[30vw] text-black shadow-md"
+            />
           {password && password.length < 9 ? <p className="mt-1 text-red-500">Weak password</p> : ""}
         </div>
-        <div className="mt-8 md:flex justify-start">
+        <div className="mt-[1vw] max-md:mt-8 md:flex justify-start">
           <button
             type="submit"
-            className="py-3 px-7 text-[17px] bg-gradient-to-r from-[#89EAFF] to-[#5648FC] text-white text-center rounded-full cursor-pointer border-none"
-          >
+            className="max-md:w-[129px] w-[10vw] md:my-[1vw] max-md:px-6 px-[1.3vw] max-md:py-4 py-[1.1vw] bg-gradient-to-r from-[#89EAFF] to-[#5648FC] text-[#ffffffcd] text-center rounded-full cursor-pointer border-none text-[1.2vw] max-md:text-[18px]"
+            >
             Sign up
           </button>
         </div>

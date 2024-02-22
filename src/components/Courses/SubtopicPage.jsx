@@ -26,7 +26,7 @@ const SubtopicPage = () => {
               <hr className="w-20 m-0 mt-1 text-blueviolet-100" />
             </span>
           </h1>
-          <div className="flex justify-center text-center mt-16 ">
+          <div className="flex justify-center text-center my-5 ">
 
           <div className="max-w-[180vh] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-20   my-8">
             {subtopicData &&

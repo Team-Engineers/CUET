@@ -12,8 +12,8 @@ const Courses = () => {
   const flexDirection = isMobile ? "flex-col" : "flex-row";
 
   return (
-    <div className="w-full h-full relative">
-      <div className=" mx-auto mt-14 px-4 sm:px-6 lg:px-8 flex flex-col justify-around">
+    <div className="w-full  h-full  relative">
+      <div className=" mx-auto overflow-hidden mt-14 px-4 sm:px-6 lg:px-8 flex flex-col justify-around">
         <div className="left-0 top-0 z-[0] absolute">
           <svg
             width="162"
@@ -65,7 +65,7 @@ const Courses = () => {
           <h1 className="text-[#5648FC] items-center flex ">Courses</h1>
         </div>
 
-        <div className="max-w-[180vh] mx-auto flex flex-col items-center mt-[-40px]">
+        <div className="max-w-[180vh] relative z-10 mx-auto flex flex-col items-center mt-[-40px]">
           <div className="flex flex-col items-center justify-center mt-[50px] ">
             <div className={`my-6 flex md:flex-row flex-col gap-[70px] `}>
               <TopicContainer
@@ -82,11 +82,11 @@ const Courses = () => {
           </div>
         </div>
 
-        <h1 className="text-[#5648FC] md:mx-[50px] mx-[0] md:justify-start justify-center items-center flex flex-col mt-10 ">
+        <h1 className="text-[#5648FC] relative z-10 md:mx-[50px] mx-[0] md:justify-start justify-center items-center flex flex-col mt-10 ">
           Domain Subjects
         </h1>
 
-        <div className="max-w-[180vh] relative z-30 mx-auto  flex flex-col items-center ">
+        <div className="max-w-[180vh] pb-60  relative z-30 mx-auto  flex flex-col items-center ">
           <div className=" mt-[20px] mb-[-80px]">
             <div
               className={`grid ${gridColumns}  my-6 ${flexDirection} ${gridGap}`}
@@ -109,7 +109,7 @@ const Courses = () => {
           </div>
         </div>
       </div>
-      <div className="relative top-12 ">
+      <div className="relative top-[-20vh]  ">
         <svg
           width="189"
           height="222"

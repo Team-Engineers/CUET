@@ -1,32 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
+import { Link } from 'react-router-dom';
 import logo from "../../assets/logo_final.png";
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
 
-const Navbar = () => {
-  const navigate = useNavigate()
+const Header = () => {
+
   return (
-    <div className="md:flex md:flex-row md:items-center md:justify-between md:gap-[7px]  md:fixed w-[100%] z-10 hidden text-[16px]">
-      <div className="flex flex-row items-center cursor-pointer" onClick={() => navigate("/")} >
-        <img
-          className="h-[40.5px] m-2 w-[30px] relative object-cover"
-          loading="eager"
-          alt=""
-          src={logo}
-        />
-        <b className="relative text-indigo">CUET-TestKnock</b>
-      </div>
-      <div className="flex items-center">
-        <p className="m-[20px] font-bold">Don't have an account? </p>
-        <Link
-          className="bg-[#FF7468] text-white  text-center px-3 py-2 rounded-full cursor-pointer text-[17px] no-underline mr-3"
-          to="/signup"
-        >
-          Sign Up
+    <header className="fixed  z-50 top-0 w-full ">
+      <nav className="flex justify-between items-center md:my-2 md:mx-4 mx-2  md:py-3 ">
+      <Link to="/" className="no-underline ">
+        <div className="flex flex-row items-center cursor-pointer"  >
+          <img
+            className="h-[40.5px] max-md:h-[30px] max-md:w-[25px] md:m-2 m-1 w-[30px] relative object-cover"
+            loading="eager"
+            alt=""
+            src={logo}
+          />
+          <b className="relative whitespace-nowrap text-[1.3vh] md:text-[1.4vw] text-indigo">CUET-TestKnock</b>
+        </div>
         </Link>
-      </div>
-    </div>
-  );
-};
+        <div className="flex items-center">
+          <p className="md:m-[20px] max-md:my-[20px]  max-md:mr-1 text-[1.3vh] md:text-[1vw] whitespace-nowrap font-bold">Don't have an account? </p>
+          <Link
+            className="bg-[#FF7468] text-white whitespace-nowrap   text-center py-1 px-2 md:px-3 md:py-2 rounded-full cursor-pointer text-[1.5vh] md:text-[1.3vw] no-underline mr-3"
+            to="/signup"
+          >
+            Sign Up
+          </Link>
+        </div>
+      </nav>
 
-export default Navbar;
+    </header>
+  );
+}
+
+export default Header;
