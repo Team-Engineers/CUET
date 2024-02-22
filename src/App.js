@@ -1,23 +1,22 @@
+import { useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import Login from "./pages/Login";
-import Signup from "./pages/Signup";
-import Homepage from "./pages/Homepage";
-import AboutPage from "./pages/Aboutpage";
 import SubtopicPage from "./components/Courses/SubtopicPage";
-import TestPage from "./components/Test/TestPage";
-import Payment from "./pages/Payment";
-import { UserContext } from "./context";
-import { useState } from "react";
 import PacksPage from "./components/Packs/PacksPage";
+import TestPage from "./components/Test/TestPage";
+import { UserContext } from "./context";
+import AboutPage from "./pages/Aboutpage";
+import Homepage from "./pages/Homepage";
+import Login from "./pages/Login";
+import Payment from "./pages/Payment";
+import Signup from "./pages/Signup";
 
+import Coursespage from "./pages/Coursespage";
 import Profile from "./pages/Profile";
 import Syllabus from "./pages/Syllabus";
-import Coursespage from "./pages/Coursespage";
+import University from "./pages/UniversityPage";
 function App() {
   const [userLoggedIn, setUserLoggedIn] = useState(false);
-
-
 
   return (
     <div>
@@ -33,7 +32,7 @@ function App() {
           <Route path="/courses/:subtopic" element={<SubtopicPage />} />
 
           <Route path="/test" element={<TestPage />} />
-
+          <Route path="/university" element={<University />} />
           <Route path="/payment" element={<Payment />} />
           <Route path="/packs" element={<PacksPage />} />
         </Routes>
