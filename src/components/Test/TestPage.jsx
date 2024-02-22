@@ -275,18 +275,17 @@ function TestPage() {
   return (
     <div className="bg-gradient-to-br from-[#ACBCFF] to-white flex flex-col justify-center items-center overflow-x-hidden">
       <Navbar />
-      <div className="w-full flex flex-col-reverse md:flex-row justify-between">
-        <div id="" className="flex md:mr-[80px] ml-4  flex-col justify-start items-start">
+      <div className="max-w-[1300px] mx-auto lg:gap-[20vw] flex flex-col-reverse md:flex-row justify-between">
+        <div id="" className="flex md:mr-[80px] ml-4  flex-col justify-center items-center">
           <div className="text-[#5648FC] flex  text-[3vw] mt-10">
             <Link className="hidden md:block text-[#5648FC]  mr-2 " to={"/courses"}>
               <IoArrowBack className="md:text-[40px]  text-[20px] flex item mt-2 item-start" />
             </Link>
-            <div className="flex flex-col text-13xl">
-              <h3 className="py-0">
-                One Step for your <br /> complete Learning
+            <div className="flex flex-col gap-[-2vw] text-13xl">
+              <h3 className="py-0 whitespace-nowrap ">
+                One Step for your <br /> complete Learning <br />
+                <span className="text-8xl opacity-70">CUET</span>
               </h3>
-              <br />
-              <h3 className="text-[#5648FC] md:mb-5 flex text-3xl opacity-50">CUET</h3>
               <button className="mt-14 max-w-72 btn hover:bg-[#FF7468] bg-[#FF7468] shadow-none outline-none border-none rounded-[10px] text-white font-normal text-3xl p-3 px-8">
                 Access Now
               </button>
@@ -296,7 +295,7 @@ function TestPage() {
         <img
         alt=""
           src="https://s3-alpha-sig.figma.com/img/bcb7/1722/18523a084e62fca4abf99df9aeb0d2c8?Expires=1708905600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=SqNR2zH1XwTymeeR2uamO5nlRdn5k7WbencRG6Fw5IkPosCTt1~y9Om0Aww2dVunFxZv3LwIzjkoTe7jYBUOgDjX3hce97LGcQNnitMAd1hcbl-rYXuqeOdPo5muxGRKkBog0piHEU4mbknkBDCLmvYI2ohi0mHKdQt0E2d9OZI8VaETV4k1IU7U1PCKegrAisPmgC6gcTfhFwNO7FHEbjnHHnPhyXgaN3wYKqdinhfIXzOjCwUu1r3f65kYN~IjkXUncekgyIQzw4kUTJ8lpuIMnvcHW30JSRK7dxr1kJr-H18v146HlAYwhTTuHnY2YOc~PRBgPkniJRyhiMIoXw__"
-          className="w-[350px] h-[350px] md:w-[450px] md:h-[450px] flex justify-center mx-auto md:mr-4 lg:mr-14"
+          className="w-[350px] h-[350px] md:w-[30vw] md:h-[60vh] flex justify-center mx-auto md:mr-4 lg:mr-14"
         />
       </div>
       <div className="w-full flex flex-col justify-center items-center">
