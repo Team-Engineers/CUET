@@ -338,6 +338,7 @@ function TestPage() {
           </div>
         ) : currentTab === "practice" ? (
           <div className="grid grid-cols-1 md:grid-cols-2 mb-20 lg:grid-cols-3 gap-14">
+
             {practice.map((subject, index) => (
               <Testcard1 {...subject} />
             ))}
