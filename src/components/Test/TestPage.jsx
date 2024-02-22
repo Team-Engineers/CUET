@@ -294,6 +294,7 @@ function TestPage() {
           </div>
         </div>
         <img
+        alt=""
           src="https://s3-alpha-sig.figma.com/img/bcb7/1722/18523a084e62fca4abf99df9aeb0d2c8?Expires=1708905600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=SqNR2zH1XwTymeeR2uamO5nlRdn5k7WbencRG6Fw5IkPosCTt1~y9Om0Aww2dVunFxZv3LwIzjkoTe7jYBUOgDjX3hce97LGcQNnitMAd1hcbl-rYXuqeOdPo5muxGRKkBog0piHEU4mbknkBDCLmvYI2ohi0mHKdQt0E2d9OZI8VaETV4k1IU7U1PCKegrAisPmgC6gcTfhFwNO7FHEbjnHHnPhyXgaN3wYKqdinhfIXzOjCwUu1r3f65kYN~IjkXUncekgyIQzw4kUTJ8lpuIMnvcHW30JSRK7dxr1kJr-H18v146HlAYwhTTuHnY2YOc~PRBgPkniJRyhiMIoXw__"
           className="w-[350px] h-[350px] md:w-[450px] md:h-[450px] flex justify-center mx-auto md:mr-4 lg:mr-14"
         />
@@ -307,7 +308,7 @@ function TestPage() {
             }}
           >
             Preparatory Modules
-            {currentTab == "prep" && <hr className="w-20 m-0 mt-2 text-blueviolet-100" />}
+            {currentTab === "prep" && <hr className="w-20 m-0 mt-2 text-blueviolet-100" />}
           </h1>
           <h1
             className="cursor-pointer my-3"
@@ -316,7 +317,7 @@ function TestPage() {
             }}
           >
             Practice Tests
-            {currentTab == "practice" && <hr className="w-20 m-0 mt-2 text-blueviolet-100" />}
+            {currentTab === "practice" && <hr className="w-20 m-0 mt-2 text-blueviolet-100" />}
           </h1>
           <h1
             className="cursor-pointer my-3"
@@ -325,17 +326,17 @@ function TestPage() {
             }}
           >
             Mock Tests
-            {currentTab == "mock" && <hr className="w-20 m-0 mt-2 text-blueviolet-100" />}
+            {currentTab === "mock" && <hr className="w-20 m-0 mt-2 text-blueviolet-100" />}
           </h1>
         </div>
 
-        {currentTab == "prep" ? (
+        {currentTab === "prep" ? (
           <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-14">
             {subjects.map((subject, index) => (
               <Testcard {...subject} />
             ))}
           </div>
-        ) : currentTab == "practice" ? (
+        ) : currentTab === "practice" ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-14">
             {practice.map((subject, index) => (
               <Testcard1 {...subject} />

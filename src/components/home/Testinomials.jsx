@@ -136,7 +136,7 @@ const Testinomials = () => {
   const isMobile = useMediaQuery({ query: `(max-width: 760px)` });
 
   return (
-    <div className="relative w-full flex justify-center items-center mt-20">
+    <div className="relative w-full flex justify-center items-center ">
       <div className="w-full xl:max-w-[95vw] 2xl:max-w-[80vw] min-h-[80vh] flex flex-col justify-around my-10">
         <div className="">
           <h1 className="text-blueviolet-100  text-13xl font-semibold text-center ">Testimonials</h1>
@@ -144,8 +144,8 @@ const Testinomials = () => {
         </div>
         <Carroussel cards={slides} height="500px" width="80%" margin="0 auto" offset={isMobile ? 10 : 200} showArrows={false} />{" "}
       </div>
-      <img src="/bubbles/bubble3.png" className="absolute bottom-0  left-0 z-[2]" />
-      <img src="/bubbles/bubble2.png" className="absolute right-0 top-[100px] md:top-0 z-[2]" />
+      <img alt="" src="/bubbles/bubble3.png" className="absolute bottom-0  left-0 z-[2]" />
+      <img alt="" src="/bubbles/bubble2.png" className="absolute right-0 top-[100px] md:top-0 z-[2]" />
     </div>
   );
 };

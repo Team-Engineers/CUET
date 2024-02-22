@@ -1,7 +1,5 @@
-import React, { useState } from "react";
 import Lottie from "lottie-react";
 import animatedGif from "../assets/Animation - 1707298499168.json";
-import background from "../assets/Vector.png";
 import LoginForm from "../components/Login/LoginForm";
 import Navbar from "../components/Login/Navbar";
 import ResponsiveNav from "../components/Login/ResponsiveNav";

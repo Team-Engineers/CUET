@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import ExamInfo from "../../components/home/ExamInfo";
-import { NavLink, useLocation } from "react-router-dom/dist";
 import Lottie from "react-lottie";
 import LandingAnimationData from "../../assets/animation_landing.json";
 import { useNavigate } from "react-router-dom/dist";
@@ -14,9 +13,16 @@ const Banner = () => {
   };
 
   return (
-    // <div className="flex flex-row gap-[100px] items-start justify-between mx-auto box-border  text-left text-13xl text-blueviolet-100 font-inter">
-    <div className="min-h-[80vh] xl:max-w-[95vw] 2xl:max-w-[80vw] max-w-[90vw] w-full flex flex-col-reverse justify-around md:flex-row md:justify-between items-center ">
-      {/* <div className="flex flex-col items-start gap-[42px] max-w-full"> */}
+    <div className="min-h-[80vh] xl:max-w-[95vw] 2xl:max-w-[80vw] max-w-[90vw] w-full flex flex-col-reverse  justify-around md:flex-row md:justify-between items-center ">
+      <div className="w-[392px] md:hidden block lg:w-[550px] ">
+        <Lottie
+          options={{
+            loop: true,
+            autoplay: true,
+            animationData: LandingAnimationData,
+          }}
+        />
+      </div>
       <div className="flex flex-col justify-around max-w-full min-h-[45vh] md:min-h-[55vh] 2xl:min-h-[40vh]">
         <div className="my-6 font-bold text-7xl md:text-21xl">
           <p className="m-0 text-blueviolet-100">One Stop Solution for your</p>
@@ -40,7 +46,7 @@ const Banner = () => {
           <button
             onClick={() => navigate("/signup")}
             className={
-              "btn text-sm md:text-lg font-medium text-white bg-salmon-200 hover:bg-salmon-200  no-underline rounded-full border-0 min-h-0 h-10 w-40 md:mr-8 mr-3 capitalize"
+              "btn text-sm md:text-lg font-medium text-white bg-salmon-200 hover:bg-salmon-200  no-underline rounded-full border-0 min-h-0 h-10 max-md:max-w-40 w-40 md:mr-8 mr-3 capitalize"
             }
           >
             Join Us
@@ -48,7 +54,7 @@ const Banner = () => {
           <button
             onClick={() => navigate("/login")}
             className={
-              "btn btn-outline text-sm md:text-lg font-medium border-blueviolet-100 text-blueviolet-100 no-underline border-solid  hover:bg-blueviolet-100 rounded-full min-h-0 h-10 w-44 md:w-56 capitalize"
+              "btn btn-outline text-sm md:text-lg font-medium border-blueviolet-100 text-blueviolet-100 no-underline border-solid  hover:bg-blueviolet-100 rounded-full min-h-0 h-10 max-md:max-w-40 md:w-56 capitalize"
             }
           >
             Take a free test
@@ -75,7 +81,7 @@ const Banner = () => {
           </div>
         </div>
       </div>
-      <div className="w-[392px] lg:w-[550px] ">
+      <div className="w-[392px] md:block hidden lg:w-[550px] ">
         <Lottie
           options={{
             loop: true,
@@ -84,7 +90,6 @@ const Banner = () => {
           }}
         />
       </div>
-      {/* <img className="w-[392px] lg:w-[500px] " loading="eager" alt="" src={require("../../assets/images/signup/homefirst.png")} /> */}
     </div>
   );
 };
