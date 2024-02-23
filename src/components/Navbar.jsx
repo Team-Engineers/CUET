@@ -1,7 +1,7 @@
-import React, { useEffect, useContext } from "react";
-import { NavLink, useLocation } from "react-router-dom/dist";
+import React, { useContext, useEffect } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { LuUser2 } from "react-icons/lu";
+import { NavLink, useLocation } from "react-router-dom/dist";
 import { UserContext } from "../context";
 
 const Navbar = () => {
@@ -18,14 +18,14 @@ const Navbar = () => {
     window.scrollTo(0, 0);
   }, []);
   return (
-    <div className={`navbar ${location.pathname === "/" ? "bg-white" : ""}  w-full xl:max-w-[95vw] 2xl:max-w-[80vw] min-h-[10vh]`}>
+    <div className={`navbar ${location.pathname === "/" ? "bg-white" : ""} z-50 relative w-full xl:max-w-[95vw] 2xl:max-w-[80vw] min-h-[10vh]`}>
       <div className="navbar-start ml-5 w-72">
-          <NavLink to={"/"} className="no-underline gap-2 items-center flex">
+        <NavLink to={"/"} className="no-underline gap-2 items-center flex">
           <div className="flex gap-2 items-center">
             <img className="h-[40.5px] w-[30px] relative object-cover" loading="eager" alt="" src={"/logo.png"} />
             <b className="relative text-blueviolet-100 whitespace-nowrap text-xl">CUET-TestKnock</b>
-            </div>
-          </NavLink>
+          </div>
+        </NavLink>
       </div>
       <div className="navbar-end mr-2  lg:ml-auto w-full relative">
         {/* Normal */}
@@ -60,17 +60,17 @@ const Navbar = () => {
               )}
             </NavLink>
           </li>
-            <li className="hidden lg:flex">
-              <NavLink
-                to={"/signup"}
-                onClick={() => {if(userLoggedIn) setUserLoggedIn(false)}}
-                className={
-                  "text-sm md:text-lg font-medium text-white bg-salmon-200 hover:bg-salmon-200 no-underline rounded-full py-2 border-solid border-2 md:py-3 md:px-6"
-                }
-              >
-                {!userLoggedIn ? <span>Sign Up</span>: <span>Sign Out</span>}
-              </NavLink>
-            </li>
+          <li className="hidden lg:flex">
+            <NavLink
+              to={"/signup"}
+              onClick={() => { if (userLoggedIn) setUserLoggedIn(false) }}
+              className={
+                "text-sm md:text-lg font-medium text-white bg-salmon-200 hover:bg-salmon-200 no-underline rounded-full py-2 border-solid border-2 md:py-3 md:px-6"
+              }
+            >
+              {!userLoggedIn ? <span>Sign Up</span> : <span>Sign Out</span>}
+            </NavLink>
+          </li>
 
         </ul>
         {/* <b className="">+91 8279662680</b> */}
@@ -138,8 +138,8 @@ const Navbar = () => {
             )}
           </ul>
         </div>
-        {location.pathname ===  "/" && (
-        <b className="hidden lg:block absolute text-blueviolet-100 top-20 mr-9">+91 8279662680</b>
+        {location.pathname === "/" && (
+          <b className="hidden lg:block absolute text-blueviolet-100 top-20 mr-9">+91 8279662680</b>
         )}
       </div>
     </div>

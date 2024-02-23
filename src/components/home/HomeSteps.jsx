@@ -1,9 +1,9 @@
-import StepGuide from "./StepGuide";
 import { useState } from "react";
 import Lottie from "react-lottie";
 import Step1AnimatiionData from "../../assets/animation_step1.json";
 import Step2AnimatiionData from "../../assets/animation_step2.json";
 import Step3AnimatiionData from "../../assets/animation_step3.json";
+import StepGuide from "./StepGuide";
 
 const HomeSteps = () => {
   const [currStep, setCurrStep] = useState(1);

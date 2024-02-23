@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <footer className="bg-[#0D0756] text-white w-full flex justify-center items-center  relative z-50 ">
-      <div className="xl:max-w-[95vw] 2xl:max-w-[80vw] w-full">
+      <div className="xl:max-w-[95vw] pt-2 2xl:max-w-[80vw] w-full">
         <div className="flex flex-col justify-betwen md:flex-row md:items-center md:justify-around mx-3 h-full">
           <div className="w-full md:max-w-[40vw] md:mr-20 my-10 md:my-0 min-h-[25vh]">
             <div className=" flex justify-start mb-5">
@@ -55,7 +55,7 @@ const Footer = () => {
               <p className="md:text-center font-bold mb-10">Contact US</p>
               <p className="flex justify-between  items-center md:text-center font-normal my-3">
                 <span className="flex justify-center items-center mr-1">
-                  <IoMdMail className="" size={"1.5em"}/>
+                  <IoMdMail className="" size={"1.5em"} />
                 </span>
                 <span>info@testknock.com</span>
               </p>
@@ -67,7 +67,7 @@ const Footer = () => {
               </p>
               <p className="flex justify-between max-w-[10em] my-3 ">
                 <span className="h-full">
-                  <IoMdPin className="mr-1 mb-auto"size={"1.5em"} />
+                  <IoMdPin className="mr-1 mb-auto" size={"1.5em"} />
                 </span>
                 <span className="font-normal ">Office No. - 42, Durga Vihar, near Amrapali Saphhire, Sec-45, Noida-201301</span>
               </p>

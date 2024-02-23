@@ -1,4 +1,6 @@
 import React from "react";
+import Vector from "../../src/assets/images/syllabus_vector.png";
+import Vector2 from "../../src/assets/images/syllabus_vector2.png";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import SyllabusCard from "../components/Syllabus/SyllabusCard";
@@ -36,26 +38,25 @@ const Syllabus = () => {
     { subjectName: "Teaching Aptitide", image: '/syllabusImages/online-test/rafiki.png', link: "https://cdnasb.samarth.ac.in/site-admin23/syllabus/327_TeachingAptitude.pdf" },
   ];
   return (
-    <div className="w-full  relative bg-[#c9d4ff] overflow-hidden flex flex-col items-center px-0 pb-0 box-border tracking-[normal]">
-      <Navbar />
-      <div>
-        <div className=" mt-10 mb-14 ml-5">
-          <h2 className="pl-0 mb-1 text-blueviolet-100 text-21xl leading-none">Syllabus</h2>
-          <hr className="w-10 m-0 mt-1 text-blueviolet-100" />
+    <>
+      <div className="w-full  relative bg-[#c9d4ff] overflow-hidden flex flex-col items-center pb-0 box-border tracking-[normal]">
+        <Navbar />
+        <img src={Vector} className="absolute top-0 left-0 z-0 overflow-hidden" alt="" />
+        <div className="relative z-10">
+          <div className=" mt-10 mb-14 ml-5">
+            <h2 className="pl-0 mb-1 text-blueviolet-100 text-21xl leading-none">Syllabus</h2>
+            <hr className="w-10 m-0 mt-1 text-blueviolet-100" />
+          </div>
+          <div className="grid grid-cols-2 lg:grid-cols-4 md:grid-cols-3 mx-[20px] justify-center">
+            {subjects.map((subject) => (
+              <SyllabusCard subject={subject} />
+            ))}
+          </div>
         </div>
-        {/* <div className="flex flex-wrap justify-center mt-10 gap-8 mb-20">
-          {subjects.map((subject) => (
-            <SyllabusCard subject={subject} />
-          ))}
-        </div> */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 md:grid-cols-3 justify-center">
-          {subjects.map((subject) => (
-            <SyllabusCard subject={subject} />
-          ))}
-        </div>
+        <img src={Vector2} className="absolute bottom-0 right-0 z-0 overflow-hidden" alt="" />
+        <Footer />
       </div>
-      <Footer />
-    </div>
+    </>
   );
 };
 

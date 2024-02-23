@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
+import { useMediaQuery } from "react-responsive";
 import { config } from "react-spring";
 import Carousel from "react-spring-3d-carousel";
 import { v4 as uuidv4 } from "uuid";
-import { useMediaQuery } from "react-responsive";
 
 const getTouches = (evt) => {
   return (
@@ -10,15 +10,15 @@ const getTouches = (evt) => {
   );
 };
 
-const Testinomials2 = ({ image, color, name, text }) => {
+const Testinomials2 = ({ image, color, name, text, university }) => {
   return (
-    <div 
-    style={{background:color}}
-    className="cursor-pointer w-[20em] min-h-[30em] md:w-[40em] md:h-[15em] py-10 rounded-[16.02px] bg-gray-300 shadow-[0px_4px_4px_rgba(0,_0,_0,_0.25)] [backdrop-filter:blur(50px)] flex flex-col justify-evenly items-center px-5">
+    <div
+      style={{ background: color }}
+      className="cursor-pointer w-[20em] min-h-[27em] md:w-[40em] md:h-[13em] py-10 rounded-[16.02px] shadow-[0px_4px_4px_rgba(0,_0,_0,_0.25)] [backdrop-filter:blur(50px)] flex flex-col justify-evenly items-center px-5 ">
       <div className="text-13xl text-white font-bold">{name}</div>
       <div className="text-white text-xl text-center my-8">{text}</div>
       <hr className="border-[1px] border-solid border-[#D9D9D9] w-full" />
-      <div className="mb-0 font-bold text-7xl text-white text-center">Professor, IILM University</div>
+      <div className="mb-0 font-bold text-7xl text-white text-center">{university}</div>
     </div>
   );
 };
@@ -110,6 +110,7 @@ const slides = [
         also achieved remarkable results. Thank you for paving the way to
         my success!"
         color="#4477CE"
+        university="Student, Joy University"
       />
     ),
   },
@@ -124,7 +125,8 @@ const slides = [
           support elevated my preparation. I not only gained confidence but
           also achieved remarkable results. Thank you for paving the way to
           my success!"
-          color="#9F73AB"
+        color="#9F73AB"
+        university="Student, IMS Unison University"
       />
     ),
   },
@@ -137,6 +139,7 @@ const slides = [
           "Enrolling in the online CUET course was a game-changer for me.  The comprehensive material, interactive lessons, and personalized support elevated my preparation. I not only gained confidence but also achieved remarkable results. Thank you for paving the way to my success!"
         }
         color="#3795BD"
+        university="Professor, IILM University"
       />
     ),
   },
