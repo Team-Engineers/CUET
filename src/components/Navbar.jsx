@@ -1,8 +1,8 @@
 import React, { useEffect, useContext } from "react";
+import BurgerAndMenu from "./burgerAndMenu/BurgerAndMenu";
 import { NavLink, useLocation } from "react-router-dom/dist";
 import { LuUser2 } from "react-icons/lu";
 import { useAuth } from "../utils/context";;
-import BurgerAndMenu from "./burgerAndMenu/BurgerAndMenu";
 
 const Navbar = () => {
   const location = useLocation();
