@@ -18,7 +18,6 @@ const Practicetest = ({ data,subtopic }) => {
   let intervalId; 
   const [timer, setTimer] = useState(30 * 60);
   const [timerColor, setTimerColor] = useState("from-[#1ee80c]"); 
-
   const [showPopup, setShowPopup] = useState(false);
 
   const handlePopupOpen = () => {
