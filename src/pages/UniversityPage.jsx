@@ -14,7 +14,7 @@ import {
 const UniversitySection = ({ universities, id, title }) => {
     return (
         <>
-            <div>
+            <div >
                 <h2 className="p-5 font-extrabold">{title}</h2>
             </div>
             <div className="grid mx-auto max-w-[1200px] md:grid-cols-3 grid-cols-2" id={id} >
@@ -80,9 +80,9 @@ const AllUniversities = () => {
 
 const University = () => {
     return (
-        <>
+        <div className="bg-gradient-to-br from-[#ACBCFF] to-white overflow-hidden">
             <Navbar />
-            <div className="flex mb-[20px] mt-[10px] gap-[1vw] flex-col lg:flex-row justify-center mx-auto max-w-[1280px]">
+            <div className="flex mb-[20px] mt-[10px] gap-[1vw] flex-col lg:flex-row  justify-center mx-auto max-w-[1280px]">
                 <div className="mx-auto">
                     <UniversitySection universities={central_universities} id="central" title="Central Universities" />
                     <UniversitySection universities={state_universities} id="state" title="State Universities" />
@@ -96,7 +96,7 @@ const University = () => {
                 </div>
             </div>
             <Footer />
-        </>
+        </div>
     );
 };
 

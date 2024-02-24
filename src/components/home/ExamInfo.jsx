@@ -70,7 +70,7 @@ const ExamInfo = () => {
     const notices = getNoticesForTab();
   
     return (
-      <div className=" mx-auto w-full justify-center mb-[40px]">
+      <div className=" mx-auto relative z-50 w-full justify-center mb-[40px]">
         <div className="grid lg:grid-cols-2 grid-cols-1  mt-[40px] mb-[80px] mx-[5vw] gap-10 ">
           <div className='min-w-[30em] max-md:mx-auto   '>
             <div className="bg-[#ffffff00] backdrop-filter backdrop-blur-[30px] shadow-xl  rounded-xl"

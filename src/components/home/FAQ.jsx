@@ -11,7 +11,7 @@ const AccordionItem = ({ title, content, expanded, onClick }) => {
                 <span className="accordion-title-faq ">{title}</span>
                 <span className="icon-faq" aria-hidden="true"></span>
             </button>
-            <div className="accordion-content-faq" style={{ opacity: expanded ? 1 : 0, maxHeight: expanded ? '5em' : 0 }}>
+            <div className="accordion-content-faq" style={{ opacity: expanded ? 1 : 0, maxHeight: expanded ? '15em' : 0 }}>
                 <p>{content}</p>
             </div>
         </div>

@@ -1,7 +1,8 @@
 import DomainTopic from "./DomainTopic";
+
 const SubjectTopic = () => {
   return (
-    
+
     <section className=" w-full relative flex flex-col items-center justify-start max-md:mb-5 ">
       <div className="text-7xl md:text-17xl w-full flex flex-col items-center justify-center">
         <div className="min-h-[10vh] flex flex-col items-center justify-around">
@@ -14,13 +15,13 @@ const SubjectTopic = () => {
       </div>
       <div className="min-h-[60vh] h-full flex justify-center items-center w-full lg:max-w-[80vw]">
         <div className="h-full w-full flex flex-col items-center md:flex-row md:justify-around ">
-          <DomainTopic color={"bg-salmon-100"} img_path={"/domain1.png"} text="General English" />
-          <DomainTopic color={"bg-darkyellow"} img_path={"/domain2.png"} text="Domain Subjects" />
-          <DomainTopic color={"bg-darkcyan"} img_path={"/domain3.png"} text="General Test" />
+          <DomainTopic color={"bg-salmon-100"} img_path={"/domain1.png"} text="General English" path={"/test"} />
+          <DomainTopic color={"bg-darkyellow"} img_path={"/domain2.png"} text="Domain Subjects" path={"/courses"} />
+          <DomainTopic color={"bg-darkcyan"} img_path={"/domain3.png"} text="General Test" path={"/test"} />
         </div>
       </div>
 
-      <img src="/bubbles/bubble1.png" className="absolute max-md:hidden right-0 top-[400px] z-[0]" />
+      <img src="/bubbles/bubble1.png" alt="" className="absolute max-md:hidden right-0 top-[400px] z-[0]" />
 
     </section>
 

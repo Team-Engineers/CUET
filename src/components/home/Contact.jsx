@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { IoMdCall } from "react-icons/io";
-import SupportAnimationData from "../../assets/animation_support.json";
 import Lottie from "react-lottie";
+import SupportAnimationData from "../../assets/images/contact_card.json";
 
 const ContactForm = () => {
   const [isPopupOpen, setisPopupOpen] = useState(false);
@@ -13,8 +13,8 @@ const ContactForm = () => {
     "my-1 w-[80%] min-h-5 border-2 border-solid border-white rounded-full bg-transparent placeholder:text-white placeholder:opacity-100 placeholder:text-md  p-3  text-white text-md focus:ring-0 focus:outline-none";
   return (
     <div className="min-h-[70vh] md:my-[10vh] 2xl:min-h-[60vh] w-full md:w-full h-full flex flex-col items-center justify-evenly">
-      <h1 className="font-bold max-md:hidden text-13xl text-left my-5 ">Request a Call back</h1>
-      <div className="flex flex-col items-center justify-evenly w-[80%] md:w-[80%] min-h-[50vh] 2xl:min-h-[40vh]">
+      <div className="flex flex-col md:items-start items-center justify-evenly md:ml-[30px] w-[80%] md:w-[80%] min-h-[50vh] 2xl:min-h-[40vh]">
+        <h1 className="font-bold max-md:hidden text-13xl text-left my-5 ">Request a Call back</h1>
         <input className={ContactInputStyles} placeholder="Your Name" type="text" />
         <input className={ContactInputStyles} placeholder="Email" type="email" />
         <input className={ContactInputStyles} placeholder="Phone Number" type="text" />
@@ -93,7 +93,7 @@ const Contact = () => {
           />
 
         </div>
-                <h1 className="font-bold md:hidden text-[25px] text-left my-5 ">Request a Call back</h1>
+        <h1 className="font-bold md:hidden text-[25px] text-left my-5 ">Request a Call back</h1>
 
       </div>
     </div>

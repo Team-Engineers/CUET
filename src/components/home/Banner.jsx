@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import ExamInfo from "../../components/home/ExamInfo";
 import Lottie from "react-lottie";
 import LandingAnimationData from "../../assets/animation_landing.json";
@@ -8,12 +8,38 @@ const Banner = () => {
   const navigate = useNavigate();
 
   const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const popupRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (popupRef.current && !popupRef.current.contains(event.target)) {
+        setIsPopupOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   const handleBellIconClick = () => {
-    setIsPopupOpen(!isPopupOpen);
+    setIsPopupOpen(true);
   };
 
   return (
     <div className="min-h-[80vh] xl:max-w-[95vw] 2xl:max-w-[80vw] max-w-[90vw] w-full flex flex-col-reverse  justify-around md:flex-row md:justify-between items-center ">
+      <div className="w-[392px] md:hidden block lg:w-[550px] ">
+        <Lottie
+          options={{
+            loop: true,
+            autoplay: true,
+            animationData: LandingAnimationData,
+          }}
+        />
+      </div>
+      <div className="min-h-[80vh] xl:max-w-[95vw] 2xl:max-w-[80vw] max-w-[90vw] w-full flex flex-col-reverse  justify-around md:flex-row md:justify-between items-center ">
       <div className="w-[392px] md:hidden block lg:w-[550px] ">
         <Lottie
           options={{
@@ -61,7 +87,7 @@ const Banner = () => {
           </button>
         </div>
         <div className="my-10 hidden md:block">
-          <div onClick={handleBellIconClick} className="flex z-50 relative  flex-row items-center gap-[7px] text-base cursor-pointer">
+          <div onClick={handleBellIconClick} className="flex relative  flex-row items-center gap-[7px] text-base cursor-pointer">
             <img
               className="h-[54px] w-[52px] relative object-cover"
               loading="eager"
@@ -69,16 +95,13 @@ const Banner = () => {
               src={require("../../assets/images/signup/bellicon.gif")}
             />
             <div className="relative font-semibold">Live Notification</div>
-            <div className="flex flex-row items-center gap-[7px] text-base cursor-pointer">
-              {isPopupOpen && (
-                <div className=" top-[0vh] absolute inset-0 flex z-40 w-full  bg-opacity-50">
-                  <div>
-                    <ExamInfo />
-                  </div>
-                </div>
-              )}
+            {isPopupOpen && (
+            <div ref={popupRef} className="absolute top-[5vh] right-[5vw]  rounded-lg p-4">
+              <ExamInfo />
             </div>
+          )}
           </div>
+          
         </div>
       </div>
       <div className="w-[392px] md:block hidden lg:w-[550px] ">
@@ -90,6 +113,7 @@ const Banner = () => {
           }}
         />
       </div>
+    </div>
     </div>
   );
 };

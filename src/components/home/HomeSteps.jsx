@@ -1,9 +1,9 @@
-import StepGuide from "./StepGuide";
 import { useState } from "react";
 import Lottie from "react-lottie";
 import Step1AnimatiionData from "../../assets/animation_step1.json";
 import Step2AnimatiionData from "../../assets/animation_step2.json";
 import Step3AnimatiionData from "../../assets/animation_step3.json";
+import StepGuide from "./StepGuide";
 
 const HomeSteps = () => {
   const [currStep, setCurrStep] = useState(1);
@@ -11,7 +11,7 @@ const HomeSteps = () => {
   return (
     <section className="w-full relative h-screen z-10 mx-md:mt-5  ">
       <div className="flex h-screen flex-col justify-around items-center mx-3 lg:flex-row lg:justify-around">
-        <div className="max-w-96 max-md:hidden max-h-96 md:max-w-[600px] md:max-h-[600px] object-cover ">
+        <div className=" max-md:hidden w-[35vw] object-cover ">
           <Lottie
             options={{
               loop: true,
