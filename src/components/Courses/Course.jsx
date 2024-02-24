@@ -102,6 +102,7 @@ const Courses = () => {
                       brick={subtopic.image}
                       heading={subtopic.title}
                       color={subtopic.color}
+                      subheading="domain"
                     />
                   </Link>
                 </div>

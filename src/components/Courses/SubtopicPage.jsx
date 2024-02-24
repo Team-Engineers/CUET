@@ -7,10 +7,10 @@ import { subtopicsData } from "../../utils/courses";
 import Navbar from "../Navbar";
 import Footer from "../Footer";
 const SubtopicPage = () => {
-  const { subtopic } = useParams();
-  const subtopicCategory = Object.keys(subtopicsData).find((subtopicsData) => subtopicsData === subtopic);
+  const { heading } = useParams();
+  const subtopicCategory = Object.keys(subtopicsData).find((subtopicsData) => subtopicsData === heading);
   const subtopicData = subtopicsData[subtopicCategory];
-
+  
   return (
     <div className="bg-gradient-to-br from-[#ACBCFF] to-white flex flex-col items-center justify-center overflow-x-hidden">
       <Navbar />

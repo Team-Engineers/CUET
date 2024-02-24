@@ -32,6 +32,8 @@ const App = () => {
       <Route path="/university" element={<University />} />
       <Route path="/courses/:subtopic" element={<SubtopicPage />} />
       <Route path="/test/:heading" element={<TestPage />} />
+      <Route path="/test/:subheading/:heading" element={<SubtopicPage />} />
+
       <Route element={<PrivateRoutes />}>
         <Route path="/test/practice/:subTopic" element={<MockTestMain />} />
         <Route path="/profile" element={<Profile />} />
