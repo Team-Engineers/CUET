@@ -13,6 +13,8 @@ import Profile from "./pages/Profile";
 import Syllabus from "./pages/Syllabus";
 import Coursespage from "./pages/Coursespage";
 import PrivateRoutes from "./utils/PrivateRoutes";
+import MockTestMain from "./components/practicetest/MockTestMain";
+import Practice from "./components/practicetest/Practice";
 import University from "./pages/UniversityPage";
 
 const App = () => {
@@ -24,16 +26,19 @@ const App = () => {
   return (
         <Routes>
           <Route path="/login" element={<Login />} />
+          <Route path="/test/practice/:subTopic" element={<MockTestMain />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/" element={<Homepage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/syllabus" element={<Syllabus />} />
+          <Route path="/courses" element={<Coursespage />} /> 
+          <Route path="/test/practice/:heading/:subTopic" element={<Practice />} />
           <Route path="/courses" element={<Coursespage />} />
           <Route path="/university" element={<University />} />
           <Route path="/courses/:subtopic" element={<SubtopicPage />} />
           <Route element={<PrivateRoutes />}>
-            <Route path="/test" element={<TestPage />} />
+            <Route path="/test/:heading" element={<TestPage />} />
             <Route exact path="/user" element={<Profile />} />
           </Route>
           <Route path="*" element={<>Error 404 </>} />
