@@ -1,26 +1,27 @@
-import { useState } from "react";
-import { Route, Routes } from "react-router-dom";
+import React from "react";
+import { Route,  Routes } from "react-router-dom";
 import "./App.css";
-import SubtopicPage from "./components/Courses/SubtopicPage";
-import PacksPage from "./components/Packs/PacksPage";
-import TestPage from "./components/Test/TestPage";
-import { UserContext } from "./context";
-import AboutPage from "./pages/Aboutpage";
-import Homepage from "./pages/Homepage";
 import Login from "./pages/Login";
-import Payment from "./pages/Payment";
 import Signup from "./pages/Signup";
-
-import Coursespage from "./pages/Coursespage";
+import Homepage from "./pages/Homepage";
+import AboutPage from "./pages/Aboutpage";
+import SubtopicPage from "./components/Courses/SubtopicPage";
+import TestPage from "./components/Test/TestPage";
+import Payment from "./pages/Payment";
+import PacksPage from "./components/Packs/PacksPage";
 import Profile from "./pages/Profile";
 import Syllabus from "./pages/Syllabus";
+import Coursespage from "./pages/Coursespage";
+import PrivateRoutes from "./utils/PrivateRoutes";
 import University from "./pages/UniversityPage";
-function App() {
-  const [userLoggedIn, setUserLoggedIn] = useState(false);
+
+const App = () => {
+  // const isUserSignedIn = () => {
+  //   const tokenData = JSON.parse(localStorage.getItem("accessToken"));
+  //   return tokenData && new Date().getTime() < tokenData.expiry;
+  // };
 
   return (
-    <div>
-      <UserContext.Provider value={{ userLoggedIn, setUserLoggedIn }}>
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
@@ -29,16 +30,15 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/syllabus" element={<Syllabus />} />
           <Route path="/courses" element={<Coursespage />} />
-          <Route path="/courses/:subtopic" element={<SubtopicPage />} />
-
-          <Route path="/test" element={<TestPage />} />
           <Route path="/university" element={<University />} />
-          <Route path="/payment" element={<Payment />} />
-          <Route path="/packs" element={<PacksPage />} />
+          <Route path="/courses/:subtopic" element={<SubtopicPage />} />
+          <Route element={<PrivateRoutes />}>
+            <Route path="/test" element={<TestPage />} />
+            <Route exact path="/user" element={<Profile />} />
+          </Route>
+          <Route path="*" element={<>Error 404 </>} />
         </Routes>
-      </UserContext.Provider>
-    </div>
   );
-}
+};
 
 export default App;
