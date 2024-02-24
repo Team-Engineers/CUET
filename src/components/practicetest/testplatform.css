@@ -1,0 +1,223 @@
+@import url('https://fonts.googleapis.com/css2?family=Edu+TAS+Beginner:wght@400;500&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,700;1,100;1,200;1,300;1,400;1,700&display=swap');
+
+.question-practice .question-container {
+    background-color: white;
+    overflow: hidden;
+}
+
+.selected-subtopic {
+    background-color: #fce4e4;
+    color: black;
+    font-weight: bold;
+    outline: 2px solid black;
+  }
+  
+.question-practice .question-box {
+    font-size: 14px;
+    background-color: white;
+    font-weight: bolder;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+
+
+.question-practice .options-grid {
+    display: flex;
+    flex-direction: column;
+}
+
+.question-practice .option-box {
+    color : #444;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 10px 0px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-weight: lighter;
+    transition: background-color 0.3s;
+}
+
+.question-practice .options-grid .incorrect {
+    color: white;
+    background: red;
+}
+
+.question-practice .options-grid .correct {
+    background: green;
+    color: black;
+}
+
+.question-practice .correct .option-alphabet {
+    background-color: green;
+    color: white;
+}
+
+.question-practice .incorrect .option-alphabet {
+    /* background-color: white; */
+    color: white;
+}
+
+.question-practice .option-alphabet {
+    font-weight: bold;
+    color: #444;
+    margin-right: 15px;
+    border: 1px solid #bababa;
+    border-radius: 100%;
+    height: 25px;
+    width: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.question-practice .correct-answer {
+    margin-left: auto;
+}
+
+.question-practice .incorrect-answer {
+    margin-left: auto;
+}
+
+@media screen and (max-width: 1024px) {
+  
+}
+
+.question-practice .question-image {
+
+  /* width: 55%; */
+  object-fit: cover;
+  border-radius: 10px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.question-practice .p {
+    justify-content: baseline;
+    align-items: baseline;
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0px;
+}
+
+.question-practice .pagination {
+    /* Styles for pagination */
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    color: black;
+}
+
+.question-practice .page-button {
+    padding: 10px 20px;
+    margin: 0 5px;
+    cursor: pointer;
+    border: 2px solid #16192C;
+    background-color: #ffffff;
+    color: #333;
+    border-radius: 10px;
+    transition: background-color 0.2s ease;
+}
+
+.question-practice .page-button.active {
+    background-color: #16192C;
+    color: #fff;
+    font-weight: bold;
+}
+
+.question-practice .page-button.disabled {
+    cursor: not-allowed;
+    pointer-events: none;
+    background-color: #c9c4c4;
+}
+
+.question-practice .explanation-wrapper .explanation p h6 {
+    color: #444;
+    line-height: 2rem;
+}
+
+.page-numbers {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+  
+  .page-button {
+    /* Your button styles */
+    margin: 0.5rem;
+  }
+  
+.question-practice .explanation-wrapper .explanation{
+    border: 1px solid #bababa;
+    margin: 10px;
+    padding: 10px;
+    background-color: #ffffff;
+}
+.popupquestion{
+    z-index: 100;
+}
+
+.question-practice .question {
+    display: flex;
+}
+
+.question-practice .question-text-container {
+    text-align: justify;
+}
+
+@media screen and (max-width: 700px) {
+    .question-practice .page-button {
+        padding: 0.5rem;
+        justify-content: center;
+    }
+}
+
+
+.question-practice h6 {
+    margin-bottom: 0px;
+    line-height: 1.5rem;
+}
+
+.question-practice .question-container .paragraph {
+    padding: 2rem;
+}
+
+.question-practice .question-box .question-option {
+    padding: 2rem 2rem 0 2rem;
+}
+
+.toggle-button {
+    transition: background-color 0.3s ease;
+    /* Add other styles for your button */
+}
+
+.toggle-button.toggled {
+    background-color: #16192C;
+    /* Change the background color when toggled */
+}
+
+.content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    /* Adjust the duration and easing as needed */
+}
+
+.content.visible {
+    max-height: 1000px;
+    /* Adjust the max height as needed */
+}   
+
+.accordion-button:focus {
+    box-shadow: none;
+}
+
+
+@media screen and (max-width: 800px){
+    .question-practice .question-box .question-option {
+        padding: 2rem 1rem 0 1rem;
+    }
+    
+}

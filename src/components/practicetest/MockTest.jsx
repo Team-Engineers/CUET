@@ -6,18 +6,24 @@ import CuetLoader from "../Loader/Loader";
 import { IoBookmark, IoBookmarkOutline } from "react-icons/io5";
 import { TfiTimer } from "react-icons/tfi";
 
-const Practicetest = ({ data,subtopic }) => {
+const MockTest = ({ data, subtopic }) => {
+  console.log(data)
   const alphabets = "12345678910".split("");
-  const [selectedOptions, setSelectedOptions] = useState(Array(data.length).fill([])); 
+  const [selectedOptions, setSelectedOptions] = useState(Array(data.length).fill([]));
   const [currentPage, setCurrentPage] = useState(0);
   const [explanationsVisible, setExplanationsVisible] = useState(Array(data.length).fill(false));
   const [isLoading, setIsLoading] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const location = useLocation();
   const [savedQuestions, setSavedQuestions] = useState([]);
-  let intervalId; 
+  let intervalId;
   const [timer, setTimer] = useState(30 * 60);
-  const [timerColor, setTimerColor] = useState("from-[#1ee80c]"); 
+  const [timerColor, setTimerColor] = useState("from-[#1ee80c]");
+  const [correctAnswers, setCorrectAnswers] = useState(0);
+  const [incorrectAnswers, setIncorrectAnswers] = useState(0);
+  const [showResultPopup, setShowResultPopup] = useState(false);
+  const [showPagePopup, setShowPagePopup] = useState(false);
+
   const [showPopup, setShowPopup] = useState(false);
 
   const handlePopupOpen = () => {
@@ -38,7 +44,7 @@ const Practicetest = ({ data,subtopic }) => {
   }, []);
 
   useEffect(() => {
-    intervalId = setInterval(() => { 
+    intervalId = setInterval(() => {
       setTimer((prevTimer) => prevTimer - 1);
     }, 1000);
 
@@ -48,7 +54,7 @@ const Practicetest = ({ data,subtopic }) => {
   useEffect(() => {
     if (timer <= 0) {
       setTimerColor("from-[#ff0800] to-[#ff0800]");
-      handleSubmit(); 
+      handleSubmit();
     }
   }, [timer]);
   const handleOptionClick = (questionIndex, optionIndex) => {
@@ -61,15 +67,37 @@ const Practicetest = ({ data,subtopic }) => {
   };
 
   const handleSubmit = () => {
+    // Calculate correct and incorrect answers
+    let correct = 0;
+    let incorrect = 0;
+    data.forEach((question, questionIndex) => {
+      const selectedOptionIndex = selectedOptions[currentPage][questionIndex];
+      const correctOptionIndex = question.subQuestions[0].correctOptionIndex - 1;
+      if (selectedOptionIndex === correctOptionIndex) {
+        correct++;
+      } else {
+        incorrect++;
+      }
+    });
+    setCorrectAnswers(correct);
+    setIncorrectAnswers(incorrect);
+  
+    // Show the result popup
+    // setShowResultPopup(true);
+  
     setIsSubmitted(true);
     setIsLoading(true);
-
-    clearInterval(intervalId); 
-
+  
+    clearInterval(intervalId);
+  
     setTimeout(() => {
       setIsLoading(false);
     }, 2000);
   };
+  
+  
+  
+
 
   const handleSaveQuestion = (questionIndex) => {
     const questionAbsoluteIndex = questionIndex + currentPage * 1;
@@ -95,34 +123,33 @@ const Practicetest = ({ data,subtopic }) => {
       <div className="question-box ">
         <div className="flex  flex-col">
           <div className="flex justify-between">
-          <div className="px-4 py-5">
-          <span className={`p-[0.5vw] m-3 rounded-full bg-gradient-to-br overflow-hidden from-[#617cea] to-white text-white text-white id-${question._id}`}>
-              {`${questionIndex + 1 + currentPage * 1} `}
-            </span>
-            of
-            <span className={`p-2 id-${question._id}`}>
-              {`${questionIndex + 1 + 30 - 1} `}
-            </span>
-          </div>
-           
-             <h1 className="bg-gradient-to-br overflow-hidden from-[#617cea] to-[#2e2323] absolute right-0 text-white px-4 py-5">{subtopic}</h1>
+            <div className="px-4 py-5">
+              <span className={`p-[0.5vw] m-3 rounded-full bg-gradient-to-br overflow-hidden from-[#617cea] to-white text-white id-${question._id}`}>
+                {`${questionIndex + 1 + currentPage * 1} `}
+              </span>
+              of
+              <span className={`p-2 id-${question._id}`}>
+                {`${questionIndex + 1 + 30 - 1} `}
+              </span>
+            </div>
+
+            <h1 className="bg-gradient-to-br overflow-hidden from-[#617cea] to-[#2e2323] absolute right-0 text-white px-4 py-5">{subtopic}</h1>
           </div>
           <div className="text-[20px] flex justify-between px-10 pb-6 p-4  relative">
             <div>
-              {question.text.map((text, textIndex) => (
+              {question.subQuestions[0].questionTextAndImages.map((textData, textIndex) => (
                 <MathText
                   className="question-text mb-2"
                   key={textIndex}
-                  text={text}
+                  text={textData.text}
                   textTag="h6"
                 />
               ))}
             </div>
             <div
-              className={` relative flex justify-center items-center  ${savedQuestions.includes(questionIndex + currentPage * 1) ? 'saved' : ''}`}
+              className={`relative flex justify-center items-center  ${savedQuestions.includes(questionIndex + currentPage * 1) ? 'saved' : ''}`}
               onClick={() => handleSaveQuestion(questionIndex)}
             >
-             
               {savedQuestions.includes(questionIndex + currentPage * 1) ? (
                 <>
                   <IoBookmark />
@@ -134,12 +161,12 @@ const Practicetest = ({ data,subtopic }) => {
                   <h1 className="text-[10px]">Save</h1>
                 </>
               )}
-
             </div>
+
           </div>
         </div>
       </div>
-      {question.options.map((option, optionIndex) => (
+      {question.subQuestions[0].options.map((option, optionIndex) => (
         <div
           key={optionIndex}
           className={`option-box bg-white ${!isSubmitted &&
@@ -149,12 +176,12 @@ const Practicetest = ({ data,subtopic }) => {
             : isSubmitted &&
               selectedOptions[currentPage] &&
               selectedOptions[currentPage][questionIndex] === optionIndex &&
-              question.correctOptionIndex - 1 === optionIndex
+              question.subQuestions[0].correctOptionIndex - 1 === optionIndex
               ? "correct"
               : isSubmitted &&
                 selectedOptions[currentPage] &&
                 selectedOptions[currentPage][questionIndex] === optionIndex &&
-                question.correctOptionIndex - 1 !== optionIndex
+                question.subQuestions[0].correctOptionIndex - 1 !== optionIndex
                 ? "incorrect"
                 : ""
             }`}
@@ -176,7 +203,7 @@ const Practicetest = ({ data,subtopic }) => {
             </div>
           </div>
           <div className="flex">
-            {question.correctOptionIndex - 1 === optionIndex &&
+            {question.subQuestions[0].correctOptionIndex - 1 === optionIndex &&
               isSubmitted &&
               selectedOptions[currentPage] &&
               selectedOptions[currentPage][questionIndex] === optionIndex && (
@@ -187,7 +214,7 @@ const Practicetest = ({ data,subtopic }) => {
             {isSubmitted &&
               selectedOptions[currentPage] &&
               selectedOptions[currentPage][questionIndex] === optionIndex &&
-              question.correctOptionIndex - 1 !== optionIndex && (
+              question.subQuestions[0].correctOptionIndex - 1 !== optionIndex && (
                 <span className="incorrect-answer">
                   <i className="fa-solid fa-xmark"></i>
                 </span>
@@ -196,61 +223,48 @@ const Practicetest = ({ data,subtopic }) => {
         </div>
       ))}
       <div className="w-100 flex justify-content-center align-items-center">
-            {isSubmitted && (
-              <button
-                className="bg-gradient-to-br overflow-hidden from-[#617cea] to-white rounded-xl text-white text-center p-2 flex justify-center"
-                onClick={() => toggleExplanationVisibility(questionIndex)}
-              >
-                {explanationsVisible[questionIndex]
-                  ? "Hide Explanation"
-                  : "Show Explanation"}
-              </button>
-            )}
+        {isSubmitted && (
+          <button
+            className="bg-gradient-to-br overflow-hidden from-[#617cea] to-white rounded-xl text-white text-center p-2 flex justify-center"
+            onClick={() => toggleExplanationVisibility(questionIndex)}
+          >
+            {explanationsVisible[questionIndex]
+              ? "Hide Explanation"
+              : "Show Explanation"}
+          </button>
+        )}
+      </div>
+      <div className="explanation-wrapper ">
+        {explanationsVisible[questionIndex] && (
+          <div className="explanation">
+            {question.subQuestions[0].explanation.map((explanationData, index) => (
+              <p className="m-0 pt-3" key={index}>
+                <h6>
+                  <span dangerouslySetInnerHTML={{ __html: explanationData.text[0] }} />
+                  <div dangerouslySetInnerHTML={{ __html: explanationData.text[1] }} />
+                  <div />
+                  <span dangerouslySetInnerHTML={{ __html: explanationData.text[2] }} />
+                </h6>
+                {explanationData.text.slice(3).map((text, index) => (
+                  <MathText key={index} text={text} textTag="h6" />
+                ))}
+              </p>
+            ))}
           </div>
-          <div className="explanation-wrapper ">
-            {explanationsVisible[questionIndex] && (
-              <div className="explanation">
-                <p className="m-0 pt-3">
-                  <h6>
-                    <span className="text-default">Answer:</span>{" "}
-                    <strong>{`Option ${alphabets[question.correctOptionIndex - 1]} `}</strong>
-                    <div />
-                    <span className="text-default">Solution:</span>
-                  </h6>
-                  {question.explanation.text.map((text, index) => (
-                    <MathText key={index} text={text} textTag="h6" />
-                  ))}
-                </p>
-                <div className="flex justify-content-center items-center gap-3">
-                  <div className="multiple-image-container">
-                    {question.explanation.images &&
-                      question.explanation.images.map(
-                        (explanationImage, explanationImageIndex) => (
-                          <img
-                            className="question-image"
-                            key={explanationImageIndex}
-                            src={explanationImage}
-                            alt={`Explanation Img ${explanationImageIndex + 1}`}
-                          />
-                        )
-                      )}
-                  </div>
-                </div>
-              </div>
-            )}
-          </div>
+        )}
+      </div>
     </div>
   );
-  
+
   const generatePageNumbers = () => {
     const totalPages = 30;
     const pages = [];
-  
+
     for (let i = 1; i <= totalPages; i++) {
-      const isSelected = selectedOptions[i - 1]?.length > 0; // Check if any option is selected on this page
+      const isSelected = selectedOptions[i - 1]?.length > 0;
       pages.push({ number: i, isSelected });
     }
-  
+
     return pages;
   };
 
@@ -381,4 +395,4 @@ const Practicetest = ({ data,subtopic }) => {
   );
 };
 
-export default Practicetest;
+export default MockTest;

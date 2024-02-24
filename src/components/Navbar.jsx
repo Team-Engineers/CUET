@@ -1,25 +1,32 @@
-import React, { useContext, useEffect } from "react";
-import { LuUser2 } from "react-icons/lu";
+import React, { useEffect, useContext } from "react";
 import { NavLink, useLocation } from "react-router-dom/dist";
-import { UserContext } from "../context";
+import { LuUser2 } from "react-icons/lu";
+import { useAuth } from "../utils/context";;
 import BurgerAndMenu from "./burgerAndMenu/BurgerAndMenu";
 
-
 const Navbar = () => {
-  const { userLoggedIn, setUserLoggedIn } = useContext(UserContext);
   const location = useLocation();
-
+  const [auth, setAuth] = useAuth();
   const nav_buttons = [
     { path: "/", title: "Home" },
     { path: "/courses", title: "Courses" },
     { path: "/about", title: "About" },
     { path: "/syllabus", title: "Syllabus" },
   ];
+  const handleLogout = () => {
+    setAuth({
+      ...auth,
+      user: null,
+      accessToken: "",
+    });
+    localStorage.removeItem("auth");
+    console.log("Logout Successfully");
+  };
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
   return (
-     <div className={`navbar ${location.pathname === "/" ? "bg-white" : ""} z-50 relative w-full min-h-[10vh]`}>
+    <div className={`navbar ${location.pathname === "/" ? "bg-white" : ""}  w-full xl:max-w-[95vw] 2xl:max-w-[80vw] min-h-[10vh]`}>
       <div className="navbar-start ml-5 w-72">
         <NavLink to={"/"} className="no-underline gap-2 items-center flex">
           <div className="flex gap-2 items-center">
@@ -29,8 +36,7 @@ const Navbar = () => {
         </NavLink>
       </div>
       <div className="navbar-end mr-2  lg:ml-auto w-full relative">
-        {/* Normal */}
-        <ul className="menu menu-horizontal lg:w-full lg:max-w-3xl justify-between lg:justify-evenly items-center">
+        <ul className="menu menu-horizontal lg:w-full lg:max-w-3xl lg:justify-evenly items-center">
           {nav_buttons.map((nav, i) => (
             <li className="hidden lg:flex ">
               <div className="h-[21px] flex flex-col items-start justify-start gap-[2px] text-blueviolet-100">
@@ -43,49 +49,70 @@ const Navbar = () => {
               </div>
             </li>
           ))}
-          <li className="hidden lg:flex">
-            <NavLink
-              to={!userLoggedIn ? "/login" : "/profile"}
-              className={
-                "flex justify-between text-sm md:text-lg font-medium text-blueviolet-100 hover:bg-blueviolet-100 hover:text-white no-underline border-solid border-2 border-blueviolet-100 rounded-full py-2 md:py-3 md:px-6"
-              }
-            >
-              {!userLoggedIn ? (
-                "Login"
-              ) : (
-                <span>
-                  <LuUser2 className="mr-1" />
-                  Profile{" "}
-                </span>
-              )}
-            </NavLink>
-          </li>
-          <li className="hidden lg:flex">
+
+          {!auth?.user ? (
+            <>
+              <li className="hidden lg:flex">
+                <NavLink
+                  to={!auth?.user ? "/login" : "/profile"}
+                  className={
+                    "flex justify-between text-sm md:text-lg font-medium text-blueviolet-100 hover:bg-blueviolet-100 hover:text-white no-underline border-solid border-2 border-blueviolet-100 rounded-full py-2 md:py-3 md:px-6"
+                  }
+                >
+                  Login
+                </NavLink>
+              </li>
+
+              <li className="hidden lg:flex">
             <NavLink
               to={"/signup"}
-              onClick={() => { if (userLoggedIn) setUserLoggedIn(false) }}
               className={
                 "text-sm md:text-lg font-medium text-white bg-salmon-200 hover:bg-salmon-200 no-underline rounded-full py-2 border-solid border-2 md:py-3 md:px-6"
               }
             >
-              {!userLoggedIn ? <span>Sign Up</span> : <span>Sign Out</span>}
+              <span>Sign Up</span>
             </NavLink>
           </li>
-         
-        </ul>
+            </>
+          ) : (
+            <>
+              <li className="hidden lg:flex">
+                <NavLink
+                  to={!auth?.user ? "/login" : "/profile"}
+                  className={
+                    "flex justify-between text-sm md:text-lg font-medium text-blueviolet-100 hover:bg-blueviolet-100 hover:text-white no-underline border-solid border-2 border-blueviolet-100 rounded-full py-2 md:py-3 md:px-6"
+                  }
+                >
+                  <span>
+                    <LuUser2 className="mr-1" />
+                    Profile{" "}
+                  </span>
 
-        
-         
-        </div>
+                </NavLink>
+              </li>
+              <li className="hidden lg:flex">
+            <button 
+              onClick={handleLogout}
+              className={
+                "text-sm md:text-lg font-medium text-white bg-salmon-200 hover:bg-salmon-200 no-underline rounded-full py-2 border-solid border-2 md:py-3 md:px-6"
+              }
+            >
+              <span>Log Out</span>
+            </button>
+          </li>
+            </>
+          )}
+
+          
+        </ul>
         {location.pathname === "/" && (
-          <b className="hidden lg:block absolute right-0 text-blueviolet-100 top-20 mr-9">+91 8279662680</b>
+          <b className="hidden lg:block absolute text-blueviolet-100 top-20 mr-9">+91 8279662680</b>
         )}
-        <li className="lg:hidden">
+      </div>
+      <li className="lg:hidden">
           <BurgerAndMenu/>
           </li>
-      </div>
-     
-   
+    </div>
   );
 };
 
