@@ -68,6 +68,7 @@ const Courses = () => {
         <div className="max-w-[180vh] relative z-10 mx-auto flex flex-col items-center mt-[-40px]">
           <div className="flex flex-col items-center justify-center mt-[50px] ">
             <div className={`my-6 flex md:flex-row flex-col gap-[70px] `}>
+              
               <TopicContainer
                 brick={require("../../assets/images/signup/brick.png")}
                 heading="General English"
@@ -101,6 +102,7 @@ const Courses = () => {
                       brick={subtopic.image}
                       heading={subtopic.title}
                       color={subtopic.color}
+                      subheading="domain"
                     />
                   </Link>
                 </div>
