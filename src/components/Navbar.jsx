@@ -1,12 +1,13 @@
 import React, { useContext, useEffect } from "react";
-import { GiHamburgerMenu } from "react-icons/gi";
 import { LuUser2 } from "react-icons/lu";
 import { NavLink, useLocation } from "react-router-dom/dist";
 import { UserContext } from "../context";
+import BurgerAndMenu from "./burgerAndMenu/BurgerAndMenu";
+
 
 const Navbar = () => {
-  const location = useLocation();
   const { userLoggedIn, setUserLoggedIn } = useContext(UserContext);
+  const location = useLocation();
 
   const nav_buttons = [
     { path: "/", title: "Home" },
@@ -18,7 +19,7 @@ const Navbar = () => {
     window.scrollTo(0, 0);
   }, []);
   return (
-    <div className={`navbar ${location.pathname === "/" ? "bg-white" : ""} z-50 relative w-full xl:max-w-[95vw] 2xl:max-w-[80vw] min-h-[10vh]`}>
+     <div className={`navbar ${location.pathname === "/" ? "bg-white" : ""} z-50 relative w-full min-h-[10vh]`}>
       <div className="navbar-start ml-5 w-72">
         <NavLink to={"/"} className="no-underline gap-2 items-center flex">
           <div className="flex gap-2 items-center">
@@ -29,7 +30,7 @@ const Navbar = () => {
       </div>
       <div className="navbar-end mr-2  lg:ml-auto w-full relative">
         {/* Normal */}
-        <ul className="menu menu-horizontal lg:w-full lg:max-w-3xl lg:justify-evenly items-center">
+        <ul className="menu menu-horizontal lg:w-full lg:max-w-3xl justify-between lg:justify-evenly items-center">
           {nav_buttons.map((nav, i) => (
             <li className="hidden lg:flex ">
               <div className="h-[21px] flex flex-col items-start justify-start gap-[2px] text-blueviolet-100">
@@ -42,7 +43,6 @@ const Navbar = () => {
               </div>
             </li>
           ))}
-
           <li className="hidden lg:flex">
             <NavLink
               to={!userLoggedIn ? "/login" : "/profile"}
@@ -71,78 +71,21 @@ const Navbar = () => {
               {!userLoggedIn ? <span>Sign Up</span> : <span>Sign Out</span>}
             </NavLink>
           </li>
-
+         
         </ul>
-        {/* <b className="">+91 8279662680</b> */}
 
-        {/* dropdown */}
-        <div className="dropdown">
-          <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden p-0 mr-5">
-            <GiHamburgerMenu className="text-blueviolet-100" size={"2em"} />
-          </div>
-          <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-50 bg-white p-2 shadow bg-base-100 rounded-box w-52 right-[0px]">
-            {nav_buttons.map((nav, i) => (
-              <li className="my-1">
-                <div className="h-[21px] flex flex-col items-start justify-start gap-[2px] text-blueviolet-100 ">
-                  <NavLink
-                    to={nav.path}
-                    className={`no-underline text-blueviolet-100 text-center w-full ${location.pathname === nav.path ? "active" : ""}`}
-                  >
-                    <b className="flex-1 relative cursor-pointer text-blueviolet-100 text-lg md:font-bold">{nav.title}</b>
-                  </NavLink>
-                </div>
-              </li>
-            ))}
-
-            {/* Not Logged In */}
-            {!userLoggedIn && (
-              <li className="my-1">
-                <div className="h-[21px] flex flex-col items-start justify-start gap-[2px] text-blueviolet-100 ">
-                  <NavLink to={"/login"} className={`no-underline text-blueviolet-100 text-center w-full `}>
-                    <b className="flex-1 relative cursor-pointer text-blueviolet-100 text-lg md:font-bold">Login</b>
-                  </NavLink>
-                </div>
-              </li>
-            )}
-            {!userLoggedIn && (
-              <li className="my-1">
-                <div className="h-[21px] flex flex-col items-start justify-start gap-[2px] text-blueviolet-100 ">
-                  <NavLink to={"/signup"} className={`no-underline text-blueviolet-100 text-center w-full `}>
-                    <b className="flex-1 relative cursor-pointer text-salmon-200 text-lg md:font-bold">Signup</b>
-                  </NavLink>
-                </div>
-              </li>
-            )}
-
-            {/* Logged In */}
-            {userLoggedIn && (
-              <li className="my-1">
-                <div className="h-[21px] flex flex-col items-start justify-start gap-[2px] text-blueviolet-100 ">
-                  <NavLink to={"/profile"} className={`no-underline text-blueviolet-100 text-center w-full `}>
-                    <b className="flex-1 relative cursor-pointer text-blueviolet-100 text-lg md:font-bold">
-                      <LuUser2 className="mr-2" />
-                      Profile
-                    </b>
-                  </NavLink>
-                </div>
-              </li>
-            )}
-            {userLoggedIn && (
-              <li className="my-1">
-                <div className="h-[21px] flex flex-col items-start justify-start gap-[2px] text-blueviolet-100 ">
-                  <NavLink onClick={() => setUserLoggedIn(false)} className={`no-underline text-blueviolet-100 text-center w-full `}>
-                    <b className="flex-1 relative cursor-pointer text-salmon-200 text-lg md:font-bold">Signout</b>
-                  </NavLink>
-                </div>
-              </li>
-            )}
-          </ul>
+        
+         
         </div>
         {location.pathname === "/" && (
-          <b className="hidden lg:block absolute text-blueviolet-100 top-20 mr-9">+91 8279662680</b>
+          <b className="hidden lg:block absolute right-0 text-blueviolet-100 top-20 mr-9">+91 8279662680</b>
         )}
+        <li className="lg:hidden">
+          <BurgerAndMenu/>
+          </li>
       </div>
-    </div>
+     
+   
   );
 };
 

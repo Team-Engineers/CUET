@@ -14,11 +14,11 @@ const Testinomials2 = ({ image, color, name, text, university }) => {
   return (
     <div
       style={{ background: color }}
-      className="cursor-pointer w-[20em] min-h-[27em] md:w-[40em] md:h-[13em] py-10 rounded-[16.02px] shadow-[0px_4px_4px_rgba(0,_0,_0,_0.25)] [backdrop-filter:blur(50px)] flex flex-col justify-evenly items-center px-5 ">
-      <div className="text-13xl text-white font-bold">{name}</div>
-      <div className="text-white text-xl text-center my-8">{text}</div>
+      className="cursor-pointer w-[55vw]  max-md:max-h-[30vh] lg:w-[35vw] lg:h-[40vh] py-10 rounded-[16.02px] shadow-[0px_4px_4px_rgba(0,_0,_0,_0.25)] [backdrop-filter:blur(50px)] flex flex-col justify-evenly items-center px-5 ">
+      <div className="md:text-[2vw] text-white font-bold">{name}</div>
+      <div className="text-white md:text-[1.2vw] text-center my-8">{text}</div>
       <hr className="border-[1px] border-solid border-[#D9D9D9] w-full" />
-      <div className="mb-0 font-bold text-7xl text-white text-center">{university}</div>
+      <div className="mb-0 font-bold md:text-[2vw] text-white text-center">{university}</div>
     </div>
   );
 };
@@ -80,7 +80,7 @@ function Carroussel(props) {
   return (
     <div
       style={{ width: props.width, height: props.height, margin: props.margin }}
-      className="xl:max-w-[95vw] 2xl:max-w-[80vw] w-full min-h-[60vh] flex flex-col justify-center items-center z-10"
+      className="  w-full lg:min-h-[60vh] flex flex-col justify-center items-center z-10"
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
     >
