@@ -155,7 +155,9 @@
     padding: 10px;
     background-color: #ffffff;
 }
-
+.popupquestion{
+    z-index: 100;
+}
 
 .question-practice .question {
     display: flex;

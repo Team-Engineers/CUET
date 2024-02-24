@@ -22,6 +22,17 @@ const MockTest = ({ data, subtopic }) => {
   const [correctAnswers, setCorrectAnswers] = useState(0);
   const [incorrectAnswers, setIncorrectAnswers] = useState(0);
   const [showResultPopup, setShowResultPopup] = useState(false);
+  const [showPagePopup, setShowPagePopup] = useState(false);
+
+  const [showPopup, setShowPopup] = useState(false);
+
+  const handlePopupOpen = () => {
+    setShowPopup(true);
+  };
+
+  const handlePopupClose = () => {
+    setShowPopup(false);
+  };
   useEffect(() => {
     const storedPage = localStorage.getItem("currentPage");
     const parsedPage = parseInt(storedPage, 10);
@@ -259,13 +270,38 @@ const MockTest = ({ data, subtopic }) => {
 
   return (
     <section className="flex lg:flex-row flex-col mb-20 items-center justify-center lg:justify-between">
+      <div className={`flex px-5 top-[-25px] lg:hidden rounded  text-white justify-between relative items-center`}>
+          <div className={`text-[20px] gap-1 px-10 border border-black border-solid py-3 bg-gradient-to-br overflow-hidden ${timerColor} flex justify-center items-center `}>
+            <div className="text-[20px] ">
+            <TfiTimer />
+            </div>
+            {Math.floor(timer / 60)
+              .toString()
+              .padStart(2, "0")}
+            :
+            {(timer % 60).toString().padStart(2, "0")}
+      
+          </div>
+          <div className="w-full flex justify-center items-center">
+          {isLoading ? (
+            <CuetLoader />
+          ) : (
+            <button
+              className="w-[70%] mr-5 relative flex justify-center items-center rounded bg-gradient-to-br overflow-hidden from-[#617cea] to-white text-white px-7 p-3"
+              onClick={handleSubmit}
+            >
+              Submit
+            </button>
+          )}
+        </div>
+        </div>
       <div className="  lg:w-[70vw] w-full ">
         {data
           .slice(currentPage, currentPage + 1)
           .map((question, questionIndex) =>
             renderQuestion(question, questionIndex)
           )}
-        <div className="flex justify-between">
+        <div className="flex items-center justify-between">
           <button
             className={`top-[20px] relative flex justify-center items-center rounded  bg-gradient-to-br overflow-hidden from-[#617cea] to-white text-white px-7 p-3 ${currentPage === 0 ? "disabled" : ""}`}
             onClick={() => setCurrentPage((prev) => prev - 1)}
@@ -274,6 +310,7 @@ const MockTest = ({ data, subtopic }) => {
           >
             Prev
           </button>
+          <button className="relative flex justify-center items-center rounded  bg-gradient-to-br overflow-hidden from-[#617cea] to-white text-white px-7 p-3" onClick={handlePopupOpen}>All Questions</button>
 
           <button
             className={`top-[20px] relative flex justify-center items-center rounded  bg-gradient-to-br overflow-hidden from-[#617cea] to-white text-white px-7 p-3 ${currentPage === 29 ? "disabled" : ""}`}
@@ -285,8 +322,8 @@ const MockTest = ({ data, subtopic }) => {
           </button>
         </div>
       </div>
-      <div className="lg:max-w-[30vw] h-[80vh] flex flex-col items-center justify-between max-w-full">
-        <div className={`flex px-5 rounded border border-black border-solid py-3 bg-gradient-to-br overflow-hidden ${timerColor} text-white justify-center relative items-center`}>
+      <div className="lg:max-w-[30vw] max-lg:hidden h-[80vh] flex flex-col items-center justify-between max-w-full">  
+        <div className={`flex px-5 max-lg:hidden rounded border border-black border-solid py-3 bg-gradient-to-br overflow-hidden ${timerColor} text-white justify-center relative items-center`}>
           <div className="text-[20px] flex justify-center items-center px-2">
             <TfiTimer />
           </div>
@@ -316,7 +353,7 @@ const MockTest = ({ data, subtopic }) => {
             </button>
           ))}
         </div>
-        <div className="w-full flex justify-center items-center">
+        <div className="w-full max-lg:hidden flex justify-center items-center">
           {isLoading ? (
             <CuetLoader />
           ) : (
@@ -329,13 +366,30 @@ const MockTest = ({ data, subtopic }) => {
           )}
         </div>
       </div>
-      {showResultPopup && (
-        <div className="result-popup">
-          <h2>Result</h2>
-          <p>Correct Answers: {correctAnswers}</p>
-          <p>Incorrect Answers: {incorrectAnswers}</p>
-          <button onClick={() => setShowResultPopup(false)}>Close</button>
+      {showPopup && (
+        <div className="fixed popupquestion inset-0  flex flex-col items-center justify-center overflow-hidden">
+        <div className="backdrop-blur backdrop-filter bg-[#0000004f] absolute inset-0"></div>
+        <div className="relative z-10 mx-10">
+          {generatePageNumbers().map(({ number, isSelected }) => (
+            <button
+              key={number}
+              className={`rounded w-[50px] h-[50px] lg:w-[5vw] lg:h-[8vh] p-[1vw] m-[0.4vw] ${currentPage === number - 1
+                ? "bg-gradient-to-br overflow-hidden from-[#617cea] to-white text-white"
+                : isSelected
+                  ? "bg-green-500 text-white"
+                  : savedQuestions.includes(number - 1)
+                    ? "bg-red-900 text-white"
+                    : "bg-white"
+                }`}
+              onClick={() => setCurrentPage(number - 1)}
+            >
+              {number}
+            </button>
+          ))}
+          <button className="relative flex justify-center items-center rounded  bg-gradient-to-br overflow-hidden from-[#617cea] to-white text-white px-7 p-3" onClick={handlePopupClose}>Close</button>
         </div>
+      </div>
+      
       )}
     </section>
   );
