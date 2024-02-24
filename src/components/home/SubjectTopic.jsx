@@ -15,9 +15,9 @@ const SubjectTopic = () => {
       </div>
       <div className="min-h-[60vh] h-full flex justify-center items-center w-full lg:max-w-[80vw]">
         <div className="h-full w-full flex flex-col items-center md:flex-row md:justify-around ">
-          <DomainTopic color={"bg-salmon-100"} img_path={"/domain1.png"} text="General English" path={"/test"} />
+          <DomainTopic color={"bg-salmon-100"} img_path={"/domain1.png"} text="General English" path={"/test/General%20English"} />
           <DomainTopic color={"bg-darkyellow"} img_path={"/domain2.png"} text="Domain Subjects" path={"/courses"} />
-          <DomainTopic color={"bg-darkcyan"} img_path={"/domain3.png"} text="General Test" path={"/test"} />
+          <DomainTopic color={"bg-darkcyan"} img_path={"/domain3.png"} text="General Test" path={"/test/General%20Test"} />
         </div>
       </div>
 

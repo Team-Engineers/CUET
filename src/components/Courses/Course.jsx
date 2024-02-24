@@ -56,7 +56,7 @@ const Courses = () => {
           </svg>
         </div>
         <Link
-          className="text-[#5648FC] flex items-center relative z-10 pr-2 "
+          className="text-[#5648FC] flex items-center relative z-20 pr-2 "
           to={"/"}
         >
           <IoArrowBack size={40} />
