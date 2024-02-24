@@ -15,6 +15,8 @@ import Coursespage from "./pages/Coursespage";
 import PrivateRoutes from "./utils/PrivateRoutes";
 import MockTestMain from "./components/practicetest/MockTestMain";
 import Practice from "./components/practicetest/Practice";
+import University from "./pages/UniversityPage";
+
 const App = () => {
   // const isUserSignedIn = () => {
   //   const tokenData = JSON.parse(localStorage.getItem("accessToken"));
@@ -32,6 +34,8 @@ const App = () => {
           <Route path="/syllabus" element={<Syllabus />} />
           <Route path="/courses" element={<Coursespage />} /> 
           <Route path="/test/practice/:heading/:subTopic" element={<Practice />} />
+          <Route path="/courses" element={<Coursespage />} />
+          <Route path="/university" element={<University />} />
           <Route path="/courses/:subtopic" element={<SubtopicPage />} />
           <Route element={<PrivateRoutes />}>
             <Route path="/test/:heading" element={<TestPage />} />

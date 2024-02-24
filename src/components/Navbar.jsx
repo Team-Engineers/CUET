@@ -125,7 +125,6 @@ const Navbar = () => {
               </li>
             ))}
 
-            {/* Not Logged In */}
             {!auth?.user && (
               <li className="my-1">
                 <div className="h-[21px] flex flex-col items-start justify-start gap-[2px] text-blueviolet-100 ">
@@ -145,7 +144,6 @@ const Navbar = () => {
               </li>
             )}
 
-            {/* Logged In */}
             {auth?.user && (
               <li className="my-1">
                 <div className="h-[21px] flex flex-col items-start justify-start gap-[2px] text-blueviolet-100 ">
