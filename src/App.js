@@ -13,6 +13,8 @@ import Profile from "./pages/Profile";
 import Syllabus from "./pages/Syllabus";
 import Coursespage from "./pages/Coursespage";
 import PrivateRoutes from "./utils/PrivateRoutes";
+import University from "./pages/UniversityPage";
+
 const App = () => {
   // const isUserSignedIn = () => {
   //   const tokenData = JSON.parse(localStorage.getItem("accessToken"));
@@ -28,6 +30,7 @@ const App = () => {
           <Route path="/profile" element={<Profile />} />
           <Route path="/syllabus" element={<Syllabus />} />
           <Route path="/courses" element={<Coursespage />} />
+          <Route path="/university" element={<University />} />
           <Route path="/courses/:subtopic" element={<SubtopicPage />} />
           <Route element={<PrivateRoutes />}>
             <Route path="/test" element={<TestPage />} />
