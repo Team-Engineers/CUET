@@ -124,7 +124,7 @@ const MockTest = ({ data, subtopic }) => {
         <div className="flex  flex-col">
           <div className="flex justify-between">
             <div className="px-4 py-5">
-              <span className={`p-[0.5vw] m-3 rounded-full bg-gradient-to-br overflow-hidden from-[#617cea] to-white text-white id-${question._id}`}>
+              <span className={`p-[0.5vw] m-3 rounded-full bg-gradient-to-br overflow-hidden from-[#617cea] to-black text-white id-${question._id}`}>
                 {`${questionIndex + 1 + currentPage * 1} `}
               </span>
               of
@@ -133,7 +133,7 @@ const MockTest = ({ data, subtopic }) => {
               </span>
             </div>
 
-            <h1 className="bg-gradient-to-br overflow-hidden from-[#617cea] to-[#2e2323] absolute right-0 text-white px-4 py-5">{subtopic}</h1>
+            {/* <h1 className="bg-gradient-to-br overflow-hidden rounded-s-2xl from-[#617cea] to-[#2e2323] absolute right-0 text-white px-4 py-5">{subtopic}</h1> */}
           </div>
           <div className="text-[20px] flex justify-between px-10 pb-6 p-4  relative">
             <div>
@@ -169,7 +169,7 @@ const MockTest = ({ data, subtopic }) => {
       {question.subQuestions[0].options.map((option, optionIndex) => (
         <div
           key={optionIndex}
-          className={`option-box bg-white ${!isSubmitted &&
+          className={`option-box  bg-white ${!isSubmitted &&
             selectedOptions[currentPage] &&
             selectedOptions[currentPage][questionIndex] === optionIndex
             ? "bg-gradient-to-br overflow-hidden from-[#617cea] to-white text-white"
@@ -190,7 +190,7 @@ const MockTest = ({ data, subtopic }) => {
           <span className="font-bold rounded-[150px] px-3 p-2 border-solid border-black border-[0.5px] mx-6">
             {alphabets[optionIndex]}
           </span>
-          <div className="flex mx-8 text-[20px]  justify-start gap-3 w-100 items-center ">
+          <div className="flex mx-8 text-[20px] top-[-13px] relative  justify-start gap-3 w-100 items-center ">
             <MathText text={option.text} textTag="h6" />
             <div className="single-image-container">
               {option.image && (
@@ -269,9 +269,9 @@ const MockTest = ({ data, subtopic }) => {
   };
 
   return (
-    <section className="flex lg:flex-row flex-col mb-20 items-center justify-center lg:justify-between">
-      <div className={`flex px-5 top-[-25px] lg:hidden rounded  text-white justify-between relative items-center`}>
-          <div className={`text-[20px] gap-1 px-10 border border-black border-solid py-3 bg-gradient-to-br overflow-hidden ${timerColor} flex justify-center items-center `}>
+    <section className="mx-auto mb-8 max-w-[1280px] ">
+      <div className={`flex px-5 top-[-25px] lg:hidden rounded  text-white  relative items-center`}>
+          <div className={`text-[20px] gap-1 rounded-xl px-10 border border-white border-solid py-3 bg-gradient-to-br overflow-hidden ${timerColor} flex justify-center items-center `}>
             <div className="text-[20px] ">
             <TfiTimer />
             </div>
@@ -282,12 +282,12 @@ const MockTest = ({ data, subtopic }) => {
             {(timer % 60).toString().padStart(2, "0")}
       
           </div>
-          <div className="w-full flex justify-center items-center">
+          <div className="w-full ml-6 flex justify-center items-center">
           {isLoading ? (
             <CuetLoader />
           ) : (
             <button
-              className="w-[70%] mr-5 relative flex justify-center items-center rounded bg-gradient-to-br overflow-hidden from-[#617cea] to-white text-white px-7 p-3"
+              className="w-[70%] mr-5 border-none relative flex justify-center items-center rounded bg-gradient-to-br overflow-hidden from-[#617cea] to-black text-white px-7 p-3"
               onClick={handleSubmit}
             >
               Submit
@@ -295,7 +295,8 @@ const MockTest = ({ data, subtopic }) => {
           )}
         </div>
         </div>
-      <div className="  lg:w-[70vw] w-full ">
+        <div className="flex justify-between">
+        <div className="w-full ">
         {data
           .slice(currentPage, currentPage + 1)
           .map((question, questionIndex) =>
@@ -303,18 +304,19 @@ const MockTest = ({ data, subtopic }) => {
           )}
         <div className="flex items-center justify-between">
           <button
-            className={`top-[20px] relative flex justify-center items-center rounded  bg-gradient-to-br overflow-hidden from-[#617cea] to-white text-white px-7 p-3 ${currentPage === 0 ? "disabled" : ""}`}
-            onClick={() => setCurrentPage((prev) => prev - 1)}
+              className=" border-none shadow-2xl relative flex justify-center items-center rounded bg-gradient-to-br overflow-hidden from-[#617cea] to-black text-white px-7 p-3"
+              onClick={() => setCurrentPage((prev) => prev - 1)}
             disabled={currentPage === 0}
 
           >
             Prev
           </button>
-          <button className="relative flex justify-center items-center rounded  bg-gradient-to-br overflow-hidden from-[#617cea] to-white text-white px-7 p-3" onClick={handlePopupOpen}>All Questions</button>
+          <button className=" border-none md:hidden shadow-2xl relative flex justify-center items-center rounded bg-gradient-to-br overflow-hidden from-[#617cea] to-black text-white px-7 p-3"
+ onClick={handlePopupOpen}>All Questions</button>
 
           <button
-            className={`top-[20px] relative flex justify-center items-center rounded  bg-gradient-to-br overflow-hidden from-[#617cea] to-white text-white px-7 p-3 ${currentPage === 29 ? "disabled" : ""}`}
-            onClick={() => setCurrentPage((prev) => prev + 1)}
+              className=" border-none shadow-2xl relative flex justify-center items-center rounded bg-gradient-to-br overflow-hidden from-[#617cea] to-black text-white px-7 p-3"
+              onClick={() => setCurrentPage((prev) => prev + 1)}
             disabled={currentPage === 29}
 
           >
@@ -322,8 +324,8 @@ const MockTest = ({ data, subtopic }) => {
           </button>
         </div>
       </div>
-      <div className="lg:max-w-[30vw] max-lg:hidden h-[80vh] flex flex-col items-center justify-between max-w-full">  
-        <div className={`flex px-5 max-lg:hidden rounded border border-black border-solid py-3 bg-gradient-to-br overflow-hidden ${timerColor} text-white justify-center relative items-center`}>
+      <div className="max-w-[400px] border-solid bg-blue-200 border-black mx-8 max-lg:hidden  flex flex-col items-center justify-center ">  
+        <div className={`flex px-5 max-lg:hidden rounded border border-white border-solid py-3 bg-gradient-to-br overflow-hidden ${timerColor} text-white justify-center relative items-center`}>
           <div className="text-[20px] flex justify-center items-center px-2">
             <TfiTimer />
           </div>
@@ -335,13 +337,14 @@ const MockTest = ({ data, subtopic }) => {
             {(timer % 60).toString().padStart(2, "0")}
           </div>
         </div>
-        <div>
+        <div className="my-4 max-w-[400px] justify-center items-center mx-auto flex flex-wrap  ">
           {generatePageNumbers().map(({ number, isSelected }) => (
             <button
               key={number}
-              className={`rounded w-[50px] h-[50px] lg:w-[5vw] lg:h-[8vh] p-[1vw] m-[0.4vw] ${currentPage === number - 1
-                  ? "bg-gradient-to-br overflow-hidden from-[#617cea] to-white text-white"
+              className={`rounded border-none shadow-xl w-[50px] h-[50px] m-1 ${currentPage === number - 1
+                  ? "bg-gradient-to-br overflow-hidden from-[#617cea] to-black text-white"
                   : isSelected
+                  
                     ? "bg-green-500 text-white"
                     : savedQuestions.includes(number - 1)
                       ? "bg-red-900 text-white"
@@ -353,12 +356,12 @@ const MockTest = ({ data, subtopic }) => {
             </button>
           ))}
         </div>
-        <div className="w-full max-lg:hidden flex justify-center items-center">
+        <div className="w-[70%] mx-auto max-lg:hidden flex justify-center items-center">
           {isLoading ? (
             <CuetLoader />
           ) : (
             <button
-              className="w-[70%] mr-5 relative flex justify-center items-center rounded bg-gradient-to-br overflow-hidden from-[#617cea] to-white text-white px-7 p-3"
+              className=" border-none shadow-2xl relative flex justify-center items-center rounded bg-gradient-to-br overflow-hidden from-[#617cea] to-black text-white px-7 p-3"
               onClick={handleSubmit}
             >
               Submit
@@ -366,6 +369,8 @@ const MockTest = ({ data, subtopic }) => {
           )}
         </div>
       </div>
+        </div>
+     
       {showPopup && (
         <div className="fixed popupquestion inset-0  flex flex-col items-center justify-center overflow-hidden">
         <div className="backdrop-blur backdrop-filter bg-[#0000004f] absolute inset-0"></div>
@@ -373,20 +378,21 @@ const MockTest = ({ data, subtopic }) => {
           {generatePageNumbers().map(({ number, isSelected }) => (
             <button
               key={number}
-              className={`rounded w-[50px] h-[50px] lg:w-[5vw] lg:h-[8vh] p-[1vw] m-[0.4vw] ${currentPage === number - 1
-                ? "bg-gradient-to-br overflow-hidden from-[#617cea] to-white text-white"
+              className={`rounded border-none shadow-2xl w-[50px] h-[50px] lg:w-[5vw] lg:h-[8vh] p-[1vw] m-[0.6vw] ${currentPage === number - 1
+                ? "bg-gradient-to-br overflow-hidden from-[#617cea] to-black text-white"
                 : isSelected
                   ? "bg-green-500 text-white"
                   : savedQuestions.includes(number - 1)
                     ? "bg-red-900 text-white"
-                    : "bg-white"
+                    : "bg-[#ffffff6e] backdrop-blur-[100px]"
                 }`}
               onClick={() => setCurrentPage(number - 1)}
             >
               {number}
             </button>
           ))}
-          <button className="relative flex justify-center items-center rounded  bg-gradient-to-br overflow-hidden from-[#617cea] to-white text-white px-7 p-3" onClick={handlePopupClose}>Close</button>
+          <button className=" border-none shadow-2xl relative flex justify-center items-center rounded bg-gradient-to-br overflow-hidden from-[#617cea] to-black text-white px-7 p-3"
+ onClick={handlePopupClose}>Close</button>
         </div>
       </div>
       

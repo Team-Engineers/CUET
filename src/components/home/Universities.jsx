@@ -3,14 +3,14 @@ import UniImage from "../../assets/images/university-img.png";
 
 const Universities = () => {
   return (
-    <div className="xl:max-w-[95vw] 2xl:max-w-[80vw] w-full flex  max-2xl:mt-[3vw] flex-col justify-evenly items-center max-md:mt-20 ">
-      <h1 className="text-blueviolet-100 mb-6 max-md:ml-3 max-md:mr-10">
+    <div className="md:mx-[30px] mx-[10px]">
+       <div className=" max-w-[1280px] mx-auto">
+      <h1 className="text-blueviolet-100 my-6  md:text-center">
         Universities Participating in <span className="text-red-500">CUET</span>
       </h1>
-
-      <div className="w-full  md:min-h-[60vh] h-full  flex flex-col justify-around items-center lg:flex-row ">
+      <div className="flex w-full  md:flex-row flex-col justify-between items-center">
         <div className="mx-1 mt-2">
-          <table className="border-collapse table  md:w-[500px] max-md:max-w-[400px]  rounded-2xl shadow-[0px_4px_6px_0px_rgba(0,0,0,0.1)]">
+          <table className="border-collapse table  lg:w-[600px]    rounded-2xl shadow-[0px_4px_6px_0px_rgba(0,0,0,0.1)]">
             <thead>
               <tr>
                 <th
@@ -55,11 +55,15 @@ const Universities = () => {
               </tr>
             </tbody>
           </table>
-          <Link to="/university"><p className="w-full text-right underline text-[#1877F2] cursor-pointer my-3 " >View More Colleges</p></Link>
+          <Link to="/university"><p className="w-full font-medium text-right my-5 underline text-[#1877F2] cursor-pointer  " >View More Colleges</p></Link>
         </div>
-        <img alt="" src={UniImage} className="w-72 h-72 md:h-[400px] md:w-[400px] z-40 mt-[-20px]" />
+        <div>
+        <img alt="" src={UniImage} className=" max-md:w-[90%]   z-40 " />
+        </div>
       </div>
     </div>
+    </div>
+   
   );
 };
 

@@ -53,30 +53,30 @@ const Footer = () => {
               <p className="md:text-center font-normal my-3">Private Colleges</p>
             </div>
             <div className="min-w-[10em] mx-auto my-5 md:my-0 md:ml-0">
-              <p className="md:text-center  font-bold mb-10">Contact US</p>
-              <p className="md:text-center font-normal flex items-center my-3">
+              <p className=" ml-4  font-bold mb-10">Contact US</p>
+              <p className="md:text-center max-sm:text-[12px] font-normal flex items-center my-3">
                 <span className="flex justify-center items-center mr-1">
-                  <IoMdMail className="" size={"1.5em"} />
+                  <IoMdMail className="text-[1.1em] md:text-[1.5em]"  />
                 </span>
-                <span>info@testknock.com</span>
+                <span >info@testknock.com</span>
               </p>
-              <p className="md:text-center font-normal flex items-center my-3">
+              <p className="md:text-center max-sm:text-[12px] font-normal flex items-center my-3">
                 <span className="flex justify-center items-center mr-1">
-                  <IoMdCall className="" size={"1.5em"} />
+                  <IoMdCall className="text-[1.1em] md:text-[1.5em]"  />
                 </span>
                 <span>9953617456</span>
               </p>
-              <p className="flex justify-between max-w-[15em] my-3 ">
+              <p className="flex max-sm:text-[12px] justify-between max-w-[15em] my-3 ">
                 <span className="h-full">
-                  <IoMdPin className="mr-1 mb-auto" size={"1.5em"} />
+                  <IoMdPin className="text-[1.1em] md:text-[1.5em]" />
                 </span>
                 <span className="font-normal ">Office No. - 42, Durga Vihar, near Amrapali Saphhire, Sec-45, Noida-201301</span>
               </p>
             </div>
-            <div className="min-w-[10em]  mx-auto my-5 md:hidden">
+            <div className="min-w-[10em]   mx-auto my-5 md:hidden">
               <p className="font-bold mb-10 md:text-center">Support</p>
-              <p className="my-3 md:text-center">Terms & Conditions</p>
-              <p className="my-3 md:text-center">Privacy</p>
+              <p className="my-3 md:text-center max-sm:text-[12px]">Terms & Conditions</p>
+              <p className="my-3 md:text-center max-sm:text-[12px]">Privacy</p>
             </div>
           </div>
         </div>

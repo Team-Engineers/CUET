@@ -44,9 +44,11 @@ const Practice = () => {
   }
 
   return (
-    <div className='bg-gradient-to-br overflow-hidden from-[#abb8ec] to-white'>
-      <Navbar />
-      <section className="question-practice m-[20px]">
+    <>
+         <Navbar />
+
+    <div className='bg-gradient-to-br overflow-hidden from-[#ffffff] to-white'>
+      <section className="question-practice overflow-hidden m-[20px]">
         {data.length > 0 ? (
           <div className="mx-auto">
             <Practicetest subtopic={subTopic} data={data} />
@@ -55,8 +57,10 @@ const Practice = () => {
           <CuetLoader />
         )}
       </section>
-      <Footer />
     </div>
+    <Footer />
+
+    </>
   );
 };
 

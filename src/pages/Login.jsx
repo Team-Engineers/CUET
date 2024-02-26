@@ -5,9 +5,9 @@ import Navbar from "../components/Login/Navbar";
 
 const Login = () => {
   return (
-    <div className="overflow-hidden ">
+    <div className="overflow-hidden h-screen ">
       <Navbar />
-      <div className="md:flex md:h-[80vh] md:w-full md:items-end gap-[10%]">
+      <div className="md:flex  md:w-full md:items-end gap-[10%]">
         <div className="hidden  md:relative md:w-[22rem] lg:w-[40vw] h-[80vh] md:flex md:justify-start md:items-start md:z-0 bg-bgGradientCustom" style={{ "border-radius": "0% 100% 100% 99% / 0% 97% 100% 93%  " }}>
           <div className="md:z-10 md:w-[80%] relative top-[8vh]  md:flex md:justify-end">
             <Lottie animationData={animatedGif} loop={true} style={{ width: '80%' }} />

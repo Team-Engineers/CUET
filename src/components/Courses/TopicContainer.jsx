@@ -2,16 +2,20 @@ import { Link } from "react-router-dom";
 
 const TopicContainer = ({ brick, heading, color, subheading }) => {
   return (
-    <Link
-      to={subheading === "domain" ? `/test/${subheading}/${heading}` : `/test/${heading}`}
-      className="no-underline cursor-pointer flex flex-col items-center justify-evenly box-border text-center text-13xl text-black rounded-xl shadow-[10px_4px_4px_rgba(0,_0,_0,_0.25)] lg:w-[20vw] my-5 lg:h-[40vh] h-[300px] w-[300px]"
+    <div
       style={{ background: color }}
-    >
-      <img className="md:w-[8vw] md:h-[15vh] w-[100px] h-[100px]" loading="eager" alt="" src={brick} />
-      <h1 className="text-5xl md:text-[2vw] text-white max-md:max-w-20 max-w-40 text-center">
-        {heading}
-      </h1>
-    </Link>
+      className="sm:w-[290px] no-underline sm:h-[300px] w-[250px] h-[270px]  flex justify-center items-center relative z-10 rounded-2xl shadow-[10px_10px_4px_0px_rgba(0,0,0,0.3)]">
+      <Link
+        className="no-underline flex flex-col items-center"
+        to={subheading === "domain" ? `/test/${subheading}/${heading}` : `/test/${heading}`}
+      >
+        <img className="w-[100px] h-[100px] relative z-10" loading="eager" alt="" src={brick} />
+        <h1 className="text-5xl md:text-[30px] flex justify-center items-center text-white md:w-40 w-20 text-center">
+          {heading}
+        </h1>
+
+      </Link>
+    </div>
   );
 };
 

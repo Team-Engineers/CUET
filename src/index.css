@@ -30,7 +30,7 @@ top: 436.98px;
 background: linear-gradient(206.9deg, rgba(0, 209, 255, 0.6) 0.06%, rgba(86, 72, 252, 0.6) 75.11%);
 transform: rotate(-64.76deg); */
 
-.swiper {
+/* .swiper {
   width: 100%;
   padding-top: 50px;
   padding-bottom: 50px;
@@ -50,7 +50,7 @@ transform: rotate(-64.76deg); */
 
 .animate-slide {
   animation: slide 0.5s ease-out;
-}
+} */
 
 @keyframes slide {
   from {

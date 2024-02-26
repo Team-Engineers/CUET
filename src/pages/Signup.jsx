@@ -8,7 +8,7 @@ const Signup = () => {
   return (
     <> 
     <Navbar />
-        <div className=" overflow-hidden md:flex md:items-end md:justify-around items-center">
+        <div className=" h-screen overflow-hidden md:flex md:items-end md:justify-around items-center">
         <div className="md:hidden relative w-full">
           <img className="w-full h-[40vh]" src={require("../assets/Vector2.png")} alt="" />
           <div className="absolute mb-10 bottom-0 left-0 w-full flex justify-center">
@@ -38,4 +38,3 @@ const Signup = () => {
 };
 
 export default Signup;
-// lg:w-[32rem] xl:w-[40rem] 2xl:min-w-[45rem]

@@ -35,7 +35,7 @@ const MockTestMain = () => {
   }
 
   return (
-    <div className='bg-gradient-to-br overflow-hidden from-[#abb8ec] to-white'>
+    <div className='bg-gradient-to-br overflow-hidden from-[#ffffff] to-white'>
     <Navbar/>
     <section className="question-practice m-[20px]">
       {data.length > 0 ? (

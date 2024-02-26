@@ -21,7 +21,7 @@ export const MathText = ({ text, textTag = 'p' }) => {
     if (index % 2 === 0) {
       return <span key={index}>{part}</span>;
     } else {
-      return <MathComponent key={index} tex={part} display={false} className='math-expression' />;
+      return <MathComponent key={index} tex={part} display={false} className='math-expression text-center items-center flex justify-center' />;
     }
   });
 
