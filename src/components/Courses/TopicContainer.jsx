@@ -16,7 +16,6 @@ const TopicContainer = ({ brick, heading, color, subheading }) => {
 
       </Link>
     </div>
-
   );
 };
 
