@@ -3,15 +3,22 @@ import './faq.css';
 
 const AccordionItem = ({ title, content, expanded, onClick }) => {
     return (
-        <div className="accordion-item-faq">
+        <div className="accordion-item-faq ">
             <button
                 aria-expanded={expanded}
                 onClick={onClick}
             >
                 <span className="accordion-title-faq ">{title}</span>
-                <span className="icon-faq" aria-hidden="true"></span>
+                <span className="icon-faq " aria-hidden="true"></span>
             </button>
-            <div className="accordion-content-faq" style={{ opacity: expanded ? 1 : 0, maxHeight: expanded ? '15em' : 0 }}>
+            <div
+                className="accordion-content-faq"
+                style={{
+                    opacity: expanded ? 1 : 0,
+                    maxHeight: expanded ? '15em' : 0,
+                    transition: 'opacity 0.3s ease, max-height 0.3s ease',
+                }}
+            >
                 <p>{content}</p>
             </div>
         </div>
@@ -61,7 +68,7 @@ const FrequentlyAskedQuestions = () => {
     ];
 
     return (
-        <div className="container-faq">
+        <div className="container-faq max-w-[1280px] mx-auto">
             <h2 className='faq-heading'>Frequently Asked Questions (FAQs)</h2>
             <Accordion items={faqItems} />
         </div>

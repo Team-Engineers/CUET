@@ -13,7 +13,7 @@ const Courses = () => {
 
   return (
     <div className="w-full  h-full  relative">
-      <div className=" mx-auto overflow-hidden mt-14 px-4 sm:px-6 lg:px-8 flex flex-col justify-around">
+      <div className=" mx-auto overflow-hidden mt-14">
         <div className="left-0 top-0 z-[0] absolute">
           <svg
             width="162"
@@ -55,8 +55,9 @@ const Courses = () => {
             />
           </svg>
         </div>
+        <div className="max-w-[1280px] mx-auto">
         <Link
-          className="text-[#5648FC] flex items-center relative z-20 pr-2 "
+          className="text-[#5648FC] md:mx-20 mx-10 relative top-[20px] flex items-center  z-20 pr-2 "
           to={"/"}
         >
           <IoArrowBack size={40} />
@@ -111,6 +112,7 @@ const Courses = () => {
           </div>
         </div>
       </div>
+        </div>
       <div className="relative top-[-20vh]  ">
         <svg
           width="189"

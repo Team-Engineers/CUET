@@ -6,8 +6,11 @@ import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../utils/context";
 
 const ProfileCard = () => {
+  const [auth, setAuth] = useAuth();
+  console.log(auth?.user?.user?.name);
   const [details, setDetails] = useState({
     firstName: "",
     lastName: "",
@@ -42,15 +45,16 @@ const ProfileCard = () => {
     console.log(data);
   };
   return (
-    <div className="flex flex-col items-center mt-10 ">
-      <div className="flex md:w-[93%] lg:w-[91%] xl:w-[90%] 2xl:w-[88%]" onClick={() => navigate(-1)}>
-        <FiArrowLeft className="text-blueviolet-100 size-7" />
-        <div className="">
-          <h2 className="pl-0 mb-1 text-blueviolet-100 text-5xl xl:text-10xl leading-none">Profile</h2>
+    <div className="flex flex-col  items-center mt-10 ">
+      <div className="flex md:w-[93%] lg:w-[91%] max-w-[1280px] mx-auto" onClick={() => navigate(-1)}>
+          <h1>
+          <FiArrowLeft className="text-blueviolet-100 size-7" />
+          </h1>
+          <h2 className="pl-0 mb-1 text-blueviolet-100 text-5xl xl:text-10xl leading-none">Profile
           <hr className="bg-blueviolet-100 h-1 border-none w-10 m-0 mb-3" />
-        </div>
+          </h2>
       </div>
-      <form className="flex flex-col items-center max-w-none w-full pb-6 md:flex-row md:items-start md:gap-[5%] md:justify-center">
+      <form className="flex flex-col   w-full pb-6 md:flex-col justify-center items-center md:gap-[5%] ">
         <img src={profileImg} alt="" className="w-24 md:w-28 xl:w-36 md:mt-5" />
         <div className="md:w-[75%]">
           <div className="flex flex-col items-center md:items-start">
@@ -61,39 +65,22 @@ const ProfileCard = () => {
                   htmlFor="firstName"
                   className="text-lg before:content-['*'] before:ml-0.5 before:text-red-500 mb-1 text-blueviolet-100 font-semibold "
                 >
-                  First Name
+                  Name
                 </label>
                 <input
                   required
                   name="firstName"
                   type="text"
+                  defaultValue={auth.user?.user?.name}
                   autoComplete="true"
                   autoCorrect="true"
-                  placeholder="Thomas"
-                  className="px-6 py-2 text-lg rounded-full border-none shadow-md shadow-gray-500 w-80 sm:w-[30rem] md:w-[17rem] lg:w-[22rem] xl:w-[27rem] text-[#00000080] 2xl:w-[510px]"
-                  {...register("firstName")}
+                  placeholder="name"
+                  className="px-6 py-2 text-lg rounded-full border-none shadow-md shadow-gray-500 w-70 sm:w-[30rem] md:w-[17rem] lg:w-[22rem] xl:w-[27rem] text-[#00000080] 2xl:w-[510px]"
+  {...register("name")}
                 />
                 {errors.firstName && <p className="text-red-500 font-semibold mb-0 mt-2">{errors.firstName.message}</p>}
               </div>
-              <div className="flex flex-col mb-3 xl:mb-6">
-                <label
-                  htmlFor="lastName"
-                  className="text-lg before:content-['*'] before:ml-0.5 before:text-red-500 mb-1 text-blueviolet-100 font-semibold"
-                >
-                  Last Name
-                </label>
-                <input
-                  required
-                  name="lastName"
-                  type="text"
-                  autoComplete="true"
-                  autoCorrect="true"
-                  placeholder="J"
-                  className="px-6 py-2 text-lg rounded-full border-none shadow-md shadow-gray-500 w-80 sm:w-[30rem] md:w-[17rem] lg:w-[22rem] text-[#00000080] xl:w-[27rem] 2xl:w-[510px]"
-                  {...register("lastName")}
-                />
-                {errors.lastName && <p className="text-red-500 font-semibold mb-0 mt-2">{errors.lastName.message}</p>}
-              </div>
+           
               <div className="flex flex-col mb-3 xl:mb-6">
                 <label
                   htmlFor="email"
@@ -105,11 +92,9 @@ const ProfileCard = () => {
                   required
                   name="email"
                   type="email"
-                  autoComplete="true"
-                  autoCorrect="true"
-                  placeholder="Thomas.j@gmail.com"
-                  className="px-6 py-2 text-lg rounded-full border-none shadow-md shadow-gray-500 w-80 sm:w-[30rem] md:w-[17rem] lg:w-[22rem] xl:w-[27rem] text-[#00000080] 2xl:w-[510px]"
-                  {...register("email")}
+
+                  defaultValue={auth.user?.user?.email}
+                  className="px-6 py-2 text-lg rounded-full border-none shadow-md shadow-gray-500 w-70 sm:w-[30rem] md:w-[17rem] lg:w-[22rem] xl:w-[27rem] text-[#00000080] 2xl:w-[510px]"
                 />
                 {errors.email && <p className="text-red-500 font-semibold mb-0 mt-2">{errors.email.message}</p>}
               </div>
@@ -129,7 +114,7 @@ const ProfileCard = () => {
                   placeholder="1998-12-5"
                   onFocus={(e) => (e.target.type = "date")}
                   onBlur={(e) => (e.target.type = "text")}
-                  className="px-6 py-2 text-lg rounded-full border-none shadow-md shadow-gray-500 w-80 sm:w-[30rem] md:w-[17rem] lg:w-[22rem] xl:w-[27rem] text-[#00000080] 2xl:w-[510px]"
+                  className="px-6 py-2 text-lg rounded-full border-none shadow-md shadow-gray-500 w-70 sm:w-[30rem] md:w-[17rem] lg:w-[22rem] xl:w-[27rem] text-[#00000080] 2xl:w-[510px]"
                   {...register("dob")}
                 />
                 {errors.dob && <p className="text-red-500 font-semibold mb-0 mt-2">{errors.dob.message}</p>}
@@ -147,8 +132,10 @@ const ProfileCard = () => {
                   type="number"
                   autoComplete="true"
                   autoCorrect="true"
+                  defaultValue={auth.user?.user?.contact}
+
                   placeholder="+000-000-0000"
-                  className="px-6 py-2 text-lg rounded-full border-none shadow-md shadow-gray-500 w-80 sm:w-[30rem] md:w-[17rem] lg:w-[22rem] xl:w-[27rem] text-[#00000080] 2xl:w-[510px]"
+                  className="px-6 py-2 text-lg rounded-full border-none shadow-md shadow-gray-500 w-70 sm:w-[30rem] md:w-[17rem] lg:w-[22rem] xl:w-[27rem] text-[#00000080] 2xl:w-[510px]"
                   {...register("phoneNumber")}
                 />
                 {errors.phoneNumber && <p className="text-red-500 font-semibold mb-0 mt-2">{errors.phoneNumber.message}</p>}
@@ -167,7 +154,7 @@ const ProfileCard = () => {
                   autoComplete="true"
                   autoCorrect="true"
                   placeholder="Banglore"
-                  className="px-6 py-2 text-lg rounded-full border-none shadow-md shadow-gray-500 w-80 sm:w-[30rem] md:w-[17rem] lg:w-[22rem] xl:w-[27rem] text-[#00000080] 2xl:w-[510px]"
+                  className="px-6 py-2 text-lg rounded-full border-none shadow-md shadow-gray-500 w-70 sm:w-[30rem] md:w-[17rem] lg:w-[22rem] xl:w-[27rem] text-[#00000080] 2xl:w-[510px]"
                   {...register("location")}
                 />
                 {errors.location && <p className="text-red-500 font-semibold mb-0 mt-2">{errors.location.message}</p>}

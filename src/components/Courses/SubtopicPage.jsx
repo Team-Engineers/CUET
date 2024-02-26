@@ -12,28 +12,28 @@ const SubtopicPage = () => {
   const subtopicData = subtopicsData[subtopicCategory];
   
   return (
-    <div className="bg-gradient-to-br from-[#ACBCFF] to-white flex flex-col items-center justify-center overflow-x-hidden">
+    <div className="bg-gradient-to-br from-[#ACBCFF] to-white overflow-x-hidden">
       <Navbar />
 
-      <div className="w-full mx-auto px-8 mt-8">
-        <div className="max-w-[180vh] mx-auto">
-          <h1 className="text-[#5648FC] items-center flex">
+      <div className="w-full max-w-[1280px] mx-auto mt-8">
+          <div className="flex flex-col justify-center text-center my-5 ">
+          <h1 className="text-[#5648FC] mx-8 items-center flex">
             <Link className="text-[#5648FC] items-center flex pr-2" to={"/courses"}>
               <IoArrowBack />
             </Link>
             <span>
               {subtopicCategory}
-              <hr className="w-20 m-0 mt-1 text-blueviolet-100" />
+              <div className="w-20 h-[2px] bg-blueviolet-400 max-md:mx-auto m-0 mt-1 text-blueviolet-100" />
             </span>
           </h1>
-          <div className="flex justify-center text-center my-5 ">
-
-          <div className="max-w-[180vh] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-20   my-8">
+          <div className="flex items-center justify-center">
+          <div className=" grid  grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-20   my-8">
             {subtopicData &&
               subtopicData.map((item, index) => <TopicContainer key={index} brick={item.image} heading={item.title} color={item.color} />)}
           </div>
           </div>
-        </div>
+        
+          </div>
       </div>
       <Footer />
     </div>

@@ -14,7 +14,7 @@ const Homepage = () => {
   return (
     <>
   
-    <div className="w-full relative bg-white overflow-hidden flex flex-col  items-center  ">
+    <div className=" bg-white overflow-hidden   ">
       <Navbar />
       <Banner />
       <SubjectTopic />
@@ -22,9 +22,9 @@ const Homepage = () => {
       <Universities />
       <Testinomials />
       <FrequentlyAskedQuestions />
-      </div>
       <Contact />
       <Footer />
+      </div>
       </>
   );
 };

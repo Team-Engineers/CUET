@@ -7,11 +7,10 @@ import StepGuide from "./StepGuide";
 
 const HomeSteps = () => {
   const [currStep, setCurrStep] = useState(1);
-
   return (
-    <section className="w-full relative h-screen z-10 mx-md:mt-5  ">
-      <div className="flex h-screen flex-col justify-around items-center mx-3 lg:flex-row lg:justify-around">
-        <div className=" max-md:hidden w-[35vw] object-cover ">
+    <section className="max-w-[1280px] mt-2 mx-auto relative z-10 flex justify-center items-center   ">
+      <div className="md:grid md:grid-cols-2 flex flex-col justify-center  md:mx-10 items-center">
+        <div className=" sm:w-[450px] w-[350px] object-cover ">
           <Lottie
             options={{
               loop: true,
@@ -20,28 +19,28 @@ const HomeSteps = () => {
             }}
           />
         </div>
-        <div className=" h-full flex flex-col justify-between md:max-w-[50%]">
-          <div className="flex-1 flex flex-col justify-evenly ">
-            <div className="flex flex-col justify-start max-md:mt-20 max-md:mb-5 ">
-              <h1 className="text-left text-blueviolet-100  text-13xl font-bold ">May We Help You</h1>
-              <h3 className="text-left font-bold text-7xl mt-2 text-[#000000CC]">3 Simple steps for Assured Success at CUET</h3>
+        <div className="  flex flex-col max-md:mx-2 justify-between ">
+          <div className=" md:justify-evenly ">
+            <div className="flex flex-col justify-start ">
+              <h1 className="md:text-left text-center text-blueviolet-100  text-13xl font-bold ">May We Help You</h1>
+              <h3 className="md:text-left text-center font-bold text-7xl mt-2 text-[#000000CC]">3 Simple steps for Assured Success at CUET</h3>
             </div>
-            <ul className="timeline timeline-compact timeline-snap-icon  timeline-vertical flex-none pl-0">
+            <ul className="timeline timeline-compact timeline-snap-icon md:pl-0  timeline-vertical flex-none ">
               <li
                 className="group cursor-pointer"
                 onClick={() => {
                   setCurrStep(1);
                 }}
               >
-                <div className="timeline-middle">
+                <div className="timeline-middle ">
                   <div
-                    className={`w-10 h-10 rounded-full flex justify-center items-center text-3xl font-bold group-hover:bg-blueviolet-100 group-hover:text-white  ${currStep === 1 ? "bg-blueviolet-100 text-white" : "text-gray-200 bg-gray-400"
+                    className={`w-10 h-10 rounded-full  flex justify-center items-center text-3xl font-bold group-hover:bg-blueviolet-100 group-hover:text-white  ${currStep === 1 ? "bg-blueviolet-100 text-white" : "text-gray-200 bg-gray-400"
                       }  `}
                   >
                     1
                   </div>
                 </div>
-                <div className="timeline-end">
+                <div className="timeline-end relative top-3  ">
                   <StepGuide
                     selected={currStep === 1}
                     step="Step 01"
@@ -67,7 +66,7 @@ const HomeSteps = () => {
                     2
                   </div>
                 </div>
-                <div className="timeline-end">
+                <div className="timeline-end relative top-3">
                   <StepGuide
                     selected={currStep === 2}
                     step="Step 01"
@@ -92,7 +91,7 @@ const HomeSteps = () => {
                     3
                   </div>
                 </div>
-                <div className="timeline-end">
+                <div className="timeline-end relative top-3">
                   <StepGuide
                     selected={currStep === 3}
                     step="Step 01"
@@ -103,16 +102,7 @@ const HomeSteps = () => {
               </li>
             </ul>
           </div>
-        </div>
-        <div className="max-w-96 max-h-96 md:hidden  md:max-w-[600px] md:max-h-[600px] object-cover ">
-          <Lottie
-            options={{
-              loop: true,
-              autoplay: true,
-              animationData: currStep === 1 ? Step1AnimatiionData : currStep === 2 ? Step2AnimatiionData : Step3AnimatiionData,
-            }}
-          />
-        </div>
+        </div>         
       </div>
     </section>
   );

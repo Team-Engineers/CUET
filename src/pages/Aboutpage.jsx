@@ -3,10 +3,11 @@ import Footer from "../components/Footer";
 
 const AboutPage = () => {
   return (
-    <div className="w-full overflow-hidden min-h-[100vh] flex flex-col items-center bg-white">
+    <div className="w-full overflow-hidden   bg-white">
       <Navbar />
-      <div className="relative w-full xl:max-w-[100vw] flex flex-col md:flex-row justify-around items-center  min-h-[90vh] h-full">
-        <div className="w-full md:max-w-[40vw] min-h-[40vh] flex flex-col justify-around">
+      <div className="">
+        <div className="flex justify-between items-center flex-col sm:flex-row ">
+        <div className="w-full sm:max-w-[40vw]  md:ml-[60px]  flex flex-col justify-around">
           <div className="px-3">
             <h1 className="pl-0 mb-0 font-bold text-7xl md:text-21xl text-blueviolet-100 px-3">About Us</h1>
             <hr className="w-10 m-0 text-blueviolet-100" />
@@ -17,9 +18,13 @@ const AboutPage = () => {
             aspiration but an inspiring and achievable pursuit.
           </p>
         </div>
-        <img alt="" src="/aboutpage_vector.png" className="w-[400px] h-[300px] max-md:top-[-30px] relative md:w-[400px] md:h-[300px] lg:w-[500px] lg:h-[400px] " />
-        <img alt="" src="/aboutpage_waves.png" className="absolute bottom-0 h-full max-h-[10vh] md:max-h-[20vh] w-[100vw]" />
+        <div>
+        <img alt="" src="/aboutpage_vector.png" className="w-[300px] mr-[60px]  h-[250px]  relative md:w-[400px] md:h-[300px] lg:w-[400px] lg:h-[370px] " />
+        </div>
+        </div>
       </div>
+      <img alt="" src="/aboutpage_waves.png" className="relative top-[10px] h-full max-h-[10vh] md:max-h-[20vh] w-[100vw]" />
+
       <Footer />
     </div>
   );
