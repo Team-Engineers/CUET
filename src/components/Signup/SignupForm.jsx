@@ -9,7 +9,6 @@ import { GoogleLogin } from "@react-oauth/google";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-
 const SignupForm = () => {
   const [, setAuth] = useAuth();
   const navigate = useNavigate();

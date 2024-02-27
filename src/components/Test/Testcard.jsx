@@ -63,9 +63,9 @@ export const Testcard = ({ subTopic, heading, Questions, Marks, take, difficulty
 export const Testcard1 = ({ subTopic, heading, Questions, Marks, take, difficultyLevel, bgcolor, Time, Negative, image, Times }) => {
   return (
     <div className=" rounded-3xl " style={{ background: bgcolor }} >
-      <div className="flex flex-col py-3 justify-around items-center w-full mx-auto sm:w-[350px] h-[350px] ">
+      <div className="flex flex-col p-5 items-center py-3 justify-center     h-[350px] ">
         <img src="https://i.ibb.co/XFnxJSS/practicetest.png" alt={subTopic} className="w-[150px] h-[150px]" />
-        <div className="rounded-[20px]  bg-white py-5  mx-auto w-[80%] h-[45%] flex flex-col items-center justify-around px-4">
+        <div className="rounded-[20px] px-10 pb-4 mt-2  bg-white    w-[70%] mx-auto h-[45%] flex flex-col items-center justify-center ">
           <h5 className="w-full font-bold text-3xl pl-4 pt-2">{subTopic}</h5>
           <div className="w-full flex items-center justify-around">
             <div className="flex justify-center items-center text-[10px]">
@@ -83,7 +83,7 @@ export const Testcard1 = ({ subTopic, heading, Questions, Marks, take, difficult
               {Times} <br /> Minutes
             </div>
           </div>
-          <Link to={`/test/practice_test/${subTopic}`}><button className="btn hover:bg-[#34A853] bg-[#34A853] rounded-full text-white min-h-0 h-8 px-8">Take Test</button>
+          <Link to={`/test/practice_test/${subTopic}`}><button className="btn hover:bg-[#34A853] my-3 bg-[#34A853] rounded-full text-white min-h-0 h-8 px-8">Take Test</button>
           </Link>
         </div>
       </div>

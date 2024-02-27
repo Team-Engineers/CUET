@@ -7,7 +7,6 @@ import { IoBookmark, IoBookmarkOutline } from "react-icons/io5";
 import { TfiTimer } from "react-icons/tfi";
 
 const MockTest = ({ data, subtopic }) => {
-  console.log(data)
   const alphabets = "12345678910".split("");
   const [selectedOptions, setSelectedOptions] = useState(Array(data.length).fill([]));
   const [currentPage, setCurrentPage] = useState(0);
