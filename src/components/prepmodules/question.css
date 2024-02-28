@@ -34,10 +34,21 @@
     align-items: center;
     border-top-left-radius: 10px;
     border-bottom-right-radius: 10px;
-    background-color: #79090b;
+    background-color: #061753;
     color: white;
 }
 
+.question-practice .question-number2 {
+    font-weight: bold;
+    white-space: nowrap;
+    position: absolute;
+    top: 0;
+    margin-top: 10px;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .question-practice .question {
     margin-top: 10px;
 }

@@ -14,7 +14,7 @@ const Testinomials2 = ({ image, color, name, text, university }) => {
   return (
     <div
       style={{ background: color }}
-      className="cursor-pointer max-md:max-w-[280px] text-center max-md:h-[250px] max-xl:w-[400px] w-[500px]  md:py-10 py-8 rounded-[16.02px] shadow-[0px_4px_4px_rgba(0,_0,_0,_0.25)]  justify-evenly items-center md:px-5 px-2 ">
+      className="cursor-pointer max-md:max-w-[280px] text-center max-md:h-[250px] md:h-[250px] max-xl:w-[400px] w-[500px]  md:py-10 py-8 rounded-[16.02px] shadow-[0px_4px_4px_rgba(0,_0,_0,_0.25)]  justify-evenly items-center md:px-5 px-2 ">
       <div className="md:text-xl text-md   text-white font-bold">{name}</div>
       <div className="text-white md:text-md text-center my-2 md:my-8">{text}</div>
       <hr className="border-[1px] border-solid border-[#D9D9D9] w-full" />
@@ -149,10 +149,9 @@ const   Testinomials = () => {
   return (
  <div className="relative w-full mx-auto flex justify-center items-center ">
       <div className="max-w-[1500px] mx-auto flex justify-center items-center">
-      <div className="w-screen flex flex-col justify-center items-center my-10">
+      <div className="w-screen flex flex-col justify-center items-center my-2">
         <div className="">
           <h1 className="text-blueviolet-100  text-13xl font-semibold text-center ">Testimonials</h1>
-          <h1 className="text-blueviolet-400 font-normal text-5xl text-center ">Information</h1>
         </div>
         <Carroussel cards={slides} height="500px" width="100%" margin="0 auto" offset={isMobile ? 10 : 200} showArrows={false} />{" "}
       </div>

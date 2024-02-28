@@ -14,7 +14,7 @@ const ContactForm = () => {
   return (
     <div className=" md:py-10 max-md:pb-4 w-full md:w-full h-full flex flex-col items-center max-md:justify-evenly">
       <div className="flex flex-col md:items-start items-center justify-evenly  w-[80%] md:w-[80%] ">
-        <h1 className="font-bold max-md:hidden text-13xl text-left my-5 ">Request a Call back</h1>
+        <h1 className="font-bold max-md:hidden text-13xl text-left my-5 md:ml-3">Request a Call back</h1>
         <input className={ContactInputStyles} placeholder="Your Name" type="text" />
         <input className={ContactInputStyles} placeholder="Email" type="email" />
         <input className={ContactInputStyles} placeholder="Phone Number" type="text" />

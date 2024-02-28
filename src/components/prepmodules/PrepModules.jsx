@@ -1,22 +1,27 @@
 import React, { useEffect, useState } from "react";
-import "./testplatform.css";
+import "./question.css";
 import { useParams } from "react-router-dom";
+import PrepModulesQue from "./PrepModulesQue";
 import axios from "axios";
 import CuetLoader from "../Loader/Loader";
-import MockTest from "./MockTest";
+import NoData from "../Loader/NoData";
 import Footer from "../Footer";
-import Navbar from "../Navbar";
-const MockTestMain = () => {
+import RecommendedSubTopics from "./RecommendedSubTopics";
+import Navbar from "./Navbar";
+
+
+const PrepModules = () => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const { subTopic, heading } = useParams();
+  
   useEffect(() => {
     setIsLoading(true);
     const fetchData = async () => {  
       let subTopic1 = subTopic.replace(/\s/g, '_');    
       try {
         const response = await axios.get(
-          `https://ourntamockpapers.onrender.com/api/question/find-questions?topic=General_English_1`
+          `https://ourntamockpapers.onrender.com/api/question/find-questions?topic=${subTopic1}`
         );
         setData(response.data.requestedData);
         setIsLoading(false);
@@ -29,27 +34,30 @@ const MockTestMain = () => {
     fetchData();
   }, [subTopic]);
   
-  
-
   if (isLoading) {
     return <CuetLoader />;
   }
 
   return (
-    <div className='bg-gradient-to-br overflow-hidden from-[#ffffff] to-white'>
-    <Navbar/>
-    <section className="question-practice m-[20px]">
+    <section className="question-practice bg-white">
+      <Navbar/>
       {data.length > 0 ? (
-        <div className="mx-auto">
-              <MockTest subtopic={subTopic} data={data} />
+        <div className="mx-auto max-w-[1280px] my-10">
+          <div className="flex mx-8 lg:flex-row flex-col gap-8  justify-between ">
+            <div className="max-lg:w-full max-lg:mx-[10px] lg:w-[400px]" >
+              <RecommendedSubTopics currentSubTopic={subTopic} />
             </div>
+            <div className="mx-auto">
+              <PrepModulesQue data={data} />
+            </div>
+          </div>
+        </div>
       ) : (
-        <CuetLoader/>
+        <NoData />
       )}
+      <Footer/>
     </section>
-    <Footer/>
-    </div>
   );
 };
 
-export default MockTestMain;
+export default PrepModules;

@@ -8,280 +8,51 @@ import { useState } from "react";
 import Footer from "../Footer";
 import { useParams } from "react-router-dom";
 import PackPage from "../Packs/PacksPage";
+import { topics } from "../../utils/constants";
 function TestPage() {
-  const { heading } = useParams();
+  const { topic } = useParams();
+  console.log(topic)
   const [isPackPageOpen, setIsPackPageOpen] = useState(false);
-  const mainheading = heading.toLowerCase().replace(/\s/g, '_');
-
+  const mainheading = topic.toLowerCase().replace(/\s/g, '_');
   const handleOpenPackPage = () => {
     setIsPackPageOpen(true);
   };
-
   const handleClosePackPage = () => {
     setIsPackPageOpen(false);
   };
-  const subjects = [
-    {
-      subTopic: "NUMBER SYSTEM",
+  const subtopics = topics[topic];
+  const subjects = subtopics.map(subtopic => {
+    return {
+      subTopic: subtopic,
       Marks: 60,
       Times: 60,
-
       Questions: 60,
-      difficultyLevel: "AVERAGE",
       bgcolor: "#776CFF",
       Times: 60,
-    },
-    {
-      subTopic: "PERCENTAGE",
-      Marks: 90,
-      Questions: 60,
-      Times: 60,
+    };
+  });
 
-      difficultyLevel: "PROFIT AND LOSS",
-      bgcolor: "#FF887E",
-    },
-    {
-      subTopic: "SIMPLE INTEREST AND COMPOUND INTEREST",
+  const practice = Array.from({ length: 12 }, (_, index) => {
+    const subtopicNumber = index + 1;
+    return {
+      subTopic: `Practice Test ${subtopicNumber}`,
       Marks: 60,
+      Times: 120,
       Questions: 60,
-      Times: 60,
-
-      difficultyLevel: "Intermediate",
-      bgcolor: "#940B92",
-    },
-    {
-      subTopic: "RATIO AND PROPORTION",
-      Marks: 90,
-      Questions: 60,
-      Times: 60,
-      difficultyLevel: "Intermediate",
-      bgcolor: "#FFC726",
-    },
-    {
-      subTopic: "TIME AND WORK",
-      Marks: 60,
-      Times: 60,
-
-      Questions: 60,
-      difficultyLevel: "Medium",
-      bgcolor: "#4797FF",
-      Times: 60,
-    },
-    {
-      subTopic: "PROBABILITY",
-      Marks: 90,
-      Questions: 60,
-      Times: 60,
-      difficultyLevel: "Medium",
-      bgcolor: "#FF9A4F",
-    },
-    {
-      subTopic: "PARTNERSHIP",
-      Marks: 60,
-      Questions: 60,
-      Times: 60,
-
-      difficultyLevel: "Advanced",
-      bgcolor: "#FF9A4F",
-    },
-    {
-      subTopic: "PERMUTATION AND COMBINATION",
-      Marks: 90,
-      Questions: 60,
-      Times: 60,
-      difficultyLevel: "Intermediate",
-      bgcolor: "#58B6C5",
-    },
-    {
-      subTopic: "TIME, SPEED AND DISTANCE",
-      Marks: 90,
-      Questions: 60,
-      Times: 60,
-      difficultyLevel: "Intermediate",
-      bgcolor: "#FF7A7A",
-    },
-
-
-  ];
-
-  const practice = [
-    {
-      subTopic: "Practice Test 1",
-      Marks: 60,
-      Times: 60,
-
-      Questions: 60,
-      difficultyLevel: "Advanced",
       bgcolor: "#58B6C5",
       Times: 60,
-    },
-    {
-      subTopic: "Practice Test 2",
-      Marks: 90,
-      Questions: 60,
-      Times: 60,
-
-      difficultyLevel: "Intermediate",
-      bgcolor: "#FF7A7A",
-    },
-    {
-      subTopic: "Practice Test 3",
+    };
+  });
+  const mock = Array.from({ length: 12 }, (_, index) => {
+    const subtopicNumber = index + 1;
+    return {
+      subTopic: `${topic} ${subtopicNumber}`,
       Marks: 60,
-      Questions: 60,
-      Times: 60,
-
-      difficultyLevel: "Advanced",
-      bgcolor: "#FFB6C1",
-    },
-    {
-      subTopic: "Practice Test 4",
-      Marks: 90,
-      Questions: 60,
-      Times: 60,
-      difficultyLevel: "Intermediate",
-      bgcolor: "#98FB98",
-    },
-    {
-      subTopic: "Practice Test 5",
-      Marks: 60,
-      Times: 60,
-
-      Questions: 60,
-      difficultyLevel: "Advanced",
-      bgcolor: "#FFB6C1",
-      Times: 60,
-    },
-    {
-      subTopic: "Practice Test 6",
-      Marks: 90,
-      Questions: 60,
-      Times: 60,
-
-      difficultyLevel: "Intermediate",
-      bgcolor: "#98FB98",
-    },
-    {
-      subTopic: "Practice Test 7",
-      Marks: 60,
-      Questions: 60,
-      Times: 60,
-
-      difficultyLevel: "Advanced",
-      bgcolor: "#FFB6C1",
-    },
-    {
-      subTopic: "Practice Test 8",
-      Marks: 90,
-      Questions: 60,
-      Times: 60,
-      difficultyLevel: "Intermediate",
-      bgcolor: "#98FB98",
-    },
-    {
-      subTopic: "Practice Test 9",
-      Marks: 90,
-      Questions: 60,
-      Times: 60,
-      difficultyLevel: "Intermediate",
-      bgcolor: "#98FB98",
-    },
-  ];
-  const mock = [
-    {
-      subTopic: "Mock Test 1",
-      Marks: 60,
-      Times: 60,
-      Negative: 60,
-
-      Questions: 60,
-      difficultyLevel: "Advanced",
-      bgcolor: "#FFB6C1",
-      Times: 60,
-    },
-    {
-      subTopic: "Mock Test 2",
-      Marks: 90,
-      Questions: 60,
-      Times: 60,
-      Negative: 60,
-
-      difficultyLevel: "Intermediate",
-      bgcolor: "#98FB98",
-    },
-    {
-      subTopic: "Mock Test 3",
-      Marks: 60,
-      Questions: 60,
-      Times: 60,
-
-      Negative: 60,
-
-      difficultyLevel: "Advanced",
-      bgcolor: "#FFB6C1",
-    },
-    {
-      subTopic: "Mock Test 4",
-      Marks: 90,
-      Negative: 60,
-
-      Questions: 60,
-      Times: 60,
-      difficultyLevel: "Intermediate",
-      bgcolor: "#98FB98",
-    },
-    {
-      subTopic: "Mock Test 5",
-      Marks: 60,
-      Times: 60,
-      Negative: 60,
-
-      Questions: 60,
-      difficultyLevel: "Advanced",
-      bgcolor: "#FFB6C1",
-      Times: 60,
-    },
-    {
-      subTopic: "Mock Test 6",
-      Marks: 90,
-      Questions: 60,
-      Times: 60,
-      Negative: 60,
-
-      difficultyLevel: "Intermediate",
-      bgcolor: "#98FB98",
-    },
-    {
-      subTopic: "Mock Test 7",
-      Marks: 60,
-      Questions: 60,
-      Times: 60,
-
-      Negative: 60,
-
-      difficultyLevel: "Advanced",
-      bgcolor: "#FFB6C1",
-    },
-    {
-      subTopic: "Mock Test 8",
-      Marks: 90,
-      Negative: 60,
-
-      Questions: 60,
-      Times: 60,
-      difficultyLevel: "Intermediate",
-      bgcolor: "#98FB98",
-    },
-    {
-      subTopic: "Mock Test 9",
-      Marks: 90,
-      Negative: 60,
-
-      Questions: 60,
-      Times: 60,
-      difficultyLevel: "Intermediate",
-      bgcolor: "#98FB98",
-    },
-  ];
+      Times: 120,
+      Negative: 1,
+      Questions: 50,
+    };
+  });
 
   const [currentTab, setCurrentTab] = useState("prep");
 
@@ -346,18 +117,17 @@ function TestPage() {
                 {currentTab === "mock" && <div className="w-20 max-md:mx-auto m-0 mt-2 h-[2px] bg-blueviolet-400 text-blueviolet-100" />}
               </h1>
             </div>
-
             {currentTab === "prep" ? (
               <div className=" grid grid-cols-1 md:grid-cols-2 mb-20 lg:grid-cols-3 gap-14">
                 {subjects.map((subject, index) => (
-                  <Testcard heading={mainheading}{...subject} />
+                  <Testcard heading={topic}{...subject} />
                 ))}
               </div>
             ) : currentTab === "practice" ? (
               <div className="grid grid-cols-1 md:grid-cols-2 mb-20 lg:grid-cols-3 gap-14">
 
                 {practice.map((subject, index) => (
-                  <Testcard1 heading={mainheading} {...subject} />
+                  <Testcard1 topic={mainheading} {...subject} />
                 ))}
               </div>
             ) : (

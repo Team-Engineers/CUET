@@ -8,8 +8,11 @@ import StepGuide from "./StepGuide";
 const HomeSteps = () => {
   const [currStep, setCurrStep] = useState(1);
   return (
-    <section className="max-w-[1280px] mt-2 mx-auto relative z-10 flex justify-center items-center   ">
-      <div className="md:grid md:grid-cols-2 flex flex-col justify-center  md:mx-10 items-center">
+    <section className="max-w-[1280px] mt-5 mx-auto relative z-10  ">
+      <div className="f ">
+            </div>
+      <div className=" flex md:flex-row flex-col  md:justify-between  md:mx-10 items-center">
+      
         <div className=" sm:w-[450px] w-[350px] object-cover ">
           <Lottie
             options={{
@@ -19,12 +22,12 @@ const HomeSteps = () => {
             }}
           />
         </div>
-        <div className="  flex flex-col max-md:mx-2 justify-between ">
+        <div className="flex flex-col mx-auto sm:w-[750px] w-[350px]  max-md:mx-2 justify-between ">
           <div className=" md:justify-evenly ">
-            <div className="flex flex-col justify-start ">
-              <h1 className="md:text-left text-center text-blueviolet-100  text-13xl font-bold ">May We Help You</h1>
-              <h3 className="md:text-left text-center font-bold text-7xl mt-2 text-[#000000CC]">3 Simple steps for Assured Success at CUET</h3>
-            </div>
+          <h1 className="md:text-left text-center text-blueviolet-100  text-13xl font-bold ">May We Help You</h1>
+
+          <h3 className="md:text-left text-center font-bold text-7xl mt-2 text-[#000000CC]">3 Simple steps for Assured Success at CUET</h3>
+
             <ul className="timeline timeline-compact timeline-snap-icon md:pl-0  timeline-vertical flex-none ">
               <li
                 className="group cursor-pointer"
@@ -102,7 +105,7 @@ const HomeSteps = () => {
               </li>
             </ul>
           </div>
-        </div>         
+        </div>
       </div>
     </section>
   );

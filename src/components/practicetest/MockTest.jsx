@@ -43,19 +43,25 @@ const MockTest = ({ data, subtopic }) => {
   }, []);
 
   useEffect(() => {
+    let timerReachedZero = false;
     intervalId = setInterval(() => {
-      setTimer((prevTimer) => prevTimer - 1);
+      setTimer((prevTimer) => {
+        if (prevTimer <= 0 && !timerReachedZero) {
+          clearInterval(intervalId);
+          timerReachedZero = true;
+          handleSubmit();
+          return 0;
+        } else {
+          return prevTimer - 1;
+        }
+      });
     }, 1000);
 
     return () => clearInterval(intervalId);
   }, []);
 
-  useEffect(() => {
-    if (timer <= 0) {
-      setTimerColor("from-[#ff0800] to-[#ff0800]");
-      handleSubmit();
-    }
-  }, [timer]);
+
+
   const handleOptionClick = (questionIndex, optionIndex) => {
     if (!isSubmitted) {
       const updatedSelectedOptions = [...selectedOptions];
@@ -66,7 +72,7 @@ const MockTest = ({ data, subtopic }) => {
   };
 
   const handleSubmit = () => {
-    // Calculate correct and incorrect answers
+    setTimer(0)
     let correct = 0;
     let incorrect = 0;
     data.forEach((question, questionIndex) => {
@@ -80,22 +86,23 @@ const MockTest = ({ data, subtopic }) => {
     });
     setCorrectAnswers(correct);
     setIncorrectAnswers(incorrect);
-  
+
     // Show the result popup
-    // setShowResultPopup(true);
-  
+    setShowResultPopup(true);
+
     setIsSubmitted(true);
     setIsLoading(true);
-  
+
     clearInterval(intervalId);
-  
+
     setTimeout(() => {
       setIsLoading(false);
     }, 2000);
   };
-  
-  
-  
+
+
+
+
 
 
   const handleSaveQuestion = (questionIndex) => {
@@ -123,18 +130,26 @@ const MockTest = ({ data, subtopic }) => {
         <div className="flex  flex-col">
           <div className="flex justify-between">
             <div className="px-4 py-5">
-              <span className={`p-[0.5vw] m-3 rounded-full bg-gradient-to-br overflow-hidden from-[#617cea] to-black text-white id-${question._id}`}>
+              <span className={`question-number id-${question._id}`}>
                 {`${questionIndex + 1 + currentPage * 1} `}
               </span>
-              of
-              <span className={`p-2 id-${question._id}`}>
-                {`${questionIndex + 1 + 30 - 1} `}
-              </span>
             </div>
-
-            {/* <h1 className="bg-gradient-to-br overflow-hidden rounded-s-2xl from-[#617cea] to-[#2e2323] absolute right-0 text-white px-4 py-5">{subtopic}</h1> */}
+            <div
+              className={` question-number2 cursor-pointer z-50  m-2  ${savedQuestions.includes(questionIndex + currentPage * 1) ? 'saved' : ''}`}
+              onClick={() => handleSaveQuestion(questionIndex)}
+            >
+              {savedQuestions.includes(questionIndex + currentPage * 1) ? (
+                <>
+                  <IoBookmark className="text-[25px]" />
+                </>
+              ) : (
+                <>
+                  <IoBookmarkOutline className="text-[25px]" />
+                </>
+              )}
+            </div>
           </div>
-          <div className="text-[20px] flex justify-between px-10 pb-6 p-4  relative">
+          <div className="text-[20px]  relative pl-8 flex items-center top-[-25px] px-4   ">
             <div>
               {question.subQuestions[0].questionTextAndImages.map((textData, textIndex) => (
                 <MathText
@@ -145,22 +160,7 @@ const MockTest = ({ data, subtopic }) => {
                 />
               ))}
             </div>
-            <div
-              className={`relative flex justify-center items-center  ${savedQuestions.includes(questionIndex + currentPage * 1) ? 'saved' : ''}`}
-              onClick={() => handleSaveQuestion(questionIndex)}
-            >
-              {savedQuestions.includes(questionIndex + currentPage * 1) ? (
-                <>
-                  <IoBookmark />
-                  <h1 className="text-[10px]">Saved</h1>
-                </>
-              ) : (
-                <>
-                  <IoBookmarkOutline />
-                  <h1 className="text-[10px]">Save</h1>
-                </>
-              )}
-            </div>
+
 
           </div>
         </div>
@@ -186,7 +186,7 @@ const MockTest = ({ data, subtopic }) => {
             }`}
           onClick={() => handleOptionClick(questionIndex, optionIndex)}
         >
-          <span className="font-bold rounded-[150px] px-3 p-2 border-solid border-black border-[0.5px] mx-6">
+          <span className="option-alphabet ">
             {alphabets[optionIndex]}
           </span>
           <div className="flex mx-8 text-[20px] top-[-13px] relative  justify-start gap-3 w-100 items-center ">
@@ -221,10 +221,10 @@ const MockTest = ({ data, subtopic }) => {
           </div>
         </div>
       ))}
-      <div className="w-100 flex justify-content-center align-items-center">
+      <div className="w-100 flex justify-center items-center">
         {isSubmitted && (
           <button
-            className="bg-gradient-to-br overflow-hidden from-[#617cea] to-white rounded-xl text-white text-center p-2 flex justify-center"
+            className=" btn btn-outline btn-tertiary text-capitalize  flex justify-center"
             onClick={() => toggleExplanationVisibility(questionIndex)}
           >
             {explanationsVisible[questionIndex]
@@ -270,132 +270,145 @@ const MockTest = ({ data, subtopic }) => {
   return (
     <section className="mx-auto mb-8 max-w-[1280px] ">
       <div className={`flex px-5 top-[-25px] lg:hidden rounded  text-white  relative items-center`}>
-          <div className={`text-[20px] gap-1 rounded-xl px-10 border border-white border-solid py-3 bg-gradient-to-br overflow-hidden ${timerColor} flex justify-center items-center `}>
-            <div className="text-[20px] ">
+        <div className={`text-[20px] gap-1 rounded-xl px-10 border-[1px] border-black border-solid py-3 bg-gradient-to-br overflow-hidden ${timerColor} flex justify-center items-center `}>
+          <div className="text-[20px] ">
             <TfiTimer />
-            </div>
-            {Math.floor(timer / 60)
-              .toString()
-              .padStart(2, "0")}
-            :
-            {(timer % 60).toString().padStart(2, "0")}
-      
           </div>
-          <div className="w-full ml-6 flex justify-center items-center">
+          {Math.floor(timer / 60)
+            .toString()
+            .padStart(2, "0")}
+          :
+          {(timer % 60).toString().padStart(2, "0")}
+
+        </div>
+        <div className="w-full ml-6 flex justify-center items-center">
           {isLoading ? (
             <CuetLoader />
           ) : (
             <button
-              className="w-[70%] mr-5 border-none relative flex justify-center items-center rounded bg-gradient-to-br overflow-hidden from-[#617cea] to-black text-white px-7 p-3"
+              className="w-[70%] mr-5  border-none relative flex justify-center items-center rounded bg-gradient-to-br overflow-hidden from-[#617cea] to-black text-white px-7 p-3"
               onClick={handleSubmit}
             >
               Submit
             </button>
           )}
         </div>
-        </div>
-        <div className="flex justify-between">
+      </div>
+      <div className="flex md:mx-10 gap-5 justify-between">
         <div className="w-full ">
-        {data
-          .slice(currentPage, currentPage + 1)
-          .map((question, questionIndex) =>
-            renderQuestion(question, questionIndex)
-          )}
-        <div className="flex items-center justify-between">
-          <button
+          {data
+            .slice(currentPage, currentPage + 1)
+            .map((question, questionIndex) =>
+              renderQuestion(question, questionIndex)
+            )}
+          <div className="flex items-center mt-8 justify-between">
+            <button
               className=" border-none shadow-2xl relative flex justify-center items-center rounded bg-gradient-to-br overflow-hidden from-[#617cea] to-black text-white px-7 p-3"
               onClick={() => setCurrentPage((prev) => prev - 1)}
-            disabled={currentPage === 0}
+              disabled={currentPage === 0}
 
-          >
-            Prev
-          </button>
-          <button className=" border-none md:hidden shadow-2xl relative flex justify-center items-center rounded bg-gradient-to-br overflow-hidden from-[#617cea] to-black text-white px-7 p-3"
- onClick={handlePopupOpen}>All Questions</button>
+            >
+              Prev
+            </button>
+            <button className=" border-none md:hidden shadow-2xl relative flex justify-center items-center rounded bg-gradient-to-br overflow-hidden from-[#617cea] to-black text-white px-7 p-3"
+              onClick={handlePopupOpen}>All Questions</button>
 
-          <button
+            <button
               className=" border-none shadow-2xl relative flex justify-center items-center rounded bg-gradient-to-br overflow-hidden from-[#617cea] to-black text-white px-7 p-3"
               onClick={() => setCurrentPage((prev) => prev + 1)}
-            disabled={currentPage === 29}
+              disabled={currentPage === 29}
 
-          >
-            Next
-          </button>
-        </div>
-      </div>
-      <div className="max-w-[400px] border-solid bg-blue-200 border-black mx-8 max-lg:hidden  flex flex-col items-center justify-center ">  
-        <div className={`flex px-5 max-lg:hidden rounded border border-white border-solid py-3 bg-gradient-to-br overflow-hidden ${timerColor} text-white justify-center relative items-center`}>
-          <div className="text-[20px] flex justify-center items-center px-2">
-            <TfiTimer />
-          </div>
-          <div>
-            {Math.floor(timer / 60)
-              .toString()
-              .padStart(2, "0")}
-            :
-            {(timer % 60).toString().padStart(2, "0")}
+            >
+              Next
+            </button>
           </div>
         </div>
-        <div className="my-4 max-w-[400px] justify-center items-center mx-auto flex flex-wrap  ">
-          {generatePageNumbers().map(({ number, isSelected }) => (
-            <button
-              key={number}
-              className={`rounded border-none shadow-xl w-[50px] h-[50px] m-1 ${currentPage === number - 1
+        <div className="max-w-[400px] relative left-8 border-solid border-[1px] rounded-2xl max-h-[800px]  border-black mx-8 max-lg:hidden  flex flex-col items-center justify-center ">
+          <div className={`flex px-5 max-lg:hidden rounded-xl mt-2 border border-white border-solid py-3 bg-gradient-to-br overflow-hidden  text-black justify-center relative items-center`}>
+            <div className="text-[20px] flex justify-center items-center px-2">
+              <TfiTimer />
+            </div>
+            <div>
+              {Math.floor(timer / 60)
+                .toString()
+                .padStart(2, "0")}
+              :
+              {(timer % 60).toString().padStart(2, "0")}
+            </div>
+          </div>
+          <div className="my-4 max-w-[400px]  justify-center items-center mx-auto flex flex-wrap  ">
+            {generatePageNumbers().map(({ number, isSelected }) => (
+              <button
+                key={number}
+                className={`rounded border-none cursor-pointer shadow-xl w-[50px] h-[50px] m-1 ${currentPage === number - 1
                   ? "bg-gradient-to-br overflow-hidden from-[#617cea] to-black text-white"
                   : isSelected
-                  
+
                     ? "bg-green-500 text-white"
                     : savedQuestions.includes(number - 1)
                       ? "bg-red-900 text-white"
                       : "bg-white"
-                }`}
-              onClick={() => setCurrentPage(number - 1)}
-            >
-              {number}
-            </button>
-          ))}
-        </div>
-        <div className="w-[70%] mx-auto max-lg:hidden flex justify-center items-center">
-          {isLoading ? (
-            <CuetLoader />
-          ) : (
-            <button
-              className=" border-none shadow-2xl relative flex justify-center items-center rounded bg-gradient-to-br overflow-hidden from-[#617cea] to-black text-white px-7 p-3"
-              onClick={handleSubmit}
-            >
-              Submit
-            </button>
-          )}
+                  }`}
+                onClick={() => setCurrentPage(number - 1)}
+              >
+                {number}
+              </button>
+            ))}
+          </div>
+          <div className="w-[70%] mx-auto max-lg:hidden flex justify-center items-center">
+            {isLoading ? (
+              <CuetLoader />
+            ) : (
+              <button
+                className=" border-none shadow-2xl mb-2 relative flex justify-center items-center rounded bg-gradient-to-br overflow-hidden from-[#617cea] to-black text-white px-7 p-3"
+                onClick={handleSubmit}
+              >
+                Submit
+              </button>
+            )}
+          </div>
         </div>
       </div>
-        </div>
-     
+
       {showPopup && (
         <div className="fixed popupquestion inset-0  flex flex-col items-center justify-center overflow-hidden">
-        <div className="backdrop-blur backdrop-filter bg-[#0000004f] absolute inset-0"></div>
-        <div className="relative z-10 mx-10">
-          {generatePageNumbers().map(({ number, isSelected }) => (
-            <button
-              key={number}
-              className={`rounded border-none shadow-2xl w-[50px] h-[50px] lg:w-[5vw] lg:h-[8vh] p-[1vw] m-[0.6vw] ${currentPage === number - 1
-                ? "bg-gradient-to-br overflow-hidden from-[#617cea] to-black text-white"
-                : isSelected
-                  ? "bg-green-500 text-white"
-                  : savedQuestions.includes(number - 1)
-                    ? "bg-red-900 text-white"
-                    : "bg-[#ffffff6e] backdrop-blur-[100px]"
-                }`}
-              onClick={() => setCurrentPage(number - 1)}
-            >
-              {number}
-            </button>
-          ))}
-          <button className=" border-none shadow-2xl relative flex justify-center items-center rounded bg-gradient-to-br overflow-hidden from-[#617cea] to-black text-white px-7 p-3"
- onClick={handlePopupClose}>Close</button>
+          <div className="backdrop-blur backdrop-filter bg-[#0000004f] absolute inset-0"></div>
+          <div className="relative z-10 mx-10">
+            {generatePageNumbers().map(({ number, isSelected }) => (
+              <button
+                key={number}
+                className={`rounded border-none shadow-2xl w-[50px] h-[50px] lg:w-[5vw] lg:h-[8vh] p-[1vw] m-[0.6vw] ${currentPage === number - 1
+                  ? "bg-gradient-to-br overflow-hidden from-[#617cea] to-black text-white"
+                  : isSelected
+                    ? "bg-green-500 text-white"
+                    : savedQuestions.includes(number - 1)
+                      ? "bg-red-900 text-white"
+                      : "bg-[#ffffff6e] backdrop-blur-[100px]"
+                  }`}
+                onClick={() => setCurrentPage(number - 1)}
+              >
+                {number}
+              </button>
+            ))}
+            <button className=" border-none shadow-2xl relative flex justify-center items-center rounded bg-gradient-to-br overflow-hidden from-[#617cea] to-black text-white px-7 p-3"
+              onClick={handlePopupClose}>Close</button>
+          </div>
         </div>
-      </div>
-      
+
       )}
+
+   {showResultPopup && (
+  <div className="popup-overlay">
+    <div className="result-popup">
+      <h2>Results</h2>
+      <p>Total attempted questions: {correctAnswers + incorrectAnswers}</p>
+      <p>Total correct options: {correctAnswers}</p>
+      <p>Total incorrect options: {incorrectAnswers}</p>
+      <button onClick={() => setShowResultPopup(false)}>Close</button>
+    </div>
+  </div>
+)}
+
     </section>
   );
 };
