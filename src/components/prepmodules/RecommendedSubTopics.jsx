@@ -5,6 +5,7 @@ import { topics } from "../../utils/constants";
 
 const TopicCard = styled.li`
   height: fit-content;
+  white-space: nowrap;
   background-color: rgba(121, 9, 11, 0.1);
   display: flex;
   justify-content: center;
@@ -32,6 +33,8 @@ const TopicCard = styled.li`
 const Wrapper = styled.ul`
   width: fit-content;
   display: flex;
+  white-space: nowrap;
+
   align-items: center;
   justify-content : center;
   flex-wrap: wrap;
@@ -50,11 +53,15 @@ const MarginTop = styled.div`
   algin-items: center;
   flex-direction: column;
   top : 0;
+  white-space: nowrap;
+
   position: sticky;
 `;
 
 const Box = styled.div`
   display: flex;
+  white-space: nowrap;
+
   justify-content: center;
   align-items: center;
 `;
@@ -62,6 +69,8 @@ const Box2 = styled.h6`
   min-width : 10rem;
   padding : 10px 5px;
   margin-bottom: 0px;
+  white-space: nowrap;
+
   text-transform: uppercase;
   font-weight: ${(props) => (props.isCurrentTopic ? "bolder" : "normal")};
   overflow-wrap: break-word;
@@ -98,11 +107,11 @@ const RecommendedSubTopics = () => {
               data-bs-target="#collapseOne"
               aria-expanded="true"
               aria-controls="collapseOne"
-              style={{ backgroundColor: '#f0f0f1', color: 'black' ,fontWeight: 'bold',
+              style={{ backgroundColor: '#0000ff25', color: 'black' ,fontWeight: 'bold',
               outline: '2px solid black',}}
             >
               {topic}
-            </button>
+            </button> 
           </h2>
           <div
             id="collapseOne"

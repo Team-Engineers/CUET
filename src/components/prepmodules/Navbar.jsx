@@ -50,7 +50,7 @@ const Navbar = () => {
 
           {!auth?.user ? (
             <>
-              <li className="hidden lg:flex">
+              <li className="hidden relative top-3 lg:flex">
                 <NavLink
                   to={!auth?.user ? "/login" : "/profile"}
                   className={
@@ -61,7 +61,7 @@ const Navbar = () => {
                 </NavLink>
               </li>
 
-              <li className="hidden lg:flex">
+              <li className="hidden relative top-3 lg:flex">
             <NavLink
               to={"/signup"}
               className={
@@ -74,7 +74,7 @@ const Navbar = () => {
             </>
           ) : (
             <>
-              <li className="hidden lg:flex">
+              <li className="hidden relative top-3 lg:flex">
                 <NavLink
                   to={!auth?.user ? "/login" : "/profile"}
                   className={
@@ -88,7 +88,7 @@ const Navbar = () => {
 
                 </NavLink>
               </li>
-              <li className="hidden lg:flex">
+              <li className="hidden relative top-3 lg:flex">
             <button 
               onClick={handleLogout}
               className={

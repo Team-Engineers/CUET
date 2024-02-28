@@ -43,11 +43,11 @@ const PrepModules = () => {
       <Navbar/>
       {data.length > 0 ? (
         <div className="mx-auto max-w-[1280px] my-10">
-          <div className="flex mx-8 lg:flex-row flex-col gap-8  justify-between ">
+          <div className="flex mx-8 lg:flex-row flex-col   justify-between ">
             <div className="max-lg:w-full max-lg:mx-[10px] lg:w-[400px]" >
               <RecommendedSubTopics currentSubTopic={subTopic} />
             </div>
-            <div className="mx-auto">
+            <div className="mx-auto max-lg:w-full max-lg:mx-[10px] lg:w-[600px]">
               <PrepModulesQue data={data} />
             </div>
           </div>

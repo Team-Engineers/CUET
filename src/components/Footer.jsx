@@ -8,9 +8,9 @@ const Footer = () => {
       <div className=" pt-4 w-full max-md:mx-5 ">
         <div className="flex my-6 justify-center items-center">
         <div className=" grid md:grid-cols-2 md:mx-10 grid-cols-1">
-          <div className="w-full md:flex md:flex-col justify-center   ">
-            <div className="flex justify-start  items-center">
-              <Link to="/" className="no-underline">
+          <div className="w-full md:flex d-flex  md:flex-col justify-center   ">
+            <div className="flex justify-start   items-center">
+              <Link to="/" className="no-underline d-flex justify-content-center mt-4 align-items-center flex-column">
                 <div className="flex items-center">
                   <div className="mr-4 mb-[-12px]">
                     <img src={"/logo.png"} alt="Logo" className="max-h-[60px] max-w-[60px] pr-4 pb-2" />
@@ -22,7 +22,7 @@ const Footer = () => {
                   </div>
                 </div>
               </Link>
-            </div>
+            </div>  
             <p className="text-left md:w-[35vw] font-normal">
               At TestKnock, we are dedicated to more than just academic success. Our unwavering commitment extends to providing you with the essential
               tools and expert guidance. So join us on this transformative expedition and discover where educational excellence is not just an
