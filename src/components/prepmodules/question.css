@@ -173,7 +173,7 @@
     padding: 10px 20px;
     margin: 0 5px;
     cursor: pointer;
-    border: 2px solid #79090b;
+    border: 2px solid #16192C;
     background-color: #ffffff;
     color: #333;
     border-radius: 10px;
@@ -181,7 +181,7 @@
 }
 
 .question-practice .page-button.active {
-    background-color: #79090b;
+    background-color: #16192C;
     color: #fff;
     font-weight: bold;
 }

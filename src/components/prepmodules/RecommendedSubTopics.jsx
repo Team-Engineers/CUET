@@ -9,12 +9,12 @@ const TopicCard = styled.li`
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid #79090b;
+  border: 1px solid #090b79;
   text-align: center;
-  background: ${(props) => (props.isCurrentTopic ? "#79090b" : "inherit")};
+  background: ${(props) => (props.isCurrentTopic ? "#070853" : "inherit")};
   color: ${(props) => (props.isCurrentTopic ? "white" : "black")};
   &:hover {
-    background: #79090b;
+    background: #060746;
     color: white;
   }
   &:hover a {
@@ -98,7 +98,7 @@ const RecommendedSubTopics = () => {
               data-bs-target="#collapseOne"
               aria-expanded="true"
               aria-controls="collapseOne"
-              style={{ backgroundColor: '#fce4e4', color: 'black' ,fontWeight: 'bold',
+              style={{ backgroundColor: '#f0f0f1', color: 'black' ,fontWeight: 'bold',
               outline: '2px solid black',}}
             >
               {topic}

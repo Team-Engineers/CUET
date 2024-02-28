@@ -21,25 +21,54 @@ function TestPage() {
     setIsPackPageOpen(false);
   };
   const subtopics = topics[topic];
-  const subjects = subtopics.map(subtopic => {
+  
+  
+  const subjects = subtopics.map((subtopic, index) => {
+    const backgroundColors = [
+      "#776CFF",
+      "#FF887E",
+      "#940B92",
+      "#FFC726",
+      "#4797FF",
+      "#FF9A4F",
+      "#FF9A4F",
+      "#58B6C5",
+      "#FF7A7A"
+    ];
+      const colorIndex = index % backgroundColors.length;
+
     return {
       subTopic: subtopic,
       Marks: 60,
       Times: 60,
       Questions: 60,
-      bgcolor: "#776CFF",
+      bgcolor: backgroundColors[colorIndex],
       Times: 60,
     };
   });
+  
+
 
   const practice = Array.from({ length: 12 }, (_, index) => {
+    const backgroundColors = [
+      "#776CFF",
+      "#FF887E",
+      "#940B92",
+      "#FFC726",
+      "#4797FF",
+      "#FF9A4F",
+      "#FF9A4F",
+      "#58B6C5",
+      "#FF7A7A"
+    ];
+      const colorIndex = index % backgroundColors.length;
     const subtopicNumber = index + 1;
     return {
       subTopic: `Practice Test ${subtopicNumber}`,
       Marks: 60,
       Times: 120,
       Questions: 60,
-      bgcolor: "#58B6C5",
+      bgcolor: backgroundColors[colorIndex],
       Times: 60,
     };
   });
@@ -72,19 +101,19 @@ function TestPage() {
                 One Step for your <br /> complete Learning
                 <br />
                 <span className="text-[#5648FC] mt-1 flex text-3xl opacity-[70%]" >CUET</span>
-                <button onClick={handleOpenPackPage}   className="mt-5 max-md:ml-28 max-w-72 btn hover:bg-[#FF7468] bg-[#FF7468] shadow-none outline-none border-none rounded-[10px] text-white font-normal md:text-3xl  p-3 px-8">
+                <button onClick={handleOpenPackPage} className="mt-5 mx-auto max-md:flex max-md:justify-center max-md:items-center max-w-72 btn hover:bg-[#FF7468] bg-[#FF7468] shadow-none outline-none border-none rounded-[10px] text-white font-normal md:text-3xl  p-3 px-8">
                   Access Now
                 </button>
               </h3>
               <div className=" z-50">
-      <PackPage isOpen={isPackPageOpen} onClose={handleClosePackPage} />
+                <PackPage isOpen={isPackPageOpen} onClose={handleClosePackPage} />
 
-      </div>
+              </div>
             </div>
             <img
               alt=""
-              src="https://s3-alpha-sig.figma.com/img/bcb7/1722/18523a084e62fca4abf99df9aeb0d2c8?Expires=1708905600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=SqNR2zH1XwTymeeR2uamO5nlRdn5k7WbencRG6Fw5IkPosCTt1~y9Om0Aww2dVunFxZv3LwIzjkoTe7jYBUOgDjX3hce97LGcQNnitMAd1hcbl-rYXuqeOdPo5muxGRKkBog0piHEU4mbknkBDCLmvYI2ohi0mHKdQt0E2d9OZI8VaETV4k1IU7U1PCKegrAisPmgC6gcTfhFwNO7FHEbjnHHnPhyXgaN3wYKqdinhfIXzOjCwUu1r3f65kYN~IjkXUncekgyIQzw4kUTJ8lpuIMnvcHW30JSRK7dxr1kJr-H18v146HlAYwhTTuHnY2YOc~PRBgPkniJRyhiMIoXw__"
-              className="w-[300px] h-[300px] md:w-[400px] md:h-[400px] flex justify-center items-center mx-auto md:mr-4 lg:mr-14"
+              src={require('../../assets/coursesbanner.png')}
+              className="w-[300px] h-[300px] md:w-[450px] md:h-[400px] flex justify-center items-center mx-auto md:mr-4 lg:mr-14"
             />
           </div>
           <div className="w-full flex flex-col justify-center items-center">
@@ -142,7 +171,7 @@ function TestPage() {
           </div>
         </div>
       </div>
-      
+
 
       <Footer />
     </div>

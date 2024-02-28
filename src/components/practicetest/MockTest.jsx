@@ -5,6 +5,7 @@ import { useLocation } from "react-router-dom";
 import CuetLoader from "../Loader/Loader";
 import { IoBookmark, IoBookmarkOutline } from "react-icons/io5";
 import { TfiTimer } from "react-icons/tfi";
+import { RxCross1 } from "react-icons/rx";
 
 const MockTest = ({ data, subtopic }) => {
   const alphabets = "12345678910".split("");
@@ -399,12 +400,13 @@ const MockTest = ({ data, subtopic }) => {
 
    {showResultPopup && (
   <div className="popup-overlay">
-    <div className="result-popup">
-      <h2>Results</h2>
-      <p>Total attempted questions: {correctAnswers + incorrectAnswers}</p>
-      <p>Total correct options: {correctAnswers}</p>
-      <p>Total incorrect options: {incorrectAnswers}</p>
-      <button onClick={() => setShowResultPopup(false)}>Close</button>
+    <div className="result-popup p-5">
+      <h2 className="font-bold text-[30px]">Results</h2>
+      <p className="text-yellow-400 text-[20px]">Total attempted questions: {correctAnswers + incorrectAnswers}</p>
+      <p className="text-green-400 text-[20px]">Total correct options: {correctAnswers}</p>
+      <p className="text-red-500 text-[20px]">Total incorrect options: {incorrectAnswers}</p>
+      <h  className=" border-none cursor-pointer shadow-2xl mb-2 relative flex justify-center items-center rounded bg-gradient-to-br overflow-hidden from-[#617cea] to-black text-white px-7 p-3"
+       onClick={() => setShowResultPopup(false)}><RxCross1/></h>
     </div>
   </div>
 )}

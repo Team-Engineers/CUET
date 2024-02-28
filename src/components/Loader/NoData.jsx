@@ -21,8 +21,8 @@ const NoData = () => {
   return (
     <div style={loaderStyles}>
       <img src={nothing} style={imageStyles} alt="noData" />
-      <Link to="/">
-        <div className="btn submit-button">Go Back To Home</div>
+      <Link to="/courses">
+        <div className="btn submit-button">Go Back</div>
       </Link>
     </div>
   );
