@@ -37,22 +37,10 @@ export const Testcard = ({ subTopic, heading, Questions, Marks, take, difficulty
               Marks
             </div>
           </div>
-
-          <div className="flex flex-col justify-start  h-[40%]">
-            <h1 className="mb-4 text-lg font-normal">Difficulty Level:</h1>
-            <div className="flex justify-between">
-              {/* {renderDifficultyBtn("Beginner")}
-              {renderDifficultyBtn("Intermediate")}
-              {renderDifficultyBtn("Advanced")} */}
-              <p className="text-xs px-2 py-1 border-2 border-solid border-white rounded-full">Beginner</p>
-              <p className="text-xs px-2 py-1 border-2 border-solid border-white rounded-full">Intermediate</p>
-              <p className="text-xs px-2 py-1 border-2 border-solid border-white rounded-full">Advanced</p>
-            </div>
-          </div>
         </div>
       </div>
       <div className="flex justify-end items-center w-[90%]">
-        <Link to={`/test/practice/${heading}/${subTopic}`} className="btn hover:bg-[#34A853] bg-[#34A853] text-white flex justify-center rounded-full items-center  text-lg font-bold min-h-0 h-10 px-8 my-3">
+        <Link to={`/test/prep/${heading}/${subTopic}`} className="btn hover:bg-[#34A853] bg-[#34A853] text-white flex justify-center rounded-full items-center  text-lg font-bold min-h-0 h-10 px-8 my-3">
           Practice
         </Link>
       </div>
@@ -60,12 +48,12 @@ export const Testcard = ({ subTopic, heading, Questions, Marks, take, difficulty
   );
 };
 
-export const Testcard1 = ({ subTopic, heading, Questions, Marks, take, difficultyLevel, bgcolor, Time, Negative, image, Times }) => {
+export const Testcard1 = ({ subTopic, topic, Questions, Marks, take, difficultyLevel, bgcolor, Time, Negative, image, Times }) => {
   return (
     <div className=" rounded-3xl " style={{ background: bgcolor }} >
-      <div className="flex flex-col py-3 justify-around items-center w-full mx-auto sm:w-[350px] h-[350px] ">
+      <div className="flex flex-col p-5 items-center py-3 justify-center     h-[350px] ">
         <img src="https://i.ibb.co/XFnxJSS/practicetest.png" alt={subTopic} className="w-[150px] h-[150px]" />
-        <div className="rounded-[20px]  bg-white py-5  mx-auto w-[80%] h-[45%] flex flex-col items-center justify-around px-4">
+        <div className="rounded-[20px] px-10 pb-4 mt-2  bg-white    w-[70%] mx-auto h-[45%] flex flex-col items-center justify-center ">
           <h5 className="w-full font-bold text-3xl pl-4 pt-2">{subTopic}</h5>
           <div className="w-full flex items-center justify-around">
             <div className="flex justify-center items-center text-[10px]">
@@ -83,7 +71,7 @@ export const Testcard1 = ({ subTopic, heading, Questions, Marks, take, difficult
               {Times} <br /> Minutes
             </div>
           </div>
-          <Link to={`/test/practice_test/${subTopic}`}><button className="btn hover:bg-[#34A853] bg-[#34A853] rounded-full text-white min-h-0 h-8 px-8">Take Test</button>
+          <Link to={`/test/practice/${topic}/${subTopic}`}><button className="btn hover:bg-[#34A853] my-3 bg-[#34A853] rounded-full text-white min-h-0 h-8 px-8">Take Test</button>
           </Link>
         </div>
       </div>
@@ -125,11 +113,10 @@ export const Testcard2 = ({ subTopic, heading, Questions, Marks, take, difficult
         </div>
       </div>
       <div className="w-full flex items-center justify-end h-16 pr-10">
-        <Link to={`/test/practice/${subTopic = "Mock_Test"}`}>
-          <button className="btn btn-outline text-[#34A853] border-[#34A853] rounded-full shadow-none outline-none font-normal text-lg min-h-0 h-8 px-6">Take Test</button>
+        <Link target="_blank" to={`https://mock-test-platform.vercel.app/topic/${subTopic.replace(/\s/g, '_')}`}>
+          <button className="btn btn-outline text-[#34A853] border-[#34A853] rounded-full shadow-none my-3 outline-none font-normal text-lg min-h-0 h-8 px-6">Take Test</button>
         </Link>
       </div>
     </div>
   );
-
-};
+};  

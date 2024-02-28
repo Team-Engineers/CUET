@@ -15,7 +15,7 @@ import Syllabus from "./pages/Syllabus";
 import University from "./pages/UniversityPage";
 import PrivateRoutes from "./utils/PrivateRoutes";
 import PackPage from "./components/Packs/PacksPage";
-import PracticeQuestions from "./components/practicequestions/PracticeQuestions";
+import PrepModules from "./components/prepmodules/PrepModules";
 
 const App = () => {
   // const isUserSignedIn = () => {
@@ -35,17 +35,19 @@ const App = () => {
 
       <Route path="/university" element={<University />} />
       <Route path="/courses/:subtopic" element={<SubtopicPage />} />
-      <Route path="/test/:heading" element={<TestPage />} />
+      <Route path="/test/:topic" element={<TestPage />} />
       <Route path="/test/:subheading/:heading" element={<SubtopicPage />} />
 
       <Route element={<PrivateRoutes />}>
         <Route path="/test/practice/:subTopic" element={<MockTestMain />} />
-        <Route path="/test/practice_test/:subTopic" element={<PracticeQuestions />} />
-
         <Route path="/profile" element={<Profile />} />
         <Route
-          path="/test/practice/:heading/:subTopic"
-          element={<Practice />}
+          path="/test/practice/:topic/:subTopic"
+          element={<MockTestMain />}
+        />
+        <Route
+          path="/test/prep/:topic/:subTopic"
+          element={<PrepModules />}
         />
       </Route>
       <Route path="*" element={<>Error 404 </>} />

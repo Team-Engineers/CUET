@@ -96,7 +96,7 @@ const Practicetest = ({ data,subtopic }) => {
         <div className="flex  flex-col">
           <div className="flex justify-between">
           <div className="px-4 py-5">
-          <span className={`p-[0.5vw] m-3 rounded-full bg-gradient-to-br overflow-hidden from-[#617cea] to-white text-white text-white id-${question._id}`}>
+          <span className={`question-number id-${question._id}`}>
               {`${questionIndex + 1 + currentPage * 1} `}
             </span>
             of

@@ -9,7 +9,7 @@ const Footer = () => {
         <div className="flex my-6 justify-center items-center">
         <div className=" grid md:grid-cols-2 md:mx-10 grid-cols-1">
           <div className="w-full md:flex md:flex-col justify-center   ">
-            <div className="flex justify-start mb-10 items-center">
+            <div className="flex justify-start  items-center">
               <Link to="/" className="no-underline">
                 <div className="flex items-center">
                   <div className="mr-4 mb-[-12px]">
