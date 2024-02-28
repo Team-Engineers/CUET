@@ -11,10 +11,11 @@ const PrepModulesQue = ({ data }) => {
     const updatedSelectedOptions = [...selectedOptions];
     updatedSelectedOptions[currentPage] = [...updatedSelectedOptions[currentPage]];
     updatedSelectedOptions[currentPage][questionIndex] = optionIndex;
+
     setSelectedOptions(updatedSelectedOptions);
   };
 
-  
+
 
   const toggleExplanationVisibility = (questionIndex) => {
     const updatedExplanationsVisible = [...explanationsVisible];
@@ -35,7 +36,7 @@ const PrepModulesQue = ({ data }) => {
                 <span className={`question-number id-${question._id}`}>
                   {`${questionIndex + 1 + currentPage * 1} `}
                 </span>
-               
+
               </div>
             </div>
             <div className="text-[20px]  relative pl-8 flex items-center top-[-40px] px-4   ">
@@ -55,7 +56,8 @@ const PrepModulesQue = ({ data }) => {
         {question.subQuestions[0].options.map((option, optionIndex) => (
           <div
             key={optionIndex}
-            className={`option-box   ${selectedOptions[currentPage] && selectedOptions[currentPage][questionIndex] === optionIndex ? (question.subQuestions[0].correctOptionIndex - 1 === optionIndex ? 'correct' : 'incorrect') : ''}`}
+            className={`option-box   
+    ${selectedOptions[currentPage] && selectedOptions[currentPage][questionIndex] === optionIndex ? (question.subQuestions[0].correctOptionIndex === optionIndex ? 'correct' : 'incorrect') : ''}`}
             onClick={() => handleOptionClick(questionIndex, optionIndex)}
           >
             <span className="option-alphabet px-2">
@@ -74,14 +76,21 @@ const PrepModulesQue = ({ data }) => {
               </div>
             </div>
             <div className="flex">
-              {selectedOptions[currentPage] && selectedOptions[currentPage][questionIndex] === optionIndex && (
-                <span className={question.subQuestions[0].correctOptionIndex - 1 === optionIndex ? "correct-answer" : "incorrect-answer"}>
-                  {question.subQuestions[0].correctOptionIndex - 1 === optionIndex ? <i className="fa-solid fa-check"></i> : <i className="fa-solid fa-xmark"></i>}
-                </span>
-              )}
+              {selectedOptions[currentPage] &&
+                selectedOptions[currentPage][questionIndex] === optionIndex && (
+                  <span>
+                    {question.subQuestions[0].correctOptionIndex  === optionIndex ? (
+                      <i className="fa-solid fa-check"></i>
+                    ) : (
+                      <i className="fa-solid fa-xmark"></i>
+                    )}
+                  </span>
+                )
+              }
             </div>
           </div>
         ))}
+
         <div className="w-100 my-2 flex justify-center items-center">
           <button
             className="  text-capitalize border-solid rounded-3xl p-2 px-3 bg-white  border-black flex justify-center"
