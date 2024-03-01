@@ -168,7 +168,7 @@ const Navbar = () => {
           </ul>
         </div>
         {location.pathname === "/" && (
-          <b className="hidden lg:block absolute text-blueviolet-100 top-20 mr-9">+91 8279662680</b>
+          <b className="hidden lg:block absolute text-blueviolet-100 top-20 mr-9">91 9560443520</b>
         )}
       </div>
     </div>

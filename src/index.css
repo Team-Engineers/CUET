@@ -17,47 +17,18 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-
-/* .circle{
-  /* Vector */
-
-/* position: absolute;
-width: 683.04px;
-height: 846.18px;
-left: -336.85px;
-top: 436.98px;
-
-background: linear-gradient(206.9deg, rgba(0, 209, 255, 0.6) 0.06%, rgba(86, 72, 252, 0.6) 75.11%);
-transform: rotate(-64.76deg); */
-
-/* .swiper {
-  width: 100%;
-  padding-top: 50px;
-  padding-bottom: 50px;
+.login-message-container {
+  animation: moveLeftToRight 5s linear infinite;
 }
 
-.swiper-slide {
-  background-position: center;
-  background-size: cover;
-  width: 300px;
-  height: 300px;
-}
-
-.swiper-slide img {
-  display: block;
-  width: 100%;
-}
-
-.animate-slide {
-  animation: slide 0.5s ease-out;
-} */
-
-@keyframes slide {
-  from {
-    transform: translateX(0); 
+@keyframes moveLeftToRight {
+  0% {
+    transform: translateX(-20%);
   }
-
-  to {
-    transform: translateX(-33.33%); 
+  50% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-20%);
   }
 }

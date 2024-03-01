@@ -103,30 +103,22 @@ const slides = [
     content: (
       <Testinomials2
         image={require("../../assets/images/signup/test1.png")}
-        name="Mohan Singh"
-        text="Enrolling in the online CUET course was a game-changer for me.
-        The comprehensive material, interactive lessons, and personalized
-        support elevated my preparation. I not only gained confidence but
-        also achieved remarkable results. Thank you for paving the way to
-        my success!"
+        name="Sachin Gupta"
+        text="After my Board exams, I felt that i seriouly need to work hard for cuet, thereby I subscribed to the complete package offered by TestKnock. Extensive practice of MCQs proved to be game changer. I owe my sucess to TestKnock"
         color="#4477CE"
-        university="Student, Joy University"
+        university="Student, Hindu College (Delhi University)"
       />
     ),
   },
-  {
+  { 
     key: uuidv4(),
     content: (
       <Testinomials2
         image={require("../../assets/images/signup/test1.png")}
-        name="Priya Singh"
-        text="Enrolling in the online CUET course was a game-changer for me.
-          The comprehensive material, interactive lessons, and personalized
-          support elevated my preparation. I not only gained confidence but
-          also achieved remarkable results. Thank you for paving the way to
-          my success!"
+        name="Varuna S"
+        text="The Platform offered by cuet Tests is exactly mapped with cuet conducted by NTA. The difficulty lvel, look & feel-- in short everything when i appeared for my final CUET exams, it felt i have appeared similar tests in the past. THanks to TestKnock"
         color="#9F73AB"
-        university="Student, IMS Unison University"
+        university="Student, APS Waranagal"
       />
     ),
   },
@@ -134,12 +126,38 @@ const slides = [
     key: uuidv4(),
     content: (
       <Testinomials2
-        name={"Jhon Lawrence"}
+        name={"S.K Malhotra "}
         text={
-          "Enrolling in the online CUET course was a game-changer for me.  The comprehensive material, interactive lessons, and personalized support elevated my preparation. I not only gained confidence but also achieved remarkable results. Thank you for paving the way to my success!"
+          "I have been running my coaching centre successfully for more than 2 decades. I owe my success to my hardwork, dedication & sincerity. I found the same in team at TestKnock. All my students compulsorily subscribe to the Dashboard & online facilities oferred by TestKnock for CUET."
         }
         color="#3795BD"
-        university="Professor, IILM University"
+        university="Owner of SKM Classes, Yamuna Nagar"
+      />
+    ),
+  },
+  {
+    key: uuidv4(),
+    content: (
+      <Testinomials2
+        name={"Manish Kumar "}
+        text={
+          "I solved MCQs on the TestKnock platform for hardly one month but in a consistent manner. I completed all the Mock Tests & then played a critical role in my success"
+        }
+        color="#7d4738"
+        university="Student, DPS Patna"
+      />
+    ),
+  },
+  {
+    key: uuidv4(),
+    content: (
+      <Testinomials2
+        name={"R.K Suranjan Singh"}
+        text={
+          "After getting to see the quality of questions & the overall experience & exposure offered to students, I recommended it to my students and they benefitted immensely"
+        }
+        color="#691672"
+        university="Teacher, K.V LOKTAK "
       />
     ),
   },

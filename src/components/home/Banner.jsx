@@ -3,6 +3,7 @@ import ExamInfo from "../../components/home/ExamInfo";
 import Lottie from "react-lottie";
 import LandingAnimationData from "../../assets/animation_landing.json";
 import { useNavigate } from "react-router-dom/dist";
+import { RxCross1 } from "react-icons/rx";
 
 const Banner = () => {
   const navigate = useNavigate();
@@ -27,6 +28,7 @@ const Banner = () => {
   const handleBellIconClick = () => {
     setIsPopupOpen(true);
   };
+  
 
   return (
     <div className="max-w-[1380px] md:mt-5 mx-auto">
@@ -63,15 +65,15 @@ const Banner = () => {
               <button
                 onClick={() => navigate("/login")}
                 className={
-                  "btn btn-outline text-sm md:text-lg font-medium border-blueviolet-100 text-blueviolet-100 no-underline border-solid  hover:bg-blueviolet-100 rounded-full min-h-0 h-10 w-40  md:w-56 capitalize"
+                  "btn btn-outline text-sm md:text-lg font-medium border-blueviolet-100 text-blueviolet-100 no-underline border-solid  hover:bg-blueviolet-100 hover:text-white rounded-full min-h-0 h-10 w-40  md:w-56 capitalize"
                 }
               >
                 Take a free test
               </button>
             </div>
             <div className="my-10 hidden md:block">
-              <div className="flex relative  flex-row items-center gap-[7px] text-base cursor-pointer">
-                <div onClick={handleBellIconClick}>
+              <div  className="flex relative  flex-row items-center gap-[7px] text-base cursor-pointer">
+                <div onClick={handleBellIconClick} >
                   <img
                     className="h-[54px] w-[52px] relative object-cover"
                     loading="eager"
@@ -80,7 +82,7 @@ const Banner = () => {
                   />
                 </div>
 
-                <div className="relative font-semibold">Live Notification</div>
+                <div onClick={handleBellIconClick} className="relative font-semibold">Live Notification</div>
               </div>
               {isPopupOpen && (
                 <div ref={popupRef} className="absolute w-[25rem] rounded-lg">
