@@ -130,9 +130,20 @@ export const Testcard2 = ({ subTopic,  Questions, Marks,  Negative,  Times, inde
       </div>
       <div className="w-full flex items-center py-3 justify-end h-16 pr-10">
       {index === 0 || (index <= 4 && auth.user) ? (
-        <Link target="_blank" to={`https://mock-test-platform.vercel.app/topic/${subTopic.replace(/\s/g, '_')}/${auth?.user ?.user?._id}`}>
-          <button className="btn btn-outline text-[#34A853] border-[#34A853] rounded-full shadow-none my-3 outline-none font-normal text-lg min-h-0 h-8 px-6">Take Test</button>
-        </Link>
+        <>
+        {auth.user ? (
+          <Link
+            target="_blank"
+            to={`https://mock-test-platform.vercel.app/topic/${subTopic.replace(/\s/g, '_')}/${auth?.user?.user?._id}`}
+          >
+            <button className="btn btn-outline text-[#34A853] border-[#34A853] rounded-full shadow-none my-3 outline-none font-normal text-lg min-h-0 h-8 px-6">Take Test</button>
+          </Link>
+        ) : (
+          <Link to={`https://mock-test-platform.vercel.app/topic/${subTopic.replace(/\s/g, '_')}/free`}>
+            <button className="btn btn-outline text-[#34A853] border-[#34A853] rounded-full shadow-none my-3 outline-none font-normal text-lg min-h-0 h-8 px-6">Take Test</button>
+          </Link>
+        )}
+         </>
       ) : (
         <Link  to={`/login`}>
           <button className="btn btn-outline text-[#34A853] border-[#34A853] rounded-full shadow-none my-3 outline-none font-normal text-lg min-h-0 h-8 px-6">
