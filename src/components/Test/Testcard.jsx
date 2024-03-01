@@ -100,7 +100,7 @@ export const Testcard2 = ({ subTopic,  Questions, Marks,  Negative,  Times, inde
           <img src={freeicon} className="absolute top-[-30px] right-[-20px] w-[80px] h-[80px]" alt="Free Icon" />
         )}
         <img src="https://i.ibb.co/p0WP2Ss/mocktest.png" alt={subTopic} className="w-28 h-28" />
-        <h5 className="font-bold text-3xl">
+        <h5 className="font-bold md:text-3xl text-xl ">
           {subTopic} <p className="text-sm text-[#00000099]">Free</p>
         </h5>
       </div>
@@ -128,7 +128,7 @@ export const Testcard2 = ({ subTopic,  Questions, Marks,  Negative,  Times, inde
           </div>
         </div>
       </div>
-      <div className="w-full flex items-center justify-end h-16 pr-10">
+      <div className="w-full flex items-center py-3 justify-end h-16 pr-10">
       {index === 0 || (index <= 4 && auth.user) ? (
         <Link target="_blank" to={`https://mock-test-platform.vercel.app/topic/${subTopic.replace(/\s/g, '_')}/${auth?.user ?.user?._id}`}>
           <button className="btn btn-outline text-[#34A853] border-[#34A853] rounded-full shadow-none my-3 outline-none font-normal text-lg min-h-0 h-8 px-6">Take Test</button>
