@@ -3,7 +3,6 @@ import { useMediaQuery } from "react-responsive";
 import { config } from "react-spring";
 import Carousel from "react-spring-3d-carousel";
 import { v4 as uuidv4 } from "uuid";
-
 const getTouches = (evt) => {
   return (
     evt.touches || evt.originalEvent.touches // browser API
@@ -110,7 +109,7 @@ const slides = [
       />
     ),
   },
-  { 
+  {
     key: uuidv4(),
     content: (
       <Testinomials2
@@ -162,23 +161,54 @@ const slides = [
     ),
   },
 ];
-const   Testinomials = () => {
+const Testinomials = () => {
   const isMobile = useMediaQuery({ query: `(max-width: 760px)` });
   return (
- <div className="relative w-full mx-auto flex justify-center items-center ">
+    <div className="relative w-full mx-auto flex justify-center items-center ">
       <div className="max-w-[1500px] mx-auto flex justify-center items-center">
-      <div className="w-screen flex flex-col justify-center items-center my-2">
-        <div className="">
-          <h1 className="text-blueviolet-100  text-13xl font-semibold text-center ">Testimonials</h1>
+        <div className="w-screen flex flex-col justify-center items-center my-2">
+          <div className="">
+            <h1 className="text-blueviolet-100  text-13xl font-semibold text-center ">Testimonials</h1>
+          </div>
+          <Carroussel cards={slides} height="500px" width="100%" margin="0 auto" offset={isMobile ? 10 : 200} showArrows={false} />{" "}
+          {/* <div className="max-md:hidden">
+        <Swiper
+            effect={'coverflow'}
+            grabCursor={true}
+            centeredSlides={true}
+            loop={true}
+            slidesPerView={'auto'}
+            coverflowEffect={{
+              rotate: 0,
+              stretch: 0,
+              depth: 100,
+              modifier: 2.5,
+            }}
+            pagination={{ el: '.swiper-pagination', clickable: true }}
+            navigation={{
+              nextEl: '.swiper-button-next',
+              prevEl: '.swiper-button-prev',
+              clickable: true,
+            }}
+            modules={[EffectCoverflow, Pagination, Navigation]}
+            className="swiper_container swiper"
+          >
+            {slides.map((slide) => (
+              <SwiperSlide height="500px" key={slide.key}>
+                {slide.content}
+              </SwiperSlide>
+            ))}
+                      <div className="swiper-pagination mx-auto"></div>
+
+          </Swiper>
+        </div> */}
         </div>
-        <Carroussel cards={slides} height="500px" width="100%" margin="0 auto" offset={isMobile ? 10 : 200} showArrows={false} />{" "}
-      </div>
       </div>
       <img alt="" src="/bubbles/bubble3.png" className="absolute bottom-0  left-0 z-0" />
       <img alt="" src="/bubbles/bubble2.png" className="absolute right-0 top-[100px] md:top-0 z-0" />
     </div>
-   
-   
+
+
   );
 };
 
