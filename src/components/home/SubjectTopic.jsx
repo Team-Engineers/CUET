@@ -12,8 +12,11 @@ const SubjectTopic = () => {
           </h1>
         </div>
       </div>
-      <div className="h-[520px] w-[50%]  rounded-xl mb-2 mx-[!important] absolute  left-0 bg-thistle [backdrop-filter:blur(50px)]   box-border text-black">
+      <div className="relative md:top-[-50px] top-[-40px]">
+      <div className="md:h-[520px] h-[1000px]  w-[50%]  rounded-xl mb-2 mx-[!important] absolute  left-0 bg-thistle [backdrop-filter:blur(50px)]   box-border text-black">
         </div>
+      </div>
+      
         <div className="mx-[20px] max-lg:flex max-lg:justify-center max-lg:-center my-10 ">
         <div className="md:flex-row flex-col max-w-[1280px] mx-auto flex justify-center md:justify-between  ">
           <DomainTopic color={"bg-salmon-100"} img_path={"/domain1.png"} text="General English" path={"/test/General%20English"} />

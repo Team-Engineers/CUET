@@ -1,7 +1,6 @@
 import { useState } from "react";
 import Lottie from "react-lottie";
 import Step1AnimatiionData from "../../assets/animation_step1.json";
-import Step2AnimatiionData from "../../assets/animation_step2.json";
 import Step3AnimatiionData from "../../assets/animation_step3.json";
 import StepGuide from "./StepGuide";
 
@@ -18,7 +17,7 @@ const HomeSteps = () => {
             options={{
               loop: true,
               autoplay: true,
-              animationData: currStep === 1 ? Step1AnimatiionData : currStep === 2 ? Step2AnimatiionData : Step3AnimatiionData,
+              animationData: currStep === 1 ? Step1AnimatiionData : currStep === 2 ? Step3AnimatiionData : Step3AnimatiionData,
             }}
           />
         </div>

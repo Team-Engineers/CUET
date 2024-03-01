@@ -65,16 +65,16 @@
 
 .question-practice .options-grid .incorrect {
     color: white;
-    background: red;
+    background: rgb(240, 76, 76);
 }
 
 .question-practice .options-grid .correct {
-    background: green;
+    background: rgb(56, 142, 56);
     color: black;
 }
 
 .question-practice .correct .option-alphabet {
-    background-color: green;
+    background-color: rgb(23, 151, 23);
     color: white;
 }
 
@@ -158,7 +158,6 @@
 }
 
 .question-practice .explanation-wrapper .explanation p h6 {
-    color: #444;
     line-height: 2rem;
 }
 

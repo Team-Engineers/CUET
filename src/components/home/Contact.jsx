@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { IoMdCall } from "react-icons/io";
 import Lottie from "react-lottie";
 import SupportAnimationData from "../../assets/images/contact_card.json";
+import { RxCross1 } from "react-icons/rx";
 
 const ContactForm = () => {
   const [isPopupOpen, setisPopupOpen] = useState(false);
@@ -36,7 +37,7 @@ const ContactForm = () => {
           Need Help
         </button>
         {isPopupOpen && (
-          <div onClick={handleNeedHelpClick} className="absolute right-[-50px] flex bg-opacity-50 z-50">
+          <div onClick={handleNeedHelpClick} className="absolute right-[-50px] top-[-100px] flex bg-opacity-50 z-50">
             <Needhelppopup />
           </div>
         )}
@@ -48,21 +49,24 @@ const ContactForm = () => {
 const Needhelppopup = () => {
   return (
     <div className="bg-[#FFFBEE]  rounded-xl ">
-      <div className="">
-        <h1 className="py-3 px-4 text-[15px] ">Need Guidance or Help in Filling Form?</h1>
-        <h1 className="mx-8 pb-4">
+      <div className="absolute m-2 cursor-pointer  text-[18px] right-0">
+        <RxCross1/>
+      </div>
+      <div className="mt-8">
+        <h1 className="py-1 px-4  text-[15px] ">Need Guidance or Help in Filling Form?</h1>
+        <h1 className="mx-8 pb-2">
           <p className="text-sm flex justify-between ">
             <span>Sachin Rana</span>{" "}
             <span>
               {" "}
-              <IoMdCall /> 91+ 9560443520
+              <IoMdCall /> +91 9560443520
             </span>{" "}
           </p>
           <p className=" flex text-sm justify-between   ">
             <span>Virendra Pratap</span>{" "}
             <span>
               {" "}
-              <IoMdCall /> 91+ 8279662680
+              <IoMdCall /> +91 8279662680
             </span>{" "}
           </p>
         </h1>

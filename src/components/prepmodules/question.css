@@ -91,7 +91,7 @@
 
 .question-practice .options-grid .incorrect {
     color: white;
-    background: red;
+    background: rgb(222, 80, 80);
 }
 
 .question-practice .options-grid .correct {
@@ -193,16 +193,15 @@
 }
 
 .question-practice .explanation-wrapper .explanation p h6 {
-    color: #444;
     line-height: 2rem;
 }
 
 .question-practice .explanation-wrapper .explanation{
     border: 1px solid #bababa;
-    margin: 10px;
+    margin: 10px;   
     padding: 10px;
     border-radius: 10px;
-    background-color: #fff7f7;
+    background-color:#a8bbff5f;
 }
 
 

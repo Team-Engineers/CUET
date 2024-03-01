@@ -88,9 +88,7 @@ const RecommendedSubTopics = () => {
       "sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN";
     bootstrapCssLink.crossOrigin = "anonymous";
     document.head.appendChild(bootstrapCssLink);
-  
     return () => {
-
       document.head.removeChild(bootstrapCssLink);
     };
   }, []);

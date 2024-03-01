@@ -4,7 +4,6 @@ import "./App.css";
 import SubtopicPage from "./components/Courses/SubtopicPage";
 import TestPage from "./components/Test/TestPage";
 import MockTestMain from "./components/practicetest/MockTestMain";
-import Practice from "./components/practicetest/Practice";
 import AboutPage from "./pages/Aboutpage";
 import Coursespage from "./pages/Coursespage";
 import Homepage from "./pages/Homepage";
@@ -37,18 +36,19 @@ const App = () => {
       <Route path="/courses/:subtopic" element={<SubtopicPage />} />
       <Route path="/test/:topic" element={<TestPage />} />
       <Route path="/test/:subheading/:heading" element={<SubtopicPage />} />
-
-      <Route element={<PrivateRoutes />}>
-        <Route path="/test/practice/:subTopic" element={<MockTestMain />} />
-        <Route path="/profile" element={<Profile />} />
+      <Route
+          path="/test/prep/:topic/:subTopic"
+          element={<PrepModules />}
+        /> 
         <Route
           path="/test/practice/:topic/:subTopic"
           element={<MockTestMain />}
         />
-        <Route
-          path="/test/prep/:topic/:subTopic"
-          element={<PrepModules />}
-        />
+      <Route element={<PrivateRoutes />}>
+        <Route path="/test/practice/:subTopic" element={<MockTestMain />} />
+        <Route path="/profile" element={<Profile />} />
+        
+        
       </Route>
       <Route path="*" element={<>Error 404 </>} />
     </Routes>

@@ -21,8 +21,8 @@ function TestPage() {
     setIsPackPageOpen(false);
   };
   const subtopics = topics[topic];
-  
-  
+
+
   const subjects = subtopics.map((subtopic, index) => {
     const backgroundColors = [
       "#776CFF",
@@ -35,7 +35,7 @@ function TestPage() {
       "#58B6C5",
       "#FF7A7A"
     ];
-      const colorIndex = index % backgroundColors.length;
+    const colorIndex = index % backgroundColors.length;
 
     return {
       subTopic: subtopic,
@@ -46,7 +46,7 @@ function TestPage() {
       Times: 60,
     };
   });
-  
+
 
 
   const practice = Array.from({ length: 12 }, (_, index) => {
@@ -61,7 +61,7 @@ function TestPage() {
       "#58B6C5",
       "#FF7A7A"
     ];
-      const colorIndex = index % backgroundColors.length;
+    const colorIndex = index % backgroundColors.length;
     const subtopicNumber = index + 1;
     return {
       subTopic: `Practice Test ${subtopicNumber}`,
@@ -149,21 +149,22 @@ function TestPage() {
             {currentTab === "prep" ? (
               <div className=" grid grid-cols-1 md:grid-cols-2 mb-20 lg:grid-cols-3 gap-14">
                 {subjects.map((subject, index) => (
-                  <Testcard heading={topic}{...subject} />
+                  <Testcard key={index} heading={topic} {...subject} index={index} />
                 ))}
+
               </div>
             ) : currentTab === "practice" ? (
               <div className="grid grid-cols-1 md:grid-cols-2 mb-20 lg:grid-cols-3 gap-14">
 
                 {practice.map((subject, index) => (
-                  <Testcard1 topic={mainheading} {...subject} />
+                  <Testcard1 topic={mainheading} {...subject} index={index} />
                 ))}
               </div>
             ) : (
               <div className="grid grid-cols-1 md:grid-cols-2 mb-20 lg:grid-cols-3 gap-14">
                 {mock.map((subject, index) => (
                   <div key={index} className="col-md-4">
-                    <Testcard2 heading={mainheading} {...subject} />
+                    <Testcard2 heading={mainheading} {...subject} index={index} />
                   </div>
                 ))}
               </div>

@@ -90,8 +90,8 @@ const PrepModulesQue = ({ data }) => {
             </div>
           </div>
         ))}
-
-        <div className="w-100 my-2 flex justify-center items-center">
+        <div className="my-2 mb-5 ">
+        <div className="w-100 flex justify-center items-center">
           <button
             className="  text-capitalize border-solid rounded-3xl p-2 px-3 bg-white  border-black flex justify-center"
             onClick={() => toggleExplanationVisibility(questionIndex)}
@@ -118,6 +118,8 @@ const PrepModulesQue = ({ data }) => {
             </div>
           )}
         </div>
+          </div>
+       
       </div>
     );
   };

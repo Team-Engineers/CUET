@@ -10,12 +10,12 @@ const SubtopicPage = () => {
   const { heading } = useParams();
   const subtopicCategory = Object.keys(subtopicsData).find((subtopicsData) => subtopicsData === heading);
   const subtopicData = subtopicsData[subtopicCategory];
-  
   return (
-    <div className="bg-gradient-to-br from-[#ACBCFF] to-white overflow-x-hidden">
+    <>
+     <div className="bg-gradient-to-br from-[#ACBCFF] to-white overflow-x-hidden">
       <Navbar />
-
-      <div className="w-full max-w-[1280px] mx-auto mt-8">
+      <img src={require("../../assets/images/courses/Ellipsecommerce.png")} className="absolute top-0 z-0 left-0" alt="" />
+      <div className="w-full relative z-10 max-w-[1280px] mx-auto mt-8">
           <div className="flex flex-col justify-center text-center my-5 ">
           <h1 className="text-[#5648FC] mx-8 items-center flex">
             <Link className="text-[#5648FC] items-center flex pr-2" to={"/courses"}>
@@ -32,11 +32,18 @@ const SubtopicPage = () => {
               subtopicData.map((item, index) => <TopicContainer key={index} brick={item.image} heading={item.title} color={item.color} />)}
           </div>
           </div>
-        
           </div>
+
       </div>
+      <div className="top-10 relative">
+      <img src={require("../../assets/images/courses/commercecircle.png")} className="absolute bottom-0 right-0" alt="" />
+
+      </div>
+
       <Footer />
     </div>
+    </>
+   
   );
 };
 
