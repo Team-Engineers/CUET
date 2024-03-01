@@ -8,6 +8,7 @@ import Footer from "../Footer";
 import Navbar from "../Navbar";
 import { useAuth } from "../../utils/context";
 import FixedNavbar from "../FixedNavbar";
+import NoData from "../Loader/NoData";
 
 const MockTestMain = () => {
   const [data, setData] = useState([]);
@@ -26,7 +27,7 @@ const MockTestMain = () => {
       let subTopic1 = subTopic.replace(/\s/g, '_');
       try {
         const response = await axios.get(
-          `https://ourntamockpapers.onrender.com/api/question/find-questions?topic=Spot_the_Error  `
+          `https://ourntamockpapers.onrender.com/api/question/find-questions?topic=${subTopic1}  `
         );
         setData(response.data.requestedData);
         setIsLoading(false);
@@ -49,6 +50,7 @@ const MockTestMain = () => {
     <div className='bg-gradient-to-br overflow-hidden from-[#ffffff] to-white'>
       {!isLoggedIn && <FixedNavbar />}
       <Navbar />
+      {data.length > 0 ? (
       <section className="question-practice m-[20px]">
         {data.length > 0 ? (
           <div className="mx-auto">
@@ -58,6 +60,9 @@ const MockTestMain = () => {
           <CuetLoader />
         )}
       </section>
+      ) : (
+        <NoData />
+      )}
       <Footer />
     </div>
   );
