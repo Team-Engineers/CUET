@@ -50,6 +50,10 @@ const Accordion = ({ items }) => {
 const FrequentlyAskedQuestions = () => {
     const faqItems = [
         {
+            title: 'We have heard from past year students that filling forms along with preference sheet for CUET is very technical. Is it true ?',
+            content: 'It is not true, however adequate inputs and knowledge shall ensure no error in filling of form. For any help / information, feel free to get in touch with the Team at TESTKNOCK'
+        },
+        {
             title: 'When is CUET in 2024?',
             content: 'The NTA has announced the exam dates for CUET 2024. The CUET 2024 is set to take place from May 15th to May 31st, 2024.'
         },
