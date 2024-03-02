@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import './css/PackPage.css';
+import React, { useEffect, useState } from 'react';
 import { API } from '../../utils/constants';
-import PriceCard from './PriceCard';
-import Navbar from '../Navbar';
 import Footer from '../Footer';
+import Navbar from '../Navbar';
+import PriceCard from './PriceCard';
+import './css/PackPage.css';
 
 export default function PackPage() {
   const [packages, setPackages] = useState([]);
@@ -27,17 +27,17 @@ export default function PackPage() {
 
   return (
     < div className=" overflow-hidden">
-    <Navbar/>
-        <div className=" overflow-hidden left-0 w-full max-w-[1280px]  flex flex-col justify-center items-center h-screen mx-auto ">
-          <div className=" grid grid-cols-3 mx-5">
-              {packages.map((packages, index) => (
-                <div key={index}>
-                  <PriceCard packages={packages} />
-                </div>
-              ))}
-          </div>
+      <Navbar />
+      <div className=" overflow-hidden left-0 w-full max-w-[1280px]  flex flex-col justify-center items-center h-screen mx-auto ">
+        <div className=" grid grid-cols-4 mx-4">
+          {packages.map((packages, index) => (
+            <div key={index}>
+              <PriceCard packages={packages} />
+            </div>
+          ))}
         </div>
-        <Footer/>
+      </div>
+      <Footer />
     </div>
   );
 }

@@ -1,8 +1,8 @@
-import React from 'react';
 import axios from 'axios';
-import { useAuth } from "../../utils/context";
-import { API } from '../../utils/constants';
+import React from 'react';
 import { useNavigate } from "react-router-dom";
+import { API } from '../../utils/constants';
+import { useAuth } from "../../utils/context";
 
 function PriceCard({ packages }) {
   const navigate = useNavigate();
@@ -22,7 +22,7 @@ function PriceCard({ packages }) {
         currency: data.currency,
         name: nameOfPlan,
         description: "Test Transaction",
-        image: "", 
+        image: "",
         order_id: data.order_id,
         handler: async (response) => {
           try {
@@ -39,8 +39,8 @@ function PriceCard({ packages }) {
               const userResponse = await axios.get(`${API}/users/find/${auth.user?._id}`);
               const updatedUser = userResponse.data;
               const updatedAuth = { ...auth, user: updatedUser };
-              setAuth(updatedAuth); 
-              localStorage.setItem("auth", JSON.stringify(updatedAuth)); 
+              setAuth(updatedAuth);
+              localStorage.setItem("auth", JSON.stringify(updatedAuth));
               navigate('/courses');
             }
           } catch (error) {
@@ -59,26 +59,26 @@ function PriceCard({ packages }) {
   };
 
   return (
-    <div className='price-card bg-gradient-to-br  from-[#ea6161] to-blue-400 transition-all duration-100  backdrop-blur[40px] hover:scale-105 border-[1px] rounded-2xl border-[#121c43] text-center h-[500px] text-white m-3'>
-      <div className='p-2 py-4 pt-10'>
-        <h2 className='text-[25px] p-1 w-[80%] mx-auto rounded-3xl text-black bg-[#38d4e2]'>{nameOfPlan}</h2>
-        <h1 className='text-10xl'>Rs {amount}</h1>
-        <p className='text-[12px]'>{description}</p>
+    <div className='price-card bg-white transition-all duration-100 border border-solid border-[#121c43] rounded-2xl backdrop-blur[40px] hover:scale-105 text-center h-[500px] text-black mx-3 mt-[-30px]'>
+      <div className='p-2 py-3 pt-7'>
+        <h2 className='text-[25px] p-1 w-[80%] mx-auto rounded-3xl text-black bg-[#ffffff]'>{nameOfPlan}</h2>
+        <h1 className='text-10xl text-slate-700'>Rs {amount}</h1>
+        <p className='text-[12px] text-slate-600 px-3 mb-3'>{description}</p>
         <div className='features text-[20px]'>
           <div className='feature-cont'>
             <div className='icon'></div>
-            <div className='feature-name bg-gradient-to-br w-[70%] mx-auto p-2 rounded-3xl from-[#5146e7] to-[#111]'>General English</div>
+            <div className='feature-name bg-gradient-to-br w-[70%] mx-auto p-2 rounded-3xl from-[#5146e7] to-[#fff]'>General English</div>
           </div>
           <div className='feature-cont'>
             <div className='icon'></div>
-            <div className='feature-name my-3 bg-gradient-to-br w-[70%] mx-auto p-2 rounded-3xl from-[#5146e7] to-[#111]'>General Test</div>
+            <div className='feature-name my-3 bg-gradient-to-br w-[70%] mx-auto p-2 rounded-3xl from-[#5146e7] to-[#fff]'>General Test</div>
           </div>
           <div className='feature-cont'>
             <div className='icon'></div>
-            <div className='feature-name bg-gradient-to-br w-[70%] mx-auto p-2 rounded-3xl from-[#5146e7] to-[#111]'>Any Domain Subject</div>
+            <div className='feature-name bg-gradient-to-br w-[70%] mx-auto p-2 rounded-3xl from-[#5146e7] to-[#fff]'>Any Domain Subject</div>
           </div>
         </div>
-        <button className='confirmation-btn cursor-pointer  text-[20px] p-2 mt-14 rounded-3xl mx-auto w-[80%] ' onClick={initPayment}>Click here to get started</button>
+        <button className='confirmation-btn cursor-pointer  text-[18px] py-2 px-1 mt-10 rounded-3xl mx-auto w-[75%] ' onClick={initPayment}>Get started</button>
       </div>
     </div>
   );

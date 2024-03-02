@@ -1,11 +1,10 @@
 import React from "react";
+import { CiCircleMinus, CiSquareCheck } from "react-icons/ci";
 import { FaQuestion } from "react-icons/fa6";
-import { CiSquareCheck } from "react-icons/ci";
 import { TbClockHour8 } from "react-icons/tb";
-import { CiCircleMinus } from "react-icons/ci";
 import { Link } from "react-router-dom";
+import freeicon from "../../assets/images/courses/freeicon.gif";
 import { useAuth } from "../../utils/context";
-import freeicon from "../../assets/images/courses/freeicon.gif"
 export const Testcard = ({ subTopic, heading, Questions, bgcolor, index }) => {
   const [auth] = useAuth();
   const allow = auth?.user?.packageId;
@@ -22,8 +21,8 @@ export const Testcard = ({ subTopic, heading, Questions, bgcolor, index }) => {
           <div className="flex items-center justify-center pr-8">
             <div className="flex justify-center items-center">
               <FaQuestion size={30} className="mr-3 text-white bg-[#5648FC] rounded-full p-2" />
-              {Questions} <br />
-              Questions
+              {Questions}
+              &nbsp; Questions
             </div>
           </div>
         </div>
@@ -78,9 +77,9 @@ export const Testcard1 = ({ subTopic, topic, Questions, Marks, bgcolor, Times, i
           <img src={freeicon} className="absolute top-[-30px] right-[-20px] w-[80px] h-[80px]" alt="Free Icon" />
         )}
         <img src="https://i.ibb.co/XFnxJSS/practicetest.png" alt={subTopic} className="w-[150px] h-[150px]" />
-        <div className="rounded-[20px] px-10 pb-4 mt-2 bg-white w-[70%] mx-auto h-[45%] flex flex-col items-center justify-center">
+        <div className="rounded-[20px] px-7 pb-4 mt-2 bg-white w-[70%] mx-auto h-[45%] flex flex-col items-center justify-center">
           <h5 className="w-full font-bold text-3xl pl-4 pt-2">{subTopic}</h5>
-          <div className="w-full flex items-center justify-around">
+          <div className="w-full flex gap-3 items-center justify-around">
             <div className="flex justify-center items-center text-[10px]">
               <FaQuestion size={16} className="mr-1 text-white bg-[#5648FC] rounded-full p-2" />
               {Questions} <br />

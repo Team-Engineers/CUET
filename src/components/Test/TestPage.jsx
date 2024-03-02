@@ -1,12 +1,11 @@
-import { IoArrowBack } from "react-icons/io5";
-import { Link } from "react-router-dom";
-import Navbar from "../Navbar";
-import "./css/TestPage.css";
-import { Testcard1, Testcard, Testcard2 } from "../Test/Testcard";
 import { useState } from "react";
-import Footer from "../Footer";
-import { useParams } from "react-router-dom";
+import { IoArrowBack } from "react-icons/io5";
+import { Link, useParams } from "react-router-dom";
 import { topics } from "../../utils/constants";
+import Footer from "../Footer";
+import Navbar from "../Navbar";
+import { Testcard, Testcard1, Testcard2 } from "../Test/Testcard";
+import "./css/TestPage.css";
 function TestPage() {
   const { topic } = useParams();
   console.log(topic)
@@ -88,7 +87,7 @@ function TestPage() {
                 One Step for your <br /> complete Learning
                 <br />
                 <span className="text-[#5648FC] mt-1 flex text-4xl opacity-[70%] md:my-7" >CUET</span>
-                <Link to={'/purchase'} className="mt-5 no-underline mx-auto max-md:flex max-md:justify-center  max-md:items-center max-w-72 btn hover:bg-[#FF7468] bg-[#FF7468] shadow-none outline-none border-none rounded-[10px] text-white font-normal md:text-3xl  p-3 px-8">
+                <Link to={'/purchase'} className="mt-5 no-underline mx-auto max-md:flex max-md:justify-center  max-md:items-center max-w-72 btn hover:bg-[#FF7468] bg-[#FF7468] shadow-none outline-none border-none rounded-[10px] text-white font-normal md:text-3xl  p-1 px-8">
                   Access Now
                 </Link>
               </h3>

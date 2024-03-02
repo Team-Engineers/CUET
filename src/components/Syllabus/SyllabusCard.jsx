@@ -8,7 +8,7 @@ const SyllabusCard = ({ subject }) => {
   };
 
   return (
-    <div className=" border-[1px] border-solid border-black  m-6 rounded-xl shadow-[7px_7px_7px_0px_rgba(0,_0,_0,_0.25)] bg-white ">
+    <div className=" border-[1px] border-solid border-black  m-6 rounded-xl shadow-[7px_7px_7px_0px_rgba(0,_0,_0,_0.25)] hover:scale-110 transition-all duration-100 bg-white ">
       <div className="flex flex-col p-4 items-center justify-evenly text-center">
         <p className="font-bold max-md:text-[4vw] text-2xl drop-shadow-[7px_7px_7px_rgba(0,_0,_0,_0.25)]">{subjectName}</p>
         <img src={process.env.PUBLIC_URL + `${image}`} alt="" className="w-[80px] h-[80px] my-1" />
