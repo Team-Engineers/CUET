@@ -1,10 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import 'swiper/css/effect-coverflow';
-import 'swiper/css/pagination';
 import './css/PackPage.css';
-import {  Pagination } from 'swiper/modules';
 import { API } from '../../utils/constants';
 import PriceCard from './PriceCard';
 import Navbar from '../Navbar';
@@ -31,29 +26,18 @@ export default function PackPage() {
   };
 
   return (
-    <>
+    < div className=" overflow-hidden">
     <Navbar/>
-     
-        <div className=" overflow-hidden left-0 w-full flex flex-col justify-center items-center h-screen mx-auto ">
-          <div className="">
-            <Swiper
-              effect={'coverflow'}
-              grabCursor={true}
-              centeredSlides={true}
-              slidesPerView={'auto'}
-              pagination={true}
-              modules={[Pagination]}
-              className="mySwiper h-[500px]"
-            >
+        <div className=" overflow-hidden left-0 w-full max-w-[1280px]  flex flex-col justify-center items-center h-screen mx-auto ">
+          <div className=" grid grid-cols-3 mx-5">
               {packages.map((packages, index) => (
-                <SwiperSlide key={index}>
+                <div key={index}>
                   <PriceCard packages={packages} />
-                </SwiperSlide>
+                </div>
               ))}
-            </Swiper>
           </div>
         </div>
         <Footer/>
-    </>
+    </div>
   );
 }

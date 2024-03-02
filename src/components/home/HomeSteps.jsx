@@ -24,9 +24,9 @@ const HomeSteps = () => {
         </div>
         <div className="flex flex-col mx-auto sm:w-[750px] w-[350px]  max-md:mx-2 justify-between ">
           <div className=" md:justify-evenly ">
-          <h1 className="md:text-left text-center text-blueviolet-100  text-13xl font-bold ">May We Help You</h1>
+          <h1 className="md:text-left text-center gradient-text  text-13xl font-bold ">May We Help You</h1>
 
-          <h3 className="md:text-left text-center font-bold text-7xl mt-2 text-[#000000CC]">3 Simple steps for Assured Success at CUET</h3>
+          <h3 className="md:text-left gradient-text2 text-center font-bold text-7xl mt-2 text-[#000000CC]">3 Simple steps for Assured Success at CUET</h3>
 
             <ul className="timeline timeline-compact timeline-snap-icon md:pl-0  timeline-vertical flex-none ">
               <li

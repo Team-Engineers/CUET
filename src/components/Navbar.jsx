@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom/dist";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { LuUser2 } from "react-icons/lu";
@@ -7,6 +7,7 @@ import { useAuth } from "../utils/context";
 const Navbar = () => {
   const location = useLocation();
   const [auth, setAuth] = useAuth();
+
   const nav_buttons = [
     { path: "/", title: "Home" },
     { path: "/courses", title: "Courses" },
@@ -22,6 +23,8 @@ const Navbar = () => {
     localStorage.removeItem("auth");
     console.log("Logout Successfully");
   };
+
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -35,12 +38,11 @@ const Navbar = () => {
           </div>
         </NavLink>
       </div>
-      <div className="navbar-end mr-2  lg:ml-auto w-full relative">
-        {/* Normal */}
+      <div className="navbar-end lg:ml-auto w-full relative">
         <ul className="menu menu-horizontal lg:w-full lg:max-w-3xl lg:justify-evenly items-center">
           {nav_buttons.map((nav, i) => (
             <li className="hidden lg:flex ">
-              <div className="h-[21px] flex flex-col items-start justify-start gap-[2px] text-blueviolet-100">
+              <div className="h-[21px] flex flex-col items-start justify-start  text-blueviolet-100">
                 <NavLink to={nav.path} className={`no-underline text-blueviolet-100 ${location.pathname === nav.path ? "active" : ""}`}>
                   <b className="flex-1 relative cursor-pointer text-blueviolet-100 text-lg font-semibold">{nav.title}</b>
                 </NavLink>
@@ -55,56 +57,56 @@ const Navbar = () => {
             <>
               <li className="hidden lg:flex">
                 <NavLink
-                  to={!auth?.user ? "/login" : "/profile"}
+                  to={"/signup"}
                   className={
-                    "flex justify-between text-sm md:text-lg font-medium text-blueviolet-100 hover:bg-blueviolet-100 hover:text-white no-underline border-solid border-2 border-blueviolet-100 rounded-full py-2 md:py-3 md:px-6"
+                    "text-sm md:text-lg font-medium text-white bg-salmon-200 hover:bg-salmon-200 no-underline rounded-full py-2 border-solid border-2 md:py-3 md:px-6"
                   }
                 >
-                  Login
+                  <span>Get Started</span>
                 </NavLink>
               </li>
-
-              <li className="hidden lg:flex">
-            <NavLink
-              to={"/signup"}
-              className={
-                "text-sm md:text-lg font-medium text-white bg-salmon-200 hover:bg-salmon-200 no-underline rounded-full py-2 border-solid border-2 md:py-3 md:px-6"
-              }
-            >
-              <span>Sign Up</span>
-            </NavLink>
-          </li>
             </>
           ) : (
             <>
-              <li className="hidden lg:flex">
-                <NavLink
-                  to={!auth?.user ? "/login" : "/profile"}
-                  className={
-                    "flex justify-between text-sm md:text-lg font-medium text-blueviolet-100 hover:bg-blueviolet-100 hover:text-white no-underline border-solid border-2 border-blueviolet-100 rounded-full py-2 md:py-3 md:px-6"
-                  }
-                >
-                  <span>
-                    <LuUser2 className="mr-1" />
-                    Profile{" "}
-                  </span>
+              <ul className="menu lg:menu-horizontal  rounded-box ">
+                <li>
+                  <details open>
+                    <summary> <div
+                      className="rounded font-bold text-white text-[20px] w-10 h-10 flex items-center justify-center bg-salmon-200 border "
+                    >
+                      {auth?.user?.name ? auth?.user?.name.charAt(0).toUpperCase() : ''}
+                    </div></summary>
+                    <ul>
+                      <li>
+                        <NavLink
+                          to="/profile"
+                          className={
+                            " font-medium  text-black no-underline  "
+                          }
+                        >
+                          Dashboard
+                        </NavLink>
+                      </li>
+                      <li className="">
+                      <NavLink
+                      onClick={handleLogout}
+                          className={
+                            " font-medium   no-underline  "
+                          }
+                        >
+                          Log Out
+                        </NavLink>
+                      </li>
+                    </ul>
+                  </details>
+                </li>
+              </ul>
 
-                </NavLink>
-              </li>
-              <li className="hidden lg:flex">
-            <button 
-              onClick={handleLogout}
-              className={
-                "text-sm md:text-lg font-medium text-white bg-salmon-200 hover:bg-salmon-200 no-underline rounded-full py-2 border-solid border-2 md:py-3 md:px-6"
-              }
-            >
-              <span>Log Out</span>
-            </button>
-          </li>
+
             </>
           )}
 
-          
+
         </ul>
 
         <div className="dropdown">
@@ -167,9 +169,9 @@ const Navbar = () => {
             )}
           </ul>
         </div>
-        {location.pathname === "/" && (
-          <b className="hidden lg:block absolute text-blueviolet-100 top-20 mr-9">+91 9560443520</b>
-        )}
+        {/* {location.pathname === "/" && (
+          <b className="hidden lg:block absolute text-blueviolet-100 top-20  mr-14">+91 9560443520</b>
+        )} */}
       </div>
     </div>
   );

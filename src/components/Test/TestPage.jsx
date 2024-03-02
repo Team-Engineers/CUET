@@ -60,9 +60,9 @@ function TestPage() {
     };
   });
   const mock = Array.from({ length: 12 }, (_, index) => {
-    const subtopicNumber = index + 1;
+    const mocksubtopicNumber = index + 1;
     return {
-      subTopic: `${topic} ${subtopicNumber}`,
+      subTopic: `${topic} ${mocksubtopicNumber}`,
       Marks: 60,
       Times: 120,
       Negative: 1,
@@ -88,7 +88,7 @@ function TestPage() {
                 One Step for your <br /> complete Learning
                 <br />
                 <span className="text-[#5648FC] mt-1 flex text-4xl opacity-[70%] md:my-7" >CUET</span>
-                <Link to={'/purchase'}  className="mt-5 no-underline mx-auto max-md:flex max-md:justify-center  max-md:items-center max-w-72 btn hover:bg-[#FF7468] bg-[#FF7468] shadow-none outline-none border-none rounded-[10px] text-white font-normal md:text-3xl  p-3 px-8">
+                <Link to={'/purchase'} className="mt-5 no-underline mx-auto max-md:flex max-md:justify-center  max-md:items-center max-w-72 btn hover:bg-[#FF7468] bg-[#FF7468] shadow-none outline-none border-none rounded-[10px] text-white font-normal md:text-3xl  p-3 px-8">
                   Access Now
                 </Link>
               </h3>
@@ -147,9 +147,10 @@ function TestPage() {
               <div className="grid grid-cols-1 md:grid-cols-2 mb-20 lg:grid-cols-3 gap-14">
                 {mock.map((subject, index) => (
                   <div key={index} className="col-md-4">
-                    <Testcard2 heading={mainheading} {...subject} index={index} />
+                    <Testcard2 heading={mainheading} {...subject} index={index} mocksubtopicNumber={index + 1} />
                   </div>
                 ))}
+
               </div>
             )}
           </div>
