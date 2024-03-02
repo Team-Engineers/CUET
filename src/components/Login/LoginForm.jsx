@@ -122,10 +122,10 @@ const LoginForm = () => {
             />
           </div>
           <div className="text-sm flex my-[1.2vw] max-md:my-4 gap-2 w-80 md:ml-[1.5vw]">
-            <p>
+            {/* <p>
               {" "}
               <input type="checkbox" className=" checked:bg-gray-300 h-4 w-4 rounded" style={{ backgroundColor: '#c5c5c5', cursor: 'pointer' }} />
-            </p>
+            </p> */}
             <p type="button" className="font-bold   text-blue-600 underline hover:text-blue-500 text-[1vw] max-md:text-[15px]" onClick={handleForgotPassword}>
               forgot password?
             </p>

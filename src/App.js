@@ -16,6 +16,7 @@ import PrivateRoutes from "./utils/PrivateRoutes";
 import PackPage from "./components/Packs/PacksPage";
 import PrepModules from "./components/prepmodules/PrepModules";
 import Nopage from "./components/nopage/Nopage";
+import Domain from "./components/Courses/Domain";
 
 const App = () => {
  
@@ -24,6 +25,7 @@ const App = () => {
     <Routes>
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
+      <Route path="/Domain" element={<Domain />} />
       <Route path="/" element={<Homepage />} />
       <Route path="/about" element={<AboutPage />} />
       <Route path="/syllabus" element={<Syllabus />} />

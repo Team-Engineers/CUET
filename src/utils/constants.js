@@ -25,7 +25,7 @@ export const subjects = [
   { subjectName: "Mathematics", image: '/syllabusImages/mathematics/amico.png', link: "https://cdnasb.samarth.ac.in/site-admin23/syllabus/Final_Mathematics+12+March+2023.pdf" },
   { subjectName: "Performing Arts", image: '/syllabusImages/acting/amico.png', link: "https://cdnasb.samarth.ac.in/site-admin23/syllabus/Final+Performing+Arts+12+March+2023.pdf" },
   { subjectName: "Physical Education", image: '/syllabusImages/physical-education/pana.png', link: "https://cdnasb.samarth.ac.in/site/Syllabus%20of%20CUET%20%28UG%29%20-%202022/321_PhysicalEducation.pdf" },
-  { subjectName: "Physics", image: '/syllabusImages/stationery and physics book for education.png', link: "https://cdnasb.samarth.ac.in/site-admin23/syllabus/Final+Physics+12+March+2023.pdf" },
+  { subjectName: "Physics", image: '/syllabusImages/researching/amico.png', link: "https://cdnasb.samarth.ac.in/site-admin23/syllabus/Final+Physics+12+March+2023.pdf" },
   { subjectName: "Political Science", image: '/syllabusImages/Political debates.png', link: "https://cdnasb.samarth.ac.in/site/Syllabus%20of%20CUET%20%28UG%29%20-%202022/323_politicalscience.pdf" },
   { subjectName: "Psychology", image: '/syllabusImages/group-therapy/rafiki.png', link: "https://cdnasb.samarth.ac.in/site/Syllabus%20of%20CUET%20%28UG%29%20-%202022/324_Psychology.pdf" },
   { subjectName: "Sanskrit", image: '/syllabusImages/Sandy_Edu-04_Single-03 4.png', link: "https://cdnasb.samarth.ac.in/site/Syllabus+of+CUET+(UG)+-+2022/325_Sanskrit_Domain.pdf" },

@@ -63,7 +63,7 @@ const Courses = () => {
           <IoArrowBack size={40} />
         </Link>
         <div className="relative z-10 flex  items-center  flex-col  mt-[-40px] ">
-          <h1 className="text-[#5648FC] items-center flex ">Courses</h1>
+          <h1 className="gradient-text2 items-center flex ">Courses</h1>
         </div>
 
         <div className="max-w-[180vh] relative z-10 mx-auto flex flex-col items-center mt-[-40px]">
@@ -84,7 +84,7 @@ const Courses = () => {
           </div>
         </div>
 
-        <h1 className="text-[#5648FC] relative z-10 md:mx-[50px] mx-[0] md:justify-start justify-center items-center flex flex-col mt-10 ">
+        <h1 className="gradient-text2 relative z-10 md:mx-[50px] mx-[0] md:justify-start justify-center items-center flex flex-col mt-10 ">
           Domain Subjects
         </h1>
 
