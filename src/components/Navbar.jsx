@@ -14,6 +14,8 @@ const Navbar = () => {
     { path: "/courses", title: "Courses" },
     { path: "/about", title: "About" },
     { path: "/syllabus", title: "Syllabus" },
+    { path: "/purchase", title: "Pricing" },
+
   ];
 
   const handleLogout = () => {
@@ -31,7 +33,7 @@ const Navbar = () => {
   }, [location.pathname]);
 
   return (
-    <div className={`navbar ${location.pathname === "/" ? "bg-white" : ""} max-w-[1400px] mx-auto z-50 relative min-h-[10vh]`}>
+    <div className={`navbar ${location.pathname === "/" ? "bg-white" : ""} max-w-[1400px] mx-auto z-50 relative min-h-[8vh]`}>
       <div className="navbar-start ml-5 w-72">
         <NavLink to={"/"} className="no-underline gap-2 items-center flex">
           <div className="flex gap-2 items-center">

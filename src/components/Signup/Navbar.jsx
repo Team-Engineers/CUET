@@ -4,7 +4,7 @@ const Header = () => {
 
   return (
     <header className="fixed  z-50 top-0 w-full ">
-      <nav className="flex justify-between items-center md:my-2 md:mx-4 mx-2  md:py-3 ">
+      <nav className="flex justify-between items-center md:my-2 md:mx-[70px] mx-2  md:py-3 ">
         <Link to="/" className="no-underline ">
         <div className="flex flex-row items-center cursor-pointer"  >
           <img
@@ -13,7 +13,7 @@ const Header = () => {
             alt=""
             src={logo}
           />
-          <b className="relative whitespace-nowrap text-[1.3vh] md:text-[1.4vw] text-indigo">CUET-TestKnock</b>
+          <b className="relative whitespace-nowrap text-[1.3vh] md:text-[1.3vw] text-indigo">CUET-TestKnock</b>
         </div>
         </Link>
         <div className="flex items-center">

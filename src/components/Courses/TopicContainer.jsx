@@ -12,8 +12,6 @@ const TopicContainer = ({ brick, heading, color, subheading }) => {
         <h1 className="text-5xl md:text-[30px] flex justify-center items-center text-white md:w-40 w-20 text-center">
           {heading}
         </h1>
-
-      
     </div>
     </Link>
 
