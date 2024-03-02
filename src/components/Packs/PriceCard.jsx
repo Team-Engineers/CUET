@@ -59,11 +59,11 @@ function PriceCard({ packages }) {
   };
 
   return (
-    <div className='price-card bg-white transition-all duration-100 border border-solid border-[#121c43] rounded-2xl backdrop-blur[40px] hover:scale-105 text-center h-[500px] text-black mx-3 mt-[-30px]'>
+    <div className='price-card bg-white transition-all duration-100 border border-solid border-[#121c43] rounded-2xl backdrop-blur[40px] hover:scale-105 text-center h-[500px] text-black mx-3 '>
       <div className='p-2 py-3 pt-7'>
-        <h2 className='text-[25px] p-1 w-[80%] mx-auto rounded-3xl text-black bg-[#ffffff]'>{nameOfPlan}</h2>
-        <h1 className='text-10xl text-slate-700'>Rs {amount}</h1>
-        <p className='text-[12px] text-slate-600 px-3 mb-3'>{description}</p>
+        <h2 className='text-[25px] p-1 w-[90%] mx-auto rounded-3xl text-black bg-[#ffffff]'>{nameOfPlan}</h2>
+        <h1 className='text-[23px] text-slate-700'>Rs {amount}/*</h1>
+        <p className='text-[12px] text-slate-600 px-3 mb-5'>{description}</p>
         <div className='features text-[20px]'>
           <div className='feature-cont'>
             <div className='icon'></div>
