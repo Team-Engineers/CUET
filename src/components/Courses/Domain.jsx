@@ -23,7 +23,7 @@ const Domain = () => {
               <IoArrowBack />
             </Link>
             <span>
-              Domain
+              Domain Subjects
               <div className="w-20 h-[2px] bg-blueviolet-400 max-md:mx-auto m-0 mt-1 text-blueviolet-100" />
             </span>
           </h1>

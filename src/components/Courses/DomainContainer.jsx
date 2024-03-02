@@ -3,7 +3,7 @@ const DomainContainer = ({ brick, heading, color, subheading }) => {
   return (
     < div
       style={{ background: color }}
-      className="sm:w-[290px] no-underline sm:h-[300px] w-[250px] h-[270px]  flex justify-center items-center relative z-10 rounded-2xl shadow-[10px_10px_4px_0px_rgba(0,0,0,0.3)]">
+      className="sm:w-[290px] transition-all duration-100 hover:scale-[105%] no-underline sm:h-[300px] w-[250px] h-[270px]  flex justify-center items-center relative z-10 rounded-2xl shadow-[10px_10px_4px_0px_rgba(0,0,0,0.3)]">
       <div
         className="no-underline flex flex-col items-center"
       >
@@ -12,7 +12,7 @@ const DomainContainer = ({ brick, heading, color, subheading }) => {
           {heading}
         </h1>
         <p className="text-white">
-            Coming Soon
+            Coming Soon...
         </p>
     </div>
     </div>

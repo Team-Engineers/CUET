@@ -15,12 +15,12 @@ const UniversitySection = ({ universities, id, title }) => {
     return (
         <>
             <div >
-                <h2 className="p-5 font-extrabold">{title}</h2>
+                <h2 className="p-5 gradient-text2 font-extrabold">{title}</h2>
             </div>
             <div className="grid mx-auto max-w-[1200px] md:grid-cols-3 grid-cols-2" id={id} >
                 {universities.map((university, index) => (
                     <div
-                        className="flex flex-col rounded-xl p-2 bg-white h-[35vw] w-[35vw] md:h-[17vw] md:w-[17vw] justify-center items-center m-[10px] text-center"
+                        className="flex flex-col rounded-xl p-2 shadow-lg hover:scale-105 transition-all duration-100 border-[1px] border-solid border-black h-[35vw] w-[35vw] md:h-[200px] md:w-[200px] justify-center items-center m-[10px] text-center"
                         key={index}
                     >
                         <a target="_blank" rel="noreferrer" className="hover:underline" href={university.link}>
@@ -32,7 +32,7 @@ const UniversitySection = ({ universities, id, title }) => {
                                 />
                             </div>
                             <div>
-                                <p className="md:text-[1vw] text-[2.5vw]">{university.cuname}</p>
+                                <p className="md:text-[15px] gradient-text2 text-[2.5vw]">{university.cuname}</p>
                             </div>
                         </a>
                     </div>
@@ -48,20 +48,20 @@ const AllUniversities = () => {
             <div className="flex  text-center flex-col">
                 <a
                     href="#central"
-                    className=" bg-white p-3 font-bold rounded-lg justify-center items-center m-[10px]"
+                    className=" bg-black  gradient-text2 p-3 font-bold rounded-lg justify-center items-center m-[10px]"
                 >
                     Central Universities
                 </a>
-                <a href="#state" className=" bg-white p-3 font-bold rounded-lg justify-center items-center m-[10px]">
+                <a href="#state" className=" bg-black gradient-text2 p-3 font-bold rounded-lg justify-center items-center m-[10px]">
                     State Universities
                 </a>
-                <a href="#deemed" className=" bg-white p-3 font-bold rounded-lg justify-center items-center m-[10px]">
+                <a href="#deemed" className=" bg-white gradient-text2 p-3 font-bold rounded-lg justify-center items-center m-[10px]">
                     Deemed Universities
                 </a>
-                <a href="#private" className=" bg-white p-3 font-bold rounded-lg justify-center items-center m-[10px]">
+                <a href="#private" className=" bg-white gradient-text2 p-3 font-bold rounded-lg justify-center items-center m-[10px]">
                     Private Universities
                 </a>
-                <a href="#other" className=" bg-white p-3 font-bold rounded-lg justify-center items-center m-[10px]">
+                <a href="#other" className=" bg-white gradient-text2 p-3 font-bold rounded-lg justify-center items-center m-[10px]">
                     Other Universities
                 </a>
             </div>
@@ -80,7 +80,7 @@ const AllUniversities = () => {
 
 const University = () => {
     return (
-        <div className="bg-gradient-to-br from-[#ACBCFF] to-white overflow-hidden">
+        <div className="overflow-hidden">
             <Navbar />
             <div className="flex mb-[20px] mt-[10px] gap-[1vw] flex-col lg:flex-row  justify-center mx-auto max-w-[1280px]">
                 <div className="mx-auto">
@@ -91,7 +91,7 @@ const University = () => {
                     <UniversitySection universities={other_universities} id="other" title="Other Universities" />
                 </div>
                 <div className="mx-auto">
-                    <h2 className="p-5 font-extrabold">All Universities</h2>
+                    <h2 className="p-5 font-extrabold gradient-text2">All Universities</h2>
                     <AllUniversities />
                 </div>
             </div>

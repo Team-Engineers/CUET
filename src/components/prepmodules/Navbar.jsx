@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom/dist";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { LuUser2 } from "react-icons/lu";
@@ -6,12 +6,14 @@ import { useAuth } from "../../utils/context";
 
 const Navbar = () => {
   const location = useLocation();
+  const [detailsOpen, setDetailsOpen] = useState(false)
   const [auth, setAuth] = useAuth();
   const nav_buttons = [
     { path: "/", title: "Home" },
     { path: "/courses", title: "Courses" },
     { path: "/about", title: "About" },
     { path: "/syllabus", title: "Syllabus" },
+    { path: "/purchase", title: "Pricing" },
   ];
   const handleLogout = () => {
     setAuth({
@@ -26,9 +28,9 @@ const Navbar = () => {
     window.scrollTo(0, 0);
   }, []);
   return (
-    <div className={`navbar ${location.pathname === "/" ? "bg-white" : ""} max-w-[1400px] mx-auto z-50 relative  min-h-[10vh]`}>
+    <div className={`navbar ${location.pathname === "/" ? "bg-white" : ""} max-w-[1400px] pt-4 mx-auto  relative  min-h-[10vh]`}>
       <div className=" mr-2 flex justify-between lg:ml-auto w-full relative">
-      <NavLink to={"/"} className="no-underline gap-2  mx-6 items-center flex">
+        <NavLink to={"/"} className="no-underline gap-2 relative z-10  mx-6 items-center flex">
           <div className="flex gap-2 items-center">
             <img className="h-[40.5px] w-[30px] relative object-cover" loading="eager" alt="" src={"/logo.png"} />
             <b className="relative text-blueviolet-100 whitespace-nowrap text-xl">CUET-TestKnock</b>
@@ -37,7 +39,7 @@ const Navbar = () => {
         <ul className="menu menu-horizontal lg:w-full lg:max-w-3xl lg:justify-evenly items-center">
           {nav_buttons.map((nav, i) => (
             <li className="hidden lg:flex ">
-              <div className="h-[21px] flex flex-col items-start justify-start gap-[2px] text-blueviolet-100">
+              <div className="h-[21px] flex flex-col items-center justify-center gap-[2px] text-blueviolet-100">
                 <NavLink to={nav.path} className={`no-underline text-blueviolet-100 ${location.pathname === nav.path ? "active" : ""}`}>
                   <b className="flex-1 relative cursor-pointer text-blueviolet-100 text-lg font-semibold">{nav.title}</b>
                 </NavLink>
@@ -50,58 +52,53 @@ const Navbar = () => {
 
           {!auth?.user ? (
             <>
-              <li className="hidden relative top-3 lg:flex">
+              <li className="hidden lg:flex">
                 <NavLink
-                  to={!auth?.user ? "/login" : "/profile"}
+                  to={"/signup"}
                   className={
-                    "flex justify-between text-sm md:text-lg font-medium text-blueviolet-100 hover:bg-blueviolet-100 hover:text-white no-underline border-solid border-2 border-blueviolet-100 rounded-full py-2 md:py-3 md:px-6"
+                    "text-sm md:text-lg font-medium text-white bg-salmon-200 hover:bg-salmon-200 no-underline rounded-full py-2 border-solid border-2 md:py-3 md:px-6"
                   }
                 >
-                  Login
+                  <span>Get Started</span>
                 </NavLink>
               </li>
-
-              <li className="hidden relative top-3 lg:flex">
-            <NavLink
-              to={"/signup"}
-              className={
-                "text-sm md:text-lg font-medium text-white bg-salmon-200 hover:bg-salmon-200 no-underline rounded-full py-2 border-solid border-2 md:py-3 md:px-6"
-              }
-            >
-              <span>Sign Up</span>
-            </NavLink>
-          </li>
             </>
           ) : (
             <>
-              <li className="hidden relative top-3 lg:flex">
-                <NavLink
-                  to={!auth?.user ? "/login" : "/profile"}
-                  className={
-                    "flex justify-between text-sm md:text-lg font-medium text-blueviolet-100 hover:bg-blueviolet-100 hover:text-white no-underline border-solid border-2 border-blueviolet-100 rounded-full py-2 md:py-3 md:px-6"
-                  }
-                >
-                  <span>
-                    <LuUser2 className="mr-1" />
-                    Profile{" "}
-                  </span>
-
-                </NavLink>
-              </li>
-              <li className="hidden relative top-3 lg:flex">
-            <button 
-              onClick={handleLogout}
-              className={
-                "text-sm md:text-lg font-medium text-white bg-salmon-200 hover:bg-salmon-200 no-underline rounded-full py-2 border-solid border-2 md:py-3 md:px-6"
-              }
-            >
-              <span>Log Out</span>
-            </button>
-          </li>
+              <ul className="menu lg:menu-horizontal h-[1vh] top-[-20px] relative z-50   rounded-box ">
+                <li>
+                  <details open={detailsOpen} onClick={() => setDetailsOpen(!detailsOpen)}>
+                    <summary>
+                      <div className="rounded font-bold text-white relative text-[20px] w-10 h-10 flex items-center justify-center bg-salmon-200 border ">
+                        {auth?.user?.name ? auth?.user?.name.charAt(0).toUpperCase() : ''}
+                      </div>
+                      {auth?.user?.name}
+                    </summary>
+                    <ul className="relative left-[30px]">
+                      <li>
+                        <NavLink
+                          to="/profile"
+                          className="font-medium text-black no-underline"
+                        >
+                          Dashboard
+                        </NavLink>
+                      </li>
+                      <li className="">
+                        <NavLink
+                          onClick={handleLogout}
+                          className="font-medium no-underline"
+                        >
+                          Log Out
+                        </NavLink>
+                      </li>
+                    </ul>
+                  </details>
+                </li>
+              </ul>
             </>
           )}
 
-          
+
         </ul>
         <div className="dropdown lg:hidden">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden p-0 mr-5">
