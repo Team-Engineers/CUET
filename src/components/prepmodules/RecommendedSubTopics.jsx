@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import styled from "styled-components";
 import { topics } from "../../utils/constants";
-
+import { useAuth } from "../../utils/context";
 const TopicCard = styled.li`
   height: fit-content;
   white-space: nowrap;
@@ -50,7 +50,6 @@ const MarginTop = styled.div`
   margin-top: 1.5rem;
   display: flex;
   justify-content: center;
-  algin-items: center;
   flex-direction: column;
   top : 0;
   white-space: nowrap;
@@ -77,6 +76,8 @@ const Box2 = styled.h6`
 `;
 
 const RecommendedSubTopics = () => {
+  const [auth] = useAuth();
+  const allow = auth?.user?.packageId;
   const { topic, subTopic } = useParams();
   const subtopics = topics[topic] || [];
   useEffect(() => {
@@ -92,7 +93,7 @@ const RecommendedSubTopics = () => {
       document.head.removeChild(bootstrapCssLink);
     };
   }, []);
-  
+
   return (
     <MarginTop>
       <div className="accordion" id="accordionExample">
@@ -105,11 +106,15 @@ const RecommendedSubTopics = () => {
               data-bs-target="#collapseOne"
               aria-expanded="true"
               aria-controls="collapseOne"
-              style={{ backgroundColor: '#0000ff25', color: 'black' ,fontWeight: 'bold',
-              outline: '2px solid black',}}
+              style={{
+                backgroundColor: '#0000ff25',
+                color: 'black',
+                fontWeight: 'bold',
+                outline: '2px solid black',
+              }}
             >
               {topic}
-            </button> 
+            </button>
           </h2>
           <div
             id="collapseOne"
@@ -119,29 +124,43 @@ const RecommendedSubTopics = () => {
           >
             <div className="accordion-body p-1 mt-3">
               <Wrapper>
-                {subtopics.map((currentTopic, subIndex) => (
-              <Link
-              className="no-underline"
-              to={`/test/prep/${topic}/${currentTopic}`}
-              key={subIndex}
-            >
-                    <TopicCard
-                      isCurrentTopic={
-                        subTopic.split("_").join(" ") === currentTopic
-                      }
-                    >
-                      <Box>
-                        <Box2 
+                {subtopics.map((currentTopic, subIndex) => {
+                  // Determine if the link should be visible based on conditions
+                  const isVisible =
+                    (!auth.user && subIndex === 0) || // Show only index 0 when user is not logged in
+                    (auth.user && subIndex <= 4) || // Show up to index 4 when user is logged in
+                    (allow === '65d93ff1aaf8ebc47c522ced'); // Show all when allow is a specific value
+
+                  // Render the link only if it's visible
+                  if (isVisible) {
+                    return (
+                      <Link
+                        className="no-underline"
+                        to={`/test/prep/${topic}/${currentTopic}`}
+                        key={subIndex}
+                      >
+                        <TopicCard
                           isCurrentTopic={
-                            currentTopic === subTopic.split("_").join(" ")
+                            subTopic.split('_').join(' ') === currentTopic
                           }
                         >
-                          {currentTopic}
-                        </Box2>
-                      </Box>
-                    </TopicCard>
-                  </Link>
-                ))}
+                          <Box>
+                            <Box2
+                              isCurrentTopic={
+                                currentTopic ===
+                                subTopic.split('_').join(' ')
+                              }
+                            >
+                              {currentTopic}
+                            </Box2>
+                          </Box>
+                        </TopicCard>
+                      </Link>
+                    );
+                  } else {
+                    return null; // Render nothing if the link is not visible
+                  }
+                })}
               </Wrapper>
             </div>
           </div>

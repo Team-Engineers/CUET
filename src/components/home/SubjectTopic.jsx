@@ -7,8 +7,8 @@ const SubjectTopic = () => {
       <div>
       <div className="text-7xl md:text-17xl w-full flex flex-col items-center justify-center">
         <div className=" flex flex-col items-center justify-around">
-          <h1 className="text-blueviolet-100 m-0 mb-2 text-center tracking-[0.02em] text-7xl md:text-21xl font-bold z-10 ">Challenge Yourself</h1>
-          <h1 className="m-0 mt-2 inline-block text-5xl text-center md:text-21xl z-10">ATTEMPT FREE MOCK TEST
+          <h1 className="gradient-text m-0 mb-2 text-center tracking-[0.02em] text-7xl md:text-21xl font-bold z-10 ">Challenge Yourself</h1>
+          <h1 className="m-0 mt-2 gradient-text2  inline-block text-5xl text-center md:text-21xl z-10">ATTEMPT FREE MOCK TEST
           </h1>
         </div>
       </div>

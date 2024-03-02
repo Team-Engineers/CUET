@@ -9,9 +9,22 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #acbcff;
-  background-image: linear-gradient(to bottom right, transparent, white);
+  background-color: #ffffff;
 }
+
+.gradient-text {
+  background-image: linear-gradient(to bottom right, #e94242, rgb(150, 185, 255));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.gradient-text2 {
+  background-image: linear-gradient(to bottom right, #2a20ec, rgb(50, 183, 255));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",

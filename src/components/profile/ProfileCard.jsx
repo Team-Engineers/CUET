@@ -9,9 +9,9 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../utils/context";
 
 const ProfileCard = () => {
-  const [auth, setAuth] = useAuth();
+  const [auth] = useAuth();
   console.log(auth?.user?.user?.name);
-  const [details, setDetails] = useState({
+  const [details, ] = useState({
     firstName: "",
     lastName: "",
     email: "",
@@ -35,17 +35,14 @@ const ProfileCard = () => {
 
   const {
     register,
-    handleSubmit,
     formState: { errors },
   } = useForm({
     resolver: zodResolver(schema),
     defaultValues: details,
   });
-  const onSubmit = (data) => {
-    console.log(data);
-  };
+ 
   return (
-    <div className="flex flex-col  items-center mt-10 ">
+    <div className="flex flex-col  items-center  ">
       <div className="flex md:w-[93%] lg:w-[91%] max-w-[1280px] mx-auto" onClick={() => navigate(-1)}>
           <h1>
           <FiArrowLeft className="text-blueviolet-100 size-7" />
@@ -71,7 +68,7 @@ const ProfileCard = () => {
                   required
                   name="firstName"
                   type="text"
-                  defaultValue={auth.user?.user?.name}
+                  defaultValue={auth.user?.name}
                   autoComplete="true"
                   autoCorrect="true"
                   placeholder="name"
@@ -93,7 +90,7 @@ const ProfileCard = () => {
                   name="email"
                   type="email"
 
-                  defaultValue={auth.user?.user?.email}
+                  defaultValue={auth.user?.email}
                   className="px-6 py-2 text-lg rounded-full border-none shadow-md shadow-gray-500 w-70 sm:w-[30rem] md:w-[17rem] lg:w-[22rem] xl:w-[27rem] text-[#00000080] 2xl:w-[510px]"
                 />
                 {errors.email && <p className="text-red-500 font-semibold mb-0 mt-2">{errors.email.message}</p>}
@@ -132,7 +129,7 @@ const ProfileCard = () => {
                   type="number"
                   autoComplete="true"
                   autoCorrect="true"
-                  defaultValue={auth.user?.user?.contact}
+                  defaultValue={auth.user?.contact}
 
                   placeholder="+000-000-0000"
                   className="px-6 py-2 text-lg rounded-full border-none shadow-md shadow-gray-500 w-70 sm:w-[30rem] md:w-[17rem] lg:w-[22rem] xl:w-[27rem] text-[#00000080] 2xl:w-[510px]"

@@ -4,12 +4,13 @@ import 'swiper/css';
 import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
 import './css/PackPage.css';
-import { RxCross1 } from "react-icons/rx";
-import { EffectCoverflow, Pagination } from 'swiper/modules';
+import {  Pagination } from 'swiper/modules';
 import { API } from '../../utils/constants';
 import PriceCard from './PriceCard';
+import Navbar from '../Navbar';
+import Footer from '../Footer';
 
-export default function PackPage({ isOpen, onClose }) {
+export default function PackPage() {
   const [packages, setPackages] = useState([]);
 
   useEffect(() => {
@@ -31,9 +32,9 @@ export default function PackPage({ isOpen, onClose }) {
 
   return (
     <>
-      {isOpen && (
-        <div className="fixed z-50 overflow-hidden left-0 w-full flex flex-col justify-center items-center h-screen backdrop-blur-[10px] bg-[#00000045] mx-auto ">
-          <div className="close-btn cursor-pointer h-[50px] w-[50px] text-black" onClick={onClose}><RxCross1 /></div>
+    <Navbar/>
+     
+        <div className=" overflow-hidden left-0 w-full flex flex-col justify-center items-center h-screen mx-auto ">
           <div className="">
             <Swiper
               effect={'coverflow'}
@@ -52,7 +53,7 @@ export default function PackPage({ isOpen, onClose }) {
             </Swiper>
           </div>
         </div>
-      )}
+        <Footer/>
     </>
   );
 }

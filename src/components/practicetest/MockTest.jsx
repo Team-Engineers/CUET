@@ -1,28 +1,24 @@
 import React, { useState, useEffect } from "react";
 import "./testplatform.css";
 import { MathText } from "../mathJax/MathText";
-import { useLocation } from "react-router-dom";
 import CuetLoader from "../Loader/Loader";
 import { IoBookmark, IoBookmarkOutline } from "react-icons/io5";
 import { TfiTimer } from "react-icons/tfi";
 import { RxCross1 } from "react-icons/rx";
 
-const MockTest = ({ data, subtopic }) => {
+const MockTest = ({ data }) => {
   const alphabets = "12345678910".split("");
   const [selectedOptions, setSelectedOptions] = useState(Array(data.length).fill([]));
   const [currentPage, setCurrentPage] = useState(0);
   const [explanationsVisible, setExplanationsVisible] = useState(Array(data.length).fill(false));
   const [isLoading, setIsLoading] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const location = useLocation();
   const [savedQuestions, setSavedQuestions] = useState([]);
   let intervalId;
   const [timer, setTimer] = useState(30 * 60);
-  const [timerColor, setTimerColor] = useState("from-[#1ee80c]");
   const [correctAnswers, setCorrectAnswers] = useState(0);
   const [incorrectAnswers, setIncorrectAnswers] = useState(0);
   const [showResultPopup, setShowResultPopup] = useState(false);
-  const [showPagePopup, setShowPagePopup] = useState(false);
 
   const [showPopup, setShowPopup] = useState(false);
 
@@ -45,12 +41,11 @@ const MockTest = ({ data, subtopic }) => {
 
   useEffect(() => {
     let timerReachedZero = false;
-    intervalId = setInterval(() => {
+    const intervalId = setInterval(() => {
       setTimer((prevTimer) => {
         if (prevTimer <= 0 && !timerReachedZero) {
           clearInterval(intervalId);
           timerReachedZero = true;
-          handleSubmit();
           return 0;
         } else {
           return prevTimer - 1;
@@ -87,8 +82,6 @@ const MockTest = ({ data, subtopic }) => {
     });
     setCorrectAnswers(correct);
     setIncorrectAnswers(incorrect);
-
-    // Show the result popup
     setShowResultPopup(true);
 
     setIsSubmitted(true);
@@ -271,7 +264,7 @@ const MockTest = ({ data, subtopic }) => {
   return (
     <section className="mx-auto mb-8 max-w-[1280px] ">
       <div className={`flex px-5 top-[-25px] lg:hidden rounded  text-white  relative items-center`}>
-        <div className={`text-[20px] gap-1 rounded-xl px-10 border-[1px] border-black border-solid py-3 bg-gradient-to-br overflow-hidden ${timerColor} flex justify-center items-center `}>
+        <div className={`text-[20px] gap-1 rounded-xl px-10 border-[1px] border-black border-solid py-3 bg-gradient-to-br overflow-hidden  flex justify-center items-center `}>
           <div className="text-[20px] ">
             <TfiTimer />
           </div>

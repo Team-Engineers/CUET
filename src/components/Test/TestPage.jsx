@@ -1,4 +1,3 @@
-import React, { useEffect } from "react";
 import { IoArrowBack } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import Navbar from "../Navbar";
@@ -7,23 +6,15 @@ import { Testcard1, Testcard, Testcard2 } from "../Test/Testcard";
 import { useState } from "react";
 import Footer from "../Footer";
 import { useParams } from "react-router-dom";
-import PackPage from "../Packs/PacksPage";
 import { topics } from "../../utils/constants";
 function TestPage() {
   const { topic } = useParams();
   console.log(topic)
-  const [isPackPageOpen, setIsPackPageOpen] = useState(false);
   const mainheading = topic.toLowerCase().replace(/\s/g, '_');
-  const handleOpenPackPage = () => {
-    setIsPackPageOpen(true);
-  };
-  const handleClosePackPage = () => {
-    setIsPackPageOpen(false);
-  };
   const subtopics = topics[topic];
 
 
-  const subjects = subtopics.map((subtopic, index) => {
+  const prep = subtopics.map((subtopic, index) => {
     const backgroundColors = [
       "#776CFF",
       "#FF887E",
@@ -39,11 +30,8 @@ function TestPage() {
 
     return {
       subTopic: subtopic,
-      Marks: 60,
-      Times: 60,
       Questions: 60,
       bgcolor: backgroundColors[colorIndex],
-      Times: 60,
     };
   });
 
@@ -69,7 +57,6 @@ function TestPage() {
       Times: 120,
       Questions: 60,
       bgcolor: backgroundColors[colorIndex],
-      Times: 60,
     };
   });
   const mock = Array.from({ length: 12 }, (_, index) => {
@@ -86,29 +73,25 @@ function TestPage() {
   const [currentTab, setCurrentTab] = useState("prep");
 
   return (
-    <div className="bg-gradient-to-br from-[#ACBCFF] to-white  overflow-x-hidden">
+    <div className="  overflow-x-hidden">
       <Navbar />
       <div className="md:mx-10 mx-4 ">
         <div className="max-w-[1280px] mx-auto ">
           <div className="w-full  flex flex-col-reverse md:flex-row items-center justify-between">
-            <div className="flex flex-row text-7xl md:text-13xl">
+            <div className="flex flex-row text-7xl md:text-[35px]">
               <h2>
-                <Link className="hidden md:block text-[#5648FC]  " to={"/courses"}>
+                <Link className=" text-[#5648FC]  " to={"/courses"}>
                   <IoArrowBack className="" />
                 </Link>
               </h2>
-              <h3 className="py-0 text-[#5648FC]">
+              <h3 className="py-0 md:text-[40px] text-[#5648FC]">
                 One Step for your <br /> complete Learning
                 <br />
-                <span className="text-[#5648FC] mt-1 flex text-3xl opacity-[70%]" >CUET</span>
-                <button onClick={handleOpenPackPage} className="mt-5 mx-auto max-md:flex max-md:justify-center max-md:items-center max-w-72 btn hover:bg-[#FF7468] bg-[#FF7468] shadow-none outline-none border-none rounded-[10px] text-white font-normal md:text-3xl  p-3 px-8">
+                <span className="text-[#5648FC] mt-1 flex text-4xl opacity-[70%] md:my-7" >CUET</span>
+                <Link to={'/purchase'}  className="mt-5 no-underline mx-auto max-md:flex max-md:justify-center  max-md:items-center max-w-72 btn hover:bg-[#FF7468] bg-[#FF7468] shadow-none outline-none border-none rounded-[10px] text-white font-normal md:text-3xl  p-3 px-8">
                   Access Now
-                </button>
+                </Link>
               </h3>
-              <div className=" z-50">
-                <PackPage isOpen={isPackPageOpen} onClose={handleClosePackPage} />
-
-              </div>
             </div>
             <img
               alt=""
@@ -117,7 +100,7 @@ function TestPage() {
             />
           </div>
           <div className="w-full flex flex-col justify-center items-center">
-            <div className="max-w-screen-xl w-full flex flex-col items-center md:flex-row md:justify-evenly md:text-lg text-center text-[15px] text-[#5648FC] md:my-14">
+            <div className=" w-[1150px]  flex flex-col items-center md:flex-row justify-between md:text-lg text-center text-[15px] text-[#5648FC] md:my-14">
               <h1
                 className="cursor-pointer  my-3"
                 onClick={() => {
@@ -148,7 +131,7 @@ function TestPage() {
             </div>
             {currentTab === "prep" ? (
               <div className=" grid grid-cols-1 md:grid-cols-2 mb-20 lg:grid-cols-3 gap-14">
-                {subjects.map((subject, index) => (
+                {prep.map((subject, index) => (
                   <Testcard key={index} heading={topic} {...subject} index={index} />
                 ))}
 

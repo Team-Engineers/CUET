@@ -17,10 +17,7 @@ import PackPage from "./components/Packs/PacksPage";
 import PrepModules from "./components/prepmodules/PrepModules";
 
 const App = () => {
-  // const isUserSignedIn = () => {
-  //   const tokenData = JSON.parse(localStorage.getItem("accessToken"));
-  //   return tokenData && new Date().getTime() < tokenData.expiry;
-  // };
+ 
 
   return (
     <Routes>
@@ -30,7 +27,6 @@ const App = () => {
       <Route path="/about" element={<AboutPage />} />
       <Route path="/syllabus" element={<Syllabus />} />
       <Route path="/courses" element={<Coursespage />} />
-      <Route path="/pack" element={<PackPage />} />
 
       <Route path="/university" element={<University />} />
       <Route path="/courses/:subtopic" element={<SubtopicPage />} />
@@ -48,7 +44,8 @@ const App = () => {
         <Route path="/test/practice/:subTopic" element={<MockTestMain />} />
         <Route path="/profile" element={<Profile />} />
         
-        
+        <Route path="/purchase" element={<PackPage />} />
+
       </Route>
       <Route path="*" element={<>Error 404 </>} />
     </Routes>

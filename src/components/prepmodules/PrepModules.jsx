@@ -12,16 +12,16 @@ import { useAuth } from "../../utils/context";
 import FixedNavbar from "./FixedNavbar";
 
 const PrepModules = () => {
-  const [auth, setAuth] = useAuth();
+  const [auth] = useAuth();
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [isLoggedIn, setIsLoggedIn] = useState(false); 
+  // const [isLoggedIn, setIsLoggedIn] = useState(false); 
   const { subTopic, heading } = useParams();
-
+console.log(heading)
   useEffect(() => {
     setIsLoading(true);
     const fetchData = async () => {
-      let subTopic1 = subTopic.replace(/\s/g, "_");
+      let subTopic1 = subTopic.toLowerCase().replace(/\s/g, "_");
       try {
         const response = await axios.get(
           `https://ourntamockpapers.onrender.com/api/question/find-questions?topic=${subTopic1}`
@@ -37,9 +37,9 @@ const PrepModules = () => {
     fetchData();
   }, [subTopic]);
 
-  useEffect(() => {
-    setIsLoggedIn(!!auth?.user); 
-  }, []);
+  // useEffect(() => {
+  //   setIsLoggedIn(!auth?.user); 
+  // }, []);
 
   if (isLoading) {
     return <CuetLoader />;
@@ -47,7 +47,7 @@ const PrepModules = () => {
 
   return (
     <section className="question-practice bg-white">
-      {!isLoggedIn && <FixedNavbar />} 
+      {!auth?.user && <FixedNavbar />} 
       <Navbar />
       {data.length > 0 ? (
         <div className="mx-auto max-w-[1280px] my-10">

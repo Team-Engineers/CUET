@@ -4,7 +4,7 @@ import ProfileCard from "../components/profile/ProfileCard";
 
 const Profile = () => {
   return (
-    <div className="bg-[#c9d4ff] h-screen">
+    <div >
       <Navbar />
         <ProfileCard />
     </div>

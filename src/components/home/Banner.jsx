@@ -3,7 +3,6 @@ import ExamInfo from "../../components/home/ExamInfo";
 import Lottie from "react-lottie";
 import LandingAnimationData from "../../assets/animation_landing.json";
 import { useNavigate } from "react-router-dom/dist";
-import { RxCross1 } from "react-icons/rx";
 
 const Banner = () => {
   const navigate = useNavigate();

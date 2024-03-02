@@ -2,8 +2,10 @@ import React from 'react';
 import axios from 'axios';
 import { useAuth } from "../../utils/context";
 import { API } from '../../utils/constants';
+import { useNavigate } from "react-router-dom";
 
 function PriceCard({ packages }) {
+  const navigate = useNavigate();
   const { _id, amount, nameOfPlan, description } = packages;
   const [auth, setAuth] = useAuth();
 
@@ -11,7 +13,7 @@ function PriceCard({ packages }) {
     try {
       const response = await axios.post(`${API}/payment/initiate`, {
         packageId: _id,
-        userId: auth.user?.user?._id,
+        userId: auth.user?._id,
       });
       const { data } = response;
       const options = {
@@ -25,7 +27,7 @@ function PriceCard({ packages }) {
         handler: async (response) => {
           try {
             const verifyResponse = await axios.put(`${API}/payment/verify`, {
-              userId: auth.user?.user?._id,
+              userId: auth.user?._id,
               razorpay_order_id: response.razorpay_order_id,
               razorpay_payment_id: response.razorpay_payment_id,
               razorpay_signature: response.razorpay_signature,
@@ -34,7 +36,12 @@ function PriceCard({ packages }) {
 
             console.log(verifyResponse.data);
             if (verifyResponse.data.success) {
-              window.location.reload();
+              const userResponse = await axios.get(`${API}/users/find/${auth.user?._id}`);
+              const updatedUser = userResponse.data;
+              const updatedAuth = { ...auth, user: updatedUser };
+              setAuth(updatedAuth); 
+              localStorage.setItem("auth", JSON.stringify(updatedAuth)); 
+              navigate('/courses');
             }
           } catch (error) {
             console.error(error);

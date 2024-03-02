@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect } from "react";
 import { NavLink, useLocation } from "react-router-dom/dist";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { LuUser2 } from "react-icons/lu";
@@ -111,7 +111,7 @@ const Navbar = () => {
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden p-0 mr-5">
             <GiHamburgerMenu className="text-blueviolet-100" size={"2em"} />
           </div>
-          <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-50 bg-white p-2 shadow bg-base-100 rounded-box w-52 right-[0px]">
+          <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-50 bg-white p-2 shadow  rounded-box w-52 right-[0px]">
             {nav_buttons.map((nav, i) => (
               <li className="my-1">
                 <div className="h-[21px] flex flex-col items-start justify-start gap-[2px] text-blueviolet-100 ">
@@ -168,7 +168,7 @@ const Navbar = () => {
           </ul>
         </div>
         {location.pathname === "/" && (
-          <b className="hidden lg:block absolute text-blueviolet-100 top-20 mr-9">91 9560443520</b>
+          <b className="hidden lg:block absolute text-blueviolet-100 top-20 mr-9">+91 9560443520</b>
         )}
       </div>
     </div>
