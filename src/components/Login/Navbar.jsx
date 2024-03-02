@@ -5,7 +5,7 @@ const Header = () => {
 
   return (
     <header className="fixed  z-50 top-0 w-full ">
-      <nav className="flex justify-between items-center md:my-2 md:mx-4 mx-2  md:py-3 ">
+      <nav className="flex justify-between items-center md:my-2 md:mx-[70px] mx-2  md:py-3 ">
       <Link to="/" className="no-underline ">
         <div className="flex flex-row items-center cursor-pointer"  >
           <img

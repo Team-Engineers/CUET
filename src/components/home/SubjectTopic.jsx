@@ -20,9 +20,8 @@ const SubjectTopic = () => {
         <div className="mx-[20px] max-lg:flex max-lg:justify-center max-lg:-center my-10 ">
         <div className="md:flex-row flex-col max-w-[1280px] mx-auto flex justify-center md:justify-between  ">
           <DomainTopic color={"bg-salmon-100"} img_path={"/domain1.png"} text="General English" path={"/test/General%20English"} />
+          <DomainTopic color={"bg-darkyellow"} img_path={"/domain2.png"} text="Domain Subjects" path={"/domain"} />
           <DomainTopic color={"bg-darkcyan"} img_path={"/domain3.png"} text="General Test" path={"/test/General%20Test"} />
-          <DomainTopic color={"bg-darkyellow"} img_path={"/domain2.png"} text="Domain Subjects" path={"/courses"} />
-
         </div>
         </div>
       </div>  

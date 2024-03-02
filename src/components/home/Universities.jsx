@@ -14,7 +14,7 @@ const Universities = () => {
             <thead>
               <tr>
                 <th
-                  className="bg-[#ACBCFF] text-black text-lg text-left h-11 "
+                  className=" text-black text-lg text-left h-11 "
                   style={{ borderTopLeftRadius: "20px", borderTopRightRadius: "20px" }}
                   colSpan={2}
                 >
