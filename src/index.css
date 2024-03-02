@@ -34,6 +34,15 @@ code {
   animation: moveLeftToRight 5s linear infinite;
 }
 
+.fixednav{
+  background-image: url("https://d2kh7o38xye1vj.cloudfront.net/wp-content/uploads/2023/11/stripBG.png");
+}
+
+.signupp{
+  position: relative;
+  z-index: 1100;
+}
+
 @keyframes moveLeftToRight {
   0% {
     transform: translateX(-20%);

@@ -69,7 +69,7 @@ export const Testcard = ({ subTopic, heading, Questions, bgcolor, index }) => {
 export const Testcard1 = ({ subTopic, topic, Questions, Marks, bgcolor, Times, index }) => {
   const [auth] = useAuth();
   const allow = auth?.user?.packageId;
-
+  
   return (
     <div style={{ boxShadow: `0 4px 6px ${bgcolor}, 0 1px 3px rgba(0, 0, 0, 0.1)`, background: bgcolor }} className="transition-all duration-100 hover:scale-[105%] rounded-3xl">
       <div className="flex flex-col p-5 items-center py-3 justify-center relative h-[350px]">

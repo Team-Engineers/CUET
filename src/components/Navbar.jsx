@@ -3,6 +3,7 @@ import { NavLink, useLocation } from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { LuUser2 } from "react-icons/lu";
 import { useAuth } from "../utils/context";
+import FixedNavbar from "./FixedNavbar";
 
 const Navbar = () => {
   const location = useLocation();
@@ -33,9 +34,11 @@ const Navbar = () => {
   }, [location.pathname]);
 
   return (
-    <div className={`navbar ${location.pathname === "/" ? "bg-white" : ""} max-w-[1400px] mx-auto z-50 relative min-h-[8vh]`}>
-      <div className="navbar-start ml-5 w-72">
-        <NavLink to={"/"} className="no-underline gap-2 items-center flex">
+    <>
+ {!auth?.user && <FixedNavbar />} 
+    <div className={`navbar ${location.pathname === "/" ? "bg-white" : ""} max-w-[1400px] mx-auto z-10  relative min-h-[8vh]`}>
+      <div className="navbar-start ml-5 w-72  relative">
+        <NavLink to={"/"} className="no-underline gap-2 mt-[5px] items-center flex">
           <div className="flex gap-2 items-center">
             <img className="h-[40.5px] w-[30px] relative object-cover" loading="eager" alt="" src={"/logo.png"} />
             <b className="relative text-blueviolet-100 whitespace-nowrap text-xl">CUET-TestKnock</b>
@@ -43,7 +46,7 @@ const Navbar = () => {
         </NavLink>
       </div>
       <div className="navbar-end lg:ml-auto w-full relative">
-        <ul className="menu menu-horizontal relative left-[30px] lg:w-full lg:max-w-3xl lg:justify-evenly items-center">
+        <ul className="menu menu-horizontal  lg:w-full lg:max-w-3xl lg:justify-evenly items-center">
           {nav_buttons.map((nav, i) => (
             <li className="hidden lg:flex" key={i}>
               <div className="h-[21px] flex flex-col items-start justify-start text-blueviolet-100">
@@ -59,7 +62,7 @@ const Navbar = () => {
 
           {!auth?.user ? (
             <>
-              <li className="hidden lg:flex">
+              <li className="hidden h-[6vh] lg:flex">
                 <NavLink
                   to={"/signup"}
                   className={
@@ -72,7 +75,7 @@ const Navbar = () => {
             </>
           ) : (
             <>
-              <ul className="menu lg:menu-horizontal rounded-box ">
+              <ul className="menu lg:menu-horizontal h-[1vh] top-[-20px] relative   rounded-box ">
                 <li>
                   <details open={detailsOpen} onClick={() => setDetailsOpen(!detailsOpen)}>
                     <summary>
@@ -167,6 +170,8 @@ const Navbar = () => {
         </div>
       </div>
     </div>
+    </>
+    
   );
 };
 
