@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { IoMdCall } from "react-icons/io";
+import { RxCross1 } from "react-icons/rx";
 import Lottie from "react-lottie";
 import SupportAnimationData from "../../assets/images/contact_card.json";
-import { RxCross1 } from "react-icons/rx";
 
 const ContactForm = () => {
   const [isPopupOpen, setisPopupOpen] = useState(false);
@@ -15,7 +15,7 @@ const ContactForm = () => {
   return (
     <div className=" md:py-10 max-md:pb-4 w-full md:w-full h-full flex flex-col items-center max-md:justify-evenly">
       <div className="flex flex-col md:items-start items-center justify-evenly  w-[80%] md:w-[80%] ">
-        <h1 className="font-bold max-md:hidden text-13xl text-left my-5 md:ml-3">Request a Call back</h1>
+        <h1 className="font-bold gradient-text2 max-md:hidden text-13xl text-left my-5 md:ml-3">Request a Call back</h1>
         <input className={ContactInputStyles} placeholder="Your Name" type="text" />
         <input className={ContactInputStyles} placeholder="Email" type="email" />
         <input className={ContactInputStyles} placeholder="Phone Number" type="text" />
@@ -50,7 +50,7 @@ const Needhelppopup = () => {
   return (
     <div className="bg-[#FFFBEE]  rounded-xl ">
       <div className="absolute m-2 cursor-pointer  text-[18px] right-0">
-        <RxCross1/>
+        <RxCross1 />
       </div>
       <div className="mt-8">
         <h1 className="py-1 px-4  text-[15px] ">Need Guidance or Help in Filling Form?</h1>
@@ -79,7 +79,7 @@ const Contact = () => {
   return (
     <div className="pt-10  md:mx-20 md:pt-15 bg-white pb-32">
       <div
-        className="bg-gradient-to-br overflow-hidden from-[#0c8b37] to-[#ffffff]  rounded-2xl flex flex-col-reverse items-center justify-evenly md:flex-row md:justify-evenly max-w-[1000px] mx-auto max-sm:mx-2 max-md:mx-8  "
+        className="bg-gradient-to-br overflow-hidden from-[#e78f8fd7] to-[#a691f5de]  rounded-2xl flex flex-col-reverse items-center justify-evenly md:flex-row md:justify-evenly max-w-[1000px] mx-auto max-sm:mx-2 max-md:mx-8  "
       >
         <div className="h-full  w-[350px] sm:w-[500px] flex justify-center">
           <ContactForm />
@@ -94,7 +94,7 @@ const Contact = () => {
           />
 
         </div>
-        <h1 className="font-bold md:hidden  text-[25px] text-left my-5 ">Request a Call back</h1>
+        <h1 className="font-bold md:hidden gradient-text2 text-[25px] text-left my-5 ">Request a Call back</h1>
 
       </div>
     </div>

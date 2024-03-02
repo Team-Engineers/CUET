@@ -142,7 +142,7 @@ const slides = [
         text={
           "I solved MCQs on the TestKnock platform for hardly one month but in a consistent manner. I completed all the Mock Tests & then played a critical role in my success"
         }
-        color="#7d4738"
+        color="#35CE8D"
         university="Student, DPS Patna"
       />
     ),
@@ -155,8 +155,8 @@ const slides = [
         text={
           "After getting to see the quality of questions & the overall experience & exposure offered to students, I recommended it to my students and they benefitted immensely"
         }
-        color="#691672"
-        university="Teacher, K.V LOKTAK "
+        color="#A34F88"
+        university="Teacher, KV Loktak "
       />
     ),
   },
