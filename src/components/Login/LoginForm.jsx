@@ -14,8 +14,6 @@ const LoginForm = () => {
   const [password, setPassword] = useState("");
   const [, setAuth] = useAuth();
   const [loading, setLoading] = useState(false);
-
-
   const handleGoogleLogin = async (credentialResponse) => {
     try {
       const idToken = credentialResponse.credential;
@@ -25,34 +23,31 @@ const LoginForm = () => {
       );
 
       if (response.status === 200) {
-        const user = response.data;
+        const res = response.data;
         const tokenExpiry = new Date().getTime() + 5 * 24 * 60 * 60 * 1000;
         const tokenData = {
-          token: user.accessToken,
+          token: res.accessToken,
           expiry: tokenExpiry,
         };
-        setAuth({
-          user: user,
-          accessToken: tokenData,
-        });
+        setAuth({ user: res.user, accessToken:tokenData });
         localStorage.setItem("auth", JSON.stringify({
-          user: user,
+          user: res.user,
           accessToken: tokenData,
         }));
         navigate("/");
       } else {
         console.error("Google authentication error:", response);
-        // toast.error("Google authentication failed");
+        toast.error("Google authentication failed");
       }
     } catch (error) {
       console.error("Google authentication error:", error);
-      // toast.error("Google authentication failed");
+      toast.error("Google authentication failed");
     }
   };
 
   const handleGoogleLoginError = (error) => {
     console.error("Google Login Error:", error);
-    // toast.error("Google login failed");
+    toast.error("Google login failed");
   };
   const handleLogin = async () => {
     setLoading(true);
@@ -61,14 +56,20 @@ const LoginForm = () => {
       const response = await axios.post(`${API}/auth/signin`, { email: username, password });
       if (response.status === 200) {
         const { accessToken, ...userInfo } = response.data;
-        setAuth({ user: userInfo, accessToken });
-        localStorage.setItem("auth", JSON.stringify({ user: userInfo, accessToken }));
+        const tokenExpiry = new Date().getTime() + 5 * 24 * 60 * 60 * 1000;
+        const tokenData = {
+          token: accessToken,
+          expiry: tokenExpiry,
+        };
+        setAuth({ user: userInfo, accessToken:tokenData });
+        localStorage.setItem("auth", JSON.stringify({
+          user: userInfo,
+          accessToken: tokenData,
+        }));
         navigate("/");
         setLoading(false);
-
       } else {
         setLoading(false);
-
         console.error("Login failed:", response.data.message);
       }
     } catch (error) {

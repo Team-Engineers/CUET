@@ -5,7 +5,7 @@ const Universities = () => {
   return (
     <div className="md:mx-[30px] mx-[10px]">
        <div className=" max-w-[1280px] mx-auto">
-      <h1 className="text-blueviolet-100 my-6  md:text-center">
+      <h1 className="gradient-text2 my-6  md:text-center">
         Universities Participating in <span className="text-red-500">CUET</span>
       </h1>
       <div className="flex w-full  md:flex-row flex-col justify-between items-center">

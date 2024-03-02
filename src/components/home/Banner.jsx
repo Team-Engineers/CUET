@@ -3,14 +3,19 @@ import ExamInfo from "../../components/home/ExamInfo";
 import Lottie from "react-lottie";
 import LandingAnimationData from "../../assets/animation_landing.json";
 import { useNavigate } from "react-router-dom/dist";
-import { RxCross1 } from "react-icons/rx";
 
 const Banner = () => {
   const navigate = useNavigate();
-
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const popupRef = useRef(null);
 
+  const handlescroll = () => {
+    window.scrollTo({
+      top: 600,
+      behavior: 'smooth'
+    });
+  };
+  
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (popupRef.current && !popupRef.current.contains(event.target)) {
@@ -55,7 +60,7 @@ const Banner = () => {
             </div>
             <div className="my-6 flex justify-center md:justify-start">
               <button
-                onClick={() => navigate("/signup")}
+                onClick={() => navigate("/purchase")}
                 className={
                   "btn text-sm md:text-lg font-medium text-white bg-salmon-200 hover:bg-salmon-200  no-underline rounded-full border-0 min-h-0 h-10 md:w-40 w-35 md:mr-8 mr-3 capitalize"
                 }
@@ -63,7 +68,7 @@ const Banner = () => {
                 Join Us
               </button>
               <button
-                onClick={() => navigate("/login")}
+                onClick={handlescroll}
                 className={
                   "btn btn-outline text-sm md:text-lg font-medium border-blueviolet-100 text-blueviolet-100 no-underline border-solid  hover:bg-blueviolet-100 hover:text-white rounded-full min-h-0 h-10 w-40  md:w-56 capitalize"
                 }

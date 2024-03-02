@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { FaFacebook, FaLinkedin } from "react-icons/fa";
-import axios from "axios"; // Import axios for making HTTP requests
+import axios from "axios"; 
 import { useNavigate } from "react-router-dom";
 import { API } from "../../utils/constants";
 import { CgSpinner } from "react-icons/cg";
@@ -14,7 +13,7 @@ const SignupForm = () => {
   const navigate = useNavigate();
   const [showVerifyEmailPopup, setShowVerifyEmailPopup] = useState(false);
   const [otp, setOtp] = useState("");
-  const [emailVerified, setEmailVerified] = useState(false);
+  const [, setEmailVerified] = useState(false);
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
@@ -102,33 +101,30 @@ const SignupForm = () => {
       );
 
       if (response.status === 200) {
-        const user = response.data;
+        const res = response.data;
         const tokenExpiry = new Date().getTime() + 5 * 24 * 60 * 60 * 1000;
         const tokenData = {
-          token: user.accessToken,
+          token: res.accessToken,
           expiry: tokenExpiry,
         };
-        setAuth({
-          user: user,
-          accessToken: tokenData,
-        });
+        setAuth({ user: res.user, accessToken:tokenData });
         localStorage.setItem("auth", JSON.stringify({
-          user: user,
+          user: res.user,
           accessToken: tokenData,
         }));
         navigate("/");
       } else {
         console.error("Google authentication error:", response);
-        // toast.error("Google authentication failed");
+        toast.error("Google authentication failed");
       }
     } catch (error) {
       console.error("Google authentication error:", error);
-      // toast.error("Google authentication failed");
+      toast.error("Google authentication failed");
     }
   };
   const handleGoogleLoginError = (error) => {
     console.error("Google Login Error:", error);
-    // toast.error("Google login failed");
+    toast.error("Google login failed");
   };
   const validateEmail = (email) => {
     let emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;

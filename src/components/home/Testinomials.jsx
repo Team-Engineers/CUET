@@ -168,7 +168,7 @@ const Testinomials = () => {
       <div className="max-w-[1500px] mx-auto flex justify-center items-center">
         <div className="w-screen flex flex-col justify-center items-center my-2">
           <div className="">
-            <h1 className="text-blueviolet-100  text-13xl font-semibold text-center ">Testimonials</h1>
+            <h1 className="gradient-text2  text-13xl font-bold text-center ">Testimonials</h1>
           </div>
           <Carroussel cards={slides} height="500px" width="100%" margin="0 auto" offset={isMobile ? 10 : 200} showArrows={false} />{" "}
           {/* <div className="max-md:hidden">

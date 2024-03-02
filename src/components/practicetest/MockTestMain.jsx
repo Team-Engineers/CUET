@@ -14,17 +14,20 @@ const MockTestMain = () => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const { subTopic, heading } = useParams();
-  const [auth, setAuth] = useAuth();
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  console.log(heading)
 
-  useEffect(() => {
-    setIsLoggedIn(!!auth?.user);
-  }, []);
+  const [auth] = useAuth();
+  // const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  // useEffect(() => {
+  //   setIsLoggedIn(!auth?.user);
+  // }, []);
 
   useEffect(() => {
     setIsLoading(true);
     const fetchData = async () => {
-      let subTopic1 = subTopic.replace(/\s/g, '_');
+      let subTopic1 = subTopic.toLowerCase().replace(/\s/g, '_');
+      console.log(subTopic1)
       try {
         const response = await axios.get(
           `https://ourntamockpapers.onrender.com/api/question/find-questions?topic=${subTopic1}  `
@@ -48,7 +51,7 @@ const MockTestMain = () => {
 
   return (
     <div className='bg-gradient-to-br overflow-hidden from-[#ffffff] to-white'>
-      {!isLoggedIn && <FixedNavbar />}
+      {!auth?.user && <FixedNavbar />}
       <Navbar />
       {data.length > 0 ? (
       <section className="question-practice m-[20px]">

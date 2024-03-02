@@ -12,7 +12,7 @@ const SubtopicPage = () => {
   const subtopicData = subtopicsData[subtopicCategory];
   return (
     <>
-     <div className="bg-gradient-to-br from-[#ACBCFF] to-white overflow-x-hidden">
+     <div className=" overflow-x-hidden">
       <Navbar />
       <img src={require("../../assets/images/courses/Ellipsecommerce.png")} className="absolute top-0 z-0 left-0" alt="" />
       <div className="w-full relative z-10 max-w-[1280px] mx-auto mt-8">

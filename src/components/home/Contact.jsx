@@ -79,7 +79,7 @@ const Contact = () => {
   return (
     <div className="pt-10  md:mx-20 md:pt-15 bg-white pb-32">
       <div
-        className="bg-gradient-to-br overflow-hidden from-[#1c86e3] to-[#5f9cfe]  rounded-2xl flex flex-col-reverse items-center justify-evenly md:flex-row md:justify-evenly max-w-[1000px] mx-auto max-sm:mx-2 max-md:mx-8  "
+        className="bg-gradient-to-br overflow-hidden from-[#0c8b37] to-[#ffffff]  rounded-2xl flex flex-col-reverse items-center justify-evenly md:flex-row md:justify-evenly max-w-[1000px] mx-auto max-sm:mx-2 max-md:mx-8  "
       >
         <div className="h-full  w-[350px] sm:w-[500px] flex justify-center">
           <ContactForm />

@@ -79,7 +79,7 @@ const ExamInfo = () => {
                   {['cuetNotifications', 'otherExamsNotifications'].map((tab) => (
                     <h key={tab}  >
                       <p
-                        className={` font-bold  hover:text-blue-500 text-black   ${activeTab === tab ? 'text-blue-500' : ''}`}
+                        className={` cursor-pointer font-bold  hover:text-blue-500 text-black   ${activeTab === tab ? 'text-blue-500' : ''}`}
                         onClick={() => handleTabClick(tab)}
                       >
                         {tab === 'cuetNotifications' ? 'CUET Notifications' : 'Other Exams Notifications'}
