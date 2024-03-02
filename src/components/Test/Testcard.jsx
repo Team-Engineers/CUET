@@ -134,8 +134,10 @@ export const Testcard1 = ({ subTopic, topic, Questions, Marks, bgcolor, Times, i
 
 export const Testcard2 = ({ subTopic, Questions, mocksubtopicNumber, Marks, Negative, Times, index }) => {
   const [auth] = useAuth();
+  console.log(subTopic);
   const allow = auth?.user?.packageId;
-  const subtopic2 = "general_english_mock_test";
+  const subtopic2 = subTopic === "General English" ? "general_english_mock_test" : "general_test_mock_test";
+
   return (
     <div className="flex flex-col shadow-blue-500 transition-all duration-100 border-solid border-[0.5px] shadow-lg hover:scale-[105%] border-black bg-white rounded-[20px] items-center justify-around w-full md:w-[350px] h-[350px]">
 
@@ -173,42 +175,40 @@ export const Testcard2 = ({ subTopic, Questions, mocksubtopicNumber, Marks, Nega
         </div>
       </div>
       <div className="w-full flex items-center py-3 justify-end h-16 pr-10">
-  {auth.user ? (
-    <>
-      {allow === "65d93ff1aaf8ebc47c522ced" || index <= 4 ? (
-        <Link
-          target="_blank"
-          to={`https://mock-test-platform.vercel.app/${subtopic2}/${mocksubtopicNumber}/${auth?.user?._id}`}
-        >
-          <button className="btn btn-outline text-[#34A853] border-[#34A853] rounded-full shadow-none my-3 outline-none font-normal text-lg min-h-0 h-8 px-6">Take Test</button>
-        </Link>
-      ) : (
-        <Link to={`/purchase`}>
-          <button className="btn btn-outline text-[#34A853] border-[#34A853] rounded-full shadow-none my-3 outline-none font-normal text-lg min-h-0 h-8 px-6">Purchase Course</button>
-        </Link>
-      )}
-    </>
-  ) : (
-    <>
-      {index === 0 ? (
-        <Link
-          target="_blank"
-          to={`https://mock-test-platform.vercel.app/${subtopic2}/${mocksubtopicNumber}/free`}
-        >
-          <button className="btn btn-outline text-[#34A853] border-[#34A853] rounded-full shadow-none my-3 outline-none font-normal text-lg min-h-0 h-8 px-6">Take Test</button>
-        </Link>
-      ) : (
-        <Link to={`/login`}>
-          <button className="btn btn-outline text-[#34A853] border-[#34A853] rounded-full shadow-none my-3 outline-none font-normal text-lg min-h-0 h-8 px-6">
-            Login to Take Test
-          </button>
-        </Link>
-      )}
-    </>
-  )}
-</div>
-
-
+        {auth.user ? (
+          <>
+            {allow === "65d93ff1aaf8ebc47c522ced" || index <= 4 ? (
+              <Link
+                target="_blank"
+                to={`https://mock-test-platform.vercel.app/${subtopic2}/${mocksubtopicNumber}/${auth?.user?._id}`}
+              >
+                <button className="btn btn-outline text-[#34A853] border-[#34A853] rounded-full shadow-none my-3 outline-none font-normal text-lg min-h-0 h-8 px-6">Take Test</button>
+              </Link>
+            ) : (
+              <Link to={`/purchase`}>
+                <button className="btn btn-outline text-[#34A853] border-[#34A853] rounded-full shadow-none my-3 outline-none font-normal text-lg min-h-0 h-8 px-6">Purchase Course</button>
+              </Link>
+            )}
+          </>
+        ) : (
+          <>
+            {index === 0 ? (
+              <Link
+                target="_blank"
+                to={`https://mock-test-platform.vercel.app/${subtopic2}/${mocksubtopicNumber}/free`}
+              >
+                <button className="btn btn-outline text-[#34A853] border-[#34A853] rounded-full shadow-none my-3 outline-none font-normal text-lg min-h-0 h-8 px-6">Take Test</button>
+              </Link>
+            ) : (
+              <Link to={`/login`}>
+                <button className="btn btn-outline text-[#34A853] border-[#34A853] rounded-full shadow-none my-3 outline-none font-normal text-lg min-h-0 h-8 px-6">
+                  Login to Take Test
+                </button>
+              </Link>
+            )}
+          </>
+        )}
+      </div>
     </div>
   );
 };
