@@ -30,11 +30,10 @@ const PrepModulesQue = ({ data }) => {
       <div key={questionIndex} className="options-grid">
         <div className="question-box ">
           <div className="flex  flex-col">
-            {/* Render question content */}
             <div className="flex justify-between">
               <div className="px-4 py-5">
                 <span className={`question-number id-${question._id}`}>
-                  {`${questionIndex + 1 + currentPage * 1} `}
+                  {`${questionIndex + 1 + currentPage * 5} `}
                 </span>
 
               </div>
@@ -57,7 +56,7 @@ const PrepModulesQue = ({ data }) => {
           <div
             key={optionIndex}
             className={`option-box   
-    ${selectedOptions[currentPage] && selectedOptions[currentPage][questionIndex] === optionIndex ? (question.subQuestions[0].correctOptionIndex === optionIndex ? 'correct' : 'incorrect') : ''}`}
+    ${selectedOptions[currentPage] && selectedOptions[currentPage][questionIndex] === optionIndex ? (question.subQuestions[0].correctOptionIndex   === optionIndex ? 'correct' : 'incorrect') : ''}`}
             onClick={() => handleOptionClick(questionIndex, optionIndex)}
           >
             <span className="option-alphabet px-2">
@@ -79,7 +78,7 @@ const PrepModulesQue = ({ data }) => {
               {selectedOptions[currentPage] &&
                 selectedOptions[currentPage][questionIndex] === optionIndex && (
                   <span>
-                    {question.subQuestions[0].correctOptionIndex  === optionIndex ? (
+                    {question.subQuestions[0].correctOptionIndex   === optionIndex ? (
                       <i className="fa-solid fa-check"></i>
                     ) : (
                       <i className="fa-solid fa-xmark"></i>
@@ -123,29 +122,12 @@ const PrepModulesQue = ({ data }) => {
       </div>
     );
   };
-
   const generatePageNumbers = () => {
     const totalPages = Math.ceil(data.length / 5);
-    const maxPagesToShow = 5;
     const pages = [];
-    let startPage = currentPage - Math.floor(maxPagesToShow / 2);
-    let endPage = currentPage + Math.floor(maxPagesToShow / 2);
-
-    startPage = Math.max(0, startPage);
-    endPage = Math.min(totalPages - 1, endPage);
-
-    for (let i = startPage; i <= endPage; i++) {
+    for (let i = 0; i < totalPages; i++) {
       pages.push(i);
     }
-
-    while (pages.length > maxPagesToShow) {
-      if (currentPage - startPage <= endPage - currentPage) {
-        pages.pop();
-      } else {
-        pages.shift();
-      }
-    }
-
     return pages;
   };
 
@@ -158,24 +140,30 @@ const PrepModulesQue = ({ data }) => {
             .map((question, questionIndex) =>
               renderQuestion(question, questionIndex)
             )}
-          <div className="pagination">
+          <div className="pagination max-w-[700px] mx-auto ">
             <button
-              className={`page-button ${currentPage === 0 ? "disabled" : ""}`}
+              className={`page-button h-[50px] ${currentPage === 0 ? "disabled" : ""}`}
               onClick={() => setCurrentPage((prev) => prev - 1)}
             >
               Prev
             </button>
-            {generatePageNumbers().map((pageIndex) => (
-              <button
-                key={pageIndex}
-                className={`page-button ${currentPage === pageIndex ? "active" : ""}`}
-                onClick={() => setCurrentPage(pageIndex)}
-              >
-                {pageIndex + 1}
-              </button>
+            <div className="max-w-[700px] mx-auto">
+            {generatePageNumbers().map((pageIndex, index) => (
+              <React.Fragment key={pageIndex}>
+      
+                {index > 0 && index % 6 === 0 && <br />}
+                <button
+                  className={`page-button ${currentPage === pageIndex ? "active" : ""}`}
+                  onClick={() => setCurrentPage(pageIndex)}
+                >
+                  {pageIndex + 1}
+                </button>
+              </React.Fragment>
             ))}
+            </div>
+           
             <button
-              className={`page-button ${currentPage === Math.ceil(data.length / 5) - 1 ? "disabled" : ""}`}
+              className={`page-button h-[50px] ${currentPage === Math.ceil(data.length / 5) - 1 ? "disabled" : ""}`}
               onClick={() => setCurrentPage((prev) => prev + 1)}
             >
               Next
@@ -184,7 +172,7 @@ const PrepModulesQue = ({ data }) => {
         </div>
       </div>
     </section>
-  );
+);
 };
 
 export default PrepModulesQue;

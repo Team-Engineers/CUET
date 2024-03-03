@@ -36,8 +36,8 @@ export const topics = {
   "General English": [
     "Spot the Error",
     "Sentence Correction",
-    "Fill in the Blanks - Single",
-    "Fill in the Blanks - Double",
+    "Fill in the Blanks Single",
+    "Fill in the Blanks Double",
     "Cloze Test",
     "Synonyms",
     "Antonyms",

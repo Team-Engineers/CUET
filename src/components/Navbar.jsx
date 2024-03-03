@@ -75,7 +75,7 @@ const Navbar = () => {
             </>
           ) : (
             <>
-              <ul className="menu lg:menu-horizontal h-[1vh] top-[-20px] relative   rounded-box ">
+              <ul className="menu max-md:hidden lg:menu-horizontal h-[1vh] top-[-20px] relative   rounded-box ">
                 <li>
                   <details open={detailsOpen} onClick={() => setDetailsOpen(!detailsOpen)}>
                     <summary>
@@ -84,7 +84,7 @@ const Navbar = () => {
                       </div>
                       {auth?.user?.name }
                     </summary>
-                    <ul className="relative left-[30px]">
+                    <ul className="relative bg-white  left-[30px]">
                       <li>
                         <NavLink
                           to="/profile"

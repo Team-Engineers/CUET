@@ -11,8 +11,6 @@ function TestPage() {
   console.log(topic)
   const mainheading = topic.toLowerCase().replace(/\s/g, '_');
   const subtopics = topics[topic];
-
-
   const prep = subtopics.map((subtopic, index) => {
     const backgroundColors = [
       "#776CFF",
@@ -51,6 +49,7 @@ function TestPage() {
     const colorIndex = index % backgroundColors.length;
     const subtopicNumber = index + 1;
     return {
+      topic: topic,
       subTopic: `Practice Test ${subtopicNumber}`,
       Marks: 60,
       Times: 120,
@@ -137,9 +136,8 @@ function TestPage() {
               </div>
             ) : currentTab === "practice" ? (
               <div className="grid grid-cols-1 md:grid-cols-2 mb-20 lg:grid-cols-3 gap-14">
-
                 {practice.map((subject, index) => (
-                  <Testcard1 topic={mainheading} {...subject} index={index} />
+                  <Testcard1 key={index} topic={topic} subtopicNumber={index + 1} {...subject} index={index} />
                 ))}
               </div>
             ) : (

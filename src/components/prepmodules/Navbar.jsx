@@ -65,7 +65,7 @@ const Navbar = () => {
             </>
           ) : (
             <>
-              <ul className="menu lg:menu-horizontal h-[1vh] top-[-20px] relative z-50   rounded-box ">
+              <ul className="menu max-md:hidden lg:menu-horizontal h-[1vh] top-[-20px] relative z-50   rounded-box ">
                 <li>
                   <details open={detailsOpen} onClick={() => setDetailsOpen(!detailsOpen)}>
                     <summary>
