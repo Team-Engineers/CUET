@@ -18,8 +18,7 @@ const MockTest = ({ data }) => {
   const [correctAnswers, setCorrectAnswers] = useState(0);
   const [incorrectAnswers, setIncorrectAnswers] = useState(0);
   const [showResultPopup, setShowResultPopup] = useState(false);
-  const [totalAttempted, setTotalAttempted] = useState(0);
-  const [notAttempted, setNotAttempted] = useState(0); 
+
   const [showPopup, setShowPopup] = useState(false);
 
   const handlePopupOpen = () => {
@@ -414,8 +413,7 @@ const MockTest = ({ data }) => {
   <div className="popup-overlay">
     <div className="result-popup p-5">
       <h2 className="font-bold text-[30px]">Results</h2>
-      <p className="text-yellow-400 text-[20px]">Total attempted questions: {totalAttempted}</p>
-      <p className="text-yellow-400 text-[20px]">Total not attempted questions: {notAttempted}</p>
+      <p className="text-yellow-400 text-[20px]">Total attempted questions: {correctAnswers + incorrectAnswers}</p>
 
       <p className="text-green-400 text-[20px]">Total correct options: {correctAnswers}</p>
       <p className="text-red-500 text-[20px]">Total incorrect options: {incorrectAnswers}</p>
