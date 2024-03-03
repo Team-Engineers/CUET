@@ -28,15 +28,15 @@ export default function PackPage() {
   return (
     < div className=" overflow-hidden">
       <Navbar />
-      <div className=" overflow-hidden left-0 w-full max-w-[1280px] mb-8 mt-4 pt-4 flex flex-col justify-center items-center  mx-auto ">
-        <div className=" grid grid-cols-4 mx-4">
+      <div className=" overflow-hidden left-0 w-full max-w-[1280px]  flex flex-col justify-center items-center  mx-auto ">
+        <h1 className='gradient-text2'>Pricing</h1>
+        <div className=" my-10 grid grid-cols-2 self-center max-md:grid-cols-1 lg:grid-cols-4 mx-4">
           {packages.map((packages, index) => (
             <div key={index}>
               <PriceCard packages={packages} />
             </div>
           ))}
         </div>
-        <p className='self-start ml-6'>*Amount listed exludes GST.</p>
       </div>
       <Footer />
     </div>

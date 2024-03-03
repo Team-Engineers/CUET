@@ -59,11 +59,11 @@ function PriceCard({ packages }) {
   };
 
   return (
-    <div className='price-card bg-white transition-all duration-100 border border-solid border-[#121c43] rounded-2xl backdrop-blur[40px] hover:scale-105 text-center h-[500px] text-black mx-3 '>
+    <div className='price-card bg-white transition-all duration-100 border border-solid border-[#121c43] my-8 rounded-2xl backdrop-blur[40px] hover:scale-105 text-center md:max-h-[600px] text-black mx-3 mt-[-30px]'>
       <div className='p-2 py-3 pt-7'>
-        <h2 className='text-[25px] p-1 w-[90%] mx-auto rounded-3xl text-black bg-[#ffffff]'>{nameOfPlan}</h2>
-        <h1 className='text-[23px] text-slate-700'>Rs {amount}/*</h1>
-        <p className='text-[12px] text-slate-600 px-3 mb-5'>{description}</p>
+        <h2 className='text-[25px] p-1 w-[80%] mx-auto rounded-3xl text-black whitespace-nowrap bg-[#ffffff]'>{nameOfPlan}</h2>
+        <h1 className='text-10xl text-slate-700'>Rs {amount}</h1>
+        <p className='text-[12px] text-slate-600 px-1 md:h-[100px] '>{description}</p>
         <div className='features text-[20px]'>
           <div className='feature-cont'>
             <div className='icon'></div>
@@ -78,7 +78,7 @@ function PriceCard({ packages }) {
             <div className='feature-name bg-gradient-to-br w-[70%] mx-auto p-2 rounded-3xl from-[#5146e7] to-[#fff]'>Any Domain Subject</div>
           </div>
         </div>
-        <button className='confirmation-btn cursor-pointer  text-[18px] py-2 px-1 mt-10 rounded-3xl mx-auto w-[75%] ' onClick={initPayment}>Get started</button>
+        <button className='confirmation-btn hover:bg-blue-300 cursor-pointer  text-[18px] py-2 px-1 mt-10 rounded-3xl mx-auto w-[75%] ' onClick={initPayment}>Get started</button>
       </div>
     </div>
   );

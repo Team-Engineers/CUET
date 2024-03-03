@@ -13,15 +13,8 @@ import NoData from "../Loader/NoData";
 const MockTestMain = () => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const { subTopic, heading } = useParams();
-  console.log(heading)
-
+  const { subTopic, topic } = useParams();
   const [auth] = useAuth();
-  // const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-  // useEffect(() => {
-  //   setIsLoggedIn(!auth?.user);
-  // }, []);
 
   useEffect(() => {
     setIsLoading(true);
@@ -30,9 +23,10 @@ const MockTestMain = () => {
       console.log(subTopic1)
       try {
         const response = await axios.get(
-          `https://ourntamockpapers.onrender.com/api/question/find-questions?topic=${subTopic1}  `
+          `https://ourntamockpapers.onrender.com/api/question/mock_test?topic=${topic}&subTopic=${subTopic1}`
         );
-        setData(response.data.requestedData);
+        setData(response.data);
+        console.log("Fetched data:", response.data);
         setIsLoading(false);
       } catch (error) {
         setIsLoading(false);
@@ -41,9 +35,9 @@ const MockTestMain = () => {
     };
 
     fetchData();
-  }, [subTopic]);
+  }, [subTopic, topic]);
 
-
+  console.log("Data:", data);
 
   if (isLoading) {
     return <CuetLoader />;
@@ -52,17 +46,13 @@ const MockTestMain = () => {
   return (
     <div className='bg-gradient-to-br overflow-hidden from-[#ffffff] to-white'>
       {!auth?.user && <FixedNavbar />}
-      <Navbar />
-      {data.length > 0 ? (
-      <section className="question-practice m-[20px]">
-        {data.length > 0 ? (
+      <Navbar />  
+      {data.data.length > 0 ? (
+        <section className="question-practice m-[20px]">
           <div className="mx-auto">
             <MockTest subtopic={subTopic} data={data} />
           </div>
-        ) : (
-          <CuetLoader />
-        )}
-      </section>
+        </section>
       ) : (
         <NoData />
       )}

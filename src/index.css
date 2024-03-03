@@ -38,6 +38,20 @@ code {
   background-image: url("https://d2kh7o38xye1vj.cloudfront.net/wp-content/uploads/2023/11/stripBG.png");
 }
 
+.scroll-kit::-webkit-scrollbar {
+  width: 10px; 
+}
+
+.scroll-kit::-webkit-scrollbar-thumb {
+  background: #888; /* Color of the scrollbar handle */
+  border-radius: 5px; /* Rounded corners of the scrollbar handle */
+}
+
+.scroll-kit::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Color of the scrollbar handle on hover */
+}
+
+
 .signupp{
   position: relative;
   z-index: 1100;

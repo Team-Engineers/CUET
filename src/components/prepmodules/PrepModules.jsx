@@ -55,7 +55,7 @@ console.log(heading)
             <div className="max-lg:w-full max-lg:mx-[10px] lg:w-[400px]">
               <RecommendedSubTopics currentSubTopic={subTopic} />
             </div>
-            <div className="  ml-[50px] w-2/3">
+            <div className="  md:ml-[50px] md:w-2/3">
               <PrepModulesQue data={data} />
             </div>
           </div>

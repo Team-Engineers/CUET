@@ -66,9 +66,11 @@ export const Testcard = ({ subTopic, heading, Questions, bgcolor, index }) => {
 
 
 
-export const Testcard1 = ({ subTopic, topic, Questions, Marks, bgcolor, Times, index }) => {
+export const Testcard1 = ({ subTopic, topic,subtopicNumber, Questions, Marks, bgcolor, Times, index }) => {
   const [auth] = useAuth();
   const allow = auth?.user?.packageId;
+  const topic2 = topic === "General English" ? "general_english_practice_test" : "general_test_practice_test";
+
   
   return (
     <div style={{ boxShadow: `0 4px 6px ${bgcolor}, 0 1px 3px rgba(0, 0, 0, 0.1)`, background: bgcolor }} className="transition-all duration-100 hover:scale-[105%] rounded-3xl">
@@ -96,19 +98,19 @@ export const Testcard1 = ({ subTopic, topic, Questions, Marks, bgcolor, Times, i
             </div>
           </div>
           {index === 0 || (index <= 4 && auth.user) ? (
-            <Link to={`/test/practice/${topic}/${subTopic}`}>
+            <Link to={`/test/practice/${topic2}/${subtopicNumber}`}>
               <button className="btn hover:bg-[#34A853] my-3 bg-[#34A853] rounded-full text-white min-h-0 h-8 px-8">Take Test</button>
             </Link>
           ) : (
             <>
               {auth.user ? (
                 allow === "65d93ff1aaf8ebc47c522ced" ? (
-                  <Link to={`/test/practice/${topic}/${subTopic}`}>
+                  <Link to={`/test/practice/${topic2}/${subtopicNumber}`}>
                     <button className="btn hover:bg-[#34A853] my-3 bg-[#34A853] rounded-full text-white min-h-0 h-8 px-8">Take Test</button>
                   </Link>
                 ) : (
                   index <= 4 ? (
-                    <Link to={`/test/practice/${topic}/${subTopic}`}>
+                    <Link to={`/test/practice/${topic2}/${subtopicNumber}`}>
                       <button className="btn hover:bg-[#34A853] my-3 bg-[#34A853] rounded-full text-white min-h-0 h-8 px-8">Take Test</button>
                     </Link>
                   ) : (

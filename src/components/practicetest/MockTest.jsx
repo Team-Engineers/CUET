@@ -4,8 +4,7 @@ import { MathText } from "../mathJax/MathText";
 import CuetLoader from "../Loader/Loader";
 import { IoBookmark, IoBookmarkOutline } from "react-icons/io5";
 import { TfiTimer } from "react-icons/tfi";
-import { RxCross1 } from "react-icons/rx";
-
+import { Link } from "react-router-dom/dist";
 const MockTest = ({ data }) => {
   const alphabets = "12345678910".split("");
   const [selectedOptions, setSelectedOptions] = useState(Array(data.length).fill([]));
@@ -61,7 +60,7 @@ const MockTest = ({ data }) => {
   const handleOptionClick = (questionIndex, optionIndex) => {
     if (!isSubmitted) {
       const updatedSelectedOptions = [...selectedOptions];
-      updatedSelectedOptions[currentPage] = [...updatedSelectedOptions[currentPage]];
+      updatedSelectedOptions[currentPage] = updatedSelectedOptions[currentPage] || []; // Ensure selectedOptions[currentPage] is initialized as an array
       updatedSelectedOptions[currentPage][questionIndex] = optionIndex;
       setSelectedOptions(updatedSelectedOptions);
     }
@@ -71,8 +70,8 @@ const MockTest = ({ data }) => {
     setTimer(0)
     let correct = 0;
     let incorrect = 0;
-    data.forEach((question, questionIndex) => {
-      const selectedOptionIndex = selectedOptions[currentPage][questionIndex];
+    data.data.forEach((question, questionIndex) => {
+      const selectedOptionIndex = selectedOptions[currentPage] && selectedOptions[currentPage][questionIndex];
       const correctOptionIndex = question.subQuestions[0].correctOptionIndex - 1;
       if (selectedOptionIndex === correctOptionIndex) {
         correct++;
@@ -93,12 +92,8 @@ const MockTest = ({ data }) => {
       setIsLoading(false);
     }, 2000);
   };
-
-
-
-
-
-
+  
+  
   const handleSaveQuestion = (questionIndex) => {
     const questionAbsoluteIndex = questionIndex + currentPage * 1;
     const updatedSavedQuestions = [...savedQuestions];
@@ -195,20 +190,20 @@ const MockTest = ({ data }) => {
               )}
             </div>
           </div>
-          <div className="flex">
+          <div className="flex relative left-1/3 ">
             {question.subQuestions[0].correctOptionIndex - 1 === optionIndex &&
               isSubmitted &&
               selectedOptions[currentPage] &&
               selectedOptions[currentPage][questionIndex] === optionIndex && (
-                <span className="correct-answer">
-                  <i className="fa-solid fa-check"></i>
+                <span className="relative  ">
+                  <i className="fa-solid fa-check "></i>
                 </span>
               )}
             {isSubmitted &&
               selectedOptions[currentPage] &&
               selectedOptions[currentPage][questionIndex] === optionIndex &&
               question.subQuestions[0].correctOptionIndex - 1 !== optionIndex && (
-                <span className="incorrect-answer">
+                <span className=" relative ">
                   <i className="fa-solid fa-xmark"></i>
                 </span>
               )}
@@ -250,20 +245,21 @@ const MockTest = ({ data }) => {
   );
 
   const generatePageNumbers = () => {
-    const totalPages = 30;
+    const totalPages = Math.ceil(data.data.length / 1);
     const pages = [];
-
+  
     for (let i = 1; i <= totalPages; i++) {
       const isSelected = selectedOptions[i - 1]?.length > 0;
       pages.push({ number: i, isSelected });
     }
-
+  
     return pages;
   };
+  
 
   return (
     <section className="mx-auto mb-8 max-w-[1280px] ">
-      <div className={`flex px-5 top-[-25px] lg:hidden rounded  text-white  relative items-center`}>
+      <div className={`flex px-5 top-[-25px] lg:hidden rounded  text-black  relative items-center`}>
         <div className={`text-[20px] gap-1 rounded-xl px-10 border-[1px] border-black border-solid py-3 bg-gradient-to-br overflow-hidden  flex justify-center items-center `}>
           <div className="text-[20px] ">
             <TfiTimer />
@@ -279,25 +275,36 @@ const MockTest = ({ data }) => {
           {isLoading ? (
             <CuetLoader />
           ) : (
-            <button
-              className="w-[70%] mr-5  border-none relative flex justify-center items-center rounded bg-gradient-to-br overflow-hidden from-[#617cea] to-black text-white px-7 p-3"
-              onClick={handleSubmit}
-            >
-              Submit
-            </button>
+            <>
+              {!isSubmitted ? (
+                <button
+                  className="border-none cursor-pointer shadow-2xl relative flex justify-center items-center rounded bg-gradient-to-br overflow-hidden from-[#617cea] to-black text-white px-7 p-3"
+                  onClick={handleSubmit}
+                >
+                  Submit
+                </button>
+              ) : (
+                <button
+                  className="border-none cursor-pointer shadow-2xl relative flex justify-center items-center rounded bg-gradient-to-br overflow-hidden from-[#617cea] to-black text-white px-7 p-3"
+                  onClick={() => window.location.reload()}
+                >
+                  Retake Test
+                </button>
+              )}
+            </>
           )}
         </div>
       </div>
       <div className="flex md:mx-10 gap-5 justify-between">
         <div className="w-full ">
-          {data
+          {data.data
             .slice(currentPage, currentPage + 1)
             .map((question, questionIndex) =>
               renderQuestion(question, questionIndex)
             )}
           <div className="flex items-center mt-8 justify-between">
             <button
-              className=" border-none shadow-2xl relative flex justify-center items-center rounded bg-gradient-to-br overflow-hidden from-[#617cea] to-black text-white px-7 p-3"
+              className=" border-none cursor-pointer shadow-2xl relative flex justify-center items-center rounded bg-gradient-to-br overflow-hidden from-[#617cea] to-black text-white px-7 p-3"
               onClick={() => setCurrentPage((prev) => prev - 1)}
               disabled={currentPage === 0}
 
@@ -308,7 +315,7 @@ const MockTest = ({ data }) => {
               onClick={handlePopupOpen}>All Questions</button>
 
             <button
-              className=" border-none shadow-2xl relative flex justify-center items-center rounded bg-gradient-to-br overflow-hidden from-[#617cea] to-black text-white px-7 p-3"
+              className=" border-none cursor-pointer shadow-2xl relative flex justify-center items-center rounded bg-gradient-to-br overflow-hidden from-[#617cea] to-black text-white px-7 p-3"
               onClick={() => setCurrentPage((prev) => prev + 1)}
               disabled={currentPage === 29}
 
@@ -317,7 +324,7 @@ const MockTest = ({ data }) => {
             </button>
           </div>
         </div>
-        <div className="max-w-[400px] relative left-8 border-solid border-[1px] rounded-2xl max-h-[800px]  border-black mx-8 max-lg:hidden  flex flex-col items-center justify-center ">
+        <div className="max-w-[400px] scroll-kit max-h-[630px] overflow-y-scroll relative left-8 border-solid border-[1px] rounded-2xl   border-black mx-8 max-lg:hidden  flex flex-col items-center justify-center ">
           <div className={`flex px-5 max-lg:hidden rounded-xl mt-2 border border-white border-solid py-3 bg-gradient-to-br overflow-hidden  text-black justify-center relative items-center`}>
             <div className="text-[20px] flex justify-center items-center px-2">
               <TfiTimer />
@@ -330,7 +337,7 @@ const MockTest = ({ data }) => {
               {(timer % 60).toString().padStart(2, "0")}
             </div>
           </div>
-          <div className="my-4 max-w-[400px]  justify-center items-center mx-auto flex flex-wrap  ">
+          <div className="my-4 max-w-[400px]   justify-center items-center mx-auto flex flex-wrap  ">
             {generatePageNumbers().map(({ number, isSelected }) => (
               <button
                 key={number}
@@ -353,12 +360,23 @@ const MockTest = ({ data }) => {
             {isLoading ? (
               <CuetLoader />
             ) : (
-              <button
-                className=" border-none shadow-2xl mb-2 relative flex justify-center items-center rounded bg-gradient-to-br overflow-hidden from-[#617cea] to-black text-white px-7 p-3"
-                onClick={handleSubmit}
-              >
-                Submit
-              </button>
+              <>
+              {!isSubmitted ? (
+                <button
+                  className="border-none shadow-2xl mb-2 cursor-pointer relative flex justify-center items-center rounded bg-gradient-to-br overflow-hidden from-[#617cea] to-black text-white px-7 p-3"
+                  onClick={handleSubmit}
+                >
+                  Submit
+                </button>
+              ) : (
+                <button
+                  className="border-none cursor-pointer shadow-2xl mb-2 relative flex justify-center items-center rounded bg-gradient-to-br overflow-hidden from-[#617cea] to-black text-white px-7 p-3"
+                  onClick={() => window.location.reload()}
+                >
+                  Retake Test
+                </button>
+              )}
+            </>
             )}
           </div>
         </div>
@@ -391,18 +409,24 @@ const MockTest = ({ data }) => {
 
       )}
 
-   {showResultPopup && (
+{showResultPopup && (
   <div className="popup-overlay">
     <div className="result-popup p-5">
       <h2 className="font-bold text-[30px]">Results</h2>
       <p className="text-yellow-400 text-[20px]">Total attempted questions: {correctAnswers + incorrectAnswers}</p>
+
       <p className="text-green-400 text-[20px]">Total correct options: {correctAnswers}</p>
       <p className="text-red-500 text-[20px]">Total incorrect options: {incorrectAnswers}</p>
-      <h  className=" border-none cursor-pointer shadow-2xl mb-2 relative flex justify-center items-center rounded bg-gradient-to-br overflow-hidden from-[#617cea] to-black text-white px-7 p-3"
-       onClick={() => setShowResultPopup(false)}><RxCross1/></h>
+      <div className="flex justify-between">
+        <h className=" border-none cursor-pointer shadow-2xl mb-2 relative flex justify-center items-center rounded bg-gradient-to-br overflow-hidden from-[#617cea] to-black text-white px-7 p-3"
+          onClick={() => setShowResultPopup(false)}>Reveiw Test</h>
+        <Link to= "/" className="no-underline border-none cursor-pointer shadow-2xl mb-2 relative flex justify-center items-center rounded bg-gradient-to-br overflow-hidden from-[#617cea] to-black text-white px-7 p-3"
+        >Home</Link>
+      </div>
     </div>
   </div>
 )}
+
 
     </section>
   );
