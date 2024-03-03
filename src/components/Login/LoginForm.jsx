@@ -15,13 +15,13 @@ const LoginForm = () => {
   const [, setAuth] = useAuth();
   const [loading, setLoading] = useState(false);
   const handleGoogleLogin = async (credentialResponse) => {
+    setLoading(true); 
     try {
       const idToken = credentialResponse.credential;
       const response = await axios.post(
         `${API}/auth/google-signin`,
         { idToken }
       );
-
       if (response.status === 200) {
         const res = response.data;
         const tokenExpiry = new Date().getTime() + 5 * 24 * 60 * 60 * 1000;
@@ -29,25 +29,31 @@ const LoginForm = () => {
           token: res.accessToken,
           expiry: tokenExpiry,
         };
-        setAuth({ user: res.user, accessToken:tokenData });
+        setAuth({ user: res.user, accessToken: tokenData });
         localStorage.setItem("auth", JSON.stringify({
           user: res.user,
           accessToken: tokenData,
         }));
         navigate("/");
+        setLoading(false); 
       } else {
         console.error("Google authentication error:", response);
         toast.error("Google authentication failed");
+        setLoading(false); 
+
       }
     } catch (error) {
       console.error("Google authentication error:", error);
       toast.error("Google authentication failed");
+      setLoading(false); 
     }
   };
 
   const handleGoogleLoginError = (error) => {
     console.error("Google Login Error:", error);
     toast.error("Google login failed");
+    setLoading(false); 
+
   };
   const handleLogin = async () => {
     setLoading(true);
@@ -61,7 +67,7 @@ const LoginForm = () => {
           token: accessToken,
           expiry: tokenExpiry,
         };
-        setAuth({ user: userInfo, accessToken:tokenData });
+        setAuth({ user: userInfo, accessToken: tokenData });
         localStorage.setItem("auth", JSON.stringify({
           user: userInfo,
           accessToken: tokenData,
@@ -140,12 +146,19 @@ const LoginForm = () => {
                 <CgSpinner size={20} className="mt-1 animate-spin" />
               )}
               {!loading && <span>Log In</span>}{" "}  </button>
-            
+
             <div className="flex items-center max-md:mt-1 my-1 md:ml-[1.5vw]">
               <GoogleLogin
                 onSuccess={handleGoogleLogin}
                 onError={handleGoogleLoginError}
-              />
+                disabled={loading}
+              >
+                {loading ? (
+                  <CgSpinner size={20} className="mt-1 animate-spin mr-2" />
+                ) : (
+                  <span>Login with Google</span>
+                )}
+              </GoogleLogin>
             </div>{" "}
           </div>
         </form>
