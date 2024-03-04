@@ -9,10 +9,13 @@ const getTouches = (evt) => {
   );
 };
 
-const Testinomials2 = ({ image, color, name, text, university }) => {
+const Testinomials2 = ({ image, color1, color2, name, text, university }) => {
+  const gradientStyle = {
+    background: `linear-gradient(to bottom right, ${color1}, ${color2})`
+  };
   return (
     <div
-      style={{ background: color }}
+      style={gradientStyle}
       className="cursor-pointer max-md:max-w-[280px] text-center max-md:h-[250px] md:h-[250px] max-xl:w-[400px] w-[500px]  md:py-10 py-8 rounded-[16.02px] shadow-[0px_4px_4px_rgba(0,_0,_0,_0.25)]  justify-evenly items-center md:px-5 px-2 ">
       <div className="md:text-xl text-md   text-white font-bold">{name}</div>
       <div className="text-white md:text-md text-center my-2 md:my-8">{text}</div>
@@ -104,7 +107,8 @@ const slides = [
         image={require("../../assets/images/signup/test1.png")}
         name="Sachin Gupta"
         text="After my Board exams, I felt that i seriouly need to work hard for cuet, thereby I subscribed to the complete package offered by TestKnock. Extensive practice of MCQs proved to be game changer. I owe my sucess to TestKnock"
-        color="#4477CE"
+        color1="#52e5e7"
+        color2="#130ca4"
         university="Student, Hindu College (Delhi University)"
       />
     ),
@@ -115,8 +119,9 @@ const slides = [
       <Testinomials2
         image={require("../../assets/images/signup/test1.png")}
         name="Varuna S"
-        text="The Platform offered by cuet Tests is exactly mapped with cuet conducted by NTA. The difficulty lvel, look & feel-- in short everything when i appeared for my final CUET exams, it felt i have appeared similar tests in the past. THanks to TestKnock"
-        color="#9F73AB"
+        text="The Platform offered by cuet Tests is exactly mapped with cuet conducted by NTA. The difficulty level, look & feel-- in short everything when i appeared for my final CUET exams, it felt i have appeared similar tests in the past. THanks to TestKnock"
+        color1="#7367f0"
+        color2="#5a1b9a"
         university="Student, APS Waranagal"
       />
     ),
@@ -129,7 +134,8 @@ const slides = [
         text={
           "I have been running my coaching centre successfully for more than 2 decades. I owe my success to my hardwork, dedication & sincerity. I found the same in team at TestKnock. All my students compulsorily subscribe to the Dashboard & online facilities oferred by TestKnock for CUET."
         }
-        color="#3795BD"
+        color1="#fec163"
+        color2="#de4313"
         university="Owner of SKM Classes, Yamuna Nagar"
       />
     ),
@@ -142,7 +148,8 @@ const slides = [
         text={
           "I solved MCQs on the TestKnock platform for hardly one month but in a consistent manner. I completed all the Mock Tests & then played a critical role in my success"
         }
-        color="#35CE8D"
+        color1="#92ffc0"
+        color2="#002640"
         university="Student, DPS Patna"
       />
     ),
@@ -155,7 +162,8 @@ const slides = [
         text={
           "After getting to see the quality of questions & the overall experience & exposure offered to students, I recommended it to my students and they benefitted immensely"
         }
-        color="#A34F88"
+        color1="#f97794"
+        color2="#623aa2"
         university="Teacher, KV Loktak "
       />
     ),

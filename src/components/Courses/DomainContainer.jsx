@@ -11,10 +11,10 @@ const DomainContainer = ({ brick, heading, color, subheading }) => {
         <h1 className="text-5xl md:text-[30px] flex justify-center items-center text-white md:w-40 w-20 text-center">
           {heading}
         </h1>
-        <p className="text-white">
-            Coming Soon...
+        <p className="text-white bg-[#c93f35e7] border-dashed border-white border-t-[1.5px] border-l-0 border-r-0 border-b-[1.5px] px-[90px] py-1 ">
+          Coming Soon...
         </p>
-    </div>
+      </div>
     </div>
 
   );

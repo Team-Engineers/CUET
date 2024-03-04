@@ -1,8 +1,8 @@
-import { useState, useEffect, useRef } from "react";
-import ExamInfo from "../../components/home/ExamInfo";
+import { useEffect, useRef, useState } from "react";
 import Lottie from "react-lottie";
-import LandingAnimationData from "../../assets/animation_landing.json";
 import { useNavigate } from "react-router-dom/dist";
+import LandingAnimationData from "../../assets/animation_landing.json";
+import ExamInfo from "../../components/home/ExamInfo";
 
 const Banner = () => {
   const navigate = useNavigate();
@@ -15,7 +15,7 @@ const Banner = () => {
       behavior: 'smooth'
     });
   };
-  
+
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (popupRef.current && !popupRef.current.contains(event.target)) {
@@ -33,7 +33,7 @@ const Banner = () => {
   const handleBellIconClick = () => {
     setIsPopupOpen(true);
   };
-  
+
 
   return (
     <div className="max-w-[1380px] md:mt-5 mx-auto">
@@ -76,8 +76,8 @@ const Banner = () => {
                 Take a free test
               </button>
             </div>
-            <div className="my-10 hidden md:block">
-              <div  className="flex relative  flex-row items-center gap-[7px] text-base cursor-pointer">
+            <div className="my-10 md:block">
+              <div className="flex relative  flex-row items-center gap-[7px] text-base cursor-pointer">
                 <div onClick={handleBellIconClick} >
                   <img
                     className="h-[54px] w-[52px] relative object-cover"

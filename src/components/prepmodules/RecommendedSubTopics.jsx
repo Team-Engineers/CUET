@@ -66,6 +66,7 @@ const Box = styled.div`
 `;
 const Box2 = styled.h6`
   min-width : 10rem;
+  margin: auto;
   padding : 10px 5px;
   margin-bottom: 0px;
   white-space: nowrap;
