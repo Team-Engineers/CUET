@@ -16,14 +16,12 @@ const ExamInfo = () => {
       id: 1, title: 'NMIMS', date: 'December 6, 2023', closingDate: 'May 20, 2024', link: 'https://npat.nmims.edu/'
     },
     { id: 2, title: 'CHRIST', date: 'December 08, 2023 ', closingDate: 'April 28, 2024', link: 'https://christuniversity.in/admission-ug' },
-    { id: 3, title: 'SYMBIOSIS', date: 'December, 2023', closingDate: 'April 12, 2024', link: 'https://set2024.ishinfosys.com' },
+    { id: 3, title: 'SYMBIOSIS', date: 'December, 2023', closingDate: 'April 12, 2024', link: 'https://www.siu.edu.in/' },
     { id: 4, title: 'IP UNIVERSITY', date: 'February 19,2024	', closingDate: 'March 31, 2024', link: 'https://admissions.nic.in/' },
     { id: 5, title: 'FLAME', date: 'December 3, 2023', closingDate: 'May 5, 2024', link: ' https://application.flame.edu.in' },
     { id: 6, title: 'KREA', date: 'October 3, 2023 ', closingDate: 'May 6, 2024', link: ' https://siasadmissions.krea.edu.in' },
     { id: 7, title: 'ASHOKA', date: 'November 22, 2023', closingDate: 'June 10, 2024	', link: 'https://apply.ashoka.edu.in/' },
     { id: 8, title: 'OP JINDAL', date: 'November 15, 2023 	', closingDate: 'June 05, 2024', link: 'https://jgu.edu.in/' },
-    { id: 9, title: 'MANAV RACHANA', date: 'January 25, 2024 ', closingDate: 'April 30, 2024', link: 'https://apply.manavrachna.edu.in/' },
-    { id: 10, title: 'SHIV NADAR', date: 'December 12, 2023', closingDate: 'March 31, 2024', link: 'https://snuadmissions.com/' },
   ];
 
   const getNoticesForTab = () => {

@@ -34,7 +34,7 @@ const Wrapper = styled.ul`
   width: fit-content;
   display: flex;
   white-space: nowrap;
-
+  text-align: center;
   align-items: center;
   justify-content : center;
   flex-wrap: wrap;
