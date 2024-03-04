@@ -6,7 +6,7 @@ import SubtopicPage from "./components/Courses/SubtopicPage";
 import PackPage from "./components/Packs/PacksPage";
 import TestPage from "./components/Test/TestPage";
 import Nopage from "./components/nopage/Nopage";
-import MockTestMain from "./components/practicetest/MockTestMain";
+import PracticeTestMain from "./components/practicetest/PracticeTestMain";
 import PrepModules from "./components/prepmodules/PrepModules";
 import AboutPage from "./pages/Aboutpage";
 import Coursespage from "./pages/Coursespage";
@@ -36,10 +36,10 @@ const App = () => {
       <Route path="/test/prep/:topic/:subTopic" element={<PrepModules />} />
       <Route
         path="/test/practice/:topic/:subTopic"
-        element={<MockTestMain />}
+        element={<PracticeTestMain />}
       />
       <Route element={<PrivateRoutes />}>
-        <Route path="/test/practice/:subTopic" element={<MockTestMain />} />
+        <Route path="/test/practice/:subTopic" element={<PracticeTestMain />} />
         <Route path="/profile" element={<Profile />} />
       </Route>
       <Route path="*" element={<Nopage />} />

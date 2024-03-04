@@ -91,24 +91,18 @@
 
 .question-practice .options-grid .incorrect {
     color: white;
-    background: rgb(222, 80, 80);
+    background: rgb(240, 76, 76);
 }
 
 .question-practice .options-grid .correct {
-    /* border: 2px solid green !important; */
+    background: rgb(56, 142, 56);
     color: black;
 }
 
-/* .question-practice .correct .option-alphabet {
-    background-color: green;
-    color: white;
-} */
-
-.question-practice .incorrect .option-alphabet {
-    /* background-color: white; */
+.question-practice .correct .option-alphabet {
+    background-color: rgb(23, 151, 23);
     color: white;
 }
-
 .question-practice .option-alphabet {
     font-weight: bold;
     color: #444;
@@ -195,6 +189,8 @@
 .question-practice .explanation-wrapper .explanation p h6 {
     line-height: 2rem;
 }
+
+
 
 .question-practice .explanation-wrapper .explanation{
     border: 1px solid #bababa;

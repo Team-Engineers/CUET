@@ -3,14 +3,14 @@ import "./testplatform.css";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import CuetLoader from "../Loader/Loader";
-import MockTest from "./MockTest";
+import PracticeTestQues from "./PracticeTestQues";
 import Footer from "../Footer";
 import Navbar from "../Navbar";
 import { useAuth } from "../../utils/context";
 import FixedNavbar from "../FixedNavbar";
 import NoData from "../Loader/NoData";
 
-const MockTestMain = () => {
+const PracticeTestMain = () => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const { subTopic, topic } = useParams();
@@ -50,7 +50,7 @@ const MockTestMain = () => {
       {data.data.length > 0 ? (
         <section className="question-practice m-[20px]">
           <div className="mx-auto">
-            <MockTest subtopic={subTopic} data={data} />
+            <PracticeTestQues subtopic={subTopic} data={data} />
           </div>
         </section>
       ) : (
@@ -61,4 +61,4 @@ const MockTestMain = () => {
   );
 };
 
-export default MockTestMain;
+export default PracticeTestMain;
