@@ -3,6 +3,8 @@ import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Domain from "./components/Courses/Domain";
 import SubtopicPage from "./components/Courses/SubtopicPage";
+import ForgotPassword from "./components/Login/ForgotPassword";
+import ResetPassword from "./components/Login/ResetPassword";
 import PackPage from "./components/Packs/PacksPage";
 import TestPage from "./components/Test/TestPage";
 import Nopage from "./components/nopage/Nopage";
@@ -23,6 +25,8 @@ const App = () => {
     <Routes>
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
+      <Route path="/forgot-password" element={<ForgotPassword />} />
+      <Route path="/reset_password/:id/:token" element={<ResetPassword />} />
       <Route path="/Domain" element={<Domain />} />
       <Route path="/" element={<Homepage />} />
       <Route path="/about" element={<AboutPage />} />
