@@ -15,9 +15,9 @@ const PrepModules = () => {
   const [auth] = useAuth();
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  // const [isLoggedIn, setIsLoggedIn] = useState(false); 
+  // const [isLoggedIn, setIsLoggedIn] = useState(false);
   const { subTopic, heading } = useParams();
-console.log(heading)
+  console.log(heading);
   useEffect(() => {
     setIsLoading(true);
     const fetchData = async () => {
@@ -25,7 +25,9 @@ console.log(heading)
       try {
         const response = await axios.get(
           `https://ourntamockpapers.onrender.com/api/question/find-questions?topic=${subTopic1}`
+          // `https://ourntamockpapers.onrender.com/api/question/mock_test?topic=general_english_practice_test&subTopic=5`
         );
+        // console.log("response",response)
         setData(response.data.requestedData);
         setIsLoading(false);
       } catch (error) {
@@ -38,7 +40,7 @@ console.log(heading)
   }, [subTopic]);
 
   // useEffect(() => {
-  //   setIsLoggedIn(!auth?.user); 
+  //   setIsLoggedIn(!auth?.user);
   // }, []);
 
   if (isLoading) {
@@ -47,9 +49,9 @@ console.log(heading)
 
   return (
     <section className="question-practice bg-white">
-      {!auth?.user && <FixedNavbar />} 
+      {!auth?.user && <FixedNavbar />}
       <Navbar />
-      {data.length > 0 ? (
+      {data?.length > 0 ? (
         <div className="mx-auto max-w-[1280px] my-10">
           <div className="flex mx-8 lg:flex-row flex-col   justify-between ">
             <div className="max-lg:w-full max-lg:mx-[10px] lg:w-[400px]">
