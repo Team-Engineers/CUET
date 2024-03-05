@@ -35,7 +35,10 @@ const Navbar = () => {
 
   return (
     <>
- {!auth?.user && <FixedNavbar />} 
+    <div className="max-md:hidden">
+    {!auth?.user && <FixedNavbar />} 
+
+    </div>
     <div className={`navbar ${location.pathname === "/" ? "bg-white" : ""} max-w-[1400px] mx-auto z-10  relative min-h-[8vh]`}>
       <div className="navbar-start ml-5 w-72  relative">
         <NavLink to={"/"} className="no-underline gap-2 mt-[5px] items-center flex">
@@ -57,10 +60,10 @@ const Navbar = () => {
                   <div className="w-[23px] h-px relative box-border border-t-[1px] border-solid border-blueviolet-100" />
                 )}
               </div>
-            </li>
+            </li> 
           ))}
-
-          {!auth?.user ? (
+          <li className="h-[1vh] top-[-25px] relative">
+            {!auth?.user ? (
             <>
               <li className="hidden h-[6vh] lg:flex">
                 <NavLink
@@ -75,7 +78,7 @@ const Navbar = () => {
             </>
           ) : (
             <>
-              <ul className="menu max-md:hidden lg:menu-horizontal h-[1vh] top-[-20px] relative   rounded-box ">
+              <ul className="menu max-md:hidden lg:menu-horizontal relative top-[-2px]    rounded-box ">
                 <li>
                   <details open={detailsOpen} onClick={() => setDetailsOpen(!detailsOpen)}>
                     <summary>
@@ -84,7 +87,7 @@ const Navbar = () => {
                       </div>
                       {auth?.user?.name }
                     </summary>
-                    <ul className="relative bg-white  left-[30px]">
+                    <ul className="relative  bg-white   left-[25px]">
                       <li>
                         <NavLink
                           to="/profile"
@@ -107,6 +110,8 @@ const Navbar = () => {
               </ul>
             </>
           )}
+          </li>
+          
         </ul>
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden p-0 mr-5">
