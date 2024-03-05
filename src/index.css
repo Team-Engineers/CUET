@@ -72,6 +72,17 @@ code {
 
 
 
+
+
+.benefits ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.benefits ul li {
+  margin-bottom: 5px;
+}
+
 .title {
   margin-bottom: 20px;
 }

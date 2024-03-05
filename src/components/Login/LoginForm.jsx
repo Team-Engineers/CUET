@@ -1,12 +1,12 @@
-import React, { useState } from "react";
-import axios from "axios";
-import { useAuth } from "../../utils/context";
-import { useNavigate } from "react-router-dom";
-import { API } from "../../utils/constants";
-import { CgSpinner } from "react-icons/cg";
 import { GoogleLogin } from "@react-oauth/google";
+import axios from "axios";
+import React, { useState } from "react";
+import { CgSpinner } from "react-icons/cg";
+import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { API } from "../../utils/constants";
+import { useAuth } from "../../utils/context";
 
 const LoginForm = () => {
   const navigate = useNavigate();
@@ -15,7 +15,7 @@ const LoginForm = () => {
   const [, setAuth] = useAuth();
   const [loading, setLoading] = useState(false);
   const handleGoogleLogin = async (credentialResponse) => {
-    setLoading(true); 
+    setLoading(true);
     try {
       const idToken = credentialResponse.credential;
       const response = await axios.post(
@@ -35,24 +35,24 @@ const LoginForm = () => {
           accessToken: tokenData,
         }));
         navigate("/");
-        setLoading(false); 
+        setLoading(false);
       } else {
         console.error("Google authentication error:", response);
         toast.error("Google authentication failed");
-        setLoading(false); 
+        setLoading(false);
 
       }
     } catch (error) {
       console.error("Google authentication error:", error);
       toast.error("Google authentication failed");
-      setLoading(false); 
+      setLoading(false);
     }
   };
 
   const handleGoogleLoginError = (error) => {
     console.error("Google Login Error:", error);
     toast.error("Google login failed");
-    setLoading(false); 
+    setLoading(false);
 
   };
   const handleLogin = async () => {
@@ -83,10 +83,6 @@ const LoginForm = () => {
     }
     setLoading(false);
 
-  };
-
-  const handleForgotPassword = () => {
-    console.log("Forgot password clicked");
   };
 
   return (
@@ -132,9 +128,10 @@ const LoginForm = () => {
               {" "}
               <input type="checkbox" className=" checked:bg-gray-300 h-4 w-4 rounded" style={{ backgroundColor: '#c5c5c5', cursor: 'pointer' }} />
             </p> */}
-            <p type="button" className="font-bold   text-blue-600 underline hover:text-blue-500 text-[1vw] max-md:text-[15px]" onClick={handleForgotPassword}>
+            {/* <p type="button" className="font-bold   text-blue-600 underline hover:text-blue-500 text-[1vw] max-md:text-[15px]" >
               forgot password?
-            </p>
+            </p> */}
+            <Link to="/forgot-password" className="font-bold   text-blue-600 underline hover:text-blue-500 text-[1vw] max-md:text-[15px]">Forgot Password?</Link>
           </div>
           <div className="flex flex-col items-center md:items-start">
             <button
