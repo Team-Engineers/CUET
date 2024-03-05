@@ -133,11 +133,10 @@ export const Testcard1 = ({ subTopic, topic,subtopicNumber, Questions, Marks, bg
 };
 
 
-export const Testcard2 = ({ subTopic, Questions, mocksubtopicNumber, Marks, Negative, Times, index }) => {
+export const Testcard2 = ({ subTopic, topic, Questions, mocksubtopicNumber, Marks, Negative, Times, index }) => {
   const [auth] = useAuth();
-  console.log(subTopic);
   const allow = auth?.user?.packageId;
-  const subtopic2 = subTopic === "General English" ? "general_english_mock_test" : "general_test_mock_test";
+  const subtopic2 = topic === "General English" ? "general_english_mock_test" : "general_test_mock_test";
 
   return (
     <div className="flex flex-col shadow-blue-500 transition-all duration-100 border-solid border-[0.5px] shadow-lg hover:scale-[105%] border-black bg-white rounded-[20px] items-center justify-around w-full md:w-[350px] h-[350px]">

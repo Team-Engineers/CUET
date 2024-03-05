@@ -37,8 +37,13 @@ const ContactForm = () => {
           Need Help
         </button>
         {isPopupOpen && (
-          <div onClick={handleNeedHelpClick} className="absolute right-[-50px] top-[-100px] flex bg-opacity-50 z-50">
-            <Needhelppopup />
+          <div className="absolute  md:right-[-50px] md:top-[-100px] top-[-120px] flex bg-opacity-50 z-50">
+            <div className="bg-[#FFFBEE]  rounded-xl">
+              <div onClick={handleNeedHelpClick} className="absolute m-2 cursor-pointer  text-[18px] right-0">
+                <RxCross1 />
+              </div>
+              <Needhelppopup />
+            </div>
           </div>
         )}
       </div>
@@ -48,26 +53,21 @@ const ContactForm = () => {
 
 const Needhelppopup = () => {
   return (
-    <div className="bg-[#FFFBEE]  rounded-xl ">
-      <div className="absolute m-2 cursor-pointer  text-[18px] right-0">
-        <RxCross1 />
-      </div>
+    <div className=" ">
       <div className="mt-8">
-        <h1 className="py-1 px-4  text-[15px] ">Need Guidance or Help in Filling Form?</h1>
-        <h1 className="mx-8 pb-2">
-          <p className="text-sm flex justify-between ">
+        <h1 className="py-1 px-4 text-xs  md:text-[15px] ">Need Guidance or Help in Filling Form?</h1>
+        <h1 className="md:mx-8 mx-3 pb-2">
+          <p className="md:text-sm text-xs flex justify-between ">
             <span>Sachin Rana</span>{" "}
-            <span>
-              {" "}
+            <a className="no-underline text-black" href="tel:+919560443520">
               <IoMdCall /> +91 9560443520
-            </span>{" "}
+            </a>{" "}
           </p>
-          <p className=" flex text-sm justify-between   ">
+          <p className=" flex md:text-sm text-xs justify-between   ">
             <span>Virendra Pratap</span>{" "}
-            <span>
-              {" "}
+            <a className="no-underline text-black"  href="tel:+918279662680">
               <IoMdCall /> +91 8279662680
-            </span>{" "}
+            </a>{" "}
           </p>
         </h1>
       </div>

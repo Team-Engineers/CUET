@@ -70,12 +70,7 @@ code {
 }
 
 
-app {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-family: Arial, sans-serif;
-}
+
 
 .title {
   margin-bottom: 20px;
@@ -116,11 +111,3 @@ app {
   margin-bottom: 10px;
 }
 
-.benefits ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-.benefits ul li {
-  margin-bottom: 5px;
-}
