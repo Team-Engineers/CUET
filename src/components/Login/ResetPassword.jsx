@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { useNavigate, useParams } from "react-router-dom";
+import { API } from '../../utils/constants';
 import Navbar from '../Navbar';
 
 function ResetPassword() {
@@ -19,7 +20,7 @@ function ResetPassword() {
             return;
         }
 
-        axios.post(`http://localhost:8800/api/auth/reset-password/${id}/${token}`, { password })
+        axios.post(`${API}/auth/reset-password/${id}/${token}`, { password })
             .then(res => {
                 if (res.data.Status === "Success") {
                     navigate('/login');
