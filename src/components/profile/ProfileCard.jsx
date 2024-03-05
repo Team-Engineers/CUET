@@ -1,191 +1,51 @@
 import React, { useState } from "react";
-import { FiArrowLeft } from "react-icons/fi";
-import profileImg from "../../assets/ProfileImg.png";
-import { BsFillPersonLinesFill } from "react-icons/bs";
-import { z } from "zod";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useNavigate } from "react-router-dom";
-import { useAuth } from "../../utils/context";
+import User from "./User";
+import { AiFillHome } from "react-icons/ai";
+import { GiProgression } from "react-icons/gi";
+import { MdOutlineLocalActivity } from "react-icons/md";
 
-const ProfileCard = () => {
-  const [auth] = useAuth();
-  console.log(auth?.user?.user?.name);
-  const [details, ] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    dob: "",
-    phoneNumber: "",
-    location: "",
-  });
+function GroupsPage() {
+  const [activeTab, setActiveTab] = useState('tab1'); // State to track active tab
+  
+  const handleTabClick = (tab) => {
+    setActiveTab(tab);
+  };
 
-  const navigate = useNavigate();
-  const schema = z.object({
-    firstName: z
-      .string()
-      .min(2, "First name must be at least 2 characters long")
-      .refine((value) => /^[a-zA-Z]+$/.test(value), "First name should contain only alphabets"),
-    lastName: z.string().refine((value) => /^[a-zA-Z]+$/.test(value), "First name should contain only alphabets"),
-    dob: z.coerce.date("Date of birth must be in the past").max(new Date(), "Date of birth cannot be in the future"),
-    email: z.string().email("Invalid email address"),
-    phoneNumber: z.string().length(10, "Phone number must be 10 digits long"),
-    location: z.string(),
-  });
-
-  const {
-    register,
-    formState: { errors },
-  } = useForm({
-    resolver: zodResolver(schema),
-    defaultValues: details,
-  });
- 
   return (
-    <div className="flex flex-col  items-center  ">
-      <div className="flex md:w-[93%] lg:w-[91%] max-w-[1280px] mx-auto" onClick={() => navigate(-1)}>
-          <h1>
-          <FiArrowLeft className="text-blueviolet-100 size-7" />
-          </h1>
-          <h2 className="pl-0 mb-1 text-blueviolet-100 text-5xl xl:text-10xl leading-none">Profile
-          <hr className="bg-blueviolet-100 h-1 border-none w-10 m-0 mb-3" />
-          </h2>
-      </div>
-      <form className="flex flex-col   w-full pb-6 md:flex-col justify-center items-center md:gap-[5%] ">
-        <img src={profileImg} alt="" className="w-24 md:w-28 xl:w-36 md:mt-5" />
-        <div className="md:w-[75%]">
-          <div className="flex flex-col items-center md:items-start">
-            <p className="text-blueviolet-100 font-semibold text-lg ">Personal Information</p>
-            <div className="mt-4 flex flex-wrap justify-center md:justify-between">
-              <div className="flex flex-col mb-3 xl:mb-6">
-                <label
-                  htmlFor="firstName"
-                  className="text-lg before:content-['*'] before:ml-0.5 before:text-red-500 mb-1 text-blueviolet-100 font-semibold "
-                >
-                  Name
-                </label>
-                <input
-                  required
-                  name="firstName"
-                  type="text"
-                  defaultValue={auth.user?.name}
-                  autoComplete="true"
-                  autoCorrect="true"
-                  placeholder="name"
-                  className="px-6 py-2 text-lg rounded-full border-none shadow-md shadow-gray-500 w-70 sm:w-[30rem] md:w-[17rem] lg:w-[22rem] xl:w-[27rem] text-[#00000080] 2xl:w-[510px]"
-  {...register("name")}
-                />
-                {errors.firstName && <p className="text-red-500 font-semibold mb-0 mt-2">{errors.firstName.message}</p>}
-              </div>
-           
-              <div className="flex flex-col mb-3 xl:mb-6">
-                <label
-                  htmlFor="email"
-                  className="text-lg before:content-['*'] before:ml-0.5 before:text-red-500 mb-1 text-blueviolet-100 font-semibold"
-                >
-                  Email
-                </label>
-                <input
-                  required
-                  name="email"
-                  type="email"
-
-                  defaultValue={auth.user?.email}
-                  className="px-6 py-2 text-lg rounded-full border-none shadow-md shadow-gray-500 w-70 sm:w-[30rem] md:w-[17rem] lg:w-[22rem] xl:w-[27rem] text-[#00000080] 2xl:w-[510px]"
-                />
-                {errors.email && <p className="text-red-500 font-semibold mb-0 mt-2">{errors.email.message}</p>}
-              </div>
-              <div className="flex flex-col mb-3 xl:mb-6">
-                <label
-                  htmlFor="dob"
-                  className="text-lg before:content-['*'] before:ml-0.5 before:text-red-500 mb-1 text-blueviolet-100 font-semibold"
-                >
-                  Date of Birth
-                </label>
-                <input
-                  required
-                  name="dob"
-                  type="date"
-                  autoComplete="true"
-                  autoCorrect="true"
-                  placeholder="1998-12-5"
-                  onFocus={(e) => (e.target.type = "date")}
-                  onBlur={(e) => (e.target.type = "text")}
-                  className="px-6 py-2 text-lg rounded-full border-none shadow-md shadow-gray-500 w-70 sm:w-[30rem] md:w-[17rem] lg:w-[22rem] xl:w-[27rem] text-[#00000080] 2xl:w-[510px]"
-                  {...register("dob")}
-                />
-                {errors.dob && <p className="text-red-500 font-semibold mb-0 mt-2">{errors.dob.message}</p>}
-              </div>
-              <div className="flex flex-col mb-3 xl:mb-6">
-                <label
-                  htmlFor="phoneNumber"
-                  className="text-lg before:content-['*'] before:ml-0.5 before:text-red-500 mb-1 text-blueviolet-100 font-semibold"
-                >
-                  Phone Number
-                </label>
-                <input
-                  required
-                  name="phoneNumber"
-                  type="number"
-                  autoComplete="true"
-                  autoCorrect="true"
-                  defaultValue={auth.user?.contact}
-
-                  placeholder="+000-000-0000"
-                  className="px-6 py-2 text-lg rounded-full border-none shadow-md shadow-gray-500 w-70 sm:w-[30rem] md:w-[17rem] lg:w-[22rem] xl:w-[27rem] text-[#00000080] 2xl:w-[510px]"
-                  {...register("phoneNumber")}
-                />
-                {errors.phoneNumber && <p className="text-red-500 font-semibold mb-0 mt-2">{errors.phoneNumber.message}</p>}
-              </div>
-              <div className="flex flex-col mb-3 xl:mb-6">
-                <label
-                  htmlFor="location"
-                  className="text-lg before:content-['*'] before:ml-0.5 before:text-red-500 mb-1 text-blueviolet-100 font-semibold"
-                >
-                  Location
-                </label>
-                <input
-                  required
-                  name="location"
-                  type="text"
-                  autoComplete="true"
-                  autoCorrect="true"
-                  placeholder="Banglore"
-                  className="px-6 py-2 text-lg rounded-full border-none shadow-md shadow-gray-500 w-70 sm:w-[30rem] md:w-[17rem] lg:w-[22rem] xl:w-[27rem] text-[#00000080] 2xl:w-[510px]"
-                  {...register("location")}
-                />
-                {errors.location && <p className="text-red-500 font-semibold mb-0 mt-2">{errors.location.message}</p>}
-              </div>
-              <div className="sm:w-[30rem]  xl:w-[27rem] flex justify-between items-end">
-                <div className="flex flex-col items-start justify-around md:justify-start md:gap-8">
-                  <p className="text-blueviolet-100 font-semibold text-lg pl-2 md:pl-0 my-1">Membership</p>
-                  <button className="px-6 py-2 text-lg rounded-full border-none bg-white shadow-md shadow-gray-500 text-[#00000080] flex items-center gap-1 cursor-pointer">
-                    <BsFillPersonLinesFill /> CUET GENERAL PACK
-                  </button>
-                </div>
-                <button className="min-h-0 h-10 w-32 py-0 text-md rounded-full border-none bg-tomato-100 shadow-md shadow-gray-500 text-white text-lg cursor-pointer">
-                  Upgrade
-                </button>
-              </div>
-            </div>
-          </div>
-          {/* <div className="">
-            <p className="text-blueviolet-100 font-semibold text-lg pl-[10%] md:pl-0">
-              Membership
-            </p>
-            <div className="flex items-center justify-around md:justify-start md:gap-8">
-              <button className="px-6 py-2 text-lg rounded-full border-none bg-white shadow-md shadow-gray-500 text-[#00000080] flex items-center gap-1 cursor-pointer">
-                <BsFillPersonLinesFill /> CUET GENERAL PACK
-              </button>
-              <button className="px-6 py-2 text-md rounded-full border-none bg-tomato-100 shadow-md shadow-gray-500 text-white text-lg cursor-pointer">
-                Upgrade
-              </button>
-            </div>
-          </div> */}
+    <div className="bg-gray-900 min-h-screen flex items-center justify-center">
+      <div className="bg-gray-800 flex-1 flex flex-col space-y-5 lg:space-y-0 lg:flex-row lg:space-x-10 max-w-6xl sm:p-6 sm:my-2 sm:mx-4 sm:rounded-2xl">
+        <div className="bg-gray-900 px-2 lg:px-4 py-2 lg:py-10 sm:rounded-xl flex lg:flex-col justify-between">
+          <nav className="flex items-center flex-row space-x-2 lg:space-x-0 lg:flex-col lg:space-y-2">
+            <a className={`p-4 font-bold  no-underline inline-flex justify-center items-center rounded-md ${activeTab === 'tab1' ? 'bg-gray-800 text-white' : 'text-white/50 hover:bg-gray-800 hover:text-white smooth-hover'}`} href="#" onClick={() => handleTabClick('tab1')}>
+              <AiFillHome className="text-[20px] mr-2"/>
+              Dashboard
+            </a>
+            <a className={`p-4 no-underline  font-bold inline-flex justify-center rounded-md ${activeTab === 'tab2' ? 'bg-gray-800 text-white' : 'text-white/50 hover:bg-gray-800 hover:text-white smooth-hover'}`} href="#" onClick={() => handleTabClick('tab2')}>
+             <MdOutlineLocalActivity className="text-[20px] mr-2"/>
+              Plan
+            </a>
+            <a className={`p-4 no-underline  font-bold  inline-flex justify-center rounded-md ${activeTab === 'tab3' ? 'bg-gray-800 text-white' : 'text-white/50 hover:bg-gray-800 hover:text-white smooth-hover'}`} href="#" onClick={() => handleTabClick('tab3')}>
+             <GiProgression className="text-[20px] mr-2"/>
+             Progress
+            </a>
+          </nav>
         </div>
-      </form>
+        <div className="flex-1 min-h-[500px] px-2 sm:px-0">
+          {activeTab === 'tab1' && (
+            <User/>
+          )}
+          {activeTab === 'tab2' && (
+            <div>
+            </div>
+          )}
+          {activeTab === 'tab3' && (
+            <div>
+            </div>
+          )}
+        </div>
+      </div>
     </div>
   );
-};
+}
 
-export default ProfileCard;
+export default GroupsPage;

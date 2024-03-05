@@ -82,7 +82,7 @@ function TestPage() {
                 </Link>
               </h2>
               <h3 className="py-0 md:text-[40px] text-[#5648FC]">
-                One Step for your <br /> complete Learning
+                One Stop for your <br /> complete Learning
                 <br />
                 <span className="text-[#5648FC] mt-1 flex text-4xl opacity-[70%] md:my-7" >CUET</span>
                 <Link to={'/purchase'} className="mt-5 no-underline mx-auto max-md:flex max-md:justify-center  max-md:items-center max-w-72 btn hover:bg-[#FF7468] bg-[#FF7468] shadow-none outline-none border-none rounded-[10px] text-white font-normal md:text-3xl  p-1 px-8">
