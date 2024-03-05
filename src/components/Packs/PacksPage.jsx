@@ -156,12 +156,12 @@ const Tabs = ({ packages, setActiveTab, activeTab, setBgColor }) => {
   }
 
   return (
-    <div className="tabs border relative left-20 bg-white p-1 mt-4 mb-6 rounded-lg shadow-sm ">
+    <div className="tabs border relative left-24 bg-white p-1 mt-4 mb-6 rounded-lg shadow-sm ">
       {packages.map((packageItem) => (
         <div
           key={packageItem._id}
           onClick={() => { setActiveTab(packageItem._id); changeBgColor(packageItem.bgColor); }}
-          className={`tab-button px-3 bg-white shadow-2xl shadow-gray-400 cursor-pointer rounded p-5 m-2 ${activeTab === packageItem._id ? 'active bg-yellow-200' : ''}`}
+          className={`tab-button px-3 bg-white shadow-2xl shadow-gray-400 cursor-pointer rounded p-4 m-2 ${activeTab === packageItem._id ? 'active bg-yellow-200' : ''}`}
         >
           {packageItem.nameOfPlan}
         </div>
@@ -229,7 +229,7 @@ const Packages = [
     _id: "65d9428fd3267bf1efe0f364",
     nameOfPlan: 'MEGA PACK',
     amount: 2599,
-    bgColor: '#f0eac4',
+    bgColor: '#6B9292',
     benefitsIcons: {
       'GENERAL ENGLISH': FaCheck,
       'GENERAL TEST': FaCheck,
@@ -245,7 +245,7 @@ const Packages = [
     _id: "65e352e265a057561b4dcb67",
     nameOfPlan: 'JUMBO PACK',
     amount: 2999,
-    bgColor: '#f0eac4',
+    bgColor: '#94B0DA',
     benefitsIcons: {
       'GENERAL ENGLISH': FaCheck,
       'GENERAL TEST': FaCheck,
@@ -261,7 +261,7 @@ const Packages = [
     _id: "65e67846183e38473cf606f7",
     nameOfPlan: 'ROOKIE PACK',
     amount: 0,
-    bgColor: '#f0eac4',
+    bgColor: '##B1EDE8',
     benefitsIcons: {
       'GENERAL ENGLISH': FaTimes,
       'GENERAL TEST': FaTimes,
@@ -277,7 +277,7 @@ const Packages = [
     _id: "65e6796c183e38473cf606f8",
     nameOfPlan: 'NOVICE PACK',
     amount: 0,
-    bgColor: '#f0eac4',
+    bgColor: '#94B0DA',
     benefitsIcons: {
       'GENERAL ENGLISH': FaTimes,
       'GENERAL TEST': FaTimes,

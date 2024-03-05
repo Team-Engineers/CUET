@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
+import { API } from "../../utils/constants";
 import Navbar from '../Navbar';
 import "./forgotPassword.css";
 
@@ -11,7 +12,7 @@ function ForgotPassword() {
     axios.defaults.withCredentials = true;
     const handleSubmit = (e) => {
         e.preventDefault()
-        axios.post('http://localhost:8800/api/auth/forgot-password', { email })
+        axios.post(`${API}/auth/forgot-password`, { email })
             .then(res => {
                 if (res.data.Status === "Success") {
                     navigate('/login')
