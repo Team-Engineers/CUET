@@ -28,6 +28,8 @@ const TopicCard = styled.li`
     height: 20px;
     width: 20px;
   }
+  /* Centering */
+
 `;
 
 const Wrapper = styled.ul`
@@ -40,7 +42,6 @@ const Wrapper = styled.ul`
   flex-wrap: wrap;
   gap: 1rem;
   padding: 0px;
-
   a{
     width : 100%;
   }
@@ -53,24 +54,25 @@ const MarginTop = styled.div`
   flex-direction: column;
   top : 0;
   white-space: nowrap;
-
   position: sticky;
 `;
 
 const Box = styled.div`
   display: flex;
   white-space: nowrap;
-
   justify-content: center;
   align-items: center;
 `;
 const Box2 = styled.h6`
-  min-width : 10rem;
-  margin: auto;
+  min-width : 22rem;
   padding : 10px 5px;
+  margin: auto 0;
   margin-bottom: 0px;
   white-space: nowrap;
-
+  display: flex;
+  white-space: nowrap;
+  justify-content: center;
+  align-items: center;
   text-transform: uppercase;
   font-weight: ${(props) => (props.isCurrentTopic ? "bolder" : "normal")};
   overflow-wrap: break-word;
@@ -126,13 +128,11 @@ const RecommendedSubTopics = () => {
             <div className="accordion-body p-1 mt-3">
               <Wrapper>
                 {subtopics.map((currentTopic, subIndex) => {
-                  // Determine if the link should be visible based on conditions
                   const isVisible =
-                    (!auth.user && subIndex === 0) || // Show only index 0 when user is not logged in
-                    (auth.user && subIndex <= 4) || // Show up to index 4 when user is logged in
-                    (allow === '65d93ff1aaf8ebc47c522ced'); // Show all when allow is a specific value
+                    (!auth.user && subIndex === 0) || 
+                    (auth.user && subIndex <= 4) || 
+                    (allow === '65d93ff1aaf8ebc47c522ced');
 
-                  // Render the link only if it's visible
                   if (isVisible) {
                     return (
                       <Link
@@ -159,9 +159,9 @@ const RecommendedSubTopics = () => {
                       </Link>
                     );
                   } else {
-                    return null; // Render nothing if the link is not visible
+                    return null;
                   }
-                })}
+                })} 
               </Wrapper>
             </div>
           </div>

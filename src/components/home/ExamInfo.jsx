@@ -60,15 +60,15 @@ const ExamInfo = () => {
 
   return (
     <div className=" mx-auto relative z-50 w-full justify-center mb-[40px]">
-      <div className='min-w-[30em] max-md:mx-auto   '>
-        <div className="bg-[#ffffff00] backdrop-filter backdrop-blur-[30px] shadow-xl  rounded-xl"
+      <div className='md:min-w-[30em]    max-md:mx-auto   '>
+        <div className="bg-[#ffffff00]  backdrop-filter backdrop-blur-[30px] shadow-xl  rounded-xl"
         >
           <div className="pb-8 px-8 text-center mb-[-30px]">
-            <ul className="flex flex-wrap justify-center gap-[20px]">
+            <ul className="flex  justify-center gap-[20px]">
               {['cuetNotifications', 'otherExamsNotifications'].map((tab) => (
                 <h key={tab}  >
                   <p
-                    className={` cursor-pointer font-bold  hover:text-blue-500 text-black   ${activeTab === tab ? 'text-blue-500' : ''}`}
+                    className={` cursor-pointer font-bold max-md:text-[12px]  hover:text-blue-500 text-black   ${activeTab === tab ? 'text-blue-500' : ''}`}
                     onClick={() => handleTabClick(tab)}
                   >
                     {tab === 'cuetNotifications' ? 'CUET Notifications' : 'Other Exams Notifications'}

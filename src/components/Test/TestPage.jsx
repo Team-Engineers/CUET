@@ -8,7 +8,6 @@ import { Testcard, Testcard1, Testcard2 } from "../Test/Testcard";
 import "./css/TestPage.css";
 function TestPage() {
   const { topic } = useParams();
-  console.log(topic)
   const mainheading = topic.toLowerCase().replace(/\s/g, '_');
   const subtopics = topics[topic];
   const prep = subtopics.map((subtopic, index) => {
@@ -144,7 +143,7 @@ function TestPage() {
               <div className="grid grid-cols-1 md:grid-cols-2 mb-20 lg:grid-cols-3 gap-14">
                 {mock.map((subject, index) => (
                   <div key={index} className="col-md-4">
-                    <Testcard2 heading={mainheading} {...subject} index={index} mocksubtopicNumber={index + 1} />
+                    <Testcard2 heading={mainheading} topic={topic} {...subject} index={index} mocksubtopicNumber={index + 1} />
                   </div>
                 ))}
 
