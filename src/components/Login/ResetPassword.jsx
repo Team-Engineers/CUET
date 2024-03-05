@@ -1,52 +1,73 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { useNavigate, useParams } from "react-router-dom";
-
+import Navbar from '../Navbar';
 
 function ResetPassword() {
-    const [password, setPassword] = useState()
-    const navigate = useNavigate()
-    const { id, token } = useParams()
+    const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
+    const [error, setError] = useState('');
+    const navigate = useNavigate();
+    const { id, token } = useParams();
 
     axios.defaults.withCredentials = true;
+
     const handleSubmit = (e) => {
-        e.preventDefault()
+        e.preventDefault();
+        if (password !== confirmPassword) {
+            setError("Passwords do not match");
+            return;
+        }
+
         axios.post(`http://localhost:8800/api/auth/reset-password/${id}/${token}`, { password })
             .then(res => {
                 if (res.data.Status === "Success") {
-                    navigate('/login')
-
+                    navigate('/login');
                 }
-            }).catch(err => console.log(err))
-    }
+            })
+            .catch(err => console.log(err));
+    };
 
     return (
-        <div className="flex justify-center align-middle bg-whitesmoke h-[100vh]">
-            <div className="bg-white p-3 rounded w-25">
-                <h4>Reset Password</h4>
-                <form onSubmit={handleSubmit}>
-                    <div className="mb-3">
-                        <label htmlFor="email">
-                            <strong>New Password</strong>
-                        </label>
-                        <input
-                            type="password"
-                            placeholder="Enter Password"
-                            autoComplete="off"
-                            name="password"
-                            className="form-control rounded-0"
-                            onChange={(e) => setPassword(e.target.value)}
-                        />
-                    </div>
-                    <button type="submit" className="btn btn-success w-100 rounded-0" onClick={handleSubmit}>
-                        Update
-                    </button>
-                </form>
-
+        <div className="overflow-hidden bg-gradient-to-br from-[#fff] to-[#a691f5de]">
+            <Navbar />
+            <div className="flex justify-center  items-center h-[90vh]">
+                <div className="bg-white p-6 relative bottom-20 rounded shadow-lg max-w-sm w-full">
+                    <h4 className="text-[24px] font-medium mb-6">Reset Password</h4>
+                    <form onSubmit={handleSubmit}>
+                        <div className="mb-5">
+                            <label htmlFor="password" className="block text-md font-normal">New Password</label>
+                            <input
+                                type="password"
+                                placeholder="Enter Password"
+                                autoComplete="off"
+                                name="password"
+                                className="form-input h-6 rounded-md mt-1 block w-[95%]"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                            />
+                        </div>
+                        <div className="mb-4">
+                            <label htmlFor="confirmPassword" className="block text-md font-normal">Confirm Password</label>
+                            <input
+                                type="password"
+                                placeholder="Confirm Password"
+                                autoComplete="off"
+                                name="confirmPassword"
+                                className="form-input h-6 rounded-md mt-1 block w-[95%]"
+                                value={confirmPassword}
+                                onChange={(e) => setConfirmPassword(e.target.value)}
+                            />
+                        </div>
+                        {error && <p className="text-red-500 text-sm mb-4">{error}</p>}
+                        <button type="submit" className="bg-[#123456] text-white mt-2 text-[14px] rounded-md py-2 px-4">
+                            Update
+                        </button>
+                    </form>
+                </div>
             </div>
         </div>
-    )
+    );
 }
 
 export default ResetPassword;
-

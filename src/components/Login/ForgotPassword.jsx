@@ -21,7 +21,7 @@ function ForgotPassword() {
     }
 
     return (
-        <div className="  overflow-x-hidden">
+        <div className="  overflow-x-hidden bg-gradient-to-br from-[#fff] to-[#a691f5de]">
             <Navbar />
             <div className="forgot-body ">
                 <div className="forgot-form">
