@@ -17,8 +17,10 @@ const PrepModulesMultipleSubquestion = ({ data }) => {
     Array(totalSubquestions).fill([])
   );
   const [currentPage, setCurrentPage] = useState(0);
-  const [explanationsVisible, setExplanationsVisible] = useState(
-    Array(data.length).fill(false)
+  const [explanationsVisiblePara, setExplanationsVisiblePara] = useState(
+    Array(10)
+      .fill(null)
+      .map(() => Array(10).fill(false))
   );
 
   const handleOptionClickMultiple = (
@@ -36,12 +38,17 @@ const PrepModulesMultipleSubquestion = ({ data }) => {
     ] = optionIndex;
     setSelectedOptions(updatedSelectedOptions);
   };
-  const toggleExplanationVisibility = (questionIndex) => {
-    const updatedExplanationsVisible = [...explanationsVisible];
-    updatedExplanationsVisible[questionIndex] = !updatedExplanationsVisible[
-      questionIndex
-    ];
-    setExplanationsVisible(updatedExplanationsVisible);
+  const toggleExplanationVisibilityPara = (itemIndex, questionIndex) => {
+    setExplanationsVisiblePara((prevExplanationsVisible) => {
+      const updatedExplanationsVisible = [...prevExplanationsVisible];
+      updatedExplanationsVisible[itemIndex] = [
+        ...prevExplanationsVisible[itemIndex],
+      ];
+      updatedExplanationsVisible[itemIndex][
+        questionIndex
+      ] = !prevExplanationsVisible[itemIndex][questionIndex];
+      return updatedExplanationsVisible;
+    });
   };
   const calculateQuestionNumber = (questionIndex, subQuestionIndex) => {
     let questionNumber = 0;
@@ -64,7 +71,7 @@ const PrepModulesMultipleSubquestion = ({ data }) => {
     return questionNumber;
   };
   const renderQuestionWithMultipleSubquestions = (question, questionIndex) => {
-    const isExplanationVisible = explanationsVisible[questionIndex];
+    // const isExplanationVisible = explanationsVisible[questionIndex];
     return (
       <div key={questionIndex} className="">
         {question?.questionTextAndImages[0]?.text[0] && (
@@ -162,7 +169,7 @@ const PrepModulesMultipleSubquestion = ({ data }) => {
                           )}
                         </div>
                       </div>
-                      {subQuestion.options.map((option, optionIndex) => (
+                      {subQuestion?.options?.map((option, optionIndex) => (
                         <div
                           key={optionIndex}
                           className={`option-box ${
@@ -188,12 +195,12 @@ const PrepModulesMultipleSubquestion = ({ data }) => {
                             {alphabets[optionIndex]}
                           </span>
                           <div className="flex justify-start gap-3 w-100 items-center ">
-                            <MathText text={option.text} textTag="h6" />
+                            <MathText text={option?.text} textTag="h6" />
                             <div className="single-image-container">
-                              {option.image && (
+                              {option?.image && (
                                 <img
                                   className="question-image"
-                                  src={option.image}
+                                  src={option?.image}
                                   alt={`Img ${optionIndex + 1}`}
                                 />
                               )}
@@ -222,40 +229,67 @@ const PrepModulesMultipleSubquestion = ({ data }) => {
                       <button
                         className="btn-tertiary"
                         onClick={() =>
-                          toggleExplanationVisibility(questionIndex)
+                          toggleExplanationVisibilityPara(
+                            questionIndex,
+                            subQuestionIndex
+                          )
                         }
                       >
-                        {isExplanationVisible
+                        {explanationsVisiblePara[questionIndex] &&
+                        explanationsVisiblePara[questionIndex][subQuestionIndex]
                           ? "Hide Explanation"
                           : "Show Explanation"}
                       </button>
                     </div>
                     <div className="explanation-wrapper ">
-                      {isExplanationVisible && (
-                        <div className="explanation">
-                          {subQuestion?.explanation?.map(
-                            (explanation, explanationIndex) => (
-                              <div key={explanationIndex} className="m-0 pt-3">
-                                {explanation?.text?.map((text, textIndex) => (
-                                  <MathText
-                                    className="explanation-text mb-2"
-                                    key={textIndex}
-                                    text={text}
-                                    textTag="h6"
-                                  />
-                                ))}
-                                {explanation?.image && (
-                                  <img
-                                    className="question-image"
-                                    src={explanation?.image}
-                                    alt={`Img ${explanationIndex + 1}`}
-                                  />
-                                )}
-                              </div>
-                            )
-                          )}
-                        </div>
-                      )}
+                      {explanationsVisiblePara[questionIndex] &&
+                        explanationsVisiblePara[questionIndex][
+                          subQuestionIndex
+                        ] && (
+                          <div className="explanation">
+                            {subQuestion?.explanation?.map(
+                              (explanation, explanationIndex) => (
+                                <div
+                                  key={explanationIndex}
+                                  className="m-0 pt-3"
+                                >
+                                  <div className="flex flex-row gap-2 justify-start items-center">
+                                    <h6 className="mb-0 text-primary fw-bold">
+                                      Answer:
+                                    </h6>
+                                    <h6 className="mb-0  fw-bold text-secondary">
+                                      Option{" "}
+                                      {subQuestion?.correctOptionIndex !==
+                                      undefined
+                                        ? alphabets[
+                                            subQuestion?.correctOptionIndex
+                                          ]
+                                        : ""}
+                                    </h6>
+                                  </div>
+                                  <h6 className="text-primary fw-bold">
+                                    Solution:
+                                  </h6>
+                                  {explanation?.text?.map((text, textIndex) => (
+                                    <MathText
+                                      className="explanation-text mb-2"
+                                      key={textIndex}
+                                      text={text}
+                                      textTag="h6"
+                                    />
+                                  ))}
+                                  {explanation?.image && (
+                                    <img
+                                      className="question-image"
+                                      src={explanation?.image}
+                                      alt={`Img ${explanationIndex + 1}`}
+                                    />
+                                  )}
+                                </div>
+                              )
+                            )}
+                          </div>
+                        )}
                     </div>
                   </div>
                 </div>
