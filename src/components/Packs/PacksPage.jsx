@@ -8,48 +8,10 @@ import { useAuth } from "../../utils/context";
 import Footer from '../Footer';
 import Navbar from '../Navbar';
 import FAQ from "../home/FAQ";
-<<<<<<< Updated upstream
-
-const PriceCard = ({ _id, nameOfPlan, amount, setActiveTab, activeTab }) => {
-=======
 import PriceTables from './PriceCard';
 const PriceCard = ({ _id, nameOfPlan, bgColor, amount, description, benefits }) => {
->>>>>>> Stashed changes
   const [auth, setAuth] = useAuth();
 
-<<<<<<< Updated upstream
-  const renderIcon = (benefit) => {
-    const packageItem = Packages.find(item => item.nameOfPlan === nameOfPlan);
-    if (packageItem && packageItem.benefitsIcons && packageItem.benefitsIcons[benefit]) {
-      const iconData = packageItem.benefitsIcons[benefit];
-      if (typeof iconData === 'object') {
-        if ('text' in iconData) {
-          return <span className="text font-normal w-[50%]">{iconData.text}</span>;
-        } else {
-          const IconComponent = iconData.icon;
-          return (
-            <div className="icon-with-text">
-              <IconComponent className="icon" style={{ color: iconData.color }} />
-              <span className="text">{iconData.text}</span>
-            </div>
-          );
-        }
-      } else {
-        const IconComponent = iconData;
-        return <IconComponent className="icon" style={{ color: iconData === FaCheck ? 'green' : 'red' }} />;
-      }
-    } else {
-      return null;
-    }
-  };
-
-
-
-  const handleCardClick = () => {
-    setActiveTab(_id);
-  };
-
-=======
   const navigate = useNavigate();
   const [selectedGeneral, setSelectedGeneral] = useState('');
   const [selectedSubjects, setSelectedSubjects] = useState([]);
@@ -66,7 +28,6 @@ const PriceCard = ({ _id, nameOfPlan, bgColor, amount, description, benefits }) 
         return <FaQuestionCircle className='text-blue-400' />;
     }
   };
->>>>>>> Stashed changes
   const initPayment = async () => {
     try {
       const response = await axios.post(`${API}/payment/initiate`, {
@@ -101,7 +62,6 @@ const PriceCard = ({ _id, nameOfPlan, bgColor, amount, description, benefits }) 
               const updatedAuth = { ...auth, user: updatedUser };
               setAuth(updatedAuth);
               localStorage.setItem("auth", JSON.stringify(updatedAuth));
-              setActiveTab(_id);
               navigate('/courses');
             }
           } catch (error) {
@@ -114,7 +74,6 @@ const PriceCard = ({ _id, nameOfPlan, bgColor, amount, description, benefits }) 
       };
       const rzp1 = new window.Razorpay(options);
       rzp1.open();
-      setActiveTab(_id);
     } catch (error) {
       console.error(error);
     }
@@ -128,48 +87,6 @@ const PriceCard = ({ _id, nameOfPlan, bgColor, amount, description, benefits }) 
   };
 
   return (
-<<<<<<< Updated upstream
-    <div className={`max-w-[350px]  transition-all relative cursor-pointer z-20 duration-100 justify-center items-center flex ${activeTab === _id ? 'scale-105' : ''}`} onClick={handleCardClick} >
-      <div className='max-w-[250px] relative left-20 z-10 h-[680px] bg-white transition-all duration-100 shadow-xl mx-[6px] my-8 rounded-md backdrop-blur[40px] text-center text-black'>
-        <div className='p-1 py-3'>
-          <h2 className='text-[16px] mb-8 py-2 px-1 w-[100%] mx-auto text-black whitespace-nowrap bg-[#85ffeb] '>{nameOfPlan}</h2>
-          <div className="benefits">
-            {fixedBenefits.map((benefit, index) => (
-              <div key={index} className="benefit my-8">
-                {renderIcon(benefit)}
-              </div>
-            ))}
-          </div>
-          <div className='w-[30px] rounded-full mx-auto h-[30px] border-[1px] flex justify-center items-center border-solid border-black'>
-            {activeTab === _id && (
-              <div className="relative z-50 h-[20px] w-[20px] mx-auto flex justify-center items-center  bg-blue-500 rounded-full">
-
-              </div>
-            )}
-          </div>
-
-          <h1 className='text-xl text-slate-700'>Rs {amount}</h1>
-          <button className='bg-blue-500 w-[80%] mt-3 cursor-pointer hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full' onClick={initPayment}>Get <br /> started</button>
-
-        </div>
-      </div>
-    </div >
-  );
-};
-
-
-const PriceCardsContainer = ({ packages, setActiveTab, activeTab }) => {
-  return (
-    <div className="flex ">
-      <div className='w-[250px] absolute left-10 z-10  h-[480px] bg-white transition-all duration-100 shadow-xl  my-8 rounded-md backdrop-blur[40px] hover:scale-105 text-center  text-black '>
-        <h4 className='text-[20px] font-medium'>Plan Benefits:</h4>
-        <hr className='mt-[-5px] grey' />
-        <ul className='leading-[13px] text-[16px] font-normal px-6'>
-          {fixedBenefits.map((benefit, index) => (
-            <li key={index} className="flex items-center">
-              <p>{benefit}</p>
-            </li>
-=======
     <div id='select'  className="price-card flex-col-reverse lg:flex-row lg:h-[550px] my-4 j items-center flex">
       <div className="rounded-3xl max-lg:justify-center max-lg:top-[-30px] flex flex-col justify-center px-10 hover:scale-105 shadow-2xl transition-all duration-100 p-5 relative lg:left-5 z-0 bg-white h-[400px]">
         <h4 className='font-bold text-[25px]'>Plan Benefits:
@@ -181,12 +98,9 @@ const PriceCardsContainer = ({ packages, setActiveTab, activeTab }) => {
               {renderIcon(benefit)}
               <span className='ml-3'>{benefit}</span>
             </p>
->>>>>>> Stashed changes
           ))}
         </h>
       </div>
-<<<<<<< Updated upstream
-=======
 
       <div className='p-4 max-w-[350px] relative z-10 max-h-[700px] bg-white transition-all duration-100 shadow-2xl my-8 rounded-3xl backdrop-blur[40px] hover:scale-105 text-center text-black mx-3 '>
         <div className='p-2 py-3 '>
@@ -218,7 +132,7 @@ const PriceCardsContainer = ({ packages, setActiveTab, activeTab }) => {
       {showOptions && (
         <>
           <div className="popup-overlay  ">
-            <div className="rounded-3xl bg-[#ffffff] p-5 backdrop-blur-[100px] shadow-2xl  ">
+            <div className="rounded-3xl bg-[#ffffff7c] p-5 backdrop-blur-[100px] shadow-2xl  ">
               <div className="flex justify-between">
                 <h2 className="font-bold mx-2 text-xl">Select Subjects for <span className='p-4 rounded-3xl' style={{ background: bgColor }}>{nameOfPlan}</span></h2>
                 <h2 className="mx-4 cursor-pointer" onClick={() => setShowOptions(false)} ><RxCross1 /></h2>
@@ -302,14 +216,8 @@ const PriceCardsContainer = ({ packages, setActiveTab, activeTab }) => {
 const PriceCardsContainer = ({ packages }) => {
   return (
     <div className="price-cards-container">
->>>>>>> Stashed changes
       {packages.map((packageItem) => (
-        <PriceCard
-          key={packageItem._id}
-          {...packageItem}
-          setActiveTab={setActiveTab}
-          activeTab={activeTab}
-        />
+        <PriceCard key={packageItem._id} {...packageItem} />
       ))}
     </div>
   );
@@ -321,53 +229,33 @@ const Tabs = ({ packages, setActiveTab, activeTab, setBgColor }) => {
   }
 
   return (
-<<<<<<< Updated upstream
-    <div className="tabs border relative left-24 bg-white p-1 mt-4 mb-6 rounded-lg shadow-sm ">
-=======
     <div  className=" border max-sm:fixed max-sm:mx-2  bottom-0 max-sm:w-full  z-50 flex justify-between  bg-white rounded-lg shadow-2xl ">
->>>>>>> Stashed changes
       {packages.map((packageItem) => (
         <div
           key={packageItem._id}
           onClick={() => { setActiveTab(packageItem._id); changeBgColor(packageItem.bgColor); }}
-<<<<<<< Updated upstream
-          className={`tab-button px-3 bg-white shadow-2xl shadow-gray-400 cursor-pointer rounded p-4 m-2 ${activeTab === packageItem._id ? 'active bg-yellow-200' : ''}`}
-=======
           className={`  bg-white font-medium max-sm:text-[3vw] shadow-2xl cursor-pointer rounded p-2 md:p-5 m-1  ${activeTab === packageItem._id ? 'active bg-yellow-200' : ''}`}
->>>>>>> Stashed changes
         >
           {packageItem.nameOfPlan}
         </div>
-      ))
-      }
-    </div >
+      ))}
+    </div>
   );
 };
 
 const PriceCardPage = ({ packages }) => {
-<<<<<<< Updated upstream
-  const initialActiveTabId = packages.find(packageItem => packageItem.nameOfPlan === 'SOLO PACK')._id;
-=======
   const initialActiveTabId = packages.find(packageItem => packageItem.nameOfPlan === ' SOLO PACK')._id;
->>>>>>> Stashed changes
   const [activeTab, setActiveTab] = useState(initialActiveTabId);
   const [bgColor, setBgColor] = useState(packages.find(packageItem => packageItem._id === initialActiveTabId).bgColor);
 
   return (
     <div className="flex overflow-hidden  flex-col justify-center items-center  bg-[#c4e9f0]" style={{ backgroundColor: bgColor, transition: "background-color 0.3s ease" }}>
       <Navbar />
+
       <Tabs packages={packages} setActiveTab={setActiveTab} activeTab={activeTab} setBgColor={setBgColor} />
-<<<<<<< Updated upstream
-      <PriceCardsContainer
-        packages={packages}
-        setActiveTab={setActiveTab}
-        activeTab={activeTab}
-      />
-=======
       <PriceCardsContainer  packages={packages.filter((packageItem) => packageItem._id === activeTab)}/>
       <PriceTables />
 
->>>>>>> Stashed changes
       <FAQ />
       <Footer />
     </div>
@@ -378,69 +266,6 @@ const PriceCardPage = ({ packages }) => {
 const Packages = [
   {
     _id: "65d93ff1aaf8ebc47c522ced",
-<<<<<<< Updated upstream
-    nameOfPlan: 'SOLO PACK',
-    amount: 699,
-    bgColor: '#c4e9f0',
-    benefitsIcons: {
-      'GENERAL ENGLISH': { text: 'Can be chosen' },
-      'GENERAL TEST': { text: 'Can be chosen' },
-      'DOMAIN SUBJECT': { text: 'Any 1' },
-      'PREP MODULES': { text: "FULL ACCESS" },
-      'PRACTICE TESTS': { text: "12" },
-      'MOCK TESTS': { text: "12" },
-      'UNLIMITED ATTEMPT': FaCheck,
-      'TOTAL SUBJECT': { text: "1" }
-    }
-  },
-  {
-    _id: "65d94008aaf8ebc47c522cef",
-    nameOfPlan: 'PAIR PACK',
-    amount: 1299,
-    bgColor: '#f0eac4',
-    benefitsIcons: {
-      'GENERAL ENGLISH': { text: 'Can be chosen' },
-      'GENERAL TEST': { text: 'Can be chosen' },
-      'DOMAIN SUBJECT': { text: 'Any 2' },
-      'PREP MODULES': { text: "FULL ACCESS" },
-      'PRACTICE TESTS': { text: "12" },
-      'MOCK TESTS': { text: "12" },
-      'UNLIMITED ATTEMPT': FaCheck,
-      'TOTAL SUBJECT': { text: "2" }
-    }
-  },
-  {
-    _id: "65d9428fd3267bf1efe0f364",
-    nameOfPlan: 'MEGA PACK',
-    amount: 2599,
-    bgColor: '#6B9292',
-    benefitsIcons: {
-      'GENERAL ENGLISH': FaCheck,
-      'GENERAL TEST': FaCheck,
-      'DOMAIN SUBJECT': { text: 'Any 3' },
-      'PREP MODULES': { text: "FULL ACCESS" },
-      'PRACTICE TESTS': { text: "12" },
-      'MOCK TESTS': { text: "12" },
-      'UNLIMITED ATTEMPT': FaCheck,
-      'TOTAL SUBJECT': { text: "5" }
-    }
-  },
-  {
-    _id: "65e352e265a057561b4dcb67",
-    nameOfPlan: 'JUMBO PACK',
-    amount: 2999,
-    bgColor: '#94B0DA',
-    benefitsIcons: {
-      'GENERAL ENGLISH': FaCheck,
-      'GENERAL TEST': FaCheck,
-      'DOMAIN SUBJECT': { text: 'Any 4' },
-      'PREP MODULES': { text: "FULL ACCESS" },
-      'PRACTICE TESTS': { text: "12" },
-      'MOCK TESTS': { text: "12" },
-      'UNLIMITED ATTEMPT': FaCheck,
-      'TOTAL SUBJECT': { text: "6" }
-    }
-=======
     nameOfPlan: ' SOLO PACK',
     amount: 699,
     description:
@@ -502,52 +327,7 @@ const Packages = [
       'Unlimited Attempt '
     ],
     bgColor: '#c4f0e9'
->>>>>>> Stashed changes
   },
-  {
-    _id: "65e67846183e38473cf606f7",
-    nameOfPlan: 'ROOKIE PACK',
-    amount: 0,
-    bgColor: '##B1EDE8',
-    benefitsIcons: {
-      'GENERAL ENGLISH': FaTimes,
-      'GENERAL TEST': FaTimes,
-      'DOMAIN SUBJECT': FaTimes,
-      'PREP MODULES': { text: "1" },
-      'PRACTICE TESTS': { text: "1" },
-      'MOCK TESTS': { text: "1" },
-      'UNLIMITED ATTEMPT': FaCheck,
-      'TOTAL SUBJECT': { text: "0" }
-    }
-  },
-  {
-    _id: "65e6796c183e38473cf606f8",
-    nameOfPlan: 'NOVICE PACK',
-    amount: 0,
-    bgColor: '#94B0DA',
-    benefitsIcons: {
-      'GENERAL ENGLISH': FaTimes,
-      'GENERAL TEST': FaTimes,
-      'DOMAIN SUBJECT': FaTimes,
-      'PREP MODULES': { text: "3" },
-      'PRACTICE TESTS': { text: "3" },
-      'MOCK TESTS': { text: "3" },
-      'UNLIMITED ATTEMPT': FaCheck,
-      'TOTAL SUBJECT': { text: "0" }
-    }
-  },
-];
-
-
-const fixedBenefits = [
-  'GENERAL ENGLISH',
-  'GENERAL TEST',
-  'DOMAIN SUBJECT',
-  'PREP MODULES',
-  'PRACTICE TESTS',
-  'MOCK TESTS',
-  'UNLIMITED ATTEMPT',
-  'TOTAL SUBJECT'
 ];
 
 export default function App() {
@@ -557,4 +337,3 @@ export default function App() {
     </div>
   );
 }
-
