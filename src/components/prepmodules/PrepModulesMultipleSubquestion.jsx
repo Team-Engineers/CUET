@@ -31,14 +31,16 @@ const PrepModulesMultipleSubquestion = ({ data }) => {
       updatedSelectedOptions[currentPage] || [];
     updatedSelectedOptions[currentPage][questionIndex] =
       updatedSelectedOptions[currentPage][questionIndex] || {};
-    updatedSelectedOptions[currentPage][questionIndex][subQuestionIndex] =
-      optionIndex;
+    updatedSelectedOptions[currentPage][questionIndex][
+      subQuestionIndex
+    ] = optionIndex;
     setSelectedOptions(updatedSelectedOptions);
   };
   const toggleExplanationVisibility = (questionIndex) => {
     const updatedExplanationsVisible = [...explanationsVisible];
-    updatedExplanationsVisible[questionIndex] =
-      !updatedExplanationsVisible[questionIndex];
+    updatedExplanationsVisible[questionIndex] = !updatedExplanationsVisible[
+      questionIndex
+    ];
     setExplanationsVisible(updatedExplanationsVisible);
   };
   const calculateQuestionNumber = (questionIndex, subQuestionIndex) => {
@@ -64,54 +66,53 @@ const PrepModulesMultipleSubquestion = ({ data }) => {
   const renderQuestionWithMultipleSubquestions = (question, questionIndex) => {
     const isExplanationVisible = explanationsVisible[questionIndex];
     return (
-      <div key={questionIndex} className="options-grid">
+      <div key={questionIndex} className="">
         {question?.questionTextAndImages[0]?.text[0] && (
-          <div className="question-box">
-            <div className="flex flex-col">
+          <div className="question-box paragraph">
+            {question?.description[0] ? (
+              <div className="mb-2">
+                <strong>Direction:</strong>
+                {question?.description?.map((desc, descIndex) => (
+                  <MathText
+                    className="question-text"
+                    key={descIndex}
+                    text={desc}
+                    textTag="h6"
+                  />
+                ))}
+              </div>
+            ) : (
+              ""
+            )}
+
+            <div className="flex justify-center items-center gap-3">
               <span className={`question-number id-${question?._id}`}>
                 {`P${questionIndex + 1} `}
               </span>
-              <div className="pt-[2.5rem] pb-2 ">
-                <div className="text-[20px]   pl-8 flex items-center top-[-40px] px-4   ">
-                  <div className="">
-                    {question?.description[0] ? <strong>Direction:</strong> : ""}
-                    {question?.description?.map((desc, descIndex) => (
+              {question?.questionTextAndImages?.map(
+                (textAndImages, textAndImagesIndex) => (
+                  <div className="question-text" key={textAndImagesIndex}>
+                    {textAndImages?.text?.map((text, textIndex) => (
                       <MathText
-                        className="question-text mb-2"
-                        key={descIndex}
-                        text={desc}
+                        className=""
+                        key={textIndex}
+                        text={text}
                         textTag="h6"
                       />
                     ))}
+                    {textAndImages?.image ? (
+                      <img
+                        className="question-image"
+                        key={textAndImagesIndex}
+                        src={textAndImages.image}
+                        alt={`Img ${textAndImagesIndex + 1}`}
+                      />
+                    ) : (
+                      ""
+                    )}
                   </div>
-                </div>
-                <div className="text-[20px]  pl-8 flex items-center top-[-40px] px-4 ">
-                  {question?.questionTextAndImages?.map(
-                    (textAndImages, textAndImagesIndex) => (
-                      <div className="flex flex-col" key={textAndImagesIndex}>
-                        {textAndImages?.text?.map((text, textIndex) => (
-                          <MathText
-                            className="question-text"
-                            key={textIndex}
-                            text={text}
-                            textTag="h6"
-                          />
-                        ))}
-                        {textAndImages?.image ? (
-                          <img
-                            className="question-image"
-                            key={textAndImagesIndex}
-                            src={textAndImages.image}
-                            alt={`Img ${textAndImagesIndex + 1}`}
-                          />
-                        ) : (
-                          ""
-                        )}
-                      </div>
-                    )
-                  )}
-                </div>
-              </div>
+                )
+              )}
             </div>
           </div>
         )}
@@ -119,148 +120,144 @@ const PrepModulesMultipleSubquestion = ({ data }) => {
         {question?.subQuestions?.map((subQuestion, subQuestionIndex) => {
           return (
             <div>
-              <div key={subQuestionIndex} className="question-box">
-                <div className="flex flex-col">
-                  <div className="flex position-absolute top-0 left-0 items-center justify-between">
-                    <div className="py-4 px-6">
-                      <span className={`question-number id-${question?._id}`}>
-                        {`${calculateQuestionNumber(
-                          questionIndex,
-                          subQuestionIndex,
-                          currentPage
-                        )} `}
-                      </span>
-                    </div>
-                  </div>
-                  <div className="flex ps-3 pt-[2.5rem] pb-2 justify-start flex-col">
-                    {subQuestion?.questionTextAndImages?.map(
-                      (textAndImages, textAndImagesIndex) => (
-                        <div className="flex flex-col" key={textAndImagesIndex}>
-                          {textAndImages?.text?.map((text, textIndex) => (
-                            <MathText
-                              className="question-text mb-2"
-                              key={textIndex}
-                              text={text}
-                              textTag="h6"
-                            />
-                          ))}
-                          {textAndImages?.image ? (
-                            <img
-                              className="question-image"
-                              key={textAndImagesIndex}
-                              src={textAndImages?.image}
-                              alt={`Img ${textAndImagesIndex + 1}`}
-                            />
-                          ) : (
-                            ""
-                          )}
-                        </div>
-                      )
-                    )}
-                  </div>
-
-                  {/* Render options */}
-                  <div className="flex flex-col pl-3 mt-2">
-                    {subQuestion.options.map((option, optionIndex) => (
-                      <div
-                        key={optionIndex}
-                        className={`option-box ${
-                          selectedOptions[currentPage] &&
-                          selectedOptions[currentPage][questionIndex] &&
-                          selectedOptions[currentPage][questionIndex][
-                            subQuestionIndex
-                          ] === optionIndex
-                            ? subQuestion.correctOptionIndex === optionIndex
-                              ? "correct"
-                              : "incorrect"
-                            : ""
-                        }`}
-                        onClick={() =>
-                          handleOptionClickMultiple(
+              <div key={subQuestionIndex} className="options-container">
+                <div className="options-grid">
+                  <div className="question-box">
+                    <div className="question-option">
+                      <div className="flex items-center justify-start">
+                        <span className={`question-number id-${question?._id}`}>
+                          {`${calculateQuestionNumber(
                             questionIndex,
                             subQuestionIndex,
-                            optionIndex
-                          )
-                        }
-                      >
-                        <span className="option-alphabet text-black px-2">
-                          {alphabets[optionIndex]}
+                            currentPage
+                          )} `}
                         </span>
-                        <div className="flex mx-3 text-[20px]  relative  justify-start gap-3 w-100 items-center ">
-                          <MathText text={option.text} textTag="h6" />
-                          <div className="single-image-container">
-                            {option.image && (
-                              <img
-                                className="question-image"
-                                src={option.image}
-                                alt={`Img ${optionIndex + 1}`}
-                              />
-                            )}
-                          </div>
+                        <div className="">
+                          {subQuestion?.questionTextAndImages?.map(
+                            (textAndImages, textAndImagesIndex) => (
+                              <div
+                                className="flex flex-col"
+                                key={textAndImagesIndex}
+                              >
+                                {textAndImages?.text?.map((text, textIndex) => (
+                                  <MathText
+                                    className="question-text mb-2"
+                                    key={textIndex}
+                                    text={text}
+                                    textTag="h6"
+                                  />
+                                ))}
+                                {textAndImages?.image ? (
+                                  <img
+                                    className="question-image"
+                                    key={textAndImagesIndex}
+                                    src={textAndImages?.image}
+                                    alt={`Img ${textAndImagesIndex + 1}`}
+                                  />
+                                ) : (
+                                  ""
+                                )}
+                              </div>
+                            )
+                          )}
                         </div>
-                        <div className="flex">
-                          {selectedOptions[currentPage] &&
+                      </div>
+                      {subQuestion.options.map((option, optionIndex) => (
+                        <div
+                          key={optionIndex}
+                          className={`option-box ${
+                            selectedOptions[currentPage] &&
                             selectedOptions[currentPage][questionIndex] &&
                             selectedOptions[currentPage][questionIndex][
                               subQuestionIndex
-                            ] === optionIndex && (
-                              <span>
-                                {subQuestion.correctOptionIndex ===
-                                optionIndex ? (
-                                  <i className="fa-solid fa-check"></i>
-                                ) : (
-                                  <i className="fa-solid fa-xmark text-black"></i>
-                                )}
-                              </span>
-                            )}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-              {/* Explanation Button and Explanation */}
-              <div className="my-2 mb-5 ">
-                <div className="w-100 flex justify-center items-center">
-                  <button
-                    className="text-capitalize border-solid rounded-3xl p-2 px-3 bg-white border-black flex justify-center"
-                    onClick={() => toggleExplanationVisibility(questionIndex)}
-                  >
-                    {isExplanationVisible
-                      ? "Hide Explanation"
-                      : "Show Explanation"}
-                  </button>
-                </div>
-                <div className="explanation-wrapper ">
-                  {isExplanationVisible && (
-                    <div className="explanation">
-                      {subQuestion?.explanation?.map(
-                        (explanation, explanationIndex) => (
-                          <div
-                            key={explanationIndex}
-                            className="explanation-box"
-                            style={{ margin: "0 20px" }}
-                          >
-                            {explanation?.text?.map((text, textIndex) => (
-                              <MathText
-                                className="explanation-text mb-2"
-                                key={textIndex}
-                                text={text}
-                                textTag="h6"
-                              />
-                            ))}
-                            {explanation?.image && (
-                              <img
-                                className="question-image"
-                                src={explanation?.image}
-                                alt={`Img ${explanationIndex + 1}`}
-                              />
-                            )}
+                            ] === optionIndex
+                              ? subQuestion.correctOptionIndex === optionIndex
+                                ? "correct"
+                                : "incorrect"
+                              : ""
+                          }`}
+                          onClick={() =>
+                            handleOptionClickMultiple(
+                              questionIndex,
+                              subQuestionIndex,
+                              optionIndex
+                            )
+                          }
+                        >
+                          <span className="option-alphabet">
+                            {alphabets[optionIndex]}
+                          </span>
+                          <div className="flex justify-start gap-3 w-100 items-center ">
+                            <MathText text={option.text} textTag="h6" />
+                            <div className="single-image-container">
+                              {option.image && (
+                                <img
+                                  className="question-image"
+                                  src={option.image}
+                                  alt={`Img ${optionIndex + 1}`}
+                                />
+                              )}
+                            </div>
                           </div>
-                        )
+                          <div className="flex">
+                            {selectedOptions[currentPage] &&
+                              selectedOptions[currentPage][questionIndex] &&
+                              selectedOptions[currentPage][questionIndex][
+                                subQuestionIndex
+                              ] === optionIndex && (
+                                <span>
+                                  {subQuestion.correctOptionIndex ===
+                                  optionIndex ? (
+                                    <i className="fa-solid fa-check"></i>
+                                  ) : (
+                                    <i className="fa-solid fa-xmark"></i>
+                                  )}
+                                </span>
+                              )}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                    <div className="w-100 flex justify-center items-center  ">
+                      <button
+                        className="btn-tertiary"
+                        onClick={() =>
+                          toggleExplanationVisibility(questionIndex)
+                        }
+                      >
+                        {isExplanationVisible
+                          ? "Hide Explanation"
+                          : "Show Explanation"}
+                      </button>
+                    </div>
+                    <div className="explanation-wrapper ">
+                      {isExplanationVisible && (
+                        <div className="explanation">
+                          {subQuestion?.explanation?.map(
+                            (explanation, explanationIndex) => (
+                              <div key={explanationIndex} className="m-0 pt-3">
+                                {explanation?.text?.map((text, textIndex) => (
+                                  <MathText
+                                    className="explanation-text mb-2"
+                                    key={textIndex}
+                                    text={text}
+                                    textTag="h6"
+                                  />
+                                ))}
+                                {explanation?.image && (
+                                  <img
+                                    className="question-image"
+                                    src={explanation?.image}
+                                    alt={`Img ${explanationIndex + 1}`}
+                                  />
+                                )}
+                              </div>
+                            )
+                          )}
+                        </div>
                       )}
                     </div>
-                  )}
+                  </div>
                 </div>
               </div>
             </div>
@@ -272,31 +269,34 @@ const PrepModulesMultipleSubquestion = ({ data }) => {
 
   const handlePageChange = (page) => {
     setCurrentPage(page - 1);
-    window.scroll(0, 0); 
+    window.scroll(0, 0);
   };
 
   return (
     <section className="question-practice question-practice-v2">
-      <div className="w-100 d-flex justify-content-center mt-4 align-items-center flex-column">
-        <div className="options-container">
+      <div className="w-100 flex justify-center mt-4 items-center flex-col">
+        <div className="question-container">
           {renderQuestionWithMultipleSubquestions(
             data[currentPage],
             currentPage
           )}
+
+          <div className="pagination">
+            <Pagination
+              locale={locale}
+              current={currentPage} // Zero-based indexing
+              total={data?.length}
+              pageSize={1}
+              onChange={handlePageChange}
+              showPrevNextJumpers
+              showQuickJumper
+              showTotal={(total, range) =>
+                `${range[0]}-${range[1]} of ${total} items`
+              }
+            />
+          </div>
         </div>
       </div>
-        <Pagination
-          locale={locale}
-          current={currentPage} // Zero-based indexing
-          total={data?.length}
-          pageSize={1}
-          onChange={handlePageChange}
-          showPrevNextJumpers
-          showQuickJumper
-          showTotal={(total, range) =>
-            `${range[0]}-${range[1]} of ${total} items`
-          }
-        />
     </section>
   );
 };

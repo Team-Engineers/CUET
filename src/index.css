@@ -128,3 +128,11 @@ code {
   margin-bottom: 10px;
 }
 
+
+
+.rc-pagination-options-quick-jumper {
+  display: inline-block;
+  height: 34px !important;
+  line-height: 28px !important;
+  vertical-align: top;
+}

@@ -26,10 +26,10 @@ const PrepModules = () => {
       try {
         const response = await axios.get(
           `https://ourntamockpapers.onrender.com/api/question/find-questions?topic=${subTopic1}`
-          // `https://ourntamockpapers.onrender.com/api/question/mock_test?topic=general_english_practice_test&subTopic=5`
+          // `https://ourntamockpapers.onrender.com/api/question/find-questions?topic=reading_comprehension`
         );
         // console.log("response",response)
-        setData(response.data.requestedData);
+        setData(response?.data?.requestedData);
         setIsLoading(false);
       } catch (error) {
         setIsLoading(false);
@@ -59,7 +59,7 @@ const PrepModules = () => {
               <RecommendedSubTopics currentSubTopic={subTopic} />
             </div>
             <div className="  md:ml-[50px] md:w-2/3">
-              {data && data[0].subQuestions.length > 1 ? (
+              {data && data[0]?.subQuestions?.length > 1 ? (
                 <PrepModulesMultipleSubquestion data={data} />
               ) : (
                 <PrepModulesSingleSubquestion data={data} />
