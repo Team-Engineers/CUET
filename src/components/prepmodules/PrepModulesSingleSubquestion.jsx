@@ -198,8 +198,7 @@ const PrepModulesSingleSubquestion = ({ data }) => {
                           {question?.subQuestions[0]?.correctOptionIndex !==
                           undefined
                             ? alphabets[
-                                data[currentPage]?.subQuestions[0]
-                                  ?.correctOptionIndex
+                                question?.subQuestions[0]?.correctOptionIndex
                               ]
                             : ""}
                         </h6>
