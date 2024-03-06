@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import { MathText } from "../mathJax/MathText";
+import Pagination from "rc-pagination";
+import "rc-pagination/assets/index.css";
+import locale from "rc-pagination/lib/locale/en_US";
 
-const PrepModulesQue = ({ data }) => {
+const PrepModulesSingleSubquestion = ({ data }) => {
   const alphabets = "ABCDEFGHIJKL".split("");
   const [selectedOptions, setSelectedOptions] = useState(
     Array(data.length).fill([])
@@ -122,36 +125,6 @@ const PrepModulesQue = ({ data }) => {
             )}
           </div>
         </div>
-        {/* <div className=" question-box">
-          <div>
-            <div className="question-text ">
-              {question?.subQuestions[0]?.questionTextAndImages?.map(
-                (textAndImages, textAndImagesIndex) => (
-                  <div className="flex flex-col" key={textAndImagesIndex}>
-                    {textAndImages?.text?.map((text, textIndex) => (
-                      <MathText
-                        className="question-text mb-2"
-                        key={textIndex}
-                        text={text}
-                        textTag="h6"
-                      />
-                    ))}
-                    {textAndImages?.image ? (
-                      <img
-                        className="question-image"
-                        key={textAndImagesIndex}
-                        src={textAndImages?.image}
-                        alt={`Img ${textAndImagesIndex + 1}`}
-                      />
-                    ) : (
-                      ""
-                    )}
-                  </div>
-                )
-              )}
-            </div>
-          </div>
-        </div> */}
         {question?.subQuestions[0]?.options?.map((option, optionIndex) => (
           <div
             key={optionIndex}
@@ -256,43 +229,10 @@ const PrepModulesQue = ({ data }) => {
       </div>
     );
   };
-  const generatePageNumbers = () => {
-    const totalPages = Math.ceil(data.length / 5);
-    const maxPagesToShow = 5;
-    const pages = [];
-    let startPage = currentPage - Math.floor(maxPagesToShow / 2);
-    let endPage = currentPage + Math.floor(maxPagesToShow / 2);
 
-    if (startPage < 0) {
-      endPage -= startPage;
-      startPage = 0;
-    }
-
-    if (endPage > totalPages - 1) {
-      startPage -= endPage - totalPages + 1;
-      endPage = totalPages - 1;
-    }
-
-    startPage = Math.max(startPage, 0);
-
-    for (let i = startPage; i <= endPage; i++) {
-      pages.push(i);
-    }
-
-    while (pages.length > maxPagesToShow) {
-      if (currentPage - startPage <= endPage - currentPage) {
-        pages.pop();
-      } else {
-        pages.shift();
-      }
-    }
-
-    return pages;
-  };
-
-  const handlePageChange = (pageIndex) => {
-    setCurrentPage(pageIndex);
-    window.scrollTo(0, 0);
+  const handlePageChange = (page) => {
+    setCurrentPage(page - 1);
+    window.scroll(0, 0); 
   };
 
   return (
@@ -304,72 +244,22 @@ const PrepModulesQue = ({ data }) => {
             .map((question, questionIndex) =>
               renderQuestion(question, questionIndex)
             )}
-          {/* <div className="pagination  mx-auto ">
-            <button
-              className={`page-button h-[50px] ${
-                currentPage === 0 ? "disabled" : ""
-              }`}
-              onClick={() => handlePageChange(currentPage - 1)}
-            >
-              Prev
-            </button>
-            <div className="content-center self-center align-center justify-center flex flex-wrap gap-1 mx-auto">
-              {generatePageNumbers()?.map((pageIndex, index) => (
-                <button
-                  key={pageIndex}
-                  className={`page-button ${
-                    currentPage === pageIndex ? "active" : ""
-                  }`}
-                  onClick={() => handlePageChange(pageIndex)}
-                >
-                  {pageIndex + 1}
-                </button>
-              ))}
-            </div>
-
-            <button
-              className={`page-button h-[50px] ${
-                currentPage === Math.ceil(data?.length / 5) - 1
-                  ? "disabled"
-                  : ""
-              }`}
-              onClick={() => handlePageChange(currentPage + 1)}
-            >
-              Next
-            </button>
-          </div> */}
-
-          <div className="pagination">
-            <button
-              className={`page-button ${currentPage === 0 ? "disabled" : ""}`}
-              onClick={() => handlePageChange(currentPage - 1)}
-            >
-              Prev
-            </button>
-            {generatePageNumbers().map((pageIndex) => (
-              <button
-                key={pageIndex}
-                className={`page-button ${
-                  currentPage === pageIndex ? "active" : ""
-                }`}
-                onClick={() => handlePageChange(pageIndex)}
-              >
-                {pageIndex + 1}
-              </button>
-            ))}
-            <button
-              className={`page-button ${
-                currentPage === Math.ceil(data.length / 5) - 1 ? "disabled" : ""
-              }`}
-              onClick={() => handlePageChange(currentPage + 1)}
-            >
-              Next
-            </button>
-          </div>
         </div>
       </div>
+      <Pagination
+        defaultCurrent={currentPage + 1} 
+        locale={locale}
+        total={data.length}
+        pageSize={5} // Display 5 questions per page
+        onChange={handlePageChange}
+        showPrevNextJumpers
+        showQuickJumper
+        showTotal={(total, range) =>
+          `${range[0]}-${range[1]} of ${total} items`
+        }
+      />
     </section>
   );
 };
 
-export default PrepModulesQue;
+export default PrepModulesSingleSubquestion;
