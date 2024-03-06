@@ -33,16 +33,16 @@ const Footer = () => {
             <div className="min-w-[10em] mx-auto my-5 md:my-0 md:ml-0">
               <p className="cursor-pointer font-bold mb-10  md:text-center">Company</p>
               <Link to="/" className="no-underline text-white">
-                <p className="font-normal my-3 md:text-center hover:text-gray-500 hover:cursor-pointer">Home</p>
+                <p className="font-normal my-3 md:text-center hover:text-red-500 hover:cursor-pointer">Home</p>
               </Link>
               <Link to="/about" className="no-underline text-white">
-                <p className="font-normal my-3 md:text-center hover:text-gray-500 hover:cursor-pointer">About</p>
+                <p className="font-normal my-3 md:text-center hover:text-red-500 hover:cursor-pointer">About</p>
               </Link>
               <Link to="/syllabus" className="no-underline text-white">
-                <p className="font-normal my-3 md:text-center hover:text-gray-500 hover:cursor-pointer">Syllabus</p>
+                <p className="font-normal my-3 md:text-center hover:text-red-500 hover:cursor-pointer">Syllabus</p>
               </Link>
               <Link to="/courses" className="no-underline text-white">
-                <p className="font-normal my-3 md:text-center hover:text-gray-500 hover:cursor-pointer">Courses</p>
+              <p className="font-normal my-3 md:text-center hover:text-red-500 hover:cursor-pointer">Courses</p>
               </Link>
             </div>
             <div className="min-w-[10em] mx-auto my-5 md:my-0 md:ml-0">
@@ -58,19 +58,19 @@ const Footer = () => {
                 <span className="flex justify-center items-center mr-1">
                   <IoMdMail className="text-[1.1em] md:text-[1.5em]"  />
                 </span>
-                <a href="mailto:info@testknock.com" className="text-white hover:text-gray-500 hover:cursor-pointer">info@testknock.com</a>
+                <a href="mailto:info@testknock.com" className="text-white hover:text-red-500 hover:cursor-pointer [text-decoration:None]">info@testknock.com</a>
               </p>
               <p className="md:text-center max-sm:text-[12px] font-normal flex items-center my-3">
                 <span className="flex justify-center items-center mr-1">
                   <IoMdCall className="text-[1.1em] md:text-[1.5em]"  />
                 </span>
-                <a href="tel:9953617456" className="text-white hover:text-gray-500 hover:cursor-pointer">9953617456</a>
+                <a href="tel:9953617456" className="text-white hover:text-red-500 hover:cursor-pointer [text-decoration:None]">9953617456</a>
               </p>
               <p className="flex max-sm:text-[12px] justify-between max-w-[15em] my-3 ">
                 <span className="h-full">
                   <IoMdPin className="text-[1.1em] md:text-[1.5em]" />
                 </span>
-                <a href="https://maps.google.com/?q=Office+No.+42,+Durga+Vihar,+near+Amrapali+Sapphire,+Sec-45,+Noida-201301" className="text-white font-normal hover:text-gray-500 hover:cursor-pointer">Office No. - 42, Durga Vihar, near Amrapali Saphhire, Sec-45, Noida-201301</a>
+                <a href="https://maps.google.com/?q=Office+No.+42,+Durga+Vihar,+near+Amrapali+Sapphire,+Sec-45,+Noida-201301" className="text-white font-normal hover:text-red-500 hover:cursor-pointer [text-decoration:None]">Office No. - 42, Durga Vihar, near Amrapali Saphhire, Sec-45, Noida-201301</a>
               </p>
             </div>
             <div className="min-w-[10em]   mx-auto my-5 md:hidden">
@@ -90,14 +90,14 @@ const Footer = () => {
               <div className="flex flex-row items-start justify-start max-w-full mq750:flex-wrap mq450:gap-[76px]">
                 <div className="flex flex-row items-start justify-start gap-[6px] mr-5">
                   &copy;
-                  <b className="relative z-[1]">2024 TestKnock</b>
+                  <b className="mr-4 mb-[-12px] ml-4 relative z-[1]">2024 TestKnock</b>
                 </div>
-                <b className="relative z-[1]">All rights reserved</b>
+                <b className="mr-4 mb-[-12px] relative z-[1]">All rights reserved</b>
               </div>
               <div className="flex flex-row items-start justify-start gap-[30px] text-white">
-                <b className="relative [text-decoration:underline] z-[1] hover:text-gray-500 hover:cursor-pointer">{`Terms & Condition`}</b>
-                <b className="relative [text-decoration:underline] z-[1]">|</b>
-                <b className="relative [text-decoration:underline] z-[1] hover:text-gray-500 hover:cursor-pointer">Privacy</b>
+                <b className="relative z-[1] hover:text-red-500 hover:cursor-pointer">{`Terms & Condition`}</b>
+                <b className="relative z-[1]">|</b>
+                <b className="relative z-[1] hover:text-red-500 hover:cursor-pointer">Privacy</b>
               </div>
             </div>
           </div>
