@@ -9,7 +9,7 @@ function ForgotPassword() {
     const [email, setEmail] = useState()
     const navigate = useNavigate()
 
-    axios.defaults.withCredentials = true;
+    // axios.defaults.withCredentials = true;
     const handleSubmit = (e) => {
         e.preventDefault()
         axios.post(`${API}/auth/forgot-password`, { email })
