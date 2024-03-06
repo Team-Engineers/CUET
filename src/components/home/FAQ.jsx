@@ -51,7 +51,7 @@ const FrequentlyAskedQuestions = () => {
     const faqItems = [
         {
             title: 'When is CUET in 2024?',
-            content: 'The NTA has announced the exam dates for CUET 2024. The CUET 2024 is set to take place from May 15th to May 31st, 2024.'
+            content: 'The NTA has announced the exam dates for CUET 2024. The CUET 2024 is set to take place from May 15th to May 31st, 2024. However, these dates are subject to change if the Lok Sabha election dates are altered.'
         },
         {
             title: 'Can I make corrections to my CUET application after submission?',
