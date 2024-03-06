@@ -85,7 +85,15 @@ code {
   position: relative;
   z-index: 2000;
 }
-.abovecontain2{
+
+  .abovecontain2{
   position: absolute;
   z-index: 3000;
+}
+
+.rc-pagination-options-quick-jumper {
+  display: inline-block;
+  height: 34px !important;
+  line-height: 28px !important;
+  vertical-align: top;
 }

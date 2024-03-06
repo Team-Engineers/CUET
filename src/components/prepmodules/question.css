@@ -8,6 +8,14 @@
     position: relative;
     overflow: hidden;
 }
+.btn-tertiary {
+    background-color: #fff7f7;
+    border-radius: 10px;
+    font-size: .8rem;
+    margin: 10px;
+    padding: 5px;
+    transition: background-color .3s, color .3s;
+}
 
 .question-practice .question-box {
     border-radius: 15px;
@@ -90,8 +98,16 @@
 }
 
 .question-practice .options-grid .incorrect {
+    background: red;
+    color: #fff;
+}
+
+.question-practice .options-grid .incorrect {
     color: white;
     background: rgb(240, 76, 76);
+}
+.question-practice .incorrect .option-alphabet {
+    color: #fff;
 }
 
 .question-practice .options-grid .correct {
@@ -101,7 +117,6 @@
 
 .question-practice .correct .option-alphabet {
     background-color:lightgreen;
-    color: white;
 }
 .question-practice .option-alphabet {
     font-weight: bold;
@@ -192,11 +207,11 @@
 
 
 .question-practice .explanation-wrapper .explanation{
+    background-color: #fff7f7;
     border: 1px solid #bababa;
-    margin-top: 20px;   
-    padding: 10px;
     border-radius: 10px;
-    background-color:#a8bbff5f;
+    margin: 10px;
+    padding: 10px;
 }
 
 
