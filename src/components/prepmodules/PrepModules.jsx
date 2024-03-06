@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "./question.css";
 import { useParams } from "react-router-dom";
-import PrepModulesQue from "./PrepModulesQue";
+import PrepModulesMultipleSubquestion from "./PrepModulesMultipleSubquestion";
+import PrepModulesSingleSubquestion from "./PrepModulesSingleSubquestion";
 import axios from "axios";
 import CuetLoader from "../Loader/Loader";
 import NoData from "../Loader/NoData";
@@ -58,7 +59,11 @@ const PrepModules = () => {
               <RecommendedSubTopics currentSubTopic={subTopic} />
             </div>
             <div className="  md:ml-[50px] md:w-2/3">
-              <PrepModulesQue data={data} />
+              {data && data[0].subQuestions.length > 1 ? (
+                <PrepModulesMultipleSubquestion data={data} />
+              ) : (
+                <PrepModulesSingleSubquestion data={data} />
+              )}
             </div>
           </div>
         </div>

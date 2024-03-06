@@ -16,18 +16,18 @@ function GroupsPage() {
       <div className="bg-gray-800 flex-1 flex flex-col space-y-5 lg:space-y-0 lg:flex-row lg:space-x-10 max-w-6xl sm:p-6 sm:my-2 sm:mx-4 sm:rounded-2xl">
         <div className="bg-gray-900 px-2 lg:px-4 py-2 lg:py-10 sm:rounded-xl flex lg:flex-col justify-between">
           <nav className="flex items-center flex-row space-x-2 lg:space-x-0 lg:flex-col lg:space-y-2">
-            <a className={`p-4 font-bold  no-underline inline-flex justify-center items-center rounded-md ${activeTab === 'tab1' ? 'bg-gray-800 text-white' : 'text-white/50 hover:bg-gray-800 hover:text-white smooth-hover'}`} href="#" onClick={() => handleTabClick('tab1')}>
+            <div className={`p-4 font-bold  no-underline inline-flex justify-center items-center rounded-md ${activeTab === 'tab1' ? 'bg-gray-800 text-white' : 'text-white/50 hover:bg-gray-800 hover:text-white smooth-hover'}`} href="#" onClick={() => handleTabClick('tab1')}>
               <AiFillHome className="text-[20px] mr-2"/>
               Dashboard
-            </a>
-            <a className={`p-4 no-underline  font-bold inline-flex justify-center rounded-md ${activeTab === 'tab2' ? 'bg-gray-800 text-white' : 'text-white/50 hover:bg-gray-800 hover:text-white smooth-hover'}`} href="#" onClick={() => handleTabClick('tab2')}>
+            </div>
+            <div className={`p-4 no-underline  font-bold inline-flex justify-center rounded-md ${activeTab === 'tab2' ? 'bg-gray-800 text-white' : 'text-white/50 hover:bg-gray-800 hover:text-white smooth-hover'}`} href="#" onClick={() => handleTabClick('tab2')}>
              <MdOutlineLocalActivity className="text-[20px] mr-2"/>
               Plan
-            </a>
-            <a className={`p-4 no-underline  font-bold  inline-flex justify-center rounded-md ${activeTab === 'tab3' ? 'bg-gray-800 text-white' : 'text-white/50 hover:bg-gray-800 hover:text-white smooth-hover'}`} href="#" onClick={() => handleTabClick('tab3')}>
+            </div>
+            <div className={`p-4 no-underline  font-bold  inline-flex justify-center rounded-md ${activeTab === 'tab3' ? 'bg-gray-800 text-white' : 'text-white/50 hover:bg-gray-800 hover:text-white smooth-hover'}`} href="#" onClick={() => handleTabClick('tab3')}>
              <GiProgression className="text-[20px] mr-2"/>
              Progress
-            </a>
+            </div>
           </nav>
         </div>
         <div className="flex-1 min-h-[500px] px-2 sm:px-0">

@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { FiArrowLeft } from "react-icons/fi";
+// import { FiArrowLeft } from "react-icons/fi";
 import profileImg from "../../assets/user.png";
 import { BsLinkedin, BsGithub } from "react-icons/bs";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useNavigate } from "react-router-dom";
-import { MdOutlineModeEdit } from "react-icons/md";
+// import { useNavigate } from "react-router-dom";
+// import { MdOutlineModeEdit } from "react-icons/md";
 
 import { useAuth } from "../../utils/context";
 const User = () => {
@@ -22,7 +22,7 @@ const User = () => {
         location: "",
     });
 
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
     const schema = z.object({
         firstName: z
             .string()
