@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { NavLink, useLocation } from "react-router-dom/dist";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { LuUser2 } from "react-icons/lu";
+import { NavLink, useLocation } from "react-router-dom/dist";
 import { useAuth } from "../../utils/context";
 
 const Navbar = () => {
@@ -65,7 +65,7 @@ const Navbar = () => {
             </>
           ) : (
             <>
-              <ul className="menu max-md:hidden lg:menu-horizontal h-[1vh] top-[-20px] relative z-50   rounded-box ">
+              <ul className="menu max-lg:hidden lg:menu-horizontal h-[1vh] top-[-28px] relative z-50   rounded-box ">
                 <li>
                   <details open={detailsOpen} onClick={() => setDetailsOpen(!detailsOpen)}>
                     <summary>
@@ -74,7 +74,7 @@ const Navbar = () => {
                       </div>
                       {auth?.user?.name}
                     </summary>
-                    <ul className="relative left-[30px]">
+                    <ul className="relative top-[2rem] left-[3.2rem]">
                       <li>
                         <NavLink
                           to="/profile"
