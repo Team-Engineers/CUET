@@ -11,7 +11,7 @@ function ResetPassword() {
     const navigate = useNavigate();
     const { id, token } = useParams();
 
-    axios.defaults.withCredentials = true;
+    // axios.defaults.withCredentials = true;
 
     const handleSubmit = (e) => {
         e.preventDefault();
