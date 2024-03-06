@@ -2,8 +2,6 @@ import axios from 'axios';
 import { FaCheck, FaQuestionCircle } from 'react-icons/fa';
 import { RxCross1 } from "react-icons/rx";
 import React, { useState } from 'react';
-import { FaCheck, FaQuestionCircle } from 'react-icons/fa';
-import { RxCross1 } from "react-icons/rx";
 import { useNavigate } from "react-router-dom";
 import { API } from '../../utils/constants';
 import { useAuth } from "../../utils/context";
