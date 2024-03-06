@@ -111,7 +111,7 @@ const AllUniversities = () => {
                     className=" border-[1px] border-gray-900 border-solid px-3 rounded-lg m-[10px]"
                     key={index}
                 >
-                    <a target="_blank" rel="noreferrer" href={university.link} className="no-underline text-gray-800"> <p className="md:text-[1vw] text-[2.5vw] hover:underline">{university.university}</p></a>
+                    <a target="_blank" rel="noreferrer" href={university.link} className="no-underline hover:underline text-gray-800"> <p className="md:text-[1vw] gradient-text2 text-[2.5vw] font-medium ">{university.university}</p></a>
 
                 </div>
             ))}
