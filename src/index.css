@@ -74,7 +74,12 @@ code {
     transform: translateX(-20%);
   }
 }
+.borderyy{
+  border-left: 1px solid black;
+  border-top:1px solid black ;
+  border-bottom:1px solid black ;
 
+<<<<<<< Updated upstream
 
 
 
@@ -104,27 +109,17 @@ code {
 .tabs {
   display: flex;
   margin-bottom: 20px;
+=======
+>>>>>>> Stashed changes
 }
 
 
-.middle-content {
-  display: flex;
-  gap: 20px;
-  justify-content: center;
-}
 
-.price-card {
-  padding: 20px;
-  border-radius: 8px;
+.abovecontain{
+  position: relative;
+  z-index: 2000;
 }
-
-.price-card-table {
-  padding: 20px;
-  border-radius: 8px;
+.abovecontain2{
+  position: absolute;
+  z-index: 3000;
 }
-
-.price-card .price-info h3,
-.price-cards-table th {
-  margin-bottom: 10px;
-}
-

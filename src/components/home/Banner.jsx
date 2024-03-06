@@ -77,7 +77,7 @@ const Banner = () => {
               </button>
             </div>
             <div className="my-10 md:block">
-              <div className="flex relative  flex-row items-center gap-[7px] text-base cursor-pointer">
+              <div className="flex relative  max-lg:hidden flex-row items-center gap-[7px] text-base cursor-pointer">
                 <div onClick={handleBellIconClick} >
                   <img
                     className="h-[54px] w-[52px] relative object-cover"
