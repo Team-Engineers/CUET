@@ -3,7 +3,7 @@ const DomainContainer = ({ brick, heading, color, subheading }) => {
   return (
     < div
       style={{ background: color }}
-      className="sm:w-[290px] transition-all duration-100 hover:scale-[105%] no-underline sm:h-[300px] w-[250px] h-[270px]  flex justify-center items-center relative z-10 rounded-2xl shadow-[10px_10px_4px_0px_rgba(0,0,0,0.3)]">
+      className="sm:w-[290px] flex-col transition-all duration-100 hover:scale-[105%] no-underline sm:h-[300px] w-[250px] h-[270px]  flex justify-center items-center relative z-10 rounded-2xl shadow-[10px_10px_4px_0px_rgba(0,0,0,0.3)]">
       <div
         className="no-underline flex flex-col items-center"
       >
@@ -11,10 +11,11 @@ const DomainContainer = ({ brick, heading, color, subheading }) => {
         <h1 className="text-5xl md:text-[30px] flex justify-center items-center text-white md:w-40 w-20 text-center">
           {heading}
         </h1>
-        <p className="text-white bg-[#c93f35e7] border-dashed border-white border-t-[1.5px] border-l-0 border-r-0 border-b-[1.5px] px-[90px] py-1 ">
-          Coming Soon...
-        </p>
+
       </div>
+      <p className="text-white bg-[#c93f35e7] border-dashed border-white border-t-[1.5px] whitespace-nowrap border-l-0 border-r-0 border-b-[1.5px] w-full py-1 ">
+        Coming Soon...
+      </p>
     </div>
 
   );

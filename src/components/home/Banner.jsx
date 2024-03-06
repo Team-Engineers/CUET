@@ -87,7 +87,7 @@ const Banner = () => {
                   />
                 </div>
 
-                <div onClick={handleBellIconClick} className="relative font-semibold">Live Notification</div>
+                <div onClick={handleBellIconClick} className="relative font-semibold">Live Notifications</div>
               </div>
               {isPopupOpen && (
                 <div ref={popupRef} className="absolute max-md:left-0 m-3 md:w-[25rem] rounded-lg">
