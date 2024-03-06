@@ -1,7 +1,7 @@
 import axios from 'axios';
-import React, { useState } from 'react';
 import { FaCheck, FaQuestionCircle } from 'react-icons/fa';
 import { RxCross1 } from "react-icons/rx";
+import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { API } from '../../utils/constants';
 import { useAuth } from "../../utils/context";
@@ -87,7 +87,7 @@ const PriceCard = ({ _id, nameOfPlan, bgColor, amount, description, benefits }) 
   };
 
   return (
-    <div id='select' className="price-card flex-col-reverse lg:flex-row lg:h-[550px] my-4 j items-center flex">
+    <div id='select'  className="price-card flex-col-reverse lg:flex-row lg:h-[550px] my-4 j items-center flex">
       <div className="rounded-3xl max-lg:justify-center max-lg:top-[-30px] flex flex-col justify-center px-10 hover:scale-105 shadow-2xl transition-all duration-100 p-5 relative lg:left-5 z-0 bg-white h-[400px]">
         <h4 className='font-bold text-[25px]'>Plan Benefits:
           <hr className='my-1' />

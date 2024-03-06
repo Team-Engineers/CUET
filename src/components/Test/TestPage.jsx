@@ -143,32 +143,23 @@ function TestPage() {
             </div>
             {currentTab === "prep" && (
               <>
-                <h onClick={() => {
-                  setCurrentTab("prep");
-                  toggleDropdown();
-                }} className="text-[30px] cursor-pointer gradient-text2 relative top-[-30px] font-bold">{selectedCategory}</h>
-                <span className="relative text-blue-800 top-[-30px]  ">
-                  {isDropdownOpen ? <IoIosArrowUp /> : <IoIosArrowDown />}
-                  {currentTab === "prep" && isDropdownOpen && (
-                    <div className="absolute z-50 left-0 mt-1 w-full flex justify-center">
-                      <div className="bg-white py-2 px-4 shadow-md  rounded-md w-56">
-                        {Object.keys(topics2).map(category => (
-                          <div
-                            key={category}
-                            className={`cursor-pointer leading-7  hover:text-white text-center text-[20px] py-1 hover:bg-gray-400 ${category === selectedCategory ? "font-bold text-red-300" : "font-medium whitespace-nowrap text-blue-800"
-                              }`}
-                            onClick={() => {
-                              setSelectedCategory(category);
-                              setIsDropdownOpen(false);
-                            }}
-                          >
-                            {category}
-                          </div>
-                        ))}
-                      </div>
+                  {currentTab === "prep" && (
+                    <div className=" py-2 mb-6 top-[-20px] relative  px-4 shadow-md flex flex-row  rounded-md ">
+                      {Object.keys(topics2).map(category => (
+                        <div
+                          key={category}
+                          className={`text-[30px] mx-3  whitespace-nowrap flex cursor-pointer relative  font-bold leading-7  text-center  p-2 rounded ${category === selectedCategory ? "font-medium bg-red-400 text-white " : " font-normal  text-blue-800"
+                            }`}
+                          onClick={() => {
+                            setSelectedCategory(category);
+                          }}
+                        >
+                          {category}
+                        </div>
+                      ))}
                     </div>
                   )}
-                </span>
+              
 
                 <div className="grid grid-cols-1 md:grid-cols-2 mb-20 lg:grid-cols-3 gap-14">
                   {prep.map((subject, index) => (
@@ -220,3 +211,4 @@ function TestPage() {
 }
 
 export default TestPage;
+

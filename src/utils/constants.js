@@ -334,7 +334,7 @@ export const topics2 = {
     "Simplification & Calculation",
     "Average",
     "Percentage",
-    "Fraction & Decimals, Square root",
+    "Fraction and Decimals, Square root",
     "Ratio & Proportion",
     "Profit & Loss",
     "S.I & C.I, Partnership",
