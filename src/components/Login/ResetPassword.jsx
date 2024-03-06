@@ -1,6 +1,8 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { useNavigate, useParams } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { API } from '../../utils/constants';
 import Navbar from '../Navbar';
 
@@ -10,8 +12,6 @@ function ResetPassword() {
     const [error, setError] = useState('');
     const navigate = useNavigate();
     const { id, token } = useParams();
-
-    // axios.defaults.withCredentials = true;
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -23,16 +23,22 @@ function ResetPassword() {
         axios.post(`${API}/auth/reset-password/${id}/${token}`, { password })
             .then(res => {
                 if (res.data.Status === "Success") {
-                    navigate('/login');
+                    toast.success("Your password has been updated successfully.", { toastId: "success-toast" });
+                    setTimeout(() => {
+                        navigate('/login');
+                    }, 5000);
                 }
             })
-            .catch(err => console.log(err));
+            .catch(err => {
+                setError("An error occurred while updating your password. Please try again later.");
+                console.log(err);
+            });
     };
 
     return (
         <div className="overflow-hidden bg-gradient-to-br from-[#fff] to-[#a691f5de]">
             <Navbar />
-            <div className="flex justify-center  items-center h-[90vh]">
+            <div className="flex justify-center items-center h-[90vh]">
                 <div className="bg-white p-6 relative bottom-20 rounded shadow-lg max-w-sm w-full">
                     <h4 className="text-[24px] font-medium mb-6">Reset Password</h4>
                     <form onSubmit={handleSubmit}>
@@ -67,6 +73,7 @@ function ResetPassword() {
                     </form>
                 </div>
             </div>
+            <ToastContainer />
         </div>
     );
 }
