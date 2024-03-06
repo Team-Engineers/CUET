@@ -326,3 +326,48 @@ export const topics = {
     }
   }
 };
+
+export const topics2 = {
+  Mathematics: [
+    "Number System",
+    "Algebra",
+    "Simplification & Calculation",
+    "Average",
+    "Percentage",
+    "Fraction & Decimals, Square root",
+    "Ratio & Proportion",
+    "Profit & Loss",
+    "S.I & C.I, Partnership",
+    "Time, Speed & Distance",
+    "Time & Work",
+    "Mensuration",
+    "Geometry",
+    "Permutation & Combination",
+    "Probability"
+  ],
+  "Logical Reasoning": [
+    "Alphabet series",
+    "Blood Relation",
+    "Classification",
+    "Clock and Calendar",
+    "Critical Reasoning",
+    "Arrangement Circular and Linear",
+    "Coding Decoding",
+    "Decision Making and Order and Ranking",
+    "Direction Problem",
+    "Number Series",
+    "Puzzle",
+    "Venn Diagram",
+    "Visual Reasoning"
+  ],
+  "General Awareness": [
+    "Art Culture and Literature",
+    "Award and Honor",
+    "Indian Geography",
+    "Indian Economics",
+    "Indian History",
+    "Indian Polity",
+    "General Science",
+    "International Cooperation Organization"
+  ]
+};
