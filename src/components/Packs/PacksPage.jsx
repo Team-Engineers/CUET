@@ -1,13 +1,13 @@
 import axios from 'axios';
+import React, { useState } from 'react';
 import { FaCheck, FaQuestionCircle } from 'react-icons/fa';
 import { RxCross1 } from "react-icons/rx";
-import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { API } from '../../utils/constants';
 import { useAuth } from "../../utils/context";
 import Footer from '../Footer';
 import Navbar from '../Navbar';
-import FAQ from "../home/FAQ";
+import PackFaq from "./PackFaq";
 import PriceTables from './PriceCard';
 const PriceCard = ({ _id, nameOfPlan, bgColor, amount, description, benefits }) => {
   const [auth, setAuth] = useAuth();
@@ -20,7 +20,7 @@ const PriceCard = ({ _id, nameOfPlan, bgColor, amount, description, benefits }) 
   const renderIcon = (benefit) => {
     switch (benefit) {
       case 'Both General English & General Test':
-      case 'Unlimited Attempt ':
+      case 'Unlimited Attempts ':
       case 'Full Access to Prep Mudules':
       case 'Full Access to Practice Tests':
         return <FaCheck className='text-green-400' />;
@@ -87,7 +87,7 @@ const PriceCard = ({ _id, nameOfPlan, bgColor, amount, description, benefits }) 
   };
 
   return (
-    <div id='select'  className="price-card flex-col-reverse lg:flex-row lg:h-[550px] my-4 j items-center flex">
+    <div id='select' className="price-card flex-col-reverse lg:flex-row lg:h-[550px] my-4 j items-center flex">
       <div className="rounded-3xl max-lg:justify-center max-lg:top-[-30px] flex flex-col justify-center px-10 hover:scale-105 shadow-2xl transition-all duration-100 p-5 relative lg:left-5 z-0 bg-white h-[400px]">
         <h4 className='font-bold text-[25px]'>Plan Benefits:
           <hr className='my-1' />
@@ -120,7 +120,7 @@ const PriceCard = ({ _id, nameOfPlan, bgColor, amount, description, benefits }) 
               }
               setShowOptions(true);
             }}>
-              <p className="w-full py-4 cursor-pointer text-black border transition-colors duration-100 border-blue-800 border-solid hover:bg-blue-600 mt-8 rounded-xl hover:text-white">
+              <p className="w-full py-4 cursor-pointer text-black border transition-colors duration-100 border-blue-800 bg-[#bbbbbb8e] border-solid hover:bg-blue-600 mt-8 rounded-xl hover:text-white">
                 <span className="font-medium">
                   Get Started
                 </span>
@@ -229,7 +229,7 @@ const Tabs = ({ packages, setActiveTab, activeTab, setBgColor }) => {
   }
 
   return (
-    <div  className=" border max-sm:fixed max-sm:mx-2  bottom-0 max-sm:w-full  z-50 flex justify-between  bg-white rounded-lg shadow-2xl ">
+    <div className=" border max-sm:fixed max-sm:mx-2  bottom-0 max-sm:w-full  z-50 flex justify-between  bg-white rounded-lg shadow-2xl ">
       {packages.map((packageItem) => (
         <div
           key={packageItem._id}
@@ -253,10 +253,10 @@ const PriceCardPage = ({ packages }) => {
       <Navbar />
 
       <Tabs packages={packages} setActiveTab={setActiveTab} activeTab={activeTab} setBgColor={setBgColor} />
-      <PriceCardsContainer  packages={packages.filter((packageItem) => packageItem._id === activeTab)}/>
+      <PriceCardsContainer packages={packages.filter((packageItem) => packageItem._id === activeTab)} />
       <PriceTables />
 
-      <FAQ />
+      <PackFaq />
       <Footer />
     </div>
   );
@@ -271,12 +271,12 @@ const Packages = [
     description:
       'Maximize your exam readiness with our Solo Pack. Choose from General English or General Test or any domain subject. Includes preparatory module, 12 practice tests, and 12 mock tests.',
     benefits: [
-      'General English/ General Test',
+      'General English / General Test',
       'Any one Domain Subject',
       'Full Access to Prep Mudules',
       '12 Practice Tests',
       '12 Mock Tests',
-      'Unlimited Attempt '
+      'Unlimited Attempts '
     ],
     bgColor: '#c4e9f0'
   },
@@ -287,12 +287,12 @@ const Packages = [
     description:
       'Supercharge your preparation with our Pair Pack. Choose any from: General English and any one domain subject, General Test and one domain subject, or any two domain subjects. Includes preparatory modules, 12 practice tests, and 12 mock tests for each.',
     benefits: [
-      'General English /General Test',
+      'General English / General Test',
       'Any two Domain Subject',
       'Full Access to Prep Mudules',
       '12 Practice Tests',
       '12 Mock Tests',
-      'Unlimited Attempt '
+      'Unlimited Attempts '
     ],
     bgColor: '#f0eac4'
   },
@@ -308,9 +308,9 @@ const Packages = [
       'Full Access to Prep Mudules',
       'Full Access to Practice Tests',
       '12 Mock Tests',
-      'Unlimited Attempt '
+      'Unlimited Attempts '
     ],
-    bgColor: '#e9c4f0'
+    bgColor: '#d9c4f0'
   },
   {
     _id: "65e352e265a057561b4dcb67",
@@ -324,7 +324,7 @@ const Packages = [
       'Full Access to Prep Mudules',
       'Full Access to Practice Tests',
       '12 Mock Tests',
-      'Unlimited Attempt '
+      'Unlimited Attempts '
     ],
     bgColor: '#c4f0e9'
   },
