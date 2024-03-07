@@ -3,7 +3,7 @@ import Footer from "../components/Footer";
 
 const AboutPage = () => {
   return (
-    <div className="w-full overflow-hidden   bg-white">
+    <div className="w-full overflow-hidden h-screen   bg-white">
       <Navbar />
       <div className="">
         <div className="flex justify-between items-center flex-col sm:flex-row ">
