@@ -1,8 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import styled from "styled-components";
 import { topics } from "../../utils/constants";
 import { useAuth } from "../../utils/context";
+
 const TopicCard = styled.li`
   height: fit-content;
   white-space: nowrap;
@@ -29,7 +30,6 @@ const TopicCard = styled.li`
     width: 20px;
   }
   /* Centering */
-
 `;
 
 const Wrapper = styled.ul`
@@ -81,8 +81,21 @@ const RecommendedSubTopics = () => {
   const [auth] = useAuth();
   const allow = auth?.user?.packageId;
   const { topic, subTopic } = useParams();
-  const subtopics = topics[topic] || [];
+  const [subtopics, setSubtopics] = useState([]);
+
   useEffect(() => {
+    if (topic === "General Test") {
+      const category = Object.keys(topics[topic]).find(category => topics[topic][category].includes(subTopic));
+      if (category) {
+        const categorySubtopics = topics[topic][category] || [];
+        setSubtopics(categorySubtopics);
+      } else {
+        setSubtopics([]);
+      }
+    } else {
+      setSubtopics(topics[topic] || []);
+    }
+
     const bootstrapCssLink = document.createElement("link");
     bootstrapCssLink.rel = "stylesheet";
     bootstrapCssLink.href =
@@ -94,7 +107,7 @@ const RecommendedSubTopics = () => {
     return () => {
       document.head.removeChild(bootstrapCssLink);
     };
-  }, []);
+  }, [topic, subTopic]);
 
   return (
     <MarginTop>
@@ -126,11 +139,12 @@ const RecommendedSubTopics = () => {
           >
             <div className="accordion-body p-1 mt-3">
               <Wrapper>
-                {subtopics.map((currentTopic, subIndex) => {
+              {subtopics.map((currentTopic, subIndex) => {
                   const isVisible =
                     (!auth.user && subIndex === 0) || 
                     (auth.user && subIndex <= 4) || 
                     (allow === '65d93ff1aaf8ebc47c522ced');
+
 
                   if (isVisible) {
                     return (
