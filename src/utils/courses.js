@@ -3,154 +3,142 @@ const subtopicsData = {
     {
       title: "Mathematics",
       image: require("../assets/images/courses/mathematics.png"),
-      color: "#FF9283"
-     
+      color: "#FF9283",
     },
     {
       title: "Physics",
       image: require("../assets/images/courses/physics.png"),
-      color: "#407BFF"
+      color: "#407BFF",
     },
     {
       title: "Chemistry",
       image: require("../assets/images/courses/Microscope.png"),
-     color: "#15E4B9" 
+      color: "#15E4B9",
     },
     {
       title: "Biology",
       image: require("../assets/images/courses/bio.png"),
-     color: "#EBC33C"
+      color: "#EBC33C",
     },
   ],
   Commerce: [
     {
       title: "Accountancy",
       image: require("../assets/images/courses/accounting.png"),
-    color: "#EB76FF" 
+      color: "#EB76FF",
     },
     {
       title: "Economics",
       image: require("../assets/images/courses/economy.png"),
-    color: "#FF725E"
+      color: "#FF725E",
     },
     {
       title: "Business Studies",
       image: require("../assets/images/courses/business.png"),
-     color: "#3EB7FB"
+      color: "#3EB7FB",
     },
     {
       title: "Mathematics",
       image: require("../assets/images/courses/business.png"),
-     color: "#F0997A"
+      color: "#F0997A",
     },
   ],
   "Humanities & Social Sciences": [
     {
       title: "History",
       image: require("../assets/images/courses/history.png"),
-     color: "#0ED2FC" 
+      color: "#0ED2FC",
     },
     {
       title: "Political Science",
       image: require("../assets/images/courses/political.png"),
-     color: "#FF99BA"
+      color: "#FF99BA",
     },
     {
       title: "Geography",
       image: require("../assets/images/courses/geography.png"),
-    color: "#FFD700"
+      color: "#FFD700",
     },
     {
       title: "Psychology",
       image: require("../assets/images/courses/psycology.png"),
-     color: "#29C7AC"
+      color: "#29C7AC",
     },
     {
       title: "Sociology",
       image: require("../assets/images/courses/Sociology.png"),
-     color: "#FFA069" 
+      color: "#FFA069",
     },
     {
       title: "Mathematics",
       image: require("../assets/images/courses/Sociology.png"),
-     color: "#FF6464" 
+      color: "#FF6464",
     },
   ],
 };
 
 const subtopicsData1 = [
-    {
-      title: "Mathematics",
-      image: require("../assets/images/courses/mathematics.png"),
-      color: "#FF9283"
-     
-    },
-    {
-      title: "Physics",
-      image: require("../assets/images/courses/physics.png"),
-      color: "#407BFF"
-    },
-    {
-      title: "Chemistry",
-      image: require("../assets/images/courses/Microscope.png"),
-     color: "#15E4B9" 
-    },
-    {
-      title: "Biology",
-      image: require("../assets/images/courses/bio.png"),
-     color: "#EBC33C"
-    },
-    {
-      title: "Accountancy",
-      image: require("../assets/images/courses/accounting.png"),
-    color: "#EB76FF" 
-    },
-    {
-      title: "Economics",
-      image: require("../assets/images/courses/economy.png"),
-    color: "#FF725E"
-    },
-    {
-      title: "Business Studies",
-      image: require("../assets/images/courses/business.png"),
-     color: "#3EB7FB"
-    },
-    {
-      title: "Mathematics",
-      image: require("../assets/images/courses/business.png"),
-     color: "#F0997A"
-    },
-    {
-      title: "History",
-      image: require("../assets/images/courses/history.png"),
-     color: "#0ED2FC" 
-    },
-    {
-      title: "Political Science",
-      image: require("../assets/images/courses/political.png"),
-     color: "#FF99BA"
-    },
-    {
-      title: "Geography",
-      image: require("../assets/images/courses/geography.png"),
-    color: "#FFD700"
-    },
-    {
-      title: "Psychology",
-      image: require("../assets/images/courses/psycology.png"),
-     color: "#29C7AC"
-    },
-    {
-      title: "Sociology",
-      image: require("../assets/images/courses/Sociology.png"),
-     color: "#FFA069" 
-    },
-    {
-      title: "Mathematics",
-      image: require("../assets/images/courses/Sociology.png"),
-     color: "#FF6464" 
-    },
-  ]
+  {
+    title: "Mathematics",
+    image: require("../assets/images/courses/mathematics.png"),
+    color: "#FF9283",
+  },
+  {
+    title: "Physics",
+    image: require("../assets/images/courses/physics.png"),
+    color: "#407BFF",
+  },
+  {
+    title: "Chemistry",
+    image: require("../assets/images/courses/Microscope.png"),
+    color: "#15E4B9",
+  },
+  {
+    title: "Biology",
+    image: require("../assets/images/courses/bio.png"),
+    color: "#EBC33C",
+  },
+  {
+    title: "Accountancy",
+    image: require("../assets/images/courses/accounting.png"),
+    color: "#EB76FF",
+  },
+  {
+    title: "Economics",
+    image: require("../assets/images/courses/economy.png"),
+    color: "#FF725E",
+  },
+  {
+    title: "Business Studies",
+    image: require("../assets/images/courses/business.png"),
+    color: "#3EB7FB",
+  },
+  {
+    title: "History",
+    image: require("../assets/images/courses/history.png"),
+    color: "#0ED2FC",
+  },
+  {
+    title: "Political Science",
+    image: require("../assets/images/courses/political.png"),
+    color: "#FF99BA",
+  },
+  {
+    title: "Geography",
+    image: require("../assets/images/courses/geography.png"),
+    color: "#FFD700",
+  },
+  {
+    title: "Psychology",
+    image: require("../assets/images/courses/psycology.png"),
+    color: "#29C7AC",
+  },
+  {
+    title: "Sociology",
+    image: require("../assets/images/courses/Sociology.png"),
+    color: "#FFA069",
+  },
+];
 const DomainTopic = [
   {
     title: "Science",
@@ -169,4 +157,4 @@ const DomainTopic = [
   },
 ];
 
-export { DomainTopic, subtopicsData,subtopicsData1 };
+export { DomainTopic, subtopicsData, subtopicsData1 };
