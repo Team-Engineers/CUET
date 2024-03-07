@@ -1,8 +1,9 @@
 import axios from 'axios';
+import React, { useState } from 'react';
 import { FaCheck, FaQuestionCircle } from 'react-icons/fa';
 import { RxCross1 } from "react-icons/rx";
-import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
+import Select from 'react-select';
 import { API } from '../../utils/constants';
 import { useAuth } from "../../utils/context";
 import Footer from '../Footer';
@@ -11,11 +12,63 @@ import PackFaq from "./PackFaq";
 import PriceTables from './PriceCard';
 const PriceCard = ({ _id, nameOfPlan, bgColor, amount, description, benefits }) => {
   const [auth, setAuth] = useAuth();
-
   const navigate = useNavigate();
-  const [selectedGeneral, setSelectedGeneral] = useState('');
-  const [selectedSubjects, setSelectedSubjects] = useState([]);
+  const [selectedOptions, setSelectedOptions] = useState([]);
+  const [errorMessage, setErrorMessage] = useState('');
   const [showOptions, setShowOptions] = useState(false);
+
+  let options;
+  if (nameOfPlan === 'SOLO PACK' || nameOfPlan === 'PAIR PACK') {
+    options = [
+      { value: "General English", label: "General English" },
+      { value: "General Test", label: "General Test" },
+      { value: "Mathematics", label: "Mathematics" },
+      { value: "Physics", label: "Physics" },
+      { value: "Chemistry", label: "Chemistry" },
+      { value: "Biology", label: "Biology" },
+      { value: "Accountancy", label: "Accountancy" },
+      { value: "Economics", label: "Economics" },
+      { value: "Business Studies", label: "Business Studies" },
+      { value: "History", label: "History" },
+      { value: "Political Science", label: "Political Science" },
+      { value: "Geography", label: "Geography" },
+      { value: "Psychology", label: "Psychology" },
+      { value: "Sociology", label: "Sociology" }
+    ];
+  } else {
+    options = [
+      { value: "Mathematics", label: "Mathematics" },
+      { value: "Physics", label: "Physics" },
+      { value: "Chemistry", label: "Chemistry" },
+      { value: "Biology", label: "Biology" },
+      { value: "Accountancy", label: "Accountancy" },
+      { value: "Economics", label: "Economics" },
+      { value: "Business Studies", label: "Business Studies" },
+      { value: "History", label: "History" },
+      { value: "Political Science", label: "Political Science" },
+      { value: "Geography", label: "Geography" },
+      { value: "Psychology", label: "Psychology" },
+      { value: "Sociology", label: "Sociology" }
+    ];
+  }
+  const handleSelectChange = (selected) => {
+    if ((nameOfPlan === 'SOLO PACK') && selected.length > 1) {
+      setErrorMessage("Select only one option.");
+    } else if ((nameOfPlan === 'PAIR PACK') && selected.length > 2) {
+      setErrorMessage("Select only two options");
+    }
+    else if ((nameOfPlan === 'MEGA PACK') && selected.length > 3) {
+      setErrorMessage("Select only three options");
+    }
+    else if ((nameOfPlan === 'JUMBO PACK') && selected.length > 4) {
+      setErrorMessage("Select only four options");
+    } else {
+      setSelectedOptions(selected);
+      setErrorMessage('');
+    }
+  };
+
+
 
   const renderIcon = (benefit) => {
     switch (benefit) {
@@ -33,8 +86,7 @@ const PriceCard = ({ _id, nameOfPlan, bgColor, amount, description, benefits }) 
       const response = await axios.post(`${API}/payment/initiate`, {
         packageId: _id,
         userId: auth.user?._id,
-        selectedGeneral,
-        selectedSubjects,
+        selectedOptions: selectedOptions.map(option => option.value),
       });
       const { data } = response;
       const options = {
@@ -78,17 +130,11 @@ const PriceCard = ({ _id, nameOfPlan, bgColor, amount, description, benefits }) 
       console.error(error);
     }
   };
-  const handleGeneralChange = (e) => {
-    setSelectedGeneral(e.target.value);
-  };
 
-  const handleSubjectChange = (e) => {
-    setSelectedSubjects(Array.from(e.target.selectedOptions, (option) => option.value));
-  };
 
   return (
-    <div id='select'  className="price-card flex-col-reverse lg:flex-row lg:h-[550px] my-4 j items-center flex">
-      <div className="rounded-3xl max-lg:justify-center max-lg:top-[-30px] flex flex-col justify-center px-10 hover:scale-105 shadow-2xl transition-all duration-100 p-5 relative lg:left-5 z-0 bg-white h-[400px]">
+    <div id='select' className="price-card flex-col-reverse lg:flex-row lg:h-[550px] my-4 j items-center flex">
+      <div className="max-md:hidden rounded-3xl max-lg:justify-center max-lg:top-[-30px] flex flex-col justify-center px-10 hover:scale-105 shadow-2xl transition-all duration-100 p-5 relative lg:left-5 z-0 bg-white h-[400px]">
         <h4 className='font-bold text-[25px]'>Plan Benefits:
           <hr className='my-1' />
         </h4>
@@ -102,7 +148,7 @@ const PriceCard = ({ _id, nameOfPlan, bgColor, amount, description, benefits }) 
         </h>
       </div>
 
-      <div className='p-4 max-w-[350px] relative z-10 max-h-[700px] bg-white transition-all duration-100 shadow-2xl my-8 rounded-3xl backdrop-blur[40px] hover:scale-105 text-center text-black mx-3 '>
+      <div className='p-4 md:max-w-[350px] max-md:w-full relative z-10 md:max-h-[700px] max-h-[800px] bg-white transition-all duration-100 shadow-2xl my-8 rounded-3xl backdrop-blur[40px] hover:scale-105 text-center text-black mx-3 '>
         <div className='p-2 py-3 '>
           <h2 style={{ background: bgColor }} className='text-[25px] mb-6 border-dashed border-2 border-blue-950 p-2 mx-auto text-black whitespace-nowrap rounded-3xl '>{nameOfPlan}</h2>
           <hr className='my-2' />
@@ -110,9 +156,17 @@ const PriceCard = ({ _id, nameOfPlan, bgColor, amount, description, benefits }) 
             <span className="text-gray-400 font-medium text-xl">/ year</span>
             <p className='ml-0 text-[12px]'>*GST Excluded</p>
           </h1>
-          <hr className='my-2' />
-          <p className='text-[15px] text-slate-600 px-1 md:h-[100px] '>{description}</p>
-          <div className="pt-8">
+          <hr className='my-2 ' />
+          <h className='md:hidden font-medium text-[13px] md:text-[18px]'>
+            {benefits.map((benefit, index) => (
+              <p key={index} className="mt-4">
+                {renderIcon(benefit)}
+                <span className='ml-3'>{benefit}</span>
+              </p>
+            ))}
+          </h>
+          <p className='max-md:hidden text-[15px] text-slate-600 px-1 md:h-[100px] '>{description}</p>
+          <div className="md:pt-8 pt-5">
             <h onClick={() => {
               if (!auth.user) {
                 navigate('/login');
@@ -120,7 +174,7 @@ const PriceCard = ({ _id, nameOfPlan, bgColor, amount, description, benefits }) 
               }
               setShowOptions(true);
             }}>
-              <p className="w-full py-4 cursor-pointer text-black border transition-colors duration-100 border-blue-800 bg-[#bbbbbb8e] border-solid hover:bg-blue-600 mt-8 rounded-xl hover:text-white">
+              <p className="w-full py-4 cursor-pointer text-black border transition-colors duration-100 border-blue-800 bg-[#bbbbbb8e] border-solid hover:bg-blue-600 md:mt-8 rounded-xl hover:text-white">
                 <span className="font-medium">
                   Get Started
                 </span>
@@ -132,76 +186,45 @@ const PriceCard = ({ _id, nameOfPlan, bgColor, amount, description, benefits }) 
       {showOptions && (
         <>
           <div className="popup-overlay  ">
-            <div className="rounded-3xl bg-[#ffffff7c] p-5 backdrop-blur-[100px] shadow-2xl  ">
+            <div className="rounded-3xl bg-[#ffffffee] p-4 px-6 backdrop-blur-[100px] shadow-2xl  ">
               <div className="flex justify-between">
-                <h2 className="font-bold mx-2 text-xl">Select Subjects for <span className='p-4 rounded-3xl' style={{ background: bgColor }}>{nameOfPlan}</span></h2>
-                <h2 className="mx-4 cursor-pointer" onClick={() => setShowOptions(false)} ><RxCross1 /></h2>
+                <h2 className="font-semibold mx-2 text-xl">Select Subjects for <span className='px-4 py-2 rounded-3xl' style={{ background: bgColor }}>{nameOfPlan}</span></h2>
+                <h3 className="mx-4 cursor-pointer" onClick={() => setShowOptions(false)} ><RxCross1 /></h3>
               </div>
               <hr className="my-1" />
               <div className='flex flex-col justify-center items-center'>
+                {(nameOfPlan === 'MEGA PACK' || nameOfPlan === 'JUMBO PACK') && (
+                  <p className='font-medium text-[18px] text-gray-700'>General English & General Test is free for this Pack</p>
+                )}
+                <p className='font-medium text-[18px]'>Select Any&nbsp;
+                  {nameOfPlan === 'SOLO PACK' && (
+                    <span>One</span>
+                  )}
+                  {nameOfPlan === 'PAIR PACK' && (
+                    <span>Two</span>
+                  )}
+                  {nameOfPlan === 'MEGA PACK' && (
+                    <span>Three</span>
+                  )}
+                  {nameOfPlan === 'JUMBO PACK' && (
+                    <span>Four</span>
+                  )}
+                  {(nameOfPlan === 'JUMBO PACK' || nameOfPlan === 'MEGA PACK') && (
+                    <span>&nbsp;Domain Subject</span>
+                  )}
+                </p>
                 <div className="mt-4 relative">
-                  <select value={selectedGeneral} onChange={handleGeneralChange} className="border w-[400px] bg-[#aaa0] appearance-none text-center font-bold  border-gray-300 o rounded-md px-3 py-2">
-                    <option className='bg-[#aaa0]' value="">Select General</option>
-                    <option className='bg-[#aaa0]' value="General English">General English</option>
-                    <option value="General Test">General Test</option>
-                  </select>
-                  <div className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-                    <svg
-                      className="h-5 w-5 text-gray-700"
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M10 12a2 2 0 100-4 2 2 0 000 4z"
-                        clipRule="evenodd"
-                      />
-                      <path
-                        fillRule="evenodd"
-                        d="M5 10a5 5 0 1110 0 1 1 0 00-2 0 3 3 0 00-6 0 1 1 0 00-2 0zm5-7a1 1 0 00-1 1v8a1 1 0 102 0V4a1 1 0 00-1-1z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
-                  </div>
+                  <Select
+                    isMulti
+                    options={options}
+                    value={selectedOptions}
+                    onChange={handleSelectChange}
+                  />
+                  <div className="text-red-600 text-l mt-2">{errorMessage}</div>
                 </div>
-                <div className="mt-4 relative">
-                  <select
-                    value={selectedSubjects}
-                    onChange={handleSubjectChange}
-                    className="border w-[400px] bg-[#aaa0] text-center font-bold border-gray-300 rounded-md px-3 py-2 appearance-none cursor-pointer"
-                  >
-                    <option value="">Domain</option>
-                    <option value="Science">Science</option>
-                    <option value="Math">Math</option>
-                    <option value="Humanities">Humanities</option>
-                  </select>
-                  <div className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
-                    <svg
-                      className="h-5 w-5 text-gray-700"
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M10 12a2 2 0 100-4 2 2 0 000 4z"
-                        clipRule="evenodd"
-                      />
-                      <path
-                        fillRule="evenodd"
-                        d="M5 10a5 5 0 1110 0 1 1 0 00-2 0 3 3 0 00-6 0 1 1 0 00-2 0zm5-7a1 1 0 00-1 1v8a1 1 0 102 0V4a1 1 0 00-1-1z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
-                  </div>
-                </div>
-
               </div>
-
-
               <div className="flex mx-4 my-3  justify-end">
-                <h onClick={initPayment} className="block cursor-pointer mx-auto mt-4 border-2 border-solid border-blue-400 hover:text-white px-4 py-2 rounded-md hover:bg-blue-700">Confirm Selection</h>
+                <h onClick={initPayment} className="block cursor-pointer mx-auto mt-4 border-[2px] border-solid border-blue-400 bg-[#dfdbdbe8] hover:text-white px-3 py-2 rounded-md hover:bg-blue-600">Confirm Selection</h>
 
               </div>
             </div>
@@ -223,18 +246,19 @@ const PriceCardsContainer = ({ packages }) => {
   );
 };
 
-const Tabs = ({ packages, setActiveTab, activeTab, setBgColor }) => {
+const Tabs = ({ packages, setActiveTab, activeTab, setBgColor, bgColor }) => {
   const changeBgColor = (color) => {
     setBgColor(color);
   }
 
   return (
-    <div className=" border max-sm:fixed max-sm:mx-2  bottom-0 max-sm:w-full  z-50 flex justify-between  bg-white rounded-lg shadow-2xl ">
+    <div className=" border max-sm:fixed max-sm:w-[95%]  bottom-2  z-50 flex justify-between  bg-white rounded-lg shadow-2xl ">
       {packages.map((packageItem) => (
         <div
           key={packageItem._id}
           onClick={() => { setActiveTab(packageItem._id); changeBgColor(packageItem.bgColor); }}
-          className={`  bg-white font-medium max-sm:text-[3vw] shadow-2xl cursor-pointer rounded p-2 md:p-5 m-1  ${activeTab === packageItem._id ? 'active bg-yellow-200' : ''}`}
+          className={`bg-white font-medium max-sm:text-[3vw] shadow-2xl cursor-pointer rounded p-2 md:p-5 m-1 ${activeTab === packageItem._id ? 'active' : ''}`}
+          style={{ backgroundColor: activeTab === packageItem._id ? bgColor : '' }}
         >
           {packageItem.nameOfPlan}
         </div>
@@ -244,7 +268,7 @@ const Tabs = ({ packages, setActiveTab, activeTab, setBgColor }) => {
 };
 
 const PriceCardPage = ({ packages }) => {
-  const initialActiveTabId = packages.find(packageItem => packageItem.nameOfPlan === ' SOLO PACK')._id;
+  const initialActiveTabId = packages.find(packageItem => packageItem.nameOfPlan === 'SOLO PACK')._id;
   const [activeTab, setActiveTab] = useState(initialActiveTabId);
   const [bgColor, setBgColor] = useState(packages.find(packageItem => packageItem._id === initialActiveTabId).bgColor);
 
@@ -252,7 +276,7 @@ const PriceCardPage = ({ packages }) => {
     <div className="flex overflow-hidden  flex-col justify-center items-center  bg-[#c4e9f0]" style={{ backgroundColor: bgColor, transition: "background-color 0.3s ease" }}>
       <Navbar />
 
-      <Tabs packages={packages} setActiveTab={setActiveTab} activeTab={activeTab} setBgColor={setBgColor} />
+      <Tabs packages={packages} setActiveTab={setActiveTab} activeTab={activeTab} setBgColor={setBgColor} bgColor={bgColor} />
       <PriceCardsContainer packages={packages.filter((packageItem) => packageItem._id === activeTab)} />
       <PriceTables />
 
@@ -266,7 +290,7 @@ const PriceCardPage = ({ packages }) => {
 const Packages = [
   {
     _id: "65d93ff1aaf8ebc47c522ced",
-    nameOfPlan: ' SOLO PACK',
+    nameOfPlan: 'SOLO PACK',
     amount: 699,
     description:
       'Maximize your exam readiness with our Solo Pack. Choose from General English or General Test or any domain subject. Includes preparatory module, 12 practice tests, and 12 mock tests.',
@@ -282,7 +306,7 @@ const Packages = [
   },
   {
     _id: "65d94008aaf8ebc47c522cef",
-    nameOfPlan: ' PAIR PACK',
+    nameOfPlan: 'PAIR PACK',
     amount: 1299,
     description:
       'Supercharge your preparation with our Pair Pack. Choose any from: General English and any one domain subject, General Test and one domain subject, or any two domain subjects. Includes preparatory modules, 12 practice tests, and 12 mock tests for each.',
@@ -294,11 +318,11 @@ const Packages = [
       '12 Mock Tests',
       'Unlimited Attempts '
     ],
-    bgColor: '#f0eac4'
+    bgColor: '#C6EBBE'
   },
   {
     _id: "65d9428fd3267bf1efe0f364",
-    nameOfPlan: ' MEGA PACK',
+    nameOfPlan: 'MEGA PACK',
     amount: 2599,
     description:
       'Introducing our MEGA pack! Choose any three domain subjects of your choice, along with general English and general Test. Includes preparatory modules, 12 practice tests, and 12 mock tests for each.',
@@ -314,7 +338,7 @@ const Packages = [
   },
   {
     _id: "65e352e265a057561b4dcb67",
-    nameOfPlan: ' JUMBO PACK',
+    nameOfPlan: 'JUMBO PACK',
     amount: 2999,
     description:
       'Elevate your exam readiness with our Jumbo Pack. Choose any four domain subjects along with general Test and general English. Includes preparatory modules, 12 practice tests, and 12 mock tests for each.',
@@ -326,7 +350,7 @@ const Packages = [
       '12 Mock Tests',
       'Unlimited Attempts '
     ],
-    bgColor: '#c4f0e9'
+    bgColor: '#E6D0CF'
   },
 ];
 
