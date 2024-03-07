@@ -134,7 +134,7 @@ const PriceCard = ({ _id, nameOfPlan, bgColor, amount, description, benefits }) 
 
   return (
     <div id='select' className="price-card flex-col-reverse lg:flex-row lg:h-[550px] my-4 j items-center flex">
-      <div className="max-md:hidden rounded-3xl max-lg:justify-center max-lg:top-[-30px] flex flex-col justify-center px-10 hover:scale-105 shadow-2xl transition-all duration-100 p-5 relative lg:left-5 z-0 bg-white h-[400px]">
+      <div className="max-lg:hidden rounded-3xl max-lg:justify-center max-lg:top-[-30px] flex flex-col justify-center px-10 hover:scale-105 shadow-2xl transition-all duration-100 p-5 relative lg:left-5 z-0 bg-white h-[400px]">
         <h4 className='font-bold text-[25px]'>Plan Benefits:
           <hr className='my-1' />
         </h4>
@@ -148,7 +148,7 @@ const PriceCard = ({ _id, nameOfPlan, bgColor, amount, description, benefits }) 
         </h>
       </div>
 
-      <div className='p-4 md:max-w-[350px] max-md:w-full relative z-10 md:max-h-[700px] max-h-[800px] bg-white transition-all duration-100 shadow-2xl my-8 rounded-3xl backdrop-blur[40px] hover:scale-105 text-center text-black mx-3 '>
+      <div className='p-4 md:max-w-[350px] max-lg:w-full relative z-10 md:max-h-[700px] max-h-[800px] bg-white transition-all duration-100 shadow-2xl my-8 rounded-3xl backdrop-blur[40px] hover:scale-105 text-center text-black mx-3 '>
         <div className='p-2 py-3 '>
           <h2 style={{ background: bgColor }} className='text-[25px] mb-6 border-dashed border-2 border-blue-950 p-2 mx-auto text-black whitespace-nowrap rounded-3xl '>{nameOfPlan}</h2>
           <hr className='my-2' />
