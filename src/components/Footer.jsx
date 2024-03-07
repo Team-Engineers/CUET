@@ -8,7 +8,7 @@ const Footer = () => {
       <div className=" pt-4 w-full max-md:mx-5 ">
         <div className="flex my-6 justify-center items-center">
           <div className=" grid md:grid-cols-2 md:mx-10 grid-cols-1">
-            <div className="w-full md:flex d-flex  md:flex-col justify-center ml-[34px]  ">
+            <div className="w-full md:flex d-flex  md:flex-col justify-center ml-[34px] max-md:ml-[0px]  ">
               <div className="flex justify-start   items-center">
                 <Link to="/" className="no-underline d-flex justify-content-center mt-4 align-items-center flex-column">
                   <div className="flex items-center">
@@ -23,7 +23,7 @@ const Footer = () => {
                   </div>
                 </Link>
               </div>
-              <p className="text-left md:w-[35vw] font-normal">
+              <p className=" md:w-[35vw] font-normal text-justify">
                 At TestKnock, we are dedicated to more than just academic success. Our unwavering commitment extends to providing you with the essential
                 tools and expert guidance. So join us on this transformative expedition and discover where educational excellence is not just an
                 aspiration but an inspiring and achievable pursuit.
@@ -46,36 +46,36 @@ const Footer = () => {
                 </Link>
               </div>
               <div className="min-w-[10em] mx-auto my-5 md:my-0 md:ml-0">
-                <p className="md:text-center font-bold mb-10">Whom we serve</p>
-                <p className="md:text-center font-normal my-3">School Students</p>
-                <p className="md:text-center font-normal my-3">College Students</p>
-                <p className="md:text-center font-normal my-3">Educational Institutions</p>
-                <p className="md:text-center font-normal my-3">Private Colleges</p>
+                <p className="md:text-center font-bold mb-10 hover:text-red-500">Whom we serve</p>
+                <p className="md:text-center font-normal my-3 hover:text-red-500">School Students</p>
+                <p className="md:text-center font-normal my-3 hover:text-red-500">College Students</p>
+                <p className="md:text-center font-normal my-3 hover:text-red-500">Educational Institutions</p>
+                <p className="md:text-center font-normal my-3 hover:text-red-500">Private Colleges</p>
               </div>
               <div className="min-w-[10em] mx-auto my-5 md:my-0 md:ml-[29px]">
                 <p className="ml-4 font-bold mb-10">Contact US</p>
-                <a href="mailto:info@testknock.com" className="hover:opacity-80">
-                  <p className="md:text-center max-sm:text-[12px] font-normal flex items-center my-3 text-white hover:text-red-500 hover:cursor-pointer [text-decoration:None]">
+                <a href="mailto:info@testknock.com" className="hover:opacity-80 no-underline">
+                  <p className="md:text-center max-sm:text-[12px] font-normal flex items-center my-3 text-white hover:text-red-500 hover:cursor-pointer ">
                     <span className="flex justify-center items-center mr-2">
                       <IoMdMail className="text-[1.1em] md:text-[1.5em]" />
                     </span>
                     info@testknock.com
                   </p>
                 </a>
-                <a href="tel:9953617456" className="hover:opacity-80">
-                  <p className="md:text-center max-sm:text-[12px] font-normal flex items-center my-3 text-white text-white hover:text-red-500 hover:cursor-pointer [text-decoration:None]">
+                <a href="tel:9953617456" className="hover:opacity-80 no-underline">
+                  <p className="md:text-center max-sm:text-[12px] font-normal flex items-center my-3 text-white hover:text-red-500 hover:cursor-pointer [text-decoration:None]">
                     <span className="flex justify-center items-center mr-2">
                       <IoMdCall className="text-[1.1em] md:text-[1.5em]" />
                     </span>
                     9953617456
                   </p>
                 </a>
-                <a href="https://maps.google.com/?q=Office+No.+42,+Durga+Vihar,+near+Amrapali+Sapphire,+Sec-45,+Noida-201301" className="hover:opacity-80">
-                  <p className="flex max-sm:text-[12px] justify-between max-w-[15em] my-3 text-white text-white hover:text-red-500 hover:cursor-pointer [text-decoration:None]">
+                <a href="https://maps.google.com/?q=Office+No.+42,+Durga+Vihar,+near+Amrapali+Sapphire,+Sec-45,+Noida-201301" className="hover:opacity-80 no-underline">
+                  <p className="flex max-sm:text-[12px] justify-between max-w-[15em] my-3  text-white hover:text-red-500 hover:cursor-pointer">
                     <span className="h-full">
                       <IoMdPin className="text-[1.1em] md:text-[1.5em]" />
                     </span>
-                    <span className="ml-2">Office No. - 42, Durga Vihar, near Amrapali Saphhire, Sec-45, Noida-201301</span>
+                    <span className="ml-2 ">Office No. - 42, Durga Vihar, near Amrapali Saphhire, Sec-45, Noida-201301</span>
                   </p>
                 </a>
               </div>
