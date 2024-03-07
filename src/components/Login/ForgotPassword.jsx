@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useState } from 'react';
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { API } from "../../utils/constants";
@@ -13,7 +13,7 @@ function ForgotPassword() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post(`${API}/auth/forgot-password`, { email })
+        axios.post(`${API} / auth / forgot - password, { email }`)
             .then(res => {
                 if (res.data.Status === "Success") {
                     toast.success("Password Reset Link has been sent to your email.", { toastId: "success-toast" });
@@ -32,28 +32,51 @@ function ForgotPassword() {
     }
 
     return (
-        <div className="overflow-x-hidden bg-gradient-to-br from-[#fff] to-[#a691f5de]">
+        <div className="overflow-x-hidden bg-gradient-to-b from-[#af9fe9de] to-[#fff] ">
             <Navbar />
-            <div className="forgot-body">
-                <div className="forgot-form">
-                    <h2>Reset Password</h2>
-                    <hr className='grey mt-[-10px] mb-6'></hr>
-                    <form onSubmit={handleSubmit}>
-                        <div className="mb-3">
-                            <p className='forgot-description-p'>Forgotten your password? Enter your e-mail address below, and we'll send you an e-mail allowing you to reset it.</p>
-                            <input
-                                type="email"
-                                placeholder="Enter Email Address"
-                                name="email"
-                                className="forgot-description-input"
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
-                            />
+            <div className='md:h-[60vh] h-[80vh] flex justify-center items-center'>
+                <div className="mt-6 max-w-[600px] border-solid border-[1px] mx-auto bg-white rounded-xl shadow-lg  border-blue-600">
+                    <div className="p-4 sm:p-7">
+                        <div className="text-center">
+                            <h1 className="block text-xl font-semibold text-gray-800">Forgot password?</h1>
+                            <p className="mt-2 text-sm text-gray-700">
+                                Remember your password?
+                                <Link to="/login" className="text-blue-600 font-semibold ml-1 hover:underline">
+                                    Login here
+                                </Link>
+                            </p>
                         </div>
-                        <button type="submit" className="forgot-btn">
-                            Reset My Password
-                        </button>
-                    </form>
+
+                        <div className="mt-5">
+                            <form onSubmit={handleSubmit}>
+                                <div className="grid gap-y-4">
+                                    <div>
+                                        <label htmlFor="email" className="block text-sm font-bold ml-1 mb-2">Email address</label>
+                                        <div className="relative">
+                                            <input
+                                                type="email"
+                                                id="email"
+                                                name="email"
+                                                className="py-3 px-4 w-[90%] block  border-2 border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 shadow-sm"
+                                                placeholder="Enter Email Address"
+                                                value={email}
+                                                onChange={(e) => setEmail(e.target.value)}
+                                                required
+                                                aria-describedby="email-error"
+                                            />
+                                        </div>
+
+                                    </div>
+                                    <button
+                                        type="submit"
+                                        className="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 cursor-pointer focus:ring-blue-500 focus:ring-offset-2 transition-all text-sm"
+                                    >
+                                        Reset password
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
             <ToastContainer />
