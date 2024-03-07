@@ -186,9 +186,9 @@ const PriceCard = ({ _id, nameOfPlan, bgColor, amount, description, benefits }) 
       {showOptions && (
         <>
           <div className="popup-overlay  ">
-            <div className="rounded-3xl bg-[#ffffffee] p-4 px-6 backdrop-blur-[100px] shadow-2xl  ">
+            <div className="rounded-3xl bg-[#ffffffee] p-4 px-6 max-md:px-2 max-md:mx-4 backdrop-blur-[100px] shadow-2xl  ">
               <div className="flex justify-between">
-                <h2 className="font-semibold mx-2 text-xl">Select Subjects for <span className='px-4 py-2 rounded-3xl' style={{ background: bgColor }}>{nameOfPlan}</span></h2>
+                <h2 className="font-semibold mx-2 md:text-xl whitespace-nowrap max-md:text-[17px]">Select Subjects for <span className='px-4 py-2 rounded-3xl max-md:px-2 max-md:text-[16px] ' style={{ background: bgColor }}>{nameOfPlan}</span></h2>
                 <h3 className="mx-4 cursor-pointer" onClick={() => setShowOptions(false)} ><RxCross1 /></h3>
               </div>
               <hr className="my-1" />
