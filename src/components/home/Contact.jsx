@@ -20,8 +20,8 @@ const ContactForm = () => {
         <input className={ContactInputStyles} placeholder="Email" type="email" />
         <input className={ContactInputStyles} placeholder="Phone Number" type="text" />
         <textarea
-          className={`my-1 md:w-[90%] w-[80%] mx-auto border-2 border-solid border-white rounded-2xl bg-transparent placeholder:text-white placeholder:opacity-100 placeholder:text-xl p-3 text-white text-xl focus:ring-0 focus:outline-none h-40 resize-none`}
-          placeholder="Reason"
+        className={`my-1 md:w-[90%] w-[80%] mx-auto border-2 border-solid border-white rounded-2xl bg-transparent placeholder:text-white placeholder:opacity-100 placeholder:text-md p-3 text-white text-lg focus:ring-0 focus:outline-none h-40 resize-none`}
+        placeholder="Reason"
           type="text"
         />
 
