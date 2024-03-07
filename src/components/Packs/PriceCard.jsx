@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../utils/context';
 const PriceTable = () => {
@@ -7,7 +6,7 @@ const PriceTable = () => {
 
   const navigate = useNavigate();
   return (
-    <section className="text-gray-700  max-lg:mx-4 mt-2 max-w-[1280px] mx-auto body-font overflow-hidden border-t border-gray-200">
+    <section className="text-gray-700 max-md:hidden  max-lg:mx-4 mt-2 max-w-[1280px] mx-auto body-font overflow-hidden border-t border-gray-200">
       <div className="   flex py-3 justify-center item-center ">
         <div className="lg:w-1/6 font-medium mt-48 hidden lg:block">
           <div className="mt-px borderyy border-gray-300   rounded-tl-lg rounded-bl-lg overflow-hidden">
@@ -72,7 +71,7 @@ const PriceTable = () => {
 
             </div>
           </div>
-          <div className="lg:w-1/4  lg:mt-px w-full mb-10 lg:mb-0 border-[1px] border-solid  border-gray-300   rounded-lg ">
+          <div className="lg:w-1/4  lg:mt-px w-full mb-10 lg:mb-0 border-[1px] border-t-0 border-b-0 border-solid  border-gray-300  ">
             <div className="px-2 text-center h-48 flex flex-col items-center justify-center">
               <h3 className="tracking-widest">NOVICE</h3>
               <h2 className="text-5xl text-gray-900 font-medium leading-none mb-4 mt-2">Free</h2>
