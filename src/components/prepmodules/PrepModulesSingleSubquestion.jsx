@@ -36,99 +36,100 @@ const PrepModulesSingleSubquestion = ({ data }) => {
     const isExplanationVisible = explanationsVisible[questionIndex];
     console.log("question is", question);
     return (
-      <div key={questionIndex} className="options-grid">
-        <div className="question-box ">
-          <div className="flex  flex-col">
-            <div className="flex position-absolute top-0 left-0 items-center justify-between">
-              <div className="py-4 px-6">
+      <div className="options-grid">
+        <div className="question-box">
+          <div className="question-option">
+            <div className="question">
+              <div class="question-number-container">
                 <span className={`question-number id-${question?._id}`}>
                   {`${questionIndex + 1 + currentPage * 5} `}
                 </span>
               </div>
-            </div>
-            {question?.questionTextAndImages[0]?.text[0] ? (
-              <div className="pt-[2.5rem] pb-2 ">
-                <div className="text-[20px]   pl-8 flex items-center top-[-40px] px-4   ">
-                  <div className="">
-                    {question?.description[0] ? (
-                      <strong>Direction:</strong>
-                    ) : (
-                      ""
-                    )}
-                    {question?.description?.map((desc, descIndex) => (
-                      <MathText
-                        className="question-text mb-2"
-                        key={descIndex}
-                        text={desc}
-                        textTag="h6"
-                      />
-                    ))}
-                  </div>
-                </div>
-                <div className="text-[20px]  pl-8 flex items-center top-[-40px] px-4 ">
-                  {question?.questionTextAndImages?.map(
-                    (textAndImages, textAndImagesIndex) => (
-                      <div className="flex flex-col" key={textAndImagesIndex}>
-                        {textAndImages?.text?.map((text, textIndex) => (
-                          <MathText
-                            className="question-text"
-                            key={textIndex}
-                            text={text}
-                            textTag="h6"
-                          />
-                        ))}
-                        {textAndImages?.image ? (
-                          <img
-                            className="question-image"
-                            key={textAndImagesIndex}
-                            src={textAndImages?.image}
-                            alt={`Img ${textAndImagesIndex + 1}`}
-                          />
+              <div class="question-text-container">
+                {/* for paragraph rendering  */}
+                {/* {question?.questionTextAndImages[0]?.text[0] ? (
+                  <div className="pt-[2.5rem] pb-2 ">
+                    <div className="text-[20px]   pl-8 flex items-center top-[-40px] px-4   ">
+                      <div className="">
+                        {question?.description[0] ? (
+                          <strong>Direction:</strong>
                         ) : (
                           ""
                         )}
+                        {question?.description?.map((desc, descIndex) => (
+                          <MathText
+                            className="question-text mb-2"
+                            key={descIndex}
+                            text={desc}
+                            textTag="h6"
+                          />
+                        ))}
                       </div>
-                    )
-                  )}
-                </div>
-              </div>
-            ) : (
-              ""
-            )}
+                    </div>
+                    <div className="text-[20px]  pl-8 flex items-center top-[-40px] px-4 ">
+                      {question?.questionTextAndImages?.map(
+                        (textAndImages, textAndImagesIndex) => (
+                          <div
+                            className="flex flex-col"
+                            key={textAndImagesIndex}
+                          >
+                            {textAndImages?.text?.map((text, textIndex) => (
+                              <MathText
+                                className="question-text"
+                                key={textIndex}
+                                text={text}
+                                textTag="h6"
+                              />
+                            ))}
+                            {textAndImages?.image ? (
+                              <img
+                                className="question-image"
+                                key={textAndImagesIndex}
+                                src={textAndImages?.image}
+                                alt={`Img ${textAndImagesIndex + 1}`}
+                              />
+                            ) : (
+                              ""
+                            )}
+                          </div>
+                        )
+                      )}
+                    </div>
+                  </div>
+                ) : (
+                  ""
+                )} */}
 
-            {question?.subQuestions[0]?.questionTextAndImages?.map(
-              (textAndImages, textAndImagesIndex) => (
-                <div
-                  className="flex ps-3 pt-[2.5rem] pb-2 justify-start flex-col"
-                  key={textAndImagesIndex}
-                >
-                  {textAndImages?.text?.map((text, textIndex) => (
-                    <MathText
-                      className="question-text mb-2"
-                      key={textIndex}
-                      text={text}
-                      textTag="h6"
-                    />
-                  ))}
-                  {textAndImages?.image ? (
-                    <img
-                      className="question-image"
-                      key={textAndImagesIndex}
-                      src={textAndImages?.image}
-                      alt={`Img ${textAndImagesIndex + 1}`}
-                    />
-                  ) : (
-                    ""
-                  )}
-                </div>
-              )
-            )}
-          </div>
-        </div>
-        {question?.subQuestions[0]?.options?.map((option, optionIndex) => (
-          <div
-            key={optionIndex}
-            className={`option-box   
+                {question?.subQuestions[0]?.questionTextAndImages?.map(
+                  (textAndImages, textAndImagesIndex) => (
+                    <div className="" key={textAndImagesIndex}>
+                      {textAndImages?.text?.map((text, textIndex) => (
+                        <MathText
+                          className="question-text mb-2"
+                          key={textIndex}
+                          text={text}
+                          textTag="h6"
+                        />
+                      ))}
+                      {textAndImages?.image ? (
+                        <img
+                          className="question-image"
+                          key={textAndImagesIndex}
+                          src={textAndImages?.image}
+                          alt={`Img ${textAndImagesIndex + 1}`}
+                        />
+                      ) : (
+                        ""
+                      )}
+                    </div>
+                  )
+                )}
+              </div>
+            </div>
+            {question?.subQuestions[0]?.options?.map((option, optionIndex) => (
+              <div
+                key={optionIndex}
+                className={`option-box   
     ${
       selectedOptions[currentPage] &&
       selectedOptions[currentPage][questionIndex] === optionIndex
@@ -137,42 +138,44 @@ const PrepModulesSingleSubquestion = ({ data }) => {
           : "incorrect"
         : ""
     }`}
-            onClick={() => handleOptionClick(questionIndex, optionIndex)}
-          >
-            <span className="option-alphabet text-black px-2">
-              {alphabets[optionIndex]}
-            </span>
-            <div className="flex mx-3 text-[20px]  relative  justify-start gap-3 w-100 items-center ">
-              <MathText text={option?.text} textTag="h6" />
-              <div className="single-image-container">
-                {option?.image && (
-                  <img
-                    className="question-image"
-                    src={option?.image}
-                    alt={`Img ${optionIndex + 1}`}
-                  />
-                )}
-              </div>
-            </div>
-            <div className="flex">
-              {selectedOptions[currentPage] &&
-                selectedOptions[currentPage][questionIndex] === optionIndex && (
-                  <span>
-                    {question?.subQuestions[0]?.correctOptionIndex ===
-                    optionIndex ? (
-                      <i className="fa-solid fa-check"></i>
-                    ) : (
-                      <i className="fa-solid fa-xmark text-black"></i>
+                onClick={() => handleOptionClick(questionIndex, optionIndex)}
+              >
+                <span className="option-alphabet px-2">
+                  {alphabets[optionIndex]}
+                </span>
+                <div className="flex mx-3 text-[20px]  relative  justify-start gap-3 w-100 items-center ">
+                  <MathText text={option?.text} textTag="h6" />
+                  <div className="single-image-container">
+                    {option?.image && (
+                      <img
+                        className="question-image"
+                        src={option?.image}
+                        alt={`Img ${optionIndex + 1}`}
+                      />
                     )}
-                  </span>
-                )}
-            </div>
+                  </div>
+                </div>
+                <div className="flex">
+                  {selectedOptions[currentPage] &&
+                    selectedOptions[currentPage][questionIndex] ===
+                      optionIndex && (
+                      <span>
+                        {question?.subQuestions[0]?.correctOptionIndex ===
+                        optionIndex ? (
+                          <i className="fa-solid fa-check"></i>
+                        ) : (
+                          <i className="fa-solid fa-xmark"></i>
+                        )}
+                      </span>
+                    )}
+                </div>
+              </div>
+            ))}
           </div>
-        ))}
-        <div className="my-2 mb-5 ">
+
           <div className="w-100 flex justify-center items-center">
             <button
-              className="  text-capitalize border-solid rounded-3xl p-2 px-3 bg-white  border-black flex justify-center"
+              className="btn-tertiary"
               onClick={() => toggleExplanationVisibility(questionIndex)}
             >
               {isExplanationVisible ? "Hide Explanation" : "Show Explanation"}
@@ -186,7 +189,7 @@ const PrepModulesSingleSubquestion = ({ data }) => {
                     <div
                       key={explanationIndex}
                       className="explanation-box"
-                      style={{ margin: "0 20px" }}
+                      style={{ margin: "0 10px" }}
                     >
                       <div className="flex flex-row gap-2 justify-start items-center">
                         <h6 className="mb-0 text-primary fw-bold">Answer:</h6>
@@ -195,8 +198,7 @@ const PrepModulesSingleSubquestion = ({ data }) => {
                           {question?.subQuestions[0]?.correctOptionIndex !==
                           undefined
                             ? alphabets[
-                                data[currentPage]?.subQuestions[0]
-                                  ?.correctOptionIndex
+                                question?.subQuestions[0]?.correctOptionIndex
                               ]
                             : ""}
                         </h6>
@@ -232,12 +234,12 @@ const PrepModulesSingleSubquestion = ({ data }) => {
 
   const handlePageChange = (page) => {
     setCurrentPage(page - 1);
-    window.scroll(0, 0); 
+    window.scroll(0, 0);
   };
 
   return (
-    <section className="question-practice question-practice-v2">
-      <div className="w-100 d-flex justify-content-center mt-4 align-items-center flex-column">
+    <section className="question-practice  question-practice-v2">
+      <div className="w-100 flex justify-center mt-4 items-center flex-col">
         <div className="options-container">
           {data
             .slice(currentPage * 5, (currentPage + 1) * 5)
@@ -245,19 +247,21 @@ const PrepModulesSingleSubquestion = ({ data }) => {
               renderQuestion(question, questionIndex)
             )}
         </div>
+        <div className="pagination">
+          <Pagination
+            defaultCurrent={currentPage + 1}
+            locale={locale}
+            total={data.length}
+            pageSize={5} // Display 5 questions per page
+            onChange={handlePageChange}
+            showPrevNextJumpers
+            showQuickJumper
+            showTotal={(total, range) =>
+              `${range[0]}-${range[1]} of ${total} items`
+            }
+          />
+        </div>
       </div>
-      <Pagination
-        defaultCurrent={currentPage + 1} 
-        locale={locale}
-        total={data.length}
-        pageSize={5} // Display 5 questions per page
-        onChange={handlePageChange}
-        showPrevNextJumpers
-        showQuickJumper
-        showTotal={(total, range) =>
-          `${range[0]}-${range[1]} of ${total} items`
-        }
-      />
     </section>
   );
 };
