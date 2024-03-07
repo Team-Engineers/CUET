@@ -57,7 +57,7 @@ const Navbar = () => {
                     <b className="flex-1 relative cursor-pointer text-blueviolet-100 text-lg font-semibold">{nav.title}</b>
                   </NavLink>
                   {location.pathname === nav.path && (
-                    <div className="w-[23px] h-px relative box-border border-t-[1px] border-solid border-blueviolet-100" />
+                    <div className="w-full h-px relative box-border border-t-[1px] border-solid border-blueviolet-100" />
                   )}
                 </div>
               </li>
