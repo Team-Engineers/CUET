@@ -1,7 +1,7 @@
 import axios from 'axios';
+import React, { useState } from 'react';
 import { FaCheck, FaQuestionCircle } from 'react-icons/fa';
 import { RxCross1 } from "react-icons/rx";
-import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { API } from '../../utils/constants';
 import { useAuth } from "../../utils/context";
@@ -87,8 +87,8 @@ const PriceCard = ({ _id, nameOfPlan, bgColor, amount, description, benefits }) 
   };
 
   return (
-    <div id='select'  className="price-card flex-col-reverse lg:flex-row lg:h-[550px] my-4 j items-center flex">
-      <div className="rounded-3xl max-lg:justify-center max-lg:top-[-30px] flex flex-col justify-center px-10 hover:scale-105 shadow-2xl transition-all duration-100 p-5 relative lg:left-5 z-0 bg-white h-[400px]">
+    <div id='select' className="price-card flex-col-reverse lg:flex-row lg:h-[550px] my-4 j items-center flex">
+      <div className="max-md:hidden rounded-3xl max-lg:justify-center max-lg:top-[-30px] flex flex-col justify-center px-10 hover:scale-105 shadow-2xl transition-all duration-100 p-5 relative lg:left-5 z-0 bg-white h-[400px]">
         <h4 className='font-bold text-[25px]'>Plan Benefits:
           <hr className='my-1' />
         </h4>
@@ -102,7 +102,7 @@ const PriceCard = ({ _id, nameOfPlan, bgColor, amount, description, benefits }) 
         </h>
       </div>
 
-      <div className='p-4 max-w-[350px] relative z-10 max-h-[700px] bg-white transition-all duration-100 shadow-2xl my-8 rounded-3xl backdrop-blur[40px] hover:scale-105 text-center text-black mx-3 '>
+      <div className='p-4 md:max-w-[350px] max-md:w-full relative z-10 md:max-h-[700px] max-h-[800px] bg-white transition-all duration-100 shadow-2xl my-8 rounded-3xl backdrop-blur[40px] hover:scale-105 text-center text-black mx-3 '>
         <div className='p-2 py-3 '>
           <h2 style={{ background: bgColor }} className='text-[25px] mb-6 border-dashed border-2 border-blue-950 p-2 mx-auto text-black whitespace-nowrap rounded-3xl '>{nameOfPlan}</h2>
           <hr className='my-2' />
@@ -110,9 +110,17 @@ const PriceCard = ({ _id, nameOfPlan, bgColor, amount, description, benefits }) 
             <span className="text-gray-400 font-medium text-xl">/ year</span>
             <p className='ml-0 text-[12px]'>*GST Excluded</p>
           </h1>
-          <hr className='my-2' />
-          <p className='text-[15px] text-slate-600 px-1 md:h-[100px] '>{description}</p>
-          <div className="pt-8">
+          <hr className='my-2 ' />
+          <h className='md:hidden font-medium text-[13px] md:text-[18px]'>
+            {benefits.map((benefit, index) => (
+              <p key={index} className="mt-4">
+                {renderIcon(benefit)}
+                <span className='ml-3'>{benefit}</span>
+              </p>
+            ))}
+          </h>
+          <p className='max-md:hidden text-[15px] text-slate-600 px-1 md:h-[100px] '>{description}</p>
+          <div className="md:pt-8 pt-5">
             <h onClick={() => {
               if (!auth.user) {
                 navigate('/login');
@@ -120,7 +128,7 @@ const PriceCard = ({ _id, nameOfPlan, bgColor, amount, description, benefits }) 
               }
               setShowOptions(true);
             }}>
-              <p className="w-full py-4 cursor-pointer text-black border transition-colors duration-100 border-blue-800 bg-[#bbbbbb8e] border-solid hover:bg-blue-600 mt-8 rounded-xl hover:text-white">
+              <p className="w-full py-4 cursor-pointer text-black border transition-colors duration-100 border-blue-800 bg-[#bbbbbb8e] border-solid hover:bg-blue-600 md:mt-8 rounded-xl hover:text-white">
                 <span className="font-medium">
                   Get Started
                 </span>
@@ -223,18 +231,19 @@ const PriceCardsContainer = ({ packages }) => {
   );
 };
 
-const Tabs = ({ packages, setActiveTab, activeTab, setBgColor }) => {
+const Tabs = ({ packages, setActiveTab, activeTab, setBgColor, bgColor }) => {
   const changeBgColor = (color) => {
     setBgColor(color);
   }
 
   return (
-    <div className=" border max-sm:fixed max-sm:mx-2  bottom-0 max-sm:w-full  z-50 flex justify-between  bg-white rounded-lg shadow-2xl ">
+    <div className=" border max-sm:fixed max-sm:w-[95%]  bottom-2  z-50 flex justify-between  bg-white rounded-lg shadow-2xl ">
       {packages.map((packageItem) => (
         <div
           key={packageItem._id}
           onClick={() => { setActiveTab(packageItem._id); changeBgColor(packageItem.bgColor); }}
-          className={`  bg-white font-medium max-sm:text-[3vw] shadow-2xl cursor-pointer rounded p-2 md:p-5 m-1  ${activeTab === packageItem._id ? 'active bg-yellow-200' : ''}`}
+          className={`bg-white font-medium max-sm:text-[3vw] shadow-2xl cursor-pointer rounded p-2 md:p-5 m-1 ${activeTab === packageItem._id ? 'active' : ''}`}
+          style={{ backgroundColor: activeTab === packageItem._id ? bgColor : '' }}
         >
           {packageItem.nameOfPlan}
         </div>
@@ -252,7 +261,7 @@ const PriceCardPage = ({ packages }) => {
     <div className="flex overflow-hidden  flex-col justify-center items-center  bg-[#c4e9f0]" style={{ backgroundColor: bgColor, transition: "background-color 0.3s ease" }}>
       <Navbar />
 
-      <Tabs packages={packages} setActiveTab={setActiveTab} activeTab={activeTab} setBgColor={setBgColor} />
+      <Tabs packages={packages} setActiveTab={setActiveTab} activeTab={activeTab} setBgColor={setBgColor} bgColor={bgColor} />
       <PriceCardsContainer packages={packages.filter((packageItem) => packageItem._id === activeTab)} />
       <PriceTables />
 
@@ -294,7 +303,7 @@ const Packages = [
       '12 Mock Tests',
       'Unlimited Attempts '
     ],
-    bgColor: '#f0eac4'
+    bgColor: '#C6EBBE'
   },
   {
     _id: "65d9428fd3267bf1efe0f364",
@@ -326,7 +335,7 @@ const Packages = [
       '12 Mock Tests',
       'Unlimited Attempts '
     ],
-    bgColor: '#c4f0e9'
+    bgColor: '#E6D0CF'
   },
 ];
 

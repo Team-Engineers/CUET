@@ -82,7 +82,7 @@ const PackFaq = () => {
             content: 'You cannot apply for refund once the payment is done as all transactions done on Testknock platform are non refundable.'
         },
         {
-            title: 'Can I share my testbook account with my friend/relative?',
+            title: 'Can I share my testknock account with my friend/relative?',
             content: 'No, You can not share your account with anyone. If you do so, Our systems will detect it and block your account immediately.'
         },
     ];
