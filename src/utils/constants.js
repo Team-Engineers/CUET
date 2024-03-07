@@ -47,24 +47,50 @@ export const topics = {
     "Jumbled Sentences & Parajumble",
     "Reading Comprehension"
   ],
-  "General Test": [
-    "Number System",
-    "Algebra",
-    "Simplification & Calculation",
-    "Average",
-    "Percentage",
-    "Fraction & Decimals, Square root",
-    "Ratio & Proportion",
-    "Profit & Loss",
-    "S.I & C.I , partnership",
-    "Time, Speed & Distance",
-    "Time & Work",
-    "Mensuration",
-    "Geometry",
-    "Permutation & Combination",
-    "Probability",
-    "General Awareness"
-  ],
+  "General Test": {
+    Mathematics: [
+      "Number System",
+      "Algebra",
+      "Simplification & Calculation",
+      "Average",
+      "Percentage",
+      "Fraction and Decimals, Square root",
+      "Ratio & Proportion",
+      "Profit & Loss",
+      "S.I & C.I, Partnership",
+      "Time, Speed & Distance",
+      "Time & Work",
+      "Mensuration",
+      "Geometry",
+      "Permutation & Combination",
+      "Probability"
+    ],
+    "Logical Reasoning": [
+      "Alphabet series",
+      "Blood Relation",
+      "Classification",
+      "Clock and Calendar",
+      "Critical Reasoning",
+      "Arrangement Circular and Linear",
+      "Coding Decoding",
+      "Decision Making and Order and Ranking",
+      "Direction Problem",
+      "Number Series",
+      "Puzzle",
+      "Venn Diagram",
+      "Visual Reasoning"
+    ],
+    "General Awareness": [
+      "Art Culture and Literature",
+      "Award and Honor",
+      "Indian Geography",
+      "Indian Economics",
+      "Indian History",
+      "Indian Polity",
+      "General Science",
+      "International Cooperation Organization"
+    ]
+  },
   "Domain": {
     "Science": {
       "Maths": [
@@ -324,7 +350,7 @@ export const topics = {
         "General Awareness"
       ]
     }
-  }
+  },
 };
 
 export const topics2 = {
