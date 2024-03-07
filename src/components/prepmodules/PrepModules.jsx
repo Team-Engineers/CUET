@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from "react";
-import "./question.css";
-import { useParams } from "react-router-dom";
-import PrepModulesMultipleSubquestion from "./PrepModulesMultipleSubquestion";
-import PrepModulesSingleSubquestion from "./PrepModulesSingleSubquestion";
 import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { useAuth } from "../../utils/context";
+import Footer from "../Footer";
 import CuetLoader from "../Loader/Loader";
 import NoData from "../Loader/NoData";
-import Footer from "../Footer";
-import RecommendedSubTopics from "./RecommendedSubTopics";
-import Navbar from "./Navbar";
-import { useAuth } from "../../utils/context";
 import FixedNavbar from "./FixedNavbar";
+import Navbar from "./Navbar";
+import PrepModulesMultipleSubquestion from "./PrepModulesMultipleSubquestion";
+import PrepModulesSingleSubquestion from "./PrepModulesSingleSubquestion";
+import RecommendedSubTopics from "./RecommendedSubTopics";
+import "./question.css";
 
 const PrepModules = () => {
   const [auth] = useAuth();
@@ -50,7 +50,9 @@ const PrepModules = () => {
 
   return (
     <section className="question-practice bg-white">
-      {!auth?.user && <FixedNavbar />}
+      <div className="max-md:hidden">
+        {!auth?.user && <FixedNavbar />}
+      </div>
       <Navbar />
       {data?.length > 0 ? (
         <div className="mx-auto max-w-[1280px] my-10">
