@@ -94,7 +94,7 @@ const Navbar = () => {
                 <NavLink
                   to={"/signup"}
                   className={
-                    "text-sm md:text-lg whitespace-nowrap font-medium text-white bg-salmon-200 hover:bg-salmon-200 no-underline rounded-full py-2 border-solid border-2 md:py-3 md:px-6"
+                    "text-sm md:text-lg max-md:hidden whitespace-nowrap font-medium text-white bg-salmon-200 hover:bg-salmon-200 no-underline rounded-full py-2 border-solid border-2 md:py-3 md:px-6"
                   }
                 >
                   <span>Get Started</span>
