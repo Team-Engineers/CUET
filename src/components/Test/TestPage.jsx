@@ -10,7 +10,6 @@ import "./css/TestPage.css";
 function TestPage() {
   const { topic } = useParams();
   const mainheading = topic.toLowerCase().replace(/\s/g, "_");
-
   let subtopics = [];
   const [selectedCategory, setSelectedCategory] = useState("Mathematics");
   if (topic === "General Test") {
@@ -103,7 +102,7 @@ function TestPage() {
               className="w-[300px] h-[300px] md:w-[450px] md:h-[400px] flex justify-center items-center mx-auto md:mr-4 lg:mr-14"
             />
           </div>
-        
+
           <div className="w-full flex flex-col justify-center items-center">
             <div className="w-[98%]  flex flex-col items-center md:flex-row justify-between md:text-lg text-center text-[15px] text-[#5648FC] md:my-14">
               <h1
@@ -111,42 +110,47 @@ function TestPage() {
                 onClick={() => setCurrentTab("prep")}
               >
                 Preparatory Modules
-                
-                {currentTab === "prep" && <div className="w-20 m-0 mt-2 max-md:mx-auto h-[2px] bg-blueviolet-400 text-blueviolet-100" />}
+
+                {currentTab === "prep" && <div className="w-20 m-0 mt-2 max-md:mx-auto h-[3px] bg-blueviolet-400 text-blueviolet-100" />}
               </h1>
               <h1
                 className="cursor-pointer my-3"
                 onClick={() => setCurrentTab("practice")}
               >
                 Practice Tests
-                {currentTab === "practice" && <div className="w-20 m-0 mt-2 max-md:mx-auto h-[2px] bg-blueviolet-400 text-blueviolet-100" />}
+                {currentTab === "practice" && <div className="w-20 m-0 mt-2 max-md:mx-auto h-[3px] bg-blueviolet-400 text-blueviolet-100" />}
               </h1>
               <h1
                 className="cursor-pointer my-3"
                 onClick={() => setCurrentTab("mock")}
               >
                 Mock Tests
-                {currentTab === "mock" && <div className="w-20 m-0 mt-2 max-md:mx-auto h-[2px] bg-blueviolet-400 text-blueviolet-100" />}
+                {currentTab === "mock" && <div className="w-20 m-0 mt-2 max-md:mx-auto h-[3px] bg-blueviolet-400 text-blueviolet-100" />}
               </h1>
             </div>
-            {topic === "General Test" && (
-            <div className="md:mx-10 mx-4">
-              <div className=" py-2 mb-6 top-[-20px] relative  px-4 shadow-md flex flex-row  rounded-md ">
-                {Object.keys(topics2).map(category => (
-                  <div
-                    key={category}
-                    className={`text-[30px] mx-3  whitespace-nowrap flex cursor-pointer relative  font-bold leading-7  text-center  p-2 rounded ${category === selectedCategory ? "font-medium bg-red-400 text-white " : " font-normal  text-blue-800"
-                      }`}
-                    onClick={() => {
-                      setSelectedCategory(category);
-                    }}
-                  >
-                    {category}
+            {currentTab === "prep" &&
+              <>
+                {topic === "General Test" && (
+                  <div className="md:mx-10 max-md:mt-7 mx-4">
+                    <div className=" py-2 mb-6 top-[-20px] relative  px-4 md:shadow-md flex flex-col lg:flex-row   rounded-md ">
+                      {Object.keys(topics2).map(category => (
+                        <div
+                          key={category}
+                          className={`text-[30px] mx-3  whitespace-nowrap flex flex-col lg:flex-row  cursor-pointer relative  font-bold leading-7  text-center  p-2 rounded ${category === selectedCategory ? "font-medium bg-red-400 text-white " : " font-normal  text-blue-800"
+                            }`}
+                          onClick={() => {
+                            setSelectedCategory(category);
+                          }}
+                        >
+                          {category}
+                        </div>
+                      ))}
+                    </div>
                   </div>
-                ))}
-              </div>
-            </div>
-          )}
+                )}
+              </>
+            }
+
             <div className="grid grid-cols-1 md:grid-cols-2 mb-20 lg:grid-cols-3 gap-14">
               {currentTab === "prep" &&
                 prep.map((subject, index) => (
@@ -154,12 +158,12 @@ function TestPage() {
                 ))}
               {currentTab === "practice" &&
                 practice.map((subject, index) => (
-                  <Testcard1 topic={mainheading} {...subject} index={index} />
+                  <Testcard1 key={index} subtopicNumber={index + 1} topic={topic} {...subject} index={index} />
                 ))}
               {currentTab === "mock" &&
                 mock.map((subject, index) => (
                   <div key={index} className="col-md-4">
-                    <Testcard2 heading={mainheading} {...subject} index={index} mocksubtopicNumber={index + 1} />
+                    <Testcard2 topicNumber={index + 1} topic={topic} {...subject} index={index} mocksubtopicNumber={index + 1} />
                   </div>
                 ))}
             </div>

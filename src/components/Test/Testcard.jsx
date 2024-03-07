@@ -69,6 +69,8 @@ export const Testcard = ({ subTopic, heading, Questions, bgcolor, index }) => {
 export const Testcard1 = ({ subTopic, topic,subtopicNumber, Questions, Marks, bgcolor, Times, index }) => {
   const [auth] = useAuth();
   const allow = auth?.user?.packageId;
+  console.log(topic, "hello")
+  console.log(subtopicNumber, "hello2")
   const topic2 = topic === "General English" ? "general_english_practice_test" : "general_test_practice_test";
 
   
@@ -212,4 +214,3 @@ export const Testcard2 = ({ subTopic, topic, Questions, mocksubtopicNumber, Mark
     </div>
   );
 };
-
