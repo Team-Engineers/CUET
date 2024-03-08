@@ -191,21 +191,24 @@ const PrepModulesMultipleSubquestion = ({ data }) => {
                             )
                           }
                         >
-                          <span className="option-alphabet">
-                            {alphabets[optionIndex]}
-                          </span>
-                          <div className="flex justify-start gap-3 w-100 items-center ">
-                            <MathText text={option?.text} textTag="h6" />
-                            <div className="single-image-container">
-                              {option?.image && (
-                                <img
-                                  className="question-image"
-                                  src={option?.image}
-                                  alt={`Img ${optionIndex + 1}`}
-                                />
-                              )}
+                          <div className="flex items-center justify-start">
+                            <span className="option-alphabet">
+                              {alphabets[optionIndex]}
+                            </span>
+                            <div className="flex justify-start gap-3 w-100 items-center ">
+                              <MathText text={option?.text} textTag="h6" />
+                              <div className="single-image-container">
+                                {option?.image && (
+                                  <img
+                                    className="question-image"
+                                    src={option?.image}
+                                    alt={`Img ${optionIndex + 1}`}
+                                  />
+                                )}
+                              </div>
                             </div>
                           </div>
+
                           <div className="flex">
                             {selectedOptions[currentPage] &&
                               selectedOptions[currentPage][questionIndex] &&
@@ -254,10 +257,10 @@ const PrepModulesMultipleSubquestion = ({ data }) => {
                                   className="m-0 pt-3"
                                 >
                                   <div className="flex flex-row gap-2 justify-start items-center">
-                                    <h6 className="mb-0 text-primary fw-bold">
+                                    <h6 className="mb-0 text-blueviolet-100 fw-bold">
                                       Answer:
                                     </h6>
-                                    <h6 className="mb-0  fw-bold text-secondary">
+                                    <h6 className="mb-0  fw-bold text-salmon-200">
                                       Option{" "}
                                       {subQuestion?.correctOptionIndex !==
                                       undefined
@@ -267,7 +270,7 @@ const PrepModulesMultipleSubquestion = ({ data }) => {
                                         : ""}
                                     </h6>
                                   </div>
-                                  <h6 className="text-primary fw-bold">
+                                  <h6 className="text-blueviolet-100 fw-bold">
                                     Solution:
                                   </h6>
                                   {explanation?.text?.map((text, textIndex) => (
