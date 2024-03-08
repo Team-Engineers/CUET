@@ -38,7 +38,7 @@ const MarginTop = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
-  top: 0;
+  top: 10px;
   white-space: nowrap;
   position: sticky;
 `;
