@@ -135,9 +135,9 @@ const PracticeTestQues = ({ data }) => {
           <div className="flex flex-col">
             <div className="flex justify-between">
               <div className="px-4 py-5">
-                <span className={`question-number id-${question._id}`}>
+                {/* <span className={`question-number id-${question._id}`}>
                   {`P${currentPage + 1}`}
-                </span>
+                </span> */}
               </div>
             </div>
             <div className="text-[20px]  relative pl-8 flex items-center top-[-25px] px-4">
