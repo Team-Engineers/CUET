@@ -126,7 +126,10 @@ const PracticeTestQues = ({ data }) => {
   };
 
   const renderQuestion = (question, questionIndex) => (
-    <div key={questionIndex} className="options-grid max-h-[70vh] min-h-[70vh] px-[5px] overflow-y-scroll">
+    <div
+      key={questionIndex}
+      className="options-grid max-h-[70vh] min-h-[70vh] px-[5px] overflow-y-scroll"
+    >
       {question?.questionTextAndImages[0]?.text[0] ? (
         <div className="question-box">
           <div className="flex flex-col">
@@ -215,7 +218,7 @@ const PracticeTestQues = ({ data }) => {
             !isSubmitted &&
             selectedOptions[currentPage] &&
             selectedOptions[currentPage][questionIndex] === optionIndex
-              ? "bg-gradient-to-br overflow-hidden from-[#a1e486] to-[#76e967] text-white"
+              ? "bg-gradient-to-br from-[#a1e486] to-[#76e967] text-white"
               : isSubmitted &&
                 selectedOptions[currentPage] &&
                 selectedOptions[currentPage][questionIndex] === optionIndex &&
@@ -248,7 +251,7 @@ const PracticeTestQues = ({ data }) => {
             </div>
           </div>
 
-          <div className="absolute right-2 top-1/2 transform -translate-y-1/2">
+          <div className="">
             {question?.subQuestions[0]?.correctOptionIndex - 1 ===
               optionIndex &&
               isSubmitted &&
@@ -288,7 +291,28 @@ const PracticeTestQues = ({ data }) => {
           <div className="explanation">
             {question?.subQuestions[0]?.explanation?.map(
               (explanationData, index) => (
-                <p className="m-0 text-[23px] pb-6 font-thin pt-3" key={index}>
+                <p className="m-0" key={index}>
+                  <div className="flex flex-row gap-2 justify-start items-center">
+                    <h6 className="mb-0  text-blueviolet-100 fw-bold">
+                      <strong>Answer: </strong>
+                    </h6>
+                    <h6 className="mb-0   text-salmon-200">
+                      <strong>
+                        {" "}
+                        Option{" "}
+                        {question?.subQuestions[0]?.correctOptionIndex !==
+                        undefined
+                          ? alphabets[
+                              question?.subQuestions[0]?.correctOptionIndex
+                            ]
+                          : ""}
+                      </strong>
+                    </h6>
+                  </div>
+
+                  <h6 className="text-blueviolet-100">
+                    <strong> Solution:</strong>
+                  </h6>
                   <h6>
                     <span
                       dangerouslySetInnerHTML={{

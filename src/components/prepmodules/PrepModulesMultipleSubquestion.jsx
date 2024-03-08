@@ -258,20 +258,22 @@ const PrepModulesMultipleSubquestion = ({ data }) => {
                                 >
                                   <div className="flex flex-row gap-2 justify-start items-center">
                                     <h6 className="mb-0 text-blueviolet-100 fw-bold">
-                                      Answer:
+                                      <strong> Answer:</strong>
                                     </h6>
                                     <h6 className="mb-0  fw-bold text-salmon-200">
-                                      Option{" "}
-                                      {subQuestion?.correctOptionIndex !==
-                                      undefined
-                                        ? alphabets[
-                                            subQuestion?.correctOptionIndex
-                                          ]
-                                        : ""}
+                                      <strong>
+                                        Option{" "}
+                                        {subQuestion?.correctOptionIndex !==
+                                        undefined
+                                          ? alphabets[
+                                              subQuestion?.correctOptionIndex
+                                            ]
+                                          : ""}
+                                      </strong>
                                     </h6>
                                   </div>
                                   <h6 className="text-blueviolet-100 fw-bold">
-                                    Solution:
+                                    <strong> Solution: </strong>
                                   </h6>
                                   {explanation?.text?.map((text, textIndex) => (
                                     <MathText
