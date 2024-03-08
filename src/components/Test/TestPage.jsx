@@ -31,13 +31,26 @@ function TestPage() {
       "#FF7A7A"
     ];
     const colorIndex = index % backgroundColors.length;
+    let questionsValues;
+    if (topic === "General Test") {
+      if (selectedCategory === "Mathematics") {
+        questionsValues = [50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160];
+      } else if (selectedCategory === "Logical Reasoning") {
+        questionsValues = [70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 170, 180];
+      } else if (selectedCategory === "General Awareness") {
+        questionsValues = [60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 170];
+      }
+    } else {
+      questionsValues = [40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150];
+    }
 
     return {
       subTopic: subtopic,
-      Questions: 60,
+      Questions: questionsValues[index % questionsValues.length],
       bgcolor: backgroundColors[colorIndex],
     };
   });
+
 
   const practice = Array.from({ length: 12 }, (_, index) => {
     const backgroundColors = [
@@ -53,25 +66,56 @@ function TestPage() {
     ];
     const colorIndex = index % backgroundColors.length;
     const subtopicNumber = index + 1;
+    let marksValues, timesValues, questionsValues;
+
+    if (topic === "General Test") {
+      marksValues = [60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 170];
+      timesValues = [110, 120, 130, 140, 150, 160, 170, 180, 190, 200, 210, 220];
+      questionsValues = [50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160];
+    } else {
+      marksValues = [20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20];
+      timesValues = [100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200, 210];
+      questionsValues = [40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150];
+    }
+
     return {
       subTopic: `Practice Test ${subtopicNumber}`,
-      Marks: 60,
-      Times: 120,
-      Questions: 60,
+      Marks: marksValues[index % marksValues.length],
+      Times: timesValues[index % timesValues.length],
+      Questions: questionsValues[index % questionsValues.length],
       bgcolor: backgroundColors[colorIndex],
     };
   });
 
+
   const mock = Array.from({ length: 12 }, (_, index) => {
     const mocksubtopicNumber = index + 1;
+    let marksValues, timesValues, negativeValues, questionsValues;
+
+    if (topic === "General Test") {
+      marksValues = [60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 170];
+      timesValues = [110, 120, 130, 140, 150, 160, 170, 180, 190, 200, 210, 220];
+      questionsValues = [50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160];
+      negativeValues = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+
+    } else {
+      marksValues = [50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160];
+      timesValues = [100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200, 210];
+      questionsValues = [40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150];
+      negativeValues = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+
+    }
+
+
     return {
       subTopic: `${topic} ${mocksubtopicNumber}`,
-      Marks: 60,
-      Times: 120,
-      Negative: 1,
-      Questions: 50,
+      Marks: marksValues[index % marksValues.length],
+      Times: timesValues[index % timesValues.length],
+      Negative: negativeValues[index % negativeValues.length],
+      Questions: questionsValues[index % questionsValues.length],
     };
   });
+
 
   const [currentTab, setCurrentTab] = useState("prep");
 

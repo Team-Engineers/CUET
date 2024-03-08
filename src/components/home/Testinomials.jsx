@@ -16,11 +16,14 @@ const Testinomials2 = ({ image, color1, color2, name, text, university }) => {
   return (
     <div
       style={gradientStyle}
-      className="cursor-pointer max-md:max-w-[280px] text-center max-md:h-[250px] md:h-[250px] max-xl:w-[400px] w-[500px]  md:py-10 py-8 rounded-[16.02px] shadow-[0px_4px_4px_rgba(0,_0,_0,_0.25)]  justify-evenly items-center md:px-5 px-2 ">
-      <div className="md:text-xl text-md   text-white font-bold">{name}</div>
-      <div className="text-white md:text-md text-center my-2 md:my-8">{text}</div>
-      <hr className="border-[1px] border-solid border-[#D9D9D9] w-full" />
-      <div className="mb-0 font-bold md:text-xl text-white text-center">{university}</div>
+      className="cursor-pointer flex justify-center items-center px-6 pb-3  max-md:max-w-[280px] text-center max-md:h-[350px] md:h-[350px] max-xl:w-[400px] w-[500px]  rounded-[16.02px] shadow-[0px_4px_4px_rgba(0,_0,_0,_0.25)] ">
+      <div className="flex flex-col justify-center items-center">
+        <img src={image} className="w-[100px] rounded-full mx-auto" alt="" />
+        <div className="md:text-xl text-md   text-white font-bold">{name}</div>
+        <div className="text-white md:text-md text-center my-2 md:my-8">{text}</div>
+        <hr className="border-[1px] border-solid border-[#D9D9D9] w-full" />
+        <div className="mb-0 font-bold md:text-xl  text-white text-center">{university}</div>
+      </div>
     </div>
   );
 };
@@ -56,7 +59,6 @@ function Carroussel(props) {
 
     let xUp = evt.touches[0].clientX;
     let yUp = evt.touches[0].clientY;
-
     let xDiff = xDown - xUp;
     let yDiff = yDown - yUp;
     if (Math.abs(xDiff) > Math.abs(yDiff)) {
@@ -104,7 +106,7 @@ const slides = [
     key: uuidv4(),
     content: (
       <Testinomials2
-        image={require("../../assets/images/signup/test1.png")}
+        image={require("../../assets/images/testimonials/e.jpeg")}
         name="Sachin Gupta"
         text="After my Board exams, I felt that i seriouly need to work hard for cuet, thereby I subscribed to the complete package offered by TestKnock. Extensive practice of MCQs proved to be game changer. I owe my sucess to TestKnock"
         color1="#52e5e7"
@@ -117,7 +119,7 @@ const slides = [
     key: uuidv4(),
     content: (
       <Testinomials2
-        image={require("../../assets/images/signup/test1.png")}
+        image={require("../../assets/images/testimonials/sm.jpeg")}
         name="Varuna S"
         text="The Platform offered by cuet Tests is exactly mapped with cuet conducted by NTA. The difficulty level, look & feel-- in short everything when i appeared for my final CUET exams, it felt i have appeared similar tests in the past. THanks to TestKnock"
         color1="#7367f0"
@@ -131,12 +133,13 @@ const slides = [
     content: (
       <Testinomials2
         name={"S.K Malhotra "}
+        image={require("../../assets/images/testimonials/r.jpeg")}
         text={
           "I have been running my coaching centre successfully for more than 2 decades. I owe my success to my hardwork, dedication & sincerity. I found the same in team at TestKnock. All my students compulsorily subscribe to the Dashboard & online facilities oferred by TestKnock for CUET."
         }
         color1="#fec163"
         color2="#de4313"
-        university="Owner of SKM Classes, Yamuna Nagar"
+        university="SKM Classes (Owner), Yamuna Nagar"
       />
     ),
   },
@@ -145,6 +148,7 @@ const slides = [
     content: (
       <Testinomials2
         name={"Manish Kumar "}
+        image={require("../../assets/images/testimonials/s.jpeg")}
         text={
           "I solved MCQs on the TestKnock platform for hardly one month but in a consistent manner. I completed all the Mock Tests & then played a critical role in my success"
         }
@@ -159,6 +163,7 @@ const slides = [
     content: (
       <Testinomials2
         name={"R.K Suranjan Singh"}
+        image={require("../../assets/images/testimonials/d.jpeg")}
         text={
           "After getting to see the quality of questions & the overall experience & exposure offered to students, I recommended it to my students and they benefitted immensely"
         }
@@ -179,37 +184,6 @@ const Testinomials = () => {
             <h1 className="gradient-text2  text-13xl font-bold text-center ">Testimonials</h1>
           </div>
           <Carroussel cards={slides} height="500px" width="100%" margin="0 auto" offset={isMobile ? 10 : 200} showArrows={false} />{" "}
-          {/* <div className="max-md:hidden">
-        <Swiper
-            effect={'coverflow'}
-            grabCursor={true}
-            centeredSlides={true}
-            loop={true}
-            slidesPerView={'auto'}
-            coverflowEffect={{
-              rotate: 0,
-              stretch: 0,
-              depth: 100,
-              modifier: 2.5,
-            }}
-            pagination={{ el: '.swiper-pagination', clickable: true }}
-            navigation={{
-              nextEl: '.swiper-button-next',
-              prevEl: '.swiper-button-prev',
-              clickable: true,
-            }}
-            modules={[EffectCoverflow, Pagination, Navigation]}
-            className="swiper_container swiper"
-          >
-            {slides.map((slide) => (
-              <SwiperSlide height="500px" key={slide.key}>
-                {slide.content}
-              </SwiperSlide>
-            ))}
-                      <div className="swiper-pagination mx-auto"></div>
-
-          </Swiper>
-        </div> */}
         </div>
       </div>
       <img alt="" src="/bubbles/bubble3.png" className="absolute bottom-0  left-0 z-0" />
