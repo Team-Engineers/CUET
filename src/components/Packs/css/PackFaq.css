@@ -35,7 +35,7 @@
     text-align: left;
     width: 100%;
     padding: 1em 0;
-    color: rgb(41, 41, 41);
+    color: rgb(65, 65, 65);
     font-size: 1.15rem;
     font-weight: 400;
     border: none;
@@ -46,7 +46,7 @@
 .pack-accordion-faq button:hover,
 .pack-accordion-faq button:focus {
     cursor: pointer;
-    color: rgb(153, 153, 153);
+    color: rgb(136, 136, 136);
 }
 
 .pack-accordion-faq button .pack-accordion-title-faq {
@@ -95,7 +95,7 @@
 
 .pack-accordion-faq button[aria-expanded='true'] {
     padding-bottom: 3px;
-    color: #ffffff;
+    color: rgb(65, 65, 65);
 }
 
 .pack-accordion-faq button[aria-expanded='true'] .pack-icon-faq::after {
@@ -125,11 +125,6 @@
     max-height: 9em;
 
 }
-
-.pack-accordion-title-faq {
-    color: black;
-}
-
 
 
 .swiper-slide {

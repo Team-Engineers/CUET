@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../utils/context';
-const PriceTable = () => {
+const PriceTable = ({ handleGetStarted }) => {
   const [auth, setAuth] = useAuth();
 
   const navigate = useNavigate();
@@ -163,15 +163,15 @@ const PriceTable = () => {
               1
             </p>
             <div className="p-6 text-center border-t border-gray-300">
-              <a href='#select' className="flex no-underline text-sm cursor-pointer items-center mt-auto text-white bg-blue-500 border-0 py-2 px-1 w-full focus:outline-none hover:bg-indigo-600 rounded">Get Started
+              <button onClick={() => handleGetStarted('SOLO PACK')} className="flex no-underline text-sm cursor-pointer items-center mt-auto text-white bg-blue-500 border-0 py-2 px-1 w-full focus:outline-none hover:bg-indigo-600 rounded">Get Started
                 <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" className="w-4 h-4 ml-auto" viewBox="0 0 24 24">
                   <path d="M5 12h14M12 5l7 7-7 7"></path>
                 </svg>
-              </a>
+              </button>
             </div>
           </div>
-          <div className=" w-1/4   -mt-px mb-0 border-2 border-solid rounded-lg border-blue-500 relative">
-            <span className="bg-blue-500 text-white px-3 py-1 tracking-widest text-xs absolute right-0 top-0 rounded-bl">POPULAR</span>
+          <div className=" w-1/4   -mt-px mb-0 border-2 border-solid rounded-lg border-[#5b42b8] relative">
+            <span className="bg-[#5b42b8] text-white px-3 py-1 tracking-widest text-xs absolute right-0 top-0 rounded-bl">POPULAR</span>
             <div className="px-2 text-center h-48 flex flex-col items-center justify-center">
               <h3 className="tracking-widest">PAIR</h3>
               <h2 className="text-5xl text-gray-900 font-medium flex items-center justify-center leading-none mb-4 mt-2">1299
@@ -207,11 +207,11 @@ const PriceTable = () => {
               2
             </p>
             <div className="p-6 text-center border-t border-gray-300">
-              <a href='#select' className="flex no-underline text-sm cursor-pointer items-center mt-auto text-white bg-blue-500 border-0 py-2 px-1 w-full focus:outline-none hover:bg-indigo-600 rounded">Get Started
+              <button onClick={() => handleGetStarted('PAIR PACK')} className="flex no-underline text-sm cursor-pointer items-center mt-auto text-white bg-blue-500 border-0 py-2 px-1 w-full focus:outline-none hover:bg-indigo-600 rounded">Get Started
                 <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" className="w-4 h-4 ml-auto" viewBox="0 0 24 24">
                   <path d="M5 12h14M12 5l7 7-7 7"></path>
                 </svg>
-              </a>
+              </button>
             </div>
           </div>
           <div className=" w-1/4   mt-px mb-0 border-2  border-gray-300  border-none  rounded-none">
@@ -263,15 +263,15 @@ const PriceTable = () => {
               5
             </p>
             <div className="p-6 text-center border-t border-gray-300">
-              <a href='#select' className="flex no-underline text-sm cursor-pointer items-center mt-auto text-white bg-blue-500 border-0 py-2 px-1 w-full focus:outline-none hover:bg-indigo-600 rounded">Get Started
+              <button onClick={() => handleGetStarted('MEGA PACK')} className="flex no-underline text-sm cursor-pointer items-center mt-auto text-white bg-blue-500 border-0 py-2 px-1 w-full focus:outline-none hover:bg-indigo-600 rounded">Get Started
                 <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" className="w-4 h-4 ml-auto" viewBox="0 0 24 24">
                   <path d="M5 12h14M12 5l7 7-7 7"></path>
                 </svg>
-              </a>
+              </button>
             </div>
           </div>
-          <div className=" w-1/4   -mt-px mb-0 border-2 border-solid rounded-lg border-blue-500 relative">
-            <span className="bg-blue-500 text-white px-3 py-1 tracking-widest text-xs absolute right-0 top-0 rounded-bl">RECOMMENDED</span>
+          <div className=" w-1/4   -mt-px mb-0 border-2 border-solid rounded-lg border-[#c2a948] relative">
+            <span className="bg-[#c2a948] text-white px-3 py-1 tracking-widest text-xs absolute right-0 top-0 rounded-bl">RECOMMENDED</span>
             <div className="px-2 text-center h-48 flex flex-col items-center justify-center">
               <h3 className="tracking-widest">JUMBO</h3>
               <h2 className="text-5xl text-gray-900 font-medium flex items-center justify-center leading-none mb-4 mt-2">2999
@@ -320,11 +320,11 @@ const PriceTable = () => {
               6
             </p>
             <div className="p-6 text-center border-t border-gray-300">
-              <a href='#select' className="flex no-underline text-sm cursor-pointer items-center mt-auto text-white bg-blue-500 border-0 py-2 px-1 w-full focus:outline-none hover:bg-indigo-600 rounded">Get Started
+              <button onClick={() => handleGetStarted('JUMBO PACK')} className="flex no-underline text-sm cursor-pointer items-center mt-auto text-white bg-blue-500 border-0 py-2 px-1 w-full focus:outline-none hover:bg-indigo-600 rounded">Get Started
                 <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" className="w-4 h-4 ml-auto" viewBox="0 0 24 24">
                   <path d="M5 12h14M12 5l7 7-7 7"></path>
                 </svg>
-              </a>
+              </button>
             </div>
           </div>
         </div>
