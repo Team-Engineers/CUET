@@ -274,7 +274,7 @@ const PriceCardPage = ({ packages }) => {
   const handleGetStarted = (packageName) => {
     const packageItem = packages.find(item => item.nameOfPlan === packageName);
     setActiveTab(packageItem._id);
-    setBgColor(packageItem.bgColor);
+    // setBgColor(packageItem.bgColor);
     window.scrollTo({
       top: 100,
       behavior: 'smooth'
@@ -282,16 +282,18 @@ const PriceCardPage = ({ packages }) => {
   };
 
   return (
-    <div className="flex overflow-hidden  flex-col justify-center items-center  bg-[#c4e9f0]" style={{ backgroundColor: bgColor, transition: "background-color 0.3s ease" }}>
+    <div className='overflow-hidden  bg-[#c4e9f0]' style={{ backgroundColor: bgColor, transition: "background-color 0.3s ease" }} >
       <Navbar />
+      <div className="flex  flex-col justify-center items-center ">
+        <Tabs packages={packages} setActiveTab={setActiveTab} activeTab={activeTab} setBgColor={setBgColor} bgColor={bgColor} />
+        <PriceCardsContainer packages={packages.filter((packageItem) => packageItem._id === activeTab)} />
+        <PriceTables handleGetStarted={handleGetStarted} />
 
-      <Tabs packages={packages} setActiveTab={setActiveTab} activeTab={activeTab} setBgColor={setBgColor} bgColor={bgColor} />
-      <PriceCardsContainer packages={packages.filter((packageItem) => packageItem._id === activeTab)} />
-      <PriceTables handleGetStarted={handleGetStarted} />
-
-      <PackFaq />
-      <Footer />
+        <PackFaq />
+        <Footer />
+      </div>
     </div>
+
   );
 };
 
