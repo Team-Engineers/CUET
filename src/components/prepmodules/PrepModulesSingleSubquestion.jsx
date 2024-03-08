@@ -34,7 +34,7 @@ const PrepModulesSingleSubquestion = ({ data }) => {
 
   const renderQuestion = (question, questionIndex) => {
     const isExplanationVisible = explanationsVisible[questionIndex];
-    console.log("question is", question);
+    // console.log("question is", question);
     return (
       <div className="options-grid">
         <div className="question-box">
@@ -46,60 +46,6 @@ const PrepModulesSingleSubquestion = ({ data }) => {
                 </span>
               </div>
               <div class="question-text-container">
-                {/* for paragraph rendering  */}
-                {/* {question?.questionTextAndImages[0]?.text[0] ? (
-                  <div className="pt-[2.5rem] pb-2 ">
-                    <div className="text-[20px]   pl-8 flex items-center top-[-40px] px-4   ">
-                      <div className="">
-                        {question?.description[0] ? (
-                          <strong>Direction:</strong>
-                        ) : (
-                          ""
-                        )}
-                        {question?.description?.map((desc, descIndex) => (
-                          <MathText
-                            className="question-text mb-2"
-                            key={descIndex}
-                            text={desc}
-                            textTag="h6"
-                          />
-                        ))}
-                      </div>
-                    </div>
-                    <div className="text-[20px]  pl-8 flex items-center top-[-40px] px-4 ">
-                      {question?.questionTextAndImages?.map(
-                        (textAndImages, textAndImagesIndex) => (
-                          <div
-                            className="flex flex-col"
-                            key={textAndImagesIndex}
-                          >
-                            {textAndImages?.text?.map((text, textIndex) => (
-                              <MathText
-                                className="question-text"
-                                key={textIndex}
-                                text={text}
-                                textTag="h6"
-                              />
-                            ))}
-                            {textAndImages?.image ? (
-                              <img
-                                className="question-image"
-                                key={textAndImagesIndex}
-                                src={textAndImages?.image}
-                                alt={`Img ${textAndImagesIndex + 1}`}
-                              />
-                            ) : (
-                              ""
-                            )}
-                          </div>
-                        )
-                      )}
-                    </div>
-                  </div>
-                ) : (
-                  ""
-                )} */}
-
                 {question?.subQuestions[0]?.questionTextAndImages?.map(
                   (textAndImages, textAndImagesIndex) => (
                     <div className="" key={textAndImagesIndex}>
@@ -140,21 +86,24 @@ const PrepModulesSingleSubquestion = ({ data }) => {
     }`}
                 onClick={() => handleOptionClick(questionIndex, optionIndex)}
               >
-                <span className="option-alphabet px-2">
-                  {alphabets[optionIndex]}
-                </span>
-                <div className="flex mx-3 text-[20px]  relative  justify-start gap-3 w-100 items-center ">
-                  <MathText text={option?.text} textTag="h6" />
-                  <div className="single-image-container">
-                    {option?.image && (
-                      <img
-                        className="question-image"
-                        src={option?.image}
-                        alt={`Img ${optionIndex + 1}`}
-                      />
-                    )}
+                <div className="flex justify-between items-center">
+                  <span className="option-alphabet">
+                    {alphabets[optionIndex]}
+                  </span>
+                  <div className="flex justify-start gap-3 w-100 items-center ">
+                    <MathText text={option?.text} textTag="h6" />
+                    <div className="single-image-container">
+                      {option?.image && (
+                        <img
+                          className="question-image"
+                          src={option?.image}
+                          alt={`Img ${optionIndex + 1}`}
+                        />
+                      )}
+                    </div>
                   </div>
                 </div>
+
                 <div className="flex">
                   {selectedOptions[currentPage] &&
                     selectedOptions[currentPage][questionIndex] ===
@@ -192,8 +141,10 @@ const PrepModulesSingleSubquestion = ({ data }) => {
                       style={{ margin: "0 10px" }}
                     >
                       <div className="flex flex-row gap-2 justify-start items-center">
-                        <h6 className="mb-0 text-primary fw-bold">Answer:</h6>
-                        <h6 className="mb-0  fw-bold text-secondary">
+                        <h6 className="mb-0 text-blueviolet-100 fw-bold">
+                          Answer:
+                        </h6>
+                        <h6 className="mb-0  fw-bold text-salmon-200">
                           Option{" "}
                           {question?.subQuestions[0]?.correctOptionIndex !==
                           undefined
@@ -203,7 +154,7 @@ const PrepModulesSingleSubquestion = ({ data }) => {
                             : ""}
                         </h6>
                       </div>
-                      <h6 className="text-primary fw-bold">Solution:</h6>
+                      <h6 className="text-blueviolet-100 fw-bold">Solution:</h6>
                       {explanation.text.map((text, textIndex) => (
                         <MathText
                           className="explanation-text mb-2"
@@ -252,7 +203,7 @@ const PrepModulesSingleSubquestion = ({ data }) => {
             defaultCurrent={currentPage + 1}
             locale={locale}
             total={data.length}
-            pageSize={5} // Display 5 questions per page
+            pageSize={1} // Display 5 questions per page
             onChange={handlePageChange}
             showPrevNextJumpers
             showQuickJumper

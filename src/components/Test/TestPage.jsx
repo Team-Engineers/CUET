@@ -9,7 +9,7 @@ import "./css/TestPage.css";
 
 function TestPage() {
   const { topic } = useParams();
-  const mainheading = topic.toLowerCase().replace(/\s/g, "_");
+  // const mainheading = topic.toLowerCase().replace(/\s/g, "_");
   let subtopics = [];
   const [selectedCategory, setSelectedCategory] = useState("Mathematics");
   if (topic === "General Test") {
