@@ -274,7 +274,7 @@ const PriceCardPage = ({ packages }) => {
   const handleGetStarted = (packageName) => {
     const packageItem = packages.find(item => item.nameOfPlan === packageName);
     setActiveTab(packageItem._id);
-    // setBgColor(packageItem.bgColor);
+    setBgColor(packageItem.bgColor);
     window.scrollTo({
       top: 100,
       behavior: 'smooth'
@@ -282,7 +282,7 @@ const PriceCardPage = ({ packages }) => {
   };
 
   return (
-    <div className='overflow-hidden  bg-[#c4e9f0]' style={{ backgroundColor: bgColor, transition: "background-color 0.3s ease" }} >
+    <div className="overflow-hidden   bg-[#c4e9f0]" style={{ background: `linear-gradient(to bottom, ${bgColor}, white)`, transition: "background-color 0.3s ease" }} >
       <Navbar />
       <div className="flex  flex-col justify-center items-center ">
         <Tabs packages={packages} setActiveTab={setActiveTab} activeTab={activeTab} setBgColor={setBgColor} bgColor={bgColor} />
@@ -313,7 +313,7 @@ const Packages = [
       '12 Mock Tests',
       'Unlimited Attempts '
     ],
-    bgColor: '#c4e9f0'
+    bgColor: 'rgb(208, 239, 245, 0.8)'
   },
   {
     _id: "65d94008aaf8ebc47c522cef",
@@ -329,7 +329,7 @@ const Packages = [
       '12 Mock Tests',
       'Unlimited Attempts '
     ],
-    bgColor: '#C6EBBE'
+    bgColor: 'rgb(205, 232, 200, 0.6)'
   },
   {
     _id: "65d9428fd3267bf1efe0f364",
@@ -345,7 +345,7 @@ const Packages = [
       '12 Mock Tests',
       'Unlimited Attempts '
     ],
-    bgColor: '#d9c4f0'
+    bgColor: 'rgb(217, 196, 240, 0.6)'
   },
   {
     _id: "65e352e265a057561b4dcb67",
@@ -361,7 +361,7 @@ const Packages = [
       '12 Mock Tests',
       'Unlimited Attempts '
     ],
-    bgColor: '#E6D0CF'
+    bgColor: 'rgb(242, 224, 223, 0.6)'
   },
 ];
 
