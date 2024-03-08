@@ -9,7 +9,7 @@ import { IoBookmark, IoBookmarkOutline } from "react-icons/io5";
 import { TfiTimer } from "react-icons/tfi";
 import { Link } from "react-router-dom/dist";
 const PracticeTestQues = ({ data }) => {
-  console.log(data);
+  // console.log(data);
   const alphabets = "ABCDEFGHIJ".split("");
   const [selectedOptions, setSelectedOptions] = useState(
     Array(data.length).fill([])
@@ -118,51 +118,52 @@ const PracticeTestQues = ({ data }) => {
   const toggleExplanationVisibility = (questionIndex) => {
     if (isSubmitted) {
       const updatedExplanationsVisible = [...explanationsVisible];
-      updatedExplanationsVisible[questionIndex] =
-        !updatedExplanationsVisible[questionIndex];
+      updatedExplanationsVisible[questionIndex] = !updatedExplanationsVisible[
+        questionIndex
+      ];
       setExplanationsVisible(updatedExplanationsVisible);
     }
   };
 
   const renderQuestion = (question, questionIndex) => (
-    <div key={questionIndex} className="options-grid">
-      {question?.questionTextAndImages[0]?.text[0] ?  
-        (<div className="question-box">
+    <div key={questionIndex} className="options-grid max-h-[70vh] min-h-[70vh] px-[5px] overflow-y-scroll">
+      {question?.questionTextAndImages[0]?.text[0] ? (
+        <div className="question-box">
           <div className="flex flex-col">
             <div className="flex justify-between">
               <div className="px-4 py-5">
                 <span className={`question-number id-${question._id}`}>
-                  {`P${currentPage+1}`}
+                  {`P${currentPage + 1}`}
                 </span>
               </div>
             </div>
             <div className="text-[20px]  relative pl-8 flex items-center top-[-25px] px-4">
               <div>
-                {question?.questionTextAndImages?.map(
-                  (textData, textIndex) => (
-                    <div key={textIndex}>
-                      {textData.text && (
-                        <MathText
-                          className="question-text mb-2"
-                          text={textData.text}
-                          textTag="h6"
-                        />
-                      )}
-                      {textData.imageUrl && (
-                        <img
-                          src={textData.imageUrl}
-                          alt={`Img ${textIndex}+1`}
-                          className="question-image"
-                        />
-                      )}
-                    </div>
-                  )
-                )}
+                {question?.questionTextAndImages?.map((textData, textIndex) => (
+                  <div key={textIndex}>
+                    {textData.text && (
+                      <MathText
+                        className="question-text mb-2"
+                        text={textData.text}
+                        textTag="h6"
+                      />
+                    )}
+                    {textData.imageUrl && (
+                      <img
+                        src={textData.imageUrl}
+                        alt={`Img ${textIndex}+1`}
+                        className="question-image"
+                      />
+                    )}
+                  </div>
+                ))}
               </div>
             </div>
           </div>
-        </div>) : ""
-      }
+        </div>
+      ) : (
+        ""
+      )}
 
       <div className="question-box ">
         <div className="flex  flex-col">
@@ -191,7 +192,7 @@ const PracticeTestQues = ({ data }) => {
               )}
             </div>
           </div>
-          <div className="text-[20px]  relative pl-8 flex items-center top-[-25px] px-4   ">
+          <div className="text-[20px] pt-[1rem]  relative pl-8 flex items-center top-[-25px] px-4   ">
             <div>
               {question?.subQuestions[0]?.questionTextAndImages?.map(
                 (textData, textIndex) => (
@@ -210,11 +211,11 @@ const PracticeTestQues = ({ data }) => {
       {question?.subQuestions[0]?.options?.map((option, optionIndex) => (
         <div
           key={optionIndex}
-          className={`option-box relative bg-white ${
+          className={`option-box ${
             !isSubmitted &&
             selectedOptions[currentPage] &&
             selectedOptions[currentPage][questionIndex] === optionIndex
-              ? "bg-gradient-to-br overflow-hidden from-[#617cea] to-white text-white"
+              ? "bg-gradient-to-br overflow-hidden from-[#a1e486] to-[#76e967] text-white"
               : isSubmitted &&
                 selectedOptions[currentPage] &&
                 selectedOptions[currentPage][questionIndex] === optionIndex &&
@@ -231,21 +232,25 @@ const PracticeTestQues = ({ data }) => {
             handleOptionClick(question, questionIndex, optionIndex)
           }
         >
-          <span className="option-alphabet ">{alphabets[optionIndex]}</span>
-          <div className="flex mx-2 text-[20px] top-[-15px] relative  justify-start gap-3 w-100 items-center ">
-            <MathText text={option.text} textTag="h6" />
-            <div className="single-image-container">
-              {option.image && (
-                <img
-                  className="question-image"
-                  src={option.image}
-                  alt={`Img ${optionIndex + 1}`}
-                />
-              )}
+          <div className="flex justify-start items-center">
+            <span className="option-alphabet ">{alphabets[optionIndex]}</span>
+            <div className="flex mx-2 text-[20px]  relative  justify-start gap-3 w-100 items-center ">
+              <MathText text={option.text} textTag="h6" />
+              <div className="single-image-container">
+                {option.image && (
+                  <img
+                    className="question-image"
+                    src={option.image}
+                    alt={`Img ${optionIndex + 1}`}
+                  />
+                )}
+              </div>
             </div>
           </div>
+
           <div className="absolute right-2 top-1/2 transform -translate-y-1/2">
-            {question?.subQuestions[0]?.correctOptionIndex - 1 === optionIndex &&
+            {question?.subQuestions[0]?.correctOptionIndex - 1 ===
+              optionIndex &&
               isSubmitted &&
               selectedOptions[currentPage] &&
               selectedOptions[currentPage][questionIndex] === optionIndex && (
@@ -256,7 +261,7 @@ const PracticeTestQues = ({ data }) => {
             {isSubmitted &&
               selectedOptions[currentPage] &&
               selectedOptions[currentPage][questionIndex] === optionIndex &&
-              question.subQuestions[0].correctOptionIndex - 1 !==
+              question?.subQuestions[0]?.correctOptionIndex - 1 !==
                 optionIndex && (
                 <span className=" relative mx-2  ">
                   <i className="fa-solid fa-xmark"></i>
@@ -398,14 +403,14 @@ const PracticeTestQues = ({ data }) => {
             <>
               {!isSubmitted ? (
                 <button
-                  className="border-none cursor-pointer shadow-2xl relative flex justify-center items-center rounded bg-gradient-to-br overflow-hidden from-[#617cea] to-black text-white px-7 p-3"
+                  className="border-none cursor-pointer shadow-2xl relative flex justify-center items-center rounded bg-gradient-to-br overflow-hidden from-[#5648FC] to-[#5648FC] text-white px-7 p-3"
                   onClick={handleWarningExam}
                 >
                   Submit
                 </button>
               ) : (
                 <button
-                  className="border-none cursor-pointer shadow-2xl relative flex justify-center items-center rounded bg-gradient-to-br overflow-hidden from-[#617cea] to-black text-white px-7 p-3"
+                  className="border-none cursor-pointer shadow-2xl relative flex justify-center items-center rounded bg-gradient-to-br overflow-hidden from-[#5648FC] to-[#5648FC] text-white px-7 p-3"
                   onClick={() => window.location.reload()}
                 >
                   Retake Test
@@ -424,21 +429,21 @@ const PracticeTestQues = ({ data }) => {
             )}
           <div className="flex items-center mt-8 justify-between">
             <button
-              className=" border-none cursor-pointer shadow-2xl relative flex justify-center items-center rounded bg-gradient-to-br overflow-hidden from-[#617cea] to-black text-white px-7 p-3"
+              className=" border-none cursor-pointer shadow-2xl relative flex justify-center items-center rounded bg-gradient-to-br overflow-hidden from-[#5648FC] to-[#5648FC] text-white px-7 p-3"
               onClick={() => setCurrentPage((prev) => prev - 1)}
               disabled={currentPage === 0}
             >
               Prev
             </button>
             <button
-              className=" border-none md:hidden shadow-2xl relative flex justify-center items-center rounded bg-gradient-to-br overflow-hidden from-[#617cea] to-black text-white px-7 p-3"
+              className=" border-none md:hidden shadow-2xl relative flex justify-center items-center rounded bg-gradient-to-br overflow-hidden from-[#5648FC] to-[#5648FC] text-white px-7 p-3"
               onClick={handlePopupOpen}
             >
               All Questions
             </button>
 
             <button
-              className=" border-none cursor-pointer shadow-2xl relative flex justify-center items-center rounded bg-gradient-to-br overflow-hidden from-[#617cea] to-black text-white px-7 p-3"
+              className=" border-none cursor-pointer shadow-2xl relative flex justify-center items-center rounded bg-gradient-to-br overflow-hidden from-[#5648FC] to-[#5648FC] text-white px-7 p-3"
               onClick={() => setCurrentPage((prev) => prev + 1)}
               disabled={currentPage === data.data.length - 1}
             >
@@ -446,7 +451,7 @@ const PracticeTestQues = ({ data }) => {
             </button>
           </div>
         </div>
-        <div className="max-w-[400px] scroll-kit max-h-[630px] overflow-y-scroll relative left-8 border-solid border-[1px] rounded-2xl   border-black mx-8 max-lg:hidden  flex flex-col items-center justify-center ">
+        <div className="max-w-[400px] scroll-kit max-h-[630px] h-fit overflow-y-scroll relative left-8 border-solid border-[1px] rounded-2xl   border-black mx-8 max-lg:hidden  flex flex-col items-center justify-center ">
           <div
             className={`flex px-5 max-lg:hidden rounded-xl mt-2 border border-white border-solid py-3 bg-gradient-to-br overflow-hidden  text-black justify-center relative items-center`}
           >
@@ -466,13 +471,13 @@ const PracticeTestQues = ({ data }) => {
                 key={number}
                 className={`rounded border-none cursor-pointer shadow-xl w-[50px] h-[50px] m-1 ${
                   currentPage === number - 1
-                    ? "bg-gradient-to-br overflow-hidden from-[#617cea] to-black text-white"
+                    ? "bg-gradient-to-br overflow-hidden from-[#5648FC] to-[#5648FC] text-white"
                     : isSelected
-                    ? "bg-yellow-400 text-white"
+                    ? "bg-slate-400 text-white"
                     : pageStatus === "correct"
                     ? "bg-green-500 text-white"
                     : pageStatus === "incorrect"
-                    ? "bg-red-900 text-white"
+                    ? "bg-red-400 text-white"
                     : "bg-white"
                 }`}
                 onClick={() => setCurrentPage(number - 1)}
@@ -501,14 +506,14 @@ const PracticeTestQues = ({ data }) => {
               <>
                 {!isSubmitted ? (
                   <button
-                    className="border-none shadow-2xl mb-2 cursor-pointer relative flex justify-center items-center rounded bg-gradient-to-br overflow-hidden from-[#617cea] to-black text-white px-7 p-3"
+                    className="border-none shadow-2xl mb-2 cursor-pointer relative flex justify-center items-center rounded bg-gradient-to-br overflow-hidden from-[#5648FC] to-[#5648FC] text-white px-7 p-3"
                     onClick={handleWarningExam}
                   >
                     Submit
                   </button>
                 ) : (
                   <button
-                    className="border-none cursor-pointer shadow-2xl mb-2 relative flex justify-center items-center rounded bg-gradient-to-br overflow-hidden from-[#617cea] to-black text-white px-7 p-3"
+                    className="border-none cursor-pointer shadow-2xl mb-2 relative flex justify-center items-center rounded bg-gradient-to-br overflow-hidden from-[#5648FC] to-[#5648FC] text-white px-7 p-3"
                     onClick={() => window.location.reload()}
                   >
                     Retake Test
@@ -529,7 +534,7 @@ const PracticeTestQues = ({ data }) => {
                 key={number}
                 className={`rounded border-none shadow-2xl w-[50px] h-[50px] lg:w-[5vw] lg:h-[8vh] p-[1vw] m-[0.6vw] ${
                   currentPage === number - 1
-                    ? "bg-gradient-to-br overflow-hidden from-[#617cea] to-black text-white"
+                    ? "bg-gradient-to-br overflow-hidden from-[#5648FC] to-[#5648FC] text-white"
                     : isSelected
                     ? "bg-green-500 text-white"
                     : savedQuestions.includes(number - 1)
@@ -542,7 +547,7 @@ const PracticeTestQues = ({ data }) => {
               </button>
             ))}
             <button
-              className=" border-none shadow-2xl relative flex justify-center items-center rounded bg-gradient-to-br overflow-hidden from-[#617cea] to-black text-white px-7 p-3"
+              className=" border-none shadow-2xl relative flex justify-center items-center rounded bg-gradient-to-br overflow-hidden from-[#5648FC] to-[#5648FC] text-white px-7 p-3"
               onClick={handlePopupClose}
             >
               Close
@@ -606,14 +611,14 @@ const PracticeTestQues = ({ data }) => {
 
             <div className="flex justify-between">
               <button
-                className="border-none cursor-pointer shadow-2xl mb-2 relative flex justify-center items-center rounded bg-gradient-to-br overflow-hidden from-[#617cea] to-black text-white px-7 p-3"
+                className="border-none cursor-pointer shadow-2xl mb-2 relative flex justify-center items-center rounded bg-gradient-to-br overflow-hidden from-[#5648FC] to-[#5648FC] text-white px-7 p-3"
                 onClick={() => setShowResultPopup(false)}
               >
                 Review Test
               </button>
               <Link
                 to="/"
-                className="no-underline border-none cursor-pointer shadow-2xl mb-2 relative flex justify-center items-center rounded bg-gradient-to-br overflow-hidden from-[#617cea] to-black text-white px-7 p-3"
+                className="no-underline border-none cursor-pointer shadow-2xl mb-2 relative flex justify-center items-center rounded bg-gradient-to-br overflow-hidden from-[#5648FC] to-[#5648FC] text-white px-7 p-3"
               >
                 Home
               </Link>
@@ -645,13 +650,13 @@ const PracticeTestQues = ({ data }) => {
 
             <div className="flex mx-4 my-3  justify-end">
               <button
-                className="border-none mr-2 cursor-pointer shadow-2xl mb-2 relative flex justify-center items-center rounded bg-gradient-to-br overflow-hidden from-[#617cea] to-black text-white px-7 p-3"
+                className="border-none mr-2 cursor-pointer shadow-2xl mb-2 relative flex justify-center items-center rounded bg-gradient-to-br overflow-hidden from-[#5648FC] to-[#5648FC] text-white px-7 p-3"
                 onClick={handleContinueExam}
               >
                 Continue Exam
               </button>
               <button
-                className="border-none cursor-pointer shadow-2xl mb-2 relative flex justify-center items-center rounded bg-gradient-to-br overflow-hidden from-[#617cea] to-black text-white px-7 p-3"
+                className="border-none cursor-pointer shadow-2xl mb-2 relative flex justify-center items-center rounded bg-gradient-to-br overflow-hidden from-[#5648FC] to-[#5648FC] text-white px-7 p-3"
                 onClick={handleSubmitWarning}
               >
                 Submit
