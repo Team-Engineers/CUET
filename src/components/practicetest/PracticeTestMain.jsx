@@ -48,7 +48,7 @@ const PracticeTestMain = () => {
       {!auth?.user && <FixedNavbar />}
       <Navbar />  
       {data.data.length > 0 ? (
-        <section className="question-practice m-[20px]">
+        <section className="question-practice m-[20px] mb-[7rem]">
           <div className="mx-auto">
             <PracticeTestQues subtopic={subTopic} data={data} />
           </div>

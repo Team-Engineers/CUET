@@ -142,19 +142,25 @@ const PrepModulesSingleSubquestion = ({ data }) => {
                     >
                       <div className="flex flex-row gap-2 justify-start items-center">
                         <h6 className="mb-0 text-blueviolet-100 fw-bold">
-                          Answer:
+                          <strong> Answer:</strong>
                         </h6>
                         <h6 className="mb-0  fw-bold text-salmon-200">
-                          Option{" "}
-                          {question?.subQuestions[0]?.correctOptionIndex !==
-                          undefined
-                            ? alphabets[
-                                question?.subQuestions[0]?.correctOptionIndex
-                              ]
-                            : ""}
+                          <strong>
+                            {" "}
+                            Option{" "}
+                            {question?.subQuestions[0]?.correctOptionIndex !==
+                            undefined
+                              ? alphabets[
+                                  question?.subQuestions[0]?.correctOptionIndex
+                                ]
+                              : ""}
+                          </strong>
                         </h6>
                       </div>
-                      <h6 className="text-blueviolet-100 fw-bold">Solution:</h6>
+                      <h6 className="text-blueviolet-100 fw-bold">
+                        {" "}
+                        <strong>Solution:</strong>
+                      </h6>
                       {explanation.text.map((text, textIndex) => (
                         <MathText
                           className="explanation-text mb-2"
