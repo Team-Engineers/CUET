@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { LuUser2 } from "react-icons/lu";
 import { NavLink, useLocation } from "react-router-dom";
@@ -11,7 +11,6 @@ const Navbar = () => {
   const [auth, setAuth] = useAuth();
   const [detailsOpen, setDetailsOpen] = useState(false);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
-  const popupRef = useRef(null);
   const nav_buttons = [
     { path: "/", title: "Home" },
     { path: "/courses", title: "Courses" },
@@ -22,23 +21,13 @@ const Navbar = () => {
 
   ];
 
-
   const handleBellIconClick = () => {
     setIsPopupOpen(true);
   };
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (popupRef.current && !popupRef.current.contains(event.target)) {
-        setIsPopupOpen(false);
-      }
-    };
 
-    document.addEventListener("mousedown", handleClickOutside);
-
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
+  const handleCloseExamInfo = () => {
+    setIsPopupOpen(false);
+  };
   const handleLogout = () => {
     setAuth({
       ...auth,
@@ -209,8 +198,8 @@ const Navbar = () => {
         </div>
       </div>
       {isPopupOpen && (
-        <div ref={popupRef} className="absolute max-md:left-0 m-3 md:w-[25rem] rounded-lg">
-          <ExamInfo />
+        <div className="absolute max-md:left-0 m-3 md:w-[25rem] rounded-lg">
+          <ExamInfo onClose={handleCloseExamInfo} />
         </div>
       )}
     </>
@@ -219,4 +208,5 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
 

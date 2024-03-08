@@ -50,39 +50,39 @@ const Accordion = ({ items }) => {
 const PackFaq = () => {
     const faqItems = [
         {
-            title: 'What are CUET Testknock Passes?',
-            content: 'Testknock Passes offer exclusive membership plans that grant access to various features available on the CUET Testknock platform. These passes unlock prep modules, practice tests, and mock exams provided on the website.'
+            title: 'What are CUET Testknock Packs?',
+            content: 'Testknock Packs offer exclusive membership plans that grant access to various features available on the CUET Testknock platform. These packs unlock prep modules, practice tests, and mock exams provided on the website.'
         },
         {
-            title: 'When will my Pass expire?',
-            content: 'Each pass has a validity period of one year, which you can conveniently verify through your profile dashboard.'
+            title: 'When will my Pack expire?',
+            content: 'Each pack has a validity period of one year, which you can conveniently verify through your profile dashboard.'
         },
         {
-            title: 'Will I be able to access CUET Testknock prep modules, practice test and mock test after my Pass expires?',
-            content: "No, You won't be able to access the prep modules, practice test and mock test after your Pass expires. To access the same, you will have to renew the respective Pass."
+            title: 'Will I be able to access CUET Testknock prep modules, practice test and mock test after my Pack expires?',
+            content: "No, You won't be able to access the prep modules, practice test and mock test after your Pack expires. To access the same, you will have to renew the respective Pack."
         },
         {
-            title: 'What happens if I renew the Pass before the expiry date?',
-            content: 'If you renew the Pass before the expiry date, the duration of Pass simply gets added to the remaining days in your currently active Pass.'
+            title: 'What happens if I renew the Pack before the expiry date?',
+            content: 'If you renew the Pack before the expiry date, the duration of Pack simply gets added to the remaining days in your currently active Pack.'
         },
         {
-            title: 'How can I renew my Tesknock Pass?',
-            content: 'You have the flexibility to renew your Testknock Pass at any time, just as you initially purchased it. Simply navigate to the Pass page to view available plans and complete the renewal process.'
+            title: 'How can I renew my Testknock Pack?',
+            content: 'You have the flexibility to renew your Testknock Pack at any time, just as you initially purchased it. Simply navigate to the Pricing page to view available packs and complete the renewal process.'
         },
         {
             title: 'I do not have online payment activated, can I use any other mode for payment?',
             content: 'You can use your Debit card, ATM card, Credit card, Netbanking account or payment wallets like Paytm to pay for the package.'
         },
         {
-            title: 'Will I get the refund if I want to stop using it before the Pass expiry?',
-            content: 'Once payment is made for a pass purchase, it is considered final and refund regarding the same cannot be initiated.'
+            title: 'Will I get the refund if I want to stop using it before the Pack expiry?',
+            content: 'Once payment is made for a pack purchase, it is considered final and refund regarding the same cannot be initiated.'
         },
         {
             title: 'How can I apply for the refund?',
             content: 'You cannot apply for refund once the payment is done as all transactions done on Testknock platform are non refundable.'
         },
         {
-            title: 'Can I share my testknock account with my friend/relative?',
+            title: 'Can I share my Testknock account with my friend/relative?',
             content: 'No, You can not share your account with anyone. If you do so, Our systems will detect it and block your account immediately.'
         },
     ];

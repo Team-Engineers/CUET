@@ -53,15 +53,15 @@ const PriceCard = ({ _id, nameOfPlan, bgColor, amount, description, benefits }) 
   }
   const handleSelectChange = (selected) => {
     if ((nameOfPlan === 'SOLO PACK') && selected.length > 1) {
-      setErrorMessage("Select only one option.");
+      setErrorMessage("Select only one.");
     } else if ((nameOfPlan === 'PAIR PACK') && selected.length > 2) {
-      setErrorMessage("Select only two options");
+      setErrorMessage("Select only two.");
     }
     else if ((nameOfPlan === 'MEGA PACK') && selected.length > 3) {
-      setErrorMessage("Select only three options");
+      setErrorMessage("Select only three subjects.");
     }
     else if ((nameOfPlan === 'JUMBO PACK') && selected.length > 4) {
-      setErrorMessage("Select only four options");
+      setErrorMessage("Select only four subjects.");
     } else {
       setSelectedOptions(selected);
       setErrorMessage('');
@@ -174,7 +174,7 @@ const PriceCard = ({ _id, nameOfPlan, bgColor, amount, description, benefits }) 
               }
               setShowOptions(true);
             }}>
-              <p className="w-full py-4 cursor-pointer text-black border transition-colors duration-100 border-blue-800 bg-[#bbbbbb8e] border-solid hover:bg-blue-600 md:mt-8 rounded-xl hover:text-white">
+              <p className="w-full py-4 cursor-pointer border transition-colors duration-100 hover:border-blue-800 border-[#23bd68] bg-[#23bd68] border-solid hover:bg-blue-600 md:mt-8 rounded-xl text-white">
                 <span className="font-medium">
                   Get Started
                 </span>
@@ -186,7 +186,7 @@ const PriceCard = ({ _id, nameOfPlan, bgColor, amount, description, benefits }) 
       {showOptions && (
         <>
           <div className="popup-overlay  ">
-            <div className="rounded-3xl bg-[#ffffffee] p-4 px-6 max-md:px-2 max-md:mx-4 backdrop-blur-[100px] shadow-2xl  ">
+            <div className="rounded-3xl bg-[#ffffffee] md:w-[700px] p-4 px-6 max-md:px-2 max-md:mx-6 backdrop-blur-[100px] shadow-2xl  ">
               <div className="flex justify-between">
                 <h2 className="font-semibold mx-2 md:text-xl whitespace-nowrap max-md:text-[17px]">Select Subjects for <span className='px-4 py-2 rounded-3xl max-md:px-2 max-md:text-[16px] ' style={{ background: bgColor }}>{nameOfPlan}</span></h2>
                 <h3 className="mx-4 cursor-pointer" onClick={() => setShowOptions(false)} ><RxCross1 /></h3>
@@ -194,7 +194,7 @@ const PriceCard = ({ _id, nameOfPlan, bgColor, amount, description, benefits }) 
               <hr className="my-1" />
               <div className='flex flex-col justify-center items-center'>
                 {(nameOfPlan === 'MEGA PACK' || nameOfPlan === 'JUMBO PACK') && (
-                  <p className='font-medium text-[18px] text-gray-700'>General English & General Test is free for this Pack</p>
+                  <p className='font-medium max-md:text-center text-[18px] text-gray-700'>General English & General Test is free for this Pack</p>
                 )}
                 <p className='font-medium text-[18px]'>Select Any&nbsp;
                   {nameOfPlan === 'SOLO PACK' && (
@@ -213,7 +213,7 @@ const PriceCard = ({ _id, nameOfPlan, bgColor, amount, description, benefits }) 
                     <span>&nbsp;Domain Subject</span>
                   )}
                 </p>
-                <div className="mt-4 relative">
+                <div className="mt-4 w-[95%] relative">
                   <Select
                     isMulti
                     options={options}
@@ -224,12 +224,11 @@ const PriceCard = ({ _id, nameOfPlan, bgColor, amount, description, benefits }) 
                 </div>
               </div>
               <div className="flex mx-4 my-3  justify-end">
-                <h onClick={initPayment} className="block cursor-pointer mx-auto mt-4 border-[2px] border-solid border-blue-400 bg-[#dfdbdbe8] hover:text-white px-3 py-2 rounded-md hover:bg-blue-600">Confirm Selection</h>
+                <h onClick={initPayment} className="block cursor-pointer mx-auto mt-4 border-[2px] border-solid border-[#2fa062] bg-[#23bd68] hover:text-white px-3 py-2 font-medium rounded-md hover:border-blue-600 hover:bg-blue-600">Confirm Selection</h>
 
               </div>
             </div>
           </div>
-
         </>
       )}
     </div>
@@ -272,17 +271,29 @@ const PriceCardPage = ({ packages }) => {
   const [activeTab, setActiveTab] = useState(initialActiveTabId);
   const [bgColor, setBgColor] = useState(packages.find(packageItem => packageItem._id === initialActiveTabId).bgColor);
 
+  const handleGetStarted = (packageName) => {
+    const packageItem = packages.find(item => item.nameOfPlan === packageName);
+    setActiveTab(packageItem._id);
+    setBgColor(packageItem.bgColor);
+    window.scrollTo({
+      top: 100,
+      behavior: 'smooth'
+    });
+  };
+
   return (
-    <div className="flex overflow-hidden  flex-col justify-center items-center  bg-[#c4e9f0]" style={{ backgroundColor: bgColor, transition: "background-color 0.3s ease" }}>
+    <div className="overflow-hidden   bg-[#c4e9f0]" style={{ background: `linear-gradient(to bottom, ${bgColor}, white)`, transition: "background-color 0.3s ease" }} >
       <Navbar />
+      <div className="flex  flex-col justify-center items-center ">
+        <Tabs packages={packages} setActiveTab={setActiveTab} activeTab={activeTab} setBgColor={setBgColor} bgColor={bgColor} />
+        <PriceCardsContainer packages={packages.filter((packageItem) => packageItem._id === activeTab)} />
+        <PriceTables handleGetStarted={handleGetStarted} />
 
-      <Tabs packages={packages} setActiveTab={setActiveTab} activeTab={activeTab} setBgColor={setBgColor} bgColor={bgColor} />
-      <PriceCardsContainer packages={packages.filter((packageItem) => packageItem._id === activeTab)} />
-      <PriceTables />
-
-      <PackFaq />
-      <Footer />
+        <PackFaq />
+        <Footer />
+      </div>
     </div>
+
   );
 };
 
@@ -302,7 +313,7 @@ const Packages = [
       '12 Mock Tests',
       'Unlimited Attempts '
     ],
-    bgColor: '#c4e9f0'
+    bgColor: 'rgb(208, 239, 245, 0.8)'
   },
   {
     _id: "65d94008aaf8ebc47c522cef",
@@ -318,7 +329,7 @@ const Packages = [
       '12 Mock Tests',
       'Unlimited Attempts '
     ],
-    bgColor: '#C6EBBE'
+    bgColor: 'rgb(205, 232, 200, 0.6)'
   },
   {
     _id: "65d9428fd3267bf1efe0f364",
@@ -334,7 +345,7 @@ const Packages = [
       '12 Mock Tests',
       'Unlimited Attempts '
     ],
-    bgColor: '#d9c4f0'
+    bgColor: 'rgb(217, 196, 240, 0.6)'
   },
   {
     _id: "65e352e265a057561b4dcb67",
@@ -350,7 +361,7 @@ const Packages = [
       '12 Mock Tests',
       'Unlimited Attempts '
     ],
-    bgColor: '#E6D0CF'
+    bgColor: 'rgb(242, 224, 223, 0.6)'
   },
 ];
 

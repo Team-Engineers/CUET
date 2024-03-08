@@ -9,9 +9,10 @@ const Syllabus = () => {
 
   return (
     <>
-      <div className="w-full  relative overflow-hidden flex flex-col items-center pb-0 box-border tracking-[normal]">
-        <Navbar />
+      {/* <Navbar /> */}
+      <div className="w-full overflow-hidden relative pb-0 box-border tracking-[normal]">
         <img src={Vector} className="absolute top-0 left-0 z-0 overflow-hidden" alt="" />
+        <Navbar />
         <div className="relative max-w-[1300px]  mx-auto  z-10">
           <div className=" mt-10 mb-14 ml-5">
             <h2 className="pl-0 mb-1  gradient-text  text-21xl leading-none">Syllabus</h2>
