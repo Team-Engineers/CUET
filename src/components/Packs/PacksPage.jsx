@@ -219,6 +219,8 @@ const PriceCard = ({ _id, nameOfPlan, bgColor, amount, description, benefits }) 
                     options={options}
                     value={selectedOptions}
                     onChange={handleSelectChange}
+                    maxMenuHeight={180}
+                    minMenuHeight={10}
                   />
                   <div className="text-red-600 text-l mt-2">{errorMessage}</div>
                 </div>
@@ -237,7 +239,7 @@ const PriceCard = ({ _id, nameOfPlan, bgColor, amount, description, benefits }) 
 
 const PriceCardsContainer = ({ packages }) => {
   return (
-    <div className="price-cards-container">
+    <div className="price-cards-container md:pb-6">
       {packages.map((packageItem) => (
         <PriceCard key={packageItem._id} {...packageItem} />
       ))}
@@ -282,14 +284,17 @@ const PriceCardPage = ({ packages }) => {
   };
 
   return (
-    <div className="overflow-hidden   bg-[#c4e9f0]" style={{ background: `linear-gradient(to bottom, ${bgColor}, white)`, transition: "background-color 0.3s ease" }} >
+    <div className="overflow-hidden max-w-[1400px] mx-auto  bg-[#c4e9f0]" style={{ background: `linear-gradient(to bottom, ${bgColor}, white 30%,  white)`, transition: "background-color 0.3s ease" }} >
       <Navbar />
       <div className="flex  flex-col justify-center items-center ">
         <Tabs packages={packages} setActiveTab={setActiveTab} activeTab={activeTab} setBgColor={setBgColor} bgColor={bgColor} />
         <PriceCardsContainer packages={packages.filter((packageItem) => packageItem._id === activeTab)} />
-        <PriceTables handleGetStarted={handleGetStarted} />
-
-        <PackFaq />
+        <div style={{ background: `linear-gradient(to bottom, ${bgColor},  white)`, transition: "background-color 0.3s ease" }}>
+          <PriceTables handleGetStarted={handleGetStarted} />
+        </div>
+        <div style={{ background: `linear-gradient(to bottom, ${bgColor},  white)`, transition: "background-color 0.3s ease" }}>
+          <PackFaq />
+        </div>
         <Footer />
       </div>
     </div>
@@ -329,7 +334,8 @@ const Packages = [
       '12 Mock Tests',
       'Unlimited Attempts '
     ],
-    bgColor: 'rgb(205, 232, 200, 0.6)'
+    // bgColor: 'rgb(160, 232, 175, 0.6)'
+    bgColor: 'rgb(242, 224, 223, 0.6)'
   },
   {
     _id: "65d9428fd3267bf1efe0f364",
@@ -361,7 +367,8 @@ const Packages = [
       '12 Mock Tests',
       'Unlimited Attempts '
     ],
-    bgColor: 'rgb(242, 224, 223, 0.6)'
+    // bgColor: 'rgb(242, 224, 223, 0.6)'
+    bgColor: 'rgb(203, 179, 84, 0.6)'
   },
 ];
 

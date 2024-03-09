@@ -33,7 +33,7 @@ const Accordion = ({ items }) => {
     };
 
     return (
-        <div className="pack-accordion-faq">
+        <div className="pack-accordion-faq md:mx-6 mx-2" >
             {items.map((item, index) => (
                 <AccordionItem
                     key={index}
@@ -88,7 +88,7 @@ const PackFaq = () => {
     ];
 
     return (
-        <div className="pack-container-faq max-w-[1200px] my-12 mx-auto">
+        <div className="pack-container-faq my-12 mx-auto">
             <h2 className='text-center gradient-text2 text-13xl font-bold '>Frequently Asked Questions (FAQs)</h2>
             <Accordion items={faqItems} />
         </div>
