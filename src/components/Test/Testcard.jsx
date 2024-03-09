@@ -5,13 +5,14 @@ import { TbClockHour8 } from "react-icons/tb";
 import { Link } from "react-router-dom";
 import freeicon from "../../assets/images/courses/freeicon.gif";
 import { useAuth } from "../../utils/context";
+
 export const Testcard = ({ subTopic, heading, Questions, bgcolor, index }) => {
   const [auth] = useAuth();
   const allow = auth?.user?.packageId;
   console.log(allow)
   return (
     <div style={{ boxShadow: `0 4px 6px ${bgcolor}, 0 1px 3px rgba(0, 0, 0, 0.1)` }} className={`flex transition-all duration-100 border-solid border-[0.5px] shadow-xl hover:scale-[105%]  border-black flex-col justify-around items-center  bg-white rounded-3xl`}>
-      <div style={{ background: bgcolor }} className="w-[95%] h-[300px] mt-3 rounded-2xl text-white flex justify-center relative">
+      <div style={{ background: bgcolor }} className="w-[95%] h-[320px] mt-3 rounded-2xl text-white flex justify-center relative">
         {index === 0 && !auth.user && (
           <img src={freeicon} className="absolute top-[-40px] right-[-20px] w-[80px] h-[80px]" alt="Free Icon" />
         )}
@@ -66,14 +67,14 @@ export const Testcard = ({ subTopic, heading, Questions, bgcolor, index }) => {
 
 
 
-export const Testcard1 = ({ subTopic, topic,subtopicNumber, Questions, Marks, bgcolor, Times, index }) => {
+export const Testcard1 = ({ subTopic, topic, subtopicNumber, Questions, Marks, bgcolor, Times, index }) => {
   const [auth] = useAuth();
   const allow = auth?.user?.packageId;
   console.log(topic, "hello")
   console.log(subtopicNumber, "hello2")
   const topic2 = topic === "General English" ? "general_english_practice_test" : "general_test_practice_test";
 
-  
+
   return (
     <div style={{ boxShadow: `0 4px 6px ${bgcolor}, 0 1px 3px rgba(0, 0, 0, 0.1)`, background: bgcolor }} className="transition-all duration-100 hover:scale-[105%] rounded-3xl">
       <div className="flex flex-col p-5 items-center py-3 justify-center relative h-[350px]">
