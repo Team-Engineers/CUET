@@ -209,7 +209,7 @@ const PrepModulesSingleSubquestion = ({ data }) => {
             defaultCurrent={currentPage + 1}
             locale={locale}
             total={data.length}
-            pageSize={1} // Display 5 questions per page
+            pageSize={5} // Display 5 questions per page
             onChange={handlePageChange}
             showPrevNextJumpers
             showQuickJumper

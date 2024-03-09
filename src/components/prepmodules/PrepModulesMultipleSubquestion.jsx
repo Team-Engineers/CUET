@@ -325,7 +325,7 @@ const PrepModulesMultipleSubquestion = ({ data }) => {
               locale={locale}
               current={currentPage} // Zero-based indexing
               total={data?.length}
-              pageSize={1}
+              pageSize={5}
               onChange={handlePageChange}
               showPrevNextJumpers
               showQuickJumper
