@@ -1,53 +1,92 @@
 import axios from 'axios';
 import React, { useState } from 'react';
-import { FaCheck, FaTimes } from 'react-icons/fa';
+import { FaCheck, FaQuestionCircle } from 'react-icons/fa';
+import { RxCross1 } from "react-icons/rx";
 import { useNavigate } from "react-router-dom";
+import Select from 'react-select';
 import { API } from '../../utils/constants';
 import { useAuth } from "../../utils/context";
 import Footer from '../Footer';
 import Navbar from '../Navbar';
-import FAQ from "../home/FAQ";
-
-const PriceCard = ({ _id, nameOfPlan, amount, setActiveTab, activeTab }) => {
+import PackFaq from "./PackFaq";
+import PriceTables from './PriceCard';
+const PriceCard = ({ _id, nameOfPlan, bgColor, amount, description, benefits }) => {
   const [auth, setAuth] = useAuth();
   const navigate = useNavigate();
+  const [selectedOptions, setSelectedOptions] = useState([]);
+  const [errorMessage, setErrorMessage] = useState('');
+  const [showOptions, setShowOptions] = useState(false);
 
-  const renderIcon = (benefit) => {
-    const packageItem = Packages.find(item => item.nameOfPlan === nameOfPlan);
-    if (packageItem && packageItem.benefitsIcons && packageItem.benefitsIcons[benefit]) {
-      const iconData = packageItem.benefitsIcons[benefit];
-      if (typeof iconData === 'object') {
-        if ('text' in iconData) {
-          return <span className="text font-normal w-[50%]">{iconData.text}</span>;
-        } else {
-          const IconComponent = iconData.icon;
-          return (
-            <div className="icon-with-text">
-              <IconComponent className="icon" style={{ color: iconData.color }} />
-              <span className="text">{iconData.text}</span>
-            </div>
-          );
-        }
-      } else {
-        const IconComponent = iconData;
-        return <IconComponent className="icon" style={{ color: iconData === FaCheck ? 'green' : 'red' }} />;
-      }
+  let options;
+  if (nameOfPlan === 'SOLO PACK' || nameOfPlan === 'PAIR PACK') {
+    options = [
+      { value: "General English", label: "General English" },
+      { value: "General Test", label: "General Test" },
+      { value: "Mathematics", label: "Mathematics" },
+      { value: "Physics", label: "Physics" },
+      { value: "Chemistry", label: "Chemistry" },
+      { value: "Biology", label: "Biology" },
+      { value: "Accountancy", label: "Accountancy" },
+      { value: "Economics", label: "Economics" },
+      { value: "Business Studies", label: "Business Studies" },
+      { value: "History", label: "History" },
+      { value: "Political Science", label: "Political Science" },
+      { value: "Geography", label: "Geography" },
+      { value: "Psychology", label: "Psychology" },
+      { value: "Sociology", label: "Sociology" }
+    ];
+  } else {
+    options = [
+      { value: "Mathematics", label: "Mathematics" },
+      { value: "Physics", label: "Physics" },
+      { value: "Chemistry", label: "Chemistry" },
+      { value: "Biology", label: "Biology" },
+      { value: "Accountancy", label: "Accountancy" },
+      { value: "Economics", label: "Economics" },
+      { value: "Business Studies", label: "Business Studies" },
+      { value: "History", label: "History" },
+      { value: "Political Science", label: "Political Science" },
+      { value: "Geography", label: "Geography" },
+      { value: "Psychology", label: "Psychology" },
+      { value: "Sociology", label: "Sociology" }
+    ];
+  }
+  const handleSelectChange = (selected) => {
+    if ((nameOfPlan === 'SOLO PACK') && selected.length > 1) {
+      setErrorMessage("Select only one.");
+    } else if ((nameOfPlan === 'PAIR PACK') && selected.length > 2) {
+      setErrorMessage("Select only two.");
+    }
+    else if ((nameOfPlan === 'MEGA PACK') && selected.length > 3) {
+      setErrorMessage("Select only three subjects.");
+    }
+    else if ((nameOfPlan === 'JUMBO PACK') && selected.length > 4) {
+      setErrorMessage("Select only four subjects.");
     } else {
-      return null;
+      setSelectedOptions(selected);
+      setErrorMessage('');
     }
   };
 
 
 
-  const handleCardClick = () => {
-    setActiveTab(_id);
+  const renderIcon = (benefit) => {
+    switch (benefit) {
+      case 'Both General English & General Test':
+      case 'Unlimited Attempts ':
+      case 'Full Access to Prep Mudules':
+      case 'Full Access to Practice Tests':
+        return <FaCheck className='text-green-400' />;
+      default:
+        return <FaQuestionCircle className='text-blue-400' />;
+    }
   };
-
   const initPayment = async () => {
     try {
       const response = await axios.post(`${API}/payment/initiate`, {
         packageId: _id,
         userId: auth.user?._id,
+        selectedOptions: selectedOptions.map(option => option.value),
       });
       const { data } = response;
       const options = {
@@ -75,7 +114,6 @@ const PriceCard = ({ _id, nameOfPlan, amount, setActiveTab, activeTab }) => {
               const updatedAuth = { ...auth, user: updatedUser };
               setAuth(updatedAuth);
               localStorage.setItem("auth", JSON.stringify(updatedAuth));
-              setActiveTab(_id);
               navigate('/courses');
             }
           } catch (error) {
@@ -88,86 +126,145 @@ const PriceCard = ({ _id, nameOfPlan, amount, setActiveTab, activeTab }) => {
       };
       const rzp1 = new window.Razorpay(options);
       rzp1.open();
-      setActiveTab(_id);
     } catch (error) {
       console.error(error);
     }
   };
 
+
   return (
-    <div className={`max-w-[350px]  transition-all relative cursor-pointer z-20 duration-100 justify-center items-center flex ${activeTab === _id ? 'scale-105' : ''}`} onClick={handleCardClick} >
-      <div className='max-w-[250px] relative left-20 z-10 h-[680px] bg-white transition-all duration-100 shadow-xl mx-[6px] my-8 rounded-md backdrop-blur[40px] text-center text-black'>
-        <div className='p-1 py-3'>
-          <h2 className='text-[16px] mb-8 py-2 px-1 w-[100%] mx-auto text-black whitespace-nowrap bg-[#85ffeb] '>{nameOfPlan}</h2>
-          <div className="benefits">
-            {fixedBenefits.map((benefit, index) => (
-              <div key={index} className="benefit my-8">
+    <div id='select' className="price-card flex-col-reverse lg:flex-row lg:h-[550px] my-4 j items-center flex">
+      <div className="max-lg:hidden rounded-3xl max-lg:justify-center max-lg:top-[-30px] flex flex-col justify-center px-10 hover:scale-105 shadow-2xl transition-all duration-100 p-5 relative lg:left-5 z-0 bg-white h-[400px]">
+        <h4 className='font-bold text-[25px]'>Plan Benefits:
+          <hr className='my-1' />
+        </h4>
+        <h className='font-medium text-[13px] md:text-[18px]'>
+          {benefits.map((benefit, index) => (
+            <p key={index} className="my-4">
+              {renderIcon(benefit)}
+              <span className='ml-3'>{benefit}</span>
+            </p>
+          ))}
+        </h>
+      </div>
+
+      <div className='p-4 md:max-w-[350px] max-lg:w-full relative z-10 md:max-h-[700px] max-h-[800px] bg-white transition-all duration-100 shadow-2xl my-8 rounded-3xl backdrop-blur[40px] hover:scale-105 text-center text-black mx-3 '>
+        <div className='p-2 py-3 '>
+          <h2 style={{ background: bgColor }} className='text-[25px] mb-6 border-dashed border-2 border-blue-950 p-2 mx-auto text-black whitespace-nowrap rounded-3xl '>{nameOfPlan}</h2>
+          <hr className='my-2' />
+          <h1 className='text-10xl text-slate-700'>Rs {amount}
+            <span className="text-gray-400 font-medium text-xl">/ year</span>
+            <p className='ml-0 text-[12px]'>*GST Excluded</p>
+          </h1>
+          <hr className='my-2 ' />
+          <h className='md:hidden font-medium text-[13px] md:text-[18px]'>
+            {benefits.map((benefit, index) => (
+              <p key={index} className="mt-4">
                 {renderIcon(benefit)}
-              </div>
+                <span className='ml-3'>{benefit}</span>
+              </p>
             ))}
+          </h>
+          <p className='max-md:hidden text-[15px] text-slate-600 px-1 md:h-[100px] '>{description}</p>
+          <div className="md:pt-8 pt-5">
+            <h onClick={() => {
+              if (!auth.user) {
+                navigate('/login');
+                return;
+              }
+              setShowOptions(true);
+            }}>
+              <p className="w-full py-4 cursor-pointer border transition-colors duration-100 hover:border-blue-800 border-[#23bd68] bg-[#23bd68] border-solid hover:bg-blue-600 md:mt-8 rounded-xl text-white">
+                <span className="font-medium">
+                  Get Started
+                </span>
+              </p>
+            </h>
           </div>
-          <div className='w-[30px] rounded-full mx-auto h-[30px] border-[1px] flex justify-center items-center border-solid border-black'>
-            {activeTab === _id && (
-              <div className="relative z-50 h-[20px] w-[20px] mx-auto flex justify-center items-center  bg-blue-500 rounded-full">
-
-              </div>
-            )}
-          </div>
-
-          <h1 className='text-xl text-slate-700'>Rs {amount}</h1>
-          <button className='bg-blue-500 w-[80%] mt-3 cursor-pointer hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full' onClick={initPayment}>Get <br /> started</button>
-
         </div>
       </div>
-    </div >
+      {showOptions && (
+        <>
+          <div className="popup-overlay  ">
+            <div className="rounded-3xl bg-[#ffffffee] md:w-[700px] p-4 px-6 max-md:px-2 max-md:mx-6 backdrop-blur-[100px] shadow-2xl  ">
+              <div className="flex justify-between">
+                <h2 className="font-semibold mx-2 md:text-xl whitespace-nowrap max-md:text-[17px]">Select Subjects for <span className='px-4 py-2 rounded-3xl max-md:px-2 max-md:text-[16px] ' style={{ background: bgColor }}>{nameOfPlan}</span></h2>
+                <h3 className="mx-4 cursor-pointer" onClick={() => setShowOptions(false)} ><RxCross1 /></h3>
+              </div>
+              <hr className="my-1" />
+              <div className='flex flex-col justify-center items-center'>
+                {(nameOfPlan === 'MEGA PACK' || nameOfPlan === 'JUMBO PACK') && (
+                  <p className='font-medium max-md:text-center text-[18px] text-gray-700'>General English & General Test is free for this Pack</p>
+                )}
+                <p className='font-medium text-[18px]'>Select Any&nbsp;
+                  {nameOfPlan === 'SOLO PACK' && (
+                    <span>One</span>
+                  )}
+                  {nameOfPlan === 'PAIR PACK' && (
+                    <span>Two</span>
+                  )}
+                  {nameOfPlan === 'MEGA PACK' && (
+                    <span>Three</span>
+                  )}
+                  {nameOfPlan === 'JUMBO PACK' && (
+                    <span>Four</span>
+                  )}
+                  {(nameOfPlan === 'JUMBO PACK' || nameOfPlan === 'MEGA PACK') && (
+                    <span>&nbsp;Domain Subject</span>
+                  )}
+                </p>
+                <div className="mt-4 w-[95%] relative">
+                  <Select
+                    isMulti
+                    options={options}
+                    value={selectedOptions}
+                    onChange={handleSelectChange}
+                    maxMenuHeight={180}
+                    minMenuHeight={10}
+                  />
+                  <div className="text-red-600 text-l mt-2">{errorMessage}</div>
+                </div>
+              </div>
+              <div className="flex mx-4 my-3  justify-end">
+                <h onClick={initPayment} className="block cursor-pointer mx-auto mt-4 border-[2px] border-solid border-[#2fa062] bg-[#23bd68] hover:text-white px-3 py-2 font-medium rounded-md hover:border-blue-600 hover:bg-blue-600">Confirm Selection</h>
+
+              </div>
+            </div>
+          </div>
+        </>
+      )}
+    </div>
   );
 };
 
-
-const PriceCardsContainer = ({ packages, setActiveTab, activeTab }) => {
+const PriceCardsContainer = ({ packages }) => {
   return (
-    <div className="flex ">
-      <div className='w-[250px] absolute left-10 z-10  h-[480px] bg-white transition-all duration-100 shadow-xl  my-8 rounded-md backdrop-blur[40px] hover:scale-105 text-center  text-black '>
-        <h4 className='text-[20px] font-medium'>Plan Benefits:</h4>
-        <hr className='mt-[-5px] grey' />
-        <ul className='leading-[13px] text-[16px] font-normal px-6'>
-          {fixedBenefits.map((benefit, index) => (
-            <li key={index} className="flex items-center">
-              <p>{benefit}</p>
-            </li>
-          ))}
-        </ul>
-      </div>
+    <div className="price-cards-container md:pb-6">
       {packages.map((packageItem) => (
-        <PriceCard
-          key={packageItem._id}
-          {...packageItem}
-          setActiveTab={setActiveTab}
-          activeTab={activeTab}
-        />
+        <PriceCard key={packageItem._id} {...packageItem} />
       ))}
     </div>
   );
 };
 
-const Tabs = ({ packages, setActiveTab, activeTab, setBgColor }) => {
+const Tabs = ({ packages, setActiveTab, activeTab, setBgColor, bgColor }) => {
   const changeBgColor = (color) => {
     setBgColor(color);
   }
 
   return (
-    <div className="tabs border relative left-24 bg-white p-1 mt-4 mb-6 rounded-lg shadow-sm ">
+    <div className=" border max-sm:fixed max-sm:w-[95%]  bottom-2  z-50 flex justify-between  bg-white rounded-lg shadow-2xl ">
       {packages.map((packageItem) => (
         <div
           key={packageItem._id}
           onClick={() => { setActiveTab(packageItem._id); changeBgColor(packageItem.bgColor); }}
-          className={`tab-button px-3 bg-white shadow-2xl shadow-gray-400 cursor-pointer rounded p-4 m-2 ${activeTab === packageItem._id ? 'active bg-yellow-200' : ''}`}
+          className={`bg-white font-medium max-sm:text-[3vw] shadow-2xl cursor-pointer rounded p-2 md:p-5 m-1 ${activeTab === packageItem._id ? 'active' : ''}`}
+          style={{ backgroundColor: activeTab === packageItem._id ? bgColor : '' }}
         >
           {packageItem.nameOfPlan}
         </div>
-      ))
-      }
-    </div >
+      ))}
+    </div>
   );
 };
 
@@ -176,18 +273,32 @@ const PriceCardPage = ({ packages }) => {
   const [activeTab, setActiveTab] = useState(initialActiveTabId);
   const [bgColor, setBgColor] = useState(packages.find(packageItem => packageItem._id === initialActiveTabId).bgColor);
 
+  const handleGetStarted = (packageName) => {
+    const packageItem = packages.find(item => item.nameOfPlan === packageName);
+    setActiveTab(packageItem._id);
+    setBgColor(packageItem.bgColor);
+    window.scrollTo({
+      top: 100,
+      behavior: 'smooth'
+    });
+  };
+
   return (
-    <div className="price-card-page bg-[#c4e9f0]" style={{ backgroundColor: bgColor }}>
+    <div className="overflow-hidden max-w-[1400px] mx-auto  bg-[#c4e9f0]" style={{ background: `linear-gradient(to bottom, ${bgColor}, white 30%,  white)`, transition: "background-color 0.3s ease" }} >
       <Navbar />
-      <Tabs packages={packages} setActiveTab={setActiveTab} activeTab={activeTab} setBgColor={setBgColor} />
-      <PriceCardsContainer
-        packages={packages}
-        setActiveTab={setActiveTab}
-        activeTab={activeTab}
-      />
-      <FAQ />
-      <Footer />
+      <div className="flex  flex-col justify-center items-center ">
+        <Tabs packages={packages} setActiveTab={setActiveTab} activeTab={activeTab} setBgColor={setBgColor} bgColor={bgColor} />
+        <PriceCardsContainer packages={packages.filter((packageItem) => packageItem._id === activeTab)} />
+        <div style={{ background: `linear-gradient(to bottom, ${bgColor},  white)`, transition: "background-color 0.3s ease" }}>
+          <PriceTables handleGetStarted={handleGetStarted} />
+        </div>
+        <div style={{ background: `linear-gradient(to bottom, ${bgColor},  white)`, transition: "background-color 0.3s ease" }}>
+          <PackFaq />
+        </div>
+        <Footer />
+      </div>
     </div>
+
   );
 };
 
@@ -197,110 +308,68 @@ const Packages = [
     _id: "65d93ff1aaf8ebc47c522ced",
     nameOfPlan: 'SOLO PACK',
     amount: 699,
-    bgColor: '#c4e9f0',
-    benefitsIcons: {
-      'GENERAL ENGLISH': { text: 'Can be chosen' },
-      'GENERAL TEST': { text: 'Can be chosen' },
-      'DOMAIN SUBJECT': { text: 'Any 1' },
-      'PREP MODULES': { text: "FULL ACCESS" },
-      'PRACTICE TESTS': { text: "12" },
-      'MOCK TESTS': { text: "12" },
-      'UNLIMITED ATTEMPT': FaCheck,
-      'TOTAL SUBJECT': { text: "1" }
-    }
+    description:
+      'Maximize your exam readiness with our Solo Pack. Choose from General English or General Test or any domain subject. Includes preparatory module, 12 practice tests, and 12 mock tests.',
+    benefits: [
+      'General English / General Test',
+      'Any one Domain Subject',
+      'Full Access to Prep Mudules',
+      '12 Practice Tests',
+      '12 Mock Tests',
+      'Unlimited Attempts '
+    ],
+    bgColor: 'rgb(208, 239, 245, 0.8)'
   },
   {
     _id: "65d94008aaf8ebc47c522cef",
     nameOfPlan: 'PAIR PACK',
     amount: 1299,
-    bgColor: '#f0eac4',
-    benefitsIcons: {
-      'GENERAL ENGLISH': { text: 'Can be chosen' },
-      'GENERAL TEST': { text: 'Can be chosen' },
-      'DOMAIN SUBJECT': { text: 'Any 2' },
-      'PREP MODULES': { text: "FULL ACCESS" },
-      'PRACTICE TESTS': { text: "12" },
-      'MOCK TESTS': { text: "12" },
-      'UNLIMITED ATTEMPT': FaCheck,
-      'TOTAL SUBJECT': { text: "2" }
-    }
+    description:
+      'Supercharge your preparation with our Pair Pack. Choose any from: General English and any one domain subject, General Test and one domain subject, or any two domain subjects. Includes preparatory modules, 12 practice tests, and 12 mock tests for each.',
+    benefits: [
+      'General English / General Test',
+      'Any two Domain Subject',
+      'Full Access to Prep Mudules',
+      '12 Practice Tests',
+      '12 Mock Tests',
+      'Unlimited Attempts '
+    ],
+    // bgColor: 'rgb(160, 232, 175, 0.6)'
+    bgColor: 'rgb(242, 224, 223, 0.6)'
   },
   {
     _id: "65d9428fd3267bf1efe0f364",
     nameOfPlan: 'MEGA PACK',
     amount: 2599,
-    bgColor: '#6B9292',
-    benefitsIcons: {
-      'GENERAL ENGLISH': FaCheck,
-      'GENERAL TEST': FaCheck,
-      'DOMAIN SUBJECT': { text: 'Any 3' },
-      'PREP MODULES': { text: "FULL ACCESS" },
-      'PRACTICE TESTS': { text: "12" },
-      'MOCK TESTS': { text: "12" },
-      'UNLIMITED ATTEMPT': FaCheck,
-      'TOTAL SUBJECT': { text: "5" }
-    }
+    description:
+      'Introducing our MEGA pack! Choose any three domain subjects of your choice, along with general English and general Test. Includes preparatory modules, 12 practice tests, and 12 mock tests for each.',
+    benefits: [
+      'Both General English & General Test',
+      'Any three Domain Subject',
+      'Full Access to Prep Mudules',
+      'Full Access to Practice Tests',
+      '12 Mock Tests',
+      'Unlimited Attempts '
+    ],
+    bgColor: 'rgb(217, 196, 240, 0.6)'
   },
   {
     _id: "65e352e265a057561b4dcb67",
     nameOfPlan: 'JUMBO PACK',
     amount: 2999,
-    bgColor: '#94B0DA',
-    benefitsIcons: {
-      'GENERAL ENGLISH': FaCheck,
-      'GENERAL TEST': FaCheck,
-      'DOMAIN SUBJECT': { text: 'Any 4' },
-      'PREP MODULES': { text: "FULL ACCESS" },
-      'PRACTICE TESTS': { text: "12" },
-      'MOCK TESTS': { text: "12" },
-      'UNLIMITED ATTEMPT': FaCheck,
-      'TOTAL SUBJECT': { text: "6" }
-    }
+    description:
+      'Elevate your exam readiness with our Jumbo Pack. Choose any four domain subjects along with general Test and general English. Includes preparatory modules, 12 practice tests, and 12 mock tests for each.',
+    benefits: [
+      'Both General English & General Test',
+      'Any four Domain Subject',
+      'Full Access to Prep Mudules',
+      'Full Access to Practice Tests',
+      '12 Mock Tests',
+      'Unlimited Attempts '
+    ],
+    // bgColor: 'rgb(242, 224, 223, 0.6)'
+    bgColor: 'rgb(203, 179, 84, 0.6)'
   },
-  {
-    _id: "65e67846183e38473cf606f7",
-    nameOfPlan: 'ROOKIE PACK',
-    amount: 0,
-    bgColor: '##B1EDE8',
-    benefitsIcons: {
-      'GENERAL ENGLISH': FaTimes,
-      'GENERAL TEST': FaTimes,
-      'DOMAIN SUBJECT': FaTimes,
-      'PREP MODULES': { text: "1" },
-      'PRACTICE TESTS': { text: "1" },
-      'MOCK TESTS': { text: "1" },
-      'UNLIMITED ATTEMPT': FaCheck,
-      'TOTAL SUBJECT': { text: "0" }
-    }
-  },
-  {
-    _id: "65e6796c183e38473cf606f8",
-    nameOfPlan: 'NOVICE PACK',
-    amount: 0,
-    bgColor: '#94B0DA',
-    benefitsIcons: {
-      'GENERAL ENGLISH': FaTimes,
-      'GENERAL TEST': FaTimes,
-      'DOMAIN SUBJECT': FaTimes,
-      'PREP MODULES': { text: "3" },
-      'PRACTICE TESTS': { text: "3" },
-      'MOCK TESTS': { text: "3" },
-      'UNLIMITED ATTEMPT': FaCheck,
-      'TOTAL SUBJECT': { text: "0" }
-    }
-  },
-];
-
-
-const fixedBenefits = [
-  'GENERAL ENGLISH',
-  'GENERAL TEST',
-  'DOMAIN SUBJECT',
-  'PREP MODULES',
-  'PRACTICE TESTS',
-  'MOCK TESTS',
-  'UNLIMITED ATTEMPT',
-  'TOTAL SUBJECT'
 ];
 
 export default function App() {
@@ -310,4 +379,3 @@ export default function App() {
     </div>
   );
 }
-

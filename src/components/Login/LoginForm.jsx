@@ -72,14 +72,23 @@ const LoginForm = () => {
           user: userInfo,
           accessToken: tokenData,
         }));
-        navigate("/");
+        toast.success("Login successful");
+
+        setTimeout(() => {
+          navigate("/");
+        }, 1000);
+
         setLoading(false);
       } else {
         setLoading(false);
-        console.error("Login failed:", response.data.message);
+        console.log("Login failed:", response.data.message);
+        const errorMessage = response?.data?.message || "An error occurred during login now. Please try again later.";
+        toast.error(errorMessage);
       }
     } catch (error) {
-      console.error("Error occurred during login:", error);
+      console.log("Error occurred during login:", error);
+      const errorMessage = error.response?.data?.message || error.response?.data?.msg || "An error occurred during login. Please try again later.";
+      toast.error(errorMessage);
     }
     setLoading(false);
 

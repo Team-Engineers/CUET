@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import Lottie from "react-lottie";
 import { useNavigate } from "react-router-dom/dist";
 import LandingAnimationData from "../../assets/animation_landing.json";
@@ -7,7 +7,6 @@ import ExamInfo from "../../components/home/ExamInfo";
 const Banner = () => {
   const navigate = useNavigate();
   const [isPopupOpen, setIsPopupOpen] = useState(false);
-  const popupRef = useRef(null);
 
   const handlescroll = () => {
     window.scrollTo({
@@ -16,28 +15,17 @@ const Banner = () => {
     });
   };
 
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (popupRef.current && !popupRef.current.contains(event.target)) {
-        setIsPopupOpen(false);
-      }
-    };
-
-    document.addEventListener("mousedown", handleClickOutside);
-
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
-
   const handleBellIconClick = () => {
     setIsPopupOpen(true);
   };
 
+  const handleCloseExamInfo = () => {
+    setIsPopupOpen(false);
+  };
 
   return (
-    <div className="max-w-[1380px] md:mt-5 mx-auto">
-      <div className="md:mx-[50px] mx-[20px] flex flex-col md:flex-row justify-between items-center">
+    <div className="max-w-[1280px] md:mt-5 mx-auto">
+      <div className=" mx-[20px] flex flex-col md:flex-row justify-between items-center">
         <div className="flex justify-center items-center">
           <div className="flex flex-col justify-center max-md:mx-[15px] ">
             <div className="my-6 font-bold text-7xl md:text-21xl">
@@ -77,7 +65,7 @@ const Banner = () => {
               </button>
             </div>
             <div className="my-10 md:block">
-              <div className="flex relative  flex-row items-center gap-[7px] text-base cursor-pointer">
+              <div className="flex relative  max-lg:hidden flex-row items-center gap-[7px] text-base cursor-pointer">
                 <div onClick={handleBellIconClick} >
                   <img
                     className="h-[54px] w-[52px] relative object-cover"
@@ -90,8 +78,8 @@ const Banner = () => {
                 <div onClick={handleBellIconClick} className="relative font-semibold">Live Notifications</div>
               </div>
               {isPopupOpen && (
-                <div ref={popupRef} className="absolute max-md:left-0 m-3 md:w-[25rem] rounded-lg">
-                  <ExamInfo />
+                <div className="absolute max-md:left-0 m-3 md:w-[25rem] rounded-lg">
+                  <ExamInfo onClose={handleCloseExamInfo} />
                 </div>
               )}
             </div>

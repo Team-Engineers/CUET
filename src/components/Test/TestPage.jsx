@@ -1,15 +1,26 @@
 import { useState } from "react";
 import { IoArrowBack } from "react-icons/io5";
 import { Link, useParams } from "react-router-dom";
-import { topics } from "../../utils/constants";
+import { topics, topics2 } from "../../utils/constants";
 import Footer from "../Footer";
 import Navbar from "../Navbar";
 import { Testcard, Testcard1, Testcard2 } from "../Test/Testcard";
 import "./css/TestPage.css";
+
 function TestPage() {
-  const { topic } = useParams();
-  const mainheading = topic.toLowerCase().replace(/\s/g, '_');
-  const subtopics = topics[topic];
+  let { topic } = useParams();
+  topic = topic.split("_").join(" ");
+
+  let subtopics = [];
+  const [selectedCategory, setSelectedCategory] = useState("Mathematics");
+  if (topic === "General Test") {
+    subtopics = topics2[selectedCategory];
+  } else {
+    subtopics = topics[topic];
+  }
+
+  console.log("subtopci is", topic);
+
   const prep = subtopics.map((subtopic, index) => {
     const backgroundColors = [
       "#776CFF",
@@ -20,18 +31,28 @@ function TestPage() {
       "#FF9A4F",
       "#FF9A4F",
       "#58B6C5",
-      "#FF7A7A"
+      "#FF7A7A",
     ];
     const colorIndex = index % backgroundColors.length;
+    let questionsValues;
+    if (topic === "General Test") {
+      if (selectedCategory === "Mathematics") {
+        questionsValues = [100, 81, 29, 85, 80, 50, 50, 50, 25, 49, 60, 50, 50, 30, 50];
+      } else if (selectedCategory === "Logical Reasoning") {
+        questionsValues = [91, 78, 78, 52, 218, 30, 91, 30, 78, 91, 20, 70, 130];
+      } else if (selectedCategory === "General Awareness") {
+        questionsValues = [50, 50, 50, 49, 50, 171, 50, 50];
+      }
+    } else {
+      questionsValues = [100, 57, 100, 100, 60, 50, 130, 50, 50, 170, 40, 60];
+    }
 
     return {
       subTopic: subtopic,
-      Questions: 60,
+      Questions: questionsValues[index % questionsValues.length],
       bgcolor: backgroundColors[colorIndex],
     };
   });
-
-
 
   const practice = Array.from({ length: 12 }, (_, index) => {
     const backgroundColors = [
@@ -43,34 +64,61 @@ function TestPage() {
       "#FF9A4F",
       "#FF9A4F",
       "#58B6C5",
-      "#FF7A7A"
+      "#FF7A7A",
     ];
     const colorIndex = index % backgroundColors.length;
     const subtopicNumber = index + 1;
+    let marksValues, timesValues, questionsValues;
+
+    if (topic === "General Test") {
+      marksValues = [20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20];
+      timesValues = [20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20];
+      questionsValues = [20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20];
+    } else {
+      marksValues = [20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20];
+      timesValues = [15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15];
+      questionsValues = [20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20];
+    }
+
     return {
-      topic: topic,
       subTopic: `Practice Test ${subtopicNumber}`,
-      Marks: 60,
-      Times: 120,
-      Questions: 60,
+      Marks: marksValues[index % marksValues.length],
+      Times: timesValues[index % timesValues.length],
+      Questions: questionsValues[index % questionsValues.length],
       bgcolor: backgroundColors[colorIndex],
     };
   });
+
   const mock = Array.from({ length: 12 }, (_, index) => {
     const mocksubtopicNumber = index + 1;
+    let marksValues, timesValues, negativeValues, questionsValues;
+
+    if (topic === "General Test") {
+      marksValues = [250, 250, 250, 250, 250, 250, 250, 250, 250, 250, 250, 250];
+      timesValues = [60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60];
+      questionsValues = ["50 of 60", "50 of 60", "50 of 60", "50 of 60", "50 of 60", "50 of 60", "50 of 60", "50 of 60", "50 of 60", "50 of 60", "50 of 60", "50 of 60"];
+      negativeValues = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+
+    } else {
+      marksValues = [200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200];
+      timesValues = [45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45];
+      questionsValues = ["40 of 50", "40 of 50", "40 of 50", "40 of 50", "40 of 50", "40 of 50", "40 of 50", "40 of 50", "40 of 50", "40 of 50", "40 of 50", "40 of 50"];
+      negativeValues = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    }
+
     return {
       subTopic: `${topic} ${mocksubtopicNumber}`,
-      Marks: 60,
-      Times: 120,
-      Negative: 1,
-      Questions: 50,
+      Marks: marksValues[index % marksValues.length],
+      Times: timesValues[index % timesValues.length],
+      Negative: negativeValues[index % negativeValues.length],
+      Questions: questionsValues[index % questionsValues.length],
     };
   });
 
   const [currentTab, setCurrentTab] = useState("prep");
 
   return (
-    <div className="  overflow-x-hidden">
+    <div className="overflow-x-hidden">
       <Navbar />
       <div className="md:mx-10 mx-4 ">
         <div className="max-w-[1280px] mx-auto ">
@@ -85,13 +133,13 @@ function TestPage() {
               <h3 className="py-0 md:text-[40px] text-[#5648FC] md:hidden">
                 One Stop for your <br /> complete Learning
                 <br />
-                <span className="text-[#5648FC] mt-1 flex text-4xl opacity-[70%] md:my-7" >CUET</span> 
+                <span className="text-[#5648FC] mt-1 flex text-4xl opacity-[70%] md:my-7" >CUET</span>
                 </h3>
               </div>
               </div>
           <div className="w-full  flex flex-col-reverse md:flex-row items-center justify-between">
             <div className="flex flex-row text-7xl md:text-[35px]">
-              
+             
               <h2>
                 <Link className=" text-[#5648FC] invisible lg:visible " to={"/courses"}>
                   <IoArrowBack className="" />
@@ -118,65 +166,98 @@ function TestPage() {
           <div className="w-full flex flex-col justify-center items-center">
             <div className=" w-[1150px]  flex flex-col items-center md:flex-row justify-between md:text-lg text-center text-[15px] text-[#5648FC] md:my-14 p-[41px]">
               <h1
-                className="cursor-pointer  my-3"
-                onClick={() => {
-                  setCurrentTab("prep");
-                }}
+                className="cursor-pointer my-3"
+                onClick={() => setCurrentTab("prep")}
               >
                 Preparatory Modules
-                {currentTab === "prep" && <div className="w-20 m-0  max-md:mx-auto mt-2 h-[2px] bg-blueviolet-400 text-blueviolet-100" />}
+                {currentTab === "prep" && (
+                  <div className="w-20 m-0 mt-2 max-md:mx-auto h-[3px] bg-blueviolet-400 text-blueviolet-100" />
+                )}
               </h1>
               <h1
                 className="cursor-pointer my-3"
-                onClick={() => {
-                  setCurrentTab("practice");
-                }}
+                onClick={() => setCurrentTab("practice")}
               >
                 Practice Tests
-                {currentTab === "practice" && <div className="w-20 m-0 mt-2 max-md:mx-auto h-[2px] bg-blueviolet-400 text-blueviolet-100" />}
+                {currentTab === "practice" && (
+                  <div className="w-20 m-0 mt-2 max-md:mx-auto h-[3px] bg-blueviolet-400 text-blueviolet-100" />
+                )}
               </h1>
               <h1
                 className="cursor-pointer my-3"
-                onClick={() => {
-                  setCurrentTab("mock");
-                }}
+                onClick={() => setCurrentTab("mock")}
               >
                 Mock Tests
-                {currentTab === "mock" && <div className="w-20 max-md:mx-auto m-0 mt-2 h-[2px] bg-blueviolet-400 text-blueviolet-100" />}
+                {currentTab === "mock" && (
+                  <div className="w-20 m-0 mt-2 max-md:mx-auto h-[3px] bg-blueviolet-400 text-blueviolet-100" />
+                )}
               </h1>
             </div>
-            {currentTab === "prep" ? (
-              <div className=" grid grid-cols-1 md:grid-cols-2 mb-20 lg:grid-cols-3 gap-14 m-[-21px] ml-0 mr-0">
-                {prep.map((subject, index) => (
-                  <Testcard key={index} heading={topic} {...subject} index={index} />
-                ))}
+            {currentTab === "prep" && (
+              <>
+                {topic === "General Test" && (
+                  <div className="md:mx-10 max-md:mt-7 mx-4">
+                    <div className=" py-2 mb-6 top-[-20px] relative  px-4 md:shadow-md flex flex-col lg:flex-row   rounded-md ">
+                      {Object.keys(topics2).map((category) => (
+                        <div
+                          key={category}
+                          className={`text-[30px] mx-3  whitespace-nowrap flex flex-col lg:flex-row  cursor-pointer relative  font-bold leading-7  text-center  p-2 rounded ${
+                            category === selectedCategory
+                              ? "font-medium bg-red-400 text-white "
+                              : " font-normal  text-blue-800"
+                          }`}
+                          onClick={() => {
+                            setSelectedCategory(category);
+                          }}
+                        >
+                          {category}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </>
+            )}
 
-              </div>
-            ) : currentTab === "practice" ? (
-              <div className="grid grid-cols-1 md:grid-cols-2 mb-20 lg:grid-cols-3 gap-14">
-                {practice.map((subject, index) => (
-                  <Testcard1 key={index} topic={topic} subtopicNumber={index + 1} {...subject} index={index} />
+            <div className="grid grid-cols-1 md:grid-cols-2 mb-20 lg:grid-cols-3 gap-14">
+              {currentTab === "prep" &&
+                prep.map((subject, index) => (
+                  <Testcard
+                    key={index}
+                    heading={topic}
+                    {...subject}
+                    index={index}
+                    selectedCategory = {selectedCategory}
+                  />
                 ))}
-              </div>
-            ) : (
-              <div className="grid grid-cols-1 md:grid-cols-2 mb-20 lg:grid-cols-3 gap-14">
-                {mock.map((subject, index) => (
+              {currentTab === "practice" &&
+                practice.map((subject, index) => (
+                  <Testcard1
+                    key={index}
+                    subtopicNumber={index + 1}
+                    topic={topic}
+                    {...subject}
+                    index={index}
+                  />
+                ))}
+              {currentTab === "mock" &&
+                mock.map((subject, index) => (
                   <div key={index} className="col-md-4">
-                    <Testcard2 heading={mainheading} topic={topic} {...subject} index={index} mocksubtopicNumber={index + 1} />
+                    <Testcard2
+                      topicNumber={index + 1}
+                      topic={topic}
+                      {...subject}
+                      index={index}
+                      mocksubtopicNumber={index + 1}
+                    />
                   </div>
                 ))}
-
-              </div>
-            )}
+            </div>
           </div>
         </div>
       </div>
-
-
       <Footer />
     </div>
   );
-
 }
-
 export default TestPage;

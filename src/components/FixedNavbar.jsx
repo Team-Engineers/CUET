@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom/dist'
 const FixedNavbar = () => {
   return (
-    <div className="flex absolute max-md:hidden fixednav z-50   right-0 items-center h-[28px]  left-0 justify-center  mx-auto  ">
+    <div className="flex abovecontain2 absolute max-md:hidden fixednav mb-4 z-50   right-0 items-center h-[28px]  left-0 justify-center  mx-auto  ">
        <div className="flex  relative ">
       <p className="flex justify-center h-[25px] items-center ">
         <p className='font-medium'>Leap into success: </p> &nbsp; 

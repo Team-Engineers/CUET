@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
+import { RxCross1 } from "react-icons/rx";
 
-const ExamInfo = () => {
+const ExamInfo = ({ onClose }) => {
   const [activeTab, setActiveTab] = useState('cuetNotifications');
   const handleTabClick = (tab) => {
     setActiveTab(tab);
   };
 
   const cuetNotificationsNotices = [
-    { id: 1, title: 'CUET', date: 'February 27, 2024', closingDate: '	March 26, 2024, at 11:50 PM', link: ' https://cuetug.ntaonline.in/' },
+    { id: 1, title: 'CUET', date: 'February 27, 2024', closingDate: ' March 26, 2024, at 11:50 PM', link: ' https://cuetug.ntaonline.in/' },
   ];
 
   const otherExamsNotificationsNotices = [
@@ -17,11 +18,11 @@ const ExamInfo = () => {
     },
     { id: 2, title: 'CHRIST', date: 'December 08, 2023 ', closingDate: 'April 28, 2024', link: 'https://christuniversity.in/admission-ug' },
     { id: 3, title: 'SYMBIOSIS', date: 'December, 2023', closingDate: 'April 12, 2024', link: 'https://www.siu.edu.in/' },
-    { id: 4, title: 'IP UNIVERSITY', date: 'February 19,2024	', closingDate: 'March 31, 2024', link: 'https://admissions.nic.in/' },
+    { id: 4, title: 'IP UNIVERSITY', date: 'February 19,2024  ', closingDate: 'March 31, 2024', link: 'https://admissions.nic.in/' },
     { id: 5, title: 'FLAME', date: 'December 3, 2023', closingDate: 'May 5, 2024', link: ' https://application.flame.edu.in' },
     { id: 6, title: 'KREA', date: 'October 3, 2023 ', closingDate: 'May 6, 2024', link: ' https://siasadmissions.krea.edu.in' },
-    { id: 7, title: 'ASHOKA', date: 'November 22, 2023', closingDate: 'June 10, 2024	', link: 'https://apply.ashoka.edu.in/' },
-    { id: 8, title: 'OP JINDAL', date: 'November 15, 2023 	', closingDate: 'June 05, 2024', link: 'https://jgu.edu.in/' },
+    { id: 7, title: 'ASHOKA', date: 'November 22, 2023', closingDate: 'June 10, 2024  ', link: 'https://apply.ashoka.edu.in/' },
+    { id: 8, title: 'OP JINDAL', date: 'November 15, 2023   ', closingDate: 'June 05, 2024', link: 'https://jgu.edu.in/' },
   ];
 
   const getNoticesForTab = () => {
@@ -63,7 +64,7 @@ const ExamInfo = () => {
       <div className='md:min-w-[30em]    max-md:mx-auto   '>
         <div className="bg-[#ffffff00]  backdrop-filter backdrop-blur-[30px] shadow-xl  rounded-xl"
         >
-          <div className="pb-8 px-8 text-center mb-[-30px]">
+          <div className="pb-8 px-8 flex  text-center mb-[-30px]">
             <ul className="flex  justify-center gap-[20px]">
               {['cuetNotifications', 'otherExamsNotifications'].map((tab) => (
                 <h key={tab}  >
@@ -76,7 +77,12 @@ const ExamInfo = () => {
                   <hr className={`my-2 ${activeTab === tab ? 'border-b border-blue-500' : ''}`} />
                 </h>
               ))}
+              <div className="absolute top-0 right-0 m-3">
+                <RxCross1 className="cursor-pointer" onClick={onClose} />
+              </div>
             </ul>
+
+
           </div>
           <div
             className="pt-0 h-[20rem] overflow-y-scroll"

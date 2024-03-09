@@ -6,7 +6,7 @@ import Navbar from '../components/Navbar'
 
 const Coursespage = () => {
   return (
-    <div className=' overflow-hidden  flex flex-col items-center'>
+    <div className=' overflow-hidden '>
       <Navbar />
       <Courses />
       <Footer />

@@ -51,7 +51,7 @@ const FrequentlyAskedQuestions = () => {
     const faqItems = [
         {
             title: 'When is CUET in 2024?',
-            content: 'The NTA has announced the exam dates for CUET 2024. The CUET 2024 is set to take place from May 15th to May 31st, 2024.'
+            content: 'The NTA has announced the exam dates for CUET 2024. The CUET 2024 is set to take place from May 15th to May 31st, 2024. However, these dates are subject to change if the Lok Sabha election dates are altered.'
         },
         {
             title: 'Can I make corrections to my CUET application after submission?',
@@ -63,7 +63,7 @@ const FrequentlyAskedQuestions = () => {
         },
         {
             title: 'What is the exam pattern for CUET 2024?',
-            content: 'The exam pattern for CUET 2024 includes sections on mathematics, physics, chemistry, and biology.Refer to the official CUET website or the exam brochure for detailed information on the exam pattern and syllabus.'
+            content: 'As per the NTA Notification, exam pattern for CUET 2024 is same as last year (CUET 2023). There are 3 segments - General English, Domain Subjects and General Test. A student can choose a maximum of 6 domain subjects from the list of 27.'
         },
         {
             title: 'We have heard from past year students that filling forms along with preference sheet for CUET is very technical. Is it true?',
