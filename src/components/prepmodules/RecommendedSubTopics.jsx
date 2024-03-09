@@ -92,7 +92,7 @@ const RecommendedSubTopics = () => {
     } else {
       setSubtopics(topics[topic] || []);
     }
-  }, [topic, subTopic]);
+  }, [subject, topic, subTopic]);
 
   const [isOpen, setIsOpen] = useState(true);
 

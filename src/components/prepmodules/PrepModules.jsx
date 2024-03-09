@@ -64,7 +64,7 @@ const PrepModules = () => {
     };
 
     fetchData();
-  }, [subTopic, topic]);
+  }, [subject,subTopic, topic]);
 
   // useEffect(() => {
   //   setIsLoggedIn(!auth?.user);

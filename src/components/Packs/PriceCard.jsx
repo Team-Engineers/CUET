@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../utils/context';
 const PriceTable = ({ handleGetStarted }) => {
-  const [auth, setAuth] = useAuth();
+  const [auth] = useAuth();
 
   const navigate = useNavigate();
   return (

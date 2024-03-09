@@ -5,7 +5,6 @@ import "rc-pagination/assets/index.css";
 import locale from "rc-pagination/lib/locale/en_US";
 
 const PrepModulesMultipleSubquestion = ({ data }) => {
-  console.log(data);
   const totalSubquestions = data.reduce((accumulator, question) => {
     if (question.subQuestions && question.subQuestions.length > 0) {
       return accumulator + question.subQuestions.length;
@@ -328,8 +327,8 @@ const PrepModulesMultipleSubquestion = ({ data }) => {
           <div className="pagination">
             <Pagination
               locale={locale}
-              current={currentPage} // Zero-based indexing
-              total={data?.length}
+              current={currentPage + 1} // One-based indexing
+              total={totalSubquestions}
               pageSize={5}
               onChange={handlePageChange}
               showPrevNextJumpers
