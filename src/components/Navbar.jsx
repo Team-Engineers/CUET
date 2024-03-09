@@ -46,7 +46,7 @@ const Navbar = () => {
     <>
       <div className="max-md:hidden">
         {!auth?.user &&
-          <div className="h-[0.5vw]">
+          <div className="h-[1.5vw]">
             <FixedNavbar />
           </div>
         }
@@ -60,7 +60,7 @@ const Navbar = () => {
             </div>
           </NavLink>
         </div>
-        <div className="navbar-end lg:ml-auto w-full relative">
+        <div className="navbar-end lg:ml-auto w-full relative p-0">
           <ul className="menu menu-horizontal  lg:w-full lg:max-w-3xl lg:justify-end items-center">
             {nav_buttons.map((nav, i) => (
               <li className="hidden lg:flex" key={i}>
