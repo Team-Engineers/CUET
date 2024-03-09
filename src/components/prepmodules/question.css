@@ -120,13 +120,15 @@
   background-color: lightgreen;
 }
 .question-practice .option-alphabet {
+  min-height: 25px;
+  max-height: 25px;
+  min-width: 25px;
+  max-width: 25px;
   font-weight: bold;
   color: #444;
   margin-right: 15px;
   border: 1px solid #bababa;
   border-radius: 100%;
-  height: 25px;
-  width: 25px;
   display: flex;
   justify-content: center;
   align-items: center;

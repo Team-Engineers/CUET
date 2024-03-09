@@ -59,7 +59,7 @@ const Box2 = styled.p`
   white-space: nowrap;
   justify-content: center;
   align-items: center;
-  text-transform: uppercase;
+  // text-transform: uppercase;
   font-weight: ${(props) => (props.isCurrentTopic ? "bolder" : "normal")};
   overflow-wrap: break-word;
 `;
@@ -158,7 +158,9 @@ const RecommendedSubTopics = () => {
               return (
                 <Link
                   className="no-underline"
-                  to={`${navigation}${topic.split(" ").join("_")}/${currentTopic.split(" ").join("_")}`}
+                  to={`${navigation}${topic
+                    .split(" ")
+                    .join("_")}/${currentTopic.split(" ").join("_")}`}
                   key={subIndex}
                 >
                   <TopicCard
@@ -168,6 +170,7 @@ const RecommendedSubTopics = () => {
                   >
                     <Box>
                       <Box2
+                        className="text-xs md:font-normal md:text-lg"
                         isCurrentTopic={
                           currentTopic === subTopic.split("_").join(" ")
                         }

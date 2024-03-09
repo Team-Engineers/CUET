@@ -190,11 +190,11 @@ const PrepModulesMultipleSubquestion = ({ data }) => {
                             )
                           }
                         >
-                          <div className="flex items-center justify-start">
+                          <div className="flex items-center justify-between">
                             <span className="option-alphabet">
                               {alphabets[optionIndex]}
                             </span>
-                            <div className="flex justify-start gap-3 w-100 items-center ">
+                            <div className="flex justify-start w-100 items-center ">
                               <MathText text={option?.text} textTag="h6" />
                               <div className="single-image-container">
                                 {option?.image && (
