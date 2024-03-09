@@ -191,6 +191,7 @@ const PrepModulesSingleSubquestion = ({ data }) => {
 
   const handlePageChange = (page) => {
     setCurrentPage(page - 1);
+    setExplanationsVisible(Array(data.length).fill(false));
     window.scroll(0, 0);
   };
 

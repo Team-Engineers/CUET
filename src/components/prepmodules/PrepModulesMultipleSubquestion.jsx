@@ -308,6 +308,11 @@ const PrepModulesMultipleSubquestion = ({ data }) => {
 
   const handlePageChange = (page) => {
     setCurrentPage(page - 1);
+    setExplanationsVisiblePara(
+      Array(10)
+        .fill(null)
+        .map(() => Array(10).fill(false))
+    );
     window.scroll(0, 0);
   };
 
