@@ -74,18 +74,34 @@ function TestPage() {
       <Navbar />
       <div className="md:mx-10 mx-4 ">
         <div className="max-w-[1280px] mx-auto ">
-          <div className="w-full  flex flex-col-reverse md:flex-row items-center justify-between">
-            <div className="flex flex-row text-7xl md:text-[35px]">
-              <h2>
-                <Link className=" text-[#5648FC]  " to={"/courses"}>
+        <div className="w-full  flex flex-col-reverse md:flex-row items-center justify-between">
+             <div className="flex flex-row text-7xl md:text-[35px]">
+
+        <h2>
+                <Link className=" text-[#5648FC] md:hidden " to={"/courses"}>
                   <IoArrowBack className="" />
                 </Link>
               </h2>
-              <h3 className="py-0 md:text-[40px] text-[#5648FC]">
+              <h3 className="py-0 md:text-[40px] text-[#5648FC] md:hidden">
+                One Stop for your <br /> complete Learning
+                <br />
+                <span className="text-[#5648FC] mt-1 flex text-4xl opacity-[70%] md:my-7" >CUET</span> 
+                </h3>
+              </div>
+              </div>
+          <div className="w-full  flex flex-col-reverse md:flex-row items-center justify-between">
+            <div className="flex flex-row text-7xl md:text-[35px]">
+              
+              <h2>
+                <Link className=" text-[#5648FC] invisible lg:visible " to={"/courses"}>
+                  <IoArrowBack className="" />
+                </Link>
+              </h2>
+              <h3 className="py-0 md:text-[40px] text-[#5648FC] invisible lg:visible">
                 One Stop for your <br /> complete Learning
                 <br />
                 <span className="text-[#5648FC] mt-1 flex text-4xl opacity-[70%] md:my-7" >CUET</span>
-                <Link to={'/purchase'} className="mt-5 no-underline mx-auto max-md:flex max-md:justify-center  max-md:items-center max-w-72 btn hover:bg-[#FF7468] bg-[#FF7468] shadow-none outline-none border-none rounded-[10px] text-white font-normal md:text-3xl  p-1 px-8">
+                <Link to={'/purchase'} className="mt-5 no-underline mx-auto max-md:flex max-md:justify-center  max-md:items-center max-w-72 btn hover:bg-[#FF7468] bg-[#FF7468] shadow-none outline-none border-none rounded-[10px] text-white font-normal md:text-3xl  p-1 px-8 ">
                   Access Now
                 </Link>
               </h3>
@@ -93,11 +109,14 @@ function TestPage() {
             <img
               alt=""
               src={require('../../assets/coursesbanner.png')}
-              className="w-[300px] h-[300px] md:w-[450px] md:h-[400px] flex justify-center items-center mx-auto md:mr-4 lg:mr-14"
-            />
+              className="w-[300px] h-[300px] md:w-[450px] md:h-[400px] flex justify-center items-center mx-auto md:mr-4 lg:mr-14 md:mb-[-196px] mb-[-196px] md:mb-0"
+              />
           </div>
+          <Link to={'/purchase'} className="mt-5 no-underline mx-auto max-md:flex max-md:justify-center  max-md:items-center max-w-72 btn hover:bg-[#FF7468] bg-[#FF7468] shadow-none outline-none border-none rounded-[10px] text-white font-normal md:text-[2rem]  p-1 px-8 md:hidden text-[1.5rem]">
+                  Access Now
+                </Link>
           <div className="w-full flex flex-col justify-center items-center">
-            <div className=" w-[1150px]  flex flex-col items-center md:flex-row justify-between md:text-lg text-center text-[15px] text-[#5648FC] md:my-14">
+            <div className=" w-[1150px]  flex flex-col items-center md:flex-row justify-between md:text-lg text-center text-[15px] text-[#5648FC] md:my-14 p-[41px]">
               <h1
                 className="cursor-pointer  my-3"
                 onClick={() => {
@@ -127,7 +146,7 @@ function TestPage() {
               </h1>
             </div>
             {currentTab === "prep" ? (
-              <div className=" grid grid-cols-1 md:grid-cols-2 mb-20 lg:grid-cols-3 gap-14">
+              <div className=" grid grid-cols-1 md:grid-cols-2 mb-20 lg:grid-cols-3 gap-14 m-[-21px] ml-0 mr-0">
                 {prep.map((subject, index) => (
                   <Testcard key={index} heading={topic} {...subject} index={index} />
                 ))}

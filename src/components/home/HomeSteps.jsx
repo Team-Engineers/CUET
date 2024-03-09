@@ -12,8 +12,9 @@ const HomeSteps = () => {
       <div className="f ">
             </div>
       <div className=" flex md:flex-row flex-col  md:justify-between  md:mx-10 items-center">
-      
+
         <div className=" sm:w-[450px] w-[350px] object-cover ">
+        <h1 className="md:text-left text-center gradient-text  text-13xl font-bold md:hidden ">May We Help You</h1>  {/* for large device */}
           <Lottie
             options={{
               loop: true,
@@ -24,7 +25,7 @@ const HomeSteps = () => {
         </div>
         <div className="flex flex-col mx-auto sm:w-[750px] w-[350px]  max-md:mx-2 justify-between ">
           <div className=" md:justify-evenly ">
-          <h1 className="md:text-left text-center gradient-text  text-13xl font-bold ">May We Help You</h1>
+          <h1 className="md:text-left text-center gradient-text  text-13xl font-bold invisible lg:visible">May We Help You</h1>  {/* for small device */}
 
           <h3 className="md:text-left gradient-text2 text-center font-bold text-7xl mt-2 text-[#000000CC]">3 Simple steps for Assured Success at CUET</h3>
 

@@ -30,7 +30,7 @@ export const subjects = [
   { subjectName: "Psychology", image: '/syllabusImages/group-therapy/rafiki.png', link: "https://cdnasb.samarth.ac.in/site/Syllabus%20of%20CUET%20%28UG%29%20-%202022/324_Psychology.pdf" },
   { subjectName: "Sanskrit", image: '/syllabusImages/Sandy_Edu-04_Single-03 4.png', link: "https://cdnasb.samarth.ac.in/site/Syllabus+of+CUET+(UG)+-+2022/325_Sanskrit_Domain.pdf" },
   { subjectName: "Sociology", image: '/syllabusImages/Business statistics.png', link: "https://cdnasb.samarth.ac.in/site/Syllabus%20of%20CUET%20%28UG%29%20-%202022/326_sociology.pdf" },
-  { subjectName: "Teaching Aptitide", image: '/syllabusImages/online-test/rafiki.png', link: "https://cdnasb.samarth.ac.in/site-admin23/syllabus/327_TeachingAptitude.pdf" },
+  { subjectName: "Teaching Aptitude", image: '/syllabusImages/online-test/rafiki.png', link: "https://cdnasb.samarth.ac.in/site-admin23/syllabus/327_TeachingAptitude.pdf" },
 ];
 export const topics = {
   "General English": [

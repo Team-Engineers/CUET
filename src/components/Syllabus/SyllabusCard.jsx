@@ -8,15 +8,14 @@ const SyllabusCard = ({ subject }) => {
   };
 
   return (
-    <div className=" border-[1px] border-solid border-black  m-6 rounded-xl shadow-[7px_7px_7px_0px_rgba(0,_0,_0,_0.25)] hover:scale-110 transition-all duration-100 bg-white ">
-      <div className="flex flex-col p-4 items-center justify-evenly text-center">
-        <p className="font-bold max-md:text-[4vw] text-2xl drop-shadow-[7px_7px_7px_rgba(0,_0,_0,_0.25)]">{subjectName}</p>
-        <img src={process.env.PUBLIC_URL + `${image}`} alt="" className="w-[80px] h-[80px] my-1" />
-        <button onClick={handleButtonClick} className="cursor-pointer rounded-full max-md:text-[1.5vw] text-[10px] whitespace-nowrap border-none bg-indigo text-white px-5 py-3 font-bold shadow-lg shadow-gray-600">
-          View/ Download PDF
+      <div className="border border-solid border-[#818181] m-6 rounded-xl hover:shadow-[1px_1px_1px_1px_#9089E4] transition-shadow  duration-300 bg-white max-w-[12rem]">
+      <div className="flex flex-col items-center justify-center p-4 h-full mt-[-23px] w-[-1.5rem]">
+        <p className="font-bold drop-shadow-[7px_7px_7px_rgba(0,_0,_0,_0.25)]  text-center mb-[0.5rem] h-[2rem]">{subjectName}</p>
+        <img src={process.env.PUBLIC_URL + `${image}`} alt="" className="w-[6rem] h-[93px] mb-4 m-0" />
+        <button onClick={handleButtonClick} className="cursor-pointer rounded-full text-md whitespace-nowrap border-none bg-indigo text-white px-3 py-2 font-bold hover:bg-[#ff7468]">
+          View / Download PDF
         </button>
       </div>
-
     </div>
   );
 };

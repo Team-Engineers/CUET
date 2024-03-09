@@ -5,10 +5,10 @@ const Universities = () => {
   return (
     <div className="md:mx-[30px] mx-[10px]">
        <div className=" max-w-[1280px] mx-auto">
-      <h1 className="gradient-text2 my-6  md:text-center">
+      <h1 className="gradient-text2 my-6  md:text-center text-center">
         Universities Participating in <span className="text-red-500">CUET</span>
       </h1>
-      <div className="flex w-full  md:flex-row flex-col justify-between items-center">
+      <div className="flex w-full  md:flex-row  justify-between items-center flex-col-reverse">
         <div className="mx-1 mt-2">
           <table className="border-collapse table  lg:w-[600px]    rounded-2xl shadow-[0px_4px_6px_0px_rgba(0,0,0,0.1)]">
             <thead>

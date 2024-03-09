@@ -6,9 +6,18 @@ const AboutPage = () => {
     <div className="w-full overflow-hidden   bg-white">
       <Navbar />
       <div className="">
-        <div className="flex justify-between items-center flex-col sm:flex-row ">
+      <div className="flex justify-between items-center  sm:flex-row flex-col-reverse lg:invisible">  {/* for large device */}
+
+      <div className="w-full sm:max-w-[40vw]  md:ml-[60px]  flex flex-col justify-around">
+      <div className="px-3">
+      <h1 className="pl-0 mb-0 font-bold text-7xl md:text-21xl gradient-text2 px-3 my-2 text-center">About Us</h1>
+      <hr className="w-10  text-blueviolet-100 ml-[104px]" />
+      </div>
+      </div>
+      </div>
+        <div className="flex justify-between items-center  sm:flex-row flex-col-reverse ">
         <div className="w-full sm:max-w-[40vw]  md:ml-[60px]  flex flex-col justify-around">
-          <div className="px-3">
+          <div className="px-3 invisible lg:visible">              {/* for small device */}
             <h1 className="pl-0 mb-0 font-bold text-7xl md:text-21xl gradient-text2 px-3">About Us</h1>
             <hr className="w-10 m-0 text-blueviolet-100" />
           </div>
