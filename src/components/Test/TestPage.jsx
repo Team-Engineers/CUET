@@ -34,14 +34,14 @@ function TestPage() {
     let questionsValues;
     if (topic === "General Test") {
       if (selectedCategory === "Mathematics") {
-        questionsValues = [50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160];
+        questionsValues = [100, 81, 29, 85, 80, 50, 50, 50, 25, 49, 60, 50, 50, 30, 50];
       } else if (selectedCategory === "Logical Reasoning") {
-        questionsValues = [70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 170, 180];
+        questionsValues = [91, 78, 78, 52, 218, 30, 91, 30, 78, 91, 20, 70, 130];
       } else if (selectedCategory === "General Awareness") {
-        questionsValues = [60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 170];
+        questionsValues = [50, 50, 50, 49, 50, 171, 50, 50];
       }
     } else {
-      questionsValues = [40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150];
+      questionsValues = [100, 57, 100, 100, 60, 50, 130, 50, 50, 170, 40, 60];
     }
 
     return {
@@ -69,13 +69,13 @@ function TestPage() {
     let marksValues, timesValues, questionsValues;
 
     if (topic === "General Test") {
-      marksValues = [60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 170];
-      timesValues = [110, 120, 130, 140, 150, 160, 170, 180, 190, 200, 210, 220];
-      questionsValues = [50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160];
+      marksValues = [20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20];
+      timesValues = [20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20];
+      questionsValues = [20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20];
     } else {
       marksValues = [20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20];
-      timesValues = [100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200, 210];
-      questionsValues = [40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150];
+      timesValues = [15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15];
+      questionsValues = [20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20];
     }
 
     return {
@@ -93,16 +93,16 @@ function TestPage() {
     let marksValues, timesValues, negativeValues, questionsValues;
 
     if (topic === "General Test") {
-      marksValues = [60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 170];
-      timesValues = [110, 120, 130, 140, 150, 160, 170, 180, 190, 200, 210, 220];
-      questionsValues = [50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160];
-      negativeValues = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+      marksValues = [250, 250, 250, 250, 250, 250, 250, 250, 250, 250, 250, 250];
+      timesValues = [60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60];
+      questionsValues = ["50 of 60", "50 of 60", "50 of 60", "50 of 60", "50 of 60", "50 of 60", "50 of 60", "50 of 60", "50 of 60", "50 of 60", "50 of 60", "50 of 60"];
+      negativeValues = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
     } else {
-      marksValues = [50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160];
-      timesValues = [100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200, 210];
-      questionsValues = [40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150];
-      negativeValues = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+      marksValues = [200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200];
+      timesValues = [45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45];
+      questionsValues = ["40 of 50", "40 of 50", "40 of 50", "40 of 50", "40 of 50", "40 of 50", "40 of 50", "40 of 50", "40 of 50", "40 of 50", "40 of 50", "40 of 50"];
+      negativeValues = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
     }
 
