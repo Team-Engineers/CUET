@@ -56,63 +56,62 @@ const Courses = () => {
           </svg>
         </div>
         <div className="max-w-[1280px] mx-auto">
-        <Link
-          className="text-[#5648FC] md:mx-20 mx-10 relative top-[20px] flex items-center  z-20 pr-2 "
-          to={"/"}
-        >
-          <IoArrowBack size={40} />
-        </Link>
-        <div className="relative z-10 flex  items-center  flex-col  mt-[-40px] ">
-          <h1 className="gradient-text2 items-center flex ">Courses</h1>
-        </div>
+          <Link
+            className="text-[#5648FC] md:mx-20 mx-10 relative top-[20px] flex items-center  z-20 pr-2 "
+            to={"/"}
+          >
+            <IoArrowBack size={40} />
+          </Link>
+          <div className="relative z-10 flex  items-center  flex-col  mt-[-40px] ">
+            <h1 className="gradient-text2 items-center flex ">Courses</h1>
+          </div>
 
-        <div className="max-w-[180vh] relative z-10 mx-auto flex flex-col items-center mt-[-40px]">
-          <div className="flex flex-col items-center justify-center mt-[50px] ">
-            <div className={`my-6 flex md:flex-row flex-col gap-[70px] `}>
-              
-              <TopicContainer
-                brick={require("../../assets/images/signup/brick.png")}
-                heading="General English"
-                color="#FF6868"
-              />
-              <TopicContainer
-                brick={require("../../assets/images/signup/test.png")}
-                heading="General Test"
-                color="#80BCBD"
-              />
+          <div className="max-w-[180vh] relative z-10 mx-auto flex flex-col items-center mt-[-40px]">
+            <div className="flex flex-col items-center justify-center mt-[50px] ">
+              <div className={`my-6 flex md:flex-row flex-col gap-[70px] `}>
+                <TopicContainer
+                  brick={require("../../assets/images/signup/brick.png")}
+                  heading="General English"
+                  color="#FF6868"
+                />
+                <TopicContainer
+                  brick={require("../../assets/images/signup/test.png")}
+                  heading="General Test"
+                  color="#80BCBD"
+                />
+              </div>
             </div>
           </div>
-        </div>
 
-        <h1 className="gradient-text2 relative z-10 md:mx-[50px] mx-[0] md:justify-start justify-center items-center flex flex-col mt-10 ">
-          Domain Subjects
-        </h1>
+          <h1 className="gradient-text2 relative z-10 md:mx-[50px] mx-[0] md:justify-start justify-center items-center flex flex-col mt-10 ">
+            Domain Subjects
+          </h1>
 
-        <div className="max-w-[180vh] pb-60  relative z-30 mx-auto  flex flex-col items-center ">
-          <div className=" mt-[20px] mb-[-80px]">
-            <div
-              className={`grid ${gridColumns}  my-6 ${flexDirection} ${gridGap}`}
-            >
-              {DomainTopic.map((subtopic, index) => (
-                <div key={index}>
-                  <Link
-                    className="no-underline"
-                    to={`/courses/${subtopic.title}`}
-                  >
-                    <TopicContainer
-                      brick={subtopic.image}
-                      heading={subtopic.title}
-                      color={subtopic.color}
-                      subheading="domain"
-                    />
-                  </Link>
-                </div>
-              ))}
+          <div className="max-w-[180vh] pb-60  relative z-30 mx-auto  flex flex-col items-center ">
+            <div className=" mt-[20px] mb-[-80px]">
+              <div
+                className={`grid ${gridColumns}  my-6 ${flexDirection} ${gridGap}`}
+              >
+                {DomainTopic.map((subtopic, index) => (
+                  <div key={index}>
+                    <Link
+                      className="no-underline"
+                      to={`/courses/${subtopic.title.split(" ").join("_")}`}
+                    >
+                      <TopicContainer
+                        brick={subtopic.image}
+                        heading={subtopic.title}
+                        color={subtopic.color}
+                        subheading="domain"
+                      />
+                    </Link>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
       </div>
-        </div>
       <div className="relative top-[-20vh]  ">
         <svg
           width="189"

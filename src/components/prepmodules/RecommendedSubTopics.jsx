@@ -67,16 +67,24 @@ const Box2 = styled.p`
 const RecommendedSubTopics = () => {
   const [auth] = useAuth();
   const allow = auth?.user?.packageId;
-  const { topic, subTopic } = useParams();
+  let { subject, topic, subTopic } = useParams();
   const [subtopics, setSubtopics] = useState([]);
+  subject = subject?.split("_").join(" ");
+  topic = topic?.split("_").join(" ");
+  subTopic = subTopic?.split("_").join(" ");
+
+  let navigation = `/test/prep/`;
+  if (subject === "General Test") {
+    navigation += `${subject.split(" ").join("_")}/`;
+  }
 
   useEffect(() => {
-    if (topic === "General Test") {
-      const category = Object.keys(topics[topic]).find((category) =>
-        topics[topic][category].includes(subTopic)
+    if (subject === "General Test") {
+      const category = Object.keys(topics[subject]).find((category) =>
+        topics[subject][category].includes(subTopic)
       );
       if (category) {
-        const categorySubtopics = topics[topic][category] || [];
+        const categorySubtopics = topics[subject][category] || [];
         setSubtopics(categorySubtopics);
       } else {
         setSubtopics([]);
@@ -150,7 +158,7 @@ const RecommendedSubTopics = () => {
               return (
                 <Link
                   className="no-underline"
-                  to={`/test/prep/${topic}/${currentTopic}`}
+                  to={`${navigation}${topic.split(" ").join("_")}/${currentTopic.split(" ").join("_")}`}
                   key={subIndex}
                 >
                   <TopicCard

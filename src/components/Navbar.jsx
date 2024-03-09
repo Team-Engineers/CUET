@@ -51,7 +51,7 @@ const Navbar = () => {
           </div>
         }
       </div>
-      <div className={`navbar abovecontain ${location.pathname === "/" ? "bg-white" : ""} max-w-[1400px] mx-auto z-10   relative min-h-[8vh]`}>
+      <div className={`navbar abovecontain ${location.pathname === "/" ? "bg-white" : ""} max-w-[1280px] mx-auto z-10   relative min-h-[8vh]`}>
         <div className="navbar-start ml-5 md:w-72  relative">
           <NavLink to={"/"} className="no-underline gap-2 mt-[5px] items-center flex">
             <div className="flex gap-2 items-center">
