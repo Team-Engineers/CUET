@@ -12,11 +12,11 @@ const PracticeTestQues = ({ data }) => {
   // console.log(data);
   const alphabets = "ABCDEFGHIJ".split("");
   const [selectedOptions, setSelectedOptions] = useState(
-    Array(data.length).fill([])
+    Array(data?.length).fill([])
   );
   const [currentPage, setCurrentPage] = useState(0);
   const [explanationsVisible, setExplanationsVisible] = useState(
-    Array(data.length).fill(false)
+    Array(data?.length).fill(false)
   );
   const [isLoading, setIsLoading] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -144,16 +144,16 @@ const PracticeTestQues = ({ data }) => {
               <div>
                 {question?.questionTextAndImages?.map((textData, textIndex) => (
                   <div key={textIndex}>
-                    {textData.text && (
+                    {textData?.text && (
                       <MathText
                         className="question-text mb-2"
-                        text={textData.text}
+                        text={textData?.text}
                         textTag="h6"
                       />
                     )}
-                    {textData.imageUrl && (
+                    {textData?.imageUrl && (
                       <img
-                        src={textData.imageUrl}
+                        src={textData?.imageUrl}
                         alt={`Img ${textIndex}+1`}
                         className="question-image"
                       />
@@ -172,19 +172,19 @@ const PracticeTestQues = ({ data }) => {
         <div className="flex  flex-col">
           <div className="flex justify-between">
             <div className="px-4 py-5">
-              <span className={`question-number id-${question._id}`}>
+              <span className={`question-number id-${question?._id}`}>
                 {`${questionIndex + 1 + currentPage * 1} `}
               </span>
             </div>
             <div
               className={` question-number2 cursor-pointer z-50  m-2  ${
-                savedQuestions.includes(questionIndex + currentPage * 1)
+                savedQuestions?.includes(questionIndex + currentPage * 1)
                   ? "saved"
                   : ""
               }`}
               onClick={() => handleSaveQuestion(questionIndex)}
             >
-              {savedQuestions.includes(questionIndex + currentPage * 1) ? (
+              {savedQuestions?.includes(questionIndex + currentPage * 1) ? (
                 <>
                   <IoBookmark className="text-[25px]" />
                 </>
@@ -202,7 +202,7 @@ const PracticeTestQues = ({ data }) => {
                   <MathText
                     className="question-text mb-2"
                     key={textIndex}
-                    text={textData.text}
+                    text={textData?.text}
                     textTag="h6"
                   />
                 )
@@ -222,12 +222,14 @@ const PracticeTestQues = ({ data }) => {
               : isSubmitted &&
                 selectedOptions[currentPage] &&
                 selectedOptions[currentPage][questionIndex] === optionIndex &&
-                question.subQuestions[0].correctOptionIndex - 1 === optionIndex
+                question?.subQuestions[0]?.correctOptionIndex - 1 ===
+                  optionIndex
               ? "correct"
               : isSubmitted &&
                 selectedOptions[currentPage] &&
                 selectedOptions[currentPage][questionIndex] === optionIndex &&
-                question.subQuestions[0].correctOptionIndex - 1 !== optionIndex
+                question?.subQuestions[0]?.correctOptionIndex - 1 !==
+                  optionIndex
               ? "incorrect"
               : ""
           }`}
@@ -238,12 +240,12 @@ const PracticeTestQues = ({ data }) => {
           <div className="flex justify-start items-center">
             <span className="option-alphabet ">{alphabets[optionIndex]}</span>
             <div className="flex mx-2 text-[20px]  relative  justify-start gap-3 w-100 items-center ">
-              <MathText text={option.text} textTag="h6" />
+              <MathText text={option?.text} textTag="h6" />
               <div className="single-image-container">
-                {option.image && (
+                {option?.image && (
                   <img
                     className="question-image"
-                    src={option.image}
+                    src={option?.image}
                     alt={`Img ${optionIndex + 1}`}
                   />
                 )}
@@ -313,27 +315,21 @@ const PracticeTestQues = ({ data }) => {
                   <h6 className="text-blueviolet-100">
                     <strong> Solution:</strong>
                   </h6>
-                  <h6>
-                    <span
-                      dangerouslySetInnerHTML={{
-                        __html: explanationData.text[0],
-                      }}
+                  {explanationData?.text?.map((text, textIndex) => (
+                    <MathText
+                      className="explanation-text mb-2"
+                      key={textIndex}
+                      text={text}
+                      textTag="h6"
                     />
-                    <div
-                      dangerouslySetInnerHTML={{
-                        __html: explanationData.text[1],
-                      }}
-                    />
-                    <div />
-                    <span
-                      dangerouslySetInnerHTML={{
-                        __html: explanationData.text[2],
-                      }}
-                    />
-                  </h6>
-                  {explanationData.text.slice(3).map((text, index) => (
-                    <MathText key={index} text={text} textTag="h6" />
                   ))}
+                  {explanationData?.image && (
+                    <img
+                      className="question-image"
+                      src={explanationData?.image}
+                      alt={`Img ${index + 1}`}
+                    />
+                  )}
                 </p>
               )
             )}
@@ -343,7 +339,7 @@ const PracticeTestQues = ({ data }) => {
     </div>
   );
   const generatePageNumbers = () => {
-    const totalPages = Math.ceil(data.data.length / 1);
+    const totalPages = Math.ceil(data?.data?.length / 1);
     const pages = [];
 
     for (let i = 1; i <= totalPages; i++) {
@@ -361,18 +357,21 @@ const PracticeTestQues = ({ data }) => {
   };
 
   const checkPageStatusAfterSubmission = (pageIndex) => {
-    const questionsOnPage = data.data.slice(pageIndex * 1, (pageIndex + 1) * 1);
+    const questionsOnPage = data?.data?.slice(
+      pageIndex * 1,
+      (pageIndex + 1) * 1
+    );
     let correctCount = 0;
     let incorrectCount = 0;
     let notAttemptedCount = 0;
 
-    questionsOnPage.forEach((question, index) => {
+    questionsOnPage?.forEach((question, index) => {
       const selectedOptionIndex = selectedOptions[pageIndex]
         ? selectedOptions[pageIndex][index]
         : null;
       if (selectedOptionIndex !== null) {
         const isCorrect =
-          question.subQuestions[0].correctOptionIndex - 1 ===
+          question?.subQuestions[0]?.correctOptionIndex - 1 ===
           selectedOptionIndex;
         if (isCorrect) {
           correctCount++;
@@ -399,10 +398,10 @@ const PracticeTestQues = ({ data }) => {
     return null;
   };
 
-  const totalQuestions = data.data.length;
-  const totalAttempts = correctOptions.length + incorrectOptions.length;
-  const correctPercentage = (correctOptions.length / totalQuestions) * 100;
-  const incorrectPercentage = (incorrectOptions.length / totalQuestions) * 100;
+  const totalQuestions = data?.data?.length;
+  const totalAttempts = correctOptions?.length + incorrectOptions?.length;
+  const correctPercentage = (correctOptions?.length / totalQuestions) * 100;
+  const incorrectPercentage = (incorrectOptions?.length / totalQuestions) * 100;
   const attemptedPercentage = (totalAttempts / totalQuestions) * 100;
   return (
     <section className="mx-auto mb-8 max-w-[1280px] ">
@@ -469,7 +468,7 @@ const PracticeTestQues = ({ data }) => {
             <button
               className=" border-none cursor-pointer shadow-2xl relative flex justify-center items-center rounded bg-gradient-to-br overflow-hidden from-[#5648FC] to-[#5648FC] text-white px-7 p-3"
               onClick={() => setCurrentPage((prev) => prev + 1)}
-              disabled={currentPage === data.data.length - 1}
+              disabled={currentPage === data?.data?.length - 1}
             >
               Next
             </button>
@@ -582,9 +581,9 @@ const PracticeTestQues = ({ data }) => {
 
       {showResultPopup && (
         <div className="popup-overlay">
-          <div className="result-popup px-8 p-5">
+          <div className="result-popup px-8 p-5 rounded-lg">
             <h2 className="font-bold text-[30px]">Results</h2>
-            <p className="text-yellow-400 text-[20px]">
+            <p className="text-[#b89696] text-[20px]">
               Total attempted questions: {totalAttempts} out of {totalQuestions}
             </p>
             <p className="text-green-400 text-[20px]">
@@ -625,8 +624,8 @@ const PracticeTestQues = ({ data }) => {
                   text={`${attemptedPercentage.toFixed(2)}%`}
                   styles={{
                     root: { width: 100 },
-                    path: { stroke: "#FFEB3B" },
-                    text: { fill: "#FFEB3B" },
+                    path: { stroke: "#b89696" },
+                    text: { fill: "#b89696" },
                   }}
                 />
                 <p>Attempted</p>
@@ -635,7 +634,7 @@ const PracticeTestQues = ({ data }) => {
 
             <div className="flex justify-between">
               <button
-                className="border-none cursor-pointer shadow-2xl mb-2 relative flex justify-center items-center rounded bg-gradient-to-br overflow-hidden from-[#5648FC] to-[#5648FC] text-white px-7 p-3"
+                className="border-none cursor-pointer shadow-2xl mb-2 relative flex justify-center items-center rounded bg-gradient-to-br overflow-hidden from-[#FF7468] to-[#FF7468] text-white px-7 p-3"
                 onClick={() => setShowResultPopup(false)}
               >
                 Review Test
@@ -653,7 +652,7 @@ const PracticeTestQues = ({ data }) => {
 
       {showWarningPopup && (
         <div className="popup-overlay ">
-          <div className="warning-popup bg-white    rounded">
+          <div className="warning-popup bg-white rounded-xl">
             <div className="flex justify-between">
               <h2 className="font-bold mx-4 text-[20px]">Finish Test?</h2>
               <h2 className="mx-4 cursor-pointer" onClick={handleContinueExam}>
@@ -664,9 +663,9 @@ const PracticeTestQues = ({ data }) => {
 
             <div className="px-8 py-4">
               <p>Are you sure you want to finish this test?</p>
-              <p className="text-red-500 text-[20px]">
-                Time is running out! Only {Math.floor(timer / 60)}:
-                {(timer % 60).toString().padStart(2, "0")} left.
+              <p className=" text-[20px]">
+                Time is running out! <span className="text-red-500">Only {Math.floor(timer / 60)}:
+                {(timer % 60).toString().padStart(2, "0")} left.</span>
               </p>
               <p>You will be unable to resume after you finish this test.</p>
             </div>
@@ -674,7 +673,7 @@ const PracticeTestQues = ({ data }) => {
 
             <div className="flex mx-4 my-3  justify-end">
               <button
-                className="border-none mr-2 cursor-pointer shadow-2xl mb-2 relative flex justify-center items-center rounded bg-gradient-to-br overflow-hidden from-[#5648FC] to-[#5648FC] text-white px-7 p-3"
+                className="border-none mr-2 cursor-pointer shadow-2xl mb-2 relative flex justify-center items-center rounded bg-gradient-to-br overflow-hidden from-[#FF7468] to-[#FF7468] text-white px-7 p-3"
                 onClick={handleContinueExam}
               >
                 Continue Exam

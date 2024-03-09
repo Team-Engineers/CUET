@@ -37,7 +37,12 @@ const App = () => {
       <Route path="/courses/:subtopic" element={<SubtopicPage />} />
       <Route path="/test/:topic" element={<TestPage />} />
       <Route path="/test/:subheading/:heading" element={<SubtopicPage />} />
+      <Route
+        path="/test/prep/:subject/:topic/:subTopic"
+        element={<PrepModules />}
+      />
       <Route path="/test/prep/:topic/:subTopic" element={<PrepModules />} />
+
       <Route
         path="/test/practice/:topic/:subTopic"
         element={<PracticeTestMain />}

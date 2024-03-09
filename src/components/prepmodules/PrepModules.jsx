@@ -16,17 +16,43 @@ const PrepModules = () => {
   const [auth] = useAuth();
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  // const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const { subTopic, heading } = useParams();
-  console.log(heading);
+  let { subject, topic, subTopic } = useParams();
+  subject = subject
+    ?.toLowerCase()
+    .replace(/\s/g, "_")
+    .replace(/&/g, "and")
+    .replace(/\./g, "")
+    .replace(/,/g, "");
+  subTopic = subTopic
+    ?.toLowerCase()
+    .replace(/\s/g, "_")
+    .replace(/&/g, "and")
+    .replace(/\./g, "")
+    .replace(/,/g, "");
+  topic = topic
+    ?.toLowerCase()
+    .replace(/\s/g, "_")
+    .replace(/&/g, "and")
+    .replace(/\./g, "")
+    .replace(/,/g, "");
+
+  if (!subject) {
+    subject = topic;
+    topic = subTopic;
+    subTopic = "";
+  }
   useEffect(() => {
     setIsLoading(true);
     const fetchData = async () => {
-      let subTopic1 = subTopic.toLowerCase().replace(/\s/g, "_");
+      const params = {
+        subject: subject,
+        topic: topic,
+        subTopic: subTopic,
+      };
       try {
         const response = await axios.get(
-          `https://ourntamockpapers.onrender.com/api/question/find-questions?topic=${subTopic1}`
-          // `https://ourntamockpapers.onrender.com/api/question/find-questions?topic=reading_comprehension`
+          `https://ourntamockpapers.onrender.com/api/question/find-questions`,
+          { params: params }
         );
         // console.log("response",response)
         setData(response?.data?.requestedData);
@@ -38,7 +64,7 @@ const PrepModules = () => {
     };
 
     fetchData();
-  }, [subTopic]);
+  }, [subTopic, topic]);
 
   // useEffect(() => {
   //   setIsLoggedIn(!auth?.user);
@@ -53,7 +79,7 @@ const PrepModules = () => {
       <div className="max-md:hidden">{!auth?.user && <FixedNavbar />}</div>
       <Navbar />
       {data?.length > 0 ? (
-        <div className="mx-auto max-w-[1400px] px-5 md:px-20 mb-[7rem]">
+        <div className="mx-auto max-w-[1280px] px-5 md:px-20 mb-[7rem]">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div className="md:col-span-1">
               <RecommendedSubTopics currentSubTopic={subTopic} />

@@ -13,7 +13,7 @@ const Syllabus = () => {
       <div className="w-full overflow-hidden relative pb-0 box-border tracking-[normal]">
         <img src={Vector} className="absolute top-0 left-0 z-0 overflow-hidden" alt="" />
         <Navbar />
-        <div className="relative max-w-[1300px]  mx-auto  z-10">
+        <div className="relative max-w-[1280px]  mx-auto  z-10">
           <div className=" mt-10 mb-14 ml-5">
             <h2 className="pl-0 mb-1  gradient-text  text-21xl leading-none">Syllabus</h2>
             <div className="w-10 m-0 h-[2px] my-2 bg-white " />
