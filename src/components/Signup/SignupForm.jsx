@@ -1,12 +1,12 @@
-import React, { useState } from "react";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
-import { API } from "../../utils/constants";
-import { CgSpinner } from "react-icons/cg";
-import { useAuth } from "../../utils/context";
 import { GoogleLogin } from "@react-oauth/google";
+import axios from "axios";
+import React, { useState } from "react";
+import { CgSpinner } from "react-icons/cg";
+import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { API } from "../../utils/constants";
+import { useAuth } from "../../utils/context";
 
 const SignupForm = () => {
   const [, setAuth] = useAuth();
@@ -27,10 +27,9 @@ const SignupForm = () => {
       const response = await axios.post(`${API}/auth/send-otp`, { email });
       setShowVerifyEmailPopup(true);
       setLoading(false);
-      console.log(response.data);
+      toast.success(response.data);
     } catch (error) {
       toast.error(error.response.data.message);
-      console.error("Error sending OTP:", error);
       setLoading(false);
     }
   };
@@ -40,13 +39,11 @@ const SignupForm = () => {
     try {
       const response = await axios.post(`${API}/auth/verify-otp`, { email, otp });
       setEmailVerified(true);
-      console.log(response.data);
       setShowVerifyEmailPopup(false);
       handleSignUp();
       setLoading(false);
     } catch (error) {
       toast.error(error.response.data.message);
-      console.error("Error verifying OTP:", error);
       setLoading(false);
 
     }
@@ -77,11 +74,9 @@ const SignupForm = () => {
         }));
         navigate("/");
       } else {
-        console.error("Sign Up failed:", response.data);
         toast.error(response.data.message);
       }
     } catch (error) {
-      console.error("Error during sign up:", error);
       if (error.response) {
         toast.error(error.response.data.message);
       } else {
@@ -93,7 +88,7 @@ const SignupForm = () => {
   };
 
   const handleGoogleLogin = async (credentialResponse) => {
-    setLoading(true); 
+    setLoading(true);
     try {
       const idToken = credentialResponse.credential;
       const response = await axios.post(
@@ -114,25 +109,22 @@ const SignupForm = () => {
           accessToken: tokenData,
         }));
         navigate("/");
-        setLoading(false); 
+        setLoading(false);
 
       } else {
-        console.error("Google authentication error:", response);
         toast.error("Google authentication failed");
-        setLoading(false); 
+        setLoading(false);
 
       }
     } catch (error) {
-      console.error("Google authentication error:", error);
       toast.error("Google authentication failed");
-      setLoading(false); 
+      setLoading(false);
 
     }
   };
   const handleGoogleLoginError = (error) => {
-    console.error("Google Login Error:", error);
     toast.error("Google login failed");
-    setLoading(false); 
+    setLoading(false);
 
   };
   const validateEmail = (email) => {

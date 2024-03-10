@@ -19,7 +19,6 @@ function TestPage() {
     subtopics = topics[topic];
   }
 
-  console.log("subtopci is", topic);
 
   const prep = subtopics.map((subtopic, index) => {
     const backgroundColors = [
@@ -122,10 +121,10 @@ function TestPage() {
       <Navbar />
       <div className="md:mx-10 mx-4 ">
         <div className="max-w-[1280px] mx-auto ">
-        <div className="w-full  flex flex-col-reverse md:flex-row items-center justify-between">
-             <div className="flex flex-row text-7xl md:text-[35px]">
+          <div className="w-full  flex flex-col-reverse md:flex-row items-center justify-between">
+            <div className="flex flex-row text-7xl md:text-[35px]">
 
-        <h2>
+              <h2>
                 <Link className=" text-[#5648FC] md:hidden " to={"/courses"}>
                   <IoArrowBack className="" />
                 </Link>
@@ -134,12 +133,12 @@ function TestPage() {
                 One Stop for your <br /> complete Learning
                 <br />
                 <span className="text-[#5648FC] mt-1 flex text-4xl opacity-[70%] md:my-7" >CUET</span>
-                </h3>
-              </div>
-              </div>
+              </h3>
+            </div>
+          </div>
           <div className="w-full  flex flex-col-reverse md:flex-row items-center justify-between">
             <div className="flex flex-row text-7xl md:text-[35px]">
-             
+
               <h2>
                 <Link className=" text-[#5648FC] invisible lg:visible " to={"/courses"}>
                   <IoArrowBack className="" />
@@ -158,11 +157,11 @@ function TestPage() {
               alt=""
               src={require('../../assets/coursesbanner.png')}
               className="w-[300px] h-[300px] md:w-[450px] md:h-[400px] flex justify-center items-center mx-auto md:mr-4 lg:mr-14 md:mb-[-196px] mb-[-196px] md:mb-0"
-              />
+            />
           </div>
           <Link to={'/purchase'} className="mt-5 no-underline mx-auto max-md:flex max-md:justify-center  max-md:items-center max-w-72 btn hover:bg-[#FF7468] bg-[#FF7468] shadow-none outline-none border-none rounded-[10px] text-white font-normal md:text-[2rem]  p-1 px-8 md:hidden text-[1.5rem]">
-                  Access Now
-                </Link>
+            Access Now
+          </Link>
           <div className="w-full flex flex-col justify-center items-center">
             <div className=" w-[1150px]  flex flex-col items-center md:flex-row justify-between md:text-lg text-center text-[15px] text-[#5648FC] md:my-14 p-[41px]">
               <h1
@@ -201,11 +200,10 @@ function TestPage() {
                       {Object.keys(topics2).map((category) => (
                         <div
                           key={category}
-                          className={`text-[30px] mx-3  whitespace-nowrap flex flex-col lg:flex-row  cursor-pointer relative  font-bold leading-7  text-center  p-2 rounded ${
-                            category === selectedCategory
+                          className={`text-[30px] mx-3  whitespace-nowrap flex flex-col lg:flex-row  cursor-pointer relative  font-bold leading-7  text-center  p-2 rounded ${category === selectedCategory
                               ? "font-medium bg-red-400 text-white "
                               : " font-normal  text-blue-800"
-                          }`}
+                            }`}
                           onClick={() => {
                             setSelectedCategory(category);
                           }}
@@ -227,7 +225,7 @@ function TestPage() {
                     heading={topic}
                     {...subject}
                     index={index}
-                    selectedCategory = {selectedCategory}
+                    selectedCategory={selectedCategory}
                   />
                 ))}
               {currentTab === "practice" &&
