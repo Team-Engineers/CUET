@@ -6,6 +6,7 @@ import CuetLoader from "../Loader/Loader";
 import NoData from "../Loader/NoData";
 import PrepModulesMultipleSubquestion from "./PrepModulesMultipleSubquestion";
 import PrepModulesSingleSubquestion from "./PrepModulesSingleSubquestion";
+import PrepModulesMixedSubquestion from "./PrepModulesMixedSubquestion";
 import RecommendedSubTopics from "./RecommendedSubTopics";
 import "./question.css";
 import FixedNavbar from "../FixedNavbar";
@@ -56,6 +57,7 @@ const PrepModules = () => {
         );
         // console.log("response",response)
         setData(response?.data?.requestedData);
+        // console.log("data", response?.data?.requestedData);
         setIsLoading(false);
       } catch (error) {
         setIsLoading(false);
@@ -74,6 +76,26 @@ const PrepModules = () => {
     return <CuetLoader />;
   }
 
+    const questionType= (questionData) => {
+      let singleSubquestion = 0 , multipleSubquestion = 0;
+      for (let item of questionData) {
+        if (item?.subQuestions && item.subQuestions.length > 1) {
+            multipleSubquestion++;
+        } else {
+            singleSubquestion++;
+        }
+    }
+      if(multipleSubquestion===questionData.length){
+        return "multiple";
+      }
+      else if(singleSubquestion===questionData.length){
+        return "single";
+      }
+      else{
+        return "mixed";
+      }
+    }
+
   return (
     <section className="bg-white">
       <div className="max-md:hidden">{!auth?.user && <FixedNavbar />}</div>
@@ -85,11 +107,9 @@ const PrepModules = () => {
               <RecommendedSubTopics currentSubTopic={subTopic} />
             </div>
             <div className="md:col-span-2 md:pl-20">
-              {data && data[0]?.subQuestions?.length > 1 ? (
-                <PrepModulesMultipleSubquestion data={data} />
-              ) : (
-                <PrepModulesSingleSubquestion data={data} />
-              )}
+              {questionType(data)==="multiple" && <PrepModulesMultipleSubquestion data={data} /> }
+              {questionType(data)==="single" && <PrepModulesSingleSubquestion data={data} /> }
+              {questionType(data)==="mixed" && <PrepModulesMixedSubquestion data={data} /> } 
             </div>
           </div>
         </div>
