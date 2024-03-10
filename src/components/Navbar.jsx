@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
-import { GiHamburgerMenu } from "react-icons/gi";
-import { LuUser2 } from "react-icons/lu";
 import { NavLink, useLocation } from "react-router-dom";
 import { useAuth } from "../utils/context";
 import FixedNavbar from "./FixedNavbar";
+import BurgerAndMenu from "./burgerAndMenu/BurgerAndMenu";
 import ExamInfo from "./home/ExamInfo";
 
-const Navbar = () => {
+const Navbar = ({ height }) => {
   const location = useLocation();
   const [auth, setAuth] = useAuth();
   const [detailsOpen, setDetailsOpen] = useState(false);
@@ -35,7 +34,6 @@ const Navbar = () => {
       accessToken: "",
     });
     localStorage.removeItem("auth");
-    console.log("Logout Successfully");
   };
 
   useEffect(() => {
@@ -51,7 +49,7 @@ const Navbar = () => {
           </div>
         }
       </div>
-      <div className={`navbar abovecontain ${location.pathname === "/" ? "bg-white" : ""} max-w-[1280px] mx-auto z-10   relative min-h-[8vh]`}>
+      <div style={{ height: height }} className={`navbar abovecontain ${location.pathname === "/" ? "bg-white" : ""} max-w-[1280px] mx-auto z-10   relative min-h-[8vh]`}>
         <div className="navbar-start ml-5 md:w-72  relative">
           <NavLink to={"/"} className="no-underline gap-2 mt-[5px] items-center flex">
             <div className="flex gap-2 items-center">
@@ -123,78 +121,21 @@ const Navbar = () => {
             )}
           </div>
 
-          <div className="flex relative mr-4 lg:hidden  flex-row items-center top-1 gap-[7px] text-base cursor-pointer">
+          <div className="flex relative mr-4 lg:hidden  flex-row items-center  gap-[7px] text-base cursor-pointer">
             <div onClick={handleBellIconClick} >
               <img
-                className="h-[30px] w-[30px] relative object-cover"
+                className="h-[32px] w-[30px] relative object-cover"
                 loading="eager"
                 alt=""
                 src={require("../assets/images/signup/bellicon.gif")}
               />
             </div>
           </div>
-          <div className="dropdown relative abovecontain">
+          <div className="lg:hidden  ">
+            <BurgerAndMenu />
 
-            <div tabIndex={0} role="button" className="btn abovecontain btn-ghost flex justify-center items-center lg:hidden  mr-5">
-              <GiHamburgerMenu className="text-blueviolet-100" size={"2em"} />
-            </div>
-
-            <ul tabIndex={0} className="menu menu-sm abovecontain dropdown-content mt-3  bg-white p-2 shadow rounded-box w-52 right-[0px]">
-              {nav_buttons.map((nav, i) => (
-                <li className="my-1" key={i}>
-                  <div className="h-[21px] flex flex-col items-start justify-start gap-[2px] text-blueviolet-100 ">
-                    <NavLink
-                      to={nav.path}
-                      className={`no-underline text-blueviolet-100 text-center w-full ${location.pathname === nav.path ? "active" : ""}`}
-                    >
-                      <b className="flex-1 relative cursor-pointer text-blueviolet-100 text-lg md:font-bold">{nav.title}</b>
-                    </NavLink>
-                  </div>
-                </li>
-              ))}
-
-              {!auth?.user && (
-                <>
-                  <li className="my-1">
-                    <div className="h-[21px] flex flex-col items-start justify-start gap-[2px] text-blueviolet-100 ">
-                      <NavLink to={"/login"} className={`no-underline text-blueviolet-100 text-center w-full `}>
-                        <b className="flex-1 relative cursor-pointer text-blueviolet-100 text-lg md:font-bold">Login</b>
-                      </NavLink>
-                    </div>
-                  </li>
-                  <li className="my-1">
-                    <div className="h-[21px] flex flex-col items-start justify-start gap-[2px] text-blueviolet-100 ">
-                      <NavLink to={"/signup"} className={`no-underline text-blueviolet-100 text-center w-full `}>
-                        <b className="flex-1 relative cursor-pointer text-salmon-200 text-lg md:font-bold">Signup</b>
-                      </NavLink>
-                    </div>
-                  </li>
-                </>
-              )}
-
-              {auth?.user && (
-                <>
-                  <li className="my-1">
-                    <div className="h-[21px] flex flex-col items-start justify-start gap-[2px] text-blueviolet-100 ">
-                      <NavLink to={"/profile"} className={`no-underline text-blueviolet-100 text-center w-full `}>
-                        <b className="flex-1 relative cursor-pointer text-blueviolet-100 text-lg md:font-bold">
-                          <LuUser2 className="mr-2" />
-                          Profile
-                        </b>
-                      </NavLink>
-                    </div>
-                  </li>
-                  <li className="my-1">
-                    <div className="h-[21px] flex flex-col items-start justify-start gap-[2px] text-blueviolet-100 ">
-                      <button onClick={handleLogout} className={`no-underline text-blueviolet-100 text-center w-full `}>
-                        <b className="flex-1 relative cursor-pointer text-salmon-200 text-lg md:font-bold">Signout</b>
-                      </button>
-                    </div>
-                  </li>
-                </>
-              )}
-            </ul>
           </div>
+
         </div>
       </div>
       {isPopupOpen && (
@@ -208,5 +149,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
-

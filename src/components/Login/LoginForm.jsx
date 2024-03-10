@@ -37,20 +37,17 @@ const LoginForm = () => {
         navigate("/");
         setLoading(false);
       } else {
-        console.error("Google authentication error:", response);
         toast.error("Google authentication failed");
         setLoading(false);
 
       }
     } catch (error) {
-      console.error("Google authentication error:", error);
       toast.error("Google authentication failed");
       setLoading(false);
     }
   };
 
   const handleGoogleLoginError = (error) => {
-    console.error("Google Login Error:", error);
     toast.error("Google login failed");
     setLoading(false);
 
@@ -81,14 +78,10 @@ const LoginForm = () => {
         setLoading(false);
       } else {
         setLoading(false);
-        console.log("Login failed:", response.data.message);
-        const errorMessage = response?.data?.message || "An error occurred during login now. Please try again later.";
-        toast.error(errorMessage);
+        toast.error("Wrong Username or Password!");
       }
     } catch (error) {
-      console.log("Error occurred during login:", error);
-      const errorMessage = error.response?.data?.message || error.response?.data?.msg || "An error occurred during login. Please try again later.";
-      toast.error(errorMessage);
+      toast.error("An error occurred during login. Please try again later.");
     }
     setLoading(false);
 

@@ -2,15 +2,15 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useAuth } from "../../utils/context";
+import FixedNavbar from "../FixedNavbar";
+import Footer from "../Footer";
 import CuetLoader from "../Loader/Loader";
 import NoData from "../Loader/NoData";
+import Navbar from "../Navbar";
 import PrepModulesMultipleSubquestion from "./PrepModulesMultipleSubquestion";
 import PrepModulesSingleSubquestion from "./PrepModulesSingleSubquestion";
 import RecommendedSubTopics from "./RecommendedSubTopics";
 import "./question.css";
-import FixedNavbar from "../FixedNavbar";
-import Navbar from "../Navbar";
-import Footer from "../Footer";
 
 const PrepModules = () => {
   const [auth] = useAuth();
@@ -64,7 +64,7 @@ const PrepModules = () => {
     };
 
     fetchData();
-  }, [subject,subTopic, topic]);
+  }, [subject, subTopic, topic]);
 
   // useEffect(() => {
   //   setIsLoggedIn(!auth?.user);
@@ -75,7 +75,7 @@ const PrepModules = () => {
   }
 
   return (
-    <section className="bg-white">
+    <section className="bg-white overflow-hidden">
       <div className="max-md:hidden">{!auth?.user && <FixedNavbar />}</div>
       <Navbar />
       {data?.length > 0 ? (
@@ -102,3 +102,4 @@ const PrepModules = () => {
 };
 
 export default PrepModules;
+
