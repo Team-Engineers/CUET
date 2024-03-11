@@ -42,7 +42,7 @@ const Navbar = ({ height }) => {
 
   return (
     <>
-      <div className="max-md:hidden">
+      <div className="max-lg:hidden">
         {!auth?.user &&
           <div className="h-[1.5vw]">
             <FixedNavbar />

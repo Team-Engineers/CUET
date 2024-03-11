@@ -63,14 +63,21 @@ const SignupForm = () => {
           token: accessToken,
           expiry: tokenExpiry,
         };
+        const userWithoutSensitiveData = {
+          ...user,
+          password: undefined,
+          razorpay_signature: undefined,
+          razorpay_order_id: undefined,
+          razorpay_payment_id: undefined,
+        };
         setAuth({
-          user: user,
+          user: userWithoutSensitiveData,
           accessToken: tokenData,
         });
         localStorage.setItem(
           "auth",
           JSON.stringify({
-            user: user,
+            user: userWithoutSensitiveData,
             accessToken: tokenData,
           })
         );
@@ -104,11 +111,12 @@ const SignupForm = () => {
           token: res.accessToken,
           expiry: tokenExpiry,
         };
-        setAuth({ user: res.user, accessToken: tokenData });
+        const { password, razorpay_signature, razorpay_order_id, razorpay_payment_id, ...userWithoutSensitiveFields } = res.user;
+        setAuth({ user: userWithoutSensitiveFields, accessToken: tokenData });
         localStorage.setItem(
           "auth",
           JSON.stringify({
-            user: res.user,
+            user: userWithoutSensitiveFields,
             accessToken: tokenData,
           })
         );
