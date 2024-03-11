@@ -249,31 +249,28 @@ const PrepModulesMultipleSubquestion = ({ data }) => {
                           subQuestionIndex
                         ] && (
                           <div className="explanation">
+                            <div className="flex flex-row gap-2 justify-start items-center">
+                              <h6 className="mb-0 text-blueviolet-100 fw-bold">
+                                <strong> Answer:</strong>
+                              </h6>
+                              <h6 className="mb-0  fw-bold text-salmon-200">
+                                <strong>
+                                  Option{" "}
+                                  {subQuestion?.correctOptionIndex !== undefined
+                                    ? alphabets[subQuestion?.correctOptionIndex]
+                                    : ""}
+                                </strong>
+                              </h6>
+                            </div>
+                            <h6 className="text-blueviolet-100 fw-bold">
+                              <strong> Solution: </strong>
+                            </h6>
                             {subQuestion?.explanation?.map(
                               (explanation, explanationIndex) => (
                                 <div
                                   key={explanationIndex}
                                   className="m-0 pt-3"
                                 >
-                                  <div className="flex flex-row gap-2 justify-start items-center">
-                                    <h6 className="mb-0 text-blueviolet-100 fw-bold">
-                                      <strong> Answer:</strong>
-                                    </h6>
-                                    <h6 className="mb-0  fw-bold text-salmon-200">
-                                      <strong>
-                                        Option{" "}
-                                        {subQuestion?.correctOptionIndex !==
-                                        undefined
-                                          ? alphabets[
-                                              subQuestion?.correctOptionIndex
-                                            ]
-                                          : ""}
-                                      </strong>
-                                    </h6>
-                                  </div>
-                                  <h6 className="text-blueviolet-100 fw-bold">
-                                    <strong> Solution: </strong>
-                                  </h6>
                                   {explanation?.text?.map((text, textIndex) => (
                                     <MathText
                                       className="explanation-text mb-2"
@@ -323,7 +320,6 @@ const PrepModulesMultipleSubquestion = ({ data }) => {
             data[currentPage],
             currentPage
           )}
-          
 
           <div className="pagination">
             <Pagination
