@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import styled from "styled-components";
+import { useAuth } from "../../utils/context";
 
 const StyledBurger = styled.button`
 z-index: 49;
@@ -80,9 +81,20 @@ z-index: 49;
 const BurgerAndMenu = () => {
   const [open, setOpen] = useState(false);
   const location = useLocation();
+  const [auth, setAuth] = useAuth();
   useEffect(() => {
     setOpen(false);
   }, [location.pathname]);
+
+  const handleLogout = () => {
+    setAuth({
+      ...auth,
+      user: null,
+      accessToken: "",
+    });
+    localStorage.removeItem("auth");
+    setOpen(!open);
+  };
 
   const handleMenuClick = () => {
     setOpen(!open);
@@ -108,12 +120,26 @@ const BurgerAndMenu = () => {
           Syllabus
         </NavLink>
 
-        <NavLink className="text-[#1404DA]" to="/login" onClick={handleMenuClick}>
-          Log In
-        </NavLink>
-        <NavLink className="text-red-400" to="/signup" onClick={handleMenuClick}>
-          Sign Up
-        </NavLink>
+        {!auth?.user ? (
+          <>
+            <NavLink className="text-[#1404DA]" to="/login" onClick={handleMenuClick}>
+              Log In
+            </NavLink>
+            <NavLink className="text-red-400" to="/signup" onClick={handleMenuClick}>
+              Sign Up
+            </NavLink>
+          </>
+        ) : (
+          <>
+            <NavLink className="text-[#1404DA]" to="/profile" onClick={handleMenuClick}>
+              Dashboard
+            </NavLink>
+            <NavLink className="text-red-400" onClick={handleLogout}>
+              Logout
+            </NavLink>
+          </>
+        )}
+
       </StyledMenu>
     </>
   );
