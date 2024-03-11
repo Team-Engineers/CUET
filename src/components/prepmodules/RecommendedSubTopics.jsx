@@ -40,7 +40,7 @@ const MarginTop = styled.div`
   flex-direction: column;
   top: 10px;
   white-space: nowrap;
-  position: sticky;
+  // position: sticky;
 `;
 
 const Box = styled.div`
@@ -144,7 +144,7 @@ const RecommendedSubTopics = () => {
         </div>
 
         <div
-          className={`px-4 py-3 transition-all overflow-y-scroll duration-200 ${
+          className={`px-4 py-3 transition-all duration-200 ${
             isOpen ? "block" : "hidden"
           }`}
         >
