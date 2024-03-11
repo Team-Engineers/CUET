@@ -35,7 +35,7 @@ const ResetButtonStyled = styled(Button)(({ theme }) => ({
 }))
 
 const TabAccount = () => {
-  const [openAlert, setOpenAlert] = useState(true)
+  // const [openAlert, setOpenAlert] = useState(true)
   const [imgSrc, setImgSrc] = useState('/images/avatars/1.png')
 
   const onChange = file => {

@@ -7,7 +7,7 @@ import { TbCards } from "react-icons/tb";
 import { Outlet, useNavigate } from "react-router-dom";
 import Navbar from "../Navbar";
 import "./Dash.css";
-const { Header, Sider, Content } = Layout;
+const { Sider, Content } = Layout;
 const DashBoardLayout = () => {
   const [collapsed, setCollapsed] = useState(false);
   const [activeMenuItem, setActiveMenuItem] = useState(false);

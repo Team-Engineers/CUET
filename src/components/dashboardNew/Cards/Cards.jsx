@@ -13,85 +13,85 @@ for (let i = 0; i < 46; i++) {
   });
 }
 const Cards = () => {
-  const data = [
-    {
-      type: "Jan",
-      attempted: 38,
-    },
-    {
-      type: "Feb",
-      attempted: 52,
-    },
-    {
-      type: "Mar",
-      attempted: 61,
-    },
-    {
-      type: "Apr",
-      attempted: 145,
-    },
-    {
-      type: "May",
-      attempted: 48,
-    },
-    {
-      type: "Jun",
-      attempted: 38,
-    },
-    {
-      type: "July",
-      attempted: 38,
-    },
-    {
-      type: "Aug",
-      attempted: 38,
-    },
-    {
-      type: "Sept",
-      attempted: 38,
-    },
-    {
-      type: "Oct",
-      attempted: 38,
-    },
-    {
-      type: "Nov",
-      attempted: 38,
-    },
-    {
-      type: "Dec",
-      attempted: 38,
-    },
-  ];
-  const config = {
-    data,
-    xField: "type",
-    yField: "attempted",
-    color: ({ type }) => {
-      return "#ffd333";
-    },
-    label: {
-      positionType: "middle",
-      style: {
-        fill: "#FFFFFF",
-        opacity: 1,
-      },
-    },
-    xAxis: {
-      label: {
-        autoHide: true,
-        autoRotate: false,
-      },
-    },
-    meta: {
-      type: {
-        alias: "Month",
-      },
-      attempted: {
-        alias: "Income",
-      },
-    },
-  };
+  // const data = [
+  //   {
+  //     type: "Jan",
+  //     attempted: 38,
+  //   },
+  //   {
+  //     type: "Feb",
+  //     attempted: 52,
+  //   },
+  //   {
+  //     type: "Mar",
+  //     attempted: 61,
+  //   },
+  //   {
+  //     type: "Apr",
+  //     attempted: 145,
+  //   },
+  //   {
+  //     type: "May",
+  //     attempted: 48,
+  //   },
+  //   {
+  //     type: "Jun",
+  //     attempted: 38,
+  //   },
+  //   {
+  //     type: "July",
+  //     attempted: 38,
+  //   },
+  //   {
+  //     type: "Aug",
+  //     attempted: 38,
+  //   },
+  //   {
+  //     type: "Sept",
+  //     attempted: 38,
+  //   },
+  //   {
+  //     type: "Oct",
+  //     attempted: 38,
+  //   },
+  //   {
+  //     type: "Nov",
+  //     attempted: 38,
+  //   },
+  //   {
+  //     type: "Dec",
+  //     attempted: 38,
+  //   },
+  // ];
+  // const config = {
+  //   data,
+  //   xField: "type",
+  //   yField: "attempted",
+  //   color: ({ type }) => {
+  //     return "#ffd333";
+  //   },
+  //   label: {
+  //     positionType: "middle",
+  //     style: {
+  //       fill: "#FFFFFF",
+  //       opacity: 1,
+  //     },
+  //   },
+  //   xAxis: {
+  //     label: {
+  //       autoHide: true,
+  //       autoRotate: false,
+  //     },
+  //   },
+  //   meta: {
+  //     type: {
+  //       alias: "Month",
+  //     },
+  //     attempted: {
+  //       alias: "Income",
+  //     },
+  //   },
+  // };
 
   const cardsData = [
     {

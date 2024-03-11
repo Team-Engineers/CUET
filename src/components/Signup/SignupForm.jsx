@@ -37,7 +37,7 @@ const SignupForm = () => {
   const handleVerifyOTP = async () => {
     setLoading(true);
     try {
-      const response = await axios.post(`${API}/auth/verify-otp`, { email, otp });
+      await axios.post(`${API}/auth/verify-otp`, { email, otp });
       setEmailVerified(true);
       setShowVerifyEmailPopup(false);
       handleSignUp();
@@ -45,7 +45,6 @@ const SignupForm = () => {
     } catch (error) {
       toast.error(error.response.data.message);
       setLoading(false);
-
     }
   };
 
@@ -68,10 +67,13 @@ const SignupForm = () => {
           user: user,
           accessToken: tokenData,
         });
-        localStorage.setItem("auth", JSON.stringify({
-          user: user,
-          accessToken: tokenData,
-        }));
+        localStorage.setItem(
+          "auth",
+          JSON.stringify({
+            user: user,
+            accessToken: tokenData,
+          })
+        );
         navigate("/");
       } else {
         toast.error(response.data.message);
@@ -91,10 +93,9 @@ const SignupForm = () => {
     setLoading(true);
     try {
       const idToken = credentialResponse.credential;
-      const response = await axios.post(
-        `${API}/auth/google-signin`,
-        { idToken }
-      );
+      const response = await axios.post(`${API}/auth/google-signin`, {
+        idToken,
+      });
 
       if (response.status === 200) {
         const res = response.data;
@@ -104,35 +105,32 @@ const SignupForm = () => {
           expiry: tokenExpiry,
         };
         setAuth({ user: res.user, accessToken: tokenData });
-        localStorage.setItem("auth", JSON.stringify({
-          user: res.user,
-          accessToken: tokenData,
-        }));
+        localStorage.setItem(
+          "auth",
+          JSON.stringify({
+            user: res.user,
+            accessToken: tokenData,
+          })
+        );
         navigate("/");
         setLoading(false);
-
       } else {
         toast.error("Google authentication failed");
         setLoading(false);
-
       }
     } catch (error) {
       toast.error("Google authentication failed");
       setLoading(false);
-
     }
   };
   const handleGoogleLoginError = (error) => {
     toast.error("Google login failed");
     setLoading(false);
-
   };
   const validateEmail = (email) => {
     let emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
     return emailRegex.test(email);
   };
-
-
 
   const validatePassword = (event) => {
     setPassword(event.target.value);
@@ -154,11 +152,19 @@ const SignupForm = () => {
 
   return (
     <div className="">
-      <h2 className="hidden md:block text-blueviolet-100 md:text-[2.5vw]">Sign-Up</h2>
-      <form className="flex flex-col items-center justify-center mt-[.3vw] md:items-start" onSubmit={(e) => e.preventDefault()}>
+      <h2 className="hidden md:block text-blueviolet-100 md:text-[2.5vw]">
+        Sign-Up
+      </h2>
+      <form
+        className="flex flex-col items-center justify-center mt-[.3vw] md:items-start"
+        onSubmit={(e) => e.preventDefault()}
+      >
         {/* Name Input */}
         <div className="flex flex-col max-md:mb-4">
-          <label htmlFor="name" className=" max-md:mt-[2vw] my-[1vw] text-start font-medium  text-black text-[15px] sm:text-[1.4vw]">
+          <label
+            htmlFor="name"
+            className=" max-md:mt-[2vw] my-[1vw] text-start font-medium  text-black text-[15px] sm:text-[1.4vw]"
+          >
             Name
           </label>
           <input
@@ -175,7 +181,10 @@ const SignupForm = () => {
         </div>
         {/* Email Input */}
         <div className="flex flex-col max-md:mb-4 ">
-          <label htmlFor="email" className=" max-md:mt-[2vw] my-[1vw] text-start font-medium  text-black text-[15px] sm:text-[1.4vw]">
+          <label
+            htmlFor="email"
+            className=" max-md:mt-[2vw] my-[1vw] text-start font-medium  text-black text-[15px] sm:text-[1.4vw]"
+          >
             Email
           </label>
           <input
@@ -193,7 +202,10 @@ const SignupForm = () => {
         </div>
         {/* Password Input */}
         <div className="flex flex-col">
-          <label htmlFor="password" className=" max-md:mt-[2vw] my-[1vw] text-start font-medium  text-black text-[15px] sm:text-[1.4vw]">
+          <label
+            htmlFor="password"
+            className=" max-md:mt-[2vw] my-[1vw] text-start font-medium  text-black text-[15px] sm:text-[1.4vw]"
+          >
             Password
           </label>
           <input
@@ -207,18 +219,19 @@ const SignupForm = () => {
             onChange={validatePassword}
             className="max-md:mt-2 bg-[#c5c5c5] font-medium md:p-[1vw] p-3 max-md:py-4 w-[300px] border rounded-[20px] md:rounded-[15px] text-[15px] border-none sm:text-[1.2vw] md:w-[30vw] text-black shadow-md"
           />
-          {password && password.length < 9 ? <p className="mt-1 text-red-500">{passwordMessage}</p> : ""}
+          {password && password.length < 9 ? (
+            <p className="mt-1 text-red-500">{passwordMessage}</p>
+          ) : (
+            ""
+          )}
         </div>
         <div className="mt-[1vw] max-md:mt-2 md:flex justify-start">
           <button
             type="button"
             onClick={handleSendOTP}
-
             className="max-md:w-[129px] w-[10vw] md:my-[1vw] max-md:px-6 px-[1.3vw] max-md:py-4 py-[1.1vw] bg-gradient-to-r from-[#89EAFF] to-[#5648FC] text-[#ffffffcd] text-center rounded-full cursor-pointer border-none text-[1.2vw] max-md:text-[18px]"
           >
-            {loading && (
-              <CgSpinner size={20} className="mt-1 animate-spin" />
-            )}
+            {loading && <CgSpinner size={20} className="mt-1 animate-spin" />}
             {!loading && <span>Sign Up</span>}{" "}
           </button>
         </div>
@@ -235,7 +248,6 @@ const SignupForm = () => {
             )}
           </GoogleLogin>
         </div>
-
       </form>
       <ToastContainer />
 
@@ -273,7 +285,6 @@ const SignupForm = () => {
         </div>
       )}
     </div>
-
   );
 };
 

@@ -158,8 +158,6 @@ const PrepModulesSingleSubquestion = ({ data }) => {
                   (explanation, explanationIndex) => (
                     <div
                       key={explanationIndex}
-                      className="explanation-box"
-                      style={{ margin: "0 10px" }}
                     >
                       {explanation.text.map((text, textIndex) => (
                         <MathText
