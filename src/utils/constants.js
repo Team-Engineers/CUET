@@ -206,6 +206,10 @@ export const topics = {
       "Indian Polity",
       "General Science",
       "International Cooperation Organization",
+      "Current Affairs Feb 2024",
+      "Current Affairs Jan 2024",
+      "Current Affairs Dec 2023",
+      "Current Affairs Nov 2023",
     ],
   },
   Domain: {
@@ -513,5 +517,9 @@ export const topics2 = {
     "Indian Polity",
     "General Science",
     "International Cooperation Organization",
+    "Current Affairs Feb 2024",
+    "Current Affairs Jan 2024",
+    "Current Affairs Dec 2023",
+    "Current Affairs Nov 2023",
   ],
 };

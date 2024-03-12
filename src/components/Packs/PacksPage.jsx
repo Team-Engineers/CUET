@@ -255,7 +255,7 @@ const PriceCard = ({ _id, nameOfPlan, bgColor, amount, description, benefits }) 
                 </div>
               </div>
               <div className="flex mx-4 my-3  justify-end">
-                <h onClick={initPayment} className=" flex cursor-pointer mt-4 border-[2px] border-solid border-[#2fa062] bg-[#23bd68] hover:text-white px-3 py-2 font-medium rounded-md hover:border-blue-600 hover:bg-blue-600 w-[200px] mx-auto justify-center">{loading && (
+                <h onClick={initPayment} className={` flex cursor-pointer mt-4 border-[2px] border-solid border-[#2fa062] bg-[#23bd68] hover:text-white px-3 py-2 font-medium rounded-md hover:border-blue-600 hover:bg-blue-600 w-[200px] mx-auto justify-center ${loading ? 'opacity-50 pointer-events-none' : ''}`}>{loading && (
                   <CgSpinner size={20} className="mt-1 animate-spin " />
                 )}
                   {!loading && <span>Confirm Selection</span>}{" "}</h>
@@ -316,15 +316,15 @@ const PriceCardPage = ({ packages }) => {
   };
 
   return (
-    <div className="overflow-hidden max-w-[1400px] mx-auto  bg-[#c4e9f0]" style={{ background: `linear-gradient(to bottom, ${bgColor}, white 30%,  white)`, transition: "background-color 0.3s ease" }} >
+    <div className="overflow-hidden max-w-full mx-auto  bg-[#c4e9f0]" style={{ background: `linear-gradient(to bottom, ${bgColor}, white 30%,  white)`, transition: "background-color 0.3s ease" }} >
       <Navbar />
       <div className="flex  flex-col justify-center items-center ">
         <Tabs packages={packages} setActiveTab={setActiveTab} activeTab={activeTab} setBgColor={setBgColor} bgColor={bgColor} />
         <PriceCardsContainer packages={packages.filter((packageItem) => packageItem._id === activeTab)} />
-        <div style={{ background: `linear-gradient(to bottom, ${bgColor},  white)`, transition: "background-color 0.3s ease" }}>
+        <div style={{ background: `linear-gradient(to bottom, ${bgColor},  white)`, transition: "background-color 0.3s ease", width: "100%" }}>
           <PriceTables handleGetStarted={handleGetStarted} />
         </div>
-        <div style={{ background: `linear-gradient(to bottom, #ededed,  white)`, transition: "background-color 0.3s ease" }}>
+        <div style={{ background: `linear-gradient(to bottom, #ededed,  white)`, transition: "background-color 0.3s ease", width: "100%" }}>
           <PackFaq />
         </div>
         <Footer />
