@@ -4,8 +4,8 @@ import { FaQuestion } from "react-icons/fa6";
 import { TbClockHour8 } from "react-icons/tb";
 import { Link } from "react-router-dom";
 import freeicon from "../../assets/images/courses/freeicon.gif";
-import { useAuth } from "../../utils/context";
 import { MOCKAPI } from "../../utils/constants";
+import { useAuth } from "../../utils/context";
 
 export const Testcard = ({
   subTopic,
@@ -48,7 +48,7 @@ export const Testcard = ({
           <h5 className="font-bold text-center text-3xl ">{subTopic}</h5>
           <img
             src={require("../../assets/images/courses/prepmodules.png")}
-            className="w-[150px] mx-auto h-[150px] flex justify-center items-center"
+            className="w-[130px] mx-auto h-[130px] flex justify-center items-center"
             alt=""
           />
           <div className="flex items-center justify-center pr-8">
