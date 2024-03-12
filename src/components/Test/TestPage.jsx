@@ -36,14 +36,14 @@ function TestPage() {
     let questionsValues;
     if (topic === "General Test") {
       if (selectedCategory === "Mathematics") {
-        questionsValues = [100, 81, 29, 85, 80, 50, 50, 50, 25, 49, 60, 50, 50, 30, 50];
+        questionsValues = [100, 80, 30, 85, 80, 50, 50, 50, 25, 50, 60, 50, 50, 30, 50];
       } else if (selectedCategory === "Logical Reasoning") {
-        questionsValues = [91, 78, 78, 52, 218, 30, 91, 30, 78, 91, 20, 70, 130];
+        questionsValues = [90, 80, 80, 50, 220, 30, 90, 30, 80, 90, 20, 70, 130];
       } else if (selectedCategory === "General Awareness") {
-        questionsValues = [50, 50, 50, 49, 50, 171, 50, 50];
+        questionsValues = [50, 50, 50, 50, 50, 170, 50, 50, 60, 60, 60, 60];
       }
     } else {
-      questionsValues = [100, 57, 100, 100, 60, 50, 130, 50, 50, 170, 40, 60];
+      questionsValues = [100, 60, 100, 100, 60, 50, 130, 50, 50, 170, 40, 60];
     }
 
     return {
@@ -201,8 +201,8 @@ function TestPage() {
                         <div
                           key={category}
                           className={`text-[30px] mx-3  whitespace-nowrap flex flex-col lg:flex-row  cursor-pointer relative  font-bold leading-7  text-center  p-2 rounded ${category === selectedCategory
-                              ? "font-medium bg-red-400 text-white "
-                              : " font-normal  text-blue-800"
+                            ? "font-medium bg-red-400 text-white "
+                            : " font-normal  text-blue-800"
                             }`}
                           onClick={() => {
                             setSelectedCategory(category);
