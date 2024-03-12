@@ -7,7 +7,7 @@ const PriceTable = ({ handleGetStarted, hidden }) => {
   const navigate = useNavigate();
   return (
     <section className="text-gray-700 max-md:hidden  mt-10 mb-10 mx-auto body-font overflow-hidden border-t border-gray-200">
-      <div className="   flex py-3 max-w-full justify-center item-center ">
+      <div className="   flex py-3 justify-center item-center ">
         <div className=" w-1/6 font-medium mt-48  block">
           <div className="mt-px borderyy border-gray-300   rounded-tl-lg rounded-bl-lg overflow-hidden">
             <p className="bg-white text-gray-900 h-12 text-center px-4 flex items-center justify-start -mt-px">GENERAL ENGLISH</p>

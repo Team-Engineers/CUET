@@ -109,6 +109,7 @@ const PriceCard = ({ _id, nameOfPlan, bgColor, amount, description, benefits }) 
 
     setLoading(true);
     try {
+      const key = await axios.get(`${API}/payment/getKey`);
       const response = await axios.post(`${API}/payment/initiate`, {
         packageId: _id,
         userId: auth.user?._id,
@@ -116,7 +117,7 @@ const PriceCard = ({ _id, nameOfPlan, bgColor, amount, description, benefits }) 
       });
       const { data } = response;
       const options = {
-        key: "rzp_test_NAYbSHvOM4lmPb",
+        key,
         amount: data.amount,
         currency: data.currency,
         name: nameOfPlan,
@@ -140,10 +141,15 @@ const PriceCard = ({ _id, nameOfPlan, bgColor, amount, description, benefits }) 
               setAuth(updatedAuth);
               localStorage.setItem("auth", JSON.stringify(updatedAuth));
               setLoading(false);
-              navigate('/courses');
+              toast.success("Pack bought successfully")
+              setTimeout(() => {
+                navigate('/courses');
+              }, 2000);
+
             }
           } catch (error) {
             setLoading(false);
+            toast.error("Cannot process your request at the moment. Please try again later")
             console.error(error);
           }
         },

@@ -133,16 +133,16 @@ const Navbar = ({ height }) => {
           </div>
           <div className="lg:hidden  ">
             <BurgerAndMenu />
-
           </div>
+          {isPopupOpen && (
+            <div className="absolute max-sm:right-6 max-md:right-14 max-lg:right-16 top-0 md:mx-2 mt-[50px] rounded-lg">
+              <ExamInfo onClose={handleCloseExamInfo} />
+            </div>
+          )}
+        </div >
 
-        </div>
-      </div>
-      {isPopupOpen && (
-        <div className="absolute max-md:left-0 m-3 md:w-[25rem] rounded-lg">
-          <ExamInfo onClose={handleCloseExamInfo} />
-        </div>
-      )}
+      </div >
+
     </>
 
   );

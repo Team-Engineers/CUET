@@ -35,7 +35,16 @@ function CompactCard({ param, toggleExpanded }) {
       onClick={toggleExpanded}
     >
       <div className="radialBar">
-        <CircularProgressbar value={param.barValue} text={`${param.barValue}%`} />
+        <CircularProgressbar
+          styles={{
+            root: { width: '100px' },
+            path: { stroke: '#ffffff' },
+            text: { fill: '#ffffff' },
+            trail: { display: 'none' },
+          }}
+          value={param.barValue}
+          text={`${param.barValue}%`}
+        />
         <span>{param.title}</span>
       </div>
       <div className="detail">
