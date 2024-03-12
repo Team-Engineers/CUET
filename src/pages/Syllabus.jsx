@@ -18,7 +18,7 @@ const Syllabus = () => {
           <h2 className="pl-0 mb-1 gradient-text text-21xl leading-none sm:justify-center md:text-left lg:text-left">Syllabus</h2>
             <div className="w-10 m-0 h-[2px] my-2 bg-white " />
           </div>
-          <div className="grid grid-cols-1 mb-8  lg:grid-cols-5 md:grid-cols-3  justify-center mx-[20px] md:w-[80rem] lg:w-[80rem]">
+          <div className="grid grid-cols-1 mb-8  lg:grid-cols-5 md:grid-cols-3  justify-center mx-[80px] md:w-[80rem] lg:w-[80rem] lg:m-[20px]">
             {subjects.map((subject) => (
               <SyllabusCard subject={subject} />
             ))}

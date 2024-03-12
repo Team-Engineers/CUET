@@ -27,15 +27,16 @@ const ContactForm = () => {
 
       </div>
       <div className="my-3 md:w-[80%] flex justify-between relative">
-        <button className="btn bg-[#EA4335] hover:bg-[#EA4335] text-white text-lg min-h-0 h-10 min-w-30 2xl:min-w-54 rounded-full border-none mx-2">
-          Submit
-        </button>
-        <button
+      <button
           onClick={handleNeedHelpClick}
           className="btn bg-[#EA4335] hover:bg-[#EA4335] text-white text-lg min-h-0 h-10 min-w-30 2xl:min-w-54 rounded-full border-none mx-2 "
         >
           Need Help
         </button>
+        <button className="btn bg-[#EA4335] hover:bg-[#EA4335] text-white text-lg min-h-0 h-10 min-w-30 2xl:min-w-54 rounded-full border-none mx-2">
+          Submit
+        </button>
+        
         {isPopupOpen && (
           <div className="absolute  md:right-[-50px] md:top-[-100px] top-[-120px] flex bg-opacity-50 z-50">
             <div className="bg-[#FFFBEE]  rounded-xl">
