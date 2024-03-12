@@ -5,6 +5,7 @@ import { useAuth } from "../../utils/context";
 
 const StyledBurger = styled.button`
 z-index: 49;
+overflow: hidden;
   position: relative;
   top:-4px;
   display: flex;
@@ -38,23 +39,26 @@ z-index: 49;
     border-radius: 10px;
     transition: all 0.3s linear;
     position: relative;
+    overflow: hidden;
     transform-origin: 1px;
   }
 `;
 
 const StyledMenu = styled.nav`
-overflow:hidden ;
+overflow: hidden;
 z-index: 49;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: center; 
+  align-items: center;
   transform: ${({ open }) => (open ? "translateX(0)" : "translateX(100%)")};
   right: -50px;
-  height: 55vh;
+  height: 100vh;
+  width: 100vw;
   text-align: center;
   padding: 2rem;
+  top: -3rem;
   position: absolute;
-  top: 0;
   background: white;
   transition: transform 0.3s ease-in-out;
 
@@ -67,8 +71,9 @@ z-index: 49;
     text-decoration: none;
     transition: color 0.3s linear;
     @media (max-width: 1086px) {
-      font-size: 1.2rem;
+      font-size: 1.4rem;
       text-align: center;
+      justify-content: center;
       margin-right: 3rem;
     }
 
@@ -96,6 +101,13 @@ const BurgerAndMenu = () => {
     setOpen(!open);
   };
 
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  }, [open]);
   const handleMenuClick = () => {
     setOpen(!open);
   };
@@ -118,6 +130,9 @@ const BurgerAndMenu = () => {
         </NavLink>
         <NavLink className="text-[#1404DA]" to="/syllabus" onClick={handleMenuClick}>
           Syllabus
+        </NavLink>
+        <NavLink className="text-[#1404DA]" to="/purchase" onClick={handleMenuClick}>
+          Pricing
         </NavLink>
 
         {!auth?.user ? (

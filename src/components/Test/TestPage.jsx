@@ -8,18 +8,18 @@ import { Testcard, Testcard1, Testcard2 } from "../Test/Testcard";
 import "./css/TestPage.css";
 
 function TestPage() {
-  let { topic } = useParams();
+  let { topic, testCategory = "Mathematics" } = useParams();
   topic = topic.split("_").join(" ");
+  const decodedtestCategory = testCategory.replace(/_/g, ' ');
 
+  const [selectedCategory, setSelectedCategory] = useState(decodedtestCategory ? decodedtestCategory : "Mathematics");
   let subtopics = [];
-  const [selectedCategory, setSelectedCategory] = useState("Mathematics");
   if (topic === "General Test") {
     subtopics = topics2[selectedCategory];
   } else {
     subtopics = topics[topic];
   }
 
-  console.log("subtopci is", topic);
 
   const prep = subtopics.map((subtopic, index) => {
     const backgroundColors = [
@@ -117,6 +117,11 @@ function TestPage() {
 
   const [currentTab, setCurrentTab] = useState("prep");
 
+  const handleCategoryChange = (category) => {
+    setSelectedCategory(category);
+    const newUrl = `/test/${topic.split(" ").join("_")}/${category.split(" ").join("_")}`;
+    window.history.pushState(null, "", newUrl);
+  };
   return (
     <div className="overflow-x-hidden">
       <Navbar />
@@ -184,17 +189,15 @@ function TestPage() {
               <>
                 {topic === "General Test" && (
                   <div className="md:mx-10 max-md:mt-7 mx-4">
-                    <div className=" py-2 mb-6 top-[-20px] relative  px-4 md:shadow-md flex flex-col lg:flex-row   rounded-md ">
+                    <div className="py-2 mb-6 top-[-20px] relative px-4 md:shadow-md flex flex-col lg:flex-row rounded-md">
                       {Object.keys(topics2).map((category) => (
                         <div
                           key={category}
-                          className={`text-[30px] mx-3  whitespace-nowrap flex flex-col lg:flex-row  cursor-pointer relative  font-bold leading-7  text-center  p-2 rounded ${category === selectedCategory
+                          className={`text-[30px] mx-3 whitespace-nowrap flex flex-col lg:flex-row cursor-pointer relative font-bold leading-7 text-center p-2 rounded ${category === selectedCategory
                             ? "font-medium bg-red-400 text-white "
                             : " font-normal  text-blue-800"
                             }`}
-                          onClick={() => {
-                            setSelectedCategory(category);
-                          }}
+                          onClick={() => handleCategoryChange(category)}
                         >
                           {category}
                         </div>
