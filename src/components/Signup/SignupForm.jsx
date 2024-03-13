@@ -168,10 +168,10 @@ const SignupForm = () => {
         onSubmit={(e) => e.preventDefault()}
       >
         {/* Name Input */}
-        <div className="flex flex-col max-md:mb-4">
+        <div className="flex flex-col max-lg:mb-2">
           <label
             htmlFor="name"
-            className=" max-md:mt-[2vw] my-[1vw] text-start font-medium  text-black text-[15px] sm:text-[1.4vw]"
+            className=" max-lg:mt-[2vw] my-[1vw] text-start font-medium  text-black text-[15px] sm:text-[1.4vw]"
           >
             Name
           </label>
@@ -184,14 +184,14 @@ const SignupForm = () => {
             placeholder="Your Name"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="max-md:mt-2 bg-[#c5c5c5] font-medium md:p-[1vw] p-3 max-md:py-4 w-[300px] border rounded-[20px] md:rounded-[15px] text-[15px] border-none sm:text-[1.2vw] md:w-[30vw] text-black shadow-md"
+            className="max-lg:mt-2 bg-[#c5c5c5] font-medium md:p-[1vw] p-3 max-lg:py-4 w-[60vw] border rounded-[20px] md:rounded-[15px] text-[15px] border-none sm:text-[1.2vw] sm:w-[30vw] text-black shadow-md"
           />
         </div>
         {/* Email Input */}
-        <div className="flex flex-col max-md:mb-4 ">
+        <div className="flex flex-col max-lg:mb-2 ">
           <label
             htmlFor="email"
-            className=" max-md:mt-[2vw] my-[1vw] text-start font-medium  text-black text-[15px] sm:text-[1.4vw]"
+            className=" max-lg:mt-[2vw] my-[1vw] text-start font-medium  text-black text-[15px] sm:text-[1.4vw]"
           >
             Email
           </label>
@@ -204,7 +204,7 @@ const SignupForm = () => {
             placeholder="Your Email"
             value={email}
             onChange={handleChange}
-            className="max-md:mt-2 bg-[#c5c5c5] font-medium md:p-[1vw] p-3 max-md:py-4 w-[300px] border rounded-[20px] md:rounded-[15px] text-[15px] border-none sm:text-[1.2vw] md:w-[30vw] text-black shadow-md"
+            className="max-lg:mt-2 bg-[#c5c5c5] font-medium md:p-[1vw] p-3 max-lg:py-4 w-[60vw] border rounded-[20px] md:rounded-[15px] text-[15px] border-none sm:text-[1.2vw] sm:w-[30vw] text-black shadow-md"
           />
           {email && <p className="mt-1 text-red-500">{message}</p>}
         </div>
@@ -212,7 +212,7 @@ const SignupForm = () => {
         <div className="flex flex-col">
           <label
             htmlFor="password"
-            className=" max-md:mt-[2vw] my-[1vw] text-start font-medium  text-black text-[15px] sm:text-[1.4vw]"
+            className=" max-lg:mt-[2vw] my-[1vw] text-start font-medium  text-black text-[15px] sm:text-[1.4vw]"
           >
             Password
           </label>
@@ -225,7 +225,7 @@ const SignupForm = () => {
             value={password}
             placeholder="8+ Password"
             onChange={validatePassword}
-            className="max-md:mt-2 bg-[#c5c5c5] font-medium md:p-[1vw] p-3 max-md:py-4 w-[300px] border rounded-[20px] md:rounded-[15px] text-[15px] border-none sm:text-[1.2vw] md:w-[30vw] text-black shadow-md"
+            className="max-lg:mt-2 bg-[#c5c5c5] font-medium md:p-[1vw] p-3 max-lg:py-4 w-[60vw] border rounded-[20px] md:rounded-[15px] text-[15px] border-none sm:text-[1.2vw] sm:w-[30vw] text-black shadow-md"
           />
           {password && password.length < 9 ? (
             <p className="mt-1 text-red-500">{passwordMessage}</p>
@@ -233,17 +233,17 @@ const SignupForm = () => {
             ""
           )}
         </div>
-        <div className="mt-[1vw] max-md:mt-2 md:flex justify-start">
+        <div className="mt-[1vw] max-lg:mt-2 md:flex justify-start">
           <button
             type="button"
             onClick={handleSendOTP}
-            className="max-md:w-[129px] w-[10vw] md:my-[1vw] max-md:px-6 px-[1.3vw] max-md:py-4 py-[1.1vw] bg-gradient-to-r from-[#89EAFF] to-[#5648FC] text-[#ffffffcd] text-center rounded-full cursor-pointer border-none text-[1.2vw] max-md:text-[18px]"
+            className="max-lg:w-[129px] w-[10vw] md:my-[1vw] max-lg:px-6 px-[1.3vw] max-lg:py-4 py-[1.1vw] bg-gradient-to-r from-[#89EAFF] to-[#5648FC] text-[#ffffffcd] text-center rounded-full cursor-pointer border-none text-[1.2vw] max-lg:text-[18px]"
           >
             {loading && <CgSpinner size={20} className="mt-1 animate-spin" />}
             {!loading && <span>Sign Up</span>}{" "}
           </button>
         </div>
-        <div className="flex max-md:top-[10px] relative items-center">
+        <div className="flex  max-lg:top-[10px] relative items-center">
           <GoogleLogin
             onSuccess={handleGoogleLogin}
             onError={handleGoogleLoginError}
@@ -262,14 +262,14 @@ const SignupForm = () => {
       {showVerifyEmailPopup && (
         <div className="fixed z-50 inset-0 flex items-center justify-center backdrop-blur-[10px] bg-tansparent bg-opacity-75">
           <div className="bg-[#aaaaaa62] backdrop-blur-[15px] p-8 flex flex-col justify-center items-center rounded-md">
-            <h3 className="text-lg font-semibold mb-4">Let's Sign You Up</h3>
+            <h3 className="text-lg font-semibold mb-2">Let's Sign You Up</h3>
             <p>Verification code sent to {email} </p>
             <div>
               <input
                 type="text"
                 value={otp}
                 onChange={(e) => setOtp(e.target.value)}
-                className="border border-gray-300 rounded-md px-3 py-2 mb-4"
+                className="border border-gray-300 rounded-md px-3 py-2 mb-2"
               />
             </div>
             <div className="flex justify-end">
