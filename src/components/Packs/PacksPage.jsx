@@ -132,6 +132,7 @@ const PriceCard = ({ _id, nameOfPlan, bgColor, amount, description, benefits }) 
               razorpay_payment_id: response.razorpay_payment_id,
               razorpay_signature: response.razorpay_signature,
               packageId: _id,
+              selectedOptions: selectedOptions.map(option => option.value),
             });
 
             if (verifyResponse.data.success) {
