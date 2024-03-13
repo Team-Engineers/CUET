@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { MathText } from "../mathJax/MathText";
 import Pagination from "rc-pagination";
 import "rc-pagination/assets/index.css";
 import locale from "rc-pagination/lib/locale/en_US";
+import { useLocation } from "react-router-dom";
 
 const PrepModulesMultipleSubquestion = ({ data }) => {
   const totalSubquestions = data.reduce((accumulator, question) => {
@@ -21,6 +22,23 @@ const PrepModulesMultipleSubquestion = ({ data }) => {
       .fill(null)
       .map(() => Array(10).fill(false))
   );
+
+  const location = useLocation();
+
+  useEffect(() => {
+    const storedPage = localStorage.getItem("currentPage");
+    const parsedPage = parseInt(storedPage, 10);
+    if (!isNaN(parsedPage) && parsedPage >= 0) {
+      setCurrentPage(parsedPage);
+    } else {
+      setCurrentPage(0);
+    }
+
+    // Cleanup function to remove currentPage from localStorage
+    return () => {
+      localStorage.removeItem("currentPage");
+    };
+  }, [location]);
 
   const handleOptionClickMultiple = (
     questionIndex,
@@ -309,6 +327,8 @@ const PrepModulesMultipleSubquestion = ({ data }) => {
         .fill(null)
         .map(() => Array(10).fill(false))
     );
+    localStorage.setItem("currentPage", page - 1);
+
     window.scroll(0, 0);
   };
 

@@ -1,18 +1,37 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { MathText } from "../mathJax/MathText";
 import Pagination from "rc-pagination";
 import "rc-pagination/assets/index.css";
 import locale from "rc-pagination/lib/locale/en_US";
+import { useLocation } from "react-router-dom";
 
 const PrepModulesSingleSubquestion = ({ data }) => {
   const alphabets = "ABCDEFGHIJKL".split("");
+  const [currentPage, setCurrentPage] = useState("");
+
   const [selectedOptions, setSelectedOptions] = useState(
     Array(data.length).fill([])
   );
-  const [currentPage, setCurrentPage] = useState(0);
   const [explanationsVisible, setExplanationsVisible] = useState(
     Array(data.length).fill(false)
   );
+
+  const location = useLocation();
+
+  useEffect(() => {
+    const storedPage = localStorage.getItem("currentPage");
+    const parsedPage = parseInt(storedPage, 10);
+    if (!isNaN(parsedPage) && parsedPage >= 0) {
+      setCurrentPage(parsedPage);
+    } else {
+      setCurrentPage(0);
+    }
+
+    // Cleanup function to remove currentPage from localStorage
+    return () => {
+      localStorage.removeItem("currentPage");
+    };
+  }, [location]);
 
   const handleOptionClick = (questionIndex, optionIndex) => {
     const updatedSelectedOptions = [...selectedOptions];
@@ -156,9 +175,7 @@ const PrepModulesSingleSubquestion = ({ data }) => {
                 </h6>
                 {question?.subQuestions[0]?.explanation?.map(
                   (explanation, explanationIndex) => (
-                    <div
-                      key={explanationIndex}
-                    >
+                    <div key={explanationIndex}>
                       {explanation.text.map((text, textIndex) => (
                         <MathText
                           className="explanation-text mb-2"
@@ -189,6 +206,8 @@ const PrepModulesSingleSubquestion = ({ data }) => {
 
   const handlePageChange = (page) => {
     setCurrentPage(page - 1);
+    // localStorage.setItem(page - 1, "currentPage");
+    localStorage.setItem("currentPage", page - 1);
     setExplanationsVisible(Array(data.length).fill(false));
     window.scroll(0, 0);
   };

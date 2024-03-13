@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { MathText } from "../mathJax/MathText";
 import Pagination from "rc-pagination";
 import "rc-pagination/assets/index.css";
 import locale from "rc-pagination/lib/locale/en_US";
+import { useLocation } from "react-router-dom";
 
 const PrepModulesMixedSubquestion = ({ data }) => {
   const alphabets = "ABCDEFGHIJKL".split("");
@@ -18,6 +19,25 @@ const PrepModulesMixedSubquestion = ({ data }) => {
       .fill(null)
       .map(() => Array(10).fill(false))
   );
+
+
+  const location = useLocation();
+
+  useEffect(() => {
+    const storedPage = localStorage.getItem("currentPage");
+    const parsedPage = parseInt(storedPage, 10);
+    if (!isNaN(parsedPage) && parsedPage >= 0) {
+      setCurrentPage(parsedPage);
+    } else {
+      setCurrentPage(0);
+    }
+
+    // Cleanup function to remove currentPage from localStorage
+    return () => {
+      localStorage.removeItem("currentPage");
+    };
+  }, [location]);
+
   const handleOptionClick = (questionIndex, optionIndex) => {
     const updatedSelectedOptions = [...selectedOptions];
     updatedSelectedOptions[currentPage] = [
@@ -444,6 +464,7 @@ const PrepModulesMixedSubquestion = ({ data }) => {
   };
   const handlePageChange = (page) => {
     setCurrentPage(page - 1);
+    localStorage.setItem("currentPage", page - 1);
     setExplanationsVisible(Array(data.length).fill(false));
     window.scroll(0, 0);
   };

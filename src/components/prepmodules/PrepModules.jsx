@@ -76,25 +76,24 @@ const PrepModules = () => {
     return <CuetLoader />;
   }
 
-    const questionType= (questionData) => {
-      let singleSubquestion = 0 , multipleSubquestion = 0;
-      for (let item of questionData) {
-        if (item?.subQuestions && item.subQuestions.length > 1) {
-            multipleSubquestion++;
-        } else {
-            singleSubquestion++;
-        }
-    }
-      if(multipleSubquestion===questionData.length){
-        return "multiple";
-      }
-      else if(singleSubquestion===questionData.length){
-        return "single";
-      }
-      else{
-        return "mixed";
+  const questionType = (questionData) => {
+    let singleSubquestion = 0,
+      multipleSubquestion = 0;
+    for (let item of questionData) {
+      if (item?.subQuestions && item.subQuestions.length > 1) {
+        multipleSubquestion++;
+      } else {
+        singleSubquestion++;
       }
     }
+    if (multipleSubquestion === questionData.length) {
+      return "multiple";
+    } else if (singleSubquestion === questionData.length) {
+      return "single";
+    } else {
+      return "mixed";
+    }
+  };
 
   return (
     <section className="bg-white overflow-hidden">
@@ -107,9 +106,15 @@ const PrepModules = () => {
               <RecommendedSubTopics currentSubTopic={subTopic} />
             </div>
             <div className="md:col-span-2 md:pl-20">
-              {questionType(data)==="multiple" && <PrepModulesMultipleSubquestion data={data} /> }
-              {questionType(data)==="single" && <PrepModulesSingleSubquestion data={data} /> }
-              {questionType(data)==="mixed" && <PrepModulesMixedSubquestion data={data} /> } 
+              {questionType(data) === "multiple" && (
+                <PrepModulesMultipleSubquestion data={data} />
+              )}
+              {questionType(data) === "single" && (
+                <PrepModulesSingleSubquestion data={data} />
+              )}
+              {questionType(data) === "mixed" && (
+                <PrepModulesMixedSubquestion data={data} />
+              )}
             </div>
           </div>
         </div>
@@ -122,4 +127,3 @@ const PrepModules = () => {
 };
 
 export default PrepModules;
-
