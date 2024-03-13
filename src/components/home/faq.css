@@ -19,7 +19,8 @@
     padding: 0 25px 0 25px;
     border: 1px solid #e5e5e5;
     border-radius: 10px;
-    background: linear-gradient(0.25turn, #5748fc80, #407cff9f);
+    /* background: linear-gradient(0.25turn, #5748fc80, #407cff9f); */
+    background: rgb(94, 91, 193) ;
 
     @media (max-width: 786px) {
         margin: 10px;

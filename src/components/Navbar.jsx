@@ -84,8 +84,83 @@ const Navbar = ({ height }) => {
                 >
                   <span>Get Started</span>
                 </NavLink>
+          
+            </>
+          ) : (
+            <>
+              <ul className="menu max-lg:hidden lg:menu-horizontal      rounded-box ">
+                <li>
+                  <details open={detailsOpen} onClick={() => setDetailsOpen(!detailsOpen)}>
+                    <summary>
+                      <div className="rounded font-bold text-white relative text-[20px] w-10 h-10 flex items-center justify-center bg-salmon-200 border ">
+                        {auth?.user?.name ? auth?.user?.name.charAt(0).toUpperCase() : ''}
+                      </div>
+                      {auth?.user?.name }
+                    </summary>
+                    <ul className="relative top-10  bg-white ">
+                      <li>
+                        <NavLink
+                          to="/profile"
+                          className="font-medium text-black no-underline"
+                        >
+                          Dashboard
+                        </NavLink>
+                      </li>
+                      <li className="">
+                        <NavLink
+                          onClick={handleLogout}
+                          className="font-medium no-underline"
+                        >
+                          Log Out
+                        </NavLink>
+                      </li>
+                    </ul>
+                  </details>
+                </li>
+              </ul>
+            </>
+          )}
+        </div>
+          
+        <div className="flex relative mr-7 lg:hidden  flex-row items-center gap-[7px] text-base cursor-pointer">
+                <div onClick={handleBellIconClick} >
+                  <img
+                    className="h-[30px] w-[30px] relative object-cover"
+                    loading="eager"
+                    alt=""
+                    src={require("../assets/images/signup/bellicon.gif")}
+                  />
+                </div>
+              </div>
+        <div className="dropdown relative abovecontain">
+       
+          <div tabIndex={0} role="button" className="btn abovecontain btn-ghost lg:hidden p-0 mr-5">
+            <GiHamburgerMenu className="text-blueviolet-100" size={"2em"} />
+          </div>
+
+          <ul tabIndex={0} className="menu menu-sm abovecontain dropdown-content mt-3  bg-white p-2 shadow rounded-box w-52 right-[0px]">
+            {nav_buttons.map((nav, i) => (
+              <li className="my-1" key={i}>
+                <div className="h-[21px] flex flex-col items-start justify-start gap-[2px] text-blueviolet-100 ">
+                  <NavLink
+                    to={nav.path}
+                    className={`no-underline text-blueviolet-100 text-center w-full ${location.pathname === nav.path ? "active" : ""}`}
+                  >
+                    <b className="flex-1 relative cursor-pointer text-blueviolet-100 text-lg md:font-bold">{nav.title}</b>
+                  </NavLink>
+                  {location.pathname === nav.path && (
+                    <div className="w-full h-px relative box-border border-t-[1px] border-solid border-blueviolet-100" />
+                  )}
+
+                </div>
+              </li>
+            ))}
+
+            {!auth?.user && (
+
               </>
             ) : (
+
               <>
                 <ul className="menu max-lg:hidden lg:menu-horizontal   rounded-box ">
                   <li>

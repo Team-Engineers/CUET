@@ -55,7 +55,7 @@ const Universities = () => {
               </tr>
             </tbody>
           </table>
-          <Link to="/university"><p className="w-full font-medium text-right my-5 underline text-[#1877F2] cursor-pointer  " >View More Colleges</p></Link>
+          <Link to="/university"><p className="w-full font-medium text-center my-5 underline text-[#1877F2] cursor-pointer  " >View More Colleges</p></Link>
         </div>
         <div>
         <img alt="" src={UniImage} className=" max-md:w-[90%]   z-40 " />

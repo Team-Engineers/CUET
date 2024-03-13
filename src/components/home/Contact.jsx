@@ -28,13 +28,13 @@ const ContactForm = () => {
       </div>
       <div className="my-3 md:w-[80%] flex justify-between relative">
         <button className="btn bg-[#EA4335] hover:bg-[#EA4335] text-white text-lg min-h-0 h-10 min-w-30 2xl:min-w-54 rounded-full border-none mx-2">
-          Submit
+        Need Help
         </button>
         <button
           onClick={handleNeedHelpClick}
           className="btn bg-[#EA4335] hover:bg-[#EA4335] text-white text-lg min-h-0 h-10 min-w-30 2xl:min-w-54 rounded-full border-none mx-2 "
         >
-          Need Help
+          Submit
         </button>
         {isPopupOpen && (
           <div className="absolute  md:right-[-50px] md:top-[-100px] top-[-120px] flex bg-opacity-50 z-50">
@@ -79,7 +79,7 @@ const Contact = () => {
   return (
     <div className="pt-10  md:mx-20 md:pt-15 bg-white pb-32">
       <div
-        className="bg-gradient-to-br overflow-hidden from-[#e78f8fd7] to-[#a691f5de]  rounded-2xl flex flex-col-reverse items-center justify-evenly md:flex-row md:justify-evenly max-w-[1000px] mx-auto max-sm:mx-2 max-md:mx-8  "
+        className="bg-gradient-to-br overflow-hidden from-[#d47ecdd7] to-[#a691f5de]  rounded-2xl flex flex-col-reverse items-center justify-evenly md:flex-row md:justify-evenly max-w-[1000px] mx-auto max-sm:mx-2 max-md:mx-8  "
       >
         <div className="h-full  w-[350px] sm:w-[500px] flex justify-center">
           <ContactForm />
