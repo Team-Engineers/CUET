@@ -40,28 +40,27 @@ const MarginTop = styled.div`
   flex-direction: column;
   top: 10px;
   white-space: nowrap;
-  // position: sticky;
 `;
 
 const Box = styled.div`
   display: flex;
-  white-space: nowrap;
   justify-content: center;
   align-items: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
 `;
 const Box2 = styled.p`
-  min-width: 22rem;
   padding: 10px 5px;
   margin: auto 0;
   margin-bottom: 0px;
-  white-space: nowrap;
-  display: flex;
-  white-space: nowrap;
-  justify-content: center;
-  align-items: center;
   // text-transform: uppercase;
   font-weight: ${(props) => (props.isCurrentTopic ? "bolder" : "normal")};
-  overflow-wrap: break-word;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
 `;
 
 const RecommendedSubTopics = () => {
