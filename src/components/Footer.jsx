@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <footer className="bg-[#0D0756] text-white w-full flex justify-center items-center relative z-50" style={{ backgroundImage: 'linear-gradient(to right, #452760, #3d315c, #111f58, #231f7a)' }}>
       <div className="w-full max-md:mx-5 ">
-        <div className="flex my-6 justify-center items-center">
+        <div className="flex my-6 justify-center items-center lg:mr-[3rem]">
           <div className="grid md:grid-cols-2 md:mx-10 grid-cols-1">
             <div className="w-full md:flex md:flex-col justify-center ml-[34px] max-md:ml-[0px]">
               <div className="flex justify-start items-center">
@@ -43,6 +43,9 @@ const Footer = () => {
                 </Link>
                 <Link to="/courses" className="no-underline text-white">
                   <p className="font-normal my-3 md:text-center hover:text-red-500 hover:cursor-pointer">Courses</p>
+                </Link>
+                <Link to="/purchase" className="no-underline text-white">
+                  <p className="font-normal my-3 md:text-center hover:text-red-500 hover:cursor-pointer">Pricing</p>
                 </Link>
               </div>
               <div className="min-w-[10em] mx-auto my-5 md:my-0 md:ml-[-15px]">

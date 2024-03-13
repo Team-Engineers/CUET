@@ -55,10 +55,10 @@ const UniversitySection = ({ universities, id, title }) => {
             <div>
                 <h2 className="p-5 gradient-text2 text-[4vh] font-bold">{title}</h2>
             </div>
-            <div className="grid mx-auto max-w-[1200px] md:grid-cols-3 grid-cols-2" id={id}>
+            <div className="grid mx-auto max-w-[1200px] grid-cols-2 md:grid-cols-3" id={id}>
                 {universities.map((university, index) => (
                     <div
-                        className="flex flex-col rounded-xl p-2 shadow-lg hover:scale-105 transition-all duration-100 border-[1px] border-solid border-gray-400 h-[35vw] w-[35vw] md:h-[200px] md:w-[200px] justify-center items-center m-[12px] text-center"
+                        className="flex flex-col rounded-xl p-2 shadow-lg hover:scale-105 transition-all duration-100 border-[1px] border-solid border-gray-400 h-[35vw] w-[35vw] md:h-[165px] md:w-[165px] justify-center items-center m-[12px] text-center"
                         key={index}
                         style={{ boxShadow: `0 4px 6px ${getRandomColor()}, 0 1px 3px ${getRandomColor()}` }}
                     >
