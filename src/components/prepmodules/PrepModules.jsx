@@ -7,12 +7,11 @@ import Footer from "../Footer";
 import CuetLoader from "../Loader/Loader";
 import NoData from "../Loader/NoData";
 import Navbar from "../Navbar";
+import PrepModulesMixedSubquestion from "./PrepModulesMixedSubquestion";
 import PrepModulesMultipleSubquestion from "./PrepModulesMultipleSubquestion";
 import PrepModulesSingleSubquestion from "./PrepModulesSingleSubquestion";
-import PrepModulesMixedSubquestion from "./PrepModulesMixedSubquestion";
 import RecommendedSubTopics from "./RecommendedSubTopics";
 import "./question.css";
-import { API } from "../../utils/constants";
 
 const PrepModules = () => {
   const [auth] = useAuth();
@@ -53,7 +52,7 @@ const PrepModules = () => {
       };
       try {
         const response = await axios.get(
-          `${API}/question/find-questions`,
+          `https://ourntamockpapers.onrender.com/api/question/find-questions`,
           { params: params }
         );
         // console.log("response",response)
