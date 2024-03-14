@@ -9,6 +9,7 @@ import NoData from "../Loader/NoData";
 import Navbar from "../Navbar";
 import PracticeTestQues from "./PracticeTestQues";
 import "./testplatform.css";
+import { API } from "../../utils/constants";
 
 const PracticeTestMain = () => {
   const [data, setData] = useState([]);
@@ -22,7 +23,7 @@ const PracticeTestMain = () => {
       let subTopic1 = subTopic.toLowerCase().replace(/\s/g, '_');
       try {
         const response = await axios.get(
-          `https://ourntamockpapers.onrender.com/api/question/mock_test?topic=${topic}&subTopic=${subTopic1}`
+          `${API}/question/mock_test?topic=${topic}&subTopic=${subTopic1}`
         );
         setData(response.data);
         setIsLoading(false);

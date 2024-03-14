@@ -1,22 +1,23 @@
+import React, { useState , useEffect } from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import CardContent from '@mui/material/CardContent';
 import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
-import Typography from '@mui/material/Typography';
 import { styled } from '@mui/material/styles';
 import axios from 'axios';
-import { useState } from 'react';
-import { CgSpinner } from "react-icons/cg";
 import { API } from "../../../../utils/constants";
 import { useAuth } from '../../../../utils/context';
-
+import Avatars from './Avatars';
+import { CgSpinner } from "react-icons/cg";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const ImgStyled = styled('img')(({ theme }) => ({
   width: 120,
   height: 120,
   border: '1px solid black',
   marginRight: theme.spacing(6.25),
-  borderRadius: theme.shape.borderRadius,
+  borderRadius: '50%',
 }));
 
 const ButtonStyled = styled(Button)(({ theme }) => ({
@@ -26,66 +27,82 @@ const ButtonStyled = styled(Button)(({ theme }) => ({
   },
 }));
 
-const ResetButtonStyled = styled(Button)(({ theme }) => ({
-  marginLeft: theme.spacing(4.5),
-  [theme.breakpoints.down('sm')]: {
-    width: '100%',
-    marginLeft: 0,
-    textAlign: 'center',
-    marginTop: theme.spacing(4),
-  },
-}));
 
 const TabAccount = () => {
-  const [imgSrc, setImgSrc] = useState('/images/avatars/1.png');
+  const [imgSrc, setImgSrc] = useState();
   const [auth, setAuth] = useAuth();
+  const [loading, setLoading] = useState(false);
   const [name, setName] = useState(auth.user?.name || '');
   const [email, setEmail] = useState(auth.user?.email || '');
-  const [branch, setBranch] = useState(auth.user?.branch || '');
-  const [year, setYear] = useState(auth.user?.year || '');
+  const [stream, setStream] = useState(auth.user?.stream || '');
+  const [dob, setDob] = useState(auth.user?.dob || '00');
   const [contact, setContact] = useState(auth.user?.contact || '');
   const [institute, setInstitute] = useState(auth.user?.institute || '');
-  const [loading, setLoading] = useState(false);
+  const [avatarDialogOpen, setAvatarDialogOpen] = useState(false);
+  useEffect(() => {
+    setName(auth.user?.name || '');
+    setEmail(auth.user?.email || '');
+    setStream(auth.user?.stream || '');
+    setDob(auth.user?.dob ? new Date(auth.user.dob).toISOString().split('T')[0] : ''); 
+    setContact(auth.user?.contact || '');
+    setInstitute(auth.user?.institute || '');
+    setImgSrc(auth.user?.profilePic);
+  }, [auth.user]);
+  
 
-  const onChange = (file) => {
-    const reader = new FileReader();
-    const { files } = file.target;
-    if (files && files.length !== 0) {
-      reader.onload = () => setImgSrc(reader.result);
-      reader.readAsDataURL(files[0]);
-    }
+  const handleOpenAvatarDialog = () => {
+    setAvatarDialogOpen(true);
+  };
+
+  const handleCloseAvatarDialog = () => {
+    setAvatarDialogOpen(false);
+  };
+
+  const onSelectAvatar = (avatar) => {
+    setImgSrc(avatar);
+    handleCloseAvatarDialog();
   };
 
   const handleSubmit = async (e) => {
     setLoading(true);
     e.preventDefault();
     try {
-      const response = await axios.put(`${API}/users/${auth.user._id}`, {
-        name,
-        email,
-        branch,
-        year,
-        contact,
-        institute,
-      }, {
-        headers: {
-          Authorization: `Bearer ${auth.accessToken.token}`,
-        },
-      });
-      setLoading(false);
 
-      console.log('Response:', response);
+      const response = await axios.put(
+        `${API}/users/${auth.user._id}`,
+        {
+          name,
+          email,
+          stream,
+          dob,
+          contact,
+          institute,
+          profilePic: imgSrc,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${auth.accessToken.token}`,
+          },
+        }
+      );
+
+      if (response.status === 200) {
+        toast.success('Profile updated successfully');
+      } else {
+        toast.error('Failed to update profile');
+      }  
       setAuth({ user: response.data, accessToken: auth.accessToken });
-      localStorage.setItem("auth", JSON.stringify({
+      localStorage.setItem('auth', JSON.stringify({
         user: response.data,
         accessToken: auth.accessToken,
       }));
+      setLoading(false);
+
     } catch (error) {
       setLoading(false);
       console.error('Error:', error);
     }
   };
-
 
   return (
     <CardContent>
@@ -93,18 +110,12 @@ const TabAccount = () => {
         <Grid container spacing={7}>
           <Grid item xs={12} sx={{ marginTop: 4.8, marginBottom: 3 }}>
             <Box sx={{ display: 'flex', alignItems: 'center' }}>
-              <ImgStyled src={imgSrc} alt="Profile Pic" />
+              <ImgStyled className='rounded-full' src={imgSrc} alt="Profile Pic" />
               <Box>
-                <ButtonStyled component="label" variant="contained" htmlFor="account-settings-upload-image">
-                  Upload New Photo
-                  <input hidden type="file" onChange={onChange} accept="image/png, image/jpeg" id="account-settings-upload-image" />
+                <ButtonStyled variant="contained" onClick={handleOpenAvatarDialog}>
+                  Select Avatar
                 </ButtonStyled>
-                <ResetButtonStyled color="error" variant="outlined" onClick={() => setImgSrc('/images/avatars/1.png')}>
-                  Reset
-                </ResetButtonStyled>
-                <Typography variant="body2" sx={{ marginTop: 5 }}>
-                  Allowed PNG or JPEG. Max size of 800K.
-                </Typography>
+               
               </Box>
             </Box>
           </Grid>
@@ -120,11 +131,21 @@ const TabAccount = () => {
           </Grid>
 
           <Grid item xs={12} sm={6}>
-            <TextField fullWidth label="Branch" placeholder="" value={branch} onChange={(e) => setBranch(e.target.value)} />
+            <TextField fullWidth label="Stream" placeholder="" value={stream} onChange={(e) => setStream(e.target.value)} />
           </Grid>
           <Grid item xs={12} sm={6}>
-            <TextField fullWidth label="Year" placeholder="" value={year} onChange={(e) => setYear(e.target.value)} />
+          <TextField
+          fullWidth
+          label="Dob"
+          type='date'
+          value={dob}
+          onChange={(e) => setDob(e.target.value)}
+          InputLabelProps={{
+            shrink: true,
+          }}
+        />
           </Grid>
+
           <Grid item xs={12} sm={6}>
             <TextField fullWidth label="Institute" placeholder="Enter School/College Name" value={institute} onChange={(e) => setInstitute(e.target.value)} />
           </Grid>
@@ -136,12 +157,14 @@ const TabAccount = () => {
               )}
               {!loading && <span>Save Changes</span>}{" "}
             </Button>
-            <Button type="reset" variant="outlined" color="secondary">
-              Reset
-            </Button>
+            
           </Grid>
         </Grid>
       </form>
+
+      <Avatars open={avatarDialogOpen} onClose={handleCloseAvatarDialog} onSelectAvatar={onSelectAvatar} />
+      <ToastContainer />
+
     </CardContent>
   );
 };

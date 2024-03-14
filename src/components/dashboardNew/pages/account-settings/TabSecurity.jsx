@@ -1,221 +1,163 @@
-import Box from '@mui/material/Box'
-import Button from '@mui/material/Button'
-import CardContent from '@mui/material/CardContent'
-import FormControl from '@mui/material/FormControl'
-import Grid from '@mui/material/Grid'
-import IconButton from '@mui/material/IconButton'
-import InputAdornment from '@mui/material/InputAdornment'
-import InputLabel from '@mui/material/InputLabel'
-import OutlinedInput from '@mui/material/OutlinedInput'
-import { useState } from 'react'
-
-import EyeOffOutline from 'mdi-material-ui/EyeOffOutline'
-import EyeOutline from 'mdi-material-ui/EyeOutline'
-
+import React, { useState } from 'react';
+import axios from 'axios';
+import { API } from '../../../../utils/constants';
+import { useAuth } from '../../../../utils/context';
+import FormControl from '@mui/material/FormControl';
+import Grid from '@mui/material/Grid';
+import IconButton from '@mui/material/IconButton';
+import InputAdornment from '@mui/material/InputAdornment';
+import InputLabel from '@mui/material/InputLabel';
+import OutlinedInput from '@mui/material/OutlinedInput';
+import EyeOffOutline from 'mdi-material-ui/EyeOffOutline';
+import EyeOutline from 'mdi-material-ui/EyeOutline';
+import Button from '@mui/material/Button';
+import CardContent from '@mui/material/CardContent';
+import { CgSpinner } from "react-icons/cg";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const TabSecurity = () => {
+  const [loading, setLoading] = useState(false);
+  const [auth] = useAuth();
   const [values, setValues] = useState({
-    newPassword: '',
     currentPassword: '',
-    showNewPassword: false,
+    newPassword: '',
     confirmNewPassword: '',
     showCurrentPassword: false,
-    showConfirmNewPassword: false
-  })
+    showNewPassword: false,
+    showConfirmNewPassword: false,
+  });
 
-  const handleCurrentPasswordChange = prop => event => {
-    setValues({ ...values, [prop]: event.target.value })
-  }
+  const handleInputChange = (prop) => (event) => {
+    setValues({ ...values, [prop]: event.target.value });
+  };
 
-  const handleClickShowCurrentPassword = () => {
-    setValues({ ...values, showCurrentPassword: !values.showCurrentPassword })
-  }
+  const handleClickShowPassword = (prop) => () => {
+    setValues({ ...values, [prop]: !values[prop] });
+  };
 
-  const handleMouseDownCurrentPassword = event => {
-    event.preventDefault()
-  }
+  const handleSubmit = async (e) => {
+    setLoading(true);
+    e.preventDefault();
+    try {
+      const response = await axios.post(
+        `${API}/users/change-password`,
+        {
+          userId: auth.user._id,
+          oldPassword: values.currentPassword,
+          newPassword: values.newPassword,
+          confirmPassword: values.confirmNewPassword,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${auth.accessToken.token}`,
+          },
+        }
+      );
+      toast.success(response.data.message);
+      setValues({
+        ...values,
+        currentPassword: '',
+        newPassword: '',
+        confirmNewPassword: '',
+      });
+      setLoading(false);
 
-  const handleNewPasswordChange = prop => event => {
-    setValues({ ...values, [prop]: event.target.value })
-  }
+    } catch (error) {
+      toast.error(error);
+      setLoading(false);
 
-  const handleClickShowNewPassword = () => {
-    setValues({ ...values, showNewPassword: !values.showNewPassword })
-  }
-
-  const handleMouseDownNewPassword = event => {
-    event.preventDefault()
-  }
-
-  const handleConfirmNewPasswordChange = prop => event => {
-    setValues({ ...values, [prop]: event.target.value })
-  }
-
-  const handleClickShowConfirmNewPassword = () => {
-    setValues({ ...values, showConfirmNewPassword: !values.showConfirmNewPassword })
-  }
-
-  const handleMouseDownConfirmNewPassword = event => {
-    event.preventDefault()
-  }
+    }
+  };
 
   return (
-    <form>
-      <CardContent sx={{ paddingBottom: 0 }}>
-        <Grid container spacing={5}>
-          <Grid item xs={12} sm={6}>
-            <Grid container spacing={5}>
-              <Grid item xs={12} sx={{ marginTop: 4.75 }}>
-                <FormControl fullWidth>
-                  <InputLabel htmlFor='account-settings-current-password'>Current Password</InputLabel>
-                  <OutlinedInput
-                    label='Current Password'
-                    value={values.currentPassword}
-                    id='account-settings-current-password'
-                    type={values.showCurrentPassword ? 'text' : 'password'}
-                    onChange={handleCurrentPasswordChange('currentPassword')}
-                    endAdornment={
-                      <InputAdornment position='end'>
-                        <IconButton
-                          edge='end'
-                          aria-label='toggle password visibility'
-                          onClick={handleClickShowCurrentPassword}
-                          onMouseDown={handleMouseDownCurrentPassword}
-                        >
-                          {values.showCurrentPassword ? <EyeOutline /> : <EyeOffOutline />}
-                        </IconButton>
-                      </InputAdornment>
-                    }
-                  />
-                </FormControl>
-              </Grid>
-
-              <Grid item xs={12} sx={{ marginTop: 5 }}>
-                <FormControl fullWidth>
-                  <InputLabel htmlFor='account-settings-new-password'>New Password</InputLabel>
-                  <OutlinedInput
-                    label='New Password'
-                    value={values.newPassword}
-                    id='account-settings-new-password'
-                    onChange={handleNewPasswordChange('newPassword')}
-                    type={values.showNewPassword ? 'text' : 'password'}
-                    endAdornment={
-                      <InputAdornment position='end'>
-                        <IconButton
-                          edge='end'
-                          onClick={handleClickShowNewPassword}
-                          aria-label='toggle password visibility'
-                          onMouseDown={handleMouseDownNewPassword}
-                        >
-                          {values.showNewPassword ? <EyeOutline /> : <EyeOffOutline />}
-                        </IconButton>
-                      </InputAdornment>
-                    }
-                  />
-                </FormControl>
-              </Grid>
-
-              <Grid item xs={12}>
-                <FormControl fullWidth>
-                  <InputLabel htmlFor='account-settings-confirm-new-password'>Confirm New Password</InputLabel>
-                  <OutlinedInput
-                    label='Confirm New Password'
-                    value={values.confirmNewPassword}
-                    id='account-settings-confirm-new-password'
-                    type={values.showConfirmNewPassword ? 'text' : 'password'}
-                    onChange={handleConfirmNewPasswordChange('confirmNewPassword')}
-                    endAdornment={
-                      <InputAdornment position='end'>
-                        <IconButton
-                          edge='end'
-                          aria-label='toggle password visibility'
-                          onClick={handleClickShowConfirmNewPassword}
-                          onMouseDown={handleMouseDownConfirmNewPassword}
-                        >
-                          {values.showConfirmNewPassword ? <EyeOutline /> : <EyeOffOutline />}
-                        </IconButton>
-                      </InputAdornment>
-                    }
-                  />
-                </FormControl>
-              </Grid>
-            </Grid>
+    <form onSubmit={handleSubmit}>
+      <CardContent className="grid grid-cols-1 my-2 md:my-10 md:grid-cols-2" >
+        <Grid container spacing={3}>
+          <Grid item xs={12}>
+            <FormControl fullWidth>
+              <InputLabel htmlFor='current-password'>Current Password</InputLabel>
+              <OutlinedInput
+                id='current-password'
+                type={values.showCurrentPassword ? 'text' : 'password'}
+                value={values.currentPassword}
+                onChange={handleInputChange('currentPassword')}
+                endAdornment={
+                  <InputAdornment position='end'>
+                    <IconButton onClick={handleClickShowPassword('showCurrentPassword')} edge='end'>
+                      {values.showCurrentPassword ? <EyeOutline /> : <EyeOffOutline />}
+                    </IconButton>
+                  </InputAdornment>
+                }
+                label='Current Password'
+              />
+            </FormControl>
+          </Grid>
+          <Grid item xs={12}>
+            <FormControl fullWidth>
+              <InputLabel htmlFor='new-password'>New Password</InputLabel>
+              <OutlinedInput
+                id='new-password'
+                type={values.showNewPassword ? 'text' : 'password'}
+                value={values.newPassword}
+                onChange={handleInputChange('newPassword')}
+                endAdornment={
+                  <InputAdornment position='end'>
+                    <IconButton onClick={handleClickShowPassword('showNewPassword')} edge='end'>
+                      {values.showNewPassword ? <EyeOutline /> : <EyeOffOutline />}
+                    </IconButton>
+                  </InputAdornment>
+                }
+                label='New Password'
+              />
+            </FormControl>
+          </Grid>
+          <Grid item xs={12}>
+            <FormControl fullWidth>
+              <InputLabel htmlFor='confirm-new-password'>Confirm New Password</InputLabel>
+              <OutlinedInput
+                id='confirm-new-password'
+                type={values.showConfirmNewPassword ? 'text' : 'password'}
+                value={values.confirmNewPassword}
+                onChange={handleInputChange('confirmNewPassword')}
+                endAdornment={
+                  <InputAdornment position='end'>
+                    <IconButton onClick={handleClickShowPassword('showConfirmNewPassword')} edge='end'>
+                      {values.showConfirmNewPassword ? <EyeOutline /> : <EyeOffOutline />}
+                    </IconButton>
+                  </InputAdornment>
+                }
+                label='Confirm New Password'
+              />
+            </FormControl>
           </Grid>
 
-          <Grid
-            item
-            sm={6}
-            xs={12}
-            sx={{ display: 'flex', marginTop: [7.5, 2.5], alignItems: 'center', justifyContent: 'center' }}
-          >
-            {/* <img src={require('../../../assets/forgot.jpg')} className='sm:w-[350px] w-[90%] flex justify-center items-center  h-[220px] sm:h-[350px] rounded-3xl' alt="" /> */}
-            <img width={183} alt='avatar' height={256} src='/images/pages/pose-m-1.png' />
-          </Grid>
         </Grid>
-        <Box sx={{ mt: 9 }}>
-          <Button variant='contained' sx={{ marginRight: 3.5 }}>
-            Save Changes
-          </Button>
-          <Button
-            type='reset'
-            variant='outlined'
-            color='secondary'
-            onClick={() => setValues({ ...values, currentPassword: '', newPassword: '', confirmNewPassword: '' })}
-          >
-            Reset
-          </Button>
-        </Box>
+
+        <Grid
+          item
+          sm={6}
+          xs={12}
+          sx={{ display: 'flex', marginTop: [7.5, 2.5], alignItems: 'center', justifyContent: 'center' }}
+        >
+          <img className='md:w-[300px] md:h-[300px] max-sm:mb-5 w-[200px] h-[200px]'  alt='avatar' src={auth.user?.profilePic} />
+        </Grid>
+        <Grid container spacing={6}>
+
+          <Grid item xs={12}>
+            <Button type='submit' variant='contained'>
+              {loading && (
+                <CgSpinner size={20} className="mt-1 animate-spin" />
+              )}
+              {!loading && <span>Save Changes</span>}
+            </Button>
+          </Grid>
+
+        </Grid>
       </CardContent>
-
-      {/* <Divider sx={{ margin: 0 }} /> */}
-
-      {/* <CardContent>
-        <Box sx={{ mt: 1.75, display: 'flex', alignItems: 'center' }}>
-          <KeyOutline sx={{ marginRight: 3 }} />
-          <Typography variant='h6'>Two-factor authentication</Typography>
-        </Box>
-
-        <Box sx={{ mt: 5.75, display: 'flex', justifyContent: 'center' }}>
-          <Box
-            sx={{
-              maxWidth: 368,
-              display: 'flex',
-              textAlign: 'center',
-              alignItems: 'center',
-              flexDirection: 'column'
-            }}
-          >
-            <Avatar
-              variant='rounded'
-              sx={{ width: 48, height: 48, color: 'common.white', backgroundColor: 'primary.main' }}
-            >
-              <LockOpenOutline sx={{ fontSize: '1.75rem' }} />
-            </Avatar>
-            <Typography sx={{ fontWeight: 600, marginTop: 3.5, marginBottom: 3.5 }}>
-              Two factor authentication is not enabled yet.
-            </Typography>
-            <Typography variant='body2'>
-              Two-factor authentication adds an additional layer of security to your account by requiring more than just
-              a password to log in. Learn more.
-            </Typography>
-          </Box>
-        </Box>
-
-        <Box sx={{ mt: 11 }}>
-          <Button variant='contained' sx={{ marginRight: 3.5 }}>
-            Save Changes
-          </Button>
-          <Button
-            type='reset'
-            variant='outlined'
-            color='secondary'
-            onClick={() => setValues({ ...values, currentPassword: '', newPassword: '', confirmNewPassword: '' })}
-          >
-            Reset
-          </Button>
-        </Box>
-      </CardContent> */}
+      <ToastContainer />
     </form>
-  )
-}
 
-export default TabSecurity
+  );
+};
+
+export default TabSecurity;
