@@ -12,6 +12,7 @@ import PrepModulesSingleSubquestion from "./PrepModulesSingleSubquestion";
 import PrepModulesMixedSubquestion from "./PrepModulesMixedSubquestion";
 import RecommendedSubTopics from "./RecommendedSubTopics";
 import "./question.css";
+import { API } from "../../utils/constants";
 
 const PrepModules = () => {
   const [auth] = useAuth();
@@ -52,7 +53,7 @@ const PrepModules = () => {
       };
       try {
         const response = await axios.get(
-          `https://ourntamockpapers.onrender.com/api/question/find-questions`,
+          `${API}/question/find-questions`,
           { params: params }
         );
         // console.log("response",response)
