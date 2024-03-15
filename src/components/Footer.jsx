@@ -7,9 +7,9 @@ const Footer = () => {
     <footer className="bg-[#0D0756] text-white w-full flex justify-center items-center relative z-50" style={{ backgroundImage: 'linear-gradient(to right, #452760, #3d315c, #111f58, #231f7a)' }}>
       <div className="w-full max-md:mx-5 ">
         <div className="flex my-6 justify-center items-center lg:mr-[3rem]">
-          <div className="grid md:grid-cols-2 md:mx-10 grid-cols-1">
-            <div className="w-full md:flex md:flex-col justify-center ml-[34px] max-md:ml-[0px]">
-              <div className="flex justify-start items-center">
+          <div className="grid md:grid-cols-2 md:mx-10 grid-cols-1 w-fit">
+            <div className=" md:flex md:flex-col justify-center ml-[34px] max-md:ml-[0px] w-fit">
+              <div className="flex justify-start items-center w-fit">
                 <Link to="/" className="no-underline d-flex justify-content-center mt-4 align-items-center flex-column">
                   <div className="flex items-center">
                     <div className="mr-4 mb-[-12px]">
@@ -29,7 +29,7 @@ const Footer = () => {
                 aspiration but an inspiring and achievable pursuit.
               </p>
             </div>
-            <div className="w-full relative md:top-[20px] grid grid-cols-2 md:grid-cols-3 text-sm md:text-md">
+            <div className="w-fit relative md:top-[35px] grid grid-cols-2 md:grid-cols-3 text-sm md:text-md md:ml-[-64px] sm:m-0">
               <div className="min-w-[10em] mx-auto my-5 md:my-0 md:ml-0">
                 <p className="cursor-pointer font-bold mb-10  md:text-center">Company</p>
                 <Link to="/" className="no-underline text-white">
