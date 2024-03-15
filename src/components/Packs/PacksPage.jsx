@@ -1,9 +1,12 @@
 import axios from 'axios';
 import React, { useState } from 'react';
+import { CgSpinner } from "react-icons/cg";
 import { FaCheck, FaQuestionCircle } from 'react-icons/fa';
 import { RxCross1 } from "react-icons/rx";
 import { useNavigate } from "react-router-dom";
 import Select from 'react-select';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { API } from '../../utils/constants';
 import { useAuth } from "../../utils/context";
 import Footer from '../Footer';
@@ -16,6 +19,12 @@ const PriceCard = ({ _id, nameOfPlan, bgColor, amount, description, benefits }) 
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [errorMessage, setErrorMessage] = useState('');
   const [showOptions, setShowOptions] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  const closeModal = () => {
+    setLoading(false);
+    setShowOptions(false);
+  }
 
   let options;
   if (nameOfPlan === 'SOLO PACK' || nameOfPlan === 'PAIR PACK') {
@@ -82,7 +91,25 @@ const PriceCard = ({ _id, nameOfPlan, bgColor, amount, description, benefits }) 
     }
   };
   const initPayment = async () => {
+    if ((nameOfPlan === 'SOLO PACK') && selectedOptions.length < 1) {
+      toast.error("Select atleast 1 option.")
+      return;
+    } else if ((nameOfPlan === 'PAIR PACK') && selectedOptions.length < 2) {
+      toast.error("Select atleast 2 options.")
+      return;
+    }
+    else if ((nameOfPlan === 'MEGA PACK') && selectedOptions.length < 3) {
+      toast.error("Select atleast 3 options.")
+      return;
+    }
+    else if ((nameOfPlan === 'JUMBO PACK') && selectedOptions.length < 4) {
+      toast.error("Select atleast 4 options.")
+      return;
+    }
+
+    setLoading(true);
     try {
+      const key = await axios.get(`${API}/payment/getKey`);
       const response = await axios.post(`${API}/payment/initiate`, {
         packageId: _id,
         userId: auth.user?._id,
@@ -90,7 +117,7 @@ const PriceCard = ({ _id, nameOfPlan, bgColor, amount, description, benefits }) 
       });
       const { data } = response;
       const options = {
-        key: "rzp_test_NAYbSHvOM4lmPb",
+        key,
         amount: data.amount,
         currency: data.currency,
         name: nameOfPlan,
@@ -105,18 +132,25 @@ const PriceCard = ({ _id, nameOfPlan, bgColor, amount, description, benefits }) 
               razorpay_payment_id: response.razorpay_payment_id,
               razorpay_signature: response.razorpay_signature,
               packageId: _id,
+              selectedOptions: selectedOptions.map(option => option.value),
             });
 
-            console.log(verifyResponse.data);
             if (verifyResponse.data.success) {
               const userResponse = await axios.get(`${API}/users/find/${auth.user?._id}`);
               const updatedUser = userResponse.data;
-              const updatedAuth = { ...auth, user: updatedUser };
+              const updatedAuth = { ...auth, user: updatedUser, password: undefined, razorpay_signature: undefined, razorpay_order_id: undefined, razorpay_payment_id: undefined };
               setAuth(updatedAuth);
               localStorage.setItem("auth", JSON.stringify(updatedAuth));
-              navigate('/courses');
+              setLoading(false);
+              toast.success("Pack bought successfully")
+              setTimeout(() => {
+                navigate('/courses');
+              }, 2000);
+
             }
           } catch (error) {
+            setLoading(false);
+            toast.error("Cannot process your request at the moment. Please try again later")
             console.error(error);
           }
         },
@@ -125,8 +159,10 @@ const PriceCard = ({ _id, nameOfPlan, bgColor, amount, description, benefits }) 
         },
       };
       const rzp1 = new window.Razorpay(options);
+      setLoading(false);
       rzp1.open();
     } catch (error) {
+      setLoading(false);
       console.error(error);
     }
   };
@@ -189,7 +225,7 @@ const PriceCard = ({ _id, nameOfPlan, bgColor, amount, description, benefits }) 
             <div className="rounded-3xl bg-[#ffffffee] md:w-[700px] p-4 px-6 max-md:px-2 max-md:mx-6 backdrop-blur-[100px] shadow-2xl  ">
               <div className="flex justify-between">
                 <h2 className="font-semibold mx-2 md:text-xl whitespace-nowrap max-md:text-[17px]">Select Subjects for <span className='px-4 py-2 rounded-3xl max-md:px-2 max-md:text-[16px] ' style={{ background: bgColor }}>{nameOfPlan}</span></h2>
-                <h3 className="mx-4 cursor-pointer" onClick={() => setShowOptions(false)} ><RxCross1 /></h3>
+                <h3 className="mx-4 cursor-pointer" onClick={closeModal} ><RxCross1 /></h3>
               </div>
               <hr className="my-1" />
               <div className='flex flex-col justify-center items-center'>
@@ -226,7 +262,10 @@ const PriceCard = ({ _id, nameOfPlan, bgColor, amount, description, benefits }) 
                 </div>
               </div>
               <div className="flex mx-4 my-3  justify-end">
-                <h onClick={initPayment} className="block cursor-pointer mx-auto mt-4 border-[2px] border-solid border-[#2fa062] bg-[#23bd68] hover:text-white px-3 py-2 font-medium rounded-md hover:border-blue-600 hover:bg-blue-600">Confirm Selection</h>
+                <h onClick={initPayment} className={` flex cursor-pointer mt-4 border-[2px] border-solid border-[#2fa062] bg-[#23bd68] hover:text-white px-3 py-2 font-medium rounded-md hover:border-blue-600 hover:bg-blue-600 w-[200px] mx-auto justify-center ${loading ? 'opacity-50 pointer-events-none' : ''}`}>{loading && (
+                  <CgSpinner size={20} className="mt-1 animate-spin " />
+                )}
+                  {!loading && <span>Confirm Selection</span>}{" "}</h>
 
               </div>
             </div>
@@ -284,19 +323,20 @@ const PriceCardPage = ({ packages }) => {
   };
 
   return (
-    <div className="overflow-hidden max-w-[1400px] mx-auto  bg-[#c4e9f0]" style={{ background: `linear-gradient(to bottom, ${bgColor}, white 30%,  white)`, transition: "background-color 0.3s ease" }} >
+    <div className="overflow-hidden max-w-full mx-auto  bg-[#c4e9f0]" style={{ background: `linear-gradient(to bottom, ${bgColor}, white 30%,  white)`, transition: "background-color 0.3s ease" }} >
       <Navbar />
       <div className="flex  flex-col justify-center items-center ">
         <Tabs packages={packages} setActiveTab={setActiveTab} activeTab={activeTab} setBgColor={setBgColor} bgColor={bgColor} />
         <PriceCardsContainer packages={packages.filter((packageItem) => packageItem._id === activeTab)} />
-        <div style={{ background: `linear-gradient(to bottom, ${bgColor},  white)`, transition: "background-color 0.3s ease" }}>
+        <div style={{ background: `linear-gradient(to bottom, ${bgColor},  white)`, transition: "background-color 0.3s ease", width: "100%" }}>
           <PriceTables handleGetStarted={handleGetStarted} />
         </div>
-        <div style={{ background: `linear-gradient(to bottom, ${bgColor},  white)`, transition: "background-color 0.3s ease" }}>
+        <div style={{ background: `linear-gradient(to bottom, #ededed,  white)`, transition: "background-color 0.3s ease", width: "100%" }}>
           <PackFaq />
         </div>
         <Footer />
       </div>
+      <ToastContainer />
     </div>
 
   );

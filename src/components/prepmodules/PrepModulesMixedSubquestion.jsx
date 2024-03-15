@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { MathText } from "../mathJax/MathText";
 import Pagination from "rc-pagination";
 import "rc-pagination/assets/index.css";
 import locale from "rc-pagination/lib/locale/en_US";
+import { useLocation } from "react-router-dom";
 
-const PrepModulesMixedSubquestion = ({data}) => {
+const PrepModulesMixedSubquestion = ({ data }) => {
   const alphabets = "ABCDEFGHIJKL".split("");
   const [currentPage, setCurrentPage] = useState(0);
   const [selectedOptions, setSelectedOptions] = useState(
@@ -18,6 +19,25 @@ const PrepModulesMixedSubquestion = ({data}) => {
       .fill(null)
       .map(() => Array(10).fill(false))
   );
+
+
+  const location = useLocation();
+
+  useEffect(() => {
+    const storedPage = localStorage.getItem("currentPage");
+    const parsedPage = parseInt(storedPage, 10);
+    if (!isNaN(parsedPage) && parsedPage >= 0) {
+      setCurrentPage(parsedPage);
+    } else {
+      setCurrentPage(0);
+    }
+
+    // Cleanup function to remove currentPage from localStorage
+    return () => {
+      localStorage.removeItem("currentPage");
+    };
+  }, [location]);
+
   const handleOptionClick = (questionIndex, optionIndex) => {
     const updatedSelectedOptions = [...selectedOptions];
     updatedSelectedOptions[currentPage] = [
@@ -35,7 +55,6 @@ const PrepModulesMixedSubquestion = ({data}) => {
     setExplanationsVisible(updatedExplanationsVisible);
   };
   const renderQuestion = (question, questionIndex) => {
-    
     const isExplanationVisible = explanationsVisible[questionIndex];
     // console.log("question is", question);
     return (
@@ -136,34 +155,32 @@ const PrepModulesMixedSubquestion = ({data}) => {
           <div className="explanation-wrapper ">
             {isExplanationVisible && (
               <div className="explanation">
+                <div className="flex flex-row gap-2 justify-start items-center">
+                  <h6 className="mb-0 text-blueviolet-100 fw-bold">
+                    <strong> Answer:</strong>
+                  </h6>
+                  <h6 className="mb-0  fw-bold text-salmon-200">
+                    <strong>
+                      {" "}
+                      Option{" "}
+                      {question?.subQuestions[0]?.correctOptionIndex !==
+                      undefined
+                        ? alphabets[
+                            question?.subQuestions[0]?.correctOptionIndex
+                          ]
+                        : ""}
+                    </strong>
+                  </h6>
+                </div>
+                <h6 className="text-blueviolet-100 fw-bold">
+                  {" "}
+                  <strong>Solution:</strong>
+                </h6>
                 {question?.subQuestions[0]?.explanation?.map(
                   (explanation, explanationIndex) => (
                     <div
                       key={explanationIndex}
-                      className="explanation-box"
-                      style={{ margin: "0 10px" }}
                     >
-                      <div className="flex flex-row gap-2 justify-start items-center">
-                        <h6 className="mb-0 text-blueviolet-100 fw-bold">
-                          <strong> Answer:</strong>
-                        </h6>
-                        <h6 className="mb-0  fw-bold text-salmon-200">
-                          <strong>
-                            {" "}
-                            Option{" "}
-                            {question?.subQuestions[0]?.correctOptionIndex !==
-                            undefined
-                              ? alphabets[
-                                  question?.subQuestions[0]?.correctOptionIndex
-                                ]
-                              : ""}
-                          </strong>
-                        </h6>
-                      </div>
-                      <h6 className="text-blueviolet-100 fw-bold">
-                        {" "}
-                        <strong>Solution:</strong>
-                      </h6>
                       {explanation.text.map((text, textIndex) => (
                         <MathText
                           className="explanation-text mb-2"
@@ -241,7 +258,7 @@ const PrepModulesMixedSubquestion = ({data}) => {
 
             <div className="flex justify-center items-center gap-3">
               <span className={`question-number id-${question?._id}`}>
-              {`${questionIndex + 1 + currentPage * 5} `}
+                {`${questionIndex + 1 + currentPage * 5} `}
               </span>
               {question?.questionTextAndImages?.map(
                 (textAndImages, textAndImagesIndex) => (
@@ -393,31 +410,28 @@ const PrepModulesMixedSubquestion = ({data}) => {
                           subQuestionIndex
                         ] && (
                           <div className="explanation">
+                            <div className="flex flex-row gap-2 justify-start items-center">
+                              <h6 className="mb-0 text-blueviolet-100 fw-bold">
+                                <strong> Answer:</strong>
+                              </h6>
+                              <h6 className="mb-0  fw-bold text-salmon-200">
+                                <strong>
+                                  Option{" "}
+                                  {subQuestion?.correctOptionIndex !== undefined
+                                    ? alphabets[subQuestion?.correctOptionIndex]
+                                    : ""}
+                                </strong>
+                              </h6>
+                            </div>
+                            <h6 className="text-blueviolet-100 fw-bold">
+                              <strong> Solution: </strong>
+                            </h6>
                             {subQuestion?.explanation?.map(
                               (explanation, explanationIndex) => (
                                 <div
                                   key={explanationIndex}
                                   className="m-0 pt-3"
                                 >
-                                  <div className="flex flex-row gap-2 justify-start items-center">
-                                    <h6 className="mb-0 text-blueviolet-100 fw-bold">
-                                      <strong> Answer:</strong>
-                                    </h6>
-                                    <h6 className="mb-0  fw-bold text-salmon-200">
-                                      <strong>
-                                        Option{" "}
-                                        {subQuestion?.correctOptionIndex !==
-                                        undefined
-                                          ? alphabets[
-                                              subQuestion?.correctOptionIndex
-                                            ]
-                                          : ""}
-                                      </strong>
-                                    </h6>
-                                  </div>
-                                  <h6 className="text-blueviolet-100 fw-bold">
-                                    <strong> Solution: </strong>
-                                  </h6>
                                   {explanation?.text?.map((text, textIndex) => (
                                     <MathText
                                       className="explanation-text mb-2"
@@ -450,6 +464,7 @@ const PrepModulesMixedSubquestion = ({data}) => {
   };
   const handlePageChange = (page) => {
     setCurrentPage(page - 1);
+    localStorage.setItem("currentPage", page - 1);
     setExplanationsVisible(Array(data.length).fill(false));
     window.scroll(0, 0);
   };
@@ -458,7 +473,8 @@ const PrepModulesMixedSubquestion = ({data}) => {
     <section className="question-practice question-practice-v2">
       <div className="w-100 flex justify-center mt-4 items-center flex-col">
         <div className="question-container">
-        {data?.slice(currentPage * 5, (currentPage + 1) * 5)
+          {data
+            ?.slice(currentPage * 5, (currentPage + 1) * 5)
             .map((question, questionIndex) => {
               if (question.subQuestions && question.subQuestions.length > 1) {
                 return renderQuestionWithMultipleSubquestions(
@@ -470,23 +486,23 @@ const PrepModulesMixedSubquestion = ({data}) => {
               }
             })}
           <div className="pagination">
-          <Pagination
-            defaultCurrent={currentPage + 1}
-            locale={locale}
-            total={data.length}
-            pageSize={5} // Display 5 questions per page
-            onChange={handlePageChange}
-            showPrevNextJumpers
-            showQuickJumper
-            showTotal={(total, range) =>
-              `${range[0]}-${range[1]} of ${total} items`
-            }
-          />
-        </div>
+            <Pagination
+              defaultCurrent={currentPage + 1}
+              locale={locale}
+              total={data.length}
+              pageSize={5} // Display 5 questions per page
+              onChange={handlePageChange}
+              showPrevNextJumpers
+              showQuickJumper
+              showTotal={(total, range) =>
+                `${range[0]}-${range[1]} of ${total} items`
+              }
+            />
+          </div>
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default PrepModulesMixedSubquestion
+export default PrepModulesMixedSubquestion;

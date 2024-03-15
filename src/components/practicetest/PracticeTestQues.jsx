@@ -134,13 +134,13 @@ const PracticeTestQues = ({ data }) => {
         <div className="question-box">
           <div className="flex flex-col">
             <div className="flex justify-between">
-              <div className="px-4 py-5">
+              <div className="px-4 py-4">
                 {/* <span className={`question-number id-${question._id}`}>
                   {`P${currentPage + 1}`}
                 </span> */}
               </div>
             </div>
-            <div className="text-[20px]  relative pl-8 flex items-center top-[-25px] px-4">
+            <div className="text-[20px]  pl-8 flex items-center pb-2  px-4">
               <div>
                 {question?.questionTextAndImages?.map((textData, textIndex) => (
                   <div key={textIndex}>
@@ -171,7 +171,7 @@ const PracticeTestQues = ({ data }) => {
       <div className="question-box ">
         <div className="flex  flex-col">
           <div className="flex justify-between">
-            <div className="px-4 py-5">
+            <div className="px-4 py-4">
               <span className={`question-number id-${question?._id}`}>
                 {`${questionIndex + 1 + currentPage * 1} `}
               </span>
@@ -195,7 +195,7 @@ const PracticeTestQues = ({ data }) => {
               )}
             </div>
           </div>
-          <div className="text-[20px] pt-[1rem]  relative pl-8 flex items-center top-[-25px] px-4   ">
+          <div className="text-[20px] pb-2  pl-8 flex items-center px-4   ">
             <div>
               {question?.subQuestions[0]?.questionTextAndImages?.map(
                 (textData, textIndex) => (
@@ -291,30 +291,27 @@ const PracticeTestQues = ({ data }) => {
       <div className="explanation-wrapper ">
         {explanationsVisible[questionIndex] && (
           <div className="explanation">
+            <div className="flex flex-row gap-2 justify-start items-center">
+              <h6 className="mb-0  text-blueviolet-100 fw-bold">
+                <strong>Answer: </strong>
+              </h6>
+              <h6 className="mb-0   text-salmon-200">
+                <strong>
+                  {" "}
+                  Option{" "}
+                  {question?.subQuestions[0]?.correctOptionIndex !== undefined
+                    ? alphabets[question?.subQuestions[0]?.correctOptionIndex]
+                    : ""}
+                </strong>
+              </h6>
+            </div>
+
+            <h6 className="text-blueviolet-100">
+              <strong> Solution:</strong>
+            </h6>
             {question?.subQuestions[0]?.explanation?.map(
               (explanationData, index) => (
                 <p className="m-0" key={index}>
-                  <div className="flex flex-row gap-2 justify-start items-center">
-                    <h6 className="mb-0  text-blueviolet-100 fw-bold">
-                      <strong>Answer: </strong>
-                    </h6>
-                    <h6 className="mb-0   text-salmon-200">
-                      <strong>
-                        {" "}
-                        Option{" "}
-                        {question?.subQuestions[0]?.correctOptionIndex !==
-                        undefined
-                          ? alphabets[
-                              question?.subQuestions[0]?.correctOptionIndex
-                            ]
-                          : ""}
-                      </strong>
-                    </h6>
-                  </div>
-
-                  <h6 className="text-blueviolet-100">
-                    <strong> Solution:</strong>
-                  </h6>
                   {explanationData?.text?.map((text, textIndex) => (
                     <MathText
                       className="explanation-text mb-2"
@@ -664,8 +661,11 @@ const PracticeTestQues = ({ data }) => {
             <div className="px-8 py-4">
               <p>Are you sure you want to finish this test?</p>
               <p className=" text-[20px]">
-                Time is running out! <span className="text-red-500">Only {Math.floor(timer / 60)}:
-                {(timer % 60).toString().padStart(2, "0")} left.</span>
+                Time is running out!{" "}
+                <span className="text-red-500">
+                  Only {Math.floor(timer / 60)}:
+                  {(timer % 60).toString().padStart(2, "0")} left.
+                </span>
               </p>
               <p>You will be unable to resume after you finish this test.</p>
             </div>

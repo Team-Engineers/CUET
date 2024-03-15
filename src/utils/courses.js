@@ -69,11 +69,6 @@ const subtopicsData = {
       image: require("../assets/images/courses/Sociology.png"),
       color: "#FFA069",
     },
-    {
-      title: "Mathematics",
-      image: require("../assets/images/courses/Sociology.png"),
-      color: "#FF6464",
-    },
   ],
 };
 
@@ -151,7 +146,7 @@ const DomainTopic = [
     color: "#6A5EFF",
   },
   {
-    title: "Humanities & Social Sciences ",
+    title: "Humanities & Social Sciences",
     image: require("../assets/images/courses/Microscope.png"),
     color: "#47C8FF",
   },

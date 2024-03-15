@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../utils/context';
-const PriceTable = ({ handleGetStarted }) => {
+const PriceTable = ({ handleGetStarted, hidden }) => {
   const [auth] = useAuth();
 
   const navigate = useNavigate();
@@ -21,7 +21,7 @@ const PriceTable = ({ handleGetStarted }) => {
           </div>
         </div>
         <div className="flex  flex-row max-md:flex-wrap  w-3/4 border-solid  border border-gray-300 rounded-lg">
-          <div className=" w-1/4  max-lg:hidden mt-px mb-0 border-2  border-gray-300  border-none  rounded-none">
+          <div className={`${hidden} w-1/4  max-lg:hidden mt-px mb-0 border-2  border-gray-300  border-none  rounded-none`}>
             <div className="px-2 text-center h-48 flex flex-col items-center justify-center">
               <h3 className="tracking-widest">ROOKIE</h3>
               <h2 className="text-5xl text-gray-900 font-medium leading-none mb-4 mt-2">Free</h2>

@@ -31,18 +31,18 @@ const ExamInfo = ({ onClose }) => {
         return cuetNotificationsNotices.map((notice) => (
           <React.Fragment key={notice.id}>
             <a href={notice.link} target="_blank" rel="noreferrer" className=' hover:underline decoration-blue-800 no-underline text-black '>
-              <li className={`my-[8px]  ${activeTab === 'cuetNotifications' ? '' : ''}`}>
+              <li className={`my-[8px] max-md:mx-4  ${activeTab === 'cuetNotifications' ? '' : ''}`}>
                 <p className='text-black '>{notice.title}</p>
               </li>
-              <div className="text-slate-600 mb-1">Published on {notice.date}</div>
-              <div className="text-slate-600 mb-8">Closing on {notice.closingDate}</div>
+              <div className="text-slate-600 max-md:text-sm mb-1">Published on {notice.date}</div>
+              <div className="text-slate-600  max-md:text-sm mb-8">Closing on {notice.closingDate}</div>
             </a>
           </React.Fragment>
         ));
       case 'otherExamsNotifications':
         return otherExamsNotificationsNotices.map((notice, index) => (
           <React.Fragment key={notice.id}>
-            <a href={notice.link} target="_blank" rel="noreferrer" className=' no-underline text-black'>
+            <a href={notice.link} target="_blank" rel="noreferrer" className='hover:underline decoration-blue-800 no-underline text-black'>
               <li className={`my-[8px]  ${activeTab === 'cuetNotifications' ? '' : ''}`}>
                 {notice.title}
               </li>
@@ -60,8 +60,8 @@ const ExamInfo = ({ onClose }) => {
   const notices = getNoticesForTab();
 
   return (
-    <div className=" mx-auto relative z-50 w-full justify-center mb-[40px]">
-      <div className='md:min-w-[30em]    max-md:mx-auto   '>
+    <div className=" mx-auto relative z-[1000] w-full justify-center mb-[40px]">
+      <div className='md:min-w-[30em] z-50 max-sm:w-[20em]  max-md:mx-auto   '>
         <div className="bg-[#ffffff00]  backdrop-filter backdrop-blur-[30px] shadow-xl  rounded-xl"
         >
           <div className="pb-8 px-8 flex  text-center mb-[-30px]">

@@ -31,7 +31,6 @@ function ResetPassword() {
             })
             .catch(err => {
                 setError("An error occurred while updating your password. Please try again later.");
-                console.log(err);
             });
     };
 

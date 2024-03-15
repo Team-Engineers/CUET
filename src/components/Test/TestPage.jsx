@@ -8,18 +8,18 @@ import { Testcard, Testcard1, Testcard2 } from "../Test/Testcard";
 import "./css/TestPage.css";
 
 function TestPage() {
-  let { topic } = useParams();
+  let { topic, testCategory = "Mathematics" } = useParams();
   topic = topic.split("_").join(" ");
+  const decodedtestCategory = testCategory.replace(/_/g, ' ');
 
+  const [selectedCategory, setSelectedCategory] = useState(decodedtestCategory ? decodedtestCategory : "Mathematics");
   let subtopics = [];
-  const [selectedCategory, setSelectedCategory] = useState("Mathematics");
   if (topic === "General Test") {
     subtopics = topics2[selectedCategory];
   } else {
     subtopics = topics[topic];
   }
 
-  console.log("subtopci is", topic);
 
   const prep = subtopics.map((subtopic, index) => {
     const backgroundColors = [
@@ -37,14 +37,14 @@ function TestPage() {
     let questionsValues;
     if (topic === "General Test") {
       if (selectedCategory === "Mathematics") {
-        questionsValues = [100, 81, 29, 85, 80, 50, 50, 50, 25, 49, 60, 50, 50, 30, 50];
+        questionsValues = [100, 80, 30, 85, 80, 50, 50, 50, 25, 50, 60, 50, 50, 30, 50];
       } else if (selectedCategory === "Logical Reasoning") {
-        questionsValues = [91, 78, 78, 52, 218, 30, 91, 30, 78, 91, 20, 70, 130];
+        questionsValues = [90, 80, 80, 50, 220, 30, 90, 30, 80, 90, 20, 70, 130];
       } else if (selectedCategory === "General Awareness") {
-        questionsValues = [50, 50, 50, 49, 50, 171, 50, 50];
+        questionsValues = [50, 50, 50, 50, 50, 170, 50, 50, 60, 60, 60, 60];
       }
     } else {
-      questionsValues = [100, 57, 100, 100, 60, 50, 130, 50, 50, 170, 40, 60];
+      questionsValues = [100, 60, 100, 100, 60, 50, 130, 50, 50, 170, 40, 60];
     }
 
     return {
@@ -117,54 +117,46 @@ function TestPage() {
 
   const [currentTab, setCurrentTab] = useState("prep");
 
+  const handleCategoryChange = (category) => {
+    setSelectedCategory(category);
+    const newUrl = `/test/${topic.split(" ").join("_")}/${category.split(" ").join("_")}`;
+    window.history.pushState(null, "", newUrl);
+  };
   return (
     <div className="overflow-x-hidden">
       <Navbar />
-      <div className="md:mx-10 mx-4 ">
-        <div className="max-w-[1280px] mx-auto ">
-        <div className="w-full  flex flex-col-reverse md:flex-row items-center justify-between">
-             <div className="flex flex-row text-7xl md:text-[35px]">
-
-        <h2>
-                <Link className=" text-[#5648FC] md:hidden " to={"/courses"}>
-                  <IoArrowBack className="" />
-                </Link>
-              </h2>
-              <h3 className="py-0 md:text-[40px] text-[#5648FC] md:hidden">
-                One Stop for your <br /> complete Learning
-                <br />
-                <span className="text-[#5648FC] mt-1 flex text-4xl opacity-[70%] md:my-7" >CUET</span>
-                </h3>
-              </div>
-              </div>
-          <div className="w-full  flex flex-col-reverse md:flex-row items-center justify-between">
+      <div className="md:mx-10 mx-4">
+        <div className="max-w-[1280px] mx-auto">
+          <div className="w-full flex flex-col-reverse md:flex-row items-center justify-between">
             <div className="flex flex-row text-7xl md:text-[35px]">
-             
               <h2>
-                <Link className=" text-[#5648FC] invisible lg:visible " to={"/courses"}>
-                  <IoArrowBack className="" />
+                <Link className="text-[#5648FC]" to={"/courses"}>
+                  <IoArrowBack />
                 </Link>
               </h2>
-              <h3 className="py-0 md:text-[40px] text-[#5648FC] invisible lg:visible">
+              <h3 className="py-0 md:text-[40px] text-[#5648FC]">
                 One Stop for your <br /> complete Learning
                 <br />
-                <span className="text-[#5648FC] mt-1 flex text-4xl opacity-[70%] md:my-7" >CUET</span>
-                <Link to={'/purchase'} className="mt-5 no-underline mx-auto max-md:flex max-md:justify-center  max-md:items-center max-w-72 btn hover:bg-[#FF7468] bg-[#FF7468] shadow-none outline-none border-none rounded-[10px] text-white font-normal md:text-3xl  p-1 px-8 ">
+                <span className="text-[#5648FC] mt-1 flex text-4xl opacity-[70%] md:my-7">
+                  CUET
+                </span>
+                <Link
+                  to={"/purchase"}
+                  className="mt-5 no-underline mx-auto max-md:flex max-md:justify-center  max-md:items-center max-w-72 btn hover:bg-[#FF7468] bg-[#FF7468] shadow-none outline-none border-none rounded-[10px] text-white font-normal md:text-3xl p-1 px-8"
+                >
                   Access Now
                 </Link>
               </h3>
             </div>
             <img
               alt=""
-              src={require('../../assets/coursesbanner.png')}
-              className="w-[300px] h-[300px] md:w-[450px] md:h-[400px] flex justify-center items-center mx-auto md:mr-4 lg:mr-14 md:mb-[-196px] mb-[-196px] md:mb-0"
-              />
+              src={require("../../assets/coursesbanner.png")}
+              className="w-[300px] h-[300px] md:w-[450px] md:h-[400px] flex justify-center items-center mx-auto md:mr-4 lg:mr-14"
+            />
           </div>
-          <Link to={'/purchase'} className="mt-5 no-underline mx-auto max-md:flex max-md:justify-center  max-md:items-center max-w-72 btn hover:bg-[#FF7468] bg-[#FF7468] shadow-none outline-none border-none rounded-[10px] text-white font-normal md:text-[2rem]  p-1 px-8 md:hidden text-[1.5rem]">
-                  Access Now
-                </Link>
+
           <div className="w-full flex flex-col justify-center items-center">
-            <div className=" w-[1150px]  flex flex-col items-center md:flex-row justify-between md:text-lg text-center text-[15px] text-[#5648FC] md:my-14 p-[41px]">
+            <div className="w-[98%]  flex flex-col items-center md:flex-row justify-between md:text-lg text-center text-[15px] text-[#5648FC] md:my-14">
               <h1
                 className="cursor-pointer my-3"
                 onClick={() => setCurrentTab("prep")}
@@ -197,18 +189,15 @@ function TestPage() {
               <>
                 {topic === "General Test" && (
                   <div className="md:mx-10 max-md:mt-7 mx-4">
-                    <div className=" py-2 mb-6 top-[-20px] relative  px-4 md:shadow-md flex flex-col lg:flex-row   rounded-md ">
+                    <div className="py-2 mb-6 top-[-20px] relative px-4 md:shadow-md flex flex-col lg:flex-row rounded-md">
                       {Object.keys(topics2).map((category) => (
                         <div
                           key={category}
-                          className={`text-[30px] mx-3  whitespace-nowrap flex flex-col lg:flex-row  cursor-pointer relative  font-bold leading-7  text-center  p-2 rounded ${
-                            category === selectedCategory
-                              ? "font-medium bg-red-400 text-white "
-                              : " font-normal  text-blue-800"
-                          }`}
-                          onClick={() => {
-                            setSelectedCategory(category);
-                          }}
+                          className={`text-[30px] mx-3 whitespace-nowrap flex flex-col lg:flex-row cursor-pointer relative font-bold leading-7 text-center p-2 rounded ${category === selectedCategory
+                            ? "font-medium bg-red-400 text-white "
+                            : " font-normal  text-blue-800"
+                            }`}
+                          onClick={() => handleCategoryChange(category)}
                         >
                           {category}
                         </div>
@@ -227,7 +216,7 @@ function TestPage() {
                     heading={topic}
                     {...subject}
                     index={index}
-                    selectedCategory = {selectedCategory}
+                    selectedCategory={selectedCategory}
                   />
                 ))}
               {currentTab === "practice" &&
@@ -260,4 +249,5 @@ function TestPage() {
     </div>
   );
 }
+
 export default TestPage;

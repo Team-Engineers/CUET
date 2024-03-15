@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 // import { FiArrowLeft } from "react-icons/fi";
-import profileImg from "../../assets/user.png";
-import { BsLinkedin, BsGithub } from "react-icons/bs";
-import { z } from "zod";
-import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { BsGithub, BsLinkedin } from "react-icons/bs";
+import { z } from "zod";
+import profileImg from "../../assets/user.png";
 // import { useNavigate } from "react-router-dom";
 // import { MdOutlineModeEdit } from "react-icons/md";
 

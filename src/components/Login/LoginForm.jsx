@@ -29,28 +29,26 @@ const LoginForm = () => {
           token: res.accessToken,
           expiry: tokenExpiry,
         };
-        setAuth({ user: res.user, accessToken: tokenData });
+        const { password, razorpay_order_id, razorpay_payment_id, razorpay_signature, ...userWithoutSensitiveFields } = res.user;
+        setAuth({ user: userWithoutSensitiveFields, accessToken: tokenData });
         localStorage.setItem("auth", JSON.stringify({
-          user: res.user,
+          user: userWithoutSensitiveFields,
           accessToken: tokenData,
         }));
         navigate("/");
         setLoading(false);
       } else {
-        console.error("Google authentication error:", response);
         toast.error("Google authentication failed");
         setLoading(false);
 
       }
     } catch (error) {
-      console.error("Google authentication error:", error);
       toast.error("Google authentication failed");
       setLoading(false);
     }
   };
 
   const handleGoogleLoginError = (error) => {
-    console.error("Google Login Error:", error);
     toast.error("Google login failed");
     setLoading(false);
 
@@ -61,7 +59,7 @@ const LoginForm = () => {
     try {
       const response = await axios.post(`${API}/auth/signin`, { email: username, password });
       if (response.status === 200) {
-        const { accessToken, ...userInfo } = response.data;
+        const { accessToken, password, razorpay_order_id, razorpay_payment_id, razorpay_signature, ...userInfo } = response.data;
         const tokenExpiry = new Date().getTime() + 5 * 24 * 60 * 60 * 1000;
         const tokenData = {
           token: accessToken,
@@ -81,14 +79,10 @@ const LoginForm = () => {
         setLoading(false);
       } else {
         setLoading(false);
-        console.log("Login failed:", response.data.message);
-        const errorMessage = response?.data?.message || "An error occurred during login now. Please try again later.";
-        toast.error(errorMessage);
+        toast.error("Wrong Username or Password!");
       }
     } catch (error) {
-      console.log("Error occurred during login:", error);
-      const errorMessage = error.response?.data?.message || error.response?.data?.msg || "An error occurred during login. Please try again later.";
-      toast.error(errorMessage);
+      toast.error("An error occurred during login. Please try again later.");
     }
     setLoading(false);
 
@@ -96,9 +90,9 @@ const LoginForm = () => {
 
   return (
     <>
-      <div className="md:w-[30vw]">
-        <h2 className="hidden md:block relative right-[1vw] md:text-[2.5vw] md:text-blueviolet-100">Login</h2>
-        <form action="" className="flex flex-col items-center justify-center mt-[0.8vw] md:items-start" onSubmit={(e) => e.preventDefault()}>
+      <div className="lg:w-[30vw]">
+        <h2 className="hidden lg:block relative right-[1vw] lg:text-[2.5vw] lg:text-blueviolet-100">Login</h2>
+        <form action="" className="flex flex-col items-center justify-center mt-[0.8vw] lg:items-start" onSubmit={(e) => e.preventDefault()}>
           <div className="flex flex-col">
             {" "}
             <label htmlFor="username" className=" mt-[2vw] my-[1vw] text-start font-bold  text-black text-[15px] sm:text-[1.4vw]">
@@ -113,7 +107,7 @@ const LoginForm = () => {
               placeholder="Username or Email"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              className="max-md:mt-2  bg-[#c5c5c5] font-semibold md:p-[1vw] p-3 py-4 md:py-[1.2vw] w-[300px] border rounded-[20px] text-[15px] border-none sm:text-[1.2vw] md:w-[30vw] text-black"
+              className="max-lg:mt-2  bg-[#c5c5c5] font-semibold lg:p-[1vw] p-3 py-4 lg:py-[1.2vw] w-[300px] border rounded-[20px] text-[15px] border-none sm:text-[1.2vw] lg:w-[30vw] text-black"
             />
           </div>
           <div className="flex flex-col">
@@ -129,23 +123,23 @@ const LoginForm = () => {
               value={password}
               placeholder="Password"
               onChange={(e) => setPassword(e.target.value)}
-              className="max-md:mt-2  bg-[#c5c5c5] font-semibold md:p-[1vw] p-3 py-4 md:py-[1.2vw] w-[300px] border rounded-[20px] text-[15px] border-none sm:text-[1.2vw] md:w-[30vw] text-black"
+              className="max-lg:mt-2  bg-[#c5c5c5] font-semibold lg:p-[1vw] p-3 py-4 lg:py-[1.2vw] w-[300px] border rounded-[20px] text-[15px] border-none sm:text-[1.2vw] lg:w-[30vw] text-black"
             />
           </div>
-          <div className="text-sm flex my-[1.2vw] max-md:my-4 gap-2 w-80 md:ml-[1.5vw]">
+          <div className="text-sm flex my-[1.2vw] max-lg:my-4 gap-2 w-80 lg:ml-[1.5vw]">
             {/* <p>
               {" "}
               <input type="checkbox" className=" checked:bg-gray-300 h-4 w-4 rounded" style={{ backgroundColor: '#c5c5c5', cursor: 'pointer' }} />
             </p> */}
-            {/* <p type="button" className="font-bold   text-blue-600 underline hover:text-blue-500 text-[1vw] max-md:text-[15px]" >
+            {/* <p type="button" className="font-bold   text-blue-600 underline hover:text-blue-500 text-[1vw] max-lg:text-[15px]" >
               forgot password?
             </p> */}
-            <Link to="/forgot-password" className="font-bold   text-blue-600 underline hover:text-blue-500 text-[1vw] max-md:text-[15px]">Forgot Password?</Link>
+            <Link to="/forgot-password" className="font-bold   text-blue-600 underline hover:text-blue-500 text-[1vw] max-lg:text-[15px]">Forgot Password?</Link>
           </div>
-          <div className="flex flex-col items-center md:items-start">
+          <div className="flex flex-col items-center lg:items-start">
             <button
               type="submit"
-              className="max-md:w-[129px] w-[15vw] max-md:px-6 px-[2vw] max-md:py-4 py-[1.3vw] bg-gradient-to-r from-[#89EAFF] to-[#5648FC] text-[#ffffffcd] text-center rounded-full cursor-pointer border-none text-[1.5vw] max-md:text-[18px]"
+              className="max-lg:w-[129px] w-[15vw] max-lg:px-6 px-[2vw] max-lg:py-4 py-[1.3vw] bg-gradient-to-r from-[#89EAFF] to-[#5648FC] text-[#ffffffcd] text-center rounded-full cursor-pointer border-none text-[1.5vw] max-lg:text-[18px]"
               onClick={handleLogin}
             >
               {loading && (
@@ -153,7 +147,7 @@ const LoginForm = () => {
               )}
               {!loading && <span>Log In</span>}{" "}  </button>
 
-            <div className="flex items-center max-md:mt-1 my-1 md:ml-[1.5vw]">
+            <div className="flex items-center max-lg:mt-1 my-1 lg:ml-[1.5vw]">
               <GoogleLogin
                 onSuccess={handleGoogleLogin}
                 onError={handleGoogleLoginError}

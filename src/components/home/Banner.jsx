@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Lottie from "react-lottie";
-import { useNavigate } from "react-router-dom/dist";
+import { Link, useNavigate } from "react-router-dom/dist";
 import LandingAnimationData from "../../assets/animation_landing.json";
 import ExamInfo from "../../components/home/ExamInfo";
 
@@ -82,6 +82,27 @@ const Banner = () => {
                   <ExamInfo onClose={handleCloseExamInfo} />
                 </div>
               )}
+              <table className=" table max-lg:hidden  lg:w-[400px]    rounded-2xl shadow-[0px_4px_6px_0px_rgba(0,0,0,0.1)]">
+                <thead>
+
+                </thead>
+                <tbody className="font-semibold">
+                  <tr >
+                    <Link className="no-underline hover:underline " target="_blank" to="https://cuetug.ntaonline.in/">
+                      <td className="w-9 gradient-text2" >
+                        CUET                </td>
+                      <td className="text-left font-medium text-gray-900"  >
+                        Published on February 27, 2024 <br />
+                        Closing on March 26, 2024, at 11:50 PM
+                      </td>
+                    </Link>
+                  </tr>
+                </tbody>
+              </table>
+              <div onClick={handleBellIconClick} className="max-lg:hidden"><p className="w-full font-normal my-5 underline text-[#1877F2] cursor-pointer  " >All Notifications</p></div>
+
+
+
             </div>
           </div>
         </div>
