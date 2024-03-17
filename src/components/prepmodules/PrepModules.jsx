@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { API } from "../../utils/constants";
 import { useAuth } from "../../utils/context";
 import FixedNavbar from "../FixedNavbar";
 import Footer from "../Footer";
@@ -51,13 +52,19 @@ const PrepModules = () => {
         subTopic: subTopic,
       };
       try {
-        const response = await axios.get(
-          `https://ourntamockpapers.onrender.com/api/question/find-questions`,
-          { params: params }
+        let response;
+        response = await axios.get(
+          // `${API}/question/find-questions-new?userId=${auth?.user?._id}`,
+          `${API}/question/find-questions`,
+          {
+            params: params,
+            // headers: {
+            //   Authorization: `Bearer ${auth.accessToken.token}`,
+            // },
+          }
         );
-        // console.log("response",response)
+
         setData(response?.data?.requestedData);
-        // console.log("data", response?.data?.requestedData);
         setIsLoading(false);
       } catch (error) {
         setIsLoading(false);
@@ -66,11 +73,8 @@ const PrepModules = () => {
     };
 
     fetchData();
+    // }, [subject, subTopic, topic, auth]);
   }, [subject, subTopic, topic]);
-
-  // useEffect(() => {
-  //   setIsLoggedIn(!auth?.user);
-  // }, []);
 
   if (isLoading) {
     return <CuetLoader />;

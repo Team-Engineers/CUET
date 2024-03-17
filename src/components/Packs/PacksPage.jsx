@@ -13,6 +13,7 @@ import Footer from '../Footer';
 import Navbar from '../Navbar';
 import PackFaq from "./PackFaq";
 import PriceTables from './PriceCard';
+
 const PriceCard = ({ _id, nameOfPlan, bgColor, amount, description, benefits }) => {
   const [auth, setAuth] = useAuth();
   const navigate = useNavigate();
@@ -20,12 +21,10 @@ const PriceCard = ({ _id, nameOfPlan, bgColor, amount, description, benefits }) 
   const [errorMessage, setErrorMessage] = useState('');
   const [showOptions, setShowOptions] = useState(false);
   const [loading, setLoading] = useState(false);
-
   const closeModal = () => {
     setLoading(false);
     setShowOptions(false);
   }
-
   let options;
   if (nameOfPlan === 'SOLO PACK' || nameOfPlan === 'PAIR PACK') {
     options = [
@@ -116,6 +115,8 @@ const PriceCard = ({ _id, nameOfPlan, bgColor, amount, description, benefits }) 
         selectedOptions: selectedOptions.map(option => option.value),
       });
       const { data } = response;
+      console.log(data)
+
       const options = {
         key,
         amount: data.amount,
@@ -128,6 +129,11 @@ const PriceCard = ({ _id, nameOfPlan, bgColor, amount, description, benefits }) 
           try {
             const verifyResponse = await axios.put(`${API}/payment/verify`, {
               userId: auth.user?._id,
+              email: auth.user?.email,
+              name: auth?.user?.name,
+              amount,
+              packname: nameOfPlan,
+              contact: auth?.user?.contact,
               razorpay_order_id: response.razorpay_order_id,
               razorpay_payment_id: response.razorpay_payment_id,
               razorpay_signature: response.razorpay_signature,

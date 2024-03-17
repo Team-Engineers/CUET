@@ -1,4 +1,4 @@
-import React from "react";
+import { useEffect, useState } from 'react';
 import { CiCircleMinus, CiSquareCheck } from "react-icons/ci";
 import { FaQuestion } from "react-icons/fa6";
 import { TbClockHour8 } from "react-icons/tb";
@@ -16,15 +16,36 @@ export const Testcard = ({
   index,
 }) => {
   const [auth] = useAuth();
-  const allow = auth?.user?.packageId;
-  let navigation = `/test/prep/${heading.split(" ").join("_")}`;
-  if (heading === "General Test") {
-    navigation += `/${selectedCategory.split(" ").join("_")}`;
+  const [userSubject, setUserSubject] = useState(null);
+
+  useEffect(() => {
+    const fetchUserSubject = async () => {
+      try {
+        const subjects = auth?.user?.selectedSubjects
+        const currentDate = new Date();
+        const matchedSubject = subjects.find(
+          subject =>
+            subject.subjectName === heading &&
+            new Date(subject.validTill) > currentDate
+        );
+
+        if (matchedSubject) {
+          setUserSubject(matchedSubject.subjectName);
+        } else {
+          setUserSubject(null);
+        }
+      } catch (error) {
+        console.error('Error fetching user subjects:', error);
+      }
+    };
+
+    fetchUserSubject();
+  }, [heading, auth]);
+
+  let navigation = `/test/prep/${heading.split(' ').join('_')}`;
+  if (heading === 'General Test') {
+    navigation += `/${selectedCategory.split(' ').join('_')}`;
   }
-  // const sanitizedSubTopic = subTopic
-  //   .replace(/&/g, "and")
-  //   .replace(/\./g, "")
-  //   .replace(/,/g, "");
 
   return (
     <div
@@ -47,7 +68,7 @@ export const Testcard = ({
         <div className="w-[90%] h-full relative top-[-10px] flex flex-col justify-around">
           <h5 className="font-bold text-center text-3xl ">{subTopic}</h5>
           <img
-            src={require("../../assets/images/courses/prepmodules.png")}
+            src={require('../../assets/images/courses/prepmodules.png')}
             className="w-[130px] mx-auto h-[130px] flex justify-center items-center"
             alt=""
           />
@@ -66,7 +87,7 @@ export const Testcard = ({
       <div className="flex justify-end items-center w-[90%]">
         {index === 0 ? (
           <Link
-            to={`${navigation}/${subTopic.split(" ").join("_")}`}
+            to={`${navigation}/${subTopic.split(' ').join('_')}`}
             className="btn hover:bg-[#34A853] bg-[#34A853] text-white flex justify-center rounded-full items-center text-lg font-bold min-h-0 h-10 px-8 my-3"
           >
             Practice
@@ -74,23 +95,23 @@ export const Testcard = ({
         ) : (
           <>
             {auth.user ? (
-              allow === "65d93ff1aaf8ebc47c522ced" ? (
+              userSubject === heading ? (
                 <Link
-                  to={`${navigation}/${subTopic.split(" ").join("_")}`}
+                  to={`${navigation}/${subTopic.split(' ').join('_')}`}
                   className="btn hover:bg-[#34A853] bg-[#34A853] text-white flex justify-center rounded-full items-center text-lg font-bold min-h-0 h-10 px-8 my-3"
                 >
                   Practice
                 </Link>
-              ) : index <= 4 ? (
+              ) : index <= 2 ? (
                 <Link
-                  to={`${navigation}/${subTopic.split(" ").join("_")}`}
+                  to={`${navigation}/${subTopic.split(' ').join('_')}`}
                   className="btn hover:bg-[#34A853] bg-[#34A853] text-white flex justify-center rounded-full items-center text-lg font-bold min-h-0 h-10 px-8 my-3"
                 >
                   Practice
                 </Link>
               ) : (
                 <Link
-                  to={`/purchase`}
+                  to="/purchase"
                   className="btn hover:bg-[#34A853] bg-[#34A853] text-white flex justify-center rounded-full items-center text-lg font-bold min-h-0 h-10 px-8 my-3"
                 >
                   Purchase Course
@@ -98,7 +119,7 @@ export const Testcard = ({
               )
             ) : (
               <Link
-                to={`/login`}
+                to="/login"
                 className="btn hover:bg-[#34A853] bg-[#34A853] text-white flex justify-center rounded-full items-center text-lg font-bold min-h-0 h-10 px-8 my-3"
               >
                 Login to Practice
@@ -122,13 +143,40 @@ export const Testcard1 = ({
   index,
 }) => {
   const [auth] = useAuth();
-  const allow = auth?.user?.packageId;
+  const [userSubject, setUserSubject] = useState(null);
   // console.log(topic, "hello");
   // console.log(subtopicNumber, "hello2");
-  const topic2 =
-    topic === "General English"
-      ? "general_english_practice_test"
-      : "general_test_practice_test";
+
+  useEffect(() => {
+    const fetchUserSubject = async () => {
+      try {
+        const subjects = auth?.user?.selectedSubjects
+        const currentDate = new Date();
+        const matchedSubject = subjects.find(
+          subject =>
+            subject.subjectName === topic &&
+            new Date(subject.validTill) > currentDate
+        );
+
+        if (matchedSubject) {
+          setUserSubject(matchedSubject.subjectName);
+        } else {
+          setUserSubject(null);
+        }
+      } catch (error) {
+        console.error('Error fetching user subjects:', error);
+      }
+    };
+
+    fetchUserSubject();
+  }, [topic, auth]);
+
+  const topic2 = topic.toLowerCase().replace(/ /g, "_")
+
+
+  // console.log(subTopic, "Practice Test 7",
+  //   topic, "General English",
+  //   subtopicNumber, "7")
 
   return (
     <div
@@ -178,7 +226,7 @@ export const Testcard1 = ({
               {Times} <br /> Minutes
             </div>
           </div>
-          {index === 0 || (index <= 4 && auth.user) ? (
+          {index === 0 || (index <= 2 && auth.user) ? (
             <Link to={`/test/practice/${topic2}/${subtopicNumber}`}>
               <button className="btn hover:bg-[#34A853] my-3 bg-[#34A853] rounded-full text-white min-h-0 h-8 px-8">
                 Take Test
@@ -187,13 +235,13 @@ export const Testcard1 = ({
           ) : (
             <>
               {auth.user ? (
-                allow === "65d93ff1aaf8ebc47c522ced" ? (
+                userSubject === topic ? (
                   <Link to={`/test/practice/${topic2}/${subtopicNumber}`}>
                     <button className="btn hover:bg-[#34A853] my-3 bg-[#34A853] rounded-full text-white min-h-0 h-8 px-8">
                       Take Test
                     </button>
                   </Link>
-                ) : index <= 4 ? (
+                ) : index <= 2 ? (
                   <Link to={`/test/practice/${topic2}/${subtopicNumber}`}>
                     <button className="btn hover:bg-[#34A853] my-3 bg-[#34A853] rounded-full text-white min-h-0 h-8 px-8">
                       Take Test
@@ -232,7 +280,32 @@ export const Testcard2 = ({
   index,
 }) => {
   const [auth] = useAuth();
-  const allow = auth?.user?.packageId;
+  const [userSubject, setUserSubject] = useState(null);
+
+  useEffect(() => {
+    const fetchUserSubject = async () => {
+      try {
+        const subjects = auth?.user?.selectedSubjects
+        const currentDate = new Date();
+        const matchedSubject = subjects.find(
+          subject =>
+            subject.subjectName === topic &&
+            new Date(subject.validTill) > currentDate
+        );
+
+        if (matchedSubject) {
+          setUserSubject(matchedSubject.subjectName);
+        } else {
+          setUserSubject(null);
+        }
+      } catch (error) {
+        console.error('Error fetching user subjects:', error);
+      }
+    };
+
+    fetchUserSubject();
+  }, [topic, auth]);
+
   const subtopic2 =
     topic === "General English"
       ? "general_english_mock_test"
@@ -294,7 +367,7 @@ export const Testcard2 = ({
       <div className="w-full flex items-center py-3 justify-end h-16 pr-10">
         {auth.user ? (
           <>
-            {allow === "65d93ff1aaf8ebc47c522ced" || index <= 4 ? (
+            {userSubject === topic || index <= 2 ? (
               <Link
                 target="_blank"
                 to={`${MOCKAPI}/${subtopic2}/${mocksubtopicNumber}/${auth?.user?._id}`}

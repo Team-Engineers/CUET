@@ -87,28 +87,35 @@ const Navbar = ({ height }) => {
               </>
             ) : (
               <>
-                <ul className="menu max-lg:hidden lg:menu-horizontal   rounded-box ">
+                <ul onMouseLeave={() => setDetailsOpen(false)} className="menu max-lg:hidden lg:menu-horizontal   rounded-box ">
                   <li>
-                    <details className="flex justify-center items-center" open={detailsOpen} onClick={() => setDetailsOpen(!detailsOpen)}>
+                    <details className="flex justify-center items-center" open={detailsOpen} onMouseOver={() => setDetailsOpen(true)}>
                       <summary>
-                        <div className="rounded font-bold text-white relative text-[20px] w-10 h-10 flex items-center justify-center bg-salmon-200 border ">
-                          {auth?.user?.name ? auth?.user?.name.charAt(0).toUpperCase() : ''}
-                        </div>
+                        {auth.user?.profilePic ? (
+                          <div>
+                            <img className="w-[40px] h-[40px] flex justify-center items-center" src={auth.user.profilePic} alt="" />
+                          </div>
+                        ) : (
+                          <div className="rounded font-bold text-white relative text-[20px] w-10 h-10 flex items-center justify-center bg-salmon-200 border">
+                            {auth?.user?.name ? auth.user.name.charAt(0).toUpperCase() : ''}
+                          </div>
+                        )}
                         {auth?.user?.name}
                       </summary>
-                      <ul className="relative top-10 left-10 bg-white ">
-                        <li>
+                      <ul className="absolute top-10 bg-slate-100  flex flex-col items-center justify-center left-0 right-0">
+                        <li className="hover:scale-105 transition-all  hover:text-[#335ee1]  duration-100 " >
                           <NavLink
                             to="/profile"
-                            className="font-medium text-black no-underline"
+                            className="font-medium  hover:text-[#335ee1]  hover:font-bold no-underline"
                           >
                             Dashboard
                           </NavLink>
+
                         </li>
-                        <li className="">
+                        <li className="hover:scale-105 transition-all  hover:text-[#ff2525]  duration-100 " >
                           <NavLink
                             onClick={handleLogout}
-                            className="font-medium no-underline"
+                            className="font-medium  hover:text-[#ff2525]  hover:font-bold no-underline"
                           >
                             Log Out
                           </NavLink>

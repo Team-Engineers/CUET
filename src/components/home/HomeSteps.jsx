@@ -1,34 +1,23 @@
 import { useState } from "react";
-import Lottie from "react-lottie";
-import Step1AnimatiionData from "../../assets/animation_step1.json";
-import Step2AnimatiionData from "../../assets/images/step_4.json";
-import Step3AnimatiionData from "../../assets/animation_step3.json";
+import Step1Animatiion from "../../assets/homeSteps/Mocktest-ezgif.com-crop.gif";
+import Step2Animatiion from "../../assets/homeSteps/PrepModule-ezgif.com-crop.gif";
+import Step3Animatiion from "../../assets/homeSteps/pricing1-ezgif.com-video-to-gif-converter.gif";
 import StepGuide from "./StepGuide";
 
 const HomeSteps = () => {
   const [currStep, setCurrStep] = useState(1);
   return (
-    <section className="max-w-[1280px] mt-5 mx-auto relative z-10  ">
-      <div className="f ">
-            </div>
-      <div className=" flex md:flex-row flex-col  md:justify-between  md:mx-10 items-center">
-
-        <div className=" sm:w-[450px] w-[350px] object-cover ">
-        <h1 className="md:text-left text-center gradient-text  text-13xl font-bold md:hidden ">May We Help You</h1>  {/* for large device */}
-          <Lottie
-            options={{
-              loop: true,
-              autoplay: true,
-              animationData: currStep === 1 ? Step1AnimatiionData : currStep === 2 ? Step2AnimatiionData : Step3AnimatiionData,
-            }}
-          />
+    <section className="max-w-[1300px] mt-5 mx-auto relative z-10  ">
+      <h1 className="md:text-center text-center gradient-text text-[23px] md:text-13xl font-bold  ">May We Help You</h1>
+      <h3 className="md:text-center gradient-text2 text-center font-bold  md:text-7xl mt-2 text-[#000000CC]">3 Simple steps for Assured Success at CUET</h3>
+      <div className="  grid md:grid-cols-2 grid-cols-1  md:justify-between max-md:place-items-center   md:mx-10 items-center">
+        <div className="  w-[90%] object-cover ">
+          <img alt="homeSteps" className="rounded-md md:h-[300px] md:w-[600px]  w-[90vw] flex justify-center mx-auto md:max-w-[40vw]"
+            src={currStep === 1 ? Step1Animatiion : currStep === 2 ? Step2Animatiion : Step3Animatiion
+            } />
         </div>
-        <div className="flex flex-col mx-auto sm:w-[750px] w-[350px]  max-md:mx-2 justify-between ">
+        <div className="flex flex-col mx-auto   max-md:mx-2 ">
           <div className=" md:justify-evenly ">
-          <h1 className="md:text-left text-center gradient-text  text-13xl font-bold invisible lg:visible">May We Help You</h1>  {/* for small device */}
-
-          <h3 className="md:text-left gradient-text2 text-center font-bold text-7xl mt-2 text-[#000000CC]">3 Simple steps for Assured Success at CUET</h3>
-
             <ul className="timeline timeline-compact timeline-snap-icon md:pl-0  timeline-vertical flex-none ">
               <li
                 className="group cursor-pointer"

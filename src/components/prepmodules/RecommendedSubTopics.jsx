@@ -65,18 +65,18 @@ const Box2 = styled.p`
 
 const RecommendedSubTopics = () => {
   const [auth] = useAuth();
-  const allow = auth?.user?.packageId;
   let { subject, topic, subTopic } = useParams();
   const [subtopics, setSubtopics] = useState([]);
   subject = subject?.split("_").join(" ");
   topic = topic?.split("_").join(" ");
   subTopic = subTopic?.split("_").join(" ");
-
+  console.log(subject, "test")
+  console.log(topic, "english")
   let navigation = `/test/prep/`;
   if (subject === "General Test") {
     navigation += `${subject.split(" ").join("_")}/`;
   }
-
+  const selectedSubjects = auth?.user?.selectedSubjects;
   useEffect(() => {
     if (subject === "General Test") {
       const category = Object.keys(topics[subject]).find((category) =>
@@ -143,47 +143,48 @@ const RecommendedSubTopics = () => {
         </div>
 
         <div
-          className={`px-4 py-3 transition-all duration-200 ${
-            isOpen ? "block" : "hidden"
-          }`}
+          className={`px-4 py-3 transition-all duration-200 ${isOpen ? "block" : "hidden"
+            }`}
         >
-          {subtopics.map((currentTopic, subIndex) => {
-            const isVisible =
-              (!auth.user && subIndex === 0) ||
-              (auth.user && subIndex <= 4) ||
-              allow === "65d93ff1aaf8ebc47c522ced";
+          {subtopics.length > 0 ? (
+            subtopics.map((currentTopic, subIndex) => {
+              const isVisible =
+                (!auth.user && subIndex === 0) ||
+                (auth.user && subIndex <= 2) ||
+                (selectedSubjects && (
+                  selectedSubjects.some((subjectObj) => subjectObj.subjectName === topic) ||
+                  selectedSubjects.some((subjectObj) => subjectObj.subjectName === subject)
+                ));
 
-            if (isVisible) {
-              return (
-                <Link
-                  className="no-underline"
-                  to={`${navigation}${topic
-                    .split(" ")
-                    .join("_")}/${currentTopic.split(" ").join("_")}`}
-                  key={subIndex}
-                >
-                  <TopicCard
-                    isCurrentTopic={
-                      subTopic.split("_").join(" ") === currentTopic
-                    }
+              if (isVisible) {
+                return (
+                  <Link
+                    className="no-underline"
+                    to={`${navigation}${topic.split(" ").join("_")}/${currentTopic.split(" ").join("_")}`}
+                    key={subIndex}
                   >
-                    <Box>
-                      <Box2
-                        className="text-xs md:font-normal md:text-lg"
-                        isCurrentTopic={
-                          currentTopic === subTopic.split("_").join(" ")
-                        }
-                      >
-                        {currentTopic}
-                      </Box2>
-                    </Box>
-                  </TopicCard>
-                </Link>
-              );
-            } else {
-              return null;
-            }
-          })}
+                    <TopicCard
+                      isCurrentTopic={currentTopic.split("_").join(" ") === subTopic}
+                    >
+                      <Box>
+                        <Box2
+                          className="text-xs md:font-normal md:text-lg"
+                          isCurrentTopic={currentTopic === subTopic.split("_").join(" ")}
+                        >
+                          {currentTopic}
+                        </Box2>
+                      </Box>
+                    </TopicCard>
+                  </Link>
+                );
+              } else {
+                return null;
+              }
+            })
+          ) : (
+            <div>No subtopics available</div>
+          )}
+
         </div>
       </div>
     </MarginTop>

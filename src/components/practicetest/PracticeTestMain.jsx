@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { API } from "../../utils/constants";
 import { useAuth } from "../../utils/context";
 import FixedNavbar from "../FixedNavbar";
 import Footer from "../Footer";
@@ -22,7 +23,8 @@ const PracticeTestMain = () => {
       let subTopic1 = subTopic.toLowerCase().replace(/\s/g, '_');
       try {
         const response = await axios.get(
-          `https://ourntamockpapers.onrender.com/api/question/mock_test?topic=${topic}&subTopic=${subTopic1}`
+          `${API}/question/mock_test?subject=${topic}&topic=practice_test&subTopic=${subTopic1}`
+          // https://testknock-questions.onrender.com/api/question/mock_test?subject=general_english&topic=mock_test&subTopic=3
         );
         setData(response.data);
         setIsLoading(false);
