@@ -24,7 +24,7 @@ const SubjectTopic = () => {
               color={"bg-salmon-100"}
               img_path={"/domain1.png"}
               text="General English"
-              path={"/test/General_English"}
+              path={"/courses/General_English"}
             />
             <DomainTopic
               color={"bg-darkyellow"}
@@ -36,7 +36,7 @@ const SubjectTopic = () => {
               color={"bg-darkcyan"}
               img_path={"/domain3.png"}
               text="General Test"
-              path={"/test/General_Test"}
+              path={"/courses/General_Test"}
             />
           </div>
         </div>

@@ -44,8 +44,11 @@ export const Testcard = ({
     fetchUserSubject();
   }, [heading, auth]);
 
-  let navigation = `/test/prep/${heading.split(' ').join('_')}`;
+  let navigation = `/courses/prep/${heading.split(' ').join('_')}`;
   if (heading === 'General Test') {
+    navigation += `/${selectedCategory.split(' ').join('_')}`;
+  }
+  if (heading === 'Economics') {
     navigation += `/${selectedCategory.split(' ').join('_')}`;
   }
   const [buttonBgColor, setButtonBgColor] = useState("linear-gradient(to right,#ffffff,#ffffff)");
@@ -227,7 +230,7 @@ export const Testcard1 = ({
   };
 
   return (
-    <Link style={{ textDecoration: "none" }} to={`/test/practice/${topic2}/${subtopicNumber}`}>
+    <Link style={{ textDecoration: "none" }} to={`/courses/practice/${topic2}/${subtopicNumber}`}>
       <div
         style={{
           // boxShadow: `0 4px 6px ${bgcolor}, 0 1px 3px rgba(0, 0, 0, 0.1)`,
@@ -276,7 +279,7 @@ export const Testcard1 = ({
               </div>
             </div>
             {index === 0 || (index <= 2 && auth.user) ? (
-              <Link style={{ textDecoration: "none" }} to={`/test/practice/${topic2}/${subtopicNumber}`}>
+              <Link style={{ textDecoration: "none" }} to={`/courses/practice/${topic2}/${subtopicNumber}`}>
                 <button className="btn my-3   rounded-full  px-8 text-lg " style={{ backgroundImage: buttonBgColor, color: buttonTextColor }}>
 
                   Take Test
@@ -286,13 +289,13 @@ export const Testcard1 = ({
               <>
                 {auth.user ? (
                   userSubject === topic ? (
-                    <Link style={{ textDecoration: "none" }} to={`/test/practice/${topic2}/${subtopicNumber}`}>
+                    <Link style={{ textDecoration: "none" }} to={`/courses/practice/${topic2}/${subtopicNumber}`}>
                       <button className="btn my-3   rounded-full  px-8 text-lg " style={{ backgroundImage: buttonBgColor, color: buttonTextColor }}>
                         Take Test
                       </button>
                     </Link>
                   ) : index <= 2 ? (
-                    <Link style={{ textDecoration: "none" }} to={`/test/practice/${topic2}/${subtopicNumber}`}>
+                    <Link style={{ textDecoration: "none" }} to={`/courses/practice/${topic2}/${subtopicNumber}`}>
                       <button className="btn my-3   rounded-full  px-8 text-lg " style={{ backgroundImage: buttonBgColor, color: buttonTextColor }}>
                         Take Test
                       </button>
@@ -403,7 +406,7 @@ export const Testcard2 = ({
         </div>
 
         <div className="w-full flex flex-col justify-between items-center">
-          <div className="w-[100%]  gap-y-2 pl-3 flex flex-col items-start	">
+          <div className="w-[100%]  gap-y-2 pl-3 flex flex-col items-start  ">
             <div className="flex justify-start items-center text-lg gap-[8px]">
               <FaQuestion
                 size={36}
