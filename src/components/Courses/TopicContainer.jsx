@@ -5,12 +5,12 @@ const TopicContainer = ({ brick, heading, color, subheading }) => {
     <Link
       to={
         subheading === "domain"
-          ? `/test/${subheading.split(" ").join("_")}/${heading
+          ? `/courses/${subheading.split(" ").join("_")}/${heading
             .split(" ")
             .join("_")}`
           : heading === "General Test"
-            ? `/test/${heading.split(" ").join("_")}/Mathematics`
-            : `/test/${heading.split(" ").join("_")}`
+            ? `/courses/${heading.split(" ").join("_")}/Mathematics`
+            : `/courses/${heading.split(" ").join("_")}`
       }
       style={{ background: color }}
       className="sm:w-[290px] no-underline transition-all duration-100 hover:scale-[105%] sm:h-[300px] w-[250px] h-[270px]  flex justify-center items-center relative z-10 rounded-2xl shadow-[10px_10px_4px_0px_rgba(0,0,0,0.3)]"

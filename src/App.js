@@ -39,22 +39,25 @@ const App = () => {
       <Route path="/courses" element={<Coursespage />} />
       <Route path="/purchase" element={<PackPage />} />
       <Route path="/university" element={<University />} />
-      <Route path="/test/:topic" element={<TestPage />} />
-      <Route path="/test/:topic/:testCategory" element={<TestPage />} />
+      <Route path="/courses/:topic" element={<TestPage />} />
+      <Route path="/courses/:topic/:testCategory" element={<TestPage />} />
 
-      <Route path="/test/domain/:heading" element={<SubtopicPage />} />
+      <Route path="/courses/domain/:heading" element={<SubtopicPage />} />
       <Route
-        path="/test/prep/:subject/:topic/:subTopic"
+        path="/courses/prep/:subject/:topic/:subTopic"
         element={<PrepModules />}
       />
-      <Route path="/test/prep/:topic/:subTopic" element={<PrepModules />} />
+      <Route path="/courses/prep/:topic/:subTopic" element={<PrepModules />} />
 
       <Route
-        path="/test/practice/:topic/:subTopic"
+        path="/courses/practice/:topic/:subTopic"
         element={<PracticeTestMain />}
       />
       <Route element={<PrivateRoutes />}>
-        <Route path="/test/practice/:subTopic" element={<PracticeTestMain />} />
+        <Route
+          path="/courses/practice/:subTopic"
+          element={<PracticeTestMain />}
+        />
         {/* <Route path="/profile" element={<MainLayout />} /> */}
         <Route path="/profile" element={<MainLayout />}>
           <Route index element={<AccountSettings />} />
