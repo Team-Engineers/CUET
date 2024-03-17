@@ -144,7 +144,7 @@ export const subjects = [
     link: "https://cdnasb.samarth.ac.in/site/Syllabus%20of%20CUET%20%28UG%29%20-%202022/326_sociology.pdf",
   },
   {
-    subjectName: "Teaching Aptitide",
+    subjectName: "Teaching Aptitude",
     image: "/syllabusImages/online-test/rafiki.png",
     link: "https://cdnasb.samarth.ac.in/site-admin23/syllabus/327_TeachingAptitude.pdf",
   },
