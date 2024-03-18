@@ -9,7 +9,7 @@ import { API } from "../../utils/constants";
 import { useAuth } from "../../utils/context";
 
 const SignupForm = () => {
-  const [, setAuth] = useAuth();
+  const [auth, setAuth] = useAuth();
   const navigate = useNavigate();
   const [showVerifyEmailPopup, setShowVerifyEmailPopup] = useState(false);
   const [otp, setOtp] = useState("");
@@ -81,6 +81,16 @@ const SignupForm = () => {
             accessToken: tokenData,
           })
         );
+        axios.post(
+          `${API}/scores/create-test-scores/${user._id}`,
+          {},
+          {
+            headers: {
+              Authorization: `Bearer ${accessToken}`,
+            },
+          }
+        );
+
         navigate("/");
       } else {
         toast.error(response.data.message);

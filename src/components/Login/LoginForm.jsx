@@ -12,7 +12,7 @@ const LoginForm = () => {
   const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [, setAuth] = useAuth();
+  const [auth, setAuth] = useAuth();
   const [loading, setLoading] = useState(false);
   const handleGoogleLogin = async (credentialResponse) => {
     setLoading(true);
@@ -70,6 +70,16 @@ const LoginForm = () => {
           user: userInfo,
           accessToken: tokenData,
         }));
+        axios.post(
+          `${API}/scores/create-test-scores/${userInfo._id}`,
+          {},
+          {
+            headers: {
+              Authorization: `Bearer ${accessToken}`,
+            },
+          }
+        );
+
         toast.success("Login successful");
 
         setTimeout(() => {
@@ -83,9 +93,8 @@ const LoginForm = () => {
       }
     } catch (error) {
       toast.error("An error occurred during login. Please try again later.");
+      setLoading(false);
     }
-    setLoading(false);
-
   };
 
   return (

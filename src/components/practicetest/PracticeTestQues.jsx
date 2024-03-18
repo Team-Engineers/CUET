@@ -1,19 +1,24 @@
-import React, { useState, useEffect } from "react";
-import "./testplatform.css";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
-import { RxCross1 } from "react-icons/rx";
-import { MathText } from "../mathJax/MathText";
-import CuetLoader from "../Loader/Loader";
 import { IoBookmark, IoBookmarkOutline } from "react-icons/io5";
+import { RxCross1 } from "react-icons/rx";
 import { TfiTimer } from "react-icons/tfi";
 import { Link } from "react-router-dom/dist";
-const PracticeTestQues = ({ data }) => {
+import { API } from "../../utils/constants";
+import { useAuth } from "../../utils/context";
+import CuetLoader from "../Loader/Loader";
+import { MathText } from "../mathJax/MathText";
+import "./testplatform.css";
+const PracticeTestQues = ({ data, topic, subtopic }) => {
   // console.log(data);
   const alphabets = "ABCDEFGHIJ".split("");
   const [selectedOptions, setSelectedOptions] = useState(
     Array(data?.length).fill([])
   );
+  const [auth] = useAuth();
+
   const [currentPage, setCurrentPage] = useState(0);
   const [explanationsVisible, setExplanationsVisible] = useState(
     Array(data?.length).fill(false)
@@ -48,7 +53,7 @@ const PracticeTestQues = ({ data }) => {
 
   const handleSubmitWarning = () => {
     setShowWarningPopup(false);
-    handleSubmit(); // Call the handleSubmit function to submit the test
+    handleSubmit();
   };
 
   useEffect(() => {
@@ -96,10 +101,27 @@ const PracticeTestQues = ({ data }) => {
     setIsSubmitted(true);
     setIsLoading(true);
     clearInterval(intervalId);
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 2000);
+
+    const score = correctOptions.length * 2;
+
+    axios.put(`${API}/scores/update-score?userId=${auth?.user?._id}&subject=${topic}&topic=practice_test&subTopic=${subtopic}&score=${score}`,
+      null,
+      {
+        headers: {
+          Authorization: `Bearer ${auth.accessToken.token}`,
+        },
+      }
+    )
+      .then(response => {
+        console.log('Score updated successfully:', response.data);
+        setIsLoading(false);
+      })
+      .catch(error => {
+        console.error('Error updating score:', error);
+        setIsLoading(false);
+      });
   };
+
 
   const handleSaveQuestion = (questionIndex) => {
     const questionAbsoluteIndex = questionIndex + currentPage * 1;
@@ -177,11 +199,10 @@ const PracticeTestQues = ({ data }) => {
               </span>
             </div>
             <div
-              className={` question-number2 cursor-pointer z-50  m-2  ${
-                savedQuestions?.includes(questionIndex + currentPage * 1)
-                  ? "saved"
-                  : ""
-              }`}
+              className={` question-number2 cursor-pointer z-50  m-2  ${savedQuestions?.includes(questionIndex + currentPage * 1)
+                ? "saved"
+                : ""
+                }`}
               onClick={() => handleSaveQuestion(questionIndex)}
             >
               {savedQuestions?.includes(questionIndex + currentPage * 1) ? (
@@ -214,25 +235,24 @@ const PracticeTestQues = ({ data }) => {
       {question?.subQuestions[0]?.options?.map((option, optionIndex) => (
         <div
           key={optionIndex}
-          className={`option-box ${
-            !isSubmitted &&
+          className={`option-box ${!isSubmitted &&
             selectedOptions[currentPage] &&
             selectedOptions[currentPage][questionIndex] === optionIndex
-              ? "bg-gradient-to-br from-[#a1e486] to-[#76e967] text-white"
-              : isSubmitted &&
-                selectedOptions[currentPage] &&
-                selectedOptions[currentPage][questionIndex] === optionIndex &&
-                question?.subQuestions[0]?.correctOptionIndex - 1 ===
-                  optionIndex
+            ? "bg-gradient-to-br from-[#a1e486] to-[#76e967] text-white"
+            : isSubmitted &&
+              selectedOptions[currentPage] &&
+              selectedOptions[currentPage][questionIndex] === optionIndex &&
+              question?.subQuestions[0]?.correctOptionIndex - 1 ===
+              optionIndex
               ? "correct"
               : isSubmitted &&
                 selectedOptions[currentPage] &&
                 selectedOptions[currentPage][questionIndex] === optionIndex &&
                 question?.subQuestions[0]?.correctOptionIndex - 1 !==
-                  optionIndex
-              ? "incorrect"
-              : ""
-          }`}
+                optionIndex
+                ? "incorrect"
+                : ""
+            }`}
           onClick={() =>
             handleOptionClick(question, questionIndex, optionIndex)
           }
@@ -267,7 +287,7 @@ const PracticeTestQues = ({ data }) => {
               selectedOptions[currentPage] &&
               selectedOptions[currentPage][questionIndex] === optionIndex &&
               question?.subQuestions[0]?.correctOptionIndex - 1 !==
-                optionIndex && (
+              optionIndex && (
                 <span className=" relative mx-2  ">
                   <i className="fa-solid fa-xmark"></i>
                 </span>
@@ -489,17 +509,16 @@ const PracticeTestQues = ({ data }) => {
             {generatePageNumbers().map(({ number, isSelected, pageStatus }) => (
               <button
                 key={number}
-                className={`rounded border-none cursor-pointer shadow-xl w-[50px] h-[50px] m-1 ${
-                  currentPage === number - 1
-                    ? "bg-gradient-to-br overflow-hidden from-[#5648FC] to-[#5648FC] text-white"
-                    : isSelected
+                className={`rounded border-none cursor-pointer shadow-xl w-[50px] h-[50px] m-1 ${currentPage === number - 1
+                  ? "bg-gradient-to-br overflow-hidden from-[#5648FC] to-[#5648FC] text-white"
+                  : isSelected
                     ? "bg-slate-400 text-white"
                     : pageStatus === "correct"
-                    ? "bg-green-500 text-white"
-                    : pageStatus === "incorrect"
-                    ? "bg-red-400 text-white"
-                    : "bg-white"
-                }`}
+                      ? "bg-green-500 text-white"
+                      : pageStatus === "incorrect"
+                        ? "bg-red-400 text-white"
+                        : "bg-white"
+                  }`}
                 onClick={() => setCurrentPage(number - 1)}
               >
                 {number}
@@ -552,15 +571,14 @@ const PracticeTestQues = ({ data }) => {
             {generatePageNumbers().map(({ number, isSelected }) => (
               <button
                 key={number}
-                className={`rounded border-none shadow-2xl w-[50px] h-[50px] lg:w-[5vw] lg:h-[8vh] p-[1vw] m-[0.6vw] ${
-                  currentPage === number - 1
-                    ? "bg-gradient-to-br overflow-hidden from-[#5648FC] to-[#5648FC] text-white"
-                    : isSelected
+                className={`rounded border-none shadow-2xl w-[50px] h-[50px] lg:w-[5vw] lg:h-[8vh] p-[1vw] m-[0.6vw] ${currentPage === number - 1
+                  ? "bg-gradient-to-br overflow-hidden from-[#5648FC] to-[#5648FC] text-white"
+                  : isSelected
                     ? "bg-green-500 text-white"
                     : savedQuestions.includes(number - 1)
-                    ? "bg-red-900 text-white"
-                    : "bg-[#ffffff6e] backdrop-blur-[100px]"
-                }`}
+                      ? "bg-red-900 text-white"
+                      : "bg-[#ffffff6e] backdrop-blur-[100px]"
+                  }`}
                 onClick={() => setCurrentPage(number - 1)}
               >
                 {number}
@@ -657,7 +675,6 @@ const PracticeTestQues = ({ data }) => {
               </h2>
             </div>
             <hr className="my-1" />
-
             <div className="px-8 py-4">
               <p>Are you sure you want to finish this test?</p>
               <p className=" text-[20px]">
