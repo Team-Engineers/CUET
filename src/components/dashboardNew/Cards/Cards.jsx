@@ -1,6 +1,7 @@
-// import { Column } from "@ant-design/plots";
-import { UilClipboardAlt, UilMoneyWithdrawal, UilUsdSquare } from "@iconscout/react-unicons";
-import React from "react";
+import { UilUsdSquare } from "@iconscout/react-unicons";
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { useAuth } from "../../../utils/context";
 import Card from "../Card/Card";
 
 const data1 = [];
@@ -13,137 +14,92 @@ for (let i = 0; i < 46; i++) {
   });
 }
 const Cards = () => {
-  // const data = [
-  //   {
-  //     type: "Jan",
-  //     attempted: 38,
-  //   },
-  //   {
-  //     type: "Feb",
-  //     attempted: 52,
-  //   },
-  //   {
-  //     type: "Mar",
-  //     attempted: 61,
-  //   },
-  //   {
-  //     type: "Apr",
-  //     attempted: 145,
-  //   },
-  //   {
-  //     type: "May",
-  //     attempted: 48,
-  //   },
-  //   {
-  //     type: "Jun",
-  //     attempted: 38,
-  //   },
-  //   {
-  //     type: "July",
-  //     attempted: 38,
-  //   },
-  //   {
-  //     type: "Aug",
-  //     attempted: 38,
-  //   },
-  //   {
-  //     type: "Sept",
-  //     attempted: 38,
-  //   },
-  //   {
-  //     type: "Oct",
-  //     attempted: 38,
-  //   },
-  //   {
-  //     type: "Nov",
-  //     attempted: 38,
-  //   },
-  //   {
-  //     type: "Dec",
-  //     attempted: 38,
-  //   },
-  // ];
-  // const config = {
-  //   data,
-  //   xField: "type",
-  //   yField: "attempted",
-  //   color: ({ type }) => {
-  //     return "#ffd333";
-  //   },
-  //   label: {
-  //     positionType: "middle",
-  //     style: {
-  //       fill: "#FFFFFF",
-  //       opacity: 1,
-  //     },
-  //   },
-  //   xAxis: {
-  //     label: {
-  //       autoHide: true,
-  //       autoRotate: false,
-  //     },
-  //   },
-  //   meta: {
-  //     type: {
-  //       alias: "Month",
-  //     },
-  //     attempted: {
-  //       alias: "Income",
-  //     },
-  //   },
-  // };
+  const [auth, setAuth] = useAuth();
+  const [cardsDatas, setCardsData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const selectedSubjects = auth?.user?.selectedSubjects;
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          `https://testknock-questions.onrender.com/api/scores/user-scores/${auth.user._id}`,
+          {
+            headers: {
+              Authorization: `Bearer ${auth.accessToken.token}`,
+            },
+          }
+        );
 
-  const cardsData = [
-    {
-      title: "General English",
+        const filteredData = {};
+        filteredData["general_english"] = response.data.userScores["general_english"];
+        filteredData["general_test"] = response.data.userScores["general_test"];
+        selectedSubjects.forEach((subject) => {
+          const formattedSubjectName = subject.subjectName.toLowerCase().replace(/ /g, "_");
+          if (response.data.userScores[formattedSubjectName]) {
+            filteredData[formattedSubjectName] = response.data.userScores[formattedSubjectName];
+          }
+        });
+
+
+        setCardsData(filteredData);
+        setLoading(false);
+      } catch (error) {
+        setError(error.message);
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, [auth, selectedSubjects]);
+
+  const subjectNames = Object.keys(cardsDatas);
+
+  const cardsData = subjectNames.map((subject, index) => {
+    let colorGradient;
+    switch (index % 5) {
+      case 0:
+        colorGradient = "linear-gradient(180deg, #bb67ff 0%, #c484f3 100%)";
+        break;
+      case 1:
+        colorGradient = "linear-gradient(180deg, #ff6b6b 0%, #ff8787 100%)";
+        break;
+      case 2:
+        colorGradient = "linear-gradient(180deg, #63e6be 0%, #87e9ca 100%)";
+        break;
+      case 3:
+        colorGradient = "linear-gradient(180deg, #ffb36b 0%, #ff8787 100%)";
+        break;
+      case 4:
+        colorGradient = "linear-gradient(180deg, #c163e6 0%, #87e9ca 100%)";
+        break;
+      default:
+        colorGradient = "linear-gradient(180deg, #ec8dff 0%, #c484f3 100%)";
+    }
+
+    return {
+      title: subject,
       color: {
-        backGround: "linear-gradient(180deg, #bb67ff 0%, #c484f3 100%)",
+        backGround: colorGradient,
         boxShadow: "0px 10px 20px 0px #e0c6f5",
       },
       barValue: 10,
       value: "5",
       png: UilUsdSquare,
-      series: [
+      series1: [
         {
-          name: "attempted",
-          data: [31, 40, 28, 51, 42, 109, 100],
+          name: "practice test",
+          data: cardsDatas[subject].practice_test_scores,
         },
       ],
-    },
-    {
-      title: "General Test",
-      color: {
-        backGround: "linear-gradient(180deg, #FF919D 0%, #FC929D 100%)",
-        boxShadow: "0px 10px 20px 0px #FDC0C7",
-      },
-      barValue: 20,
-      value: "50",
-      png: UilMoneyWithdrawal,
-      series: [
+      series2: [
         {
-          name: "attempted",
-          data: [10, 100, 50, 70, 80, 30, 40],
+          name: "mock test",
+          data: cardsDatas[subject].mock_test_scores,
         },
       ],
-    },
-    {
-      title: "Domain",
-      color: {
-        backGround:
-          "linear-gradient(rgb(248, 212, 154) -146.42%, rgb(255 202 113) -46.42%)",
-        boxShadow: "0px 10px 20px 0px #F9D59B",
-      },
-      barValue: 40,
-      value: "60  ",
-      png: UilClipboardAlt,
-      series: [
-        {
-          name: "attempted",
-          data: [10, 25, 15, 30, 12, 15, 20],
-        },
-      ],
-    },
-  ];
+    };
+  });
   return (
     <div className="">
       <h3 className="mb-4 title">Dashboard</h3>
@@ -152,12 +108,16 @@ const Cards = () => {
           return (
             <div className="parentContainer" key={id}>
               <Card
+                maxScore={140}
+                maxScore2={200}
                 title={card.title}
                 color={card.color}
                 barValue={card.barValue}
                 value={card.value}
                 png={card.png}
-                series={card.series}
+                series1={card.series1}
+                series2={card.series2}
+
               />
             </div>
           );
