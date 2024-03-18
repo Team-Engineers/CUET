@@ -17,6 +17,8 @@ const PracticeTestMain = () => {
   const { subTopic, topic } = useParams();
   const [auth] = useAuth();
 
+  // console.log(topic);
+
   useEffect(() => {
     setIsLoading(true);
     const fetchData = async () => {
