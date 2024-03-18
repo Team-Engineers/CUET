@@ -24,6 +24,7 @@ const PriceCard = ({ _id, nameOfPlan, bgColor, amount, description, benefits }) 
   const closeModal = () => {
     setLoading(false);
     setShowOptions(false);
+    setSelectedOptions([]);
   }
   let options;
   if (nameOfPlan === 'SOLO PACK' || nameOfPlan === 'PAIR PACK') {
@@ -109,10 +110,19 @@ const PriceCard = ({ _id, nameOfPlan, bgColor, amount, description, benefits }) 
     setLoading(true);
     try {
       const key = await axios.get(`${API}/payment/getKey`);
+
       const response = await axios.post(`${API}/payment/initiate`, {
         packageId: _id,
         userId: auth.user?._id,
-        selectedOptions: selectedOptions.map(option => option.value),
+        selectedOptions: (() => {
+          if (nameOfPlan === 'JUMBO PACK' || nameOfPlan === 'MEGA PACK') {
+            selectedOptions.push({ value: 'General English', label: 'General English' });
+            selectedOptions.push({ value: 'General Test', label: 'General Test' });
+          }
+          console.log(selectedOptions);
+          return selectedOptions.map(option => option.value);
+        })()
+
       });
       const { data } = response;
       console.log(data)
@@ -167,6 +177,7 @@ const PriceCard = ({ _id, nameOfPlan, bgColor, amount, description, benefits }) 
       const rzp1 = new window.Razorpay(options);
       setLoading(false);
       rzp1.open();
+      setSelectedOptions([]);
     } catch (error) {
       setLoading(false);
       console.error(error);
