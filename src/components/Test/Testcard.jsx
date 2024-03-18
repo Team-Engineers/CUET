@@ -366,10 +366,12 @@ export const Testcard2 = ({
     fetchUserSubject();
   }, [topic, auth]);
 
-  const subtopic2 =
-    topic === "General English"
-      ? "general_english_mock_test"
-      : "general_test_mock_test";
+  // const subtopic2 =
+  //   topic === "General English"
+  //     ? "general_english_mock_test"
+  //     : "general_test_mock_test";
+  const topic2 = topic.toLowerCase().replace(/ /g, "_")
+
   const [buttonBgColor, setButtonBgColor] = useState("linear-gradient(to right,#ffffff,#ffffff)");
   const [buttonTextColor, setButtonTextColor] = useState("#ff7468");
 
@@ -388,7 +390,7 @@ export const Testcard2 = ({
 
   return (
     <Link style={{ textDecoration: "none" }} target="_blank"
-      to={`${MOCKAPI}/${subtopic2}/${mocksubtopicNumber}/free`}>
+      to={`${MOCKAPI}/${topic2}/mock_test/${mocksubtopicNumber}/free`}>
       <div className="flex flex-col transition-all duration-300 hover:shadow-2xl border-solid border-[0.5px] border-gray-700 text-black bg-white rounded-[20px] items-center justify-around cursor-pointer p-[10px]"
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}>
@@ -449,7 +451,7 @@ export const Testcard2 = ({
               {userSubject === topic || (index <= 2 && (topic === "General Test" || topic === "General English")) ? (
                 <Link style={{ textDecoration: "none" }}
                   target="_blank"
-                  to={`${MOCKAPI}/${subtopic2}/${mocksubtopicNumber}/${auth?.user?._id}`}
+                  to={`${MOCKAPI}/${topic2}/mock_test/${mocksubtopicNumber}/${auth?.user?._id}`}
                 >
                   <button className="btn my-3   rounded-full  px-8 text-lg " style={{ backgroundImage: buttonBgColor, color: buttonTextColor }}>
                     Take Test
@@ -468,7 +470,7 @@ export const Testcard2 = ({
               {index === 0 && (topic === "General Test" || topic === "General English") ? (
                 <Link style={{ textDecoration: "none" }}
                   target="_blank"
-                  to={`${MOCKAPI}/${subtopic2}/${mocksubtopicNumber}/free`}
+                  to={`${MOCKAPI}/${topic2}/mocktest/${mocksubtopicNumber}/free`}
                 >
                   <button className="btn my-3   rounded-full  px-8 text-lg " style={{ backgroundImage: buttonBgColor, color: buttonTextColor }}>
                     Take Test

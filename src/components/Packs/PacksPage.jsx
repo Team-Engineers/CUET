@@ -83,9 +83,16 @@ const PriceCard = ({ _id, nameOfPlan, bgColor, amount, description, benefits }) 
     switch (benefit) {
       case 'Both General English & General Test':
       case 'Unlimited Attempts ':
-      case 'Full Access to Prep Mudules':
+      case 'Full Access to Prep Modules':
+      case '12 Practice Tests':
+      case '12 Mock Tests':
+      case '12 Practice Tests for each Subject':
+      case '12 Mock Tests for each Subject':
       case 'Full Access to Practice Tests':
         return <FaCheck className='text-green-400' />;
+      case 'Any one Domain Subject':
+      case 'Any two Domain Subject':
+        return <span>&ensp;&ensp;</span>;
       default:
         return <FaQuestionCircle className='text-blue-400' />;
     }
@@ -368,11 +375,12 @@ const Packages = [
     description:
       'Maximize your exam readiness with our Solo Pack. Choose from General English or General Test or any domain subject. Includes preparatory module, 12 practice tests, and 12 mock tests.',
     benefits: [
-      'General English / General Test',
+      'General English / General Test /',
       'Any one Domain Subject',
-      'Full Access to Prep Mudules',
+      'Full Access to Prep Modules',
       '12 Practice Tests',
       '12 Mock Tests',
+      'Total one Subject',
       'Unlimited Attempts '
     ],
     bgColor: 'rgb(208, 239, 245, 0.8)'
@@ -384,11 +392,12 @@ const Packages = [
     description:
       'Supercharge your preparation with our Pair Pack. Choose any from: General English and any one domain subject, General Test and one domain subject, or any two domain subjects. Includes preparatory modules, 12 practice tests, and 12 mock tests for each.',
     benefits: [
-      'General English / General Test',
+      'General English & General Test /',
       'Any two Domain Subject',
-      'Full Access to Prep Mudules',
-      '12 Practice Tests',
-      '12 Mock Tests',
+      'Full Access to Prep Modules',
+      '12 Practice Tests for each Subject',
+      '12 Mock Tests for each Subject',
+      'Total two Subjects',
       'Unlimited Attempts '
     ],
     // bgColor: 'rgb(160, 232, 175, 0.6)'
@@ -403,9 +412,10 @@ const Packages = [
     benefits: [
       'Both General English & General Test',
       'Any three Domain Subject',
-      'Full Access to Prep Mudules',
+      'Full Access to Prep Modules',
       'Full Access to Practice Tests',
-      '12 Mock Tests',
+      '12 Mock Tests for each Subject',
+      'Total five Subjects',
       'Unlimited Attempts '
     ],
     bgColor: 'rgb(217, 196, 240, 0.6)'
@@ -419,9 +429,10 @@ const Packages = [
     benefits: [
       'Both General English & General Test',
       'Any four Domain Subject',
-      'Full Access to Prep Mudules',
+      'Full Access to Prep Modules',
       'Full Access to Practice Tests',
       '12 Mock Tests',
+      'Total six Subjects',
       'Unlimited Attempts '
     ],
     // bgColor: 'rgb(242, 224, 223, 0.6)'
