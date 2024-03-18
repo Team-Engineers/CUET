@@ -1,6 +1,6 @@
 export const API = "https://testknock-questions.onrender.com/api";
 // export const API = "http://localhost:8800/api";
-export const API2 = "https://ourntamockpapers.onrender.com/api";
+export const API2 = "https://testknock-questions.onrender.com/api";
 export const MOCKAPI = "https://platform.testknock.com";
 export const subjects = [
   {
