@@ -251,15 +251,15 @@ export const topics = {
   ],
   Economics: {
     "Macro Economics": [
-      "Greater National Income and Real Aggregates",
-      "Greater Money and Banking",
-      "Greater Determination of Income and Employment",
-      "Greater Government Budget and the Economy",
-      "Greater Balance of Payment",
+      "National Income and Real Aggregates",
+      "Money and Banking",
+      "Determination of Income and Employment",
+      "Government Budget and the Economy",
+      "Balance of Payment",
     ],
     "Micro Economics": [
-      "Greater Introduction to Microeconomics",
-      "Greater Consumer Behavior and Demand",
+      "Introduction to Microeconomics",
+      "Consumer Behavior and Demand",
     ],
     "Indian Economics": [
       "Human Capital formation in india",
@@ -525,15 +525,15 @@ export const topics = {
       ],
       Economics: {
         MacroEconomics: [
-          "Greater National Income and Real Aggregates",
-          "Greater Money and Banking",
-          "Greater Determination of Income and Employment",
-          "Greater Government Budget and the Economy",
-          "Greater Balance of Payment",
+          "National Income and Real Aggregates",
+          "Money and Banking",
+          "Determination of Income and Employment",
+          "Government Budget and the Economy",
+          "Balance of Payment",
         ],
         MicroEconomics: [
-          "Greater Introduction to Microeconomics",
-          "Greater Consumer Behavior and Demand",
+          "Introduction to Microeconomics",
+          "Consumer Behavior and Demand",
         ],
         IndianEconomics: [
           "Human Capital formation in india",

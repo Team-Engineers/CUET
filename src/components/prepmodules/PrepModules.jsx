@@ -38,10 +38,6 @@ const PrepModules = () => {
     .replace(/\./g, "")
     .replace(/,/g, "");
 
-  if (subject === "economics") {
-    topic = `${topic}_${subTopic}`;
-    subTopic = null;
-  }
   if (!subject) {
     subject = topic;
     topic = subTopic;
