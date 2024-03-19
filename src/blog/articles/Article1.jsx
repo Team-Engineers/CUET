@@ -3,28 +3,97 @@ import Navbar from '../../components/Navbar';
 import Article1img from "../../assets/article1.jpeg";
 import Sidebar from '../Sidebar';
 import ShareButtons from '../Sharebutton';
+import preparationData from './preparationData.json';
+import { useState, useEffect } from 'react';
+import { MathText } from "../../components/mathJax/MathText";
+
+
+
+
 
 export default function Article1() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkWindowSize = () => {
+      setIsMobile(window.innerWidth < 768); // Change the breakpoint as per your requirement
+    };
+
+    // Initial check
+    checkWindowSize();
+
+    // Event listener for window resize
+    window.addEventListener('resize', checkWindowSize);
+
+    // Cleanup
+    return () => {
+      window.removeEventListener('resize', checkWindowSize);
+    };
+  }, []);
+
   return (
     <>
       <Navbar />
-      <div className='max-w-7xl mx-auto my-12'>
-        <div className='flex justify-center lg:justify-between'>
-          <div className='lg:w-1/4'>
-            <Sidebar />
-            <div className='mt-4'>
-              <ShareButtons />
-            </div>
-          </div>
-          
-          <div className='lg:w-3/4 mx-4'>
-            <h2 className='text-3xl mt-8 font-bold mb-4 text-blue-500'>How to Prepare for CUET Biology – plans and strategies</h2>
-            <p className="mb-3 text-gray-700"><b>Published on:</b> March 14, 2024</p>
+      <p className='text-[2vw] text-center px-[15vw] h-[18vw] bg-gray-50 flex justify-center items-center font-semibold mb-4 text-blue-500'>{preparationData.Heading}</p>
+
+      <div className='mx-[13vw] my-3 '>
+
+        <div className='flex md:flex-row flex-col justify-center lg:justify-between  '>
+
+
+
+          <div className='md:w-[50vw] ml-20vw'>
+            {/* <p className="mb-3 text-gray-700"><b>Published on:</b> March 14, 2024</p> */}
             <div>
-              <img src={Article1img} alt="image" className='w-full mx-auto rounded' />
+              <img src={preparationData.Topimage} alt="image" className='w-full mx-auto rounded' />
             </div>
+
+            <h2 className='text-3xl mt-8 font-bold mb-4 text-blue-500'>{preparationData.Heading}</h2>
+
+             
+            
+            <div className='bg-slate-200'>
+            <h4 className="bg-blue-900 text-white text-[1.5vw] p-[.25vw]" >Table of Contents</h4>
+                  {preparationData.preparationStrategies.map((strategy, index) => (
+                    <ul key={index} className='list-none'>
+                      <li className=" text-[1vw] p-[.25vw] text-blue-600" >
+                          ☛{strategy.title}
+                      </li>
+                      
+                    </ul>
+                  ))}
+             </div>
+
+                       
+
             <div className=' text-base text-gray-500'>
-              <p className='  text-black'>The preparation strategy for CUET Biology is no different from other entrance exam preparation. Biology being a vast subject,    candidates must strategically plan the preparation for the exam accordingly. Here we bring some of the salient preparation strategies for Biology.</p>
+              <div>
+                {/* <h1>Preparation Strategies for CUET Biology</h1> */}
+                <div>
+                  {preparationData.preparationStrategies.map((strategy, index) => (
+                    <div key={index}>
+                      <h4 className="bg-blue-900 text-white text-[1.5vw] p-[.25vw]" >{strategy.title}</h4>
+                      <p></p>
+                      <MathText
+                        className="question-text mb-2"
+                        text={strategy.description}
+                      //  textTag="h6"
+                      />
+                    </div>
+                  ))}
+                </div>
+                <h2>Resource Links</h2>
+                <ul>
+                  {preparationData.resourceLinks.map((link, index) => (
+                    <li key={index}>
+                      <a href={link.link} target="_blank" rel="noopener noreferrer">{link.title}</a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+                   
+              {/* <p className='  text-black'>The preparation strategy for CUET Biology is no different from other entrance exam preparation. Biology being a vast subject,    candidates must strategically plan the preparation for the exam accordingly. Here we bring some of the salient preparation strategies for Biology.</p>
               <p><b>Understand the curriculum and test structure: </b></p>
               <p className='  text-black'>To gain an understanding of the types of questions and the significant areas that are given more weight, go through the analysis and question papers from past years. Give more attention to the areas that are more important.</p>
               <p><b>Determine your strengths and weaknesses: </b></p>
@@ -40,10 +109,31 @@ export default function Article1() {
               <p><b>The Secret Is Practice.</b></p>
               <p className="text-black">Students need to practice a lot and never get too confident in their knowledge of the material or their thorough understanding of it. The adage "practice makes perfect" is appropriately used when taking an admission exam. In order to get mastery over all the subjects, pupils need to practice with an increasing number of sample papers. Students' speed in time management and attempted answer correctness are also improved by practice. </p>
               <p><b>Revision, Revision, and Revision</b></p>
-              <p className="text-black">Students should dedicate their final two to three weeks exclusively to revision, as it is the most crucial activity. For entrance exams, the students prepare all year long. They have to design their plan so that they revisit the ideas and subjects they have already learned frequently. Students need to make sure they are not learning any new material when they are revising <b className=" text-blue-800">CUET 2024</b> Biology. While studying those subjects, the students are required to consult any significant notes they may have taken. A last review of the key points and subjects that are highlighted is always beneficial for doing well on the entrance exam. </p>
+              <p className="text-black">Students should dedicate their final two to three weeks exclusively to revision, as it is the most crucial activity. For entrance exams, the students prepare all year long. They have to design their plan so that they revisit the ideas and subjects they have already learned frequently. Students need to make sure they are not learning any new material when they are revising <b className=" text-blue-800">CUET 2024</b> Biology. While studying those subjects, the students are required to consult any significant notes they may have taken. A last review of the key points and subjects that are highlighted is always beneficial for doing well on the entrance exam. </p> */}
             </div>
-           
+            <ShareButtons />
+
           </div>
+
+
+
+          <div className='w-[17vw]   float-right hidden md:block'>
+            <Sidebar />
+            <div className='mt-4'>
+              
+            </div>
+          </div>
+
+
+
+          <div className='w-90% block md:hidden'>
+            <ShareButtons />
+            <div className='mt-4'>
+
+              <Sidebar />
+            </div>
+          </div>
+
         </div>
       </div>
     </>
