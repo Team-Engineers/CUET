@@ -22,10 +22,13 @@ import University from "./pages/UniversityPage";
 import PrivateRoutes from "./utils/PrivateRoutes";
 // import DashBoardNew from "./components/dashboardNew/pages/Dashboard";
 import Cards from "./components/dashboardNew/Cards/Cards";
-import TabNew from "./components/dashboardNew/pages/account-settings/TabNew";
 // import PriceTable from "./components/Packs/PriceCard";
-
+import BoughtPack from "./pages/BoughtPack";
+import { useAuth } from "./utils/context";
 const App = () => {
+  const [auth, setAuth] = useAuth();
+  const selectedSubjects = auth?.user?.selectedSubjects;
+
   return (
     <Routes>
       <Route path="/login" element={<Login />} />
@@ -33,7 +36,16 @@ const App = () => {
       <Route path="/forgot-password" element={<ForgotPassword />} />
       <Route path="/reset_password/:id/:token" element={<ResetPassword />} />
       <Route path="/Domain" element={<Domain />} />
-      <Route path="/" element={<Homepage />} />
+      <Route
+        path="/"
+        element={
+          selectedSubjects && selectedSubjects.length > 0 ? (
+            <BoughtPack />
+          ) : (
+            <Homepage />
+          )
+        }
+      />{" "}
       <Route path="/about" element={<AboutPage />} />
       <Route path="/syllabus" element={<Syllabus />} />
       <Route path="/courses" element={<Coursespage />} />
@@ -41,14 +53,12 @@ const App = () => {
       <Route path="/university" element={<University />} />
       <Route path="/courses/:topic" element={<TestPage />} />
       <Route path="/courses/:topic/:testCategory" element={<TestPage />} />
-
       <Route path="/courses/domain/:heading" element={<SubtopicPage />} />
       <Route
         path="/courses/prep/:subject/:topic/:subTopic"
         element={<PrepModules />}
       />
       <Route path="/courses/prep/:topic/:subTopic" element={<PrepModules />} />
-
       <Route
         path="/courses/practice/:topic/:subTopic"
         element={<PracticeTestMain />}
@@ -62,7 +72,7 @@ const App = () => {
         <Route path="/profile" element={<MainLayout />}>
           <Route index element={<AccountSettings />} />
           <Route path="progress" element={<Cards />} />
-          <Route path="plans" element={<TabNew />} />
+          {/* <Route path="plans" element={<UserPlans />} /> */}
           {/* <Route path="plans" element={<PriceTable hidden="hidden" />} /> */}
         </Route>
       </Route>

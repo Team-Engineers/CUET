@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { IoArrowBack } from "react-icons/io5";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { topics } from "../../utils/constants";
 import Footer from "../Footer";
 import Navbar from "../Navbar";
@@ -19,6 +19,8 @@ function TestPage() {
   } else {
     subtopics = topics[topic];
   }
+
+  const navigate = useNavigate();
 
   const handleCategoryChange = (category) => {
     setSelectedCategory(category);
@@ -129,7 +131,7 @@ function TestPage() {
           <div className="w-full flex flex-col-reverse md:flex-row items-center justify-between">
             <div className="flex flex-row text-7xl md:text-[35px]">
               <h2>
-                <Link className="text-[#5648FC]" to={"/courses"}>
+                <Link onClick={() => navigate(-1)} className="text-[#5648FC] cursor-pointer" >
                   <IoArrowBack />
                 </Link>
               </h2>
