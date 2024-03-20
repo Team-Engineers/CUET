@@ -32,39 +32,39 @@ export default function Article1() {
   }, []);
 
   return (
-    <>
+    <div className='overflow-x-hidden'>
       <Navbar />
-      <p className='text-[2vw] text-center px-[15vw] h-[18vw] bg-gray-50 flex justify-center items-center font-semibold mb-4 text-blue-500'>{preparationData.Heading}</p>
+      <h1 className=' text-center font-poppins font-sans   md:px-[15vw] py-[8vw] md:py-[12h] text-[26px] md:text-[44px] bg-gray-50 flex justify-center items-center font-semibold mb-4 text-black'>{preparationData.Heading}</h1>
 
-      <div className='mx-[13vw] my-3 '>
+      <div className='mx-[4vw] md:mx-[13vw] my-3 '>
 
-        <div className='flex md:flex-row flex-col justify-center lg:justify-between  '>
+        <div className='flex overflow-x-hidden   md:flex-row flex-col justify-center lg:justify-between  '>
 
 
 
-          <div className='md:w-[50vw] ml-20vw'>
+          <div className=' md:w-[70%] ml-20vw'>
             {/* <p className="mb-3 text-gray-700"><b>Published on:</b> March 14, 2024</p> */}
             <div>
               <img src={preparationData.Topimage} alt="image" className='w-full mx-auto rounded' />
             </div>
 
-            <h2 className='text-3xl mt-8 font-bold mb-4 text-blue-500'>{preparationData.Heading}</h2>
+            <h2 className='text-3xl mt-8 font-bold mb-4 text-black'>{preparationData.Heading}</h2>
 
-             
-            
-            <div className='bg-slate-200'>
-            <h4 className="bg-blue-900 text-white text-[1.5vw] p-[.25vw]" >Table of Contents</h4>
-                  {preparationData.preparationStrategies.map((strategy, index) => (
-                    <ul key={index} className='list-none'>
-                      <li className=" text-[1vw] p-[.25vw] text-blue-600" >
-                          ☛{strategy.title}
-                      </li>
-                      
-                    </ul>
-                  ))}
-             </div>
 
-                       
+
+            <div className='bg-slate-200 font-sans' >
+              <h4 className="bg-blue-900 text-white text-[15px] md:text-[1.5vw] p-[6px] md:p-[12px]  " >Table of Contents</h4>
+              {preparationData.preparationStrategies.map((strategy, index) => (
+                <ul key={index} className='list-none'>
+                  <li className=" text-[15px] md:text-[1vw] p-[.25vw]  text-blue-600 font-sans" >
+                    ☛{strategy.title}
+                  </li>
+
+                </ul>
+              ))}
+            </div>
+
+
 
             <div className=' text-base text-gray-500'>
               <div>
@@ -72,10 +72,10 @@ export default function Article1() {
                 <div>
                   {preparationData.preparationStrategies.map((strategy, index) => (
                     <div key={index}>
-                      <h4 className="bg-blue-900 text-white text-[1.5vw] p-[.25vw]" >{strategy.title}</h4>
+                      <h4 className="bg-blue-900 text-white text-[15px] md:text-[1.5vw] p-[6px] md:p-[6px]" >{strategy.title}</h4>
                       <p></p>
                       <MathText
-                        className="question-text mb-2"
+                        className="question-text mb-2 text-[15px] "
                         text={strategy.description}
                       //  textTag="h6"
                       />
@@ -92,7 +92,7 @@ export default function Article1() {
                 </ul>
               </div>
 
-                   
+
               {/* <p className='  text-black'>The preparation strategy for CUET Biology is no different from other entrance exam preparation. Biology being a vast subject,    candidates must strategically plan the preparation for the exam accordingly. Here we bring some of the salient preparation strategies for Biology.</p>
               <p><b>Understand the curriculum and test structure: </b></p>
               <p className='  text-black'>To gain an understanding of the types of questions and the significant areas that are given more weight, go through the analysis and question papers from past years. Give more attention to the areas that are more important.</p>
@@ -120,22 +120,22 @@ export default function Article1() {
           <div className='w-[17vw]   float-right hidden md:block'>
             <Sidebar />
             <div className='mt-4'>
-              
+
             </div>
           </div>
 
 
 
-          <div className='w-90% block md:hidden'>
-            <ShareButtons />
+          <div className='w-[90vw] float-left flex-col justify-center items-center  md:hidden'>
+            <Sidebar />
             <div className='mt-4'>
 
-              <Sidebar />
+
             </div>
           </div>
 
         </div>
       </div>
-    </>
+    </div>
   );
 }

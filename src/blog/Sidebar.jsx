@@ -19,19 +19,23 @@ const popularBlogs = [
 export default function Sidebar() {
   return (
     <div>
-      <div className="w-[20vw]  bg-white h-auto p-4 mt-[3rem] rounded-3xl flex-col  ">
-        <p className="text-xl text-blue-500  float-left">Latest Blogs</p>
+      <div className=" bg-white p-4 mt-[3rem] flex-col justify-center   md:w-[20vw]  ">
+        <div className="text-xl text-blue-500  w-[90vw]">Popular</div>
+        <hr  color='blue' className="float-left h-1px border-top:1px border-t-1 border-blue w-[25%] solid #f00"></hr>
+        <hr  className="float-left  h-1px border-top:1px w-[55%] solid #f00"></hr>
         {/* <div class="border-b border-black p-[.25vw]"></div> */}
 
-        <div className='list-none float-left'>
+        <ul className='list-none flex-col ml-0 pl-0   md:w-[20vw]'>
           {latestBlogs.map((blog, index) => (
 
-            <div key={index} className=" flex justify-center items-center  bg-white rounded-xl   hover:cursor-pointer ">
-              <img src={blog.image} className='h-[5vw] w-[5vw]' alt='image cant display'></img>
-              <div className='text-[.75vw]' >{blog.title}<br></br> - {blog.date}</div>
-            </div>
+            <li key={index} className="ml-0 pl-0 w-[90vw] mb-4 float-left md:w-[20vw] flex justify-center items-center  bg-white rounded-xl   hover:cursor-pointer ">
+              <img src={blog.image} className='pl-0  h-[48px] w-[68px] md:ml-0 ' alt='image cant display'></img>
+              <div className='ml-0 pl-0 text-[14px]' >{blog.title}<br></br> - {blog.date}</div>
+              <br></br>
+            </li>
+            
           ))}
-        </div>
+        </ul>
 
       </div>
       {/* <div className="w-full mx-[-50px] bg-white h-auto p-4 mt-[3rem] rounded-3xl flex-col items-center ">

@@ -23,14 +23,15 @@ export default function ShareButtons() {
   };
 
   return (
-    <div className="flex  justify-center items-center float-left  space-x-4 w-[50vw] bg-slate h-auto p-4  rounded-lg ">
+    <div className="flex-col  justify-center items-center float-left  space-x-4 w-[70%] bg-slate h-auto p-4  rounded-lg ">
           <div>share:</div>
-     
-      <button className='bg-white w-fit flex item-centre justify-center cursor-pointer my-4 rounded-lg ml-4' onClick={shareOnWhatsApp}><FaWhatsapp className=' h-12 w-12' /></button>
-      <button className='bg-white w-fit flex item-centre justify-center cursor-pointer my-4 rounded-lg' onClick={shareOnFacebook}><FaFacebook className=' h-12 w-12' /></button>
-      <button className='bg-white w-fit flex item-centre justify-center cursor-pointer my-4 rounded-lg' onClick={shareOnInstagram}><FaInstagram className=' h-12 w-12' /></button>
-      <button className='bg-white w-fit flex item-centre justify-center cursor-pointer my-4 rounded-lg' onClick={shareOnTelegram}><FaTelegram className=' h-12 w-12' /></button>
-    
+
+     <div className='flex ml-[-15px]'>
+      <button className='bg-white w-fit flex item-centre justify-center  cursor-pointer my-2 rounded-lg m-1 ' onClick={shareOnWhatsApp}><FaWhatsapp className=' h-[32px] w-[36px]' /></button>
+      <button className='bg-white w-fit flex item-centre justify-center  cursor-pointer my-2 rounded-lg m-1 ' onClick={shareOnFacebook}><FaFacebook className=' h-[32px] w-[36px]' /></button>
+      <button className='bg-white w-fit flex item-centre justify-center  cursor-pointer my-2 rounded-lg m-1 ' onClick={shareOnInstagram}><FaInstagram className=' h-[32px] w-[36px]' /></button>
+      <button className='bg-white w-fit flex item-centre justify-center  cursor-pointer my-2 rounded-lg m-1 ' onClick={shareOnTelegram}><FaTelegram className=' h-[32px] w-[36px]' /></button>
+    </div>
     </div>
   );
 }
