@@ -7,6 +7,7 @@ import preparationData from './preparationData.json';
 import { useState, useEffect } from 'react';
 import { MathText } from "../../components/mathJax/MathText";
 
+import { Link } from 'react-router-dom';
 
 
 
@@ -36,32 +37,40 @@ export default function Article1() {
       <Navbar />
       <h1 className=' text-center font-poppins font-sans   md:px-[15vw] py-[8vw] md:py-[12h] text-[26px] md:text-[44px] bg-gray-50 flex justify-center items-center font-semibold mb-4 text-black'>{preparationData.Heading}</h1>
 
-      <div className='mx-[4vw] md:mx-[13vw] my-3 '>
+      <div className='mx-[6vw] md:mx-[13vw] my-3 '>
 
         <div className='flex overflow-x-hidden   md:flex-row flex-col justify-center lg:justify-between  '>
 
 
 
-          <div className=' md:w-[70%] ml-20vw'>
+          <div className='mb-8 md:w-[70%] ml-20vw'>
             {/* <p className="mb-3 text-gray-700"><b>Published on:</b> March 14, 2024</p> */}
             <div>
               <img src={preparationData.Topimage} alt="image" className='w-full mx-auto rounded' />
             </div>
 
-            <h2 className='text-3xl mt-8 font-bold mb-4 text-black'>{preparationData.Heading}</h2>
+            <h2 className='font-poppins font-sans text-[34px]  mt-8 font-bold mb-12 text-black'>{preparationData.Heading}</h2>
 
 
 
-            <div className='bg-slate-200 font-sans' >
-              <h4 className="bg-blue-900 text-white text-[15px] md:text-[1.5vw] p-[6px] md:p-[12px]  " >Table of Contents</h4>
-              {preparationData.preparationStrategies.map((strategy, index) => (
-                <ul key={index} className='list-none'>
-                  <li className=" text-[15px] md:text-[1vw] p-[.25vw]  text-blue-600 font-sans" >
-                    ☛{strategy.title}
-                  </li>
+            <div className='bg-slate-200 mt-4 border-solid border-[1px] border-blue-800 font-sans mb-4' >
+              <div className="bg-blue-900  text-white text-[15px] md:text-[1.5vw] p-[6px] md:p-[12px]  " >Table of Contents</div>
+              <div className='list-none px-[15px] py-[10px]'>
+                {preparationData.preparationStrategies.map((strategy, index) => (
+                  strategy.hasOwnProperty('alsoread') ? (
+                    <>
+                    </>
+                  ) : (
+                    <div className="leading-7 text-[15px] md:text-[1vw] p-[.25vw]  text-blue-600 font-sans" >
+                      ☛{strategy.title}
+                    </div>
+                  )
 
-                </ul>
-              ))}
+
+
+
+                ))}
+              </div>
             </div>
 
 
@@ -70,26 +79,40 @@ export default function Article1() {
               <div>
                 {/* <h1>Preparation Strategies for CUET Biology</h1> */}
                 <div>
+
                   {preparationData.preparationStrategies.map((strategy, index) => (
-                    <div key={index}>
-                      <h4 className="bg-blue-900 text-white text-[15px] md:text-[1.5vw] p-[6px] md:p-[6px]" >{strategy.title}</h4>
-                      <p></p>
-                      <MathText
-                        className="question-text mb-2 text-[15px] "
-                        text={strategy.description}
-                      //  textTag="h6"
-                      />
-                    </div>
+                    strategy.hasOwnProperty('alsoread') ? (
+                      <div key={index} className=''>
+                        <p className='mb-[2rem] leading-7 text-black'>
+                          <span className='font-poppins font-sans text-[15px]'>Also read-</span>
+                          <Link to='' className='text-blue-600 font-semibold font-poppins font-sans text-[15px] no-underline'>{strategy.alsoread}</Link>
+                        </p>
+                      </div>
+                    ) : (
+                      <div key={index} className=''>
+                        <div className="font-poppins font-sans mb-[8px] bg-blue-900 text-white text-[15px]  md:text-[1.5vw] p-[6px] md:p-[6px]" >{strategy.title}</div>
+                        <p className='mb-[2rem] leading-7 text-black'>
+                          <MathText
+                            className="text-black leading-4 font-poppins font-sans  question-text  text-[15px]  "
+                            text={strategy.description}
+                          //  textTag="h6"
+                          />
+                        </p>
+                      </div>
+                    )
+
                   ))}
                 </div>
-                <h2>Resource Links</h2>
+
+
+                {/* <h2 className='text-black'>Resource Links</h2>
                 <ul>
                   {preparationData.resourceLinks.map((link, index) => (
                     <li key={index}>
                       <a href={link.link} target="_blank" rel="noopener noreferrer">{link.title}</a>
                     </li>
                   ))}
-                </ul>
+                </ul> */}
               </div>
 
 
