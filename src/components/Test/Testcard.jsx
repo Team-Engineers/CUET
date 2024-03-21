@@ -470,7 +470,7 @@ export const Testcard2 = ({
               {index === 0 && (topic === "General Test" || topic === "General English") ? (
                 <Link style={{ textDecoration: "none" }}
                   target="_blank"
-                  to={`${MOCKAPI}/${topic2}/mocktest/${mocksubtopicNumber}/free`}
+                  to={`${MOCKAPI}/${topic2}/mock_test/${mocksubtopicNumber}/free`}
                 >
                   <button className="btn my-3   rounded-full  px-8 text-lg " style={{ backgroundImage: buttonBgColor, color: buttonTextColor }}>
                     Take Test
