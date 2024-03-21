@@ -1,11 +1,11 @@
 import React from 'react';
 import { FaWhatsapp, FaFacebook, FaInstagram, FaTelegram } from 'react-icons/fa';
 
-import facebook from './images/facebook.png'
-import whatsap from './images/whatsap.jpg'
+import facebook from './images/facebook1.png'
+import whatsap from './images/whatsap1.png'
 import telegram from './images/telegram.webp'
-import twitter from './images/twitter.png'
-import email from './images/EMail.png'
+import twitter from './images/twitter1.png'
+import email from './images/EMail1.png'
 
 import { Link } from 'react-router-dom';
 import { Gmail } from 'mdi-material-ui';
@@ -36,9 +36,9 @@ export default function ShareButtons() {
           <div className='ml-[18px]'>share:</div>
 
      <div className='flex  items-center justify-center float-left ml-[-20px] leading-4'>
-     <Link to=''  onClick={shareOnWhatsApp}><img src={facebook} className='h-[36px] w-[44px]' /></Link>
-     <Link to=''  onClick={shareOnWhatsApp}><img src={whatsap} className='h-[36px] w-[44px]' /></Link>     
-     <Link to=''  onClick={shareOnWhatsApp}><img src={telegram} className='h-[28px] w-[32px]' /></Link>     
+     <Link to=''  onClick={shareOnWhatsApp}><img src={facebook} className='h-[38px] w-[40px]' /></Link>
+     <Link to=''  onClick={shareOnWhatsApp}><img src={whatsap} className='h-[38px] w-[40px]' /></Link>     
+     <Link to=''  onClick={shareOnWhatsApp}><img src={telegram} className='h-[28px] w-[28px]' /></Link>     
      <Link to=''  onClick={shareOnWhatsApp}><img src={twitter} className='h-[32px] w-[36px]' /></Link>    
      <Link to=''  onClick={shareOnWhatsApp}><img src={email} className='h-[32px] w-[36px]' /></Link>
    

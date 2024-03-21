@@ -33,10 +33,23 @@ export default function Article1() {
   }, []);
 
   return (
-    <div className='overflow-x-hidden'>
+    <div className='overflow-x-hidden '>
       <Navbar />
-      <h1 className=' text-center font-poppins font-sans   md:px-[15vw] py-[8vw] md:py-[12h] text-[26px] md:text-[44px] bg-gray-50 flex justify-center items-center font-semibold mb-4 text-black'>{preparationData.Heading}</h1>
-
+      <div className='leading-normal text-center font-poppins font-sans   md:px-[15vw] py-[8vw] md:py-[12vh]  bg-gray-50 flex-col justify-center items-center font-semibold mb-4 text-black'>
+        <h1 className='font-normal text-[26px] md:text-[44px] font-poppins font-sans mb-[10px]' >{preparationData.Heading}</h1>
+        <div className="breadcrumb flex items-center justify-center">
+          <ul className="flex flex-wrap list-none rounded-md bg-transparent text-xs font-normal py-0 my-0 text-gray-400">
+            <li>
+              <Link href="/" className="text-[12px] no-underline uppercase text-gray-600 hover:text-blue-600">cuetlions  </Link>
+            </li>
+            <p className='my-0 py-0 mx-[5px]'> {'    >  '}  </p>
+            <li>
+             
+              <Link href="blogs" className='text-[12px] no-underline text-gray-600 hover:text-blue-600'>  Blogs</Link>
+            </li>
+          </ul>
+        </div>
+      </div>
       <div className='mx-[6vw] md:mx-[13vw] my-3 '>
 
         <div className='flex overflow-x-hidden   md:flex-row flex-col justify-center lg:justify-between  '>
@@ -84,8 +97,8 @@ export default function Article1() {
                     strategy.hasOwnProperty('alsoread') ? (
                       <div key={index} className=''>
                         <p className='mb-[2rem] leading-7 text-black'>
-                          <span className='font-poppins font-sans text-[15px]'>Also read-</span>
-                          <Link to='' className='text-blue-600 font-semibold font-poppins font-sans text-[15px] no-underline'>{strategy.alsoread}</Link>
+                          <span className='font-poppins font-sans text-[16px] font-semibold'>ALSO READ-</span>
+                          <Link to='' className='text-blue-600 font-semibold font-poppins font-sans text-[16px] no-underline '>{strategy.alsoread}</Link>
                         </p>
                       </div>
                     ) : (

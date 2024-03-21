@@ -38,7 +38,7 @@ export default function Sidebar() {
 
   return (
     <div>
-      <div className= {`bg-white p-4 mt-[3rem] flex-col justify-center   md:w-[20vw] leading-5 `} >
+      <div className= {`bg-white p-4 mt-[3rem] flex-col justify-center   md:w-[20vw] leading-5 ${isSticky ? 'fixed top-0' : ''}`} >
         <div className="text-[16px] text-blue-500  w-[90vw] ">Popular</div>
         <hr  color='blue' className="mb-[30px] float-left h-1px border-top:1px border-t-1 border-blue w-[25%] solid #f00"></hr>
         <hr  className="mb-[30px] float-left  h-1px border-top:1px w-[55%] solid #f00"></hr>
