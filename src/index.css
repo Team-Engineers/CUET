@@ -103,3 +103,7 @@ code {
 .navbar{
   padding : 0px
 }
+
+a{
+  text-decoration: none;
+}
