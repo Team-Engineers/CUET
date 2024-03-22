@@ -413,7 +413,7 @@ const Packages = [
       'Both General English & General Test',
       'Any three Domain Subject',
       'Full Access to Prep Modules',
-      'Full Access to Practice Tests',
+      '12 Practice Tests for each Subject',
       '12 Mock Tests for each Subject',
       'Total five Subjects',
       'Unlimited Attempts '
@@ -430,8 +430,8 @@ const Packages = [
       'Both General English & General Test',
       'Any four Domain Subject',
       'Full Access to Prep Modules',
-      'Full Access to Practice Tests',
-      '12 Mock Tests',
+      '12 Practice Tests for each Subject',
+      '12 Mock Tests for each Subject',
       'Total six Subjects',
       'Unlimited Attempts '
     ],

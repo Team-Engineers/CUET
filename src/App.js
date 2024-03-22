@@ -25,13 +25,21 @@ import Cards from "./components/dashboardNew/Cards/Cards";
 import TabNew from "./components/dashboardNew/pages/account-settings/TabNew";
 // import PriceTable from "./components/Packs/PriceCard";
 
+import { useAuth } from "./utils/context";
 const App = () => {
+  const [auth, setAuth] = useAuth();
   return (
     <Routes>
-      <Route path="/login" element={<Login />} />
-      <Route path="/signup" element={<Signup />} />
-      <Route path="/forgot-password" element={<ForgotPassword />} />
-      <Route path="/reset_password/:id/:token" element={<ResetPassword />} />
+      <Route path="/login" element={!auth?.user ? <Login /> : <Homepage />} />
+      <Route path="/signup" element={!auth?.user ? <Signup /> : <Homepage />} />
+      <Route
+        path="/forgot-password"
+        element={!auth?.user ? <ForgotPassword /> : <Homepage />}
+      />
+      <Route
+        path="/reset_password/:id/:token"
+        element={!auth?.user ? <ResetPassword /> : <Homepage />}
+      />
       <Route path="/Domain" element={<Domain />} />
       <Route path="/" element={<Homepage />} />
       <Route path="/about" element={<AboutPage />} />
@@ -41,14 +49,12 @@ const App = () => {
       <Route path="/university" element={<University />} />
       <Route path="/courses/:topic" element={<TestPage />} />
       <Route path="/courses/:topic/:testCategory" element={<TestPage />} />
-
       <Route path="/courses/domain/:heading" element={<SubtopicPage />} />
       <Route
         path="/courses/prep/:subject/:topic/:subTopic"
         element={<PrepModules />}
       />
       <Route path="/courses/prep/:topic/:subTopic" element={<PrepModules />} />
-
       <Route
         path="/courses/practice/:topic/:subTopic"
         element={<PracticeTestMain />}

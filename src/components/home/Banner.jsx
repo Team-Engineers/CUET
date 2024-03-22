@@ -109,7 +109,7 @@ const Banner = () => {
                 src={require("../../assets/images/signup/bellicon.gif")}
               />
             </div>
-            <div onClick={handleBellIconClick} className="relative text-center text-[13px] font-semibold">View Life Notifications</div>
+            <div onClick={handleBellIconClick} className="relative text-center text-[13px] font-semibold">View Notifications</div>
           </div>
           {isPopupOpen && (
             <div className="absolute max-md:left-0 m-3 md:w-[25rem] rounded-lg">
