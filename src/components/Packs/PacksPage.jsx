@@ -161,7 +161,7 @@ const PriceCard = ({ _id, nameOfPlan, bgColor, amount, description, benefits }) 
             if (verifyResponse.data.success) {
               const userResponse = await axios.get(`${API}/users/find/${auth.user?._id}`);
               const updatedUser = userResponse.data;
-              const updatedAuth = { ...auth, user: updatedUser, password: undefined, razorpay_signature: undefined, razorpay_order_id: undefined, razorpay_payment_id: undefined };
+              const updatedAuth = { ...auth, user: updatedUser, password: undefined };
               setAuth(updatedAuth);
               localStorage.setItem("auth", JSON.stringify(updatedAuth));
               setLoading(false);

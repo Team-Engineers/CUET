@@ -22,11 +22,11 @@ import University from "./pages/UniversityPage";
 import PrivateRoutes from "./utils/PrivateRoutes";
 // import DashBoardNew from "./components/dashboardNew/pages/Dashboard";
 import Cards from "./components/dashboardNew/Cards/Cards";
-import TabNew from "./components/dashboardNew/pages/account-settings/TabNew";
+import UserPlans from "./components/dashboardNew/pages/UserPlans";
 // import PriceTable from "./components/Packs/PriceCard";
 
-import { useAuth } from "./utils/context";
 import Blog from "./pages/Blog";
+import { useAuth } from "./utils/context";
 const App = () => {
   const [auth, setAuth] = useAuth();
   return (
@@ -70,7 +70,7 @@ const App = () => {
         <Route path="/profile" element={<MainLayout />}>
           <Route index element={<AccountSettings />} />
           <Route path="progress" element={<Cards />} />
-          <Route path="plans" element={<TabNew />} />
+          <Route path="plans" element={<UserPlans />} />
           {/* <Route path="plans" element={<PriceTable hidden="hidden" />} /> */}
         </Route>
       </Route>
