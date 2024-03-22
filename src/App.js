@@ -54,9 +54,9 @@ const App = () => {
       <Route path="/blog/article2" element={<Article2 />} />
       <Route path="/purchase" element={<PackPage />} />
       <Route path="/university" element={<University />} />
-      <Route path="/test/:topic" element={<TestPage />} />
-      <Route path="/test/:topic/:testCategory" element={<TestPage />} />
-      <Route path="/test/domain/:heading" element={<SubtopicPage />} />
+      <Route path="/courses/:topic" element={<TestPage />} />
+      <Route path="/courses/:topic/:testCategory" element={<TestPage />} />
+      <Route path="/courses/domain/:heading" element={<SubtopicPage />} />
       <Route
         path="/courses/prep/:subject/:topic/:subTopic"
         element={<PrepModules />}
