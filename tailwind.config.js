@@ -1,9 +1,33 @@
-/** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./src/**/*.{js,jsx,ts,tsx}"],
+  content: [
+    "./src/**/*.{js,jsx,ts,tsx}",
+  ],
   theme: {
     extend: {
+      transitionProperty: {
+        'height': 'height',
+      },
+      container: {
+        center: true,
+        padding: '1rem',
+        screens: {
+          sm: '100%',
+          md: '100%',
+          lg: '100%',
+          xl: '100%',
+          '2xl': '1400px',
+        },
+      },
+      screens: {
+        '2xl': '1400px',
+      },
       colors: {
+        "primary-green": "#30ad1c",
+        "primary-white": "#fff",
+        "primary-black": "#000000",
+        "primary-orange": "#ff6900",
+        "primary-blue": "#1778be",
+        "primary-light": "#f6faff",
         indigo: "#5648FC",
         darkyellow: "#ffbb64",
         darkcyan: "#80BCBD",
@@ -46,6 +70,7 @@ module.exports = {
       spacing: {},
       fontFamily: {
         inter: "Inter",
+        nunito: ["Nunito", "sans-serif"]
       },
       borderRadius: {
         "lg-3": "18.3px",
@@ -57,26 +82,29 @@ module.exports = {
         bgGradientCustom:
           "linear-gradient(-206.9deg, rgba(0, 209, 255, 0.6) 0.06%, rgba(86, 72, 252, 0.6) 75.11%)",
       },
-    },
-    fontSize: {
-      base: "16px",
-      xs: "12px",
-      sm: "14px",
-      "lg-3": "18.3px",
-      "3xl": "22px",
-      lg: "18px",
-      smi: "13px",
-      "5xl": "24px",
-      lgi: "19px",
-      "lgi-2": "19.2px",
-      "xs-2": "11.2px",
-      "13xl": "32px",
-      "7xl": "26px",
-      "17xl": "36px",
-      "10xl": "29px",
-      xl: "20px",
-      "21xl": "40px",
-      inherit: "inherit",
+      fontSize: {
+        base: "16px",
+        xs: "12px",
+        sm: "14px",
+        "lg-3": "18.3px",
+        "3xl": "22px",
+        lg: "18px",
+        smi: "13px",
+        "5xl": "24px",
+        lgi: "19px",
+        "lgi-2": "19.2px",
+        "xs-2": "11.2px",
+        "13xl": "32px",
+        "7xl": "26px",
+        "17xl": "36px",
+        "10xl": "29px",
+        xl: "20px",
+        "21xl": "40px",
+        inherit: "inherit",
+        s: "14px",
+        m: "16px",
+        l: "18px"
+      }
     },
   },
   daisyui: {
