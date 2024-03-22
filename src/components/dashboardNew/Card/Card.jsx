@@ -57,6 +57,12 @@ function CompactCard({ param, toggleExpanded }) {
 }
 
 function ExpandedCard({ param, toggleExpanded }) {
+  const [activeTab, setActiveTab] = useState('practice'); // Default to practice tab
+
+  const handleTabChange = (tab) => {
+    setActiveTab(tab);
+  };
+  console.log(param)
   const data = {
     options: {
       chart: {
@@ -93,17 +99,10 @@ function ExpandedCard({ param, toggleExpanded }) {
       grid: {
         show: true,
       },
+
       xaxis: {
-        type: "datetime",
-        categories: [
-          "2018-09-19T00:00:00.000Z",
-          "2018-09-19T01:30:00.000Z",
-          "2018-09-19T02:30:00.000Z",
-          "2018-09-19T03:30:00.000Z",
-          "2018-09-19T04:30:00.000Z",
-          "2018-09-19T05:30:00.000Z",
-          "2018-09-19T06:30:00.000Z",
-        ],
+        type: "category",
+        categories: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
       },
     },
   };
@@ -119,11 +118,30 @@ function ExpandedCard({ param, toggleExpanded }) {
       <div style={{ alignSelf: "flex-end", cursor: "pointer", color: "black" }}>
         <UilTimes onClick={toggleExpanded} />
       </div>
-      <span>{param.title}</span>
-      <div className="chartContainer">
-        <Chart options={data.options} series={param.series} type="area" />
+      <div className=" flex justify-center items-center gap-3">
+        <div
+          className={` transition-all duration-100 ${activeTab === 'practice' ? 'text-white font-bold text-[24px]' : ''}`}
+          onClick={() => handleTabChange('practice')}
+        >
+          Practice Test
+        </div>
+        <div
+          className={` transition-all duration-100${activeTab === 'mock' ? 'text-white font-bold text-[24px]' : ''}`}
+          onClick={() => handleTabChange('mock')}
+        >
+          Mock Test
+        </div>
       </div>
-      <span>Last 24 hours</span>
+      <div className="chartContainer">
+        {activeTab === 'practice' && (
+          <Chart options={{ ...data.options, yaxis: { max: 40 } }} series={param.series1} type="bar" />
+        )}
+        {activeTab === 'mock' && (
+          <Chart options={{ ...data.options, yaxis: { max: 200 } }} series={param.series2} type="bar" />
+        )}
+      </div>
+      <span>{param.title}</span>
+
     </motion.div>
   );
 }

@@ -1,25 +1,30 @@
 import { useState } from "react";
 import { IoArrowBack } from "react-icons/io5";
 import { Link, useParams } from "react-router-dom";
-import { topics, topics2 } from "../../utils/constants";
+import { topics } from "../../utils/constants";
 import Footer from "../Footer";
 import Navbar from "../Navbar";
 import { Testcard, Testcard1, Testcard2 } from "../Test/Testcard";
 import "./css/TestPage.css";
 
 function TestPage() {
+  const [currentTab, setCurrentTab] = useState("prep");
   let { topic, testCategory = "Mathematics" } = useParams();
   topic = topic.split("_").join(" ");
-  const decodedtestCategory = testCategory.replace(/_/g, ' ');
-
-  const [selectedCategory, setSelectedCategory] = useState(decodedtestCategory ? decodedtestCategory : "Mathematics");
+  const decodedTestCategory = testCategory.replace(/_/g, ' ');
+  const [selectedCategory, setSelectedCategory] = useState(decodedTestCategory ? decodedTestCategory : "");
   let subtopics = [];
-  if (topic === "General Test") {
-    subtopics = topics2[selectedCategory];
+  if (topic === "General Test" || topic === "Economics") {
+    subtopics = topics[topic][selectedCategory];
   } else {
     subtopics = topics[topic];
   }
 
+  const handleCategoryChange = (category) => {
+    setSelectedCategory(category);
+    const newUrl = `/courses/${topic.split(" ").join("_")}/${category.split(" ").join("_")}`;
+    window.history.pushState(null, "", newUrl);
+  };
 
   const prep = subtopics.map((subtopic, index) => {
     const backgroundColors = [
@@ -102,7 +107,7 @@ function TestPage() {
     } else {
       marksValues = [200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200];
       timesValues = [45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45];
-      questionsValues = ["50", "50", "50", "50", "50", "50", "50", "50", "50", "50", "50", "50"];
+      questionsValues = ["40 of 50", "40 of 50", "40 of 50", "40 of 50", "40 of 50", "40 of 50", "40 of 50", "40 of 50", "40 of 50", "40 of 50", "40 of 50", "40 of 50"];
       negativeValues = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
     }
 
@@ -115,13 +120,7 @@ function TestPage() {
     };
   });
 
-  const [currentTab, setCurrentTab] = useState("prep");
 
-  const handleCategoryChange = (category) => {
-    setSelectedCategory(category);
-    const newUrl = `/test/${topic.split(" ").join("_")}/${category.split(" ").join("_")}`;
-    window.history.pushState(null, "", newUrl);
-  };
   return (
     <div className="overflow-x-hidden">
       <Navbar />
@@ -190,7 +189,25 @@ function TestPage() {
                 {topic === "General Test" && (
                   <div className="md:mx-10 max-md:mt-7 mx-4">
                     <div className="py-2 mb-6 top-[-20px] relative px-4 md:shadow-md flex flex-col lg:flex-row rounded-md">
-                      {Object.keys(topics2).map((category) => (
+                      {Object.keys(topics[topic]).map((category) => (
+                        <div
+                          key={category}
+                          className={`text-[30px] mx-3 whitespace-nowrap flex flex-col lg:flex-row cursor-pointer relative font-bold leading-7 text-center p-2 rounded ${category === selectedCategory
+                            ? "font-medium bg-red-400 text-white "
+                            : " font-normal  text-blue-800"
+                            }`}
+                          onClick={() => handleCategoryChange(category)}
+                        >
+                          {category}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+                {topic === "Economics" && (
+                  <div className="md:mx-10 max-md:mt-7 mx-4">
+                    <div className="py-2 mb-6 top-[-20px] relative px-4 md:shadow-md flex flex-col lg:flex-row rounded-md">
+                      {Object.keys(topics[topic]).map((category) => (
                         <div
                           key={category}
                           className={`text-[30px] mx-3 whitespace-nowrap flex flex-col lg:flex-row cursor-pointer relative font-bold leading-7 text-center p-2 rounded ${category === selectedCategory

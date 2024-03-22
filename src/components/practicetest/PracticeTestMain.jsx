@@ -17,6 +17,8 @@ const PracticeTestMain = () => {
   const { subTopic, topic } = useParams();
   const [auth] = useAuth();
 
+  // console.log(topic);
+
   useEffect(() => {
     setIsLoading(true);
     const fetchData = async () => {
@@ -48,7 +50,7 @@ const PracticeTestMain = () => {
       {data.data.length > 0 ? (
         <section className="question-practice m-[20px] mb-[7rem]">
           <div className="mx-auto">
-            <PracticeTestQues subtopic={subTopic} data={data} />
+            <PracticeTestQues topic={topic} subtopic={subTopic} data={data} />
           </div>
         </section>
       ) : (
