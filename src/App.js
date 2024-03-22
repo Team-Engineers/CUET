@@ -26,6 +26,7 @@ import TabNew from "./components/dashboardNew/pages/account-settings/TabNew";
 // import PriceTable from "./components/Packs/PriceCard";
 
 import { useAuth } from "./utils/context";
+import Blog from "./pages/Blog";
 const App = () => {
   const [auth, setAuth] = useAuth();
   return (
@@ -43,6 +44,7 @@ const App = () => {
       <Route path="/Domain" element={<Domain />} />
       <Route path="/" element={<Homepage />} />
       <Route path="/about" element={<AboutPage />} />
+      <Route path="/blog" element={<Blog />} />
       <Route path="/syllabus" element={<Syllabus />} />
       <Route path="/courses" element={<Coursespage />} />
       <Route path="/purchase" element={<PackPage />} />
