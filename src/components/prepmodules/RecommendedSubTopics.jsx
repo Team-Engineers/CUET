@@ -72,13 +72,13 @@ const RecommendedSubTopics = () => {
   subTopic = subTopic?.split("_").join(" ");
   console.log(subject, "test")
   console.log(topic, "english")
-  let navigation = `/test/prep/`;
-  if (subject === "General Test") {
+  let navigation = `/courses/prep/`;
+  if (subject === "General Test" || subject === "Economics") {
     navigation += `${subject.split(" ").join("_")}/`;
   }
   const selectedSubjects = auth?.user?.selectedSubjects;
   useEffect(() => {
-    if (subject === "General Test") {
+    if (subject === "General Test" || subject === "Economics") {
       const category = Object.keys(topics[subject]).find((category) =>
         topics[subject][category].includes(subTopic)
       );

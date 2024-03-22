@@ -1,20 +1,20 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import { API } from '../../../../utils/constants';
-import { useAuth } from '../../../../utils/context';
+import Button from '@mui/material/Button';
+import CardContent from '@mui/material/CardContent';
 import FormControl from '@mui/material/FormControl';
 import Grid from '@mui/material/Grid';
 import IconButton from '@mui/material/IconButton';
 import InputAdornment from '@mui/material/InputAdornment';
 import InputLabel from '@mui/material/InputLabel';
 import OutlinedInput from '@mui/material/OutlinedInput';
+import axios from 'axios';
 import EyeOffOutline from 'mdi-material-ui/EyeOffOutline';
 import EyeOutline from 'mdi-material-ui/EyeOutline';
-import Button from '@mui/material/Button';
-import CardContent from '@mui/material/CardContent';
+import React, { useState } from 'react';
 import { CgSpinner } from "react-icons/cg";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { API } from '../../../../utils/constants';
+import { useAuth } from '../../../../utils/context';
 const TabSecurity = () => {
   const [loading, setLoading] = useState(false);
   const [auth] = useAuth();
@@ -63,7 +63,8 @@ const TabSecurity = () => {
       setLoading(false);
 
     } catch (error) {
-      toast.error(error);
+      console.log(error.response.data)
+      toast.error(error.response.data.message);
       setLoading(false);
 
     }
@@ -139,7 +140,7 @@ const TabSecurity = () => {
           xs={12}
           sx={{ display: 'flex', marginTop: [7.5, 2.5], alignItems: 'center', justifyContent: 'center' }}
         >
-          <img className='md:w-[300px] md:h-[300px] max-sm:mb-5 w-[200px] h-[200px]'  alt='avatar' src={auth.user?.profilePic} />
+          <img className='md:w-[300px] md:h-[300px] max-sm:mb-5 w-[200px] h-[200px]' alt='avatar' src={auth.user?.profilePic} />
         </Grid>
         <Grid container spacing={6}>
 

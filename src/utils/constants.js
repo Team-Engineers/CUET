@@ -1,6 +1,6 @@
 export const API = "https://testknock-questions.onrender.com/api";
 // export const API = "http://localhost:8800/api";
-export const API2 = "https://ourntamockpapers.onrender.com/api";
+export const API2 = "https://testknock-questions.onrender.com/api";
 export const MOCKAPI = "https://platform.testknock.com";
 export const subjects = [
   {
@@ -250,18 +250,18 @@ export const topics = {
     "Computerised Accounting system (CAS)",
   ],
   Economics: {
-    MacroEconomics: [
+    "Macro Economics": [
       "National Income and Real Aggregates",
       "Money and Banking",
       "Determination of Income and Employment",
       "Government Budget and the Economy",
       "Balance of Payment",
     ],
-    MicroEconomics: [
+    "Micro Economics": [
       "Introduction to Microeconomics",
       "Consumer Behavior and Demand",
     ],
-    IndianEconomics: [
+    "Indian Economics": [
       "Human Capital formation in india",
       "Rural Development",
       "Sustaniable Economic Development",
@@ -270,6 +270,55 @@ export const topics = {
       "Poverty",
       "Employment",
       "Development experience 1947 -90 and economic reforms since 1991",
+    ],
+  },
+  "General Test": {
+    Mathematics: [
+      "Number System",
+      "Algebra",
+      "Simplification & Calculation",
+      "Average",
+      "Percentage",
+      "Fraction, Decimals & Square root",
+      "Ratio & Proportion",
+      "Profit & Loss",
+      "S.I & C.I",
+      "Partnership",
+      "Time, Speed & Distance",
+      "Time & Work",
+      "Mensuration",
+      "Geometry",
+      "Permutation & Combination",
+      "Probability",
+    ],
+    "Logical Reasoning": [
+      "Alphabet series",
+      "Blood Relation",
+      "Classification",
+      "Clock and Calendar",
+      "Critical Reasoning",
+      "Arrangement Circular and Linear",
+      "Coding Decoding",
+      "Decision Making and Order and Ranking",
+      "Direction Problem",
+      "Number Series",
+      "Puzzle",
+      "Venn Diagram",
+      "Visual Reasoning",
+    ],
+    "General Awareness": [
+      "Art Culture and Literature",
+      "Award and Honor",
+      "Indian Geography",
+      "Indian Economics",
+      "Indian History",
+      "Indian Polity",
+      "General Science",
+      "International Cooperation Organization",
+      "Current Affairs Feb 2024",
+      "Current Affairs Jan 2024",
+      "Current Affairs Dec 2023",
+      "Current Affairs Nov 2023",
     ],
   },
   "Business Studies": [
@@ -384,55 +433,7 @@ export const topics = {
     "Probability",
     "General Awareness",
   ],
-  "General Test": {
-    Mathematics: [
-      "Number System",
-      "Algebra",
-      "Simplification & Calculation",
-      "Average",
-      "Percentage",
-      "Fraction, Decimals & Square root",
-      "Ratio & Proportion",
-      "Profit & Loss",
-      "S.I & C.I",
-      "Partnership",
-      "Time, Speed & Distance",
-      "Time & Work",
-      "Mensuration",
-      "Geometry",
-      "Permutation & Combination",
-      "Probability",
-    ],
-    "Logical Reasoning": [
-      "Alphabet series",
-      "Blood Relation",
-      "Classification",
-      "Clock and Calendar",
-      "Critical Reasoning",
-      "Arrangement Circular and Linear",
-      "Coding Decoding",
-      "Decision Making and Order and Ranking",
-      "Direction Problem",
-      "Number Series",
-      "Puzzle",
-      "Venn Diagram",
-      "Visual Reasoning",
-    ],
-    "General Awareness": [
-      "Art Culture and Literature",
-      "Award and Honor",
-      "Indian Geography",
-      "Indian Economics",
-      "Indian History",
-      "Indian Polity",
-      "General Science",
-      "International Cooperation Organization",
-      "Current Affairs Feb 2024",
-      "Current Affairs Jan 2024",
-      "Current Affairs Dec 2023",
-      "Current Affairs Nov 2023",
-    ],
-  },
+
   Domain: {
     Science: {
       Maths: [
@@ -537,7 +538,7 @@ export const topics = {
         IndianEconomics: [
           "Human Capital formation in india",
           "Rural Development",
-          "Sustaniable Economic Development",
+          "Sustainable Economic Development",
           "Infrastructure",
           "Development experience of india",
           "Poverty",
@@ -692,54 +693,4 @@ export const topics = {
       ],
     },
   },
-};
-
-export const topics2 = {
-  Mathematics: [
-    "Number System",
-    "Algebra",
-    "Simplification & Calculation",
-    "Average",
-    "Percentage",
-    "Fraction, Decimals & Square root",
-    "Ratio & Proportion",
-    "Profit & Loss",
-    "S.I & C.I",
-    "Partnership",
-    "Time, Speed & Distance",
-    "Time & Work",
-    "Mensuration",
-    "Geometry",
-    "Permutation & Combination",
-    "Probability",
-  ],
-  "Logical Reasoning": [
-    "Alphabet series",
-    "Blood Relation",
-    "Classification",
-    "Clock and Calendar",
-    "Critical Reasoning",
-    "Arrangement Circular and Linear",
-    "Coding Decoding",
-    "Decision Making and Order and Ranking",
-    "Direction Problem",
-    "Number Series",
-    "Puzzle",
-    "Venn Diagram",
-    "Visual Reasoning",
-  ],
-  "General Awareness": [
-    "Art Culture and Literature",
-    "Award and Honor",
-    "Indian Geography",
-    "Indian Economics",
-    "Indian History",
-    "Indian Polity",
-    "General Science",
-    "International Cooperation Organization",
-    "Current Affairs Feb 2024",
-    "Current Affairs Jan 2024",
-    "Current Affairs Dec 2023",
-    "Current Affairs Nov 2023",
-  ],
 };

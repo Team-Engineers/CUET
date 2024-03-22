@@ -44,8 +44,11 @@ export const Testcard = ({
     fetchUserSubject();
   }, [heading, auth]);
 
-  let navigation = `/test/prep/${heading.split(' ').join('_')}`;
+  let navigation = `/courses/prep/${heading.split(' ').join('_')}`;
   if (heading === 'General Test') {
+    navigation += `/${selectedCategory.split(' ').join('_')}`;
+  }
+  if (heading === 'Economics') {
     navigation += `/${selectedCategory.split(' ').join('_')}`;
   }
   const [buttonBgColor, setButtonBgColor] = useState("linear-gradient(to right,#ffffff,#ffffff)");
@@ -81,13 +84,14 @@ export const Testcard = ({
           style={{ background: bgcolor }}
           className="w-[95%] h-[300px] mt-3 rounded-2xl text-white flex justify-center "
         >
-          {index === 0 && !auth.user && (
-            <img
-              src={freeicon}
-              className="absolute top-[-40px] right-[-20px] w-[80px] h-[80px]"
-              alt="Free Icon"
-            />
-          )}
+          {index === 0 && !auth.user && ((heading === "General Test" || heading === "General English")
+          ) && (
+              <img
+                src={freeicon}
+                className="absolute top-[-40px] right-[-20px] w-[80px] h-[80px]"
+                alt="Free Icon"
+              />
+            )}
           <div className="w-[90%] h-full relative top-[-10px] flex flex-col justify-around">
             <h5 className="font-bold text-center text-3xl ">{subTopic}</h5>
             <img
@@ -108,56 +112,57 @@ export const Testcard = ({
           </div>
         </div>
         <div className="flex justify-end items-center w-[90%]">
-          {index === 0 ? (
-            <Link
-              to={`${navigation}/${subTopic.split(" ").join("_")}`}>
-              <button className="btn my-3   rounded-full  px-8 text-lg " style={{ backgroundImage: buttonBgColor, color: buttonTextColor }}>
+          {index === 0 && (heading === "General Test" || heading === "General English")
+            ? (
+              <Link
+                to={`${navigation}/${subTopic.split(" ").join("_")}`}>
+                <button className="btn my-3   rounded-full  px-8 text-lg " style={{ backgroundImage: buttonBgColor, color: buttonTextColor }}>
 
-                Practice
-              </button>
-            </Link>
-          ) : (
-            <>
-              {auth.user ? (
-                userSubject === heading ? (
-                  <Link
-                    to={`${navigation}/${subTopic.split(" ").join("_")}`}>
-                    <button className="btn my-3   rounded-full  px-8 text-lg " style={{ backgroundImage: buttonBgColor, color: buttonTextColor }}>
+                  Practice
+                </button>
+              </Link>
+            ) : (
+              <>
+                {auth.user ? (
+                  userSubject === heading ? (
+                    <Link
+                      to={`${navigation}/${subTopic.split(" ").join("_")}`}>
+                      <button className="btn my-3   rounded-full  px-8 text-lg " style={{ backgroundImage: buttonBgColor, color: buttonTextColor }}>
 
 
-                      Practice
-                    </button>
-                  </Link>
-                ) : index <= 2 ? (
-                  <Link
+                        Practice
+                      </button>
+                    </Link>
+                  ) : index <= 2 && (heading === "General Test" || heading === "General English") ? (
+                    <Link
 
-                    to={`${navigation}/${subTopic.split(" ").join("_")}`}>
-                    <button className="btn my-3   rounded-full  px-8 text-lg " style={{ backgroundImage: buttonBgColor, color: buttonTextColor }}>
+                      to={`${navigation}/${subTopic.split(" ").join("_")}`}>
+                      <button className="btn my-3   rounded-full  px-8 text-lg " style={{ backgroundImage: buttonBgColor, color: buttonTextColor }}>
 
-                      Practice
-                    </button>
-                  </Link>
+                        Practice
+                      </button>
+                    </Link>
+                  ) : (
+                    <Link
+                      to={`/purchase`}>
+                      <button className="btn my-3   rounded-full  px-8 text-lg " style={{ backgroundImage: buttonBgColor, color: buttonTextColor }}>
+
+                        Purchase Course
+                      </button>
+                    </Link>
+                  )
                 ) : (
                   <Link
-                    to={`/purchase`}>
+                    to={`/login`}>
                     <button className="btn my-3   rounded-full  px-8 text-lg " style={{ backgroundImage: buttonBgColor, color: buttonTextColor }}>
+                      <img src={png} alt="Lock Icon" className="w-5 h-5" />
 
-                      Purchase Course
+                      Login
                     </button>
                   </Link>
-                )
-              ) : (
-                <Link
-                  to={`/login`}>
-                  <button className="btn my-3   rounded-full  px-8 text-lg " style={{ backgroundImage: buttonBgColor, color: buttonTextColor }}>
-                    <img src={png} alt="Lock Icon" className="w-5 h-5" />
-
-                    Login
-                  </button>
-                </Link>
-              )}
-            </>
-          )}
+                )}
+              </>
+            )}
         </div>
       </div>
     </Link>
@@ -227,7 +232,7 @@ export const Testcard1 = ({
   };
 
   return (
-    <Link style={{ textDecoration: "none" }} to={`/test/practice/${topic2}/${subtopicNumber}`}>
+    <Link style={{ textDecoration: "none" }} to={`/courses/practice/${topic2}/${subtopicNumber}`}>
       <div
         style={{
           // boxShadow: `0 4px 6px ${bgcolor}, 0 1px 3px rgba(0, 0, 0, 0.1)`,
@@ -238,13 +243,14 @@ export const Testcard1 = ({
         onMouseLeave={handleMouseLeave}
       >
         <div className="flex flex-col p-5 items-center justify-center ">
-          {index === 0 && !auth.user && (
-            <img
-              src={freeicon}
-              className="absolute top-[-30px] right-[-20px] w-[80px] h-[80px]"
-              alt="Free Icon"
-            />
-          )}
+          {index === 0 && !auth.user && (topic === "General Test" || topic === "General English")
+            && (
+              <img
+                src={freeicon}
+                className="absolute top-[-30px] right-[-20px] w-[80px] h-[80px]"
+                alt="Free Icon"
+              />
+            )}
           <img
             src="https://i.ibb.co/XFnxJSS/practicetest.png"
             alt={subTopic}
@@ -275,46 +281,47 @@ export const Testcard1 = ({
                 {Times} Minutes
               </div>
             </div>
-            {index === 0 || (index <= 2 && auth.user) ? (
-              <Link style={{ textDecoration: "none" }} to={`/test/practice/${topic2}/${subtopicNumber}`}>
-                <button className="btn my-3   rounded-full  px-8 text-lg " style={{ backgroundImage: buttonBgColor, color: buttonTextColor }}>
+            {(index === 0 || (index <= 2 && auth.user)) && (topic === "General Test" || topic === "General English")
+              ? (
+                <Link style={{ textDecoration: "none" }} to={`/courses/practice/${topic2}/${subtopicNumber}`}>
+                  <button className="btn my-3   rounded-full  px-8 text-lg " style={{ backgroundImage: buttonBgColor, color: buttonTextColor }}>
 
-                  Take Test
-                </button>
-              </Link>
-            ) : (
-              <>
-                {auth.user ? (
-                  userSubject === topic ? (
-                    <Link style={{ textDecoration: "none" }} to={`/test/practice/${topic2}/${subtopicNumber}`}>
-                      <button className="btn my-3   rounded-full  px-8 text-lg " style={{ backgroundImage: buttonBgColor, color: buttonTextColor }}>
-                        Take Test
-                      </button>
-                    </Link>
-                  ) : index <= 2 ? (
-                    <Link style={{ textDecoration: "none" }} to={`/test/practice/${topic2}/${subtopicNumber}`}>
-                      <button className="btn my-3   rounded-full  px-8 text-lg " style={{ backgroundImage: buttonBgColor, color: buttonTextColor }}>
-                        Take Test
-                      </button>
-                    </Link>
+                    Take Test
+                  </button>
+                </Link>
+              ) : (
+                <>
+                  {auth.user ? (
+                    userSubject === topic ? (
+                      <Link style={{ textDecoration: "none" }} to={`/courses/practice/${topic2}/${subtopicNumber}`}>
+                        <button className="btn my-3   rounded-full  px-8 text-lg " style={{ backgroundImage: buttonBgColor, color: buttonTextColor }}>
+                          Take Test
+                        </button>
+                      </Link>
+                    ) : index <= 2 && (topic === "General Test" || topic === "General English") ? (
+                      <Link style={{ textDecoration: "none" }} to={`/courses/practice/${topic2}/${subtopicNumber}`}>
+                        <button className="btn my-3   rounded-full  px-8 text-lg " style={{ backgroundImage: buttonBgColor, color: buttonTextColor }}>
+                          Take Test
+                        </button>
+                      </Link>
+                    ) : (
+                      <Link style={{ textDecoration: "none" }} to={`/purchase`}>
+                        <button className="btn my-3   rounded-full  px-8 text-lg " style={{ backgroundImage: buttonBgColor, color: buttonTextColor }}>
+                          Purchase Course
+                        </button>
+                      </Link>
+                    )
                   ) : (
-                    <Link style={{ textDecoration: "none" }} to={`/purchase`}>
+                    <Link style={{ textDecoration: "none" }} to={`/login`}>
                       <button className="btn my-3   rounded-full  px-8 text-lg " style={{ backgroundImage: buttonBgColor, color: buttonTextColor }}>
-                        Purchase Course
+                        <img src={png} alt="Lock Icon" className="w-5 h-5" />
+
+                        Login
                       </button>
                     </Link>
-                  )
-                ) : (
-                  <Link style={{ textDecoration: "none" }} to={`/login`}>
-                    <button className="btn my-3   rounded-full  px-8 text-lg " style={{ backgroundImage: buttonBgColor, color: buttonTextColor }}>
-                      <img src={png} alt="Lock Icon" className="w-5 h-5" />
-
-                      Login
-                    </button>
-                  </Link>
-                )}
-              </>
-            )}
+                  )}
+                </>
+              )}
           </div>
         </div>
       </div>
@@ -359,10 +366,12 @@ export const Testcard2 = ({
     fetchUserSubject();
   }, [topic, auth]);
 
-  const subtopic2 =
-    topic === "General English"
-      ? "general_english_mock_test"
-      : "general_test_mock_test";
+  // const subtopic2 =
+  //   topic === "General English"
+  //     ? "general_english_mock_test"
+  //     : "general_test_mock_test";
+  const topic2 = topic.toLowerCase().replace(/ /g, "_")
+
   const [buttonBgColor, setButtonBgColor] = useState("linear-gradient(to right,#ffffff,#ffffff)");
   const [buttonTextColor, setButtonTextColor] = useState("#ff7468");
 
@@ -381,13 +390,13 @@ export const Testcard2 = ({
 
   return (
     <Link style={{ textDecoration: "none" }} target="_blank"
-      to={`${MOCKAPI}/${subtopic2}/${mocksubtopicNumber}/free`}>
+      to={`${MOCKAPI}/${topic2}/mock_test/${mocksubtopicNumber}/free`}>
       <div className="flex flex-col transition-all duration-300 hover:shadow-2xl border-solid border-[0.5px] border-gray-700 text-black bg-white rounded-[20px] items-center justify-around cursor-pointer p-[10px]"
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}>
 
         <div className="w-full flex relative flex-row items-center">
-          {index === 0 && !auth.user && (
+          {index === 0 && !auth.user && (topic === "General Test" || topic === "General English") && (
             <img
               src={freeicon}
               className="absolute top-[-38px] right-[-38px] w-[80px] h-[80px]"
@@ -403,7 +412,7 @@ export const Testcard2 = ({
         </div>
 
         <div className="w-full flex flex-col justify-between items-center">
-          <div className="w-[100%]  gap-y-2 pl-3 flex flex-col items-start	">
+          <div className="w-[100%]  gap-y-2 pl-3 flex flex-col items-start  ">
             <div className="flex justify-start items-center text-lg gap-[8px]">
               <FaQuestion
                 size={36}
@@ -439,10 +448,10 @@ export const Testcard2 = ({
         <div className="w-full flex items-center py-3 justify-end h-16 pr-10">
           {auth.user ? (
             <>
-              {userSubject === topic || index <= 2 ? (
+              {userSubject === topic || (index <= 2 && (topic === "General Test" || topic === "General English")) ? (
                 <Link style={{ textDecoration: "none" }}
                   target="_blank"
-                  to={`${MOCKAPI}/${subtopic2}/${mocksubtopicNumber}/${auth?.user?._id}`}
+                  to={`${MOCKAPI}/${topic2}/mock_test/${mocksubtopicNumber}/${auth?.user?._id}`}
                 >
                   <button className="btn my-3   rounded-full  px-8 text-lg " style={{ backgroundImage: buttonBgColor, color: buttonTextColor }}>
                     Take Test
@@ -458,10 +467,10 @@ export const Testcard2 = ({
             </>
           ) : (
             <>
-              {index === 0 ? (
+              {index === 0 && (topic === "General Test" || topic === "General English") ? (
                 <Link style={{ textDecoration: "none" }}
                   target="_blank"
-                  to={`${MOCKAPI}/${subtopic2}/${mocksubtopicNumber}/free`}
+                  to={`${MOCKAPI}/${topic2}/mock_test/${mocksubtopicNumber}/free`}
                 >
                   <button className="btn my-3   rounded-full  px-8 text-lg " style={{ backgroundImage: buttonBgColor, color: buttonTextColor }}>
                     Take Test

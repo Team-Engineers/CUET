@@ -29,13 +29,21 @@ import Article2 from "./blog/articles/Article2";
 
 // import PriceTable from "./components/Packs/PriceCard";
 
+import { useAuth } from "./utils/context";
 const App = () => {
+  const [auth, setAuth] = useAuth();
   return (
     <Routes>
-      <Route path="/login" element={<Login />} />
-      <Route path="/signup" element={<Signup />} />
-      <Route path="/forgot-password" element={<ForgotPassword />} />
-      <Route path="/reset_password/:id/:token" element={<ResetPassword />} />
+      <Route path="/login" element={!auth?.user ? <Login /> : <Homepage />} />
+      <Route path="/signup" element={!auth?.user ? <Signup /> : <Homepage />} />
+      <Route
+        path="/forgot-password"
+        element={!auth?.user ? <ForgotPassword /> : <Homepage />}
+      />
+      <Route
+        path="/reset_password/:id/:token"
+        element={!auth?.user ? <ResetPassword /> : <Homepage />}
+      />
       <Route path="/Domain" element={<Domain />} />
       <Route path="/" element={<Homepage />} />
       <Route path="/about" element={<AboutPage />} />
@@ -46,21 +54,23 @@ const App = () => {
       <Route path="/blog/article2" element={<Article2 />} />                                                                                                                                    
       <Route path="/purchase" element={<PackPage />} />
       <Route path="/university" element={<University />} />
-      <Route path="/test/:topic" element={<TestPage />} />
-      <Route path="/test/:topic/:testCategory" element={<TestPage />} />
-      <Route path="/test/domain/:heading" element={<SubtopicPage />} />
+      <Route path="/courses/:topic" element={<TestPage />} />
+      <Route path="/courses/:topic/:testCategory" element={<TestPage />} />
+      <Route path="/courses/domain/:heading" element={<SubtopicPage />} />
       <Route
-        path="/test/prep/:subject/:topic/:subTopic"
+        path="/courses/prep/:subject/:topic/:subTopic"
         element={<PrepModules />}
       />
-      <Route path="/test/prep/:topic/:subTopic" element={<PrepModules />} />
-
+      <Route path="/courses/prep/:topic/:subTopic" element={<PrepModules />} />
       <Route
-        path="/test/practice/:topic/:subTopic"
+        path="/courses/practice/:topic/:subTopic"
         element={<PracticeTestMain />}
       />
       <Route element={<PrivateRoutes />}>
-        <Route path="/test/practice/:subTopic" element={<PracticeTestMain />} />
+        <Route
+          path="/courses/practice/:subTopic"
+          element={<PracticeTestMain />}
+        />
         {/* <Route path="/profile" element={<MainLayout />} /> */}
         <Route path="/profile" element={<MainLayout />}>
           <Route index element={<AccountSettings />} />
