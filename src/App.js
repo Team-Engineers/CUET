@@ -23,6 +23,10 @@ import PrivateRoutes from "./utils/PrivateRoutes";
 // import DashBoardNew from "./components/dashboardNew/pages/Dashboard";
 import Cards from "./components/dashboardNew/Cards/Cards";
 import TabNew from "./components/dashboardNew/pages/account-settings/TabNew";
+import Blog01 from "./blog/BlogPage";
+import Article1 from "./blog/articles/Article1";
+import Article2 from "./blog/articles/Article2";
+
 // import PriceTable from "./components/Packs/PriceCard";
 
 import { useAuth } from "./utils/context";
@@ -43,8 +47,11 @@ const App = () => {
       <Route path="/Domain" element={<Domain />} />
       <Route path="/" element={<Homepage />} />
       <Route path="/about" element={<AboutPage />} />
+      <Route path="/blog" element={<Blog01/>} />
       <Route path="/syllabus" element={<Syllabus />} />
-      <Route path="/courses" element={<Coursespage />} />
+      <Route path="/courses" element={<Coursespage />} />                                                                                                                                    
+      <Route path="/blog/article1" element={<Article1 />} />                                                                                                                                    
+      <Route path="/blog/article2" element={<Article2 />} />                                                                                                                                    
       <Route path="/purchase" element={<PackPage />} />
       <Route path="/university" element={<University />} />
       <Route path="/courses/:topic" element={<TestPage />} />
