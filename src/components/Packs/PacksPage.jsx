@@ -90,8 +90,8 @@ const PriceCard = ({ _id, nameOfPlan, bgColor, amount, description, benefits }) 
       case '12 Mock Tests for each Subject':
       case 'Full Access to Practice Tests':
         return <FaCheck className='text-green-400' />;
-      case 'Any one Domain Subject':
-      case 'Any two Domain Subject':
+      case '/ Any one Domain Subject':
+      case '/ Any two Domain Subject':
         return <span>&ensp;&ensp;</span>;
       default:
         return <FaQuestionCircle className='text-blue-400' />;
