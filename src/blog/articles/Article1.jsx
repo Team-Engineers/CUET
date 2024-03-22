@@ -1,11 +1,9 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Navbar from '../../components/Navbar';
-import Article1img from "../../assets/article1.jpeg";
-import Sidebar from '../Sidebar';
-import ShareButtons from '../Sharebutton';
-import preparationData from './preparationData.json';
-import { useState, useEffect } from 'react';
 import { MathText } from "../../components/mathJax/MathText";
+import ShareButtons from '../Sharebutton';
+import Sidebar from '../Sidebar';
+import preparationData from './preparationData.json';
 
 import { Link } from 'react-router-dom';
 
@@ -40,11 +38,11 @@ export default function Article1() {
         <div className="breadcrumb flex items-center justify-center">
           <ul className="flex flex-wrap list-none rounded-md bg-transparent text-xs font-normal py-0 my-0 text-gray-400">
             <li>
-              <Link href="/" className="text-[12px] no-underline uppercase text-gray-600 hover:text-blue-600">cuetlions  </Link>
+              <Link href="/" className="text-[12px] no-underline uppercase text-gray-600 hover:text-blue-600">cuet testknock  </Link>
             </li>
             <p className='my-0 py-0 mx-[5px]'> {'    >  '}  </p>
             <li>
-             
+
               <Link href="blogs" className='text-[12px] no-underline text-gray-600 hover:text-blue-600'>  Blogs</Link>
             </li>
           </ul>
@@ -88,37 +86,53 @@ export default function Article1() {
 
 
 
+
             <div className=' text-base text-gray-500'>
               <div>
                 {/* <h1>Preparation Strategies for CUET Biology</h1> */}
                 <div>
 
-                  {preparationData.preparationStrategies.map((strategy, index) => (
-                    strategy.hasOwnProperty('alsoread') ? (
-                      <div key={index} className=''>
-                        <p className='mb-[2rem] leading-7 text-black'>
-                          <span className='font-poppins font-sans text-[16px] font-semibold'>ALSO READ-</span>
-                          <Link to='' className='text-blue-600 font-semibold font-poppins font-sans text-[16px] no-underline '>{strategy.alsoread}</Link>
-                        </p>
-                      </div>
-                    ) : (
-                      <div key={index} className=''>
-                        <div className="font-poppins font-sans mb-[8px] bg-blue-900 text-white text-[15px]  md:text-[1.5vw] p-[6px] md:p-[6px]" >{strategy.title}</div>
-                        <p className='mb-[2rem] leading-7 text-black'>
-                          <MathText
-                            className="text-black leading-4 font-poppins font-sans  question-text  text-[15px]  "
-                            text={strategy.description}
-                          //  textTag="h6"
-                          />
-                        </p>
-                      </div>
-                    )
+                  {
+                    preparationData.preparationStrategies.map((strategy, index) => (
+                      strategy.hasOwnProperty('alsoread') ? (
+                        <div key={index} className=''>
+                          <p className='mb-[2rem] leading-7 text-black'>
+                            <span className='font-poppins font-sans text-[16px] font-semibold'>ALSO READ-</span>
+                            <Link to='' className='text-blue-600 font-semibold font-poppins font-sans text-[16px] no-underline '>{strategy.alsoread}</Link>
+                          </p>
+                        </div>
+                      ) : (
+                        <div key={index} className=''>
+                          <div className="font-poppins font-sans mb-[8px] bg-blue-900 text-white text-[15px]  md:text-[1.5vw] p-[6px] md:p-[6px]" >{strategy.title}</div>
+                          <p className='mb-[2rem] leading-7 text-black'>
+                            <MathText
+                              className="text-black leading-4 font-poppins font-sans  question-text  text-[15px]  "
+                              text={strategy.description}
+                            //  textTag="h6"
+                            />
+                          </p>
+                        </div>
+                      )
 
-                  ))}
-                </div>
+                    ))
+                  }
+                </div >
 
 
                 {/* <h2 className='text-black'>Resource Links</h2>
+                  {preparationData.preparationStrategies.map((strategy, index) => (
+                    <div key={index}>
+                      <h4 className="bg-blue-900 text-white text-[1.5vw] p-[.25vw]" >{strategy.title}</h4>
+                      <p></p>
+                      <MathText
+                        className="question-text mb-2"
+                        text={strategy.description}
+                      //  textTag="h6"
+                      />
+                    </div>
+                  ))}
+                </div>
+                <h2>Resource Links</h2>
                 <ul>
                   {preparationData.resourceLinks.map((link, index) => (
                     <li key={index}>
@@ -126,8 +140,7 @@ export default function Article1() {
                     </li>
                   ))}
                 </ul> */}
-              </div>
-
+              </div >
 
               {/* <p className='  text-black'>The preparation strategy for CUET Biology is no different from other entrance exam preparation. Biology being a vast subject,    candidates must strategically plan the preparation for the exam accordingly. Here we bring some of the salient preparation strategies for Biology.</p>
               <p><b>Understand the curriculum and test structure: </b></p>
@@ -146,32 +159,29 @@ export default function Article1() {
               <p className="text-black">Students need to practice a lot and never get too confident in their knowledge of the material or their thorough understanding of it. The adage "practice makes perfect" is appropriately used when taking an admission exam. In order to get mastery over all the subjects, pupils need to practice with an increasing number of sample papers. Students' speed in time management and attempted answer correctness are also improved by practice. </p>
               <p><b>Revision, Revision, and Revision</b></p>
               <p className="text-black">Students should dedicate their final two to three weeks exclusively to revision, as it is the most crucial activity. For entrance exams, the students prepare all year long. They have to design their plan so that they revisit the ideas and subjects they have already learned frequently. Students need to make sure they are not learning any new material when they are revising <b className=" text-blue-800">CUET 2024</b> Biology. While studying those subjects, the students are required to consult any significant notes they may have taken. A last review of the key points and subjects that are highlighted is always beneficial for doing well on the entrance exam. </p> */}
-            </div>
+            </div >
             <ShareButtons />
 
-          </div>
+          </div >
 
 
 
           <div className='w-[17vw]   float-right hidden md:block'>
             <Sidebar />
             <div className='mt-4'>
-
-            </div>
-          </div>
-
+            </div >
+          </div >
 
 
           <div className='w-[90vw] float-left flex-col justify-center items-center  md:hidden'>
             <Sidebar />
             <div className='mt-4'>
 
-
             </div>
           </div>
 
         </div>
       </div>
-    </div>
+    </div >
   );
 }
