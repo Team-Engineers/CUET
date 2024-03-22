@@ -375,8 +375,8 @@ const Packages = [
     description:
       'Maximize your exam readiness with our Solo Pack. Choose from General English or General Test or any domain subject. Includes preparatory module, 12 practice tests, and 12 mock tests.',
     benefits: [
-      'General English / General Test /',
-      'Any one Domain Subject',
+      'General English / General Test',
+      '/ Any one Domain Subject',
       'Full Access to Prep Modules',
       '12 Practice Tests',
       '12 Mock Tests',
@@ -392,8 +392,8 @@ const Packages = [
     description:
       'Supercharge your preparation with our Pair Pack. Choose any from: General English and any one domain subject, General Test and one domain subject, or any two domain subjects. Includes preparatory modules, 12 practice tests, and 12 mock tests for each.',
     benefits: [
-      'General English & General Test /',
-      'Any two Domain Subject',
+      'General English & General Test',
+      '/ Any two Domain Subject',
       'Full Access to Prep Modules',
       '12 Practice Tests for each Subject',
       '12 Mock Tests for each Subject',
