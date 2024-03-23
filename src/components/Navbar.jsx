@@ -15,6 +15,7 @@ const Navbar = ({ height }) => {
     { path: "/courses", title: "Courses" },
     { path: "/about", title: "About" },
     { path: "/syllabus", title: "Syllabus" },
+    { path: "/blog", title: "Blog" },
     { path: "/purchase", title: "Pricing" },
 
 

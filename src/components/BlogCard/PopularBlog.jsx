@@ -37,9 +37,9 @@ export default function PopularBlogs() {
   }, []);
 
   return (
-    <div>
+    <div className='sticky'>
       <div className={`bg-white p-4 mt-[3rem] flex-col justify-center   leading-5 `} >
-        <div className="text-[16px] text-blue-500  w-[90vw] ">Popular</div>
+        <div className="text-[16px] text-blue-500 ">Popular</div>
         <hr color='blue' className="mb-[30px] float-left h-1px border-top:1px border-t-1 border-blue w-[25%] solid #f00"></hr>
         <hr className="mb-[30px] float-left  h-1px border-top:1px w-[55%] solid #f00"></hr>
         {/* <div class="border-b border-black p-[.25vw]"></div> */}
@@ -47,8 +47,8 @@ export default function PopularBlogs() {
         <ul className='list-none flex-col ml-0 pl-0  '>
           {latestBlogs.map((blog, index) => (
 
-            <li key={index} className="ml-0 pl-0 w-[90vw] mb-4 float-left flex justify-center items-center  bg-white rounded-xl   hover:cursor-pointer ">
-              <img src={blog.image} className='pl-0  h-[48px] w-[68px] md:ml-0 ' alt='image cant display'></img>
+            <li key={index} className="ml-0 pl-0 mb-4 float-left flex justify-center items-center  bg-white rounded-xl   hover:cursor-pointer ">
+              <img src={blog.image} className='thumbnail-img pl-0  h-5 w-5 md:ml-0 object-contain ' alt='image cant display'></img>
               <div className='ml-0 pl-0 text-[14px]' >{blog.title}<br></br> - {blog.date}</div>
               <br></br>
             </li>

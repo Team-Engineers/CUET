@@ -3,7 +3,7 @@ import "./Blog.css";
 import { useParams } from "react-router";
 import { BlogData } from "./Data";
 import ShareButtons from "./ShareButton";
-// import PopularBlogs from "./PopularBlog";
+import PopularBlogs from "./PopularBlog";
 import { Link } from "react-router-dom";
 import BlogFaq from "./Faq";
 import { MathText } from "../mathJax/MathText.jsx";
@@ -128,8 +128,8 @@ const BlogPost = () => {
                 </div>
               </div>
             </div>
-            <div className="popular-blogs md:max-w-[30%] md:order-2">
-              {/* <PopularBlogs /> */}
+            <div className="popular-blogs md:max-w-[30%] md:order-2 sticky top-0 h-12">
+              <PopularBlogs />
             </div>
           </div>
         </div>
