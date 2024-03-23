@@ -1,10 +1,10 @@
 import React from "react";
 
-import email from "./blogImages/EMail1.png";
-import facebook from "./blogImages/facebook1.png";
-import telegram from "./blogImages/telegram.webp";
-import twitter from "./blogImages/twitter1.png";
-import whatsap from "./blogImages/whatsap1.png";
+import email from "./blogImages/email.png";
+import facebook from "./blogImages/facebook.png";
+import telegram from "./blogImages/telegram.png";
+import twitter from "./blogImages/twitter.png";
+import whatsap from "./blogImages/whatsapp.png";
 
 import { Link } from "react-router-dom";
 
@@ -42,12 +42,12 @@ export default function ShareButtons() {
   };
 
   return (
-    <div className="flex-col  justify-center items-center float-left ml-[-18px]  space-x-4 w-[70%] bg-slate h-auto   rounded-lg ">
-      <div className="ml-[18px]">share:</div>
-
-      <div className="flex  items-center justify-center float-left ml-[-20px] leading-4">
+    <div className="flex-col flex  justify-center items-start gap-3 float-left ml-[-18px]  space-x-4 w-[70%] bg-slate h-auto   rounded-lg ">
+      {/* <h5 className=" m-0 text-md">Share:</h5> */}
+      <strong className="ml-[18px]">Share</strong>
+      <div className="flex  items-center justify-center float-left gap-3 ml-[-20px] leading-4">
         <Link to="" onClick={shareOnWhatsApp}>
-          <img src={facebook} className="h-[38px] w-[40px]" />
+          <img src={facebook} className="h-[28px] w-[28px]" />
         </Link>
         <Link to="" onClick={shareOnWhatsApp}>
           <img src={whatsap} className="h-[28px] w-[28px]" />
@@ -60,7 +60,7 @@ export default function ShareButtons() {
         </Link>
         <Link to="" onClick={shareOnWhatsApp}>
           <img src={email} className="h-[28px] w-[28px]" />
-        </Link>
+        </Link> 
       </div>
     </div>
   );

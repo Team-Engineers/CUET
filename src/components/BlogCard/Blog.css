@@ -1,6 +1,6 @@
 #page-title .page-title {
   text-align: center;
-  padding: 0;
+  padding: 0px 20px;
 }
 
 #page-title .page-title > h1 {
@@ -69,7 +69,7 @@ a:not(.btn):hover {
   opacity: 0.8;
 }
 
-.single-post .post-item img {
+.single-post .post-item .post-image img {
   width: 100%;
   height: auto;
 }
@@ -83,6 +83,7 @@ a:not(.btn):hover {
 .post-item .post-item-wrap {
   background-color: #fff;
   position: relative;
+  padding: 0px 20px;
 }
 
 .post-item {
@@ -165,4 +166,111 @@ a:not(.btn):hover {
 
 .table-body a {
   color: #0000ff;
+}
+
+.sidebar {
+  border-right-width: 0;
+  padding: 0px 20px;
+}
+
+.sidebar .widget:last-child {
+  border-bottom: 0;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.widget:before {
+  clear: both;
+  content: " ";
+  display: table;
+}
+.tabs .nav-tabs {
+  /* border-bottom: 2px solid #ececec; */
+  margin-bottom: 30px;
+  list-style: none;
+  padding: 0px;
+}
+
+.tabs .nav-tabs .nav-item {
+  margin-bottom: -2px;
+}
+
+.tabs .nav-tabs .nav-link.active {
+  color: #2250fc;
+  background-color: transparent;
+  border-bottom: 2px solid #2250fc;
+}
+
+.sidebar .widget .tabs li > a {
+  padding: 10px;
+}
+
+.tab-content > .active {
+  display: block;
+}
+
+.tab-content {
+  display: block;
+}
+
+.post-thumbnail-list {
+  position: relative;
+}
+
+.post-thumbnail-entry {
+  border-bottom: 1px solid #f7f9fb;
+  float: left;
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  position: relative;
+  clear: both;
+}
+
+.sidebar .widget .post-thumbnail-list .post-thumbnail-entry > img {
+  height: 48px;
+  margin-right: 10px;
+  width: 64px;
+}
+
+.post-thumbnail-list .post-thumbnail-entry > img {
+  float: left;
+  display: block;
+  height: 60px;
+  width: 80px;
+  margin-right: 16px;
+  border-radius: 2px;
+}
+
+.sidebar
+  .widget
+  .post-thumbnail-list
+  .post-thumbnail-entry
+  img
+  + .post-thumbnail-content {
+  padding-left: 72px;
+}
+
+.post-thumbnail-list .post-thumbnail-entry img + .post-thumbnail-content {
+  padding-left: 90px;
+}
+.post-thumbnail-list .post-thumbnail-entry .post-thumbnail-content a {
+  font-size: 14px;
+  font-weight: 500;
+  margin: -4px 0 0;
+}
+
+.widget .post-thumbnail-content a {
+  font-size: 13px;
+  line-height: 20px;
+  display: block;
+}
+
+@media (max-width: 991px) {
+  #page-title .page-title > h1 {
+    font-size: 26px;
+    line-height: 34px;
+  }
+  #page-title {
+    padding: 50px 0 !important;
+  }
 }

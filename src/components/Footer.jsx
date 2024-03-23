@@ -4,16 +4,29 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <footer className="bg-[#0D0756] text-white w-full flex justify-center items-center relative z-50" style={{ backgroundImage: 'linear-gradient(to right, #452760, #3d315c, #111f58, #231f7a)' }}>
-      <div className="w-full max-md:mx-5 ">
+    <footer
+      className="bg-[#0D0756] text-white w-full flex justify-center items-center relative z-50"
+      style={{
+        backgroundImage:
+          "linear-gradient(to right, #452760, #3d315c, #111f58, #231f7a)",
+      }}
+    >
+      <div className="w-full max-md:mx-5 overflow-hidden">
         <div className="flex my-6 justify-center items-center lg:mr-[3rem]">
           <div className="grid md:grid-cols-2 md:mx-10 grid-cols-1 w-fit">
             <div className=" md:flex md:flex-col justify-center ml-[34px] max-md:ml-[0px] w-fit">
               <div className="flex justify-start items-center w-fit">
-                <Link to="/" className="no-underline d-flex justify-content-center mt-4 align-items-center flex-column">
+                <Link
+                  to="/"
+                  className="no-underline d-flex justify-content-center mt-4 align-items-center flex-column"
+                >
                   <div className="flex items-center">
                     <div className="mr-4 mb-[-12px]">
-                      <img src={"/logo.png"} alt="Logo" className="max-h-[60px] max-w-[60px] pr-4 pb-2" />
+                      <img
+                        src={"/logo.png"}
+                        alt="Logo"
+                        className="max-h-[60px] max-w-[60px] pr-4 pb-2"
+                      />
                     </div>
                     <div className="text-white font-sans font-bold text-[100%] ml-[-8%]">
                       <h2>
@@ -24,40 +37,66 @@ const Footer = () => {
                 </Link>
               </div>
               <p className="md:w-[35vw] font-normal text-justify">
-                At TestKnock, we are dedicated to more than just academic success. Our unwavering commitment extends to providing you with the essential
-                tools and expert guidance. So join us on this transformative expedition and discover where educational excellence is not just an
-                aspiration but an inspiring and achievable pursuit.
+                At TestKnock, we are dedicated to more than just academic
+                success. Our unwavering commitment extends to providing you with
+                the essential tools and expert guidance. So join us on this
+                transformative expedition and discover where educational
+                excellence is not just an aspiration but an inspiring and
+                achievable pursuit.
               </p>
             </div>
             <div className="w-fit relative md:top-[35px] grid grid-cols-2 md:grid-cols-3 text-sm md:text-md md:ml-[-64px] sm:m-0">
               <div className="min-w-[10em] mx-auto my-5 md:my-0 md:ml-0">
-                <p className="cursor-pointer font-bold mb-10  md:text-center">Company</p>
+                <p className="cursor-pointer font-bold mb-10  md:text-center">
+                  Company
+                </p>
                 <Link to="/" className="no-underline text-white">
-                  <p className="font-normal my-3 md:text-center hover:text-red-500 hover:cursor-pointer">Home</p>
+                  <p className="font-normal my-3 md:text-center hover:text-red-500 hover:cursor-pointer">
+                    Home
+                  </p>
                 </Link>
                 <Link to="/about" className="no-underline text-white">
-                  <p className="font-normal my-3 md:text-center hover:text-red-500 hover:cursor-pointer">About</p>
+                  <p className="font-normal my-3 md:text-center hover:text-red-500 hover:cursor-pointer">
+                    About
+                  </p>
                 </Link>
                 <Link to="/syllabus" className="no-underline text-white">
-                  <p className="font-normal my-3 md:text-center hover:text-red-500 hover:cursor-pointer">Syllabus</p>
+                  <p className="font-normal my-3 md:text-center hover:text-red-500 hover:cursor-pointer">
+                    Syllabus
+                  </p>
                 </Link>
                 <Link to="/courses" className="no-underline text-white">
-                  <p className="font-normal my-3 md:text-center hover:text-red-500 hover:cursor-pointer">Courses</p>
+                  <p className="font-normal my-3 md:text-center hover:text-red-500 hover:cursor-pointer">
+                    Courses
+                  </p>
                 </Link>
                 <Link to="/purchase" className="no-underline text-white">
-                  <p className="font-normal my-3 md:text-center hover:text-red-500 hover:cursor-pointer">Pricing</p>
+                  <p className="font-normal my-3 md:text-center hover:text-red-500 hover:cursor-pointer">
+                    Pricing
+                  </p>
                 </Link>
               </div>
               <div className="min-w-[10em] mx-auto my-5 md:my-0 md:ml-[-15px]">
                 <p className="md:text-center font-bold mb-10">Whom we serve</p>
-                <p className="md:text-center font-normal my-3 hover:text-red-500">School Students</p>
-                <p className="md:text-center font-normal my-3 hover:text-red-500">College Students</p>
-                <p className="md:text-center font-normal my-3 hover:text-red-500">Educational Institutions</p>
-                <p className="md:text-center font-normal my-3 hover:text-red-500">Private Colleges</p>
+                <p className="md:text-center font-normal my-3 hover:text-red-500">
+                  School Students
+                </p>
+                <p className="md:text-center font-normal my-3 hover:text-red-500">
+                  College Students
+                </p>
+                <p className="md:text-center font-normal my-3 hover:text-red-500">
+                  Educational Institutions
+                </p>
+                <p className="md:text-center font-normal my-3 hover:text-red-500">
+                  Private Colleges
+                </p>
               </div>
               <div className="min-w-[10em] mx-auto my-5 md:my-0 md:ml-[29px]">
                 <p className="ml-4 font-bold mb-10">Contact US</p>
-                <a href="mailto:info@testknock.com" className="hover:opacity-80 no-underline">
+                <a
+                  href="mailto:info@testknock.com"
+                  className="hover:opacity-80 no-underline"
+                >
                   <p className="md:text-center font-normal flex items-center my-3 text-white hover:text-red-500 hover:cursor-pointer">
                     <span className="flex justify-center items-center mr-2">
                       <IoMdMail className="text-[1.1em] md:text-[1.5em]" />
@@ -65,7 +104,10 @@ const Footer = () => {
                     info@testknock.com
                   </p>
                 </a>
-                <a href="tel:9953617456" className="hover:opacity-80 no-underline">
+                <a
+                  href="tel:9953617456"
+                  className="hover:opacity-80 no-underline"
+                >
                   <p className="md:text-center font-normal flex items-center my-3 text-white hover:text-red-500 hover:cursor-pointer">
                     <span className="flex justify-center items-center mr-2">
                       <IoMdCall className="text-[1.1em] md:text-[1.5em]" />
@@ -73,12 +115,18 @@ const Footer = () => {
                     9953617456
                   </p>
                 </a>
-                <a href="https://maps.google.com/?q=Office+No.+42,+Durga+Vihar,+near+Amrapali+Sapphire,+Sec-45,+Noida-201301" className="hover:opacity-80 no-underline">
+                <a
+                  href="https://maps.google.com/?q=Office+No.+42,+Durga+Vihar,+near+Amrapali+Sapphire,+Sec-45,+Noida-201301"
+                  className="hover:opacity-80 no-underline"
+                >
                   <p className="flex justify-between my-3 text-white hover:text-red-500 hover:cursor-pointer">
                     <span>
                       <IoMdPin className="text-[1.1em] md:text-[1.5em]" />
                     </span>
-                    <span className="ml-2">Office No. - 42, Durga Vihar, near Amrapali Saphhire, Sec-45, Noida-201301</span>
+                    <span className="ml-2">
+                      Office No. - 42, Durga Vihar, near Amrapali Saphhire,
+                      Sec-45, Noida-201301
+                    </span>
                   </p>
                 </a>
               </div>
@@ -98,14 +146,22 @@ const Footer = () => {
               <div className="flex flex-row items-start justify-start max-w-full mq750:flex-wrap mq450:gap-[76px]">
                 <div className="flex flex-row items-start justify-start  mr-4">
                   &copy;
-                  <b className="mr-4 mb-[-12px] ml-2 relative z-[1]">2024 TestKnock</b>
+                  <b className="mr-4 mb-[-12px] ml-2 relative z-[1]">
+                    2024 TestKnock
+                  </b>
                 </div>
-                <b className="mr-4 mb-[-12px] relative z-[1]">All rights reserved</b>
+                <b className="mr-4 mb-[-12px] relative z-[1]">
+                  All rights reserved
+                </b>
               </div>
               <div className="flex flex-row items-start justify-start gap-[30px] text-white">
-                <b className="relative z-[1] hover:text-red-500 hover:cursor-pointer">Terms & Condition</b>
+                <b className="relative z-[1] hover:text-red-500 hover:cursor-pointer">
+                  Terms & Condition
+                </b>
                 <b className="relative z-[1]">|</b>
-                <b className="relative z-[1] hover:text-red-500 hover:cursor-pointer">Privacy</b>
+                <b className="relative z-[1] hover:text-red-500 hover:cursor-pointer">
+                  Privacy
+                </b>
               </div>
             </div>
           </div>
