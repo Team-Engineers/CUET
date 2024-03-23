@@ -27,12 +27,12 @@ export default function DesktopNav() {
       <ul className="flex gap-6">
         {/* Solutions */}
 
-        {NavLinks.map((singLinkDetail) => (
+        {NavLinks?.map((singLinkDetail) => (
           <>
-            {singLinkDetail.clickable ? (
+            {singLinkDetail?.clickable ? (
               <>
                 <li
-                  key={singLinkDetail.category}
+                  key={singLinkDetail?.category}
                   className={
                     desktopNavToggle
                       ? " text-blueviolet-100 text-lg font-semibold"
@@ -41,10 +41,10 @@ export default function DesktopNav() {
                   onClick={deskTopNavToggleHander}
                 >
                   <Link
-                    to={singLinkDetail.link}
+                    to={singLinkDetail?.link}
                     className="text-blueviolet-100"
                   >
-                    {singLinkDetail.desktopCategoryName}
+                    {singLinkDetail?.desktopCategoryName}
                     <i
                       className={`fa-solid fa-chevron-down ml-2 ${
                         desktopNavToggle ? "rotate-180" : "rotate-0"
@@ -52,16 +52,16 @@ export default function DesktopNav() {
                     ></i>
                   </Link>
                 </li>
-                {singLinkDetail.hasMenu && desktopNavToggle && <Solutions />}
+                {singLinkDetail?.hasMenu && desktopNavToggle && <Solutions />}
               </>
             ) : (
-              <li key={singLinkDetail.category} className="relative group">
+              <li key={singLinkDetail?.category} className="relative group">
                 <Link
-                  to={singLinkDetail.link}
+                  to={singLinkDetail?.link}
                   className=" text-blueviolet-100 text-lg font-semibold hover:text-primary-green"
                 >
-                  {singLinkDetail.category}
-                  {(singLinkDetail.hasMenu || singLinkDetail.hasSubLinks) && (
+                  {singLinkDetail?.category}
+                  {(singLinkDetail?.hasMenu || singLinkDetail?.hasSubLinks) && (
                     <i
                       className={`fa-solid fa-chevron-down ml-2 rotate-0 group-hover:rotate-180`}
                     ></i>
@@ -69,14 +69,14 @@ export default function DesktopNav() {
                 </Link>
 
                 {/* if Sub Links  */}
-                {singLinkDetail.hasSubLinks && (
+                {singLinkDetail?.hasSubLinks && (
                   <ul className="absolute top-6 left-0 bg-primary-white w-36 rounded-md overflow-hidden h-0 group-hover:h-40 group-hover:p-4">
-                    {singLinkDetail.subLinks.map((linkItem) => (
+                    {singLinkDetail?.subLinks.map((linkItem) => (
                       <li
-                        key={linkItem.title}
+                        key={linkItem?.title}
                         className="py-1 hover:text-blueviolet-100"
                       >
-                        <Link to={linkItem.link}>{linkItem.title}</Link>
+                        <Link to={linkItem?.link}>{linkItem?.title}</Link>
                       </li>
                     ))}
                   </ul>
@@ -94,7 +94,7 @@ export default function DesktopNav() {
 
 const Solutions = () => {
   const [hoverMenuItem, setHoverMenuItem] = useState({
-    heading: NavLinks[1].menu[0].subHeading,
+    heading: NavLinks[1]?.menu[0]?.subHeading,
     index: 0,
   });
 
@@ -105,46 +105,48 @@ const Solutions = () => {
     <div className="max-w-full flex overflow-hidden p-0 absolute z-50 left-0 bg-primary-light top-24 rounded-b-2xl mx-2">
       {/* Menu */}
       <ul className="w-[25%] bg-primary-blue text-primary-white py-4 pl-0 mb-0 mt-0">
-        {NavLinks[1].menu.map((menuItem, index) => (
+        {NavLinks[1]?.menu?.map((menuItem, index) => (
           <li
-            key={menuItem.subHeading}
+            key={menuItem?.subHeading}
             className={`py-3 px-10 cursor-pointer ${
-              hoverMenuItem.heading === menuItem.subHeading
+              hoverMenuItem?.heading === menuItem?.subHeading
                 ? "bg-primary-light text-primary-black"
                 : ""
             }`}
             onMouseEnter={() =>
-              hoverMenuItemHandler(menuItem.subHeading, index)
+              hoverMenuItemHandler(menuItem?.subHeading, index)
             }
           >
-            <Link to={menuItem.link}>
+            <Link to={menuItem?.link}>
               <span
                 className={`flex items-center gap-2 mb-2 ${
-                  hoverMenuItem.heading === menuItem.subHeading
+                  hoverMenuItem?.heading === menuItem?.subHeading
                     ? "text-primary-black"
                     : "text-white"
                 }`}
               >
                 <img
                   src={
-                    hoverMenuItem.heading === menuItem.subHeading
-                      ? menuItem.icon
-                      : menuItem.icon_white
+                    hoverMenuItem?.heading === menuItem?.subHeading
+                      ? menuItem?.icon
+                      : menuItem?.icon_white
                   }
-                  alt={menuItem.subHeading}
+                  alt={menuItem?.subHeading}
                 />
-                {menuItem.subHeading}
+                {menuItem?.subHeading}
               </span>
-              {hoverMenuItem.heading === menuItem.subHeading && (
+              {hoverMenuItem?.heading === menuItem?.subHeading && (
                 <span className="text-s ml-8 block text-gray-500">
-                  {menuItem.subHeadingDescription}
+                  {menuItem?.subHeadingDescription}
                 </span>
               )}
             </Link>
           </li>
         ))}
       </ul>
-      <SolutionInfo solutionInfoData={NavLinks[1].menu[hoverMenuItem.index]} />
+      <SolutionInfo
+        solutionInfoData={NavLinks[1]?.menu[hoverMenuItem?.index]}
+      />
     </div>
   );
 };
@@ -152,43 +154,47 @@ const Solutions = () => {
 const SolutionInfo = ({ solutionInfoData }) => {
   return (
     <div className="w-[75%] relative">
-      {solutionInfoData.hasSubMenu && (
+      {solutionInfoData?.hasSubMenu && (
         <div className="grid grid-cols-3">
           {/* Coloumn 1 */}
-          {solutionInfoData.subMenu.column1Visible && (
+          {solutionInfoData?.subMenu?.column1Visible && (
             <ul className="w-full m-0 py-4 px-0 border-r  lg:text-s xl:text-m">
-              {solutionInfoData.subMenu.column1Links.map((linkItem, index) => (
-                <li
-                  key={linkItem.title + index}
-                  className="py-1 flex items-center gap-4 group transition-all overflow-hidden duration-500 hover:text-primary-orange hover:bg-primary-orange hover:bg-opacity-15 font-semibold"
-                >
-                  <p className="relative text-primary-orange transition-all duration-300 w-0 group-hover:w-4">
-                    <i className="fa-solid fa-caret-right duration-300 absolute -top-2 z-50 -left-10 group-hover:left-full"></i>
-                  </p>
-                  <Link to={linkItem.link}>{linkItem.title}</Link>
-                </li>
-              ))}
+              {solutionInfoData?.subMenu?.column1Links?.map(
+                (linkItem, index) => (
+                  <li
+                    key={linkItem?.title + index}
+                    className="py-1 flex items-center gap-4 group transition-all overflow-hidden duration-500 hover:text-primary-orange hover:bg-primary-orange hover:bg-opacity-15 font-semibold"
+                  >
+                    <p className="relative text-primary-orange transition-all duration-300 w-0 group-hover:w-4">
+                      <i className="fa-solid fa-caret-right duration-300 absolute -top-2 z-50 -left-10 group-hover:left-full"></i>
+                    </p>
+                    <Link to={linkItem?.link}>{linkItem?.title}</Link>
+                  </li>
+                )
+              )}
             </ul>
           )}
 
           {/* Coloumn 2 */}
-          {solutionInfoData.subMenu.column2Visible && (
+          {solutionInfoData?.subMenu?.column2Visible && (
             <ul className="w-full border-r lg:text-s xl:text-m px-0 py-4 m-0">
-              {solutionInfoData.subMenu.column2Links.map((linkItem, index) => (
-                <li
-                  key={linkItem.title + index}
-                  className="py-1 flex items-center gap-4 group transition-all overflow-hidden duration-500 hover:text-primary-orange hover:bg-primary-orange hover:bg-opacity-15 font-semibold"
-                >
-                  <p className="relative text-primary-orange transition-all duration-300 w-0 group-hover:w-4">
-                    <i className="fa-solid fa-caret-right duration-300 absolute -top-2 z-50 -left-10 group-hover:left-full"></i>
-                  </p>
-                  <Link to={linkItem.link}>{linkItem.title}</Link>
-                </li>
-              ))}
-              {solutionInfoData.subMenu.otherServiceVisible && (
+              {solutionInfoData?.subMenu?.column2Links?.map(
+                (linkItem, index) => (
+                  <li
+                    key={linkItem?.title + index}
+                    className="py-1 flex items-center gap-4 group transition-all overflow-hidden duration-500 hover:text-primary-orange hover:bg-primary-orange hover:bg-opacity-15 font-semibold"
+                  >
+                    <p className="relative text-primary-orange transition-all duration-300 w-0 group-hover:w-4">
+                      <i className="fa-solid fa-caret-right duration-300 absolute -top-2 z-50 -left-10 group-hover:left-full"></i>
+                    </p>
+                    <Link to={linkItem?.link}>{linkItem?.title}</Link>
+                  </li>
+                )
+              )}
+              {solutionInfoData?.subMenu?.otherServiceVisible && (
                 <li className="py-2 pl-4 group hover:text-primary-orange font-bold transition-all duration-300 text-s">
-                  <Link to={solutionInfoData.subMenu.otherService.link}>
-                    {solutionInfoData.subMenu.otherService.name}
+                  <Link to={solutionInfoData?.subMenu?.otherService?.link}>
+                    {solutionInfoData?.subMenu?.otherService?.name}
                     <i className="fa-solid fa-arrow-right ml-1 relative right-0 group-hover:-right-2"></i>
                   </Link>
                 </li>
@@ -197,37 +203,37 @@ const SolutionInfo = ({ solutionInfoData }) => {
           )}
 
           {/* Info 1 Visible  */}
-          {solutionInfoData.subMenu.info1Visible && (
+          {solutionInfoData?.subMenu?.info1Visible && (
             <div className="m-0 border-r py-4 lg:text-s mt-0 xl:text-m">
-              {solutionInfoData.subMenu.info1.hasLink && (
+              {solutionInfoData?.subMenu?.info1?.hasLink && (
                 <p className="py-1 mb-2 mt-0 flex items-center gap-4 group transition-all overflow-hidden duration-500 hover:text-primary-orange hover:bg-primary-orange hover:bg-opacity-15 font-semibold">
                   <p className="relative text-primary-orange transition-all duration-300 w-0 group-hover:w-4">
                     <i className="fa-solid fa-caret-right duration-300 absolute -top-2 z-50 -left-10 group-hover:left-full"></i>
                   </p>
-                  <Link to={solutionInfoData.subMenu.info1.linkInfo.link}>
-                    {solutionInfoData.subMenu.info1.linkInfo.title}
+                  <Link to={solutionInfoData?.subMenu?.info1?.linkInfo?.link}>
+                    {solutionInfoData?.subMenu?.info1?.linkInfo?.title}
                   </Link>
                 </p>
               )}
               <div className="px-4 flex flex-col gap-2">
                 <img
-                  src={solutionInfoData.subMenu.info1.image}
-                  alt={solutionInfoData.subMenu.info1.heading}
-                  className="w-full h-40 object-cover rounded-md"
+                  src={solutionInfoData?.subMenu?.info1?.image}
+                  alt={solutionInfoData?.subMenu?.info1?.heading}
+                  className="w-full h-40 object-contain rounded-md"
                 />
                 <h6 className="py-2 m-0 text-sm ">
-                  {solutionInfoData.subMenu.info1.heading}
+                  {solutionInfoData?.subMenu?.info1?.heading}
                 </h6>
 
                 <p className="m-0">
-                  {solutionInfoData.subMenu.info1.description}{" "}
+                  {solutionInfoData?.subMenu?.info1?.description}{" "}
                 </p>
-                {solutionInfoData.subMenu.info1.boldLinkVisible && (
+                {solutionInfoData?.subMenu?.info1?.boldLinkVisible && (
                   <Link
-                    to={solutionInfoData.subMenu.info1.boldLinkInfo.link}
+                    to={solutionInfoData?.subMenu?.info1?.boldLinkInfo?.link}
                     className="block py-4 font-bold"
                   >
-                    {solutionInfoData.subMenu.info1.boldLinkInfo.title}
+                    {solutionInfoData?.subMenu?.info1?.boldLinkInfo?.title}
                   </Link>
                 )}
               </div>
@@ -235,18 +241,18 @@ const SolutionInfo = ({ solutionInfoData }) => {
           )}
 
           {/* Info 2 Visible */}
-          {solutionInfoData.subMenu.info2Visible && (
+          {solutionInfoData?.subMenu?.info2Visible && (
             <div className="my-4  lg:text-s xl:text-m px-3">
               <h6 className="py-2 m-0 text-sm">
-                {solutionInfoData.subMenu.info2.heading}
+                {solutionInfoData?.subMenu?.info2?.heading}
               </h6>
               <img
-                src={solutionInfoData.subMenu.info2.image}
-                alt={solutionInfoData.subMenu.info2.heading}
-                className="w-60 my-2 h-40 object-cover rounded-md"
+                src={solutionInfoData?.subMenu?.info2?.image}
+                alt={solutionInfoData?.subMenu?.info2?.heading}
+                className="w-60 my-2 h-28 object-contain rounded-md"
               />
               <ul className="flex flex-col gap-2 my-2 p-0">
-                {solutionInfoData.subMenu.info2.data.map((text) => (
+                {solutionInfoData?.subMenu?.info2?.data?.map((text) => (
                   <li key={text} className="flex gap-2 items-center">
                     <img src={checkIcon} alt="check" />
                     {text}
@@ -258,12 +264,12 @@ const SolutionInfo = ({ solutionInfoData }) => {
         </div>
       )}
 
-      {solutionInfoData.descriptionListVisible && (
+      {solutionInfoData?.descriptionListVisible && (
         <div className="py-4">
-          {solutionInfoData.descriptionList.map((desc) => (
+          {solutionInfoData?.descriptionList?.map((desc) => (
             <Link
-              to={desc.link}
-              key={desc.title}
+              to={desc?.link}
+              key={desc?.title}
               className="flex p-4 items-center gap-2 group transition-all overflow-hidden duration-500 hover:bg-primary-orange hover:bg-opacity-15"
             >
               <p className="relative text-primary-orange transition-all duration-300 w-0 group-hover:w-10">
@@ -271,10 +277,10 @@ const SolutionInfo = ({ solutionInfoData }) => {
               </p>
               <p className="m-0">
                 <span className="font-semibold block group-hover:text-primary-orange lg:text-m">
-                  {desc.title}
+                  {desc?.title}
                 </span>
                 <span className="text-gray-600 mt-2 block lg:text-s xl:text-m">
-                  {desc.description}
+                  {desc?.description}
                 </span>
               </p>
             </Link>

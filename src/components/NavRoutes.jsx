@@ -3,7 +3,7 @@ import seoIconWhite from "../assets/indeed/seo-svg-white.svg";
 import socialIcon from "../assets/indeed/social-svg.svg";
 import socialIconWhite from "../assets/indeed/social-svg-white.svg";
 import droneImage from "../assets/indeed/drone-x-featured.webp";
-import smmImage from "../assets/indeed/megamenu-smm-img.webp";
+// import smmImage from "../assets/indeed/megamenu-smm-img.webp";
 import ormIcon from "../assets/indeed/orm-svg.svg";
 import ormIconWhite from "../assets/indeed/orm-svg-white.svg";
 import payIcon from "../assets/indeed/pay-svg.svg";
@@ -12,8 +12,10 @@ import streetImage from "../assets/indeed/main-street-coffee.webp";
 import ppcImage from "../assets/indeed/megamenu-ppc-img.webp";
 import linkIconWhite from "../assets/indeed/link-svg-white.svg";
 import linkIcon from "../assets/indeed/link-svg.svg";
-import contentIcon from "../assets/indeed/content-svg.svg";
-import contentIconWhite from "../assets/indeed/content-svg-white.svg";
+// import contentIcon from "../assets/indeed/content-svg.svg";
+// import contentIconWhite from "../assets/indeed/content-svg-white.svg";
+import MockTestGif from "../assets/homeSteps/Mocktest-ezgif.com-crop.gif";
+
 
 const NavLinks = [
   {
@@ -33,10 +35,10 @@ const NavLinks = [
 
     menu: [
       {
-        subHeading: "SEO Services",
+        subHeading: "General English",
         link: "/",
         subHeadingDescription:
-          "Unlock the Benefits of SEO and Enhance Your Site",
+          "General English contributes around 20% to 30% of the total marks in the CUET exams",
         icon: seoIcon,
         icon_white: seoIconWhite,
         hasSubMenu: true,
@@ -44,71 +46,124 @@ const NavLinks = [
           column1Visible: true,
           column1Links: [
             {
-              title: "SEO Services",
+              title: "Spot the Error",
               link: "/",
             },
             {
-              title: "On Page Optimization",
+              title: "Sentence Correction",
               link: "/",
             },
             {
-              title: "Off Page Optimization",
+              title: "Fill in the Blanks Single",
               link: "/",
             },
             {
-              title: "Google My Business Optimization",
+              title: "Fill in the Blanks Double",
               link: "/",
             },
             {
-              title: "App Store Optimization",
+              title: "Cloze Test",
               link: "/",
             },
             {
-              title: "Roofing SEO Company",
+              title: "Synonyms",
               link: "/",
             },
             {
-              title: "Roofing SEO Company",
+              title: "Antonyms",
               link: "/",
             },
+            // {
+            //   title: "One Word Substitution",
+            //   link: "/",
+            // },
+
             {
-              title: "SEO for Casino",
+              title: "View More",
               link: "/",
             },
+            // {
+            //   title: "Idioms & Phrases",
+            //   link: "/",
+            // },
+            // {
+            //   title: "Miscellaneous",
+            //   link: "/",
+            // },
+            // {
+            //   title: "Jumbled Sentences & Parajumble",
+            //   link: "/",
+            // },
+            // {
+            //   title: "Reading Comprehension",
+            //   link: "/",
+            // },
           ],
           column2Visible: true,
           column2Links: [
             {
-              title: "Adult SEO Service",
+              title: "Pratice Test 1",
               link: "/",
             },
             {
-              title: "SEO for Cryptocurrency",
+              title: "Pratice Test 2",
               link: "/",
             },
             {
-              title: "Health Care Service",
+              title: "Pratice Test 3",
               link: "/",
             },
             {
-              title: "Real Estate SEO Service",
+              title: "Pratice Test 4",
               link: "/",
             },
             {
-              title: "Dental SEO Service",
+              title: "Pratice Test 5",
               link: "/",
             },
+            {
+              title: "Pratice Test 6",
+              link: "/",
+            },
+            {
+              title: "Pratice Test 7",
+              link: "/",
+            },
+            {
+              title: "View More",
+              link: "/",
+            },
+            // {
+            //   title: "Pratice Test 8",
+            //   link: "/",
+            // },
+            // {
+            //   title: "Pratice Test 9",
+            //   link: "/",
+            // },
+            // {
+            //   title: "Pratice Test 10",
+            //   link: "/",
+            // },
+            // {
+            //   title: "Pratice Test 11",
+            //   link: "/",
+            // },
+            // {
+            //   title: "Pratice Test 12",
+            //   link: "/",
+            // },
           ],
-          otherServiceVisible: true,
-          otherService: {
-            name: "Our SEO Service",
-            link: "/",
-          },
+          // otherServiceVisible: true,
+          // otherService: {
+          //   name: "View More",
+          //   link: "/",
+          // },
           info1Visible: false,
           info2Visible: true,
           info2: {
-            heading: "ALWAYS AVAILABLE",
-            image: smmImage,
+            heading: "MOCK TEST AVAILABLE",
+            image: MockTestGif,
             data: [
               "Results Driven Guaranteed Results",
               "Google Partner Agency",
@@ -120,10 +175,10 @@ const NavLinks = [
         descriptionListVisible: false,
       },
       {
-        subHeading: "Social Media Marketing",
+        subHeading: "General Test",
         link: "/",
         subHeadingDescription:
-          "Boost Your Social Presence with the Right Social Media Services",
+          "This section typically covers areas like reasoning, quantitative aptitude, and general awareness. It may constitute around 20% to 30% of the total marks",
         icon: socialIcon,
         icon_white: socialIconWhite,
         hasSubMenu: true,
@@ -188,10 +243,10 @@ const NavLinks = [
         descriptionListVisible: false,
       },
       {
-        subHeading: "Online Repuatation Management",
+        subHeading: "Science",
         link: "/",
         subHeadingDescription:
-          "Take Control of Your Business with Our Robust ORM Services",
+          "For science-related programs, the weightage of science subjects in CUET exams can be significant, usually around 30% to 40% of the total marks.",
         icon: ormIcon,
         icon_white: ormIconWhite,
         hasSubMenu: false,
@@ -218,10 +273,10 @@ const NavLinks = [
         ],
       },
       {
-        subHeading: "Pay Per Click",
+        subHeading: "Commerce",
         link: "/",
         subHeadingDescription:
-          "Revolutionise Your Advertising with Pay Per Click",
+          "For commerce-related programs, the weightage of commerce subjects could be around 30% to 40% of the total marks.",
         icon: payIcon,
         icon_white: payIconWhite,
         hasSubMenu: true,
@@ -278,10 +333,10 @@ const NavLinks = [
         descriptionListVisible: false,
       },
       {
-        subHeading: "Link Building",
+        subHeading: "Humanities & Social Sciences",
         link: "/",
         subHeadingDescription:
-          "Explode Your Business with the Miracle of Link Building",
+          " This category often includes subjects like history, geography, political science, economics, etc. The weightage for humanities and social sciences subjects might range from 20% to 30% of the total marks.",
         icon: linkIcon,
         icon_white: linkIconWhite,
         hasSubMenu: false,
@@ -307,36 +362,36 @@ const NavLinks = [
           },
         ],
       },
-      {
-        subHeading: "Content Writing",
-        link: "/",
-        subHeadingDescription:
-          "Take Your Business to the Next Level with Content Writing",
-        icon: contentIcon,
-        icon_white: contentIconWhite,
-        hasSubMenu: false,
-        descriptionListVisible: true,
-        descriptionList: [
-          {
-            title: "Article Writing Services ",
-            description:
-              "Are you in need of article writing services for your business or website? Our article writing services provide clients with engaging, informative and keyword-optimized articles that are tailored to their specific industry and target audience.",
-            link: "/",
-          },
-          {
-            title: "Blog Writing Services ",
-            description:
-              "Our blog writing services provide clients with engaging and keyword-rich blog posts that are tailored to their specific industry and target audience. Our writers have the expertise to craft blog posts that are interesting, informative, and SEO-friendly.",
-            link: "/",
-          },
-          {
-            title: "Seo Content Writing Services ",
-            description:
-              "No matter what kind of content you need, IndeedSEO can help. Our SEO content writing services provide clients with keyword-rich, SEO-optimized content that is tailored to their specific industry and target audience.",
-            link: "/",
-          },
-        ],
-      },
+      // {
+      //   subHeading: "Content Writing",
+      //   link: "/",
+      //   subHeadingDescription:
+      //     "Take Your Business to the Next Level with Content Writing",
+      //   icon: contentIcon,
+      //   icon_white: contentIconWhite,
+      //   hasSubMenu: false,
+      //   descriptionListVisible: true,
+      //   descriptionList: [
+      //     {
+      //       title: "Article Writing Services ",
+      //       description:
+      //         "Are you in need of article writing services for your business or website? Our article writing services provide clients with engaging, informative and keyword-optimized articles that are tailored to their specific industry and target audience.",
+      //       link: "/",
+      //     },
+      //     {
+      //       title: "Blog Writing Services ",
+      //       description:
+      //         "Our blog writing services provide clients with engaging and keyword-rich blog posts that are tailored to their specific industry and target audience. Our writers have the expertise to craft blog posts that are interesting, informative, and SEO-friendly.",
+      //       link: "/",
+      //     },
+      //     {
+      //       title: "Seo Content Writing Services ",
+      //       description:
+      //         "No matter what kind of content you need, IndeedSEO can help. Our SEO content writing services provide clients with keyword-rich, SEO-optimized content that is tailored to their specific industry and target audience.",
+      //       link: "/",
+      //     },
+      //   ],
+      // },
     ],
   },
   {
