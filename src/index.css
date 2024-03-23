@@ -115,10 +115,19 @@ ul {
   list-style: none;
 }
 
+
 .border-r {
   border-right: 1px solid rgba(34, 42, 65, 0.15);
 }
 
 .border-t {
   border-top: 1px solid rgba(34, 42, 65, 0.15);
+}
+
+.navbar{
+  padding : 0px
+}
+
+a{
+  text-decoration: none;
 }

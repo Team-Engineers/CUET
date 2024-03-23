@@ -1,11 +1,10 @@
 import React from "react";
-import Navbar from "../components/profile/Navbar";
 import ProfileCard from "../components/profile/ProfileCard";
+import Header from "../components/profile/Navbar";
 
 const Profile = () => {
   return (
     <div>
-      {/* <Navbar /> */}
       <Header/>
       <ProfileCard />
     </div>
