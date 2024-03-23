@@ -4,9 +4,10 @@ import ProfileCard from "../components/profile/ProfileCard";
 
 const Profile = () => {
   return (
-    <div >
-      <Navbar />
-        <ProfileCard />
+    <div>
+      {/* <Navbar /> */}
+      <Header/>
+      <ProfileCard />
     </div>
   );
 };

@@ -66,9 +66,6 @@ const SignupForm = () => {
         const userWithoutSensitiveData = {
           ...user,
           password: undefined,
-          razorpay_signature: undefined,
-          razorpay_order_id: undefined,
-          razorpay_payment_id: undefined,
         };
         setAuth({
           user: userWithoutSensitiveData,
@@ -121,7 +118,7 @@ const SignupForm = () => {
           token: res.accessToken,
           expiry: tokenExpiry,
         };
-        const { password, razorpay_signature, razorpay_order_id, razorpay_payment_id, ...userWithoutSensitiveFields } = res.user;
+        const { password, ...userWithoutSensitiveFields } = res.user;
         setAuth({ user: userWithoutSensitiveFields, accessToken: tokenData });
         localStorage.setItem(
           "auth",

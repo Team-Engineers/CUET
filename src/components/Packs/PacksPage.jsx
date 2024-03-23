@@ -13,6 +13,7 @@ import Footer from '../Footer';
 import Navbar from '../Navbar';
 import PackFaq from "./PackFaq";
 import PriceTables from './PriceCard';
+import Header from '../Header';
 
 const PriceCard = ({ _id, nameOfPlan, bgColor, amount, description, benefits }) => {
   const [auth, setAuth] = useAuth();
@@ -90,8 +91,8 @@ const PriceCard = ({ _id, nameOfPlan, bgColor, amount, description, benefits }) 
       case '12 Mock Tests for each Subject':
       case 'Full Access to Practice Tests':
         return <FaCheck className='text-green-400' />;
-      case 'Any one Domain Subject':
-      case 'Any two Domain Subject':
+      case '/ Any one Domain Subject':
+      case '/ Any two Domain Subject':
         return <span>&ensp;&ensp;</span>;
       default:
         return <FaQuestionCircle className='text-blue-400' />;
@@ -161,7 +162,7 @@ const PriceCard = ({ _id, nameOfPlan, bgColor, amount, description, benefits }) 
             if (verifyResponse.data.success) {
               const userResponse = await axios.get(`${API}/users/find/${auth.user?._id}`);
               const updatedUser = userResponse.data;
-              const updatedAuth = { ...auth, user: updatedUser, password: undefined, razorpay_signature: undefined, razorpay_order_id: undefined, razorpay_payment_id: undefined };
+              const updatedAuth = { ...auth, user: updatedUser, password: undefined };
               setAuth(updatedAuth);
               localStorage.setItem("auth", JSON.stringify(updatedAuth));
               setLoading(false);
@@ -348,8 +349,9 @@ const PriceCardPage = ({ packages }) => {
 
   return (
     <div className="overflow-hidden max-w-full mx-auto  bg-[#c4e9f0]" style={{ background: `linear-gradient(to bottom, ${bgColor}, white 30%,  white)`, transition: "background-color 0.3s ease" }} >
-      <Navbar />
-      <div className="flex  flex-col justify-center items-center ">
+      {/* <Navbar /> */}
+      <Header/>
+      <div className="flex  flex-col justify-center items-center pt-5 ">
         <Tabs packages={packages} setActiveTab={setActiveTab} activeTab={activeTab} setBgColor={setBgColor} bgColor={bgColor} />
         <PriceCardsContainer packages={packages.filter((packageItem) => packageItem._id === activeTab)} />
         <div style={{ background: `linear-gradient(to bottom, ${bgColor},  white)`, transition: "background-color 0.3s ease", width: "100%" }}>
@@ -375,8 +377,8 @@ const Packages = [
     description:
       'Maximize your exam readiness with our Solo Pack. Choose from General English or General Test or any domain subject. Includes preparatory module, 12 practice tests, and 12 mock tests.',
     benefits: [
-      'General English / General Test /',
-      'Any one Domain Subject',
+      'General English / General Test',
+      '/ Any one Domain Subject',
       'Full Access to Prep Modules',
       '12 Practice Tests',
       '12 Mock Tests',
@@ -392,8 +394,8 @@ const Packages = [
     description:
       'Supercharge your preparation with our Pair Pack. Choose any from: General English and any one domain subject, General Test and one domain subject, or any two domain subjects. Includes preparatory modules, 12 practice tests, and 12 mock tests for each.',
     benefits: [
-      'General English & General Test /',
-      'Any two Domain Subject',
+      'General English & General Test',
+      '/ Any two Domain Subject',
       'Full Access to Prep Modules',
       '12 Practice Tests for each Subject',
       '12 Mock Tests for each Subject',

@@ -6,6 +6,7 @@ import Footer from "../Footer";
 import Navbar from "../Navbar";
 import { Testcard, Testcard1, Testcard2 } from "../Test/Testcard";
 import "./css/TestPage.css";
+import Header from "../Header";
 
 function TestPage() {
   const [currentTab, setCurrentTab] = useState("prep");
@@ -123,7 +124,8 @@ function TestPage() {
 
   return (
     <div className="overflow-x-hidden">
-      <Navbar />
+      {/* <Navbar /> */}
+      <Header/>
       <div className="md:mx-10 mx-4">
         <div className="max-w-[1280px] mx-auto">
           <div className="w-full flex flex-col-reverse md:flex-row items-center justify-between">

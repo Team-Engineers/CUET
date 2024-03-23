@@ -1,12 +1,12 @@
-// import Navbar from "../components/Navbar";
+import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import Header from "../components/dropdownnavbar/HeaderNav";
+import Header from "../components/Header";
 
 const AboutPage = () => {
   return (
     <div className="w-full overflow-hidden   bg-white">
       {/* <Navbar /> */}
-      < Header />
+      <Header/>
       <div className="">
       <div className="flex justify-between items-center  sm:flex-row flex-col-reverse lg:invisible">  {/* for large device */}
 

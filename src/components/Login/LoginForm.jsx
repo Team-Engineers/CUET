@@ -29,7 +29,7 @@ const LoginForm = () => {
           token: res.accessToken,
           expiry: tokenExpiry,
         };
-        const { password, razorpay_order_id, razorpay_payment_id, razorpay_signature, ...userWithoutSensitiveFields } = res.user;
+        const { password, ...userWithoutSensitiveFields } = res.user;
         setAuth({ user: userWithoutSensitiveFields, accessToken: tokenData });
         localStorage.setItem("auth", JSON.stringify({
           user: userWithoutSensitiveFields,
@@ -59,7 +59,7 @@ const LoginForm = () => {
     try {
       const response = await axios.post(`${API}/auth/signin`, { email: username, password });
       if (response.status === 200) {
-        const { accessToken, password, razorpay_order_id, razorpay_payment_id, razorpay_signature, ...userInfo } = response.data;
+        const { accessToken, password, ...userInfo } = response.data;
         const tokenExpiry = new Date().getTime() + 5 * 24 * 60 * 60 * 1000;
         const tokenData = {
           token: accessToken,
