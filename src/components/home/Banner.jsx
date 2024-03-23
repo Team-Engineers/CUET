@@ -25,7 +25,7 @@ const Banner = () => {
 
   return (
     <div className="max-w-[1280px] mx-auto md:mb-8">
-      <div className=" mx-[20px] flex flex-col md:flex-row justify-between items-center ">
+      <div className=" flex flex-col md:flex-row justify-between items-center ">
         <div className="flex justify-center items-center ">
           <div className="flex flex-col gap-2 justify-center max-md:mx-[15px] ">
             <div className="my-6 font-bold text-7xl md:text-21xl">

@@ -3,7 +3,30 @@ module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
+      transitionProperty: {
+        height: "height",
+      },
+      container: {
+        center: true,
+        padding: "1rem",
+        screens: {
+          sm: "100%",
+          md: "100%",
+          lg: "100%",
+          xl: "100%",
+          "2xl": "1280px",
+        },
+      },
+      screens: {
+        "2xl": "1280px",
+      },
       colors: {
+        "primary-green": "#30ad1c",
+        "primary-white": "#fff",
+        "primary-black": "#000000",
+        "primary-orange": "#ff6900",
+        "primary-blue": "#1778be",
+        "primary-light": "#f6faff",
         indigo: "#5648FC",
         darkyellow: "#ffbb64",
         darkcyan: "#80BCBD",
@@ -35,9 +58,9 @@ module.exports = {
           100: "#7d6eff",
           200: "rgba(125, 110, 255, 0.09)",
         },
-        salmon:{
+        salmon: {
           100: "#FF6868BF",
-          200: "#ff7468"
+          200: "#ff7468",
         },
         // salmon: "#ff7468",
         firebrick: "#cc4236",
@@ -46,6 +69,11 @@ module.exports = {
       spacing: {},
       fontFamily: {
         inter: "Inter",
+      },
+      fontSize: {
+        s: "14px",
+        m: "16px",
+        l: "18px",
       },
       borderRadius: {
         "lg-3": "18.3px",
@@ -77,6 +105,9 @@ module.exports = {
       xl: "20px",
       "21xl": "40px",
       inherit: "inherit",
+      s: "14px",
+      m: "16px",
+      l: "18px",
     },
   },
   daisyui: {

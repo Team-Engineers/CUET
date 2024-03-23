@@ -7,7 +7,8 @@ import Learning from '../components/Learning/Learning'
 const Learningpage = () => {
   return (
     <div>
-      <Navbar/>
+      {/* <Navbar/> */}
+      <Header/>
       <Learning/>
       <Footer/>
     </div>

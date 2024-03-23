@@ -19,18 +19,25 @@ body {
 }
 
 .gradient-text {
-  background-image: linear-gradient(to bottom right, #e94242, rgb(150, 185, 255));
+  background-image: linear-gradient(
+    to bottom right,
+    #e94242,
+    rgb(150, 185, 255)
+  );
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 .gradient-text2 {
-  background-image: linear-gradient(to bottom right, #2a20ec, rgb(50, 183, 255));
+  background-image: linear-gradient(
+    to bottom right,
+    #2a20ec,
+    rgb(50, 183, 255)
+  );
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
-
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
@@ -40,12 +47,12 @@ code {
   animation: moveLeftToRight 5s linear infinite;
 }
 
-.fixednav{
+.fixednav {
   background-image: url("https://d2kh7o38xye1vj.cloudfront.net/wp-content/uploads/2023/11/stripBG.png");
 }
 
 .scroll-kit::-webkit-scrollbar {
-  width: 10px; 
+  width: 10px;
 }
 
 .scroll-kit::-webkit-scrollbar-thumb {
@@ -57,8 +64,7 @@ code {
   background: #555; /* Color of the scrollbar handle on hover */
 }
 
-
-.signupp{
+.signupp {
   position: relative;
   z-index: 1100;
 }
@@ -74,19 +80,18 @@ code {
     transform: translateX(-20%);
   }
 }
-.borderyy{
+.borderyy {
   border-left: 1px solid black;
-  border-top:1px solid black ;
-  border-bottom:1px solid black ;
-
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
 }
 
-.abovecontain{
+.abovecontain {
   position: relative;
   z-index: 2000;
 }
 
-  .abovecontain2{
+.abovecontain2 {
   position: absolute;
   z-index: 3000;
 }
@@ -98,7 +103,26 @@ code {
   vertical-align: top;
 }
 
+.navbar {
+  padding: 0px;
+}
 
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+
+.border-r {
+  border-right: 1px solid rgba(34, 42, 65, 0.15);
+}
+
+.border-t {
+  border-top: 1px solid rgba(34, 42, 65, 0.15);
+}
 
 .navbar{
   padding : 0px

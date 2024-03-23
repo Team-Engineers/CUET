@@ -9,6 +9,7 @@ import {
     private_universities,
     state_universities,
 } from "../utils/universitydata";
+import Header from "../components/Header";
 
 const UniversitySection = ({ universities, id, title }) => {
     // const getRandomColor = () => {
@@ -122,7 +123,8 @@ const AllUniversities = () => {
 const University = () => {
     return (
         <div className="overflow-hidden">
-            <Navbar />
+            {/* <Navbar /> */}
+            <Header/>
             <div className="flex mb-[20px] mt-[10px] gap-[1vw] flex-col lg:flex-row  justify-center mx-auto max-w-[1280px]">
                 <div className="mx-auto">
                     <UniversitySection universities={central_universities} id="central" title="Central Universities" />

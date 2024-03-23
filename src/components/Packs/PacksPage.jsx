@@ -13,6 +13,7 @@ import Footer from '../Footer';
 import Navbar from '../Navbar';
 import PackFaq from "./PackFaq";
 import PriceTables from './PriceCard';
+import Header from '../Header';
 
 const PriceCard = ({ _id, nameOfPlan, bgColor, amount, description, benefits }) => {
   const [auth, setAuth] = useAuth();
@@ -348,8 +349,9 @@ const PriceCardPage = ({ packages }) => {
 
   return (
     <div className="overflow-hidden max-w-full mx-auto  bg-[#c4e9f0]" style={{ background: `linear-gradient(to bottom, ${bgColor}, white 30%,  white)`, transition: "background-color 0.3s ease" }} >
-      <Navbar />
-      <div className="flex  flex-col justify-center items-center ">
+      {/* <Navbar /> */}
+      <Header/>
+      <div className="flex  flex-col justify-center items-center pt-5 ">
         <Tabs packages={packages} setActiveTab={setActiveTab} activeTab={activeTab} setBgColor={setBgColor} bgColor={bgColor} />
         <PriceCardsContainer packages={packages.filter((packageItem) => packageItem._id === activeTab)} />
         <div style={{ background: `linear-gradient(to bottom, ${bgColor},  white)`, transition: "background-color 0.3s ease", width: "100%" }}>
