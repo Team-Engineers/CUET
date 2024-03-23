@@ -26,7 +26,7 @@ export const MathText = ({ text, textTag = "p" }) => {
                 key={`${index}_${subIndex}`}
                 tex={subpart}
                 display={false}
-                className="math-expression"
+                className="text-spacing math-expression"
               />
             );
           } else {
