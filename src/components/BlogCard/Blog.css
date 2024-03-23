@@ -73,7 +73,10 @@ a:not(.btn):hover {
   width: 100%;
   height: auto;
 }
-
+.thumbnail-img{
+  height: 100px !important;
+  width: 100px !important;
+}
 .post-item .post-image {
   margin: 0;
   position: relative;
