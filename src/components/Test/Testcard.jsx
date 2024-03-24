@@ -108,15 +108,15 @@ export const Testcard = ({
                 alt="Free Icon"
               />
             )}
-          <div className="w-[90%] h-full relative top-[-10px] flex flex-col justify-around">
-            <h5 className="font-bold text-center text-[17px] ">{subTopic}</h5>
+          <div className="w-[295.01px] h-[271.48px] relative top-[-10px] flex flex-col justify-around">
+            <h5 className="font-bold text-center text-[17px] mt-4 ">{subTopic}</h5>
             {/* <div className="image-cards grid grid-cols-3 gap-4"> */}
             <div className="image-card">
             <img
               src={require(`../../assets/images/prepImages/${path}/img${index + 1}.png`)}
               // src={require(`${imagesPath}/img${index + 1}.png`)}
               // src={random}
-              className="w-[130px] mx-auto h-[130px] flex justify-center items-center"
+              className="w-[121px] mx-auto h-[121px] flex justify-center items-center"
               alt={`Image ${index + 1}`}
             />
           </div>
