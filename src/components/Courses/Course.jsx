@@ -69,16 +69,20 @@ const Courses = () => {
           <div className="max-w-[180vh] relative z-10 mx-auto flex flex-col items-center mt-[-40px]">
             <div className="flex flex-col items-center justify-center mt-[50px] ">
               <div className={`my-6 flex md:flex-row flex-col gap-[70px] `}>
-                <TopicContainer
-                  brick={require("../../assets/images/signup/brick.png")}
-                  heading="General English"
-                  color="#FF6868"
-                />
-                <TopicContainer
-                  brick={require("../../assets/images/signup/test.png")}
-                  heading="General Test"
-                  color="#80BCBD"
-                />
+                <a href="/courses/General_English">
+                  <TopicContainer
+                    brick={require("../../assets/images/signup/brick.png")}
+                    heading="General English"
+                    color="#FF6868"
+                  />
+                </a>
+                <a href="/courses/General_Test/Mathematics">
+                  <TopicContainer
+                    brick={require("../../assets/images/signup/test.png")}
+                    heading="General Test"
+                    color="#80BCBD"
+                  />
+                </a>
               </div>
             </div>
           </div>

@@ -355,7 +355,7 @@ export const topics = {
   ],
   "Political Science": [
     "The Cold War Era",
-    "The End of Bipolarity ",
+    "The End of Bipolarity",
     "US Hegemony in World Politics",
     "Alternatives Centre of Power",
     "Contemporary South Asia",
