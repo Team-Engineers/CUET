@@ -16,7 +16,7 @@ const BlogPost = () => {
   const renderPreparationStrategies = (strategies) => {
     return strategies?.map((strategy, index) => {
       if (strategy?.type === "text") {
-        return <p key={index}>{strategy?.content}</p>;
+        return <MathText key={index} text={strategy?.content} textTag="p" />;
       } else if (strategy?.type === "image") {
         return (
           <img key={index} src={strategy?.imageUrl} alt={strategy?.altText} />
@@ -30,7 +30,8 @@ const BlogPost = () => {
                 <div className="">
                   {strategy?.table?.data?.map((cell, idx) => (
                     <div key={idx} className="mr-4">
-                      <a href="#">☛ {cell}</a>
+                      {/* <a href="#">☛ {cell}</a> */}
+                      <MathText text={"☛  " + cell} textTag="a" />
                     </div>
                   ))}
                 </div>
@@ -46,7 +47,7 @@ const BlogPost = () => {
             <h2>Also Read</h2>
             <ul>
               {strategies?.alsoRead?.map((item, index) => (
-                <li key={index}>{item}</li>
+                <MathText key={index} text={item} textTag="li" />
               ))}
             </ul>
           </>
