@@ -1,12 +1,37 @@
-import React from "react";
+import React,{useState } from "react";
 import { BlogData } from "./Data";
 import { Link } from "react-router-dom";
-import { FaArrowRight } from 'react-icons/fa';
+import { FaArrowRight, FaSearch } from 'react-icons/fa';
+
 
 
 const BlogGrid = () => {
+  const [searchTerm, setSearchTerm] = useState("");
+
+  // Filter blog entries based on search term
+  const filteredBlogs = BlogData.filter(blogEntry =>
+    blogEntry.title.toLowerCase().includes(searchTerm.toLowerCase())
+  );
   return (
     <div className=" max-w-[1280px]  mt-[7rem] mb-[7rem] mx-auto">
+      <div className='flex flex-col md:flex-row md:items-center pl-[2.5rem]'>
+          <h1 className="text-lg md:text-3xl font-bold">CUET Blogs</h1>
+        <div className="relative flex items-center">
+          <label htmlFor="default-search" className="sr-only">Search</label>
+          <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+            <FaSearch className="w-4 h-4 text-gray-400" />
+          </div>
+          <input
+            type="search"
+            id="default-search"
+            className="block w-full py-2 pl-10 pr-3 text-sm border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"
+            placeholder="Search blogs..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+        </div>
+        </div>
+
       <div className="flex justify-center items-center flex-wrap">
         {BlogData.map((blogEntry, index) => (
           <div
