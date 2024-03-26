@@ -49,7 +49,7 @@ function TestPage() {
         questionsValues = [50, 50, 50, 50, 50, 170, 50, 50, 60, 60, 60, 60];
       }
     } else {
-      questionsValues = [50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50];
+      questionsValues = [100, 60, 100, 100, 60, 50, 130, 50, 50, 170, 40, 60];
     }
 
     return {
@@ -105,9 +105,10 @@ function TestPage() {
       questionsValues = ["50 of 60", "50 of 60", "50 of 60", "50 of 60", "50 of 60", "50 of 60", "50 of 60", "50 of 60", "50 of 60", "50 of 60", "50 of 60", "50 of 60"];
       negativeValues = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
-    } else {
+    }
+    else {
       marksValues = [200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200];
-      timesValues = [45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45];
+      timesValues = [60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60];
       questionsValues = ["40 of 50", "40 of 50", "40 of 50", "40 of 50", "40 of 50", "40 of 50", "40 of 50", "40 of 50", "40 of 50", "40 of 50", "40 of 50", "40 of 50"];
       negativeValues = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
     }
