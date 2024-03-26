@@ -87,8 +87,14 @@ export const Testcard = ({
   //   .replace(/\./g, "")
   //   .replace(/,/g, "");
   return (
-    <Link style={{ textDecoration: "none" }} to={`/login`}>
-
+    <Link
+    style={{ textDecoration: "none" }}
+    to={
+      (index === 0) && (heading === "General Test" || heading === "General English") ?
+        `${navigation}/${subTopic.split(" ").join("_")}` :
+        auth.user && userSubject === heading ? `${navigation}/${subTopic.split(" ").join("_")}` :
+        auth.user ? `/purchase` : `/login`
+    }>
       <div
         style={{
         }}
@@ -254,8 +260,15 @@ export const Testcard1 = ({
   };
 
   return (
-    <Link style={{ textDecoration: "none" }} to={`/login`}>
-      <div
+    <Link
+    style={{ textDecoration: "none" }}
+    to={
+      (index === 0 || (index <= 2 && auth.user)) && (topic === "General Test" || topic === "General English") ?
+        `/courses/practice/${topic2}/${subtopicNumber}` :
+        auth.user && userSubject === topic ? `/courses/practice/${topic2}/${subtopicNumber}` :
+        auth.user ? `/purchase` : `/login`
+    }>
+          <div
         style={{
           // boxShadow: `0 4px 6px ${bgcolor}, 0 1px 3px rgba(0, 0, 0, 0.1)`,
           background: bgcolor,
@@ -411,8 +424,24 @@ export const Testcard2 = ({
   };
 
   return (
-    <Link style={{ textDecoration: "none" }} to={`/login`}>
-      <div className="flex flex-col transition-all duration-300 hover:shadow-2xl border-solid border-[0.5px] border-gray-700 text-black bg-white rounded-[20px] items-center justify-around cursor-pointer p-[10px] h-[351px] w-[321px]"
+    <Link
+  to={
+    auth.user ? (
+      userSubject === topic || (index <= 2 && (topic === "General Test" || topic === "General English")) ? (
+        `${MOCKAPI}/${topic2}/mock_test/${mocksubtopicNumber}/${auth?.user?._id}`
+      ) : (
+        "/purchase"
+      )
+    ) : (
+      index === 0 && (topic === "General Test" || topic === "General English") ? (
+        `${MOCKAPI}/${topic2}/mock_test/${mocksubtopicNumber}/free`
+      ) : (
+        "/login"
+      )
+    )
+  }
+  style={{ textDecoration: "none"}}>
+    <div className="flex flex-col transition-all duration-300 hover:shadow-2xl border-solid border-[0.5px] border-gray-700 text-black bg-white rounded-[20px] items-center justify-around cursor-pointer p-[10px] h-[351px] w-[321px]"
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}>
 

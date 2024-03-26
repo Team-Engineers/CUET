@@ -1,22 +1,22 @@
 export const BlogData = [
   {
-    title: "How to Prepare for CUET Biology – plans and strategies",
+    title: "How to crack the CUET UG Exam: A Strategic Guide for Success",
     to: "blog_5",
     description:
-      "Understanding the curriculum and exam structure is the first step in any exam or subject preparation process. Making a preparation strategy decision would be simpler once you were aware of the framework.",
+      "The Common University Entrance Test (CUET) has emerged as a crucial gateway for aspiring undergraduates seeking admission into prestigious universities across India. ",
     image: {
       url: "https://cuetlions.com/upload/images/24031312513051.jpg",
       alt: "CUET Biology Image",
     },
 
     date: "2024-03-20T12:00:00Z",
-    publishedOn: "2024-03-22T12:00:00Z",
-    author: "Your Name",
+    publishedOn: "26-03-2024",
+    author: "Sarthak",
     preparationStrategies: [
       {
         type: "text",
         content:
-          "Understanding the curriculum and exam structure is the first step in any exam or subject preparation process. Making a preparation strategy decision would be simpler once you were aware of the framework.",
+          "The Common University Entrance Test (CUET) has emerged as a crucial gateway for aspiring undergraduates seeking admission into prestigious universities across India. While some might view it as an additional hurdle, a strategic approach can transform it into an opportunity to showcase your academic strengths. This comprehensive guide delves into the intricacies of the CUET UG exam, equipping you with the knowledge and strategies to excel.",
       },
       // {
       //   type: "image",

@@ -146,7 +146,7 @@ const PriceTable = ({ handleGetStarted, hidden }) => {
             </p>
             <p className="h-12 text-gray-900 text-center leading-relaxed flex items-center justify-center"><span className='font-bold mr-2 md:hidden'>PREP MODULES </span>Full Access</p>
             <p className="bg-white text-gray-900 text-center h-12 flex items-center justify-center"><span className='font-bold mr-2 md:hidden'>Practice Test </span>
-              1 for each subject
+              12 for each subject
             </p>
             <p className="text-gray-900 text-center h-12 flex items-center justify-center"><span className='font-bold mr-2 md:hidden'>Mock Test </span>
               12 for each subject
@@ -190,7 +190,7 @@ const PriceTable = ({ handleGetStarted, hidden }) => {
             </p>
             <p className="h-12 text-gray-900 text-center leading-relaxed flex items-center justify-center"><span className='font-bold mr-2 md:hidden'>PREP MODULES </span>Full Access</p>
             <p className="bg-white text-gray-900 text-center h-12 flex items-center justify-center"><span className='font-bold mr-2 md:hidden'>Practice Test </span>
-              1 for each subject
+              12 for each subject
             </p>
             <p className="text-gray-900 text-center h-12 flex items-center justify-center"><span className='font-bold mr-2 md:hidden'>Mock Test </span>
               12 for each subject
@@ -245,7 +245,7 @@ const PriceTable = ({ handleGetStarted, hidden }) => {
             </p>
             <p className="h-12 text-gray-900 text-center leading-relaxed flex items-center justify-center"><span className='font-bold mr-2 md:hidden'>PREP MODULES </span>Full Access</p>
             <p className="bg-white text-gray-900 text-center h-12 flex items-center justify-center"><span className='font-bold mr-2 md:hidden'>Practice Test </span>
-              1 for each subject
+              12 for each subject
             </p>
             <p className="text-gray-900 text-center h-12 flex items-center justify-center"><span className='font-bold mr-2 md:hidden'>Mock Test </span>
               12 for each subject
@@ -302,7 +302,7 @@ const PriceTable = ({ handleGetStarted, hidden }) => {
             </p>
             <p className="h-12 text-gray-900 text-center leading-relaxed flex items-center justify-center"><span className='font-bold mr-2 md:hidden'>PREP MODULES </span>Full Access</p>
             <p className="bg-white text-gray-900 text-center h-12 flex items-center justify-center">
-              <span className='font-bold mr-2 md:hidden'>Practice Test </span>1 for each subject
+              <span className='font-bold mr-2 md:hidden'>Practice Test </span>12 for each subject
             </p>
             <p className="text-gray-900 text-center h-12 flex items-center justify-center">
               <span className='font-bold mr-2 md:hidden'>Mock Test </span>12 for each subject

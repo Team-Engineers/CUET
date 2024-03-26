@@ -42,14 +42,14 @@ function TestPage() {
     let questionsValues;
     if (topic === "General Test") {
       if (selectedCategory === "Mathematics") {
-        questionsValues = [50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50];
+        questionsValues = [100, 40, 30, 76, 76, 50, 44, 50, 25, 50, 46, 50, 52, 36, 37,29];
       } else if (selectedCategory === "Logical Reasoning") {
         questionsValues = [90, 80, 80, 50, 220, 30, 90, 30, 80, 90, 20, 70, 130];
       } else if (selectedCategory === "General Awareness") {
         questionsValues = [50, 50, 50, 50, 50, 170, 50, 50, 60, 60, 60, 60];
       }
     } else {
-      questionsValues = [100, 60, 100, 100, 60, 50, 130, 50, 50, 170, 40, 60];
+      questionsValues = [50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50];
     }
 
     return {
@@ -82,7 +82,7 @@ function TestPage() {
       questionsValues = [20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20];
     } else {
       marksValues = [20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20];
-      timesValues = [20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20,];
+      timesValues = [15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15];
       questionsValues = [20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20];
     }
 

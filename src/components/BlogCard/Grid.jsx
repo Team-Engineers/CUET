@@ -1,11 +1,13 @@
 import React from "react";
 import { BlogData } from "./Data";
 import { Link } from "react-router-dom";
+import { FaArrowRight } from 'react-icons/fa';
+
 
 const BlogGrid = () => {
   return (
     <div className=" max-w-[1280px]  mt-[7rem] mb-[7rem] mx-auto">
-      <div className="flex justify-start items-center flex-wrap">
+      <div className="flex justify-center items-center flex-wrap">
         {BlogData.map((blogEntry, index) => (
           <div
             key={index}
@@ -21,9 +23,19 @@ const BlogGrid = () => {
                 <div className="font-bold text-xl mb-2 hover:text-blue-500 cursor-pointer">
                   {blogEntry.title}
                 </div>
+                <p className="text-gray-700">
+                  {blogEntry.description}
+                  </p> 
+                  <Link to={`blog_${index+1}`} style={{ textDecoration: "none" }}
+                  className=" text-blue-500 text-sm font-medium  flex items-center justify-start  transition duration-300 ">
+                     Read More <FaArrowRight className="ml-2" />
+                  </Link>
                 <p className="text-sm text-gray-500">
                   Published on: {blogEntry.publishedOn}
                 </p>
+                {/* <p className="text-sm text-gray-500">  //FOR AUTHOR
+                  Author: {blogEntry.author}
+                </p> */}
               </div>
             </Link>
           </div>
