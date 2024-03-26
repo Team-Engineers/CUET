@@ -19,6 +19,7 @@ function TestPage() {
   } else {
     subtopics = topics[topic];
   }
+// console.log("consoling all the values subtopics,selectedcategory,topics",subtopics,selectedCategory,topic);
 
   const handleCategoryChange = (category) => {
     setSelectedCategory(category);
@@ -105,13 +106,22 @@ function TestPage() {
       questionsValues = ["50 of 60", "50 of 60", "50 of 60", "50 of 60", "50 of 60", "50 of 60", "50 of 60", "50 of 60", "50 of 60", "50 of 60", "50 of 60", "50 of 60"];
       negativeValues = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
+      
     }
-    else {
+    else{
       marksValues = [200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200];
-      timesValues = [60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60];
-      questionsValues = ["40 of 50", "40 of 50", "40 of 50", "40 of 50", "40 of 50", "40 of 50", "40 of 50", "40 of 50", "40 of 50", "40 of 50", "40 of 50", "40 of 50"];
       negativeValues = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+      // timesValues = [45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45];
+      //   questionsValues = ["40 of 50", "40 of 50", "40 of 50", "40 of 50", "40 of 50", "40 of 50", "40 of 50", "40 of 50", "40 of 50", "40 of 50", "40 of 50", "40 of 50"];
+      if (topic === "Mathematics" || topic === "Physics" || topic === "Chemistry" || topic === "Accountancy" || topic === "Economics") {
+        timesValues = [60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60];
+        questionsValues = ["40 of 50", "40 of 50", "40 of 50", "40 of 50", "40 of 50", "40 of 50", "40 of 50", "40 of 50", "40 of 50", "40 of 50", "40 of 50", "40 of 50"];
+      } else {
+        timesValues = [45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45];
+        questionsValues = ["40 of 50", "40 of 50", "40 of 50", "40 of 50", "40 of 50", "40 of 50", "40 of 50", "40 of 50", "40 of 50", "40 of 50", "40 of 50", "40 of 50"];
+      }
     }
+    
 
     return {
       subTopic: `${topic} ${mocksubtopicNumber}`,
