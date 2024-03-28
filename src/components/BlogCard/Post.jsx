@@ -7,93 +7,78 @@ import PopularBlogs from "./PopularBlog";
 import { Link } from "react-router-dom";
 import BlogFaq from "./Faq";
 import { MathText } from "../mathJax/MathText.jsx";
-
 const BlogPost = () => {
   const { topic } = useParams();
-  const blogIndex = parseInt(topic?.split("_")[1]);
-  const blog = BlogData[blogIndex - 1];
-  const renderListItems = (list) => {
-    return list.map((item, index) => (
-      <li key={index} dangerouslySetInnerHTML={{ __html: highlightText(item) }} />
-    ));
-  };
-  
-  const highlightText = (text) => {
-    // Define the text to be highlighted
-    const highlight = "Revision is Key";
-  
-    // Check if the text contains the highlight
-    if (text.includes(highlight)) {
-      // Apply HTML markup to highlight the text
-      return text.replace(highlight, `<strong>${highlight}</strong>`);
-    }
-  
-    // Return the original text if no highlighting is needed
-    return text;
-  };
 
+  const blogIndex = parseInt(topic?.split("_")[1]);
+
+  const blog = BlogData[blogIndex - 1];
   const renderPreparationStrategies = (strategies) => {
     return strategies?.map((strategy, index) => {
       if (strategy?.type === "text") {
-        return <p key={index}>{strategy?.content}</p>;
+        return <MathText key={index} text={strategy?.content} textTag="p" />;
       } else if (strategy?.type === "image") {
         return (
           <img key={index} src={strategy?.imageUrl} alt={strategy?.altText} />
         );
-      }
-      else if (strategy?.type === "multi_col_table") {
-        return (
-          <div key={index}>
-            <div className="table-body">
-              <h4>{strategy?.table?.title}</h4>
-              <table className="custom-table">
-                <thead>
-                  <tr>
-                    {Object.keys(strategy?.table?.data[0]).map((header, idx) => (
-                      <th key={idx}>{header}</th>
+
+      
+    }
+    else if (strategy?.type === "multi_col_table") {
+      return (
+        <div key={index}>
+          <div className="table-body">
+            <h4>{strategy?.table?.title}</h4>
+            <table className="custom-table">
+              <thead>
+                <tr>
+                  {Object.keys(strategy?.table?.data[0]).map((header, idx) => (
+                    <th key={idx}>{header}</th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {strategy?.table?.data?.map((row, idx) => (
+                  <tr key={idx}>
+                    {Object.values(row).map((value, idx) => (
+                      <td key={idx}>{value}</td>
                     ))}
                   </tr>
-                </thead>
-                <tbody>
-                  {strategy?.table?.data?.map((row, idx) => (
-                    <tr key={idx}>
-                      {Object.values(row).map((value, idx) => (
-                        <td key={idx}>{value}</td>
-                      ))}
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-            <br />
+                ))}
+              </tbody>
+            </table>
           </div>
-        );
-        
-      }
+          <br />
+        </div>
+      );
+      } 
       else if (strategy?.type === "single_col_table") {
         return (
           <div key={index}>
             <div className="table-body">
               <h4>{strategy?.table?.title}</h4>
               <div style={{ padding: "10px 15px" }}>
-                {strategy?.table?.data?.map((cell, idx) => (
-                  <div key={idx} className="mr-4">
-                    <p>{cell}</p>
-                  </div>
-                ))}
+                <div className="">
+                  {strategy?.table?.data?.map((cell, idx) => (
+                    <div key={idx} className="mr-4">
+                      {/* <a href="#">☛ {cell}</a> */}
+                      <MathText text={"☛  " + cell} textTag="a" />
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
+
             <br />
           </div>
         );
-      } 
-      else if (strategy?.type === "also_read") {
+      } else if (strategy?.type === "also_read") {
         return (
           <>
             <h2>Also Read</h2>
             <ul>
               {strategies?.alsoRead?.map((item, index) => (
-                <li key={index}>{item}</li>
+                <MathText key={index} text={item} textTag="li" />
               ))}
             </ul>
           </>
@@ -106,6 +91,37 @@ const BlogPost = () => {
           </>
         );
       } 
+      // else if (strategy.type === "new_para") {
+      //   return (
+      //     <div className="new_para">
+      //       <div className="heading">
+      //         <h4 className="m-0">{strategy.heading}</h4>
+      //       </div>
+      //       <div className="description">
+      //         <MathText text={strategy.content} textTag="p" />
+      //       </div>
+      //       <div className="read_more">
+      //         {strategy.alsoRead && strategy.alsoRead.length > 0 && (
+      //           <div>
+      //             <strong>ALSO READ -</strong>
+      //             {strategy.alsoRead.map((item, index) => (
+      //               <span style={{ color: item.color }} key={index}>
+      //                 &nbsp;
+      //                 <a
+      //                   href={item.url}
+      //                   target="_blank"
+      //                   rel="noopener noreferrer"
+      //                 >
+      //                   {item.title}
+      //                 </a>
+      //               </span>
+      //             ))}
+      //           </div>
+      //         )}
+      //       </div>
+      //     </div>
+      //   );
+      // }
       else if (strategy?.type === "new_para") {
         return (
           <div className="new_para" key={index}>
@@ -117,7 +133,7 @@ const BlogPost = () => {
               {strategy.list && (
                 <ul>
                   {strategy.list.map((item, idx) => (
-                    <li key={idx}>{item}</li>
+                    <MathText text={item} key={idx} textTag="li" />
                   ))}
                 </ul>
               )}
@@ -147,12 +163,13 @@ const BlogPost = () => {
       
     });
   };
+
   return (
     <div>
       <section id="page-title">
         <div className="page-title max-w-[1280px] mx-auto">
           <h1>{blog?.title}</h1>
-          <div className="breadcrumb">
+          <div class="breadcrumb">
             <ul>
               <li>
                 <Link to="/" style={{ textTransform: "uppercase" }}>

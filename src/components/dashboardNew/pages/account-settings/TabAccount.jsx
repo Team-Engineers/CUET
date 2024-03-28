@@ -12,6 +12,20 @@ import Avatars from './Avatars';
 import { CgSpinner } from "react-icons/cg";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Avatar from '@mui/material/Avatar';
+
+const AvatarStyled = styled(Avatar)(({ theme }) => ({
+  width: 100,
+  height: 100,
+  marginRight: theme.spacing(6.25),
+  borderRadius: '50%',
+  backgroundColor: theme.palette.primary.main,
+  color: theme.palette.primary.contrastText,
+  fontSize: '2.5rem',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+}));
 const ImgStyled = styled('img')(({ theme }) => ({
   width: 120,
   height: 120,
@@ -110,8 +124,13 @@ const TabAccount = () => {
         <Grid container spacing={7}>
           <Grid item xs={12} sx={{ marginTop: 4.8, marginBottom: 3 }}>
             <Box sx={{ display: 'flex', alignItems: 'center' }}>
-              <ImgStyled className='rounded-full' src={imgSrc} alt="Profile Pic" />
-              <Box>
+            {imgSrc ? (
+                <ImgStyled className='rounded-full' src={imgSrc} alt="Profile Pic" />
+              ) : (
+                <AvatarStyled className='rounded-full'>
+                  {name && name.charAt(0)}
+                </AvatarStyled>
+              )}              <Box>
                 <ButtonStyled variant="contained" onClick={handleOpenAvatarDialog}>
                   Select Avatar
                 </ButtonStyled>
