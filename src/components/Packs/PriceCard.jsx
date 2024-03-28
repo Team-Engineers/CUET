@@ -25,7 +25,7 @@ const PriceTable = ({ handleGetStarted, hidden }) => {
             <div className="px-2 text-center h-48 flex flex-col items-center justify-center">
               <h3 className="tracking-widest">ROOKIE</h3>
               <h2 className="text-5xl text-gray-900 font-medium leading-none mb-4 mt-2">Free</h2>
-              <span className="text-sm text-gray-900">Without Login</span>
+              <span className="text-sm text-gray-900 font-medium">Without Login</span>
             </div>
             <p className="bg-white text-gray-900 h-12 text-center px-2 flex items-center -mt-px justify-center border-t border-gray-300"><span className='font-bold mr-2 md:hidden'>General English </span>
               <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" className="w-5 h-5 text-red-500 " viewBox="0 0 24 24">
@@ -45,10 +45,10 @@ const PriceTable = ({ handleGetStarted, hidden }) => {
             </p>
             <p className="h-12 text-gray-900 px-6 text-center leading-relaxed flex items-center justify-center"><span className='font-bold mr-2 md:hidden'>PREP MODULES </span>1 Module</p>
             <p className="bg-white text-gray-900 text-center h-12 flex items-center justify-center"><span className='font-bold mr-2 md:hidden'>Practice Test </span>
-              1 Test
+              1 for each subject
             </p>
             <p className="text-gray-900 text-center h-12 flex items-center justify-center"><span className='font-bold mr-2 md:hidden'>Mock Test </span>
-              1 Test
+              1 for each subject
             </p>
             <p className="bg-white text-gray-900 text-center h-12 flex items-center justify-center"><span className='font-bold mr-2 md:hidden'>UNLIMITED ATTEMPT </span>
               <span className="w-5 h-5 inline-flex items-center justify-center bg-green-400 text-white rounded-full flex-shrink-0">
@@ -75,7 +75,7 @@ const PriceTable = ({ handleGetStarted, hidden }) => {
             <div className="px-2 text-center h-48 flex flex-col items-center justify-center">
               <h3 className="tracking-widest">NOVICE</h3>
               <h2 className="text-5xl text-gray-900 font-medium leading-none mb-4 mt-2">Free</h2>
-              <span className="text-sm text-gray-900">Login</span>
+              <span className="text-sm text-gray-900 font-medium">Login</span>
             </div>
             <p className="bg-white text-gray-900 h-12 text-center px-2 flex items-center -mt-px justify-center border-t border-gray-300">
               <span className='font-bold mr-2 md:hidden'>General English </span>
@@ -96,10 +96,10 @@ const PriceTable = ({ handleGetStarted, hidden }) => {
             </p>
             <p className="h-12 text-gray-900 px-6 text-center leading-relaxed flex items-center justify-center"><span className='font-bold mr-2 md:hidden'>PREP MODULES </span>3 Modules</p>
             <p className="bg-white text-gray-900 text-center h-12 flex items-center justify-center"><span className='font-bold mr-2 md:hidden'>Practice Test </span>
-              3 Tests
+              3 for each subject
             </p>
             <p className="text-gray-900 text-center h-12 flex items-center justify-center"><span className='font-bold mr-2 md:hidden'>Mock Test </span>
-              3 Tests
+            3 for each subject
             </p>
             <p className="bg-white text-gray-900 text-center h-12 flex items-center justify-center"><span className='font-bold mr-2 md:hidden'>UNLIMITED ATTEMPT </span>
               <span className="w-5 h-5 inline-flex items-center justify-center bg-green-400 text-white rounded-full flex-shrink-0">
@@ -132,7 +132,7 @@ const PriceTable = ({ handleGetStarted, hidden }) => {
               <h2 className="text-5xl text-gray-900 font-medium flex items-center justify-center leading-none mb-4 mt-2">₹699
                 <span className="text-gray-900 text-base ml-1">/year</span>
               </h2>
-              <span className="text-sm text-gray-900">Charging ₹58.25 per month</span>
+              <span className="text-sm text-gray-900 font-medium">Charging ₹58.25 per month</span>
 
             </div>
             <p className="bg-white text-gray-900 h-12 text-center px-2 flex items-center -mt-px justify-center border-t border-gray-300">
@@ -146,10 +146,10 @@ const PriceTable = ({ handleGetStarted, hidden }) => {
             </p>
             <p className="h-12 text-gray-900 text-center leading-relaxed flex items-center justify-center"><span className='font-bold mr-2 md:hidden'>PREP MODULES </span>Full Access</p>
             <p className="bg-white text-gray-900 text-center h-12 flex items-center justify-center"><span className='font-bold mr-2 md:hidden'>Practice Test </span>
-              Full Access
+              12 for each subject
             </p>
             <p className="text-gray-900 text-center h-12 flex items-center justify-center"><span className='font-bold mr-2 md:hidden'>Mock Test </span>
-              12 Tests
+              12 for each subject
             </p>
             <p className="bg-white text-gray-900 text-center h-12 flex items-center justify-center"><span className='font-bold mr-2 md:hidden'>UNLIMITED ATTEMPT </span>
               <span className="w-5 h-5 inline-flex items-center justify-center bg-green-400 text-white rounded-full flex-shrink-0">
@@ -177,7 +177,7 @@ const PriceTable = ({ handleGetStarted, hidden }) => {
               <h2 className="text-5xl text-gray-900 font-medium flex items-center justify-center leading-none mb-4 mt-2">1299
                 <span className="text-gray-900 text-base ml-1">/year</span>
               </h2>
-              <span className="text-sm text-gray-900">Charging ₹108.25 per month</span>
+              <span className="text-sm text-gray-900 font-medium">Charging ₹108.25 per month</span>
 
             </div>
             <p className="bg-white text-gray-900 h-12 text-center px-2 flex items-center -mt-px justify-center border-t border-gray-300"><span className='font-bold mr-2 md:hidden'>General English </span>Can be Chosen</p>
@@ -190,10 +190,10 @@ const PriceTable = ({ handleGetStarted, hidden }) => {
             </p>
             <p className="h-12 text-gray-900 text-center leading-relaxed flex items-center justify-center"><span className='font-bold mr-2 md:hidden'>PREP MODULES </span>Full Access</p>
             <p className="bg-white text-gray-900 text-center h-12 flex items-center justify-center"><span className='font-bold mr-2 md:hidden'>Practice Test </span>
-              Full Access
+              12 for each subject
             </p>
             <p className="text-gray-900 text-center h-12 flex items-center justify-center"><span className='font-bold mr-2 md:hidden'>Mock Test </span>
-              12 Tests
+              12 for each subject
             </p>
             <p className="bg-white text-gray-900 text-center h-12 flex items-center justify-center"><span className='font-bold mr-2 md:hidden'>UNLIMITED ATTEMPT </span>
               <span className="w-5 h-5 inline-flex items-center justify-center bg-green-400 text-white rounded-full flex-shrink-0">
@@ -220,7 +220,7 @@ const PriceTable = ({ handleGetStarted, hidden }) => {
               <h2 className="text-5xl text-gray-900 font-medium flex items-center justify-center leading-none mb-4 mt-2">₹2599
                 <span className="text-gray-900 text-base ml-1">/year</span>
               </h2>
-              <span className="text-sm text-gray-900">Charging ₹216.5 per month</span>
+              <span className="text-sm text-gray-900 font-medium">Charging ₹216.5 per month</span>
 
             </div>
             <p className="bg-white text-gray-900 h-12 text-center px-2 flex items-center -mt-px justify-center border-t border-gray-300">
@@ -245,10 +245,10 @@ const PriceTable = ({ handleGetStarted, hidden }) => {
             </p>
             <p className="h-12 text-gray-900 text-center leading-relaxed flex items-center justify-center"><span className='font-bold mr-2 md:hidden'>PREP MODULES </span>Full Access</p>
             <p className="bg-white text-gray-900 text-center h-12 flex items-center justify-center"><span className='font-bold mr-2 md:hidden'>Practice Test </span>
-              Full Access
+              12 for each subject
             </p>
             <p className="text-gray-900 text-center h-12 flex items-center justify-center"><span className='font-bold mr-2 md:hidden'>Mock Test </span>
-              12 Tests
+              12 for each subject
             </p>
             <p className="bg-white text-gray-900 text-center h-12 flex items-center justify-center"><span className='font-bold mr-2 md:hidden'>UNLIMITED ATTEMPT </span>
               <span className="w-5 h-5 inline-flex items-center justify-center bg-green-400 text-white rounded-full flex-shrink-0">
@@ -277,7 +277,7 @@ const PriceTable = ({ handleGetStarted, hidden }) => {
               <h2 className="text-5xl text-gray-900 font-medium flex items-center justify-center leading-none mb-4 mt-2">2999
                 <span className="text-gray-900 text-base ml-1">/year</span>
               </h2>
-              <span className="text-sm text-gray-900">Charging ₹249.91 per month</span>
+              <span className="text-sm text-gray-900 font-medium">Charging ₹249.91 per month</span>
 
             </div>
             <p className="bg-white text-gray-900 h-12 text-center px-2 flex items-center -mt-px justify-center border-t border-gray-300">
@@ -302,10 +302,10 @@ const PriceTable = ({ handleGetStarted, hidden }) => {
             </p>
             <p className="h-12 text-gray-900 text-center leading-relaxed flex items-center justify-center"><span className='font-bold mr-2 md:hidden'>PREP MODULES </span>Full Access</p>
             <p className="bg-white text-gray-900 text-center h-12 flex items-center justify-center">
-              <span className='font-bold mr-2 md:hidden'>Practice Test </span>Full Access
+              <span className='font-bold mr-2 md:hidden'>Practice Test </span>12 for each subject
             </p>
             <p className="text-gray-900 text-center h-12 flex items-center justify-center">
-              <span className='font-bold mr-2 md:hidden'>Mock Test </span>12 Tests
+              <span className='font-bold mr-2 md:hidden'>Mock Test </span>12 for each subject
             </p>
             <p className="bg-white text-gray-900 text-center h-12 flex items-center justify-center"><span className='font-bold mr-2 md:hidden'>UNLIMITED ATTEMPT </span>
               <span className="w-5 h-5 inline-flex items-center justify-center bg-green-400 text-white rounded-full flex-shrink-0">

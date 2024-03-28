@@ -4,10 +4,10 @@ import styled from "styled-components";
 import { useAuth } from "../../utils/context";
 
 const StyledBurger = styled.button`
-z-index: 49;
-overflow: hidden;
+  z-index: 49;
+  overflow: hidden;
   position: relative;
-  top:-4px;
+  top: -4px;
   display: flex;
   margin: auto 20px;
   flex-direction: column;
@@ -45,13 +45,13 @@ overflow: hidden;
 `;
 
 const StyledMenu = styled.nav`
-overflow: hidden;
-z-index: 49;
-  display: flex;
+  overflow: hidden;
+  z-index: 49;
   flex-direction: column;
-  justify-content: center; 
+  justify-content: center;
   align-items: center;
   transform: ${({ open }) => (open ? "translateX(0)" : "translateX(100%)")};
+  display: ${({ open }) => (open ? "flex" : "none")};
   right: -50px;
   height: 100vh;
   width: 100vw;
@@ -78,7 +78,7 @@ z-index: 49;
     }
 
     &:hover {
-      color: #1404DA;
+      color: #1404da;
     }
   }
 `;
@@ -122,31 +122,59 @@ const BurgerAndMenu = () => {
         <NavLink className="text-[#1404DA] " to="/" onClick={handleMenuClick}>
           Home
         </NavLink>
-        <NavLink className="text-[#1404DA] " to="/courses" onClick={handleMenuClick}>
+        <NavLink
+          className="text-[#1404DA] "
+          to="/courses"
+          onClick={handleMenuClick}
+        >
           Courses
         </NavLink>
-        <NavLink className="text-[#1404DA]" to="/about" onClick={handleMenuClick}>
+        <NavLink
+          className="text-[#1404DA]"
+          to="/about"
+          onClick={handleMenuClick}
+        >
           About
         </NavLink>
-        <NavLink className="text-[#1404DA]" to="/syllabus" onClick={handleMenuClick}>
+        <NavLink
+          className="text-[#1404DA]"
+          to="/syllabus"
+          onClick={handleMenuClick}
+        >
           Syllabus
         </NavLink>
-        <NavLink className="text-[#1404DA]" to="/purchase" onClick={handleMenuClick}>
+        <NavLink
+          className="text-[#1404DA]"
+          to="/purchase"
+          onClick={handleMenuClick}
+        >
           Pricing
         </NavLink>
 
         {!auth?.user ? (
           <>
-            <NavLink className="text-[#1404DA]" to="/login" onClick={handleMenuClick}>
+            <NavLink
+              className="text-[#1404DA]"
+              to="/login"
+              onClick={handleMenuClick}
+            >
               Log In
             </NavLink>
-            <NavLink className="text-red-400" to="/signup" onClick={handleMenuClick}>
+            <NavLink
+              className="text-red-400"
+              to="/signup"
+              onClick={handleMenuClick}
+            >
               Sign Up
             </NavLink>
           </>
         ) : (
           <>
-            <NavLink className="text-[#1404DA]" to="/profile" onClick={handleMenuClick}>
+            <NavLink
+              className="text-[#1404DA]"
+              to="/profile"
+              onClick={handleMenuClick}
+            >
               Dashboard
             </NavLink>
             <NavLink className="text-red-400" onClick={handleLogout}>
@@ -154,7 +182,6 @@ const BurgerAndMenu = () => {
             </NavLink>
           </>
         )}
-
       </StyledMenu>
     </>
   );

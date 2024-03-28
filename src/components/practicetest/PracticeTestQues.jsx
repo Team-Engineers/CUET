@@ -82,7 +82,7 @@ const PracticeTestQues = ({ data, topic, subtopic }) => {
       setSelectedOptions(updatedSelectedOptions);
 
       const isCorrect =
-        question.subQuestions[0].correctOptionIndex - 1 === optionIndex;
+        question.subQuestions[0].correctOptionIndex === optionIndex;
 
       if (isCorrect) {
         setCorrectOptions([...correctOptions, { questionIndex, optionIndex }]);
@@ -238,17 +238,17 @@ const PracticeTestQues = ({ data, topic, subtopic }) => {
           className={`option-box ${!isSubmitted &&
             selectedOptions[currentPage] &&
             selectedOptions[currentPage][questionIndex] === optionIndex
-            ? "bg-gradient-to-br from-[#a1e486] to-[#76e967] text-white"
+            ? "bg-gradient-to-br from-[#868fe4] to-[#677be9] text-white"
             : isSubmitted &&
               selectedOptions[currentPage] &&
               selectedOptions[currentPage][questionIndex] === optionIndex &&
-              question?.subQuestions[0]?.correctOptionIndex - 1 ===
+              question?.subQuestions[0]?.correctOptionIndex ===
               optionIndex
               ? "correct"
               : isSubmitted &&
                 selectedOptions[currentPage] &&
                 selectedOptions[currentPage][questionIndex] === optionIndex &&
-                question?.subQuestions[0]?.correctOptionIndex - 1 !==
+                question?.subQuestions[0]?.correctOptionIndex !==
                 optionIndex
                 ? "incorrect"
                 : ""
@@ -274,7 +274,7 @@ const PracticeTestQues = ({ data, topic, subtopic }) => {
           </div>
 
           <div className="">
-            {question?.subQuestions[0]?.correctOptionIndex - 1 ===
+            {question?.subQuestions[0]?.correctOptionIndex ===
               optionIndex &&
               isSubmitted &&
               selectedOptions[currentPage] &&
@@ -286,7 +286,7 @@ const PracticeTestQues = ({ data, topic, subtopic }) => {
             {isSubmitted &&
               selectedOptions[currentPage] &&
               selectedOptions[currentPage][questionIndex] === optionIndex &&
-              question?.subQuestions[0]?.correctOptionIndex - 1 !==
+              question?.subQuestions[0]?.correctOptionIndex !==
               optionIndex && (
                 <span className=" relative mx-2  ">
                   <i className="fa-solid fa-xmark"></i>
@@ -388,7 +388,7 @@ const PracticeTestQues = ({ data, topic, subtopic }) => {
         : null;
       if (selectedOptionIndex !== null) {
         const isCorrect =
-          question?.subQuestions[0]?.correctOptionIndex - 1 ===
+          question?.subQuestions[0]?.correctOptionIndex ===
           selectedOptionIndex;
         if (isCorrect) {
           correctCount++;

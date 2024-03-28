@@ -22,19 +22,28 @@ import University from "./pages/UniversityPage";
 import PrivateRoutes from "./utils/PrivateRoutes";
 // import DashBoardNew from "./components/dashboardNew/pages/Dashboard";
 import Cards from "./components/dashboardNew/Cards/Cards";
-// import PriceTable from "./components/Packs/PriceCard";
 import BoughtPack from "./pages/BoughtPack";
+import UserPlans from "./components/dashboardNew/pages/UserPlans";
+// import PriceTable from "./components/Packs/PriceCard";
+import Blog from "./pages/Blog";
+
 import { useAuth } from "./utils/context";
+const selectedSubjects = auth?.user?.selectedSubjects;
+import BlogStructure from "./components/BlogCard/Structure";
 const App = () => {
   const [auth, setAuth] = useAuth();
-  const selectedSubjects = auth?.user?.selectedSubjects;
-
   return (
     <Routes>
-      <Route path="/login" element={<Login />} />
-      <Route path="/signup" element={<Signup />} />
-      <Route path="/forgot-password" element={<ForgotPassword />} />
-      <Route path="/reset_password/:id/:token" element={<ResetPassword />} />
+      <Route path="/login" element={!auth?.user ? <Login /> : <Homepage />} />
+      <Route path="/signup" element={!auth?.user ? <Signup /> : <Homepage />} />
+      <Route
+        path="/forgot-password"
+        element={!auth?.user ? <ForgotPassword /> : <Homepage />}
+      />
+      <Route
+        path="/reset_password/:id/:token"
+        element={!auth?.user ? <ResetPassword /> : <Homepage />}
+      />
       <Route path="/Domain" element={<Domain />} />
       <Route
         path="/"
@@ -47,6 +56,9 @@ const App = () => {
         }
       />{" "}
       <Route path="/about" element={<AboutPage />} />
+      <Route path="/blogs" element={<Blog />} />
+      <Route path="/blogs/:topic" element={<BlogStructure />} />
+
       <Route path="/syllabus" element={<Syllabus />} />
       <Route path="/courses" element={<Coursespage />} />
       <Route path="/purchase" element={<PackPage />} />
@@ -72,7 +84,7 @@ const App = () => {
         <Route path="/profile" element={<MainLayout />}>
           <Route index element={<AccountSettings />} />
           <Route path="progress" element={<Cards />} />
-          {/* <Route path="plans" element={<UserPlans />} /> */}
+          <Route path="plans" element={<UserPlans />} />
           {/* <Route path="plans" element={<PriceTable hidden="hidden" />} /> */}
         </Route>
       </Route>

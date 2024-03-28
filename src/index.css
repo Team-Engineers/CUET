@@ -103,3 +103,16 @@ code {
 .navbar{
   padding : 0px
 }
+
+a{
+  text-decoration: none;
+}
+
+.minimal-space{
+  height : 3px;
+  width : 100%;
+}
+
+.text-spacing {
+  white-space: pre-wrap;
+}

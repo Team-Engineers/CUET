@@ -19,6 +19,7 @@ function TestPage() {
   } else {
     subtopics = topics[topic];
   }
+// console.log("consoling all the values subtopics,selectedcategory,topics",subtopics,selectedCategory,topic);
 
   const navigate = useNavigate();
 
@@ -44,7 +45,7 @@ function TestPage() {
     let questionsValues;
     if (topic === "General Test") {
       if (selectedCategory === "Mathematics") {
-        questionsValues = [100, 80, 30, 85, 80, 50, 50, 50, 25, 50, 60, 50, 50, 30, 50];
+        questionsValues = [100, 40, 30, 76, 76, 50, 44, 50, 25, 50, 46, 50, 52, 36, 37,29];
       } else if (selectedCategory === "Logical Reasoning") {
         questionsValues = [90, 80, 80, 50, 220, 30, 90, 30, 80, 90, 20, 70, 130];
       } else if (selectedCategory === "General Awareness") {
@@ -60,8 +61,9 @@ function TestPage() {
       bgcolor: backgroundColors[colorIndex],
     };
   });
+  // console.log("subtopiclength",subtopics.length);
 
-  const practice = Array.from({ length: 12 }, (_, index) => {
+  const practice = Array.from({ length: subtopics.length }, (_, index) => {
     const backgroundColors = [
       "#776CFF",
       "#FF887E",
@@ -79,7 +81,7 @@ function TestPage() {
 
     if (topic === "General Test") {
       marksValues = [20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20];
-      timesValues = [20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20];
+      timesValues = [25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25];
       questionsValues = [20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20];
     } else {
       marksValues = [20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20];
@@ -106,12 +108,22 @@ function TestPage() {
       questionsValues = ["50 of 60", "50 of 60", "50 of 60", "50 of 60", "50 of 60", "50 of 60", "50 of 60", "50 of 60", "50 of 60", "50 of 60", "50 of 60", "50 of 60"];
       negativeValues = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
-    } else {
-      marksValues = [200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200];
-      timesValues = [45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45];
-      questionsValues = ["40 of 50", "40 of 50", "40 of 50", "40 of 50", "40 of 50", "40 of 50", "40 of 50", "40 of 50", "40 of 50", "40 of 50", "40 of 50", "40 of 50"];
-      negativeValues = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+      
     }
+    else{
+      marksValues = [200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200];
+      negativeValues = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+      // timesValues = [45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45];
+      //   questionsValues = ["40 of 50", "40 of 50", "40 of 50", "40 of 50", "40 of 50", "40 of 50", "40 of 50", "40 of 50", "40 of 50", "40 of 50", "40 of 50", "40 of 50"];
+      if (topic === "Mathematics" || topic === "Physics" || topic === "Chemistry" || topic === "Accountancy" || topic === "Economics") {
+        timesValues = [60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 60];
+        questionsValues = ["40 of 50", "40 of 50", "40 of 50", "40 of 50", "40 of 50", "40 of 50", "40 of 50", "40 of 50", "40 of 50", "40 of 50", "40 of 50", "40 of 50"];
+      } else {
+        timesValues = [45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45];
+        questionsValues = ["40 of 50", "40 of 50", "40 of 50", "40 of 50", "40 of 50", "40 of 50", "40 of 50", "40 of 50", "40 of 50", "40 of 50", "40 of 50", "40 of 50"];
+      }
+    }
+    
 
     return {
       subTopic: `${topic} ${mocksubtopicNumber}`,

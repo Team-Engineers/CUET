@@ -15,6 +15,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { API } from '../../../../utils/constants';
 import { useAuth } from '../../../../utils/context';
+import Avatar from '@mui/material/Avatar';
 const TabSecurity = () => {
   const [loading, setLoading] = useState(false);
   const [auth] = useAuth();
@@ -140,12 +141,17 @@ const TabSecurity = () => {
           xs={12}
           sx={{ display: 'flex', marginTop: [7.5, 2.5], alignItems: 'center', justifyContent: 'center' }}
         >
-          <img className='md:w-[300px] md:h-[300px] max-sm:mb-5 w-[200px] h-[200px]' alt='avatar' src={auth.user?.profilePic} />
-        </Grid>
+        {auth.user?.profilePic ? (
+            <img className='md:w-[300px] md:h-[300px] max-sm:mb-5 w-[200px] h-[200px]' alt='avatar' src={auth.user?.profilePic} />
+          ) : (
+            <Avatar sx={{ width: 100, height: 100, fontSize: 40, backgroundColor:'#1565C0'}}>
+              {auth.user?.name.charAt(0)}
+            </Avatar>
+          )}        </Grid>
         <Grid container spacing={6}>
 
           <Grid item xs={12}>
-            <Button type='submit' variant='contained'>
+            <Button type='submit' variant='contained' sx={{ marginTop: 2 }}>
               {loading && (
                 <CgSpinner size={20} className="mt-1 animate-spin" />
               )}
