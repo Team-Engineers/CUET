@@ -21,8 +21,6 @@ const BlogPost = () => {
         return (
           <img key={index} src={strategy?.imageUrl} alt={strategy?.altText} />
         );
-
-      
     }
     else if (strategy?.type === "multi_col_table") {
       return (
@@ -160,7 +158,9 @@ const BlogPost = () => {
           </div>
         );
       }
-      
+      else{
+        return <div></div>
+      }
     });
   };
 
@@ -169,7 +169,7 @@ const BlogPost = () => {
       <section id="page-title">
         <div className="page-title max-w-[1280px] mx-auto">
           <h1>{blog?.title}</h1>
-          <div class="breadcrumb">
+          <div className="breadcrumb">
             <ul>
               <li>
                 <Link to="/" style={{ textTransform: "uppercase" }}>

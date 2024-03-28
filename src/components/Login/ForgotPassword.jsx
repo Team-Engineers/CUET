@@ -66,9 +66,9 @@ function ForgotPassword() {
                                                     <input autocomplete="off" value={email}
                                                         onChange={(e) => setEmail(e.target.value)}
                                                         required
-                                                        aria-describedby="email-error" id="email" name="email" type="email" class="peer bg-transparent placeholder-transparent font-medium text-lg px-3 py-2 h-10 w-full border-b-2 border-gray-300 text-gray-900 outline-none border-none focus:outline-none focus:borer-slate-400" placeholder='Email Address' />
+                                                        aria-describedby="email-error" id="email" name="email" type="email" className="peer bg-transparent placeholder-transparent font-medium text-lg px-3 py-2 h-10 w-full border-b-2 border-gray-300 text-gray-900 outline-none border-none focus:outline-none focus:borer-slate-400" placeholder='Email Address' />
                                                     <hr className='relative bg-blue-900 h-[2px] bottom-5' />
-                                                    <label for="email" class="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">Email Address</label>
+                                                    <label for="email" className="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">Email Address</label>
                                                 </div>
                                             </div>
                                             <button

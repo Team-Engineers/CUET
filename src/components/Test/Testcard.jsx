@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { CiCircleMinus, CiSquareCheck } from "react-icons/ci";
+import { CiSquareCheck } from "react-icons/ci";
 import { FaQuestion } from "react-icons/fa6";
 import { TbClockHour8 } from "react-icons/tb";
 import { Link } from 'react-router-dom';
@@ -74,7 +74,6 @@ export const Testcard = ({
     setButtonTextColor("#ff7468");
 
   };
-  const images =  '../../assets/images/prepImages/generalenglish';
   // const imagesPath = heading === 'General Test' ? `${images}/generaltest` : `${images}/generalenglish`;
   // const imagesPath = heading === 'General Test' ? `${images}/${heading.toLowerCase().split(' ').join('')}/${selectedCategory.toLowerCase().split(' ').join('')}` : `${images}/${heading.toLowerCase().split(' ').join('')}`;
 
@@ -123,7 +122,7 @@ export const Testcard = ({
               // src={require(`${imagesPath}/img${index + 1}.png`)}
               // src={random}
               className="w-[121px] mx-auto h-[121px] flex justify-center items-center"
-              alt={`Image ${index + 1}`}
+              alt={`Loading ${index + 1}`}
             />
           </div>
           {/* </div> */}

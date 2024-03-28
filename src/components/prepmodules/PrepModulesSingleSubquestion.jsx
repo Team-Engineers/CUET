@@ -59,12 +59,12 @@ const PrepModulesSingleSubquestion = ({ data }) => {
         <div className="question-box">
           <div className="question-option">
             <div className="question">
-              <div class="question-number-container">
+              <div className="question-number-container">
                 <span className={`question-number id-${question?._id}`}>
                   {`${questionIndex + 1 + currentPage * 5} `}
                 </span>
               </div>
-              <div class="question-text-container">
+              <div className="question-text-container">
                 {question?.subQuestions[0]?.questionTextAndImages?.map(
                   (textAndImages, textAndImagesIndex) => (
                     <div className="" key={textAndImagesIndex}>
