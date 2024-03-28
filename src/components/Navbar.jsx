@@ -11,23 +11,23 @@ const Navbar = ({ height }) => {
   const [detailsOpen, setDetailsOpen] = useState(false);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const nav_buttons = [
-    { path: "/", title: "Home"},
+    { path: "/", title: "Home" },
     { path: "/courses", title: "Courses" },
     { path: "/about", title: "About" },
     { path: "/syllabus", title: "Syllabus" },
     { path: "/Blogs", title: "Blog" },
     { path: "/purchase", title: "Pricing" },
   ];
-//  if(!auth?.user){
-//   nav_buttons = [
-//     { path: "/courses", title: "Courses" },
-//     { path: "/about", title: "About" },
-//     { path: "/syllabus", title: "Syllabus" },
-//     { path: "/Blogs", title: "Blog" },
-//     { path: "/purchase", title: "Pricing" },
-//   ];
-//  }
- 
+  //  if(!auth?.user){
+  //   nav_buttons = [
+  //     { path: "/courses", title: "Courses" },
+  //     { path: "/about", title: "About" },
+  //     { path: "/syllabus", title: "Syllabus" },
+  //     { path: "/Blogs", title: "Blog" },
+  //     { path: "/purchase", title: "Pricing" },
+  //   ];
+  //  }
+
 
 
   const handleBellIconClick = () => {
@@ -60,19 +60,19 @@ const Navbar = ({ height }) => {
           </div>
         }
       </div>
-      <div style={{ height: height }} className={`navbar abovecontain ${location.pathname === "/" ? "bg-white" : ""} max-w-[1280px] mx-auto z-10   relative min-h-[8vh]`}>
+      <div style={{ height: height }} className={`navbar abovecontain max-w-[1280px] mx-auto z-10   relative min-h-[8vh]`}>
         <div className="navbar-start ml-5 md:w-72  relative">
-        {/* {console.log("User authenticated:", auth?.user)} */}
-           <NavLink to={"/"} className="no-underline gap-2 mt-[5px] items-center flex">
-             <div className="flex gap-2 items-center">
-               <img className="md:h-[40.5px] w-[25px]  md:w-[30px] relative object-cover" loading="eager" alt="" src={"/logo.png"} />
-               <b className="relative text-blueviolet-100 whitespace-nowrap md:text-xl">CUET-TestKnock</b>
-             </div>
-           </NavLink>
+          {/* {console.log("User authenticated:", auth?.user)} */}
+          <NavLink to={"/"} className="no-underline gap-2 mt-[5px] items-center flex">
+            <div className="flex gap-2 items-center">
+              <img className="md:h-[40.5px] w-[25px]  md:w-[30px] relative object-cover" loading="eager" alt="" src={"/logo.png"} />
+              <b className="relative text-blueviolet-100 whitespace-nowrap md:text-xl">CUET-TestKnock</b>
+            </div>
+          </NavLink>
         </div>
         <div className="navbar-end lg:ml-auto w-full relative p-0">
           <ul className="menu menu-horizontal  lg:w-full lg:max-w-3xl lg:justify-end items-center">
-          {nav_buttons.map((nav, i) => (
+            {nav_buttons.map((nav, i) => (
               <li className="hidden lg:flex" key={i}>
                 <div className="h-[21px] flex flex-col items-start justify-start text-blueviolet-100">
                   <NavLink to={nav.path} className={`no-underline text-blueviolet-100 ${location.pathname === nav.path ? "active" : ""}`}>
@@ -83,7 +83,7 @@ const Navbar = ({ height }) => {
                   )}
                 </div>
               </li>
-          ))}
+            ))}
           </ul>
           <div className="mr-3">
             {!auth?.user ? (

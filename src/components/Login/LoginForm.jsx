@@ -93,7 +93,7 @@ const LoginForm = () => {
         toast.error("Wrong Username or Password!");
       }
     } catch (error) {
-      toast.error("An error occurred during login. Please try again later.");
+      toast.error("Wrong Username or Password!");
       setLoading(false);
     }
   };
