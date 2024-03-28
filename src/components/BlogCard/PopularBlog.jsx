@@ -50,7 +50,9 @@ const PopularBlog = () => {
                         <div className="post-thumbnail-entry" key={index}>
                           <img alt={blog.title} src={blog.image.url} />
                           <div className="post-thumbnail-content">
-                            <Link href={blog.to}>{blog.title}</Link>
+                            <Link to={`/blogs/blog_${index + 1}`}>
+                              {blog.title}
+                            </Link>
                           </div>
                         </div>
                       ))}
