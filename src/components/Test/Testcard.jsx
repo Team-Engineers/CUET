@@ -21,10 +21,10 @@ export const Testcard = ({
   index,
 }) => {
   const [auth] = useAuth();
-  index=index%12
-  let path=heading.toLowerCase().split(" ").join("")
-  if (heading === 'General Test'){
-    path+=`/${selectedCategory.toLowerCase().split(" ").join("")}`
+  index = index % 12
+  let path = heading.toLowerCase().split(" ").join("")
+  if (heading === 'General Test') {
+    path += `/${selectedCategory.toLowerCase().split(" ").join("")}`
   }
 
   const [userSubject, setUserSubject] = useState(null);
@@ -74,26 +74,27 @@ export const Testcard = ({
     setButtonTextColor("#ff7468");
 
   };
+  const images = '../../assets/images/prepImages/generalenglish';
   // const imagesPath = heading === 'General Test' ? `${images}/generaltest` : `${images}/generalenglish`;
   // const imagesPath = heading === 'General Test' ? `${images}/${heading.toLowerCase().split(' ').join('')}/${selectedCategory.toLowerCase().split(' ').join('')}` : `${images}/${heading.toLowerCase().split(' ').join('')}`;
 
 
   // const photo =  '../../assets/images/prepImages/genraltest/mathematics';
 
-  
+
   // const sanitizedSubTopic = subTopic
   //   .replace(/&/g, "and")
   //   .replace(/\./g, "")
   //   .replace(/,/g, "");
   return (
     <Link
-    style={{ textDecoration: "none" }}
-    to={
-      (index === 0) && (heading === "General Test" || heading === "General English") ?
-        `${navigation}/${subTopic.split(" ").join("_")}` :
-        auth.user && userSubject === heading ? `${navigation}/${subTopic.split(" ").join("_")}` :
-        auth.user ? `/purchase` : `/login`
-    }>
+      style={{ textDecoration: "none" }}
+      to={
+        (index === 0) ?
+          `${navigation}/${subTopic.split(" ").join("_")}` :
+          auth.user && userSubject === heading ? `${navigation}/${subTopic.split(" ").join("_")}` :
+            auth.user ? `/purchase` : `/login`
+      }>
       <div
         style={{
         }}
@@ -105,8 +106,8 @@ export const Testcard = ({
           style={{ background: bgcolor }}
           className="w-[95%] h-[300px] mt-3 rounded-2xl text-white flex justify-center "
         >
-          {index === 0 && !auth.user && ((heading === "General Test" || heading === "General English")
-          ) && (
+          {index === 0 && !auth.user
+            && (
               <img
                 src={freeicon}
                 className="absolute top-[-40px] right-[-20px] w-[80px] h-[80px]"
@@ -139,7 +140,7 @@ export const Testcard = ({
           </div>
         </div>
         <div className="flex justify-center items-center w-[90%]">
-          {index === 0 && (heading === "General Test" || heading === "General English")
+          {index === 0
             ? (
               <Link
                 to={`${navigation}/${subTopic.split(" ").join("_")}`}>
@@ -160,7 +161,7 @@ export const Testcard = ({
                         Practice
                       </button>
                     </Link>
-                  ) : index <= 2 && (heading === "General Test" || heading === "General English") ? (
+                  ) : index <= 2 ? (
                     <Link
 
                       to={`${navigation}/${subTopic.split(" ").join("_")}`}>
@@ -260,14 +261,14 @@ export const Testcard1 = ({
 
   return (
     <Link
-    style={{ textDecoration: "none" }}
-    to={
-      (index === 0 || (index <= 2 && auth.user)) && (topic === "General Test" || topic === "General English") ?
-        `/courses/practice/${topic2}/${subtopicNumber}` :
-        auth.user && userSubject === topic ? `/courses/practice/${topic2}/${subtopicNumber}` :
-        auth.user ? `/purchase` : `/login`
-    }>
-          <div
+      style={{ textDecoration: "none" }}
+      to={
+        (index === 0 || (index <= 2 && auth.user)) ?
+          `/courses/practice/${topic2}/${subtopicNumber}` :
+          auth.user && userSubject === topic ? `/courses/practice/${topic2}/${subtopicNumber}` :
+            auth.user ? `/purchase` : `/login`
+      }>
+      <div
         style={{
           // boxShadow: `0 4px 6px ${bgcolor}, 0 1px 3px rgba(0, 0, 0, 0.1)`,
           background: bgcolor,
@@ -277,7 +278,7 @@ export const Testcard1 = ({
         onMouseLeave={handleMouseLeave}
       >
         <div className="flex flex-col p-2 items-center justify-center ">
-          {index === 0 && !auth.user && (topic === "General Test" || topic === "General English")
+          {index === 0 && !auth.user
             && (
               <img
                 src={freeicon}
@@ -315,7 +316,7 @@ export const Testcard1 = ({
                 {Times} Minutes
               </div>
             </div>
-            {(index === 0 || (index <= 2 && auth.user)) && (topic === "General Test" || topic === "General English")
+            {(index === 0 || (index <= 2 && auth.user))
               ? (
                 <Link style={{ textDecoration: "none" }} to={`/courses/practice/${topic2}/${subtopicNumber}`}>
                   <button className="btn my-3   rounded-full  px-8 text-lg w-[156.33px] h-[38.4px]" style={{ backgroundImage: buttonBgColor, color: buttonTextColor }}>
@@ -332,7 +333,7 @@ export const Testcard1 = ({
                           Take Test
                         </button>
                       </Link>
-                    ) : index <= 2 && (topic === "General Test" || topic === "General English") ? (
+                    ) : index <= 2 ? (
                       <Link style={{ textDecoration: "none" }} to={`/courses/practice/${topic2}/${subtopicNumber}`}>
                         <button className="btn my-3   rounded-full  px-8 text-lg w-[156.33px] h-[38.4px]" style={{ backgroundImage: buttonBgColor, color: buttonTextColor }}>
                           Take Test
@@ -424,28 +425,28 @@ export const Testcard2 = ({
 
   return (
     <Link
-  to={
-    auth.user ? (
-      userSubject === topic || (index <= 2 && (topic === "General Test" || topic === "General English")) ? (
-        `${MOCKAPI}/${topic2}/mock_test/${mocksubtopicNumber}/${auth?.user?._id}`
-      ) : (
-        "/purchase"
-      )
-    ) : (
-      index === 0 && (topic === "General Test" || topic === "General English") ? (
-        `${MOCKAPI}/${topic2}/mock_test/${mocksubtopicNumber}/free`
-      ) : (
-        "/login"
-      )
-    )
-  }
-  style={{ textDecoration: "none"}}>
-    <div className="flex flex-col transition-all duration-300 hover:shadow-2xl border-solid border-[0.5px] border-gray-700 text-black bg-white rounded-[20px] items-center justify-around cursor-pointer p-[10px] h-[351px] w-[321px]"
+      to={
+        auth.user ? (
+          userSubject === topic || (index <= 2) ? (
+            `${MOCKAPI}/${topic2}/mock_test/${mocksubtopicNumber}/${auth?.user?._id}`
+          ) : (
+            "/purchase"
+          )
+        ) : (
+          index === 0 ? (
+            `${MOCKAPI}/${topic2}/mock_test/${mocksubtopicNumber}/free`
+          ) : (
+            "/login"
+          )
+        )
+      }
+      style={{ textDecoration: "none" }}>
+      <div className="flex flex-col transition-all duration-300 hover:shadow-2xl border-solid border-[0.5px] border-gray-700 text-black bg-white rounded-[20px] items-center justify-around cursor-pointer p-[10px] h-[351px] w-[321px]"
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}>
 
         <div className="w-full flex relative flex-row items-center">
-          {index === 0 && !auth.user && (topic === "General Test" || topic === "General English") && (
+          {index === 0 && !auth.user && (
             <img
               src={freeicon}
               className="absolute top-[-38px] right-[-38px] w-[80px] h-[80px]"
@@ -497,7 +498,7 @@ export const Testcard2 = ({
         <div className="w-fit flex justify-center h-16 ">
           {auth.user ? (
             <>
-              {userSubject === topic || (index <= 2 && (topic === "General Test" || topic === "General English")) ? (
+              {userSubject === topic || (index <= 2) ? (
                 <Link style={{ textDecoration: "none" }}
                   target="_blank"
                   to={`${MOCKAPI}/${topic2}/mock_test/${mocksubtopicNumber}/${auth?.user?._id}`}
@@ -516,7 +517,7 @@ export const Testcard2 = ({
             </>
           ) : (
             <>
-              {index === 0 && (topic === "General Test" || topic === "General English") ? (
+              {index === 0 ? (
                 <Link style={{ textDecoration: "none" }}
                   target="_blank"
                   to={`${MOCKAPI}/${topic2}/mock_test/${mocksubtopicNumber}/free`}

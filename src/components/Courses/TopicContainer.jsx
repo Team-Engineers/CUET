@@ -24,7 +24,9 @@ const TopicContainer = ({ brick, heading, text, color, subheading }) => {
             .join("_")}`
           : heading === "General Test"
             ? `/courses/${heading.split(" ").join("_")}/Mathematics`
-            : `/courses/${heading.split(" ").join("_")}`
+            : heading === "Economics"
+              ? `/courses/${heading.split(" ").join("_")}/Macro Economics`
+              : `/courses/${heading.split(" ").join("_")}`
       }
       style={{
         background: color,
