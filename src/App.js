@@ -22,16 +22,18 @@ import University from "./pages/UniversityPage";
 import PrivateRoutes from "./utils/PrivateRoutes";
 // import DashBoardNew from "./components/dashboardNew/pages/Dashboard";
 import Cards from "./components/dashboardNew/Cards/Cards";
-import BoughtPack from "./pages/BoughtPack";
 import UserPlans from "./components/dashboardNew/pages/UserPlans";
+import BoughtPack from "./pages/BoughtPack";
 // import PriceTable from "./components/Packs/PriceCard";
 import Blog from "./pages/Blog";
 
 import { useAuth } from "./utils/context";
-const selectedSubjects = auth?.user?.selectedSubjects;
+
 import BlogStructure from "./components/BlogCard/Structure";
+import CoursesNew from "./components/Courses/CoursesNew";
 const App = () => {
   const [auth, setAuth] = useAuth();
+  const selectedSubjects = auth?.user?.selectedSubjects;
   return (
     <Routes>
       <Route path="/login" element={!auth?.user ? <Login /> : <Homepage />} />
@@ -43,6 +45,10 @@ const App = () => {
       <Route
         path="/reset_password/:id/:token"
         element={!auth?.user ? <ResetPassword /> : <Homepage />}
+      />
+      <Route
+        path="/courses"
+        element={!auth?.user ? <Coursespage /> : <CoursesNew />}
       />
       <Route path="/Domain" element={<Domain />} />
       <Route
@@ -58,9 +64,7 @@ const App = () => {
       <Route path="/about" element={<AboutPage />} />
       <Route path="/blogs" element={<Blog />} />
       <Route path="/blogs/:topic" element={<BlogStructure />} />
-
       <Route path="/syllabus" element={<Syllabus />} />
-      <Route path="/courses" element={<Coursespage />} />
       <Route path="/purchase" element={<PackPage />} />
       <Route path="/university" element={<University />} />
       <Route path="/courses/:topic" element={<TestPage />} />

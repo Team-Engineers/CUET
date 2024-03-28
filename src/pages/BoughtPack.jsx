@@ -1,4 +1,5 @@
 import React from 'react';
+import Vector from "../../src/assets/images/syllabus_vector.png";
 import TopicContainer from '../components/Courses/TopicContainer';
 import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
@@ -10,8 +11,11 @@ const BoughtPack = () => {
     const selectedSubjects = auth?.user?.selectedSubjects;
 
     return (
-        <div className='overflow-hidden'>
+        <div className=" overflow-hidden">
             <Navbar />
+            <img src={Vector} className="absolute top-0 left-0 z-0 overflow-hidden" alt="" />
+
+
             <section className="max-w-[1280px] mb-8 mx-auto">
                 <div>
                     <div className="text-7xl md:text-17xl w-full flex flex-col items-center justify-center">

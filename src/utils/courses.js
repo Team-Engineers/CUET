@@ -144,7 +144,7 @@ const subtopicsData2 = [
   {
     title: "General Test",
     image: require("../assets/images/courses/domain3.png"),
-    color: "#0B8B8C",
+    color: "#976391",
   },
   {
     title: "Mathematics",

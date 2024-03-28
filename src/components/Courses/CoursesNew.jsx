@@ -23,15 +23,15 @@ const CoursesNew = () => {
             />
             <div className="w-full relative z-10 max-w-[1280px] mx-auto mt-8">
                 <div className="flex flex-col justify-center text-center my-5 ">
-                    <h1 className="gradient-text2 mx-8 items-center flex">
-                        <Link className="text-[#5648FC] items-center flex pr-2" to={"/"}>
-                            <IoArrowBack />
-                        </Link>
-                        <span>
-                            Purchase Courses
-                            <div className="w-20 h-[2px] bg-blueviolet-400 max-md:mx-auto m-0 mt-1 text-blueviolet-100" />
-                        </span>
-                    </h1>
+                    <Link
+                        className="text-[#5648FC] md:mx-20 mx-10 relative top-[20px] flex items-center  z-20 "
+                        to={"/"}
+                    >
+                        <IoArrowBack size={40} />
+                    </Link>
+                    <div className="relative z-10 flex  items-center  flex-col  md:mt-[-50px] mt-[-30px]">
+                        <h1 className="gradient-text2 items-center flex text-5xl md:text-21xl ">Purchase Courses</h1>
+                    </div>
                     <div className="flex items-center justify-center">
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-20 my-8">
                             {filteredSubtopics.map((item, index) => (
