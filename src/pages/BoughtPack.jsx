@@ -16,8 +16,8 @@ const BoughtPack = () => {
                 <div>
                     <div className="text-7xl md:text-17xl w-full flex flex-col items-center justify-center">
                         <div className="flex flex-col items-center justify-around">
-                            <h1 className="m-0 mt-2 gradient-text2 inline-block text-5xl text-center md:text-21xl z-10">
-                                Packs You Have Bought
+                            <h1 className="m-0 my-3 mt-8 gradient-text2 inline-block text-5xl text-center md:text-21xl z-10">
+                                Your Courses
                             </h1>
                         </div>
                     </div>

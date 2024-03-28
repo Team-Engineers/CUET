@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import { useAuth } from '../../utils/context';
 
 const DomainContainer = ({ brick, heading, color, subheading }) => {
-  console.log(heading)
   const [auth] = useAuth();
   const selectedSubjects = auth?.user?.selectedSubjects || [];
   const selectedSubject = selectedSubjects.find(
