@@ -255,6 +255,7 @@ const SignupForm = () => {
             onSuccess={handleGoogleLogin}
             onError={handleGoogleLoginError}
             disabled={loading}
+            text="signup_with"
           >
             {loading ? (
               <CgSpinner size={20} className="mt-1 animate-spin mr-2" />
