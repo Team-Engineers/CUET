@@ -13,30 +13,16 @@ import PrepModulesMultipleSubquestion from "./PrepModulesMultipleSubquestion";
 import PrepModulesSingleSubquestion from "./PrepModulesSingleSubquestion";
 import RecommendedSubTopics from "./RecommendedSubTopics";
 import "./question.css";
+import { urlSanitizer } from "../../services/url-sanitization.service";
 
 const PrepModules = () => {
   const [auth] = useAuth();
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   let { subject, topic, subTopic } = useParams();
-  subject = subject
-    ?.toLowerCase()
-    .replace(/\s/g, "_")
-    .replace(/&/g, "and")
-    .replace(/\./g, "")
-    .replace(/,/g, "");
-  subTopic = subTopic
-    ?.toLowerCase()
-    .replace(/\s/g, "_")
-    .replace(/&/g, "and")
-    .replace(/\./g, "")
-    .replace(/,/g, "");
-  topic = topic
-    ?.toLowerCase()
-    .replace(/\s/g, "_")
-    .replace(/&/g, "and")
-    .replace(/\./g, "")
-    .replace(/,/g, "");
+  subject = urlSanitizer(subject);
+  subTopic = urlSanitizer(subTopic);
+  topic = urlSanitizer(topic);
 
   if (!subject) {
     subject = topic;

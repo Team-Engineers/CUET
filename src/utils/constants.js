@@ -299,7 +299,7 @@ export const topics = {
       "Critical Reasoning",
       "Arrangement Circular and Linear",
       "Coding Decoding",
-      "Decision Making and Order and Ranking",
+      "Decision Making, Order and Ranking",
       "Direction Problem",
       "Number Series",
       "Puzzle",

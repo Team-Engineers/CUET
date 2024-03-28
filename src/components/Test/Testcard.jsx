@@ -118,15 +118,15 @@ export const Testcard = ({
             <h5 className="font-bold text-center text-[17px] mt-4 ">{subTopic}</h5>
             {/* <div className="image-cards grid grid-cols-3 gap-4"> */}
             <div className="image-card">
-              <img
-                src={require(`../../assets/images/prepImages/${path}/img${index + 1}.png`)}
-                // src={require(`${imagesPath}/img${index + 1}.png`)}
-                // src={random}
-                className="w-[121px] mx-auto h-[121px] flex justify-center items-center"
-                alt={`Image ${index + 1}`}
-              />
-            </div>
-            {/* </div> */}
+            <img
+              src={require(`../../assets/images/prepImages/${path}/img${index + 1}.png`)}
+              // src={require(`${imagesPath}/img${index + 1}.png`)}
+              // src={random}
+              className="w-[121px] mx-auto h-[121px] flex justify-center items-center"
+              alt={`Loading ${index + 1}`}
+            />
+          </div>
+          {/* </div> */}
             <div className="flex items-center justify-center pr-8">
               <div className="flex justify-center items-center">
                 <FaQuestion
