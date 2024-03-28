@@ -20,7 +20,6 @@ const PrepModulesMixedSubquestion = ({ data }) => {
       .map(() => Array(10).fill(false))
   );
 
-
   const location = useLocation();
 
   useEffect(() => {
@@ -54,6 +53,32 @@ const PrepModulesMixedSubquestion = ({ data }) => {
     ];
     setExplanationsVisible(updatedExplanationsVisible);
   };
+
+  const questionsPerPageArray = [];
+  const calculateQuestionsPerPageArray = () => {
+    let pageQuestions = 0;
+    // console.log("data length is ", data.length);
+    for (let i = 0; i < data.length; i++) {
+      if (data[i].subQuestions?.length > 1) {
+        questionsPerPageArray.push(pageQuestions === 0 ? 1 : pageQuestions + 1);
+        // console.log("para type question in index", i);
+        pageQuestions = 0;
+      } else {
+        pageQuestions++;
+        if (pageQuestions === 5) {
+          questionsPerPageArray.push(5);
+          pageQuestions = 0;
+        }
+      }
+    }
+    if (pageQuestions > 0) {
+      questionsPerPageArray.push(pageQuestions);
+    }
+    return questionsPerPageArray;
+  };
+
+  calculateQuestionsPerPageArray();
+  // console.log("question per pagearray is ", questionsPerPageArray);
   const renderQuestion = (question, questionIndex) => {
     const isExplanationVisible = explanationsVisible[questionIndex];
     // console.log("question is", question);
@@ -64,7 +89,11 @@ const PrepModulesMixedSubquestion = ({ data }) => {
             <div className="question">
               <div class="question-number-container">
                 <span className={`question-number id-${question?._id}`}>
-                  {`${questionIndex + 1 + currentPage * 5} `}
+                  {`${
+                    questionIndex +
+                    1 +
+                    currentPage * questionsPerPageArray[currentPage]
+                  } `}
                 </span>
               </div>
               <div class="question-text-container">
@@ -178,9 +207,7 @@ const PrepModulesMixedSubquestion = ({ data }) => {
                 </h6>
                 {question?.subQuestions[0]?.explanation?.map(
                   (explanation, explanationIndex) => (
-                    <div
-                      key={explanationIndex}
-                    >
+                    <div key={explanationIndex}>
                       {explanation.text.map((text, textIndex) => (
                         <MathText
                           className="explanation-text mb-2"
@@ -258,7 +285,11 @@ const PrepModulesMixedSubquestion = ({ data }) => {
 
             <div className="flex justify-center items-center gap-3">
               <span className={`question-number id-${question?._id}`}>
-                {`${questionIndex + 1 + currentPage * 5} `}
+                {`${
+                  questionIndex +
+                  1 +
+                  currentPage * questionsPerPageArray[currentPage]
+                } `}
               </span>
               {question?.questionTextAndImages?.map(
                 (textAndImages, textAndImagesIndex) => (
@@ -468,15 +499,25 @@ const PrepModulesMixedSubquestion = ({ data }) => {
     setExplanationsVisible(Array(data.length).fill(false));
     window.scroll(0, 0);
   };
-
+  const totalQuestions = questionsPerPageArray.reduce(
+    (acc, val) => acc + val,
+    0
+  );
+  // console.log("question per page length is", questionsPerPageArray.length)
   return (
     <section className="question-practice question-practice-v2">
       <div className="w-100 flex justify-center mt-4 items-center flex-col">
         <div className="question-container">
           {data
-            ?.slice(currentPage * 5, (currentPage + 1) * 5)
+            ?.slice(
+              calculateSliceStartIndex(currentPage, questionsPerPageArray),
+              calculateSliceEndIndex(currentPage, questionsPerPageArray)
+            )
             .map((question, questionIndex) => {
-              if (question.subQuestions && question.subQuestions.length > 1) {
+              if (
+                question?.subQuestions &&
+                question?.subQuestions?.length > 1
+              ) {
                 return renderQuestionWithMultipleSubquestions(
                   question,
                   questionIndex
@@ -487,10 +528,10 @@ const PrepModulesMixedSubquestion = ({ data }) => {
             })}
           <div className="pagination">
             <Pagination
-              defaultCurrent={currentPage + 1}
+              current={currentPage + 1}
               locale={locale}
-              total={data.length}
-              pageSize={5} // Display 5 questions per page
+              total={data?.length} 
+              pageSize={i[currentPage]}
               onChange={handlePageChange}
               showPrevNextJumpers
               showQuickJumper
@@ -503,6 +544,23 @@ const PrepModulesMixedSubquestion = ({ data }) => {
       </div>
     </section>
   );
+
+  // Helper function to calculate the start index for slicing
+  function calculateSliceStartIndex(currentPage, questionsPerPageArray) {
+    let startIndex = 0;
+    for (let i = 0; i < currentPage; i++) {
+      startIndex += questionsPerPageArray[i];
+    }
+    return startIndex;
+  }
+
+  // Helper function to calculate the end index for slicing
+  function calculateSliceEndIndex(currentPage, questionsPerPageArray) {
+    return (
+      calculateSliceStartIndex(currentPage, questionsPerPageArray) +
+      questionsPerPageArray[currentPage]
+    );
+  }
 };
 
 export default PrepModulesMixedSubquestion;
