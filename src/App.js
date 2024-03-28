@@ -44,7 +44,7 @@ const App = () => {
         element={!auth?.user ? <ResetPassword /> : <Homepage />}
       />
       <Route path="/Domain" element={<Domain />} />
-      <Route path="/" element={<Homepage />} />
+      <Route path="/" element={<Homepage /> } />
       <Route path="/about" element={<AboutPage />} />
       <Route path="/blogs" element={<Blog />} />
       <Route path="/blogs/:topic" element={<BlogStructure />} />

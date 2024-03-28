@@ -21,7 +21,38 @@ const BlogPost = () => {
         return (
           <img key={index} src={strategy?.imageUrl} alt={strategy?.altText} />
         );
-      } else if (strategy?.type === "single_col_table") {
+
+      
+    }
+    else if (strategy?.type === "multi_col_table") {
+      return (
+        <div key={index}>
+          <div className="table-body">
+            <h4>{strategy?.table?.title}</h4>
+            <table className="custom-table">
+              <thead>
+                <tr>
+                  {Object.keys(strategy?.table?.data[0]).map((header, idx) => (
+                    <th key={idx}>{header}</th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {strategy?.table?.data?.map((row, idx) => (
+                  <tr key={idx}>
+                    {Object.values(row).map((value, idx) => (
+                      <td key={idx}>{value}</td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <br />
+        </div>
+      );
+      } 
+      else if (strategy?.type === "single_col_table") {
         return (
           <div key={index}>
             <div className="table-body">
@@ -59,14 +90,53 @@ const BlogPost = () => {
             <p>{blog?.conclusion}</p>
           </>
         );
-      } else if (strategy.type === "new_para") {
+      } 
+      // else if (strategy.type === "new_para") {
+      //   return (
+      //     <div className="new_para">
+      //       <div className="heading">
+      //         <h4 className="m-0">{strategy.heading}</h4>
+      //       </div>
+      //       <div className="description">
+      //         <MathText text={strategy.content} textTag="p" />
+      //       </div>
+      //       <div className="read_more">
+      //         {strategy.alsoRead && strategy.alsoRead.length > 0 && (
+      //           <div>
+      //             <strong>ALSO READ -</strong>
+      //             {strategy.alsoRead.map((item, index) => (
+      //               <span style={{ color: item.color }} key={index}>
+      //                 &nbsp;
+      //                 <a
+      //                   href={item.url}
+      //                   target="_blank"
+      //                   rel="noopener noreferrer"
+      //                 >
+      //                   {item.title}
+      //                 </a>
+      //               </span>
+      //             ))}
+      //           </div>
+      //         )}
+      //       </div>
+      //     </div>
+      //   );
+      // }
+      else if (strategy?.type === "new_para") {
         return (
-          <div className="new_para">
+          <div className="new_para" key={index}>
             <div className="heading">
               <h4 className="m-0">{strategy.heading}</h4>
             </div>
             <div className="description">
               <MathText text={strategy.content} textTag="p" />
+              {strategy.list && (
+                <ul>
+                  {strategy.list.map((item, idx) => (
+                    <MathText text={item} key={idx} textTag="li" />
+                  ))}
+                </ul>
+              )}
             </div>
             <div className="read_more">
               {strategy.alsoRead && strategy.alsoRead.length > 0 && (
@@ -90,6 +160,7 @@ const BlogPost = () => {
           </div>
         );
       }
+      
     });
   };
 
